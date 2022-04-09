@@ -161,15 +161,6 @@
 </template>
 
 <script>
-//添加审判长 组件
-// var AddJudgeChief = Vue.extend({
-//   data() {
-//     return{
-//       chief_judge:''
-//     }
-//   },
-//   template:''
-// })
 
 var data;
 
@@ -203,6 +194,7 @@ export default {
   },
   mounted(){
     window.layui.use(['form','laydate'], function(){
+
           // var element = window.layui.element
           var laydate = window.layui.laydate;
           laydate.render({
@@ -236,7 +228,6 @@ export default {
           //这里是没有找到对应的值处理
           break
         }
-
       },
       delete_component(datatype,index){
         switch(datatype){
@@ -255,7 +246,7 @@ export default {
           default:
           //这里是没有找到对应的值处理
           break
-        }        
+        }
       },
       save_localstorage(){
         localStorage.setItem('BasicInfo',JSON.stringify(this.data))
