@@ -1,6 +1,5 @@
 <template>
 	<div class="layui-card" >
-		<div class="layui-card-header" style="text-align:center;font-size: 25px; ">法庭调查</div>
 		<div class="layui-card-body">
 			<form class="layui-form " action="" onsubmit="return false">
 				<div class="layui-form-item">
@@ -107,8 +106,8 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label layui-form-required">是否反诉</label>
 					<div class="layui-input-block">
-						<input type="radio" name = "is_counterclaim" v-model="data.is_counterclaim" lay-filter="is_counterclaim" value="1" title="反诉" >
-						<input type="radio" name = "is_counterclaim" v-model="data.is_counterclaim" lay-filter="is_counterclaim" value="0" title="不反诉" checked>
+						<input type="radio" name = "is_counterclaim" v-model="data.is_counterclaim" class="myradio" value="1" title="反诉" ><label>反诉</label>
+						<input type="radio" name = "is_counterclaim" v-model="data.is_counterclaim" class="myradio" value="0" title="不反诉"><label>不反诉</label>
 					</div>
 				</div>
 
@@ -167,8 +166,8 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label layui-form-required">反诉被告今天是否答辩</label>
 						<div class="layui-input-block">
-							<input type="radio" name="is_todayreply" v-model="data.is_todayreply" lay-filter="is_todayreply" value="1" title="答辩" >
-							<input type="radio" name="is_todayreply" v-model="data.is_todayreply" lay-filter="is_todayreply" value="0" title="不答辩" checked>
+							<input type="radio" name="is_todayreply" v-model="data.is_todayreply" class="myradio" value="1" title="答辩" ><label >答辩</label>
+							<input type="radio" name="is_todayreply" v-model="data.is_todayreply" class="myradio" value="0" title="不答辩"><label >不答辩</label>
 						</div>
 					</div>
 
@@ -254,16 +253,16 @@
     
 },
 mounted(){
-	let that=this;
-	window.layui.use(['form','laydate'], function(){
-		var form = window.layui.form;
-		form.on('radio(is_todayreply)', function(value){
-			that.data.is_todayreply=value.value;
-		})
-		form.on('radio(is_counterclaim)', function(value){
-			that.data.is_counterclaim=value.value;
-		})
-	})
+	// let that=this;
+	// window.layui.use(['form','laydate'], function(){
+	// 	var form = window.layui.form;
+	// 	form.on('radio(is_todayreply)', function(value){
+	// 		that.data.is_todayreply=value.value;
+	// 	})
+	// 	form.on('radio(is_counterclaim)', function(value){
+	// 		that.data.is_counterclaim=value.value;
+	// 	})
+	// })
 },
 updated: function () {
 

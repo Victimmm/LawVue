@@ -1,6 +1,5 @@
 <template>
   <div class="layui-card">
-    <div class="layui-card-header" style="text-align:center;font-size: 25px; ">基本信息（带*为必填项）</div>
     <div class="layui-card-body>">
       <form class="layui-form" action="">
         <div class="layui-form-item">
@@ -193,20 +192,24 @@ export default {
     
   },
   mounted(){
-    window.layui.use(['form','laydate'], function(){
-
-          // var element = window.layui.element
-          var laydate = window.layui.laydate;
-          laydate.render({
+    window.layui.use('laydate', function(){
+      var laydate = window.layui.laydate;
+      laydate.render({
               elem: '#filing_time' //指定元素
               ,format: 'yyyy年MM月dd日' //可任意组合
             });
-          laydate.render({
-            elem: '#court_time'
-            ,type: 'datetime'
+      laydate.render({
+        elem: '#court_time'
+        ,type: 'datetime'
               ,format: 'yyyy年MM月dd日 HH时mm分' //可任意组合
             });
-        })
+    });
+
+    // window.layui.use(['form','laydate'], function(){
+
+    //       // var element = window.layui.element
+
+    //     })
   },
   methods: {
 
@@ -249,7 +252,7 @@ export default {
         }
       },
       save_localstorage(){
-        localStorage.setItem('BasicInfo',JSON.stringify(this.data))
+        localStorage.setItem(this.data.court_number,JSON.stringify(this.data))
       }
     }
   }

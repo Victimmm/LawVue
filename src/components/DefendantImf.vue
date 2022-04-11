@@ -1,13 +1,12 @@
 <template>
 	<div class="layui-card">
-		<div class="layui-card-header" style="text-align:center;font-size: 25px; ">被告信息</div>
 		<div class="layui-card-body">
 			<form class="layui-form" action="" onsubmit="return false">
 				<div class="layui-form-item">
 					<label class="layui-form-label layui-form-required">被告类型</label>
 					<div class="layui-input-block">
-						<input type="radio" name="plaintiffType" v-model="data.defendant_type" lay-filter="defendantType" value="0" title="单位" checked>
-						<input type="radio" name="plaintiffType" v-model="data.defendant_type" lay-filter="defendantType" value="1" title="个人" >
+						<input type="radio" name="plaintiffType" v-model="data.defendant_type" class="myradio" value="0" title="单位" ><label >单位</label>
+						<input type="radio" name="plaintiffType" v-model="data.defendant_type" class="myradio" value="1" title="个人" ><label >个人</label>
 					</div>
 				</div>
 				<div v-if="data.defendant_type=='1'">
@@ -114,13 +113,13 @@ else
 			return {data:data}
 		},
 		mounted(){
-			let that=this;
-			window.layui.use('form', function(){
-				var form = window.layui.form;
-				form.on('radio(defendantType)', function(value){
-					that.data.defendant_type=value.value;
-				})
-			})
+			// let that=this;
+			// window.layui.use('form', function(){
+			// 	var form = window.layui.form;
+			// 	form.on('radio(defendantType)', function(value){
+			// 		that.data.defendant_type=value.value;
+			// 	})
+			// })
 		},
 		methods :{
 			save_localstorage(){

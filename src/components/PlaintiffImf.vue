@@ -1,13 +1,13 @@
 <template>
     <div class="layui-card">
-        <div class="layui-card-header" style="text-align:center;font-size: 25px; ">原告信息</div>
         <div class="layui-card-body">
             <form class="layui-form" action="" onsubmit="return false">
                 <div class="layui-form-item">
                     <label class="layui-form-label layui-form-required">原告类型</label>
                     <div class="layui-input-block">
-                        <input type="radio" name="accuser_type" v-model="data.accuser_type" value="0" title="单位" lay-filter="plaintiffType" checked>
-                        <input type="radio" name="accuser_type" v-model="data.accuser_type" value="1" title="个人" lay-filter="plaintiffType">
+                        <input type="radio" name="accuser_type" v-model="data.accuser_type" value="0" class="myradio" ><label >单位</label>
+                        <input type="radio" name="accuser_type" v-model="data.accuser_type" value="1" class="myradio"><label >个人</label>
+
                     </div>
                 </div>
                 
@@ -75,10 +75,11 @@
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-                <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
+                <button type="button" class="layui-btn layui-btn-primary" @click="onAddClick"> 添加</button>
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-warm" @click="onCloseClick"> 删除</button>
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal" @click="onSaveClick"> 保存</button>
              </div>
             </div>
-
         </form>
     </div>
 </div>
@@ -86,9 +87,6 @@
 
 <script type="text/javascript">
 var data;
-
-if(localStorage.getItem("PlaintiffImf")==null)
-{  
   data={
         accuser:'',
         accuser_short:'',
@@ -99,30 +97,59 @@ if(localStorage.getItem("PlaintiffImf")==null)
         accuser_agent:'',
         accuser_agent_address:'',
     };
-}
-else 
-  data=JSON.parse(localStorage.getItem("PlaintiffImf"));
+// if(localStorage.getItem("PlaintiffImf")==null)
+// {  
+//   data={
+//         accuser:'',
+//         accuser_short:'',
+//         accuser_type:"0",
+//         accuser_address:'',
+//         accuser_represent:'',
+//         accuser_duty:'',
+//         accuser_agent:'',
+//         accuser_agent_address:'',
+//     };
+// }
+// else 
+//   data=JSON.parse(localStorage.getItem("PlaintiffImf"));
 
 
     export default {
+          props: {
+            index: {
+              type: Number,
+              required: true
+          }
+         } ,
         data(){
-            return {data:data}
+            return {data:JSON.parse(JSON.stringify(data))}
         },
         mounted(){
-            let that=this;
-          window.layui.use('form', function(){
-            //   // var element = window.layui.element
-              var form = window.layui.form;
-              form.on('radio(plaintiffType)', function(value){
-                that.data.accuser_type=value.value;
-            })
+        //     let that=this;
+        //   window.layui.use('form', function(){
+        //     //
+        //       var form = window.layui.form;
+        //       form.on('radio(plaintiffType)', function(value){
+        //         that.data.accuser_type=value.value;
+        //     })
 
-        })
+        // })
       },
       methods :{
-          save_localstorage(){
+        save_localstorage(){
             localStorage.setItem('PlaintiffImf',JSON.stringify(this.data))
+        },
+        onCloseClick () {
+            // 将删除标签事件暴露除去
+            // console.log(this.index);
+            this.$emit("deleteIndex", this.index);
+        },
+        onAddClick(){
+            this.$emit("addIndex");
+        },
+        catchRacio(value){
+            window.alert(value);
         }
-    }   
+    }  
   }
 </script>
