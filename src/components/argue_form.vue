@@ -1,0 +1,341 @@
+
+<template>
+  <div id="argued">
+    <h1 style="text-align:center">法庭辩论</h1>
+    <form class="layui-form">
+      <table class="layui-table" id="form_argue">
+
+        <tr>
+          <td style="text-align: center" width="30%">审判员</td>
+
+          <td width="70%">
+            <textarea type="text" class="layui-input">法庭调查结束，现在进行法庭辩论，首先原告发表辩论意见</textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="layui-card-header">
+              <input type="text" v-model="data.argued_accuser[0].argue_accuser.name"   placeholder="原告" autocomplete="off" class="layui-input">
+            </div>
+          </td>
+          <td>
+            <div class="layui-input-row">
+              <div class="layui-col-md9">
+                <div class="layui-card-header">
+                  <input type="text" v-model="data.argued_accuser[0].argue_accuser_argue.name"   placeholder="原告辩论意见" autocomplete="off"
+                         class="layui-input">
+                </div>
+              </div>
+              <div class="layui-col-md3">
+                <button @click="add_component('argued_accuser')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text">
+                  <i class="layui-icon">&#xe654;</i>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="layui-card-header">
+              <input type="text" v-model="data.argued_defendant[0].argue_defendant.name"  placeholder="被告" autocomplete="off" class="layui-input">
+            </div>
+          </td>
+          <td>
+            <div class="layui-input-row">
+              <div class="layui-col-md9">
+                <div class="layui-card-header">
+                  <input type="text" v-model="data.argued_defendant[0].argue_defendant_argue.name" placeholder="被告辩论意见" autocomplete="off"
+                         class="layui-input">
+                </div>
+              </div>
+              <div class="layui-col-md3">
+                <button @click="add_component('argued_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text">
+                  <i class="layui-icon">&#xe654;</i>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <template v-for="(item, index) in data.argued_accuser.slice(1)" :key="index">
+          <tr>
+            <td>
+              <div class="layui-card-header">
+                <input type="text" v-model="data.argued_accuser[index+1].argue_accuser.name"   placeholder="原告" autocomplete="off" class="layui-input">
+              </div>
+            </td>
+            <td>
+              <div class="layui-input-row">
+                <div class="layui-col-md9">
+                  <div class="layui-card-header">
+                    <input type="text" v-model="data.argued_accuser[index+1].argue_accuser_argue.name"  placeholder="原告辩论意见" autocomplete="off"
+                           class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <button @click="delete_component('argued_accuser',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                          data-type="text">
+                    <i class="layui-icon">&#xe640;</i>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </template>
+        <template v-for="(item, index) in data.argued_defendant.slice(1)" :key="index">
+          <tr>
+            <td>
+              <div class="layui-card-header">
+                <input type="text" v-model="data.argued_defendant[index+1].argue_defendant.name"  placeholder="被告" autocomplete="off" class="layui-input">
+              </div>
+            </td>
+            <td>
+              <div class="layui-input-row">
+                <div class="layui-col-md9">
+                  <div class="layui-card-header">
+                    <input type="text" v-model="data.argued_defendant[index+1].argue_defendant_argue.name" placeholder="被告辩论意见" autocomplete="off"
+                           class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <button @click="delete_component('argued_defendant',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                          data-type="text">
+                    <i class="layui-icon">&#xe640;</i>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </template>
+      </table>
+      <table class="layui-table">
+        <tr>
+          <td style="text-align: center" width="30%">
+            <label class="layui-form-label layui-form-required">是否反诉</label>
+          </td>
+          <td>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <div class="site-title">
+                  <div class="layui-form" id="argued_is_counterclaim">
+                    <input type="radio" v-model="data.argue_is_counterclaim" name="argue_is_counterclaim" lay-filter="isCounterclaim" value="true" title="反诉" checked>
+                    <input type="radio" v-model="data.argue_is_counterclaim" name="argue_is_counterclaim" lay-filter="isCounterclaim" value="false" title="不反诉">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+      </table>
+      <table class="layui-table">
+        <tr >
+          <td width="30%">
+            <div class="layui-card-header">
+              <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant.name" placeholder="原告(反诉被告)" autoComplete="off" class="layui-input">
+            </div>
+          </td>
+          <td width="70%">
+            <div class="layui-input-row">
+              <div class="layui-col-md9">
+                <div class="layui-card-header">
+                  <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant_debate.name" placeholder="原告(反诉被告)辩论意见1" autoComplete="off" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-col-md3">
+                <button @click="add_component('argued_counterd')" type="button"
+                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text">
+                  <i class="layui-icon">&#xe654;</i>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="layui-card-header">
+              <input type="text" name="title" v-model="data.argued_countera[0].argue_counter_accuser.name" placeholder="被告(反诉原告)"
+                     autoComplete="off" class="layui-input">
+            </div>
+          </td>
+          <td>
+            <div class="layui-input-row">
+              <div class="layui-col-md9">
+                <div class="layui-card-header">
+                  <input type="text" name="title" v-model="data.argued_countera[0].argue_counter_accuser_debate.name" placeholder="被告(反诉原告)辩论意见1"
+                         autoComplete="off" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-col-md3">
+                <button @click="add_component('argued_countera')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"  data-type="text">
+                  <i class="layui-icon">&#xe654;</i>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+<!--        -->
+        <template v-for="(item, index) in data.argued_counterd.slice(1)" :key="index">
+          <tr >
+            <td width="30%">
+              <div class="layui-card-header">
+                <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant.name" placeholder="原告(反诉被告)" autoComplete="off" class="layui-input">
+              </div>
+            </td>
+            <td width="70%">
+              <div class="layui-input-row">
+                <div class="layui-col-md9">
+                  <div class="layui-card-header">
+                    <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant_debate.name" placeholder="原告(反诉被告)辩论意见" autoComplete="off" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <button @click="delete_component('argued_counterd',1)" type="button"
+                          class="layui-btn layui-btn-primary layui-btn-sm"
+                          data-type="text">
+                    <i class="layui-icon">&#xe640;</i>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </template>
+        <template v-for="(item, index) in data.argued_countera.slice(1)" :key="index">
+          <tr>
+            <td>
+              <div class="layui-card-header">
+                <input type="text" name="title" v-model="data.argued_countera[index+1].argue_counter_accuser.name" placeholder="被告(反诉原告)"
+                       autoComplete="off" class="layui-input">
+              </div>
+            </td>
+            <td>
+              <div class="layui-input-row">
+                <div class="layui-col-md9">
+                  <div class="layui-card-header">
+                    <input type="text" name="title" v-model="data.argued_countera[index+1].argue_counter_accuser_debate.name" placeholder="被告(反诉原告)辩论意见1"
+                           autoComplete="off" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <button @click="delete_component('argued_countera',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"  data-type="text">
+                    <i class="layui-icon">&#xe640;</i>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </template>
+      </table>
+    </form>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
+    </div>
+  </div>
+  <hr>
+</template>
+
+<script>
+var data;
+if (localStorage.getItem("argue_form") == null) {
+  data = {
+        argued_accuser:[
+          {
+            argue_accuser: { name: "" },                  //原告
+            argue_accuser_argue: { name: "" },            //辩论意见(原告)
+          }
+        ],
+        argued_defendant:[{
+          argue_defendant: { name: "" },                //被告
+          argue_defendant_argue: { name: "" },          //辩论意见(被告)
+        }],
+        argued_is_counterclaim: { name: "" },          //是否反诉
+        argued_counterd:[{
+          argue_counter_defendant: { name: "" },       //原告(反诉被告)
+          argue_counter_defendant_debate: { name: "" }, //反诉被告辩论意见
+        }],
+        argued_countera:[{
+          argue_counter_accuser: { name: "" },          //被告(反诉原告)
+          argue_counter_accuser_debate: { name: "" },   //反诉原告辩论意见
+        }],
+      }
+} else data = JSON.parse(localStorage.getItem("argue_form"));
+// console.log(data);
+export default {
+  data() {
+    return {
+      data: data,
+    };
+  },
+
+  components: {
+  },
+  methods: {
+    add_component(datatype) {
+      switch (datatype) {
+        case "argued_accuser":
+          this.data.argued_accuser.push({
+            argue_accuser: { name: "" },                  //原告
+            argue_accuser_argue: { name: "" },            //辩论意见(原告)
+          });
+          break;
+        case "argued_defendant":
+          this.data.argued_defendant.push({
+            argue_defendant: { name: "" },                //被告
+            argue_defendant_argue: { name: "" },          //辩论意见(被告)
+          });
+          break;
+        case "argued_counterd":
+          this.data.argued_counterd.push({
+            argue_counter_defendant: { name: "" },       //原告(反诉被告)
+            argue_counter_defendant_debate: { name: "" }, //反诉被告辩论意见
+          });
+          break;
+        case "argued_countera":
+          this.data.argued_countera.push({
+            argue_counter_accuser: { name: "" },          //被告(反诉原告)
+            argue_counter_accuser_debate: { name: "" },   //反诉原告辩论意见
+          });
+          break;
+        default:
+          //这里是没有找到对应的值处理
+          break;
+      }
+    },
+    delete_component(datatype, index) {
+      switch (datatype) {
+        case "argued_accuser":
+          //这里是值对应的处理
+          this.data.argued_accuser.splice(index, 1);
+          break;
+        case "argued_defendant":
+          //这里是值对应的处理
+          this.data.argued_defendant.splice(index, 1);
+          break;
+        case "argued_counterd":
+          //这里是值对应的处理
+          this.data.argued_counterd.splice(index, 1);
+          break;
+        case "argued_countera":
+          //这里是值对应的处理
+          this.data.argued_countera.splice(index, 1);
+          break;
+
+        default:
+          //这里是没有找到对应的值处理
+          break;
+      }
+    },
+    save_localstorage() {
+      localStorage.setItem("argue_form", JSON.stringify(this.data));
+    },
+  },
+}
+</script>
+
+<style scoped>
+
+</style>
