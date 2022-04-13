@@ -13,7 +13,7 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label layui-form-required">被告姓名</label>
 						<div class="layui-input-block">
-							<input type="text" v-model="data.defendant"  required lay-verify="required" placeholder="请输入被告姓名"
+							<input type="text" v-model="data.defendant" required lay-verify="required" placeholder="请输入被告姓名"
 							autocomplete="off" class="layui-input">
 						</div>
 					</div>

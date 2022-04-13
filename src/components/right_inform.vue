@@ -1,16 +1,13 @@
 <template>
   <!--权利告知-->
-  <div>
-    <el-radio v-model="radio1" label="1" size="large">Option 1</el-radio>
-    <el-radio v-model="radio1" label="2" size="large">Option 2</el-radio>
-  </div>
+<div class="layui-card">
+  <div class="layui-card-body>">
   <form class="layui-form">
-  <h1 style="text-align:center">权利告知（带*为必填项）</h1>
   <div class="layui-fluid">
     <div class="layui-form-item">
       <div class="layui-row">
         <div class="layui-col-md1">
-          <label>审判员</label>
+          <label style="text-align: center">审判员</label>
         </div>
         <div class="layui-col-md11">
           <textarea name="ta1" type="text" class="layui-input " style="height: 200px;" >
@@ -65,8 +62,8 @@
         </div>
         <div class="layui-col-md3">
           <div class="layui-form-item">
-            <input type="radio" value="1" v-model="data.accuser_avoid" lay-filter="accuser_avoid" name="accuser_avoid" title="不申请回避" checked>
-            <input type="radio" value="2" v-model="data.accuser_avoid" lay-filter="accuser_avoid" name="accuser_avoid" title="申请回避" >
+            <input type="radio" value="1" v-model="data.accuser_avoid" lay-filter="accuser_avoid" class="myradio" name="accuser_avoid"><label>  不申请回避 </label>
+            <input type="radio" value="2" v-model="data.accuser_avoid" lay-filter="accuser_avoid" class="myradio" name="accuser_avoid"><label>  申请回避  </label>
           </div>
         </div>
       </div>
@@ -78,8 +75,8 @@
         </div>
         <div class="layui-col-md3">
           <div class="layui-form">
-            <input type="radio" value="1"  v-model="data.defendant_avoid" lay-filter="defendant_avoid" name="defendant_avoid" title="不申请回避" checked>
-            <input type="radio" value="2"  v-model="data.defendant_avoid" lay-filter="defendant_avoid" name="defendant_avoid" title="申请回避" >
+            <input type="radio" value="1"  v-model="data.defendant_avoid" lay-filter="defendant_avoid" class="myradio" name="defendant_avoid"><label>  不申请回避  </label>
+            <input type="radio" value="2"  v-model="data.defendant_avoid" lay-filter="defendant_avoid" class="myradio" name="defendant_avoid"><label>  申请回避  </label>
           </div>
         </div>
       </div>
@@ -91,6 +88,8 @@
       </div>
     </div>
   </form>
+  </div>
+</div>
 </template>
 
 <script type="text/javascript" >
@@ -108,16 +107,7 @@ export default {
     return {data:data}
   },
   mounted(){
-    window.layui.use('form', function(){
-      // var element = window.layui.element
-      var form = window.layui.form;
-      form.on('radio(defendant_avoid)', function(value){
-        data.defendant_avoid=value.value
-      })
-      form.on('radio(accuser_avoid)', function(value){
-        data.accuser_avoid=value.value
-      })
-    })
+
   },
   methods:{
 

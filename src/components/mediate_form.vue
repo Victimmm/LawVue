@@ -1,5 +1,4 @@
 <template>
-  <h1 style="text-align:center">是否调解</h1>
   <table class="layui-table">
     <tr>
       <td width="30%">
@@ -15,16 +14,14 @@
       </td>
       <td>
         <div class="layui-form-item">
-          <div class="site-title">
+          <div class="layui-col-md9">
             <div class="layui-form">
-              <div class="site-title">
-                <div class="layui-form">
-                  <input type="radio" value="1" v-model="data.is_mediate_accuser " name="is_mediate_accuser" title="能" checked>
-                  <input type="radio" value="2" v-model="data.is_mediate_accuser " name="is_mediate_accuser" title="不能" >
-                </div>
-              </div>
+                <input type="radio" value="1" class="myradio" v-model="data.is_mediate_accuser " name="is_mediate_accuser">
+                  <label>能</label>
+                <input type="radio" value="2" class="myradio" v-model="data.is_mediate_accuser " name="is_mediate_accuser">
+                  <label>不能</label>
             </div>
-          </div>
+        </div>
         </div>
       </td>
     </tr>
@@ -46,22 +43,18 @@
             <input type="text" v-model="data.mediated_defendant[0].mediate_defendant.name" id="mediate_defendant"  placeholder="被告" autocomplete="off" class="layui-input">
           </td>
           <td width="70%">
-            <div class="layui-input-row">
+            <div class="layui-card-body">
               <div class="layui-col-md9">
-                <div class="layui-form">
-                  <div class="site-title">
-                    <div class="layui-form" id="mediated_is_mediate1">
-                      <input type="radio" value="1" v-model="data.mediated_defendant[0].is_mediate_defendant.name" name="is_mediate_defendant1" title="能" checked>
-                      <input type="radio" value="2" v-model="data.mediated_defendant[0].is_mediate_defendant.name" name="is_mediate_defendant1" title="不能" >
-                    </div>
-                  </div>
-                </div>
+                <input type="radio" value="1" v-model="data.mediated_defendant[0].is_mediate_defendant.name" class="myradio" >
+                <label>能</label>
+                <input type="radio" value="2" v-model="data.mediated_defendant[0].is_mediate_defendant.name" class="myradio" >
+                <label>不能</label>
               </div>
-              <div class="layui-col-md3">
-                <button @click="add_component('mediated_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
-              </div>
+            </div>
+            <div class="layui-col-md3">
+              <button @click="add_component('mediated_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text">
+                <i class="layui-icon">&#xe654;</i>
+              </button>
             </div>
           </td>
         </tr>
@@ -78,13 +71,11 @@
             <td width="70%">
               <div class="layui-input-row">
                 <div class="layui-col-md9">
-                  <div class="layui-form">
-                    <div class="site-title">
-                      <div class="layui-form">
-                        <input type="radio" value="1" v-model="data.mediated_defendant[index+1].is_mediate_defendant.name" name="is_mediate_defendant1" title="能" checked>
-                        <input type="radio" value="2" v-model="data.mediated_defendant[index+1].is_mediate_defendant.name" name="is_mediate_defendant1" title="不能" >
-                      </div>
-                    </div>
+                  <div class="layui-card-body">
+                      <input type="radio" value="1" v-model="data.mediated_defendant[index+1].is_mediate_defendant.name" class="myradio" >
+                      <label>能</label>
+                      <input type="radio" value="2" v-model="data.mediated_defendant[index+1].is_mediate_defendant.name" class="myradio" >
+                      <label>不能</label>
                   </div>
                 </div>
                 <div class="layui-col-md3">

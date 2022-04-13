@@ -182,7 +182,7 @@
 								</div>
 								<div style="float: right;display: inline ;margin-left: 10px;">
 									<div class="layui-btn-group">
-										<button id="todayreplyitem_add" type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text" style="height: 38px;" @click="add_component('counterclaim_defendant')">
+										<button  type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text" style="height: 38px;" @click="add_component('counterclaim_defendant')">
 											<i class="layui-icon">&#xe654;</i>
 										</button>
 									</div>
@@ -200,7 +200,7 @@
 									</div>
 									<div style="float: right;display: inline ;margin-left: 10px;">
 										<div class="layui-btn-group">
-											<button id="todayreplyitem_add" type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text" style="height: 38px;" @click="delete_component('counterclaim_defendant',index+1)">
+											<button  type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text" style="height: 38px;" @click="delete_component('counterclaim_defendant',index+1)">
 												<i class="layui-icon">&#xe640;</i>
 											</button>
 										</div>

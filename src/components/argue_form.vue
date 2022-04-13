@@ -1,7 +1,6 @@
 
 <template>
   <div id="argued">
-    <h1 style="text-align:center">法庭辩论</h1>
     <form class="layui-form">
       <table class="layui-table" id="form_argue">
 
@@ -15,14 +14,14 @@
         <tr>
           <td>
             <div class="layui-card-header">
-              <input type="text" v-model="data.argued_accuser[0].argue_accuser.name"   placeholder="原告" autocomplete="off" class="layui-input">
+              <input type="text" v-model="data.argued_accuser[0].argue_accuser"   placeholder="原告" autocomplete="off" class="layui-input">
             </div>
           </td>
           <td>
             <div class="layui-input-row">
               <div class="layui-col-md9">
                 <div class="layui-card-header">
-                  <input type="text" v-model="data.argued_accuser[0].argue_accuser_argue.name"   placeholder="原告辩论意见" autocomplete="off"
+                  <input type="text" v-model="data.argued_accuser[0].argue_accuser_argue"   placeholder="原告辩论意见" autocomplete="off"
                          class="layui-input">
                 </div>
               </div>
@@ -38,14 +37,14 @@
         <tr>
           <td>
             <div class="layui-card-header">
-              <input type="text" v-model="data.argued_defendant[0].argue_defendant.name"  placeholder="被告" autocomplete="off" class="layui-input">
+              <input type="text" v-model="data.argued_defendant[0].argue_defendant"  placeholder="被告" autocomplete="off" class="layui-input">
             </div>
           </td>
           <td>
             <div class="layui-input-row">
               <div class="layui-col-md9">
                 <div class="layui-card-header">
-                  <input type="text" v-model="data.argued_defendant[0].argue_defendant_argue.name" placeholder="被告辩论意见" autocomplete="off"
+                  <input type="text" v-model="data.argued_defendant[0].argue_defendant_argue" placeholder="被告辩论意见" autocomplete="off"
                          class="layui-input">
                 </div>
               </div>
@@ -62,14 +61,14 @@
           <tr>
             <td>
               <div class="layui-card-header">
-                <input type="text" v-model="data.argued_accuser[index+1].argue_accuser.name"   placeholder="原告" autocomplete="off" class="layui-input">
+                <input type="text" v-model="data.argued_accuser[index+1].argue_accuser"   placeholder="原告" autocomplete="off" class="layui-input">
               </div>
             </td>
             <td>
               <div class="layui-input-row">
                 <div class="layui-col-md9">
                   <div class="layui-card-header">
-                    <input type="text" v-model="data.argued_accuser[index+1].argue_accuser_argue.name"  placeholder="原告辩论意见" autocomplete="off"
+                    <input type="text" v-model="data.argued_accuser[index+1].argue_accuser_argue"  placeholder="原告辩论意见" autocomplete="off"
                            class="layui-input">
                   </div>
                 </div>
@@ -87,14 +86,14 @@
           <tr>
             <td>
               <div class="layui-card-header">
-                <input type="text" v-model="data.argued_defendant[index+1].argue_defendant.name"  placeholder="被告" autocomplete="off" class="layui-input">
+                <input type="text" v-model="data.argued_defendant[index+1].argue_defendant"  placeholder="被告" autocomplete="off" class="layui-input">
               </div>
             </td>
             <td>
               <div class="layui-input-row">
                 <div class="layui-col-md9">
                   <div class="layui-card-header">
-                    <input type="text" v-model="data.argued_defendant[index+1].argue_defendant_argue.name" placeholder="被告辩论意见" autocomplete="off"
+                    <input type="text" v-model="data.argued_defendant[index+1].argue_defendant_argue" placeholder="被告辩论意见" autocomplete="off"
                            class="layui-input">
                   </div>
                 </div>
@@ -116,31 +115,30 @@
           </td>
           <td>
             <div class="layui-form-item">
-              <div class="layui-input-block">
-                <div class="site-title">
-                  <div class="layui-form" id="argued_is_counterclaim">
-                    <input type="radio" v-model="data.argue_is_counterclaim" name="argue_is_counterclaim" lay-filter="isCounterclaim" value="true" title="反诉" checked>
-                    <input type="radio" v-model="data.argue_is_counterclaim" name="argue_is_counterclaim" lay-filter="isCounterclaim" value="false" title="不反诉">
-                  </div>
-                </div>
+              <div class="site-title">
+                  <input type="radio" v-model="data.argue_is_counterclaim" class="myradio" name="argue_is_counterclaim" value="true" >
+                  <label>反诉</label>
+                  <input type="radio" v-model="data.argue_is_counterclaim" class="myradio" name="argue_is_counterclaim" value="false">
+                  <label>不反诉</label>
               </div>
             </div>
           </td>
         </tr>
 
       </table>
+      <div v-show="data.argue_is_counterclaim=='true'">
       <table class="layui-table">
         <tr >
           <td width="30%">
             <div class="layui-card-header">
-              <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant.name" placeholder="原告(反诉被告)" autoComplete="off" class="layui-input">
+              <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant" placeholder="原告(反诉被告)" autoComplete="off" class="layui-input">
             </div>
           </td>
           <td width="70%">
             <div class="layui-input-row">
               <div class="layui-col-md9">
                 <div class="layui-card-header">
-                  <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant_debate.name" placeholder="原告(反诉被告)辩论意见1" autoComplete="off" class="layui-input">
+                  <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant_debate" placeholder="原告(反诉被告)辩论意见1" autoComplete="off" class="layui-input">
                 </div>
               </div>
               <div class="layui-col-md3">
@@ -156,7 +154,7 @@
         <tr>
           <td>
             <div class="layui-card-header">
-              <input type="text" name="title" v-model="data.argued_countera[0].argue_counter_accuser.name" placeholder="被告(反诉原告)"
+              <input type="text" name="title" v-model="data.argued_countera[0].argue_counter_accuser" placeholder="被告(反诉原告)"
                      autoComplete="off" class="layui-input">
             </div>
           </td>
@@ -164,7 +162,7 @@
             <div class="layui-input-row">
               <div class="layui-col-md9">
                 <div class="layui-card-header">
-                  <input type="text" name="title" v-model="data.argued_countera[0].argue_counter_accuser_debate.name" placeholder="被告(反诉原告)辩论意见1"
+                  <input type="text" name="title" v-model="data.argued_countera[0].argue_counter_accuser_debate" placeholder="被告(反诉原告)辩论意见1"
                          autoComplete="off" class="layui-input">
                 </div>
               </div>
@@ -181,14 +179,14 @@
           <tr >
             <td width="30%">
               <div class="layui-card-header">
-                <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant.name" placeholder="原告(反诉被告)" autoComplete="off" class="layui-input">
+                <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant" placeholder="原告(反诉被告)" autoComplete="off" class="layui-input">
               </div>
             </td>
             <td width="70%">
               <div class="layui-input-row">
                 <div class="layui-col-md9">
                   <div class="layui-card-header">
-                    <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant_debate.name" placeholder="原告(反诉被告)辩论意见" autoComplete="off" class="layui-input">
+                    <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant_debate" placeholder="原告(反诉被告)辩论意见" autoComplete="off" class="layui-input">
                   </div>
                 </div>
                 <div class="layui-col-md3">
@@ -206,7 +204,7 @@
           <tr>
             <td>
               <div class="layui-card-header">
-                <input type="text" name="title" v-model="data.argued_countera[index+1].argue_counter_accuser.name" placeholder="被告(反诉原告)"
+                <input type="text" name="title" v-model="data.argued_countera[index+1].argue_counter_accuser" placeholder="被告(反诉原告)"
                        autoComplete="off" class="layui-input">
               </div>
             </td>
@@ -214,7 +212,7 @@
               <div class="layui-input-row">
                 <div class="layui-col-md9">
                   <div class="layui-card-header">
-                    <input type="text" name="title" v-model="data.argued_countera[index+1].argue_counter_accuser_debate.name" placeholder="被告(反诉原告)辩论意见1"
+                    <input type="text" name="title" v-model="data.argued_countera[index+1].argue_counter_accuser_debate" placeholder="被告(反诉原告)辩论意见1"
                            autoComplete="off" class="layui-input">
                   </div>
                 </div>
@@ -228,6 +226,7 @@
           </tr>
         </template>
       </table>
+      </div>
     </form>
   </div>
   <div class="layui-form-item">
@@ -244,33 +243,44 @@ if (localStorage.getItem("argue_form") == null) {
   data = {
         argued_accuser:[
           {
-            argue_accuser: { name: "" },                  //原告
-            argue_accuser_argue: { name: "" },            //辩论意见(原告)
+            argue_accuser: "" ,                  //原告
+            argue_accuser_argue: "" ,            //辩论意见(原告)
           }
         ],
         argued_defendant:[{
-          argue_defendant: { name: "" },                //被告
-          argue_defendant_argue: { name: "" },          //辩论意见(被告)
+          argue_defendant: "" ,                //被告
+          argue_defendant_argue: "" ,          //辩论意见(被告)
         }],
-        argued_is_counterclaim: { name: "" },          //是否反诉
+        argue_is_counterclaim: "false",          //是否反诉
         argued_counterd:[{
-          argue_counter_defendant: { name: "" },       //原告(反诉被告)
-          argue_counter_defendant_debate: { name: "" }, //反诉被告辩论意见
+          argue_counter_defendant:"" ,       //原告(反诉被告)
+          argue_counter_defendant_debate: "", //反诉被告辩论意见
         }],
         argued_countera:[{
-          argue_counter_accuser: { name: "" },          //被告(反诉原告)
-          argue_counter_accuser_debate: { name: "" },   //反诉原告辩论意见
+          argue_counter_accuser: "" ,          //被告(反诉原告)
+          argue_counter_accuser_debate: "" ,   //反诉原告辩论意见
         }],
       }
 } else data = JSON.parse(localStorage.getItem("argue_form"));
-// console.log(data);
+console.log(data);
 export default {
   data() {
     return {
       data: data,
     };
   },
+  mounted(){
+    // let that=this;
+    // window.layui.use('form', function(){
+    //   var form = window.layui.form;
+    //   form.on('radio(argue_is_counterclaim)', function(value){
+    //     that.data.argue_is_counterclaim=value.value;
+    //   })
+    // })
+  },
+  updated: function () {
 
+  },
   components: {
   },
   methods: {
