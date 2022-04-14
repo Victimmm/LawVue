@@ -1,55 +1,65 @@
 // src/store/index.js
 
-import {createStore} from "vuex";
+import { createStore } from "vuex";
 
 export default createStore({
-    state() {
-        return {
-            basicInfo: {
-                filing_time: new Date(),
-                court_time: new Date(),
-                court_place: '',
-                chief_judge: [{name: ""}],
-                judge: [{name: ""}],
-                juror: [{name: ""}],
-                court_clerk: '',
-                court_number: '',
-                court_cause: ''
-            },
-            plaintiffImf: [{
-                accuser: '',
-                accuser_short: '',
-                accuser_type: "0",
-                accuser_address: '',
-                accuser_represent: '',
-                accuser_duty: '',
-                accuser_agent: '',
-                accuser_agent_address: ''
-            }],
-            defendantImf: [{
-                defendant: '',
-                defendant_short: '',
-                defendant_type: "0",
-                defendant_address: '',
-                defendant_representative: '',
-                defendant_duty: '',
-                defendant_agent: '',
-                defendant_agent_address: ''
-            }],
-            courtInves: {
-                accuser_claims: [{accuser_name: "", claim_item: "", fact_reason: ""}],
-                is_counterclaim: "0",
-                defendant_claims: [{defendant_name: "", claim_item: "", fact_reason: ""}],
-                counterclaim_plaintiff: [{name: "", claim_item: "", fact_reason: ""}],
-                is_todayreply: "0",
-                counterclaim_defendant: [{name: "", reply_item: ""}]
-            }
-        }
-    },
-    mutations: {
-        addTodo(state, item) {
-            state.todos.unshift(item);
-        }
-    }
+	state() {
+		return {
+			plaintiffname: [''],
+			defendantname: [''],
+			is_counterclaim:"",
+			court_number:""
+
+		}
+	},
+	mutations: {
+		HandlePlaintiffName(state, payload) {
+			state.plaintiffname[payload[1]] = payload[0]
+		},
+		HandleDefendantName(state, payload) {
+			state.defendantname[payload[1]] = payload[0]
+		},
+		setCourtNum(state,payload){
+			state.court_number=payload
+		},
+		setCounterClaim(state,payload){
+			state.is_counterclaim=payload
+		},
+		delete_components(state, payload) {
+			switch (payload[0]) {
+				case 'plaintiff':
+					state.plaintiffname.splice(payload[1], 1);
+					break
+				case 'defendant':
+					state.defendantname.splice(payload[1], 1);
+					break
+				default:
+					//这里是没有找到对应的值处理
+					break
+			}
+		},
+		add_components(state, payload) {
+			switch (payload[0]) {
+				case 'plaintiff':
+					state.plaintiffname.push('')
+					break
+				case 'defendant':
+					state.defendantname.push('')
+					break
+				default:
+					//这里是没有找到对应的值处理
+					break
+			}
+		}
+	},
+	getters: {
+		// ...
+		getPlaintiff(state) {
+			return state.plaintifflength
+		}
+	}
 });
+
+
+
 

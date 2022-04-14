@@ -5,6 +5,19 @@
         <div class="layui-form-item">
           <div class="layui-col-md2">
             <div class="layui-input-block">
+              <label class="layui-form-label layui-form-required">案号 </label>
+            </div>
+          </div>
+          <div class="layui-col-md7">
+            <div class="layui-input-block">
+              <input type="text"  v-model="data.court_number" name="courtNumber" lay-verify="required" placeholder="请输入案号" autocomplete="on"
+                     class="layui-input">
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-col-md2">
+            <div class="layui-input-block">
               <label class="layui-form-label">立案时间</label>
             </div>
           </div>
@@ -94,7 +107,7 @@
         </div>
       </div>
       <div class="layui-col-md1">
-        <button v-on:click="add_component('judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+        <button @click="add_component('judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
         data-type="text">
         <i class="layui-icon">&#xe654;</i>
         </button>
@@ -114,7 +127,7 @@
         </div>
       </div>
       <div class="layui-col-md1">
-        <button v-on:click="delete_component('judge',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+        <button @click="delete_component('judge',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                 data-type="text">
           <i class="layui-icon">&#xe640;</i>
         </button>
@@ -136,7 +149,7 @@
   </div>
   <div class="layui-col-md1">
     <div class="layui-btn-group">
-      <button v-on:click="add_component('juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+      <button @click="add_component('juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
       data-type="text">
       <i class="layui-icon">&#xe654;</i>
     </button>
@@ -159,7 +172,7 @@
     </div>
     <div class="layui-col-md1">
       <div class="layui-btn-group">
-        <button v-on:click="delete_component('juror',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+        <button @click="delete_component('juror',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                 data-type="text">
           <i class="layui-icon">&#xe640;</i>
         </button>
@@ -182,19 +195,7 @@
     </div>
   </div>
 </div>
-<div class="layui-form-item">
-  <div class="layui-col-md2">
-    <div class="layui-input-block">
-      <label class="layui-form-label layui-form-required">案号 </label>
-    </div>
-  </div>
-  <div class="layui-col-md7">
-    <div class="layui-input-block">
-      <input type="text"  v-model="data.court_number" name="courtNumber" lay-verify="required" placeholder="请输入案号" autocomplete="on"
-      class="layui-input">
-    </div>
-  </div>
-</div>
+
 <div class="layui-form-item">
   <div class="layui-col-md2">
     <div class="layui-input-block">
@@ -209,7 +210,7 @@
 </div>
 <div class="layui-form-item">
   <div class="layui-input-block">
-    <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
+    <button class="layui-btn" @click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
   </div>
 </div>
 </form>
@@ -218,11 +219,13 @@
 </template>
 
 <script>
-
 var data;
 
-if(localStorage.getItem("BasicInfo")==null)
-{  
+//已有案号
+var court_number="123456789";
+
+if(window.localStorage.getItem(court_number)==null)
+{
   data={
     filing_time:new Date(),
     court_time:new Date(),
@@ -235,12 +238,14 @@ if(localStorage.getItem("BasicInfo")==null)
     court_cause:''
   };
 }
-else 
-  data=JSON.parse(localStorage.getItem("BasicInfo"));
-
+else{
+  data=JSON.parse(window.localStorage.getItem(court_number)).BasicInfo;
+  data.court_number=court_number
+}
 
 export default {
   data() {
+
     return {
       data:data
     } 
@@ -310,7 +315,9 @@ export default {
         }
       },
       save_localstorage(){
-        localStorage.setItem(this.data.court_number,JSON.stringify(this.data))
+        this.$store.commit("setCourtNum",this.data.court_number)
+
+        localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data}))
       }
     }
   }

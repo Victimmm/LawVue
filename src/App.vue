@@ -16,8 +16,8 @@
       <fieldset class="layui-elem-field layui-field-title">
         <legend>原告信息</legend>
         <div class="layui-field-box">
-          <PlaintiffImf :index=0 @addIndex="add_plaintiffImf" :key=0></PlaintiffImf>
-          <PlaintiffImf v-for="(tag,index) in plaintiffImfTag.slice(1)" :key="index+1" @deleteIndex="del" :index="index+1" @addIndex="add_plaintiffImf"/>
+          <PlaintiffImf :index=0 @addIndex="add_plaintiffImf" :key="plaintiffImfTag[0].guid"></PlaintiffImf>
+          <PlaintiffImf v-for="(tag,index) in plaintiffImfTag.slice(1)" :key="tag.guid" @deleteIndex="del_plaintiffImf" :index="index+1" @addIndex="add_plaintiffImf" />
         </div>
       </fieldset>
     </div>
@@ -25,7 +25,9 @@
       <fieldset class="layui-elem-field layui-field-title">
         <legend>被告信息</legend>
         <div class="layui-field-box">
-          <DefendantImf></DefendantImf>
+          <DefendantImf :index=0  :key=0  @addIndex="add_defendantImf"></DefendantImf>
+          <DefendantImf v-for="(tag,index) in defendantImfTag.slice(1)" :key="tag.guid" @deleteIndex="del_defendantImf" :index="index+1" @addIndex="add_defendantImf" />
+
         </div>
       </fieldset>
     </div>
@@ -113,8 +115,10 @@
 
   </div>
 
+
+
 </template>
- 
+
 <script>
 import BasicInfo from './components/BasicInfo.vue'
 import PlaintiffImf from './components/PlaintiffImf.vue'
@@ -129,21 +133,21 @@ import final_form from "@/components/final_form";
 import mediate_form from "@/components/mediate_form";
 import delivery_form from "@/components/delivery_form";
 
-// import AccshowForm from './components/AccshowForm.vue'
 
 export default {
   name: 'App',
   data:function (){
     return {
-      plaintiffImfTag:[{name:""}]
+      plaintiffImfTag:[{guid:this.guid()}],
+      defendantImfTag:[{guid:this.guid()}]
     }
   },
   components: {
     BasicInfo,
     PlaintiffImf,
     DefendantImf,
-    right_inform,
     CourtInves,
+    right_inform,
     accshow_form,
     defendshow_form,
     inquiry_form,
@@ -151,59 +155,62 @@ export default {
     final_form,
     mediate_form,
     delivery_form,
-
-    // AccshowForm
   },
   methods: {
     add_plaintiffImf(){
-      this.plaintiffImfTag.push({name:""})
+      this.plaintiffImfTag.push({guid:this.guid()})
     },
-    del(index) {
-       // 从数组中移除。
+    del_plaintiffImf(index) {
        this.plaintiffImfTag.splice(index, 1);
      },
-     create_contentList ()  {
-
-     }
-   },
-   updated: function () {
-    // var form=window.layui.form;
-    // form.render(); 
+    add_defendantImf(){
+      this.defendantImfTag.push({guid:this.guid()})
+    },
+    del_defendantImf(index) {
+       // 从数组中移除。
+       this.defendantImfTag.splice(index, 1);
+     },
+     guid: function() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+        v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+    }
   },
   mounted (){
   // 添加目录控件
-    this.$nextTick(function () {
-      window.layui.use('layer', function(){
-        var layer = window.layui.layer;
-        layer.open({
-          title: '目录',
-          skin: 'myskin',
-          type: 1,
-          content: "<ul class='site-dir layui-layer-wrap' id='content_list' style='display: block;'>"+
-          "<li><a href='#BasicInfo'><cite>基本信息</cite></a></li>"+
-          "<li><a href='#whole_PlaintiffImf'><cite>原告信息</cite></a></li>"+
-          "<li><a href='#whole_DefendantImf'><cite>被告信息</cite></a></li>"+
-           "<li><a href='#right_inform'><cite>权利告知</cite></a></li>"+
-          "<li><a href='#CourtInves1'><cite>法庭调查1</cite></a></li>"+
-          "<li><a href='#accshow_form'><cite>法庭调查2</cite></a></li>"+
-              "<li><a href='#defendshow_form'><cite>法庭调查3</cite></a></li>"+
-              "<li><a href='#inquiry_form'><cite>法庭询问</cite></a></li>"+
-              "<li><a href='#argue_form'><cite>法庭辩论</cite></a></li>"+
-              "<li><a href='#final_form'><cite>陈述意见</cite></a></li>"+
-              "<li><a href='#mediate_form'><cite>是否调解</cite></a></li>"+
-              "<li><a href='#delivery_form'><cite>电子文书送达</cite></a></li>"+
+  this.$nextTick(function () {
+    window.layui.use('layer', function(){
+      var layer = window.layui.layer;
+      layer.open({
+        title: '目录',
+        skin: 'myskin',
+        type: 1,
+        content: "<ul class='site-dir layui-layer-wrap' id='content_list' style='display: block;'>"+
+        "<li><a href='#BasicInfo'><cite>基本信息</cite></a></li>"+
+        "<li><a href='#whole_PlaintiffImf'><cite>原告信息</cite></a></li>"+
+        "<li><a href='#whole_DefendantImf'><cite>被告信息</cite></a></li>"+
+         "<li><a href='#right_inform'><cite>权利告知</cite></a></li>"+
+        "<li><a href='#CourtInves1'><cite>法庭调查1</cite></a></li>"+
+        "<li><a href='#accshow_form'><cite>法庭调查2</cite></a></li>"+
+            "<li><a href='#defendshow_form'><cite>法庭调查3</cite></a></li>"+
+            "<li><a href='#inquiry_form'><cite>法庭询问</cite></a></li>"+
+            "<li><a href='#argue_form'><cite>法庭辩论</cite></a></li>"+
+            "<li><a href='#final_form'><cite>陈述意见</cite></a></li>"+
+            "<li><a href='#mediate_form'><cite>是否调解</cite></a></li>"+
+            "<li><a href='#delivery_form'><cite>电子文书送达</cite></a></li>"+
 
-          "</ul>" ,
-          shade: 0,
-          closeBtn:0,
-          offset: 'r'
-        });
-      });              
+        "</ul>" ,
+        shade: 0,
+        closeBtn:0,
+        offset: 'r'
+      });
+    });              
 
-    })
+  })
 
-  }
-
+}
 }
 
 
@@ -235,47 +242,47 @@ export default {
 </style>
 
 <style type="text/css">
-  
-          .myradio{
-            outline: none;
-            width: 1.2rem;
-            height: 1.2rem;
-            background-color: #ffffff;
-            border: solid 1px #dddddd;
-            -webkit-border-radius: 0.6rem;
-            border-radius: 0.6rem;
-            font-size: 0.8rem;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            display: inline-block !important;
-            vertical-align: top;
-            cursor: default;
-            -webkit-appearance: none;  /**隐藏原生控件**/
-        }
 
-        /**选择后的样式**/
-        .myradio:checked{
-            background-color: #5fb778;
-            border: solid 1px #5fb778;
-            box-shadow: 0 1px 1px rgba(0,0,0,.1);
-            text-align: center;
-            background-clip: padding-box;
-        }
-         /**选择后 里面小对勾样式**/
-        .myradio:checked:before{
-            content: '';
-            width: 0.5rem;
-            height: 0.3rem;
-            border: 1px solid #ffffff;
-            border-top: none;
-            border-right: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -0.25rem;
-            margin-top: -0.25rem;
-            -webkit-transform: rotate(-45deg);
-                    transform: rotate(-45deg);
-        }
+  .myradio{
+    outline: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #ffffff;
+    border: solid 1px #dddddd;
+    -webkit-border-radius: 0.6rem;
+    border-radius: 0.6rem;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: inline-block !important;
+    vertical-align: top;
+    cursor: default;
+    -webkit-appearance: none;  /**隐藏原生控件**/
+  }
+
+  /**选择后的样式**/
+  .myradio:checked{
+    background-color: #5fb778;
+    border: solid 1px #5fb778;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    text-align: center;
+    background-clip: padding-box;
+  }
+  /**选择后 里面小对勾样式**/
+  .myradio:checked:before{
+    content: '';
+    width: 0.5rem;
+    height: 0.3rem;
+    border: 1px solid #ffffff;
+    border-top: none;
+    border-right: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -0.25rem;
+    margin-top: -0.25rem;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
 </style>
