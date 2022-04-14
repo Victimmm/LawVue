@@ -110,7 +110,7 @@
         <div class="layui-form-item">
           <div class="layui-col-md2">
             <div class="layui-input-block">
-              <label class="layui-form-label" style="text-align: center; margin-top: -8px;">委托诉讼代理人</label>
+              <label class="layui-form-label" >委托诉讼代理人</label>
             </div>
           </div>
           <div class="layui-col-md7">
@@ -119,10 +119,10 @@
             </div>
           </div>
         </div>
-        <div class="layui-form-item" style="margin-top: 11px;">
+        <div class="layui-form-item" >
           <div class="layui-col-md2">
             <div class="layui-input-block">
-              <label class="layui-form-label" style="text-align: center;margin-top: -8px;">委托诉讼代理人单位</label>
+              <label class="layui-form-label" >委托诉讼代理人单位</label>
             </div>
           </div>
           <div class="layui-col-md7">
@@ -134,7 +134,7 @@
         <div class="layui-form-item">
           <div class="layui-input-block">
             <button type="button" class="layui-btn layui-btn-radius layui-btn-primary" @click="onAddClick"> 添加</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger" v-show="this.index!=0" @click="onCloseClick"> 删除</button>
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-warm" v-show="this.index!=0" @click="onCloseClick"> 删除</button>
             <button type="button" class="layui-btn layui-btn-radius" @click="onSaveClick"> 保存</button>
           </div>
         </div>

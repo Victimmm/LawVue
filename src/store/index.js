@@ -7,7 +7,9 @@ export default createStore({
 		return {
 			plaintiffname: [''],
 			defendantname: [''],
-			is_counterclaim:""
+			is_counterclaim:"",
+			court_number:""
+
 		}
 	},
 	mutations: {
@@ -16,6 +18,12 @@ export default createStore({
 		},
 		HandleDefendantName(state, payload) {
 			state.defendantname[payload[1]] = payload[0]
+		},
+		setCourtNum(state,payload){
+			state.court_number=payload
+		},
+		setCounterClaim(state,payload){
+			state.is_counterclaim=payload
 		},
 		delete_components(state, payload) {
 			switch (payload[0]) {
