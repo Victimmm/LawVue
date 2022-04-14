@@ -3,13 +3,14 @@
 <div class="layui-card">
   <div class="layui-card-body>">
   <form class="layui-form">
-  <div class="layui-fluid">
     <div class="layui-form-item">
-      <div class="layui-row">
-        <div class="layui-col-md1">
-          <label style="text-align: center">审判员</label>
+      <div class="layui-col-md2">
+        <div class="layui-input-block">
+          <label class="layui-form-label" style="margin-top: 70px">审判员</label>
         </div>
-        <div class="layui-col-md11">
+      </div>
+      <div class="layui-col-md7">
+        <div class="layui-input-block">
           <textarea name="ta1" type="text" class="layui-input " style="height: 200px;" >
 审判员：依据《中华人民共和国民事诉讼法》的规定，当事人在法庭上享有下列权利：
 1.原告有权承认、变更、放弃自己的诉讼请求，被告有权反驳原告的诉讼请求或提起反诉；
@@ -26,42 +27,56 @@
       </div>
     </div>
     <div class="layui-form-item">
-      <div class="layui-row">
-        <div class="layui-col-md1">
-          <label>原告</label>
+      <div class="layui-col-md2">
+        <div class="layui-input-block">
+          <div class="layui-col-md2">
+            <label class="layui-form-label">原告</label>
+          </div>
         </div>
-        <div class="layui-col-md11">
-          <textarea type="text" class="layui-input" style="height: 50px;">听清楚了</textarea>
+      </div>
+        <div class="layui-col-md7">
+          <div class="layui-input-block">
+            <textarea type="text" class="layui-input">听清楚了</textarea>
+          </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-col-md2">
+        <div class="layui-input-block">
+          <div class="layui-col-md2">
+            <label class="layui-form-label">被告</label>
+          </div>
+        </div>
+      </div>
+      <div class="layui-col-md7">
+        <div class="layui-input-block">
+          <textarea type="text" class="layui-input">听清楚了</textarea>
         </div>
       </div>
     </div>
     <div class="layui-form-item">
-      <div class="layui-row">
-        <div class="layui-col-md1">
-          <label>被告</label>
+      <div class="layui-col-md2">
+        <div class="layui-input-block">
+          <div class="layui-col-md2">
+            <label class="layui-form-label">审判员</label>
+          </div>
         </div>
-        <div class="layui-col-md11">
-          <textarea type="text" class="layui-input" style="height: 50px;">听清楚了</textarea>
+      </div>
+      <div class="layui-col-md7">
+        <div class="layui-input-block">
+          <textarea type="text" class="layui-input">审判员：当事人对审判员和书记是否申请回避？</textarea>
         </div>
       </div>
     </div>
     <div class="layui-form-item">
-      <div class="layui-row">
-        <div class="layui-col-md1">
-          <label>审判员</label>
-        </div>
-        <div class="layui-col-md11">
-            <textarea name="ta4" type="text" class="layui-input " style="height: 50px;">审判员：当事人对审判员和书记是否申请回避？</textarea>
+      <div class="layui-col-md2">
+        <div class="layui-input-block">
+          <label class="layui-form-label">原告</label>
         </div>
       </div>
-    </div>
-    <div class="layui-form-item">
-      <div class="layui-row">
-        <div class="layui-col-md1">
-          <label>原告</label>
-        </div>
-        <div class="layui-col-md3">
-          <div class="layui-form-item">
+      <div class="layui-col-md7">
+        <div class="layui-form-item">
+          <div class="layui-input-block">
             <input type="radio" value="1" v-model="data.accuser_avoid" lay-filter="accuser_avoid" class="myradio" name="accuser_avoid"><label>  不申请回避 </label>
             <input type="radio" value="2" v-model="data.accuser_avoid" lay-filter="accuser_avoid" class="myradio" name="accuser_avoid"><label>  申请回避  </label>
           </div>
@@ -69,19 +84,20 @@
       </div>
     </div>
     <div class="layui-form-item">
-      <div class="layui-row">
-        <div class="layui-col-md1">
-          <label>被告</label>
+      <div class="layui-col-md2">
+        <div class="layui-input-block">
+          <label class="layui-form-label">被告</label>
         </div>
-        <div class="layui-col-md3">
-          <div class="layui-form">
+      </div>
+      <div class="layui-col-md7">
+        <div class="layui-form">
+          <div class="layui-input-block">
             <input type="radio" value="1"  v-model="data.defendant_avoid" lay-filter="defendant_avoid" class="myradio" name="defendant_avoid"><label>  不申请回避  </label>
             <input type="radio" value="2"  v-model="data.defendant_avoid" lay-filter="defendant_avoid" class="myradio" name="defendant_avoid"><label>  申请回避  </label>
           </div>
         </div>
       </div>
     </div>
-  </div>
     <div class="layui-form-item">
       <div class="layui-input-block">
         <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
