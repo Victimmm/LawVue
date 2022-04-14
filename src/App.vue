@@ -9,7 +9,6 @@
           <BasicInfo></BasicInfo>
         </div>
       </fieldset>
-
     </div>
 
     <div id="whole_PlaintiffImf">
@@ -228,7 +227,7 @@ export default {
     color: #2c3e50;
     margin-top: 60px;
   }
-  .*{
+  *{
     margin-top:20px;
   }
 
