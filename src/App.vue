@@ -25,11 +25,9 @@
       <fieldset class="layui-elem-field layui-field-title">
         <legend>被告信息</legend>
         <div class="layui-field-box">
-          <DefendantImf :index=0  :key=0>></DefendantImf>
+          <DefendantImf :index=0  :key=0  @addIndex="add_defendantImf"></DefendantImf>
+          <DefendantImf v-for="(tag,index) in defendantImfTag.slice(1)" :key="tag.guid" @deleteIndex="del_defendantImf" :index="index+1" @addIndex="add_defendantImf" />
 
-<!--           <template v-for="(tag,index) in defendantImfTag.slice(1)" :key="index+1">
-            <DefendantImf   @deleteIndex="del" :index="index+1" @addIndex="add_plaintiffImf" />
-          </template> -->
         </div>
       </fieldset>
     </div>
@@ -118,14 +116,6 @@
   </div>
 
 
-<!--   <div id="CourtInves2">
-    <fieldset class="layui-elem-field layui-field-title">
-      <legend>法庭调查</legend>
-      <div class="layui-field-box">
-        <AccshowForm></AccshowForm>
-      </div>
-    </fieldset>
-  </div> -->
 
 </template>
 
@@ -149,7 +139,7 @@ export default {
   data:function (){
     return {
       plaintiffImfTag:[{guid:this.guid()}],
-      defendantImfTag:[{name:""}]
+      defendantImfTag:[{guid:this.guid()}]
     }
   },
   components: {
@@ -174,11 +164,10 @@ export default {
        this.plaintiffImfTag.splice(index, 1);
      },
     add_defendantImf(){
-      this.defendantImfTag.push({name:""})
+      this.defendantImfTag.push({guid:this.guid()})
     },
     del_defendantImf(index) {
        // 从数组中移除。
-       console.log(index)
        this.defendantImfTag.splice(index, 1);
      },
      guid: function() {

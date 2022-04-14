@@ -3,47 +3,52 @@
 import { createStore } from "vuex";
 
 export default createStore({
-  state () {
-    return {
-    	plaintiffname:[''],
-    	defendantname:['']
-    }
-  },
-  mutations: {
-    HandlePlaintiffName(state, payload){
-    	state.plaintiffname[payload[1]]=payload[0]
-    },
-    delete_components(state, payload){
-    	switch(payload[0]){
-    		case 'plaintiff':
-    			state.plaintiffname.splice(payload[1], 1);
-    			break
-    		case 'defendant':
-    			break
-    		default:
-          //这里是没有找到对应的值处理
-          break
-    	}
-    },
-    add_components(state, payload){
-    	switch(payload[0]){
-    		case 'plaintiff':
-    			state.plaintiffname.push('')
-    			break
-    		case 'defendant':
-    			state.defendantname.push('')
-    			break
-    		default:
-          //这里是没有找到对应的值处理
-          break
-    	}
-    }
-  },
-  getters: {
-	  // ...
-	  getPlaintiff (state) {
-	  	return state.plaintifflength
-	  }
+	state() {
+		return {
+			plaintiffname: [''],
+			defendantname: [''],
+			is_counterclaim:""
+		}
+	},
+	mutations: {
+		HandlePlaintiffName(state, payload) {
+			state.plaintiffname[payload[1]] = payload[0]
+		},
+		HandleDefendantName(state, payload) {
+			state.defendantname[payload[1]] = payload[0]
+		},
+		delete_components(state, payload) {
+			switch (payload[0]) {
+				case 'plaintiff':
+					state.plaintiffname.splice(payload[1], 1);
+					break
+				case 'defendant':
+					state.defendantname.splice(payload[1], 1);
+					break
+				default:
+					//这里是没有找到对应的值处理
+					break
+			}
+		},
+		add_components(state, payload) {
+			switch (payload[0]) {
+				case 'plaintiff':
+					state.plaintiffname.push('')
+					break
+				case 'defendant':
+					state.defendantname.push('')
+					break
+				default:
+					//这里是没有找到对应的值处理
+					break
+			}
+		}
+	},
+	getters: {
+		// ...
+		getPlaintiff(state) {
+			return state.plaintifflength
+		}
 	}
 });
 

@@ -79,9 +79,11 @@
 				</div>
 
 				<div class="layui-form-item">
-					<div class="layui-input-block">
-						<button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
-					</div>
+          <div class="layui-input-block">
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-primary" @click="onAddClick"> 添加</button>
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger" v-show="this.index!=0" @click="onCloseClick"> 删除</button>
+            <button type="button" class="layui-btn layui-btn-radius" @click="onSaveClick"> 保存</button>
+          </div>
 				</div>
 			</form>
 		</div>
@@ -109,22 +111,33 @@ else
   data=JSON.parse(localStorage.getItem("DefendantImf"));
 
 	export default {
+    props: {
+      index: {
+        type: Number,
+        required: true
+      }
+    } ,
 		data(){
-			return {data:data}
+      data.accuser=this.$store.state.defendantname[this.index]
+      return {data:JSON.parse(JSON.stringify(data))}
 		},
 		mounted(){
-			// let that=this;
-			// window.layui.use('form', function(){
-			// 	var form = window.layui.form;
-			// 	form.on('radio(defendantType)', function(value){
-			// 		that.data.defendant_type=value.value;
-			// 	})
-			// })
 		},
 		methods :{
-			save_localstorage(){
-				localStorage.setItem('DefendantImf',JSON.stringify(this.data))
-			}
+      onSaveClick(){
+        this.$store.commit('HandleDefendantName', [this.data.defendant,this.index])
+        localStorage.setItem('DefendantImf',JSON.stringify(this.data))
+      },
+      onCloseClick () {
+        // 将删除标签事件暴露除去
+        // console.log(this.index);
+        this.$emit("deleteIndex", this.index);
+        this.$store.commit('delete_components',['defendant',this.index])
+      },
+      onAddClick(){
+        this.$emit("addIndex");
+        this.$store.commit('add_components',['defendant'])
+      }
 		}   
 	}
 </script>
