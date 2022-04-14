@@ -5,9 +5,8 @@ import { createStore } from "vuex";
 export default createStore({
   state () {
     return {
-    	plaintiffname:['廖威明'],
-    	plaintifflength:1,
-    	defendantname:[]    	
+    	plaintiffname:[''],
+    	defendantname:['']
     }
   },
   mutations: {
@@ -17,7 +16,6 @@ export default createStore({
     delete_components(state, payload){
     	switch(payload[0]){
     		case 'plaintiff':
-    			console.log(payload[1])
     			state.plaintiffname.splice(payload[1], 1);
     			break
     		case 'defendant':
@@ -31,7 +29,6 @@ export default createStore({
     	switch(payload[0]){
     		case 'plaintiff':
     			state.plaintiffname.push('')
-    			state.plaintifflength ++
     			break
     		case 'defendant':
     			state.defendantname.push('')

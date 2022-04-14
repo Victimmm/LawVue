@@ -34,6 +34,15 @@
       </fieldset>
     </div>
 
+    <div id="right_inform">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>权利告知</legend>
+        <div class="layui-field-box">
+          <right_inform></right_inform>
+        </div>
+      </fieldset>
+    </div>
+
     <div id="CourtInves1">
       <fieldset class="layui-elem-field layui-field-title">
         <legend>法庭调查</legend>
@@ -42,6 +51,70 @@
         </div>
       </fieldset>
     </div>
+
+    <div id="accshow_form">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>法庭调查-原告举证</legend>
+        <div class="layui-field-box">
+          <accshow_form></accshow_form>
+        </div>
+      </fieldset>
+    </div>
+
+    <div id="defendshow_form">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>法庭调查-被告举证</legend>
+        <div class="layui-field-box">
+          <defendshow_form></defendshow_form>
+        </div>
+      </fieldset>
+    </div>
+
+    <div id="inquiry_form">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>法庭询问</legend>
+        <div class="layui-field-box">
+          <inquiry_form></inquiry_form>
+        </div>
+      </fieldset>
+    </div>
+
+    <div id="argue_form">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>法庭辩论</legend>
+        <div class="layui-field-box">
+          <argue_form></argue_form>
+        </div>
+      </fieldset>
+    </div>
+
+    <div id="final_form">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>陈述意见</legend>
+        <div class="layui-field-box">
+          <final_form></final_form>
+        </div>
+      </fieldset>
+    </div>
+
+    <div id="mediate_form">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>是否调解</legend>
+        <div class="layui-field-box">
+          <mediate_form></mediate_form>
+        </div>
+      </fieldset>
+    </div>
+
+    <div id="delivery_form">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>电子文书送达</legend>
+        <div class="layui-field-box">
+          <delivery_form></delivery_form>
+        </div>
+      </fieldset>
+    </div>
+
   </div>
 
 
@@ -57,12 +130,18 @@
 </template>
 
 <script>
-  import BasicInfo from './components/BasicInfo.vue'
-  import PlaintiffImf from './components/PlaintiffImf.vue'
-  import DefendantImf from './components/DefendantImf.vue'
-  import CourtInves from './components/CourtInves.vue'
-// import AccshowForm from './components/AccshowForm.vue'
-// this.$store.state.plaintiffname.slice(1)
+import BasicInfo from './components/BasicInfo.vue'
+import PlaintiffImf from './components/PlaintiffImf.vue'
+import DefendantImf from './components/DefendantImf.vue'
+import CourtInves from './components/CourtInves.vue'
+import right_inform from "@/components/right_inform";
+import accshow_form from "@/components/accshow_form";
+import defendshow_form from "@/components/defendshow_form";
+import inquiry_form from "@/components/inquiry_form";
+import argue_form from "@/components/argue_form";
+import final_form from "@/components/final_form";
+import mediate_form from "@/components/mediate_form";
+import delivery_form from "@/components/delivery_form";
 
 
 export default {
@@ -78,7 +157,14 @@ export default {
     PlaintiffImf,
     DefendantImf,
     CourtInves,
-    // AccshowForm
+    right_inform,
+    accshow_form,
+    defendshow_form,
+    inquiry_form,
+    argue_form,
+    final_form,
+    mediate_form,
+    delivery_form,
   },
   methods: {
     add_plaintiffImf(){
@@ -116,8 +202,16 @@ export default {
         "<li><a href='#BasicInfo'><cite>基本信息</cite></a></li>"+
         "<li><a href='#whole_PlaintiffImf'><cite>原告信息</cite></a></li>"+
         "<li><a href='#whole_DefendantImf'><cite>被告信息</cite></a></li>"+
+         "<li><a href='#right_inform'><cite>权利告知</cite></a></li>"+
         "<li><a href='#CourtInves1'><cite>法庭调查1</cite></a></li>"+
-        "<li><a href='#CourtInves2'><cite>法庭调查2</cite></a></li>"+
+        "<li><a href='#accshow_form'><cite>法庭调查2</cite></a></li>"+
+            "<li><a href='#defendshow_form'><cite>法庭调查3</cite></a></li>"+
+            "<li><a href='#inquiry_form'><cite>法庭询问</cite></a></li>"+
+            "<li><a href='#argue_form'><cite>法庭辩论</cite></a></li>"+
+            "<li><a href='#final_form'><cite>陈述意见</cite></a></li>"+
+            "<li><a href='#mediate_form'><cite>是否调解</cite></a></li>"+
+            "<li><a href='#delivery_form'><cite>电子文书送达</cite></a></li>"+
+
         "</ul>" ,
         shade: 0,
         closeBtn:0,
@@ -152,7 +246,7 @@ export default {
     color: #2c3e50;
     margin-top: 60px;
   }
-  .*{
+  *{
     margin-top:20px;
   }
 
