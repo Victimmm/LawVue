@@ -3,87 +3,164 @@
     <div class="layui-card-body>">
       <form class="layui-form" action="">
         <div class="layui-form-item">
-          <label class="layui-form-label layui-form-required">立案时间</label>
-          <div class="layui-input-block">
-            <input type="text" v-model="data.filing_time" id="filing_time" required lay-verify="required" placeholder="请输入立案时间" autocomplete="off" class="layui-input">
+          <div class="layui-col-md2">
+            <div class="layui-input-block">
+              <label class="layui-form-label">立案时间</label>
+            </div>
+          </div>
+          <div class="layui-col-md7">
+            <div class="layui-input-block">
+              <input type="text" v-model="data.filing_time" id="filing_time" required lay-verify="required" placeholder="请输入立案时间" autocomplete="off" class="layui-input">
+            </div>
           </div>
         </div>
         <div class="layui-form-item">
-          <label class="layui-form-label layui-form-required">开庭时间</label>
-          <div class="layui-input-block">
-            <input type="text" v-model="data.court_time" id="court_time" required lay-verify="required" placeholder="请输入开庭时间"
-            autocomplete="off" class="layui-input">
+          <div class="layui-col-md2">
+            <div class="layui-input-block">
+              <label class="layui-form-label">开庭时间</label>
+            </div>
+          </div>
+          <div class="layui-col-md7">
+            <div class="layui-input-block">
+              <input type="text" v-model="data.court_time" id="court_time" required lay-verify="required" placeholder="请输入开庭时间"
+                     autocomplete="off" class="layui-input">
+            </div>
           </div>
         </div>
         <div class="layui-form-item">
-          <label class="layui-form-label layui-form-required">开庭地点</label>
-          <div class="layui-input-block">
-            <input type="text" v-model="data.court_place" lay-verify="required" placeholder="请输入开庭地点"
-            class="layui-input">
+          <div class="layui-col-md2">
+            <div class="layui-input-block">
+              <label class="layui-form-label layui-form-required">开庭地点</label>
+            </div>
+          </div>
+          <div class="layui-col-md7">
+            <div class="layui-input-block">
+              <input type="text" v-model="data.court_place" lay-verify="required" placeholder="请输入开庭地点"
+              class="layui-input">
+            </div>
           </div>
         </div>
-
         <div class="layui-form-item">
-          <label class="layui-form-label layui-form-required">审判长</label>
-          <div class="layui-input-inline">
-            <input type="text"  v-model="data.chief_judge[0].name" lay-verify="required" placeholder="审判长姓名" autocomplete="off"
-            class="layui-input">
+          <div class="layui-col-md2">
+            <div class="layui-input-block">
+              <label class="layui-form-label layui-form-required">审判长</label>
+            </div>
           </div>
-          <div class="layui-input-inline">
-            <div class="layui-btn-group">
-              <button @click="add_component('chief_judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-              data-type="text">
+          <div class="layui-col-md7">
+            <div class="layui-input-block">
+              <input type="text"  v-model="data.chief_judge[0].name" placeholder="审判长姓名" autocomplete="off"
+                     class="layui-input">
+            </div>
+          </div>
+          <div class="layui-col-md1">
+            <button @click="add_component('chief_judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                    data-type="text">
               <i class="layui-icon">&#xe654;</i>
             </button>
           </div>
-        </div>
       </div>
-
+<!--        -->
       <template v-for="(item, index) in data.chief_judge.slice(1)" :key='index'>
         <div class="layui-form-item">
-          <label class="layui-form-label layui-form-required">&nbsp;</label>
-          <div class="layui-input-inline">
-            <input type="text"  v-model="data.chief_judge[index+1].name" lay-verify="required" placeholder="审判长姓名" autocomplete="off"
-            class="layui-input">
+          <div class="layui-col-md2">
+            <div class="layui-input-block">
+              <label class="layui-form-label layui-form-required">审判长</label>
+            </div>
           </div>
-          <div class="layui-input-inline">
-            <div class="layui-btn-group">
-              <button @click="delete_component('chief_judge',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-              data-type="text">
+          <div class="layui-col-md7">
+            <div class="layui-input-block">
+              <input type="text"  v-model="data.chief_judge[index+1].name" placeholder="审判长姓名" autocomplete="off"
+                     class="layui-input">
+            </div>
+          </div>
+          <div class="layui-col-md1">
+            <button @click="delete_component('chief_judge',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                    data-type="text">
               <i class="layui-icon">&#xe640;</i>
             </button>
           </div>
         </div>
-      </div>
     </template>
 
     <div class="layui-form-item">
-      <label class="layui-form-label layui-form-required">审判员 </label>
-      <div class="layui-input-inline">
-        <input type="text"  v-model="data.judge[0].name"  lay-verify="required" placeholder="审判员姓名" autocomplete="off"
-        class="layui-input">
+      <div class="layui-col-md2">
+        <div class="layui-input-block">
+          <label class="layui-form-label">审判员 </label>
+        </div>
       </div>
-      <div class="layui-input-inline">
-        <div class="layui-btn-group">
-          <button v-on:click="add_component('judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-          data-type="text">
-          <i class="layui-icon">&#xe654;</i>
+      <div class="layui-col-md7">
+        <div class="layui-input-block">
+          <input type="text"  v-model="data.judge[0].name" placeholder="审判员姓名" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-col-md1">
+        <button v-on:click="add_component('judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+        data-type="text">
+        <i class="layui-icon">&#xe654;</i>
         </button>
       </div>
     </div>
-  </div>
 
   <template v-for="(item, index) in data.judge.slice(1)" :key='index'>
     <div class="layui-form-item">
-      <label class="layui-form-label layui-form-required">&nbsp;</label>
-      <div class="layui-input-inline">
-        <input type="text"  v-model="data.judge[index+1].name" lay-verify="required" placeholder="审判员姓名" autocomplete="off"
-        class="layui-input">
+      <div class="layui-col-md2">
+        <div class="layui-input-block">
+          <label class="layui-form-label">审判员 </label>
+        </div>
       </div>
-      <div class="layui-input-inline">
-        <div class="layui-btn-group">
-          <button @click="delete_component('judge',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-          data-type="text">
+      <div class="layui-col-md7">
+        <div class="layui-input-block">
+          <input type="text"  v-model="data.judge[index+1].name" placeholder="审判员姓名" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-col-md1">
+        <button v-on:click="delete_component('judge',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                data-type="text">
+          <i class="layui-icon">&#xe640;</i>
+        </button>
+      </div>
+    </div>
+</template>
+
+<div class="layui-form-item">
+  <div class="layui-col-md2">
+    <div class="layui-input-block">
+      <label class="layui-form-label ">陪审员</label>
+    </div>
+  </div>
+  <div class="layui-col-md7">
+    <div class="layui-input-block">
+      <input type="text"  v-model="data.juror[0].name" placeholder="陪审员姓名" autocomplete="on"
+      class="layui-input">
+    </div>
+  </div>
+  <div class="layui-col-md1">
+    <div class="layui-btn-group">
+      <button v-on:click="add_component('juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+      data-type="text">
+      <i class="layui-icon">&#xe654;</i>
+    </button>
+  </div>
+  </div>
+</div>
+
+<template v-for="(item, index) in data.juror.slice(1)" :key='index'>
+  <div class="layui-form-item">
+    <div class="layui-col-md2">
+      <div class="layui-input-block">
+        <label class="layui-form-label ">陪审员</label>
+      </div>
+    </div>
+    <div class="layui-col-md7">
+      <div class="layui-input-block">
+        <input type="text"  v-model="data.juror[index+1].name" placeholder="陪审员姓名" autocomplete="on"
+               class="layui-input">
+      </div>
+    </div>
+    <div class="layui-col-md1">
+      <div class="layui-btn-group">
+        <button v-on:click="delete_component('juror',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                data-type="text">
           <i class="layui-icon">&#xe640;</i>
         </button>
       </div>
@@ -91,72 +168,53 @@
   </div>
 </template>
 
-<div class="layui-form-item">
-  <label class="layui-form-label ">陪审员</label>
-  <div class="layui-input-inline">
-    <input type="text"  v-model="data.juror[0].name" lay-verify="required" placeholder="陪审员姓名" autocomplete="on"
-    class="layui-input">
-  </div>
-  <div class="layui-input-inline">
-    <div class="layui-btn-group">
-      <button v-on:click="add_component('juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-      data-type="text">
-      <i class="layui-icon">&#xe654;</i>
-    </button>
-  </div>
-</div>
-</div>
 
-<template v-for="(item, index) in data.juror.slice(1)" :key='index'>
-  <div class="layui-form-item">
-    <label class="layui-form-label layui-form-required">&nbsp;</label>
-    <div class="layui-input-inline">
-      <input type="text"  v-model="data.juror[index+1].name" lay-verify="required" placeholder="陪审员姓名" autocomplete="off"
+<div class="layui-form-item">
+  <div class="layui-col-md2">
+    <div class="layui-input-block">
+      <label class="layui-form-label">书记员 </label>
+    </div>
+  </div>
+  <div class="layui-col-md7">
+    <div class="layui-input-block">
+      <input type="text"  v-model="data.court_clerk" name="courtClerk" placeholder="书记员姓名" autocomplete="on"
       class="layui-input">
     </div>
-    <div class="layui-input-inline">
-      <div class="layui-btn-group">
-        <button @click="delete_component('juror',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-        data-type="text">
-        <i class="layui-icon">&#xe640;</i>
-      </button>
+  </div>
+</div>
+<div class="layui-form-item">
+  <div class="layui-col-md2">
+    <div class="layui-input-block">
+      <label class="layui-form-label layui-form-required">案号 </label>
+    </div>
+  </div>
+  <div class="layui-col-md7">
+    <div class="layui-input-block">
+      <input type="text"  v-model="data.court_number" name="courtNumber" lay-verify="required" placeholder="请输入案号" autocomplete="on"
+      class="layui-input">
     </div>
   </div>
 </div>
-</template>
-
-
 <div class="layui-form-item">
-  <label class="layui-form-label layui-form-required">书记员 </label>
-  <div class="layui-input-inline">
-    <input type="text"  v-model="data.court_clerk" name="courtClerk" lay-verify="required" placeholder="书记员姓名" autocomplete="on"
-    class="layui-input">
+  <div class="layui-col-md2">
+    <div class="layui-input-block">
+      <label class="layui-form-label layui-form-requireds">案由 </label>
+    </div>
+  </div>
+  <div class="layui-col-md7">
+    <div class="layui-input-block">
+      <textarea  required v-model="data.court_cause" name="courtCause" placeholder="请输入案由" class="layui-textarea"></textarea>
+    </div>
   </div>
 </div>
-<div class="layui-form-item">
-  <label class="layui-form-label layui-form-required">案号 </label>
-  <div class="layui-input-block">
-    <input type="text"  v-model="data.court_number" name="courtNumber" lay-verify="required" placeholder="请输入案号" autocomplete="on"
-    class="layui-input">
-  </div>
-</div>
-<div class="layui-form-item">
-  <label class="layui-form-label layui-form-requireds">案由 </label>
-  <div class="layui-input-block">
-    <textarea  required v-model="data.court_cause" name="courtCause" lay-verify="required" placeholder="请输入案由" class="layui-textarea"></textarea>
-  </div>
-</div>
-
 <div class="layui-form-item">
   <div class="layui-input-block">
     <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
   </div>
 </div>
-
 </form>
 </div>
 </div>
-
 </template>
 
 <script>
