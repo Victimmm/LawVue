@@ -1,67 +1,66 @@
 <template>
-  <hr>
-  <table class="layui-table">
-    <tr>
-      <td style="text-align: center" width="30%">审判员</td>
-      <td width="70%">
-        <textarea type="text" class="layui-input">举证质证结束，下面进入法庭询问</textarea>
-      </td>
-    </tr>
-  </table>
-  <div id="inquiryd_question">
-    <div class="layui-card">
-      <div class="layui-card-body">
-        <div class="layui-input-row" id="form_inquiry">
-          <div class="layui-col-md11">
-            <div class="layui-card-header">
+  <div class="layui-card">
+    <div class="layui-card-body>">
+      <form class="layui-form">
+        <div class="layui-form-item">
+          <div class="layui-col-md2">
+            <div class="layui-input-block">
+              <div class="layui-form-label">审判员</div>
+            </div>
+          </div>
+          <div class="layui-col-md7">
+            <div class="layui-input-block">
+              <textarea type="text" class="layui-input">举证质证结束，下面进入法庭询问</textarea>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="layui-form-item">
+          <div class="layui-col-md2">
+            <div class="layui-input-block">
+              <label class="layui-form-label">问题：</label>
+            </div>
+          </div>
+          <div class="layui-col-md7">
+            <div class="layui-input-block">
               <input type="text" v-model="data.inquiryd_question[0].inquiry_question"  placeholder="问题" autocomplete="off" class="layui-input"  >
             </div>
           </div>
           <div class="layui-col-md1">
-<!--            -->
             <button @click="add_component('inquiryd_question')" type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text">
               <i class="layui-icon">&#xe654;</i>
             </button>
           </div>
-          <table class="layui-table">
-            <tr>
-              <td>
-                <div class="layui-card-header">
-                  <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser" placeholder="原告姓名" autocomplete="off" class="layui-input"  >
-                </div>
-              </td>
-              <td>
-                <div class="layui-card-header">
-                  <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser_answer" placeholder="回答" autocomplete="off" class="layui-input"  >
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: center" width="30%">
-                <div class="layui-card-header">
-                  <input type="text" v-model="data.inquiryd_question[0].inquiry_defendant" placeholder="被告姓名" autocomplete="off" class="layui-input"  >
-                </div>
-              </td>
-
-              <td width="70%">
-                <div class="layui-card-header">
-                  <input type="text" v-model="data.inquiryd_question[0].inquiry_defendant_answer" placeholder="回答" autocomplete="off" class="layui-input"  >
-                </div>
-              </td>
-            </tr>
-          </table>
         </div>
-      </div>
-    </div>
+        <hr>
+        <div class="layui-form-item">
+          <div class="layui-col-md3">
+            <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser" placeholder="原告姓名" autocomplete="off" class="layui-input"  >
+          </div>
+          <div class="layui-col-md6">
+            <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser_answer" placeholder="回答" autocomplete="off" class="layui-input" style="margin-left:12px ">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-col-md3">
+            <input type="text" v-model="data.inquiryd_question[0].inquiry_defendant" placeholder="被告姓名" autocomplete="off" class="layui-input"  >
+          </div>
+          <div class="layui-col-md6">
+            <input type="text" v-model="data.inquiryd_question[0].inquiry_defendant_answer" placeholder="回答" autocomplete="off" class="layui-input" style="margin-left:12px ">
+          </div>
+        </div>
 
-  </div>
-  <template v-for="(item, index) in data.inquiryd_question.slice(1)" :key="index">
+<!--        -->
+        <template v-for="(item, index) in data.inquiryd_question.slice(1)" :key="index">
 
-      <div class="layui-card">
-        <div class="layui-card-body">
-          <div class="layui-input-row">
-            <div class="layui-col-md11">
-              <div class="layui-card-header">
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-input-block">
+                <label class="layui-form-label">问题：</label>
+              </div>
+            </div>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
                 <input type="text" v-model="data.inquiryd_question[index+1].inquiry_question"  placeholder="问题" autocomplete="off" class="layui-input"  >
               </div>
             </div>
@@ -70,41 +69,33 @@
                 <i class="layui-icon">&#xe640;</i>
               </button>
             </div>
-            <table class="layui-table">
-              <tr>
-                <td>
-                  <div class="layui-card-header">
-                    <input type="text" v-model="data.inquiryd_question[index+1].inquiry_accuser" placeholder="原告姓名" autocomplete="off" class="layui-input"  >
-                  </div>
-                </td>
-                <td>
-                  <div class="layui-card-header">
-                    <input type="text" v-model="data.inquiryd_question[index+1].inquiry_accuser_answer" placeholder="回答" autocomplete="off" class="layui-input"  >
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style="text-align: center" width="30%">
-                  <div class="layui-card-header">
-                    <input type="text" v-model="data.inquiryd_question[index+1].inquiry_defendant" placeholder="被告姓名" autocomplete="off" class="layui-input"  >
-                  </div>
-                </td>
-
-                <td width="70%">
-                  <div class="layui-card-header">
-                    <input type="text" v-model="data.inquiryd_question[index+1].inquiry_defendant_answer" placeholder="回答" autocomplete="off" class="layui-input"  >
-                  </div>
-                </td>
-              </tr>
-            </table>
+          </div>
+          <hr>
+          <div class="layui-form-item">
+            <div class="layui-col-md3">
+              <input type="text" v-model="data.inquiryd_question[index+1].inquiry_accuser" placeholder="原告姓名" autocomplete="off" class="layui-input"  >
+            </div>
+            <div class="layui-col-md6">
+              <input type="text" v-model="data.inquiryd_question[index+1].inquiry_accuser_answer" placeholder="回答" autocomplete="off" class="layui-input" style="margin-left:12px ">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <div class="layui-col-md3">
+              <input type="text" v-model="data.inquiryd_question[index+1].inquiry_defendant" placeholder="被告姓名" autocomplete="off" class="layui-input"  >
+            </div>
+            <div class="layui-col-md6">
+              <input type="text" v-model="data.inquiryd_question[index+1].inquiry_defendant_answer" placeholder="回答" autocomplete="off" class="layui-input" style="margin-left:12px ">
+            </div>
+          </div>
+          <hr>
+        </template>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
           </div>
         </div>
-      </div>
-    <hr>
-  </template>
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-      <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
+        <hr>
+      </form>
     </div>
   </div>
 </template>

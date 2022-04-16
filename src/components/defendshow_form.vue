@@ -1,608 +1,577 @@
 <template>
   <div id="defendshowd_evidence">
-    <table class="layui-table" >
-      <tr>
-        <td style="text-align: center" width="30%">审判员</td>
-        <td width="70%">
-          <textarea type="text" class="layui-input">被告进行举证</textarea>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="layui-card-header">
-            <input type="text" v-model="data.defendshowd_evidence[0].defendshow_evidence" placeholder="证据名称" autocomplete="off"
-                   class="layui-input">
+    <div class="layui-card">
+      <div class="layui-card-body>">
+        <form class="layui-form">
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-input-block">
+                <label class="layui-form-label" style="text-align: center">审判员</label>
+              </div>
+            </div>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <textarea type="text" class="layui-input ">被告进行举证</textarea>
+              </div>
+            </div>
           </div>
-        </td>
-        <td>
-          <div class="layui-input-row">
-            <div class="layui-col-md9">
-              <div class="layui-card-header">
+          <hr>
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-input-block">
+                <input type="text" v-model="data.defendshowd_evidence[0].defendshow_evidence" placeholder="证据名称" autocomplete="off"
+                       class="layui-input">
+              </div>
+            </div>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
                 <input type="text" v-model="data.defendshowd_evidence[0].defendshow_content" placeholder="证明事项" autocomplete="off"
                        class="layui-input">
               </div>
             </div>
-            <div class="layui-col-md3">
+            <div class="layui-col-md1">
               <button @click="add_component('defendshowd_evidence')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text">
                 <i class="layui-icon">&#xe654;</i>
               </button>
             </div>
           </div>
-        </td>
-      </tr>
-      <tr>
-        <td style="text-align: center" width="30%">
-          <div class="layui-col-md2">
+
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-input-block">
+                <label class="layui-form-label" style="text-align: center">事实和理由</label>
+              </div>
+            </div>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <textarea v-model="data.defendshowd_evidence[0].defendshow_fact_reason" placeholder="理由" class="layui-textarea"></textarea>
+              </div>
+            </div>
+          </div>
+          <hr>
+<!--          -->
+          <template v-for="(item, index) in data.defendshowd_evidence.slice(1)" :key='index'>
             <div class="layui-form-item">
-              <label class="layui-form-label">事实和理由</label>
+              <div class="layui-col-md2">
+                <div class="layui-input-block">
+                  <label class="layui-form-label" style="text-align: center">审判员</label>
+                </div>
+              </div>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <textarea type="text" class="layui-input ">被告进行举证</textarea>
+                </div>
+              </div>
             </div>
-          </div>
-        </td>
-        <td style="text-align: center" width="70%">
-          <div class="layui-col-md10">
-            <div class="layui-input-row">
-              <textarea v-model="data.defendshowd_evidence[0].defendshow_fact_reason" id="defendshow_fact_reason1" placeholder="理由" class="layui-textarea"></textarea>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <hr>
-    </table>
-<!--被告举证表格的动态添加-->
-    <template v-for="(item, index) in data.defendshowd_evidence.slice(1)" :key='index'>
-      <table class="layui-table" >
-        <tr>
-          <td style="text-align: center" width="30%">审判员</td>
-          <td width="70%">
-            <textarea type="text" class="layui-input">被告进行举证</textarea>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="layui-card-header">
-              <input type="text" v-model="data.defendshowd_evidence[index+1].defendshow_evidence" placeholder="证据名称" autocomplete="off"
-                     class="layui-input">
-            </div>
-          </td>
-          <td>
-            <div class="layui-input-row">
-              <div class="layui-col-md9">
-                <div class="layui-card-header">
+            <div class="layui-form-item">
+              <div class="layui-col-md2">
+                <div class="layui-input-block">
+                  <input type="text" v-model="data.defendshowd_evidence[index+1].defendshow_evidence" placeholder="证据名称" autocomplete="off"
+                         class="layui-input">
+                </div>
+              </div>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
                   <input type="text" v-model="data.defendshowd_evidence[index+1].defendshow_content" placeholder="证明事项" autocomplete="off"
                          class="layui-input">
                 </div>
               </div>
-              <div class="layui-col-md3">
+              <div class="layui-col-md1">
                 <button @click="delete_component('defendshowd_evidence',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text">
                   <i class="layui-icon">&#xe640;</i>
                 </button>
               </div>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center" width="30%">
+            <div class="layui-form-item">
+              <div class="layui-col-md2">
+                <div class="layui-input-block">
+                  <label class="layui-form-label" style="text-align: center">事实和理由</label>
+                </div>
+              </div>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <textarea v-model="data.defendshowd_evidence[index+1].defendshow_fact_reason" placeholder="理由" class="layui-textarea"></textarea>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </template>
+
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-input-block">
+                <label class="layui-form-label" style="text-align: center">审判员</label>
+              </div>
+            </div>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <textarea type="text" class="layui-input ">原告及其他被告对被告提交的证据进行质证</textarea>
+              </div>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-input-block">
+                <input type="text" v-model="data.defendshowd_accuser[0].defendshow_accuser"  placeholder="原告姓名" autocomplete="off"
+                       class="layui-input">
+              </div>
+            </div>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <input type="text" v-model="data.defendshowd_accuser[0].defendshow_evidencenum" name="evidenceNum1"  placeholder="证据编号1" autocomplete="off"
+                       class="layui-input">
+              </div>
+            </div>
+            <div class="layui-col-md1">
+              <button @click="add_component('defendshowd_accuser')" type="button" class="layui-btn layui-btn-primary layui-btn-sm "
+                      data-type="text">
+                <i class="layui-icon">&#xe654;</i>
+              </button>
+            </div>
+          </div>
+          <hr>
+          <div class="layui-form-item">
             <div class="layui-col-md2">
               <div class="layui-form-item">
-                <label class="layui-form-label">事实和理由</label>
+                <div class="layui-input-inline">
+                  <div class="layui-col-lg-offset4">
+                    <label class="layui-form-label">真实性</label>
+                  </div>
+                  <div class="layui-col-lg-offset3">
+                    <div class="layui-row">
+                      <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_facticity" class="myradio" style="margin-top:10px"/>
+                      <label class="layui-form-label">是</label>
+                      <div class="layui-row">
+                        <input type="radio" value="false" v-model="data.defendshowd_accuser[0].defendshow_facticity" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">否</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </td>
-          <td style="text-align: center" width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_evidence[index+1].defendshow_fact_reason"  placeholder="理由" class="layui-textarea"></textarea>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <textarea v-model="data.defendshowd_accuser[0].defendshow_query_facticity" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
               </div>
             </div>
-          </td>
-        </tr>
-      </table>
-      <hr>
-    </template>
-  </div>
-  <div id="defendshowd_accuser">
-<!--    原告及其他被告质证过程-->
-    <div id="form_AccuserQuestion">
-      <table class="layui-table">
-        <tr>
-          <td style="text-align: center">审判员</td>
-          <td>
-            <textarea type="text" class="layui-input">原告及其他被告对被告提交的证据进行质证</textarea>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-card-header">
-              <input type="text" v-model="data.defendshowd_accuser[0].defendshow_accuser"  placeholder="原告姓名" autocomplete="off"
-                     class="layui-input">
+          </div>
+          <hr>
+
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-form-item">
+                <div class="layui-input-inline">
+                  <div class="layui-col-lg-offset4">
+                    <label class="layui-form-label">合法性</label>
+                  </div>
+                  <div class="layui-col-lg-offset3">
+                    <div class="layui-row">
+                      <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_legality" class="myradio" style="margin-top:10px"/>
+                      <label class="layui-form-label">是</label>
+                      <div class="layui-row">
+                        <input type="radio" value="false" v-model="data.defendshowd_accuser[0].defendshow_legality" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">否</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </td>
-          <td width="70%">
-            <div class="layui-input-row">
-              <div class="layui-col-md9">
-                <div class="layui-card-header">
-                  <input type="text" v-model="data.defendshowd_accuser[0].defendshow_evidencenum" name="evidenceNum1"  placeholder="证据编号1" autocomplete="off"
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <textarea v-model="data.defendshowd_accuser[0].defendshow_query_legality" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
+              </div>
+            </div>
+          </div>
+          <hr>
+
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-form-item">
+                <div class="layui-input-inline">
+                  <div class="layui-col-lg-offset4">
+                    <label class="layui-form-label">关联性</label>
+                  </div>
+                  <div class="layui-col-lg-offset3">
+                    <div class="layui-row">
+                      <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_relevance" class="myradio" style="margin-top:10px"/>
+                      <label class="layui-form-label">是</label>
+                      <div class="layui-row">
+                        <input type="radio" value="false" v-model="data.defendshowd_accuser[0].defendshow_relevance" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">否</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <textarea v-model="data.defendshowd_accuser[0].defendshow_query_relevace" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
+              </div>
+            </div>
+          </div>
+          <hr>
+<!--          -->
+          <template v-for="(item, index) in data.defendshowd_accuser.slice(1)" :key='index'>
+            <div class="layui-form-item">
+              <div class="layui-col-md2">
+                <div class="layui-input-block">
+                  <label class="layui-form-label" style="text-align: center">审判员</label>
+                </div>
+              </div>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <textarea type="text" class="layui-input ">原告及其他被告对被告提交的证据进行质证</textarea>
+                </div>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-col-md2">
+                <div class="layui-input-block">
+                  <input type="text" v-model="data.defendshowd_accuser[index+1].defendshow_accuser"  placeholder="原告姓名" autocomplete="off"
                          class="layui-input">
                 </div>
               </div>
-              <div class="layui-col-md3">
-<!--                增加动态增加的原告及其他被告质证-->
-                <button @click="add_component('defendshowd_accuser')" type="button" class="layui-btn layui-btn-primary layui-btn-sm "
-                        data-type="text">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-form-item">
-              <div class="layui-input-inline">
-              <label class="layui-form-label">真实性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_facticity" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_accuser[0].defendshow_facticity" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_accuser[0].defendshow_query_facticity" placeholder="理由" class="layui-textarea"></textarea>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">合法性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_legality" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_accuser[0].defendshow_legality" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_accuser[0].defendshow_query_legality" placeholder="理由" class="layui-textarea"></textarea>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">关联性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_relevance" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_accuser[0].defendshow_relevance" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_accuser[0].defendshow_query_relevace" placeholder="理由" class="layui-textarea"></textarea>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <hr>
-      </table>
-    </div>
-<!--    原告及其他被告质证动态添加-->
-    <template v-for="(item, index) in data.defendshowd_accuser.slice(1)" :key='index'>
-      <table class="layui-table">
-        <tr>
-          <td style="text-align: center">审判员</td>
-          <td>
-            <textarea type="text" class="layui-input">原告及其他被告对被告提交的证据进行质证</textarea>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-card-header">
-              <input type="text" v-model="data.defendshowd_accuser[index+1].defendshow_accuser"  placeholder="原告姓名" autocomplete="off"
-                     class="layui-input">
-            </div>
-          </td>
-          <td width="70%">
-            <div class="layui-input-row">
-              <div class="layui-col-md9">
-                <div class="layui-card-header">
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
                   <input type="text" v-model="data.defendshowd_accuser[index+1].defendshow_evidencenum" name="evidenceNum1"  placeholder="证据编号" autocomplete="off"
                          class="layui-input">
                 </div>
               </div>
-              <div class="layui-col-md3">
-                <!-- 删除动态增加的原告及其他被告质证-->
-                <button @click="delete_component('defendshowd_accuser',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+              <div class="layui-col-md1">
+                <button @click="delete_component('defendshowd_accuser',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm "
                         data-type="text">
                   <i class="layui-icon">&#xe640;</i>
                 </button>
               </div>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
+            <hr>
             <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">真实性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_facticity" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_accuser[index+1].defendshow_facticity" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
+              <div class="layui-col-md2">
+                <div class="layui-form-item">
+                  <div class="layui-input-inline">
+                    <div class="layui-col-lg-offset4">
+                      <label class="layui-form-label">真实性</label>
+                    </div>
+                    <div class="layui-col-lg-offset3">
+                      <div class="layui-row">
+                        <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_facticity" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">是</label>
+                        <div class="layui-row">
+                          <input type="radio" value="false" v-model="data.defendshowd_accuser[index+1].defendshow_facticity" class="myradio" style="margin-top:10px"/>
+                          <label class="layui-form-label">否</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <textarea v-model="data.defendshowd_accuser[index+1].defendshow_query_facticity" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
+                </div>
+              </div>
+            </div>
+            <hr>
+
+            <div class="layui-form-item">
+              <div class="layui-col-md2">
+                <div class="layui-form-item">
+                  <div class="layui-input-inline">
+                    <div class="layui-col-lg-offset4">
+                      <label class="layui-form-label">合法性</label>
+                    </div>
+                    <div class="layui-col-lg-offset3">
+                      <div class="layui-row">
+                        <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_legality" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">是</label>
+                        <div class="layui-row">
+                          <input type="radio" value="false" v-model="data.defendshowd_accuser[index+1].defendshow_legality" class="myradio" style="margin-top:10px"/>
+                          <label class="layui-form-label">否</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <textarea v-model="data.defendshowd_accuser[index+1].defendshow_query_legality" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
+                </div>
+              </div>
+            </div>
+            <hr>
+
+            <div class="layui-form-item">
+              <div class="layui-col-md2">
+                <div class="layui-form-item">
+                  <div class="layui-input-inline">
+                    <div class="layui-col-lg-offset4">
+                      <label class="layui-form-label">关联性</label>
+                    </div>
+                    <div class="layui-col-lg-offset3">
+                      <div class="layui-row">
+                        <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_relevance" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">是</label>
+                        <div class="layui-row">
+                          <input type="radio" value="false" v-model="data.defendshowd_accuser[index+1].defendshow_relevance" class="myradio" style="margin-top:10px"/>
+                          <label class="layui-form-label">否</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <textarea v-model="data.defendshowd_accuser[index+1].defendshow_query_relevace" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </template>
+<!---->
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-input-block">
+                <input type="text" v-model="data.defendshowd_defendant[0].defendshow_defendant"  placeholder="被告姓名" autocomplete="off"
+                       class="layui-input">
+              </div>
+            </div>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <input type="text" v-model="data.defendshowd_defendant[0].defendshow_numevidence" placeholder="证据编号" autocomplete="off"
+                       class="layui-input">
+              </div>
+            </div>
+            <div class="layui-col-md1">
+              <button @click="add_component('defendshowd_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm "
+                      data-type="text">
+                <i class="layui-icon">&#xe654;</i>
+              </button>
+            </div>
+          </div>
+          <hr>
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-form-item">
+                <div class="layui-input-inline">
+                  <div class="layui-col-lg-offset4">
+                    <label class="layui-form-label">真实性</label>
+                  </div>
+                  <div class="layui-col-lg-offset3">
+                    <div class="layui-row">
+                      <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numfacticity" class="myradio" style="margin-top:10px"/>
+                      <label class="layui-form-label">是</label>
+                      <div class="layui-row">
+                        <input type="radio" value="false" v-model="data.defendshowd_defendant[0].defendshow_numfacticity" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">否</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </td>
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_accuser[index+1].defendshow_query_facticity" placeholder="理由" class="layui-textarea"></textarea>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <textarea v-model="data.defendshowd_defendant[0].defendshow_reason_facticity" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
               </div>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">合法性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_legality" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_accuser[index+1].defendshow_legality" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
+          </div>
+          <hr>
+
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-form-item">
+                <div class="layui-input-inline">
+                  <div class="layui-col-lg-offset4">
+                    <label class="layui-form-label">合法性</label>
+                  </div>
+                  <div class="layui-col-lg-offset3">
+                    <div class="layui-row">
+                      <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numlegality" class="myradio" style="margin-top:10px"/>
+                      <label class="layui-form-label">是</label>
+                      <div class="layui-row">
+                        <input type="radio" value="false" v-model="data.defendshowd_defendant[0].defendshow_numlegality" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">否</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </td>
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_accuser[index+1].defendshow_query_legality" placeholder="理由" class="layui-textarea"></textarea>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <textarea v-model="data.defendshowd_defendant[0].defendshow_reason_legality" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
               </div>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">关联性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_relevance" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_accuser[index+1].defendshow_relevance" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
+          </div>
+          <hr>
+
+          <div class="layui-form-item">
+            <div class="layui-col-md2">
+              <div class="layui-form-item">
+                <div class="layui-input-inline">
+                  <div class="layui-col-lg-offset4">
+                    <label class="layui-form-label">关联性</label>
+                  </div>
+                  <div class="layui-col-lg-offset3">
+                    <div class="layui-row">
+                      <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numrelevance" class="myradio" style="margin-top:10px"/>
+                      <label class="layui-form-label">是</label>
+                      <div class="layui-row">
+                        <input type="radio" value="false" v-model="data.defendshowd_defendant[0].defendshow_numrelevance" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">否</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </td>
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_accuser[index+1].defendshow_query_relevace" placeholder="理由" class="layui-textarea"></textarea>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <textarea v-model="data.defendshowd_defendant[0].defendshow_reason_relevace" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
               </div>
             </div>
-          </td>
-        </tr>
-        <hr>
-      </table>
-    </template>
-  </div>
-  <div id="defendshowd_defendant">
-    <div id="form_accuser_query">
-      <table class="layui-table">
-        <tr>
-          <td width="30%">
-            <div class="layui-card-header">
-              <input type="text" v-model="data.defendshowd_defendant[0].defendshow_defendant" name="title" placeholder="被告姓名" autocomplete="off"
-                     class="layui-input">
-            </div>
-          </td>
-          <td width="70%">
-            <div class="layui-input-row">
-              <div class="layui-col-md9">
-                <div class="layui-card-header">
-                  <input type="text" name="title" v-model="data.defendshowd_defendant[0].defendshow_numevidence" placeholder="证据编号1" autocomplete="off"
+          </div>
+          <hr>
+
+          <template v-for="(item, index) in data.defendshowd_defendant.slice(1)" :key='index'>
+            <div class="layui-form-item">
+              <div class="layui-col-md2">
+                <div class="layui-input-block">
+                  <input type="text" v-model="data.defendshowd_defendant[index+1].defendshow_defendant"  placeholder="被告姓名" autocomplete="off"
                          class="layui-input">
                 </div>
               </div>
-              <div class="layui-col-md3">
-                <button @click="add_component('defendshowd_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm "
-                        data-type="text">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">真实性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numfacticity" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_defendant[0].defendshow_numfacticity" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-<!--          <td width="30%">-->
-<!--            <div class="layui-form-item">-->
-<!--              <div class="layui-input-inline">-->
-<!--              <label class="layui-form-label">真实性</label>-->
-<!--              <div class="site-title">-->
-<!--                <div class="layui-row">-->
-<!--                  <div class="layui-row">-->
-<!--                    <label class="layui-form-label">是</label>-->
-<!--                    <input type="radio" v-model="data.defendshowd_defendant[0].defendshow_numfacticity" name="defendshow_numfacticity" title="是" value="true" style="margin-top: 15px">-->
-<!--                  </div>-->
-<!--                  <div class="layui-row">-->
-<!--                    <label class="layui-form-label">否</label>-->
-<!--                    <input type="radio" v-model="data.defendshowd_defendant[0].defendshow_numfacticity" name="defendshow_numfacticit" title="否" value="false" style="margin-top: 15px">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </td>-->
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_defendant[0].defendshow_reason_facticity" placeholder="理由" class="layui-textarea"></textarea>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">合法性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numlegality" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_defendant[0].defendshow_numlegality" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-<!--          <td width="30%">-->
-<!--            <div class="layui-form-item">-->
-<!--              <div class="layui-input-inline">-->
-<!--              <label class="layui-form-label">合法性</label>-->
-<!--              <div class="site-title">-->
-<!--                <div class="layui-row">-->
-<!--                  <div class="layui-row">-->
-<!--                    <label class="layui-form-label">是</label>-->
-<!--                    <input type="radio" v-model="data.defendshowd_defendant[0].defendshow_numlegality" title="是" value="true" style="margin-top: 15px">-->
-<!--                  </div>-->
-<!--                  <div class="layui-row">-->
-<!--                    <label class="layui-form-label">否</label>-->
-<!--                    <input type="radio" v-model="data.defendshowd_defendant[0].defendshow_numlegality" title="否" value="false" style="margin-top: 15px">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            </div>-->
-<!--          </td>-->
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_defendant[0].defendshow_reason_legality" placeholder="理由" class="layui-textarea"></textarea>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">关联性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numrelevance" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_defendant[0].defendshow_numrelevance" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-<!--          <td width="30%">-->
-<!--            <div class="layui-form-item">-->
-<!--              <div class="layui-input-inline">-->
-<!--              <label class="layui-form-label">关联性</label>-->
-<!--              <div class="site-title">-->
-<!--                <div class="layui-row">-->
-<!--                  <div class="layui-row">-->
-<!--                    <label class="layui-form-label">是</label>-->
-<!--                    <input type="radio" v-model="data.defendshowd_defendant[0].defendshow_numrelevance" title="是" value="true" style="margin-top: 15px">-->
-<!--                  </div>-->
-<!--                  <div class="layui-row">-->
-<!--                    <label class="layui-form-label">否</label>-->
-<!--                    <input type="radio" v-model="data.defendshowd_defendant[0].defendshow_numrelevance" title="否" value="false" style="margin-top: 15px">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            </div>-->
-<!--          </td>-->
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_defendant[0].defendshow_reason_relevace" placeholder="理由" class="layui-textarea"></textarea>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </table>
-    </div>
-<!--被告质证的动态添加-->
-    <template v-for="(item, index) in data.defendshowd_defendant.slice(1)" :key='index'>
-      <table class="layui-table">
-        <tr>
-          <td width="30%">
-            <div class="layui-card-header">
-              <input type="text" v-model="data.defendshowd_defendant[index+1].defendshow_defendant" name="title" placeholder="被告姓名" autocomplete="off"
-                     class="layui-input">
-            </div>
-          </td>
-          <td width="70%">
-            <div class="layui-input-row">
-              <div class="layui-col-md9">
-                <div class="layui-card-header">
-                  <input type="text" name="title" v-model="data.defendshowd_defendant[index+1].defendshow_numevidence" placeholder="证据编号" autocomplete="off"
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <input type="text" v-model="data.defendshowd_defendant[index+1].defendshow_numevidence" placeholder="证据编号" autocomplete="off"
                          class="layui-input">
                 </div>
               </div>
-              <div class="layui-col-md3">
+              <div class="layui-col-md1">
                 <button @click="delete_component('defendshowd_defendant',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm "
                         data-type="text">
                   <i class="layui-icon">&#xe640;</i>
                 </button>
               </div>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
+            <hr>
             <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">真实性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numfacticity" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_defendant[index+1].defendshow_numfacticity" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
+              <div class="layui-col-md2">
+                <div class="layui-form-item">
+                  <div class="layui-input-inline">
+                    <div class="layui-col-lg-offset4">
+                      <label class="layui-form-label">真实性</label>
+                    </div>
+                    <div class="layui-col-lg-offset3">
+                      <div class="layui-row">
+                        <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numfacticity" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">是</label>
+                        <div class="layui-row">
+                          <input type="radio" value="false" v-model="data.defendshowd_defendant[index+1].defendshow_numfacticity" class="myradio" style="margin-top:10px"/>
+                          <label class="layui-form-label">否</label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </td>
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_defendant[index+1].defendshow_reason_facticity" placeholder="理由" class="layui-textarea"></textarea>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
-            <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">合法性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numlegality" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_defendant[index+1].defendshow_numlegality" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
-                  </div>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <textarea v-model="data.defendshowd_defendant[index+1].defendshow_reason_facticity" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
                 </div>
               </div>
             </div>
-          </td>
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_defendant[index+1].defendshow_reason_legality" placeholder="理由" class="layui-textarea"></textarea>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td width="30%">
+            <hr>
+
             <div class="layui-form-item">
-              <div class="layui-input-inline">
-                <label class="layui-form-label">关联性</label>
-                <div class="layui-row">
-                  <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numrelevance" class="myradio" style="margin-top:10px"/>
-                  <label class="layui-form-label">是</label>
-                  <div class="layui-row">
-                    <input type="radio" value="false" v-model="data.defendshowd_defendant[index+1].defendshow_numrelevance" class="myradio" style="margin-top:10px"/>
-                    <label class="layui-form-label">否</label>
+              <div class="layui-col-md2">
+                <div class="layui-form-item">
+                  <div class="layui-input-inline">
+                    <div class="layui-col-lg-offset4">
+                      <label class="layui-form-label">合法性</label>
+                    </div>
+                    <div class="layui-col-lg-offset3">
+                      <div class="layui-row">
+                        <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numlegality" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">是</label>
+                        <div class="layui-row">
+                          <input type="radio" value="false" v-model="data.defendshowd_defendant[index+1].defendshow_numlegality" class="myradio" style="margin-top:10px"/>
+                          <label class="layui-form-label">否</label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </td>
-          <td width="70%">
-            <div class="layui-col-md10">
-              <div class="layui-input-row">
-                <textarea v-model="data.defendshowd_defendant[index+1].defendshow_reason_relevace" placeholder="理由" class="layui-textarea"></textarea>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <textarea v-model="data.defendshowd_defendant[index+1].defendshow_reason_legality" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
+                </div>
               </div>
             </div>
-          </td>
-        </tr>
-      </table>
-    </template>
-  </div>
-  <div class="layui-col-md2">
-    <div class="layui-form-label">是否反诉</div>
-  </div>
-  <div class="layui-col-md10">
-    <div class="site-title">
-      <div class="layui-row">
-        <input type="radio" v-model="data.defendshow_is_counterclaim" class="myradio" value="true" >
-        <label>反诉</label>
-        <input type="radio" v-model="data.defendshow_is_counterclaim" class="myradio" value="false">
-        <label>不反诉</label>
+            <hr>
+
+            <div class="layui-form-item">
+              <div class="layui-col-md2">
+                <div class="layui-form-item">
+                  <div class="layui-input-inline">
+                    <div class="layui-col-lg-offset4">
+                      <label class="layui-form-label">关联性</label>
+                    </div>
+                    <div class="layui-col-lg-offset3">
+                      <div class="layui-row">
+                        <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numrelevance" class="myradio" style="margin-top:10px"/>
+                        <label class="layui-form-label">是</label>
+                        <div class="layui-row">
+                          <input type="radio" value="false" v-model="data.defendshowd_defendant[index+1].defendshow_numrelevance" class="myradio" style="margin-top:10px"/>
+                          <label class="layui-form-label">否</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-col-md7">
+                <div class="layui-input-block">
+                  <textarea v-model="data.defendshowd_defendant[index+1].defendshow_reason_relevace" placeholder="理由" class="layui-textarea" style="margin-top:10px"></textarea>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </template>
+        <div class="layui-form-item">
+          <div class="layui-col-md2">
+            <div class="layui-input-block">
+              <div class="layui-form-label">是否反诉</div>
+            </div>
+          </div>
+          <div class="layui-col-md7">
+            <div class="layui-row">
+              <input type="radio" v-model="data.defendshow_is_counterclaim" class="myradio" value="true" >
+              <label>反诉</label>
+              <input type="radio" v-model="data.defendshow_is_counterclaim" class="myradio" value="false">
+              <label>不反诉</label>
+            </div>
+          </div>
+        </div>
+          <div class="layui-card-header">
+            <div class="layui-input-block">
+              <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
+            </div>
+            <hr>
+          </div>
+          <hr>
+        </form>
       </div>
     </div>
-
   </div>
-  <hr>
-  <div class="layui-card-header">
-    <div class="layui-input-block">
-      <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
-    </div>
-  </div>
-  <hr>
 </template>
 
 <script>
