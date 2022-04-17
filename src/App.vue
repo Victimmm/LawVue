@@ -115,6 +115,8 @@
 
   </div>
 
+  <CourtInves :is_counterclaim="receiveCounterclaim" @receiveCounterclaim="receiveCounterclaim"></CourtInves>
+  <p>{{ receiveData }}</p>
 
 
 </template>
@@ -136,10 +138,15 @@ import delivery_form from "@/components/delivery_form";
 
 export default {
   name: 'App',
+  emits:['receiveCounterclaim'],
+  props:{
+    is_counterclaim: String,
+  },
   data:function (){
     return {
       plaintiffImfTag:[{guid:this.guid()}],
-      defendantImfTag:[{guid:this.guid()}]
+      defendantImfTag:[{guid:this.guid()}],
+      receiveData:'1'
     }
   },
   components: {
@@ -176,6 +183,9 @@ export default {
         v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
       });
+    },
+    receiveCounterclaim(data){
+      this.receiveData=data.is_counterclaim
     }
   },
   mounted (){
@@ -187,13 +197,14 @@ export default {
         title: '目录',
         skin: 'myskin',
         type: 1,
-        content: "<ul class='site-dir layui-layer-wrap' id='content_list' style='display: block;'>"+
-        "<li><a href='#BasicInfo'><cite>基本信息</cite></a></li>"+
-        "<li><a href='#whole_PlaintiffImf'><cite>原告信息</cite></a></li>"+
-        "<li><a href='#whole_DefendantImf'><cite>被告信息</cite></a></li>"+
-         "<li><a href='#right_inform'><cite>权利告知</cite></a></li>"+
-        "<li><a href='#CourtInves1'><cite>法庭调查1</cite></a></li>"+
-        "<li><a href='#accshow_form'><cite>法庭调查2</cite></a></li>"+
+        content:
+            "<ul class='site-dir layui-layer-wrap' id='content_list' style='display: block;'>"+
+            "<li><a href='#BasicInfo'><cite>基本信息</cite></a></li>"+
+            "<li><a href='#whole_PlaintiffImf'><cite>原告信息</cite></a></li>"+
+            "<li><a href='#whole_DefendantImf'><cite>被告信息</cite></a></li>"+
+            "<li><a href='#right_inform'><cite>权利告知</cite></a></li>"+
+            "<li><a href='#CourtInves1'><cite>法庭调查1</cite></a></li>"+
+            "<li><a href='#accshow_form'><cite>法庭调查2</cite></a></li>"+
             "<li><a href='#defendshow_form'><cite>法庭调查3</cite></a></li>"+
             "<li><a href='#inquiry_form'><cite>法庭询问</cite></a></li>"+
             "<li><a href='#argue_form'><cite>法庭辩论</cite></a></li>"+
@@ -234,9 +245,6 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
-  }
-  .*{
-    margin-top:20px;
   }
 
 </style>

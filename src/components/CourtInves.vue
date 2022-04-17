@@ -162,9 +162,9 @@
           </div>
           <div class="layui-col-md7">
             <div class="layui-input-block">
-              <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim" class="myradio" value="1"
+              <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim" @change="getCounterclaim" class="myradio" value="1"
                      title="反诉"><label>反诉</label>
-              <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim" class="myradio" value="0"
+              <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim" @change="getCounterclaim" class="myradio" value="0"
                      title="不反诉"><label>不反诉</label>
             </div>
           </div>
@@ -325,7 +325,7 @@
       </form>
     </div>
   </div>
-
+<button @click="getCounterclaim">ceshi</button>
 </template>
 
 <script>
@@ -346,9 +346,14 @@ if (localStorage.getItem("CourtInves") == null) {
 
 
 export default {
+  emits:['getCounterclaim'],
+  props:{
+    is_counterclaim: String,
+  },
   data() {
     return {
       data: data
+
     }
   },
   methods: {
@@ -397,6 +402,11 @@ export default {
           //这里是没有找到对应的值处理
           break
       }
+    },
+    getCounterclaim(){
+      console.log(this,'getCounterclaim');
+      // console.log(data.is_counterclaim)
+      this.$emit('receiveCounterclaim',this.data.is_counterclaim)
     },
     save_localstorage() {
       if (this.$store.state.court_number == "") {
