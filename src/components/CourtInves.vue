@@ -11,7 +11,7 @@
           <div class="layui-col-md7">
             <div class="layui-input-block">
               <input type="text" autocomplete="off" class="layui-input"
-                   value="下面进行法庭调查，原告陈述诉讼请求和事实理由">
+                     value="下面进行法庭调查，原告陈述诉讼请求和事实理由">
             </div>
           </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="layui-input-block">
               <label class="layui-form-label">
                 <input type="text" name="title" placeholder="原告简称" v-model="data.accuser_claims[0].accuser_name"
-                   class="layui-input" style="margin-top: -9px;">
+                       class="layui-input" style="margin-top: -9px;">
               </label>
             </div>
           </div>
@@ -31,10 +31,10 @@
             </div>
           </div>
           <div class="layui-col-md1">
-                <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text"
-                        style="height: 38px;" @click="add_component('accuser_claims')">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
+            <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text"
+                    style="height: 38px;" @click="add_component('accuser_claims')">
+              <i class="layui-icon">&#xe654;</i>
+            </button>
           </div>
         </div>
         <div class="layui-form-item">
@@ -82,7 +82,7 @@
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
-            <textarea v-model="data.accuser_claims[0].fact_reason" placeholder="请输入事实和理由"
+            <textarea v-model="data.accuser_claims[index+1].fact_reason" placeholder="请输入事实和理由"
                       class="layui-textarea"></textarea>
               </div>
             </div>
@@ -98,7 +98,7 @@
           <div class="layui-col-md7">
             <div class="layui-input-block">
               <input type="text" autocomplete="off" class="layui-input"
-                   value="对于原告的诉讼请求及事实理由，被告进行答辩。">
+                     value="对于原告的诉讼请求及事实理由，被告进行答辩。">
             </div>
           </div>
         </div>
@@ -107,7 +107,8 @@
           <div class="layui-col-md2">
             <div class="layui-input-block">
               <label class="layui-form-label">
-                <input type="text" v-model="data.defendant_claims[0].defendant_name" placeholder="被告姓名" class="layui-input"
+                <input type="text" v-model="data.defendant_claims[0].defendant_name" placeholder="被告姓名"
+                       class="layui-input"
                        style="margin-top: -9px;">
               </label>
             </div>
@@ -131,14 +132,16 @@
             <div class="layui-col-md2">
               <div class="layui-input-block">
                 <label class="layui-form-label">
-                  <input type="text" v-model="data.defendant_claims[index+1].defendant_name" placeholder="被告姓名" class="layui-input"
+                  <input type="text" v-model="data.defendant_claims[index+1].defendant_name" placeholder="被告姓名"
+                         class="layui-input"
                          style="margin-top: -9px;">
                 </label>
               </div>
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
-                <input type="text" v-model="data.defendant_claims[index+1].claim_item" placeholder="答辩内容" autocomplete="on"
+                <input type="text" v-model="data.defendant_claims[index+1].claim_item" placeholder="答辩内容"
+                       autocomplete="on"
                        class="layui-input">
               </div>
             </div>
@@ -154,7 +157,7 @@
         <div class="layui-form-item">
           <div class="layui-col-md2">
             <div class="layui-input-block">
-               <label class="layui-form-label">是否反诉</label>
+              <label class="layui-form-label">是否反诉</label>
             </div>
           </div>
           <div class="layui-col-md7">
@@ -172,7 +175,8 @@
             <div class="layui-col-md2">
               <div class="layui-input-block">
                 <label class="layui-form-label">
-                  <input type="text" v-model="data.counterclaim_plaintiff[0].name" placeholder="反诉原告简称" class="layui-input"
+                  <input type="text" v-model="data.counterclaim_plaintiff[0].name" placeholder="反诉原告简称"
+                         class="layui-input"
                          style="margin-top: -9px;">
                 </label>
               </div>
@@ -184,10 +188,10 @@
               </div>
             </div>
             <div class="layui-col-md1">
-                <button id="counterclaimitem_add" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text" style="height: 38px;" @click="add_component('counterclaim_plaintiff')">
-                  <i class="layui-icon"> &#xe654;</i>
-                </button>
+              <button id="counterclaimitem_add" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                      data-type="text" style="height: 38px;" @click="add_component('counterclaim_plaintiff')">
+                <i class="layui-icon"> &#xe654;</i>
+              </button>
             </div>
           </div>
           <div class="layui-form-item">
@@ -209,7 +213,8 @@
               <div class="layui-col-md2">
                 <div class="layui-input-block">
                   <label class="layui-form-label">
-                    <input type="text" v-model="data.counterclaim_plaintiff[index+1].name" placeholder="反诉原告简称" class="layui-input"
+                    <input type="text" v-model="data.counterclaim_plaintiff[index+1].name" placeholder="反诉原告简称"
+                           class="layui-input"
                            style="margin-top: -9px;">
                   </label>
                 </div>
@@ -264,7 +269,8 @@
               <div class="layui-col-md2">
                 <div class="layui-input-block">
                   <label class="layui-form-label">
-                    <input type="text" v-model="data.counterclaim_defendant[0].name" placeholder="被告姓名" class="layui-input"
+                    <input type="text" v-model="data.counterclaim_defendant[0].name" placeholder="被告姓名"
+                           class="layui-input"
                            style="margin-top: -9px;">
                   </label>
                 </div>
@@ -284,30 +290,31 @@
             </div>
           </div>
         </div>
-            <template v-for="(item, index) in data.counterclaim_defendant.slice(1)" :key='index'>
-              <div class="layui-form-item" style="margin-top: 11px;">
-                <div class="layui-col-md2">
-                  <div class="layui-input-block">
-                    <label class="layui-form-label">
-                      <input type="text" v-model="data.counterclaim_defendant[index+1].name" placeholder="被告姓名" class="layui-input"
-                             style="margin-top: -9px;">
-                    </label>
-                  </div>
-                </div>
-                <div class="layui-col-md7">
-                  <div class="layui-input-block">
-                    <input type="text" v-model="data.counterclaim_defendant[index+1].reply_item" placeholder="答辩内容"
-                           autocomplete="on" class="layui-input">
-                  </div>
-                </div>
-                <div class="layui-col-md1">
-                  <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text"
-                          style="height: 38px;" @click="delete_component('counterclaim_defendant',1)">
-                    <i class="layui-icon">&#xe640;</i>
-                  </button>
-                </div>
+        <template v-for="(item, index) in data.counterclaim_defendant.slice(1)" :key='index'>
+          <div class="layui-form-item" style="margin-top: 11px;">
+            <div class="layui-col-md2">
+              <div class="layui-input-block">
+                <label class="layui-form-label">
+                  <input type="text" v-model="data.counterclaim_defendant[index+1].name" placeholder="被告姓名"
+                         class="layui-input"
+                         style="margin-top: -9px;">
+                </label>
               </div>
-            </template>
+            </div>
+            <div class="layui-col-md7">
+              <div class="layui-input-block">
+                <input type="text" v-model="data.counterclaim_defendant[index+1].reply_item" placeholder="答辩内容"
+                       autocomplete="on" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-col-md1">
+              <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text"
+                      style="height: 38px;" @click="delete_component('counterclaim_defendant',1)">
+                <i class="layui-icon">&#xe640;</i>
+              </button>
+            </div>
+          </div>
+        </template>
 
         <div class="layui-form-item">
           <div class="layui-input-block">
@@ -343,25 +350,6 @@ export default {
     return {
       data: data
     }
-  },
-  components: {
-    // AddJudgeChief
-
-  },
-  mounted() {
-    // let that=this;
-    // window.layui.use(['form','laydate'], function(){
-    // 	var form = window.layui.form;
-    // 	form.on('radio(is_todayreply)', function(value){
-    // 		that.data.is_todayreply=value.value;
-    // 	})
-    // 	form.on('radio(is_counterclaim)', function(value){
-    // 		that.data.is_counterclaim=value.value;
-    // 	})
-    // })
-  },
-  updated: function () {
-
   },
   methods: {
     add_component(datatype) {
@@ -411,9 +399,31 @@ export default {
       }
     },
     save_localstorage() {
-      this.$store.commit("setCounterClaim",this.data.is_counterclaim)
-      localStorage.setItem('CourtInves', JSON.stringify(this.data))
+      if (this.$store.state.court_number == "") {
+        window.layui.layer.msg('请优先完善基本信息表格');
+      } else {
+        var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+        wholeItem.CourtInves = this.data
+        localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+        this.$store.commit("setCounterClaim", this.data.is_counterclaim)
+      }
+    }
+  },
+  watch: {
+    data: {
+      handler() {
+        //如何根据数据存储
+        if (this.$store.state.court_number == "") {
+          // window.layui.layer.msg('请优先完善基本信息表格');
+        } else {
+          var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+          wholeItem.CourtInves= this.data
+          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+        }
+      },
+      deep: true
     }
   }
+
 }
 </script>

@@ -145,60 +145,74 @@
 
 <script type="text/javascript">
 var data;
-  data={
-        accuser:'',
-        accuser_short:'',
-        accuser_type:"0",
-        accuser_address:'',
-        accuser_represent:'',
-        accuser_duty:'',
-        accuser_agent:'',
-        accuser_agent_address:'',
-    };
-    export default {
-          props: {
-            index: {
-              type: Number,
-              required: true
-          }
-         } ,
-        data(){
-                data.accuser=this.$store.state.plaintiffname[this.index]
-            return {data:JSON.parse(JSON.stringify(data))}
-        },
-        mounted(){
-      },
-      methods: {
-        onSaveClick() {
-          if (this.$store.state.court_number == "") {
-            window.layui.layer.msg('请优先完善基本信息表格');
-          } else {
-            this.$store.commit('HandlePlaintiffName', [this.data.accuser, this.index])
-            var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-            wholeItem.PlaintiffItems[this.index]=this.data
-            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
-          }
-        },
-        onCloseClick() {
-          // 将删除标签事件暴露除去
+data = {
+  accuser: '',
+  accuser_short: '',
+  accuser_type: "0",
+  accuser_address: '',
+  accuser_represent: '',
+  accuser_duty: '',
+  accuser_agent: '',
+  accuser_agent_address: '',
+};
+export default {
+  props: {
+    index: {
+      type: Number,
+      required: true
+    }
+  },
+  data() {
+    data.accuser = this.$store.state.plaintiffname[this.index]
+    return {data: JSON.parse(JSON.stringify(data))}
+  },
+  mounted() {
+  },
+  methods: {
+    onSaveClick() {
+      if (this.$store.state.court_number == "") {
+        window.layui.layer.msg('请优先完善基本信息表格');
+      } else {
+        this.$store.commit('HandlePlaintiffName', [this.data.accuser, this.index])
+        var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+        wholeItem.PlaintiffItems[this.index] = this.data
+        localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+      }
+    },
+    onCloseClick() {
+      // 将删除标签事件暴露除去
+      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      var PlaintiffItems = wholeItem.PlaintiffItems
+      if (this.index < PlaintiffItems.length) {
+        wholeItem.PlaintiffItems.splice(this.index, 1)
+        console.log(wholeItem.PlaintiffItems)
+        localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+      }
+      this.$emit("deleteIndex", this.index);
+      this.$store.commit('delete_components', ['plaintiff', this.index])
+    },
+    onAddClick() {
+      this.$emit("addIndex");
+      this.$store.commit('add_components', ['plaintiff'])
+    }
+  },
+  watch: {
+    data:{
+      handler() {
+        //如何根据数据存储
+        if (this.$store.state.court_number == "") {
+          // window.layui.layer.msg('请优先完善基本信息表格');
+        }
+        else{
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-          var PlaintiffItems = wholeItem.PlaintiffItems
-          if(this.index<PlaintiffItems.length){
-            wholeItem.PlaintiffItems.splice(this.index,1)
-            console.log(wholeItem.PlaintiffItems)
-            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
-          }
-          this.$emit("deleteIndex", this.index);
-          this.$store.commit('delete_components', ['plaintiff', this.index])
-        },
-        onAddClick(){
-            this.$emit("addIndex");
-            this.$store.commit('add_components',['plaintiff'])
+          wholeItem.PlaintiffItems[this.index] = this.data
+          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
         }
       },
-    computed: {
+      deep: true
     }
-
-
   }
+
+
+}
 </script>

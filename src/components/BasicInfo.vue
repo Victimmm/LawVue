@@ -245,14 +245,9 @@ else{
 
 export default {
   data() {
-
     return {
       data:data
     } 
-  },
-  components: {
-    // AddJudgeChief
-    
   },
   mounted(){
     window.layui.use('laydate', function(){
@@ -267,15 +262,8 @@ export default {
               ,format: 'yyyy年MM月dd日 HH时mm分' //可任意组合
             });
     });
-
-    // window.layui.use(['form','laydate'], function(){
-
-    //       // var element = window.layui.element
-
-    //     })
   },
   methods: {
-
     add_component(datatype) {
       switch(datatype){
         case "chief_judge":
@@ -318,6 +306,22 @@ export default {
         this.$store.commit("setCourtNum",this.data.court_number)
         localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data,PlaintiffItems:[],DefendantItems:[]}))
       }
+    },
+  watch: {
+    data:{
+      handler() {
+        //如何根据数据存储
+        if (this.$store.state.court_number == "") {
+          // window.layui.layer.msg('请优先完善基本信息表格');
+        }
+        else{
+          var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+          wholeItem.BasicInfo=this.data
+          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+        }
+      },
+      deep: true
     }
+  }
   }
 </script>

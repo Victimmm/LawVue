@@ -209,6 +209,22 @@ else
         this.$emit("addIndex");
         this.$store.commit('add_components',['defendant'])
       }
-		}   
+		},
+    watch: {
+      data:{
+        handler() {
+          //如何根据数据存储
+          if (this.$store.state.court_number == "") {
+            // window.layui.layer.msg('请优先完善基本信息表格');
+          }
+          else{
+            var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+            wholeItem.DefendantItems[this.index] = this.data
+            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          }
+        },
+        deep: true
+      }
+    }
 	}
 </script>
