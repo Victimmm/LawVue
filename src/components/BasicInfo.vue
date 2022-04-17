@@ -316,8 +316,7 @@ export default {
       },
       save_localstorage(){
         this.$store.commit("setCourtNum",this.data.court_number)
-
-        localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data}))
+        localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data,PlaintiffItems:[],DefendantItems:[]}))
       }
     }
   }

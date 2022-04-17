@@ -24,8 +24,7 @@
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
-                <input type="text" v-model="data.defendant"  placeholder="请输入被告姓名"
-                       autocomplete="off" class="layui-input">
+                <input type="text" v-model="data.defendant"  placeholder="请输入被告姓名"  autocomplete="off" class="layui-input">
               </div>
             </div>
           </div>
@@ -51,7 +50,7 @@
                 <label class="layui-form-label">被告全称</label>
               </div>
             </div>
-            <div class="layui-col-md2">
+            <div class="layui-col-md7">
               <div class="layui-input-block">
                 <input type="text" v-model="data.defendant"  required lay-verify="required" placeholder="请输入被告全称"
                      autocomplete="off" class="layui-input">
@@ -186,12 +185,23 @@ else
 		},
 		methods :{
       onSaveClick(){
-        this.$store.commit('HandleDefendantName', [this.data.defendant,this.index])
-        localStorage.setItem('DefendantImf',JSON.stringify(this.data))
+        if (this.$store.state.court_number == "") {
+          window.layui.layer.msg('请优先完善基本信息表格');
+        } else {
+          var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+          wholeItem.DefendantItems[this.index] = this.data
+          this.$store.commit('HandleDefendantName', [this.data.defendant, this.index])
+          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+        }
       },
       onCloseClick () {
         // 将删除标签事件暴露除去
-        // console.log(this.index);
+        var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+        var DefendantItems = wholeItem.DefendantItems
+        if(this.index<DefendantItems.length){
+          wholeItem.DefendantItems.splice(this.index,1)
+          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+        }
         this.$emit("deleteIndex", this.index);
         this.$store.commit('delete_components',['defendant',this.index])
       },
