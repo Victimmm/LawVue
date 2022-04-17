@@ -144,17 +144,8 @@
 </template>
 
 <script type="text/javascript">
-var data;
-data = {
-  accuser: '',
-  accuser_short: '',
-  accuser_type: "0",
-  accuser_address: '',
-  accuser_represent: '',
-  accuser_duty: '',
-  accuser_agent: '',
-  accuser_agent_address: '',
-};
+
+
 export default {
   props: {
     index: {
@@ -163,10 +154,25 @@ export default {
     }
   },
   data() {
-    data.accuser = this.$store.state.plaintiffname[this.index]
+    var data;
+    data = {
+      accuser: '',
+      accuser_short: '',
+      accuser_type: "0",
+      accuser_address: '',
+      accuser_represent: '',
+      accuser_duty: '',
+      accuser_agent: '',
+      accuser_agent_address: '',
+    };
+    // data.accuser = this.$store.state.plaintiffname[this.index]
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if (wholeItem != "" ) {
+      var PlaintiffItems = wholeItem.PlaintiffItems
+      data=(this.index<PlaintiffItems.length)?PlaintiffItems[this.index]:data
+
+    }
     return {data: JSON.parse(JSON.stringify(data))}
-  },
-  mounted() {
   },
   methods: {
     onSaveClick() {

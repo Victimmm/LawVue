@@ -245,9 +245,10 @@ else{
 
 export default {
   data() {
-    return {
-      data:data
-    } 
+
+
+
+    return {data:data}
   },
   mounted(){
     window.layui.use('laydate', function(){

@@ -143,9 +143,20 @@ export default {
     is_counterclaim: String,
   },
   data:function (){
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    var plaintiffImfTag=[{guid:this.guid()}]
+    var defendantImfTag=[{guid:this.guid()}]
+    if (wholeItem != "" ) {
+      for( var i=0;wholeItem.PlaintiffItems.length!=0&i<wholeItem.PlaintiffItems.length-1;i++){
+        plaintiffImfTag.push({guid:this.guid()})
+      }
+      for( i=0;wholeItem.DefendantItems.length!=0&i<wholeItem.DefendantItems.length-1;i++){
+        defendantImfTag.push({guid:this.guid()})
+      }
+    }
     return {
-      plaintiffImfTag:[{guid:this.guid()}],
-      defendantImfTag:[{guid:this.guid()}],
+      plaintiffImfTag:plaintiffImfTag,
+      defendantImfTag:defendantImfTag,
       receiveData:'1'
     }
   },
@@ -198,21 +209,20 @@ export default {
         skin: 'myskin',
         type: 1,
         content:
-            "<ul class='site-dir layui-layer-wrap' id='content_list' style='display: block;'>"+
-            "<li><a href='#BasicInfo'><cite>基本信息</cite></a></li>"+
-            "<li><a href='#whole_PlaintiffImf'><cite>原告信息</cite></a></li>"+
-            "<li><a href='#whole_DefendantImf'><cite>被告信息</cite></a></li>"+
-            "<li><a href='#right_inform'><cite>权利告知</cite></a></li>"+
-            "<li><a href='#CourtInves1'><cite>法庭调查1</cite></a></li>"+
-            "<li><a href='#accshow_form'><cite>法庭调查2</cite></a></li>"+
-            "<li><a href='#defendshow_form'><cite>法庭调查3</cite></a></li>"+
-            "<li><a href='#inquiry_form'><cite>法庭询问</cite></a></li>"+
-            "<li><a href='#argue_form'><cite>法庭辩论</cite></a></li>"+
-            "<li><a href='#final_form'><cite>陈述意见</cite></a></li>"+
-            "<li><a href='#mediate_form'><cite>是否调解</cite></a></li>"+
-            "<li><a href='#delivery_form'><cite>电子文书送达</cite></a></li>"+
-
-        "</ul>" ,
+            "<ul class='site-dir layui-layer-wrap' id='content_list' style='display: block;'>" +
+            "<li><a href='#BasicInfo'><cite>基本信息</cite></a></li>" +
+            "<li><a href='#whole_PlaintiffImf'><cite>原告信息</cite></a></li>" +
+            "<li><a href='#whole_DefendantImf'><cite>被告信息</cite></a></li>" +
+            "<li><a href='#right_inform'><cite>权利告知</cite></a></li>" +
+            "<li><a href='#CourtInves1'><cite>法庭调查1</cite></a></li>" +
+            "<li><a href='#accshow_form'><cite>法庭调查2</cite></a></li>" +
+            "<li><a href='#defendshow_form'><cite>法庭调查3</cite></a></li>" +
+            "<li><a href='#inquiry_form'><cite>法庭询问</cite></a></li>" +
+            "<li><a href='#argue_form'><cite>法庭辩论</cite></a></li>" +
+            "<li><a href='#final_form'><cite>陈述意见</cite></a></li>" +
+            "<li><a href='#mediate_form'><cite>是否调解</cite></a></li>" +
+            "<li><a href='#delivery_form'><cite>电子文书送达</cite></a></li>" +
+            "</ul>",
         shade: 0,
         closeBtn:0,
         offset: 'r'
