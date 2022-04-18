@@ -30,7 +30,10 @@
       <div class="layui-col-md2">
         <div class="layui-input-block">
           <div class="layui-col-md2">
-            <label class="layui-form-label">原告</label>
+            <label class="layui-form-label">
+              <input type="text" name="title" placeholder="原告简称"
+                     class="layui-input" >
+            </label>
           </div>
         </div>
       </div>
@@ -44,7 +47,10 @@
       <div class="layui-col-md2">
         <div class="layui-input-block">
           <div class="layui-col-md2">
-            <label class="layui-form-label">被告</label>
+            <label class="layui-form-label">
+              <input type="text" name="title" placeholder="被告简称"
+                     class="layui-input" >
+            </label>
           </div>
         </div>
       </div>
@@ -71,33 +77,106 @@
     <div class="layui-form-item">
       <div class="layui-col-md2">
         <div class="layui-input-block">
-          <label class="layui-form-label">原告</label>
+          <label class="layui-form-label">
+            <input type="text" name="title" placeholder="原告简称"
+                   class="layui-input" >
+          </label>
         </div>
       </div>
       <div class="layui-col-md7">
         <div class="layui-form-item">
           <div class="layui-input-block">
-            <input type="radio" value="1" v-model="data.accuser_avoid" lay-filter="accuser_avoid" class="myradio" name="accuser_avoid"><label>  不申请回避 </label>
-            <input type="radio" value="2" v-model="data.accuser_avoid" lay-filter="accuser_avoid" class="myradio" name="accuser_avoid"><label>  申请回避  </label>
+            <input type="radio" value="1" v-model="data.accuser_avoid[0]" class="myradio" name="accuser_avoid"><label>  不申请回避 </label>
+            <input type="radio" value="2" v-model="data.accuser_avoid[0]" class="myradio" name="accuser_avoid"><label>  申请回避  </label>
           </div>
         </div>
       </div>
+      <div class="layui-col-md1">
+        <button @click="add_component('accuser_avoid')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                data-type="text">
+          <i class="layui-icon">&#xe654;</i>
+        </button>
+      </div>
     </div>
+    <template v-for="(item, index) in data.accuser_avoid.slice(1)" :key='index'>
+      <div class="layui-form-item">
+        <div class="layui-col-md2">
+          <div class="layui-input-block">
+            <label class="layui-form-label">
+              <input type="text" name="title" placeholder="原告简称"
+                     class="layui-input" >
+            </label>
+          </div>
+        </div>
+        <div class="layui-col-md7">
+          <div class="layui-form-item">
+            <div class="layui-input-block">
+              <input type="radio" value="1" v-model="data.accuser_avoid[index+1]" class="myradio" name="accuser_avoid"><label>  不申请回避 </label>
+              <input type="radio" value="2" v-model="data.accuser_avoid[index+1]" class="myradio" name="accuser_avoid"><label>  申请回避  </label>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md1">
+          <button @click="delete_component('accuser_avoid',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                  data-type="text">
+            <i class="layui-icon">&#xe640;</i>
+          </button>
+        </div>
+      </div>
+    </template>
+
     <div class="layui-form-item">
       <div class="layui-col-md2">
         <div class="layui-input-block">
-          <label class="layui-form-label">被告</label>
+          <label class="layui-form-label">
+            <input type="text" name="title" placeholder="被告简称"
+                   class="layui-input" >
+          </label>
         </div>
       </div>
       <div class="layui-col-md7">
         <div class="layui-form">
           <div class="layui-input-block">
-            <input type="radio" value="1"  v-model="data.defendant_avoid" lay-filter="defendant_avoid" class="myradio" name="defendant_avoid"><label>  不申请回避  </label>
-            <input type="radio" value="2"  v-model="data.defendant_avoid" lay-filter="defendant_avoid" class="myradio" name="defendant_avoid"><label>  申请回避  </label>
+            <input type="radio" value="1" v-model="data.defendant_avoid[0]" class="myradio"><label>  不申请回避  </label>
+            <input type="radio" value="2" v-model="data.defendant_avoid[0]" class="myradio"><label>  申请回避  </label>
           </div>
         </div>
       </div>
+      <div class="layui-col-md1">
+        <button @click="add_component('defendant_avoid')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                data-type="text">
+          <i class="layui-icon">&#xe654;</i>
+        </button>
+      </div>
     </div>
+
+    <template v-for="(item, index) in data.defendant_avoid.slice(1)" :key='index'>
+      <div class="layui-form-item">
+        <div class="layui-col-md2">
+          <div class="layui-input-block">
+            <label class="layui-form-label">
+              <input type="text" name="title" placeholder="被告简称"
+                     class="layui-input" >
+            </label>
+          </div>
+        </div>
+        <div class="layui-col-md7">
+          <div class="layui-form">
+            <div class="layui-input-block">
+              <input type="radio" value="1" v-model="data.defendant_avoid[index+1]" class="myradio"><label>  不申请回避  </label>
+              <input type="radio" value="2" v-model="data.defendant_avoid[index+1]" class="myradio"><label>  申请回避  </label>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md1">
+          <button @click="delete_component('defendant_avoid',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                  data-type="text">
+            <i class="layui-icon">&#xe640;</i>
+          </button>
+        </div>
+      </div>
+    </template>
+
     <div class="layui-form-item">
       <div class="layui-input-block">
         <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
@@ -112,8 +191,8 @@
   var data;
   if(localStorage.getItem("right_inform")==null){
     data={
-      accuser_avoid:'',
-      defendantd_avoid:'',
+      accuser_avoid:["1"],
+      defendant_avoid: ["1"],
     };
   }else
     data=JSON.parse(localStorage.getItem("right_inform"));
@@ -126,6 +205,52 @@ export default {
 
   },
   methods:{
+    add_component(datatype) {
+      switch(datatype){
+        case "defendant_avoid":
+          //这里是值对应的处理
+          this.data.defendant_avoid.push([])
+          break
+        case "accuser_avoid":
+          //这里是值对应的处理
+          this.data.accuser_avoid.push([])
+          break
+        default:
+          //这里是没有找到对应的值处理
+          break
+      }
+    },
+    delete_component(datatype,index){
+      switch(datatype){
+        case "defendant_avoid":
+          //这里是值对应的处理
+          this.data.defendant_avoid.splice(index,1)
+          break
+        case "accuser_avoid":
+          //这里是值对应的处理
+          this.data.accuser_avoid.splice(index,1)
+          break
+        default:
+          //这里是没有找到对应的值处理
+          break
+      }
+    },
+    watch: {
+      data:{
+        handler() {
+          //如何根据数据存储
+          if (this.$store.state.court_number == "") {
+            // window.layui.layer.msg('请优先完善基本信息表格');
+          }
+          else{
+            var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+            wholeItem.right_inform=this.data
+            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          }
+        },
+        deep: true
+      }
+    },
 
     save_localstorage(){
       localStorage.setItem('right_inform',JSON.stringify(this.data))
