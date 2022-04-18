@@ -152,23 +152,9 @@
 
 <script type="text/javascript">
 
-var data;
 
-if(localStorage.getItem("DefendantImf")==null)
-{  
-  data={
-		defendant:'',
-		defendant_short:'',
-		defendant_type:"0",
-		defendant_address:'',
-		defendant_representative:'',
-		defendant_duty:'',
-		defendant_agent:'',
-		defendant_agent_address:'',
-	};
-}
-else 
-  data=JSON.parse(localStorage.getItem("DefendantImf"));
+
+
 
 	export default {
     props: {
@@ -178,7 +164,22 @@ else
       }
     } ,
 		data(){
-      data.accuser=this.$store.state.defendantname[this.index]
+      var data;
+      data={
+        defendant:'',
+        defendant_short:'',
+        defendant_type:"0",
+        defendant_address:'',
+        defendant_representative:'',
+        defendant_duty:'',
+        defendant_agent:'',
+        defendant_agent_address:'',
+      };
+      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      if (wholeItem != "" ) {
+        var DefendantItems = wholeItem.DefendantItems
+        data=(this.index<DefendantItems.length)?DefendantItems[this.index]:data
+      }
       return {data:JSON.parse(JSON.stringify(data))}
 		},
 		mounted(){

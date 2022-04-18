@@ -8,7 +8,7 @@ export default createStore({
 			plaintiffname: [''],
 			defendantname: [''],
 			is_counterclaim:"",
-			court_number:""
+			court_number:"123456"
 
 		}
 	},

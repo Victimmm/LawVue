@@ -332,7 +332,6 @@
 
 var data;
 
-if (localStorage.getItem("CourtInves") == null) {
   data = {
     accuser_claims: [{accuser_name: "", claim_item: "", fact_reason: ""}],
     is_counterclaim: "0",
@@ -341,8 +340,6 @@ if (localStorage.getItem("CourtInves") == null) {
     is_todayreply: "0",
     counterclaim_defendant: [{name: "", reply_item: ""}]
   };
-} else
-  data = JSON.parse(localStorage.getItem("CourtInves"));
 
 
 export default {
@@ -351,6 +348,10 @@ export default {
     is_counterclaim: String,
   },
   data() {
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if("CourtInves" in wholeItem){
+      data=wholeItem.CourtInves
+    }
     return {
       data: data
 
