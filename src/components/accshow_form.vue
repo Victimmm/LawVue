@@ -43,7 +43,7 @@
         </div>
         <div class="layui-col-md7">
           <div class="layui-input-block">
-            <textarea v-model="data.accshowd_evidence[0].accshow_content" placeholder="理由" class="layui-textarea"></textarea>
+            <textarea v-model="data.accshowd_evidence[0].accshow_fact_reason" placeholder="理由" class="layui-textarea"></textarea>
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@
         </div>
         <div class="layui-col-md7">
           <div class="layui-input-block">
-            <textarea v-model="data.accshowd_evidence[index+1].accshow_content" placeholder="理由" class="layui-textarea"></textarea>
+            <textarea v-model="data.accshowd_evidence[index+1].accshow_fact_reason" placeholder="理由" class="layui-textarea"></textarea>
           </div>
         </div>
       </div>
@@ -334,40 +334,43 @@
 </template>
 
 <script>
-var data;
-if (localStorage.getItem("accshow_form") == null) {
-  data = {
-    //第一个动态生成的json accshowd_evidence 包含以下3个信息
-    accshowd_evidence: [
-      {
-        accshow_evidence: "" , //证据名称(原告举证表 原告提出)
-        accshow_content: "" , //证明事项(原告举证表 原告提出)
-        accshow_fact_reason:"" , //事实和理由(被告质证)
-      },
-    ],
-    //第二个动态生成的json accshod_query_evidence 包含以下10个信息
-    accshowd_query_evidence: [
-      {
-        accshow_content: "" , //证明事项
-        accshow_fact_reason: "" , //事实和理由
-        accshow_defendant: "" , //被告姓名
-        accshow_query_relevace: "" , //关联性理由
-        accshow_facticity: "true" , //真实性
-        accshow_legality: "true", //合法性
-        accshow_relevance: "true", //关联性
-        accshow_query_evidence: "" , //证据名称 （被告质证）
-        accshow_query_facticity: "" , //真实性理由
-        accshow_query_legality: "" , //合法性理由
-      },
-    ],
-  };
-} else data = JSON.parse(localStorage.getItem("accshow_form"));
+
+//   };
+// } else data = JSON.parse(localStorage.getItem("accshow_form"));
 // console.log(data);
 export default {
   data() {
-    return {
-      data: data,
-    };
+    var data;
+// if (localStorage.getItem("accshow_form") == null) {
+    data = {
+      //第一个动态生成的json accshowd_evidence 包含以下3个信息
+      accshowd_evidence: [
+        {
+          accshow_evidence: "" , //证据名称(原告举证表 原告提出)
+          accshow_content: "" , //证明事项(原告举证表 原告提出)
+          accshow_fact_reason:"" , //事实和理由(被告质证)
+        },
+      ],
+      //第二个动态生成的json accshod_query_evidence 包含以下10个信息
+      accshowd_query_evidence: [
+        {
+          accshow_content: "" , //证明事项
+          accshow_fact_reason: "" , //事实和理由
+          accshow_defendant: "" , //被告姓名
+          accshow_query_relevace: "" , //关联性理由
+          accshow_facticity: "true" , //真实性
+          accshow_legality: "true", //合法性
+          accshow_relevance: "true", //关联性
+          accshow_query_evidence: "" , //证据名称 （被告质证）
+          accshow_query_facticity: "" , //真实性理由
+          accshow_query_legality: "" , //合法性理由
+        },
+      ],}
+      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      if("accshow_form" in wholeItem){
+      data=wholeItem.accshow_form
+    }
+    return {data:data}
   },
   mount(){
 
@@ -377,9 +380,7 @@ export default {
     // AddJudgeChief
   },
   methods: {
-    updated:function(){
 
-    },
     add_component(datatype) {
       switch (datatype) {
         case "accshowd_evidence":
@@ -427,9 +428,9 @@ export default {
           break;
       }
     },
-    save_localstorage() {
-      localStorage.setItem("accshow_form", JSON.stringify(this.data));
-    },
+    // save_localstorage() {
+    //   localStorage.setItem("accshow_form", JSON.stringify(this.data));
+    // },
   },
   watch: {
     data:{

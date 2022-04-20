@@ -109,25 +109,30 @@
 </template>
 
 <script>
-var data;
-if (localStorage.getItem("mediate_form") == null) {
-  data = {
-    mediate_accuser: '',            //原告简称
-    is_mediate_accuser: '',         //原告回答
-    mediate_plan_accuser: '',       //被告简称
-    time_limit_accuser:'',
-    mediated_defendant: [
-      {
-        mediate_defendant: "" , //被告回答
-        is_mediate_defendant: "" ,
-        mediate_plan_defendant:"",
-      },
-    ],
-  };
-} else data = JSON.parse(localStorage.getItem("mediate_form"));
+
+// } else data = JSON.parse(localStorage.getItem("mediate_form"));
 // console.log(data);
 export default {
   data() {
+    var data;
+// if (localStorage.getItem("mediate_form") == null) {
+    data = {
+      mediate_accuser: '',            //原告简称
+      is_mediate_accuser: '',         //原告回答
+      mediate_plan_accuser: '',       //被告简称
+      time_limit_accuser:'',
+      mediated_defendant: [
+        {
+          mediate_defendant: "" , //被告回答
+          is_mediate_defendant: "" ,
+          mediate_plan_defendant:"",
+        },
+      ],
+    };
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if("mediate_form" in wholeItem){
+      data=wholeItem.mediate_form
+    }
     return {
       data: data,
     };
@@ -162,9 +167,9 @@ export default {
           break;
       }
     },
-    save_localstorage() {
-      localStorage.setItem("mediate_form", JSON.stringify(this.data));
-    },
+    // save_localstorage() {
+    //   localStorage.setItem("mediate_form", JSON.stringify(this.data));
+    // },
   },
   watch: {
     data:{

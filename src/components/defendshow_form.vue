@@ -575,45 +575,51 @@
 </template>
 
 <script>
-var data;
-if(localStorage.getItem("defendshow_form")==null)
-{
-  data={
-    //第一个动态生成的json defendshowd_evidence 包含以下3个信息
-    defendshowd_evidence:[{
-      defendshow_evidence:"",     //证据名称(被告举证表 原告提出)
-      defendshow_content:"",       //证明事项(被告举证表 原告提出)
-      defendshow_fact_reason:""   //事实和理由(被告举证)
-    }],
-    //第二个动态生成的json defendshowd_accuser 包含以下10个信息
-    defendshowd_accuser:[{
-      defendshow_accuser:"",        //原告及其他被告姓名
-      defendshow_evidencenum:"",    //证据编号
-      defendshow_facticity:"",      //真实性(原告质证)
-      defendshow_legality:"", //合法性(原告质证)
-      defendshow_relevance:"",//关联性(原告质证)
-      defendshow_query_facticity:"", //真实性理由(原告质证)
-      defendshow_query_legality:"", //合法性理由(原告质证)
-      defendshow_query_relevace:"", //完整性理由(原告质证)
-    }],
-    defendshowd_defendant:[{
-      defendshow_defendant:"",        //原告及其他被告姓名(其他被告质证)
-      defendshow_numevidence:"",    //证据编号
-      defendshow_numfacticity:"",      //真实性(其他被告质证)
-      defendshow_numlegality:"", //合法性(其他被告质证))
-      defendshow_numrelevance:"",//关联性(其他被告质证))
-      defendshow_reason_facticity:"", //真实性理由(其他被告质证)
-      defendshow_reason_legality:"", //合法性理由(其他被告质证)
-      defendshow_reason_relevace:"", //关联性理由(其他被告质证)
-    }],
-    defendshow_is_counterclaim:'',          //是否反诉
-  };
-}
-else
-  data=JSON.parse(localStorage.getItem("defendshow_form"));
+
+// }
+// else
+//   data=JSON.parse(localStorage.getItem("defendshow_form"));
 // console.log(data)
 export default {
   data() {
+    var data;
+// if(localStorage.getItem("defendshow_form")==null)
+    {
+      data = {
+        //第一个动态生成的json defendshowd_evidence 包含以下3个信息
+        defendshowd_evidence: [{
+          defendshow_evidence: "",     //证据名称(被告举证表 原告提出)
+          defendshow_content: "",       //证明事项(被告举证表 原告提出)
+          defendshow_fact_reason: ""   //事实和理由(被告举证)
+        }],
+        //第二个动态生成的json defendshowd_accuser 包含以下10个信息
+        defendshowd_accuser: [{
+          defendshow_accuser: "",        //原告及其他被告姓名
+          defendshow_evidencenum: "",    //证据编号
+          defendshow_facticity: "",      //真实性(原告质证)
+          defendshow_legality: "", //合法性(原告质证)
+          defendshow_relevance: "",//关联性(原告质证)
+          defendshow_query_facticity: "", //真实性理由(原告质证)
+          defendshow_query_legality: "", //合法性理由(原告质证)
+          defendshow_query_relevace: "", //完整性理由(原告质证)
+        }],
+        defendshowd_defendant: [{
+          defendshow_defendant: "",        //原告及其他被告姓名(其他被告质证)
+          defendshow_numevidence: "",    //证据编号
+          defendshow_numfacticity: "",      //真实性(其他被告质证)
+          defendshow_numlegality: "", //合法性(其他被告质证))
+          defendshow_numrelevance: "",//关联性(其他被告质证))
+          defendshow_reason_facticity: "", //真实性理由(其他被告质证)
+          defendshow_reason_legality: "", //合法性理由(其他被告质证)
+          defendshow_reason_relevace: "", //关联性理由(其他被告质证)
+        }],
+        defendshow_is_counterclaim: '',          //是否反诉
+      };
+    }
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if("defendshow_form" in wholeItem){
+      data=wholeItem.defendshow_form
+    }
     return {
       data:data
     }
@@ -685,9 +691,9 @@ export default {
           break
       }
     },
-    save_localstorage(){
-      localStorage.setItem('defendshow_form',JSON.stringify(this.data))
-    }
+    // save_localstorage(){
+    //   localStorage.setItem('defendshow_form',JSON.stringify(this.data))
+    // }
   },
   watch: {
     data:{

@@ -101,23 +101,28 @@
 </template>
 
 <script>
-var data;
-if (localStorage.getItem("inquiry_form") == null) {
-  data = {
-    inquiryd_question: [
-      {
-        inquiry_question: "" ,         //问题
-        inquiry_accuser: "" ,          //原告简称
-        inquiry_accuser_answer:  "" ,  //原告回答
-        inquiry_defendant: "" ,       //被告简称
-        inquiry_defendant_answer: "" , //被告回答
-      },
-    ],
-  };
-} else data = JSON.parse(localStorage.getItem("inquiry_form"));
+
+// } else data = JSON.parse(localStorage.getItem("inquiry_form"));
 // console.log(data);
 export default {
   data() {
+    var data;
+// if (localStorage.getItem("inquiry_form") == null) {
+    data = {
+      inquiryd_question: [
+        {
+          inquiry_question: "" ,         //问题
+          inquiry_accuser: "" ,          //原告简称
+          inquiry_accuser_answer:  "" ,  //原告回答
+          inquiry_defendant: "" ,       //被告简称
+          inquiry_defendant_answer: "" , //被告回答
+        },
+      ],
+    };
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if("inquiry_form" in wholeItem){
+      data=wholeItem.inquiry_form
+    }
     return {
       data: data,
     };
@@ -156,9 +161,9 @@ export default {
           break;
       }
     },
-    save_localstorage() {
-      localStorage.setItem("inquiry_form", JSON.stringify(this.data));
-    },
+    // save_localstorage() {
+    //   localStorage.setItem("inquiry_form", JSON.stringify(this.data));
+    // },
   },
   watch: {
     data:{

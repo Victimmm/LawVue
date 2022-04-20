@@ -325,7 +325,6 @@
       </form>
     </div>
   </div>
-<button @click="getCounterclaim">ceshi</button>
 </template>
 
 <script>
@@ -343,10 +342,6 @@ var data;
 
 
 export default {
-  emits:['getCounterclaim'],
-  props:{
-    is_counterclaim: String,
-  },
   data() {
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if("CourtInves" in wholeItem){
@@ -403,11 +398,6 @@ export default {
           //这里是没有找到对应的值处理
           break
       }
-    },
-    getCounterclaim(){
-      console.log(this,'getCounterclaim');
-      // console.log(data.is_counterclaim)
-      this.$emit('receiveCounterclaim',this.data.is_counterclaim)
     },
     save_localstorage() {
       if (this.$store.state.court_number == "") {

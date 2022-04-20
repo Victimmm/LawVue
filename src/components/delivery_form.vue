@@ -78,7 +78,7 @@
             </div>
           </div>
           <div class="layui-col-md9">
-            <input type="text" v-model="data.deliveryd_defendant[0].email_defendant" name="title" placeholder="被告电子邮件地址" autocomplete="off" class="layui-input">
+            <input type="text" v-model="data.deliveryd_defendant[index+1].email_defendant" name="title" placeholder="被告电子邮件地址" autocomplete="off" class="layui-input">
           </div>
           <hr>
         </template>
@@ -92,24 +92,30 @@
 </template>
 
 <script>
-var data;
-if (localStorage.getItem("delivery_form") == null) {
-  data = {
-    delivery_accuser:'',
-    is_delivery_accuser:'',
-    email_accuser:'',
-    deliveryd_defendant: [
-      {
-        delivery_defendant: { name: "" },         //问题
-        is_delivery_defendant: { name: "" },          //原告简称
-        email_defendant: { name: "" },  //原告回答
-      },
-    ],
-  };
-} else data = JSON.parse(localStorage.getItem("delivery_form"));
+
+// } else data = JSON.parse(localStorage.getItem("delivery_form"));
 // console.log(data);
+
 export default {
   data() {
+    var data;
+// if (localStorage.getItem("delivery_form") == null) {
+    data = {
+      delivery_accuser:'',
+      is_delivery_accuser:'',
+      email_accuser:'',
+      deliveryd_defendant: [
+        {
+          delivery_defendant: '',         //问题
+          is_delivery_defendant: '',          //原告简称
+          email_defendant: '',  //原告回答
+        },
+      ],
+    };
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if("delivery_form" in wholeItem){
+      data=wholeItem.delivery_form
+    }
     return {
       data: data,
     };
@@ -146,9 +152,9 @@ export default {
           break;
       }
     },
-    save_localstorage() {
-      localStorage.setItem("delivery_form", JSON.stringify(this.data));
-    },
+    // save_localstorage() {
+    //   localStorage.setItem("delivery_form", JSON.stringify(this.data));
+    // },
   },
   watch: {
     data:{

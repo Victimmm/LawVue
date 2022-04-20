@@ -182,33 +182,38 @@
 </template>
 
 <script>
-var data;
-if (localStorage.getItem("argue_form") == null) {
-  data = {
-        argued_accuser:[
-          {
-            argue_accuser: "" ,                  //原告
-            argue_accuser_argue: "" ,            //辩论意见(原告)
-          }
-        ],
-        argued_defendant:[{
-          argue_defendant: "" ,                //被告
-          argue_defendant_argue: "" ,          //辩论意见(被告)
-        }],
-        argue_is_counterclaim: "false",          //是否反诉
-        argued_counterd:[{
-          argue_counter_defendant:"" ,       //原告(反诉被告)
-          argue_counter_defendant_debate: "", //反诉被告辩论意见
-        }],
-        argued_countera:[{
-          argue_counter_accuser: "" ,          //被告(反诉原告)
-          argue_counter_accuser_debate: "" ,   //反诉原告辩论意见
-        }],
-      }
-} else data = JSON.parse(localStorage.getItem("argue_form"));
+
+// } else data = JSON.parse(localStorage.getItem("argue_form"));
 // console.log(data);
 export default {
   data() {
+    var data;
+// if (localStorage.getItem("argue_form") == null) {
+    data = {
+      argued_accuser:[
+        {
+          argue_accuser: "" ,                  //原告
+          argue_accuser_argue: "" ,            //辩论意见(原告)
+        }
+      ],
+      argued_defendant:[{
+        argue_defendant: "" ,                //被告
+        argue_defendant_argue: "" ,          //辩论意见(被告)
+      }],
+      argue_is_counterclaim: "false",          //是否反诉
+      argued_counterd:[{
+        argue_counter_defendant:"" ,       //原告(反诉被告)
+        argue_counter_defendant_debate: "", //反诉被告辩论意见
+      }],
+      argued_countera:[{
+        argue_counter_accuser: "" ,          //被告(反诉原告)
+        argue_counter_accuser_debate: "" ,   //反诉原告辩论意见
+      }],
+    }
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if("argue_form" in wholeItem){
+      data=wholeItem.argue_form
+    }
     return {
       data: data,
     };
@@ -232,26 +237,26 @@ export default {
       switch (datatype) {
         case "argued_accuser":
           this.data.argued_accuser.push({
-            argue_accuser: { name: "" },                  //原告
-            argue_accuser_argue: { name: "" },            //辩论意见(原告)
+            argue_accuser: "" ,                  //原告
+            argue_accuser_argue: "" ,            //辩论意见(原告)
           });
           break;
         case "argued_defendant":
           this.data.argued_defendant.push({
-            argue_defendant: { name: "" },                //被告
-            argue_defendant_argue: { name: "" },          //辩论意见(被告)
+            argue_defendant: "" ,                //被告
+            argue_defendant_argue: "" ,          //辩论意见(被告)
           });
           break;
         case "argued_counterd":
           this.data.argued_counterd.push({
-            argue_counter_defendant: { name: "" },       //原告(反诉被告)
-            argue_counter_defendant_debate: { name: "" }, //反诉被告辩论意见
+            argue_counter_defendant:"" ,       //原告(反诉被告)
+            argue_counter_defendant_debate: "", //反诉被告辩论意见
           });
           break;
         case "argued_countera":
           this.data.argued_countera.push({
-            argue_counter_accuser: { name: "" },          //被告(反诉原告)
-            argue_counter_accuser_debate: { name: "" },   //反诉原告辩论意见
+            argue_counter_accuser: "" ,          //被告(反诉原告)
+            argue_counter_accuser_debate: "" ,   //反诉原告辩论意见
           });
           break;
         default:
@@ -283,9 +288,9 @@ export default {
           break;
       }
     },
-    save_localstorage() {
-      localStorage.setItem("argue_form", JSON.stringify(this.data));
-    },
+    // save_localstorage() {
+    //   localStorage.setItem("argue_form", JSON.stringify(this.data));
+    // },
   },
   watch: {
     data:{

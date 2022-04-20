@@ -17,7 +17,7 @@
 
         <div class="layui-form-item">
           <div class="layui-col-md3">
-            <input type="text" name="title" v-model="data.finald_accuser[0].final_accuser.name" placeholder="原告" autocomplete="off"
+            <input type="text" name="title" v-model="data.finald_accuser[0].final_accuser" placeholder="原告" autocomplete="off"
                    class="layui-input" >
           </div>
           <div class="layui-col-md6">
@@ -52,7 +52,7 @@
         <template v-for="(item, index) in data.finald_accuser.slice(1)" :key="index">
           <div class="layui-form-item">
             <div class="layui-col-md3">
-              <input type="text" v-model="data.finald_accuser[index+1].final_accuser.name"  placeholder="原告" autocomplete="off" class="layui-input">
+              <input type="text" v-model="data.finald_accuser[index+1].final_accuser"  placeholder="原告" autocomplete="off" class="layui-input">
             </div>
             <div class="layui-col-md6">
               <input type="text" v-model="data.finald_accuser[index+1].final_accuser_state"  placeholder="原告辩论意见" autocomplete="off"
@@ -97,26 +97,31 @@
 </template>
 
 <script>
-var data;
-if (localStorage.getItem("final_form") == null) {
-  data = {
-    finald_accuser: [
-      {
-        final_accuser: "" ,              //原告
-        final_accuser_state: "" ,        //原告陈述意见
-      },
-    ],
-    finald_defendant: [
-      {
-        final_defendant: "" ,            //被告
-        final_defendant_state: "" ,      //被告陈述意见
-      },
-    ],
-  };
-} else data = JSON.parse(localStorage.getItem("final_form"));
+
+// } else data = JSON.parse(localStorage.getItem("final_form"));
 // console.log(data);
 export default {
   data() {
+    var data;
+// if (localStorage.getItem("final_form") == null) {
+    data = {
+      finald_accuser: [
+        {
+          final_accuser: "" ,              //原告
+          final_accuser_state: "" ,        //原告陈述意见
+        },
+      ],
+      finald_defendant: [
+        {
+          final_defendant: "" ,            //被告
+          final_defendant_state: "" ,      //被告陈述意见
+        },
+      ],
+    };
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if("final_form" in wholeItem){
+      data=wholeItem.final_form
+    }
     return {
       data: data,
     };
@@ -160,9 +165,9 @@ export default {
           break;
       }
     },
-    save_localstorage() {
-      localStorage.setItem("final_form", JSON.stringify(this.data));
-    },
+    // save_localstorage() {
+    //   localStorage.setItem("final_form", JSON.stringify(this.data));
+    // },
   },
   watch: {
     data:{
