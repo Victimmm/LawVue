@@ -339,6 +339,12 @@
 // } else data = JSON.parse(localStorage.getItem("accshow_form"));
 // console.log(data);
 export default {
+  props: {
+    is_counterclaim: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     var data;
 // if (localStorage.getItem("accshow_form") == null) {

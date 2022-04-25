@@ -102,12 +102,9 @@
 
 <script>
 
-// } else data = JSON.parse(localStorage.getItem("inquiry_form"));
-// console.log(data);
 export default {
   data() {
     var data;
-// if (localStorage.getItem("inquiry_form") == null) {
     data = {
       inquiryd_question: [
         {

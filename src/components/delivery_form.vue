@@ -93,9 +93,6 @@
 
 <script>
 
-// } else data = JSON.parse(localStorage.getItem("delivery_form"));
-// console.log(data);
-
 export default {
   data() {
     var data;

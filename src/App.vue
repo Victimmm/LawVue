@@ -32,7 +32,7 @@
       </fieldset>
     </div>
 
-    <div id="right_inform">
+    <div id="right_inform" >
       <fieldset class="layui-elem-field layui-field-title">
         <legend>权利告知</legend>
         <div class="layui-field-box">
@@ -45,21 +45,22 @@
       <fieldset class="layui-elem-field layui-field-title">
         <legend>法庭调查</legend>
         <div class="layui-field-box">
-          <CourtInves></CourtInves>
+          <CourtInves @setCounterclaim='setCounterclaim'></CourtInves>
         </div>
       </fieldset>
     </div>
 
-    <div id="accshow_form">
+<div v-if="is_counterclaim=='1'">
+    <div id="accshow_form" >
       <fieldset class="layui-elem-field layui-field-title">
         <legend>法庭调查-原告举证</legend>
         <div class="layui-field-box">
-          <accshow_form></accshow_form>
+          <accshow_form ref="accshow_form" :is_counterclaim=this.is_counterclaim></accshow_form>
         </div>
       </fieldset>
     </div>
 
-    <div id="defendshow_form">
+    <div id="defendshow_form" >
       <fieldset class="layui-elem-field layui-field-title">
         <legend>法庭调查-被告举证</legend>
         <div class="layui-field-box">
@@ -112,12 +113,9 @@
         </div>
       </fieldset>
     </div>
+</div>
 
   </div>
-
-  <CourtInves :is_counterclaim="receiveCounterclaim" @receiveCounterclaim="receiveCounterclaim"></CourtInves>
-  <p>{{ receiveData }}</p>
-
 
 </template>
 
@@ -138,11 +136,9 @@ import delivery_form from "@/components/delivery_form";
 
 export default {
   name: 'App',
-  emits:['receiveCounterclaim'],
-  props:{
-    is_counterclaim: String,
-  },
+
   data:function (){
+
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     var plaintiffImfTag=[{guid:this.guid()}]
     var defendantImfTag=[{guid:this.guid()}]
@@ -157,7 +153,7 @@ export default {
     return {
       plaintiffImfTag:plaintiffImfTag,
       defendantImfTag:defendantImfTag,
-      receiveData:'1'
+      is_counterclaim:'0',
     }
   },
   components: {
@@ -175,6 +171,9 @@ export default {
     delivery_form,
   },
   methods: {
+    setCounterclaim(val){
+      this.is_counterclaim=val
+    },
     add_plaintiffImf(){
       this.plaintiffImfTag.push({guid:this.guid()})
     },
@@ -195,9 +194,13 @@ export default {
         return v.toString(16);
       });
     },
-    receiveCounterclaim(data){
-      this.receiveData=data.is_counterclaim
-    }
+    computed:{
+      showAccshow(){
+        return this.$store.state.is_counterclaim
+      },
+
+    },
+
   },
   mounted (){
   // 添加目录控件
@@ -231,7 +234,12 @@ export default {
 
   })
 
-}
+},
+//   watch:{
+//     $store.state.is_counterclaim:{
+//
+// }
+//   }
 }
 
 

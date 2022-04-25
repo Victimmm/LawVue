@@ -408,6 +408,10 @@ export default {
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
         this.$store.commit("setCounterClaim", this.data.is_counterclaim)
       }
+    },
+    getCounterclaim(){
+      this.$emit('setCounterclaim',this.data.is_counterclaim)
+      // console.log(data.is_counterclaim)
     }
   },
   watch: {
@@ -422,9 +426,12 @@ export default {
           localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
         }
       },
+      is_counterclaim:{
+        handler:'getCounterclaim'
+      },
       deep: true
     }
-  }
+  },
 
 }
 </script>

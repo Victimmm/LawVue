@@ -223,7 +223,7 @@ var data;
 
 //已有案号
 var court_number="123456789";
-
+// localStorage.setItem("123456",JSON.stringify({PlaintiffItems:[],DefendantItems:[]}))
 if(window.localStorage.getItem(court_number)==null)
 {
   data={
@@ -325,4 +325,5 @@ export default {
     }
   }
   }
+
 </script>

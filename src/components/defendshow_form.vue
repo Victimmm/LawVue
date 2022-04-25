@@ -576,10 +576,6 @@
 
 <script>
 
-// }
-// else
-//   data=JSON.parse(localStorage.getItem("defendshow_form"));
-// console.log(data)
 export default {
   data() {
     var data;

@@ -154,6 +154,7 @@ export default {
     }
   },
   data() {
+
     var data;
     data = {
       accuser: '',
@@ -191,7 +192,6 @@ export default {
       var PlaintiffItems = wholeItem.PlaintiffItems
       if (this.index < PlaintiffItems.length) {
         wholeItem.PlaintiffItems.splice(this.index, 1)
-        console.log(wholeItem.PlaintiffItems)
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
       this.$emit("deleteIndex", this.index);

@@ -201,7 +201,6 @@
 export default {
   data(){
     var data;
-    // if(localStorage.getItem("right_inform")==null){
     data={
       judge_talk: ["审判员：依据《中华人民共和国民事诉讼法》的规定，当事人在法庭上享有下列权利：\n" +
       "1.原告有权承认、变更、放弃自己的诉讼请求，被告有权反驳原告的诉讼请求或提起反诉；\n" +
@@ -291,7 +290,6 @@ export default {
       } else {
         var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
         wholeItem.right_inform = this.data
-        console.log(wholeItem)
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
     }
