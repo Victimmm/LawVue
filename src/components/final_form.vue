@@ -119,7 +119,7 @@ export default {
       ],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if("final_form" in wholeItem){
+    if(wholeItem!=null && "final_form" in wholeItem){
       data=wholeItem.final_form
     }
     return {

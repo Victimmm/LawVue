@@ -613,7 +613,7 @@ export default {
       };
     }
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if("defendshow_form" in wholeItem){
+    if(wholeItem!=null && "defendshow_form" in wholeItem){
       data=wholeItem.defendshow_form
     }
     return {

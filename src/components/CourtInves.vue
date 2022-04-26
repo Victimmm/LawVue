@@ -343,13 +343,12 @@ var data;
 
 export default {
   data() {
-    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if("CourtInves" in wholeItem){
+    if(this.$store.state.court_number!=""){
+      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
       data=wholeItem.CourtInves
     }
     return {
       data: data
-
     }
   },
   methods: {

@@ -220,7 +220,7 @@ export default {
       // defendant_avoid: [{name:"",is_avoid:"1"}],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if("right_inform" in wholeItem){
+    if(wholeItem!=null && "right_inform" in wholeItem){
       data=wholeItem.right_inform
     }
     return {data:data}

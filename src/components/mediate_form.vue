@@ -128,7 +128,7 @@ export default {
       ],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if("mediate_form" in wholeItem){
+    if(wholeItem!=null &&  "mediate_form" in wholeItem){
       data=wholeItem.mediate_form
     }
     return {

@@ -168,10 +168,9 @@ export default {
     };
     // data.accuser = this.$store.state.plaintiffname[this.index]
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if (wholeItem != "" ) {
+    if (wholeItem != "" && this.$store.state.court_number!="") {
       var PlaintiffItems = wholeItem.PlaintiffItems
       data=(this.index<PlaintiffItems.length)?PlaintiffItems[this.index]:data
-
     }
     return {data: JSON.parse(JSON.stringify(data))}
   },
@@ -181,10 +180,21 @@ export default {
         window.layui.layer.msg('请优先完善基本信息表格');
       } else {
         this.$store.commit('HandlePlaintiffName', [this.data.accuser, this.index])
-        var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-        wholeItem.PlaintiffItems[this.index] = this.data
-        localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+        // var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+        // wholeItem.PlaintiffItems[this.index] = this.data
+        // localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
+      this.axios
+          .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(error => {
+            console.log(error)
+            this.errored = true
+          })
+
+
     },
     onCloseClick() {
       // 将删除标签事件暴露除去
@@ -207,7 +217,7 @@ export default {
       handler() {
         //如何根据数据存储
         if (this.$store.state.court_number == "") {
-          // window.layui.layer.msg('请优先完善基本信息表格');
+           // window.layui.layer.msg('请优先完善基本信息表格');
         }
         else{
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))

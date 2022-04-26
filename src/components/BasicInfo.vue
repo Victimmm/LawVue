@@ -219,36 +219,25 @@
 </template>
 
 <script>
-var data;
-
-//已有案号
-var court_number="123456789";
-// localStorage.setItem("123456",JSON.stringify({PlaintiffItems:[],DefendantItems:[]}))
-if(window.localStorage.getItem(court_number)==null)
-{
-  data={
-    filing_time:new Date(),
-    court_time:new Date(),
-    court_place:'',
-    chief_judge:[{name:""}],
-    judge:[{name:""}],
-    juror:[{name:""}],
-    court_clerk:'',
-    court_number:'',
-    court_cause:''
-  };
-}
-else{
-  data=JSON.parse(window.localStorage.getItem(court_number)).BasicInfo;
-  data.court_number=court_number
-}
-
 export default {
   data() {
-
-
-
-    return {data:data}
+    var data = {
+      filing_time: new Date(),
+      court_time: new Date(),
+      court_place: '',
+      chief_judge: [{name: ""}],
+      judge: [{name: ""}],
+      juror: [{name: ""}],
+      court_clerk: '',
+      court_number: '',
+      court_cause: ''
+    };
+    if (this.$store.state.court_number != "") {
+      data = JSON.parse(window.localStorage.getItem(this.$store.state.court_number)).BasicInfo;
+    } else if (window.localStorage.getItem("CourtTemp") != null) {
+      data = JSON.parse(window.localStorage.getItem("CourtTemp"))
+    }
+    return {data: data}
   },
   mounted(){
     window.layui.use('laydate', function(){
@@ -303,20 +292,42 @@ export default {
           break
         }
       },
+    updateQueryStringParameter(uri, key, value) {
+      if(!value) {
+        return uri;
+      }
+      var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+      var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+      if (uri.match(re)) {
+        return uri.replace(re, '$1' + key + "=" + value + '$2');
+      }
+      else {
+        return uri + separator + key + "=" + value;
+      }
+    },
       save_localstorage(){
         this.$store.commit("setCourtNum",this.data.court_number)
         localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data,PlaintiffItems:[],DefendantItems:[]}))
+        var newurl = this.updateQueryStringParameter(window.location.href, 'CourtNum', this.data.court_number);
+        window.history.replaceState({
+          path: newurl
+        }, '', newurl);
       }
+
     },
   watch: {
     data:{
       handler() {
-        //如何根据数据存储
+        var wholeItem
         if (this.$store.state.court_number == "") {
           // window.layui.layer.msg('请优先完善基本信息表格');
+
+          wholeItem = JSON.parse(localStorage.getItem("CourtTemp"))
+          wholeItem=this.data
+          localStorage.setItem("CourtTemp", JSON.stringify(wholeItem))
         }
         else{
-          var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+          wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           wholeItem.BasicInfo=this.data
           localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
         }
@@ -325,5 +336,4 @@ export default {
     }
   }
   }
-
 </script>

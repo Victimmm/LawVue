@@ -4,12 +4,12 @@ import { createStore } from "vuex";
 
 export default createStore({
 	state() {
+
 		return {
 			plaintiffname: [''],
 			defendantname: [''],
 			is_counterclaim:"",
-			court_number:"123456"
-
+			court_number:""
 		}
 	},
 	mutations: {

@@ -110,7 +110,7 @@ export default {
       ],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if("delivery_form" in wholeItem){
+    if(wholeItem!=null && "delivery_form" in wholeItem){
       data=wholeItem.delivery_form
     }
     return {

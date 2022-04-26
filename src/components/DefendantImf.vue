@@ -176,7 +176,7 @@
         defendant_agent_address:'',
       };
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-      if (wholeItem != "" ) {
+      if (wholeItem != "" &&  this.$store.state.court_number!="") {
         var DefendantItems = wholeItem.DefendantItems
         data=(this.index<DefendantItems.length)?DefendantItems[this.index]:data
       }
