@@ -306,8 +306,20 @@ export default {
       }
     },
       save_localstorage(){
+
+        if (this.$store.state.court_number == "") {
+          // localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data}))
+          localStorage.removeItem("CourtTemp")
+        }
+        var wholeItem = JSON.parse(localStorage.getItem(this.data.court_number))
+        if(wholeItem != null && "BasicInfo" in wholeItem ){
+          wholeItem.BasicInfo=this.data
+          localStorage.setItem(this.data.court_number, JSON.stringify(wholeItem))
+        }
+        else{
+          localStorage.setItem(this.data.court_number, JSON.stringify({BasicInfo:this.data,PlaintiffItems:[],DefendantItems:[]}))
+        }
         this.$store.commit("setCourtNum",this.data.court_number)
-        localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data,PlaintiffItems:[],DefendantItems:[]}))
         var newurl = this.updateQueryStringParameter(window.location.href, 'CourtNum', this.data.court_number);
         window.history.replaceState({
           path: newurl

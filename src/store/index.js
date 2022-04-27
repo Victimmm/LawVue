@@ -5,6 +5,21 @@ import { createStore } from "vuex";
 export default createStore({
 	state() {
 
+			var query = window.location.search.substring(1);
+			var vars = query.split("&");
+			for (var i=0;i<vars.length;i++) {
+				var pair = vars[i].split("=");
+				if(pair[0] == "CourtNum"){
+					return {
+						plaintiffname: [''],
+						defendantname: [''],
+						is_counterclaim:"",
+						court_number:pair[1]
+					}
+				}
+			}
+
+
 		return {
 			plaintiffname: [''],
 			defendantname: [''],
@@ -54,8 +69,8 @@ export default createStore({
 	},
 	getters: {
 		// ...
-		getPlaintiff(state) {
-			return state.plaintifflength
+		getPlaintiff: (state) => {
+			return state.is_counterclaim
 		}
 	}
 });

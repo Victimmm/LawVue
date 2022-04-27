@@ -168,7 +168,7 @@ export default {
     };
     // data.accuser = this.$store.state.plaintiffname[this.index]
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if (wholeItem != "" && this.$store.state.court_number!="") {
+    if (wholeItem != null && "PlaintiffItems" in wholeItem) {
       var PlaintiffItems = wholeItem.PlaintiffItems
       data=(this.index<PlaintiffItems.length)?PlaintiffItems[this.index]:data
     }
@@ -184,15 +184,15 @@ export default {
         // wholeItem.PlaintiffItems[this.index] = this.data
         // localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
-      this.axios
-          .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(error => {
-            console.log(error)
-            this.errored = true
-          })
+      // this.axios
+      //     .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      //     .then(function (response) {
+      //       console.log(response);
+      //     })
+      //     .catch(error => {
+      //       console.log(error)
+      //       this.errored = true
+      //     })
 
 
     },
@@ -219,7 +219,7 @@ export default {
         if (this.$store.state.court_number == "") {
            // window.layui.layer.msg('请优先完善基本信息表格');
         }
-        else{
+        else {
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           wholeItem.PlaintiffItems[this.index] = this.data
           localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))

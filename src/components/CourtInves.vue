@@ -19,8 +19,12 @@
           <div class="layui-col-md2">
             <div class="layui-input-block">
               <label class="layui-form-label">
-                <input type="text" name="title" placeholder="原告简称" v-model="data.accuser_claims[0].accuser_name"
-                       class="layui-input" style="margin-top: -9px;">
+<!--                <select v-model="data.accuser_claims[0].accuser_name" style="display: inline-block">-->
+<!--                  <option disabled value="">请选择原告</option>-->
+<!--                  <option v-for="item in this.$store.state.plaintiffname" :key="item">{{ item.message }}</option>-->
+
+<!--                </select>-->1
+                {{getPlaintiff}}
               </label>
             </div>
           </div>
@@ -328,7 +332,7 @@
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex'
 var data;
 
   data = {
@@ -337,14 +341,15 @@ var data;
     defendant_claims: [{defendant_name: "", claim_item: "", fact_reason: ""}],
     counterclaim_plaintiff: [{name: "", claim_item: "", fact_reason: ""}],
     is_todayreply: "0",
-    counterclaim_defendant: [{name: "", reply_item: ""}]
+    counterclaim_defendant: [{name: "", reply_item: ""}],
+    plaintiffname:['']
   };
 
 
 export default {
   data() {
-    if(this.$store.state.court_number!=""){
-      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if(wholeItem != null && "CourtInves" in wholeItem){
       data=wholeItem.CourtInves
     }
     return {
@@ -413,6 +418,15 @@ export default {
       // console.log(data.is_counterclaim)
     }
   },
+  computed:{
+
+    ...mapGetters([
+      'getPlaintiff'
+    ]),
+    getPlaintiff(){
+      return this.getPlaintiff
+    }
+  },
   watch: {
     data: {
       handler() {
@@ -429,6 +443,9 @@ export default {
         handler:'getCounterclaim'
       },
       deep: true
+    },
+    getPlaintiff(newData, oldData){
+      console.log("new"+newData,"old"+oldData)
     }
   },
 
