@@ -144,8 +144,8 @@ export default {
 
     var plaintiffImfTag = [{guid: this.guid()}]
     var defendantImfTag = [{guid: this.guid()}]
-    if (wholeItem != "" && this.$store.state.court_number != "") {
-      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if (wholeItem != null && "PlaintiffItems" in wholeItem && "DefendantItems" in wholeItem) {
       for (var i = 0; wholeItem.PlaintiffItems.length != 0 & i < wholeItem.PlaintiffItems.length - 1; i++) {
         plaintiffImfTag.push({guid: this.guid()})
       }

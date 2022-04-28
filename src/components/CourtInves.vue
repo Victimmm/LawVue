@@ -24,7 +24,6 @@
 <!--                  <option v-for="item in this.$store.state.plaintiffname" :key="item">{{ item.message }}</option>-->
 
 <!--                </select>-->1
-                {{getPlaintiff}}
               </label>
             </div>
           </div>
@@ -332,9 +331,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 var data;
-
   data = {
     accuser_claims: [{accuser_name: "", claim_item: "", fact_reason: ""}],
     is_counterclaim: "0",
@@ -403,7 +400,7 @@ export default {
           break
       }
     },
-    save_localstorage() {
+    save_localstorage:function() {
       if (this.$store.state.court_number == "") {
         window.layui.layer.msg('请优先完善基本信息表格');
       } else {
@@ -412,6 +409,7 @@ export default {
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
         this.$store.commit("setCounterClaim", this.data.is_counterclaim)
       }
+      // console.log(store.state.is_counterclaim)
     },
     getCounterclaim(){
       this.$emit('setCounterclaim',this.data.is_counterclaim)
@@ -419,13 +417,6 @@ export default {
     }
   },
   computed:{
-
-    ...mapGetters([
-      'getPlaintiff'
-    ]),
-    getPlaintiff(){
-      return this.getPlaintiff
-    }
   },
   watch: {
     data: {
@@ -443,11 +434,8 @@ export default {
         handler:'getCounterclaim'
       },
       deep: true
-    },
-    getPlaintiff(newData, oldData){
-      console.log("new"+newData,"old"+oldData)
     }
-  },
+  }
 
 }
 </script>
