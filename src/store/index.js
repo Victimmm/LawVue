@@ -38,7 +38,8 @@ export default createStore({
 			state.court_number=payload
 		},
 		setCounterClaim(state,payload){
-			state.is_counterclaim=payload
+			// let data=Object.assign({},payload)
+			state.is_counterclaim= payload
 		},
 		delete_components(state, payload) {
 			switch (payload[0]) {

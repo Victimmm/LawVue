@@ -9,5 +9,3 @@ app.use(VueAxios,axios);
 app.use(store);
 // app.use(axios);
 app.mount('#app')
-
-

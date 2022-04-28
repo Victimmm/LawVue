@@ -12,6 +12,7 @@
             <div class="layui-input-block">
               <input type="text"  v-model="data.court_number" name="courtNumber" lay-verify="required" placeholder="请输入案号" autocomplete="on"
                      class="layui-input">
+
             </div>
           </div>
         </div>
@@ -23,7 +24,7 @@
           </div>
           <div class="layui-col-md7">
             <div class="layui-input-block">
-              <input type="text" v-model="data.filing_time" id="filing_time" required lay-verify="required" placeholder="请输入立案时间" autocomplete="off" class="layui-input">
+              <input type="text" v-model="data.filing_time" id="filing_time" placeholder="请输入立案时间" autocomplete="off" class="layui-input">
             </div>
           </div>
         </div>
@@ -219,11 +220,12 @@
 </template>
 
 <script>
+
 export default {
   data() {
     var data = {
-      filing_time: new Date(),
-      court_time: new Date(),
+      filing_time: "2022年04月21日",
+      court_time: "2022年04月28日 00时00分",
       court_place: '',
       chief_judge: [{name: ""}],
       judge: [{name: ""}],
@@ -232,7 +234,8 @@ export default {
       court_number: '',
       court_cause: ''
     };
-    if (this.$store.state.court_number != "") {
+    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if (wholeItem != null && "BasicInfo" in wholeItem) {
       data = JSON.parse(window.localStorage.getItem(this.$store.state.court_number)).BasicInfo;
     } else if (window.localStorage.getItem("CourtTemp") != null) {
       data = JSON.parse(window.localStorage.getItem("CourtTemp"))
@@ -305,26 +308,30 @@ export default {
         return uri + separator + key + "=" + value;
       }
     },
-      save_localstorage(){
-
-        if (this.$store.state.court_number == "") {
-          // localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data}))
-          localStorage.removeItem("CourtTemp")
-        }
-        var wholeItem = JSON.parse(localStorage.getItem(this.data.court_number))
-        if(wholeItem != null && "BasicInfo" in wholeItem ){
-          wholeItem.BasicInfo=this.data
-          localStorage.setItem(this.data.court_number, JSON.stringify(wholeItem))
-        }
-        else{
-          localStorage.setItem(this.data.court_number, JSON.stringify({BasicInfo:this.data,PlaintiffItems:[],DefendantItems:[]}))
-        }
-        this.$store.commit("setCourtNum",this.data.court_number)
-        var newurl = this.updateQueryStringParameter(window.location.href, 'CourtNum', this.data.court_number);
-        window.history.replaceState({
-          path: newurl
-        }, '', newurl);
+    save_localstorage() {
+      var name = document.getElementById("filing_time").value;
+      console.log(name);
+      if (this.$store.state.court_number == "") {
+        // localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data}))
+        localStorage.removeItem("CourtTemp")
       }
+      var wholeItem = JSON.parse(localStorage.getItem(this.data.court_number))
+      if (wholeItem != null && "BasicInfo" in wholeItem) {
+        wholeItem.BasicInfo = this.data
+        localStorage.setItem(this.data.court_number, JSON.stringify(wholeItem))
+      } else {
+        localStorage.setItem(this.data.court_number, JSON.stringify({
+          BasicInfo: this.data,
+          PlaintiffItems: [],
+          DefendantItems: []
+        }))
+      }
+      this.$store.commit("setCourtNum", this.data.court_number)
+      var newurl = this.updateQueryStringParameter(window.location.href, 'CourtNum', this.data.court_number);
+      window.history.replaceState({
+        path: newurl
+      }, '', newurl);
+    }
 
     },
   watch: {
@@ -333,7 +340,6 @@ export default {
         var wholeItem
         if (this.$store.state.court_number == "") {
           // window.layui.layer.msg('请优先完善基本信息表格');
-
           wholeItem = JSON.parse(localStorage.getItem("CourtTemp"))
           wholeItem=this.data
           localStorage.setItem("CourtTemp", JSON.stringify(wholeItem))
