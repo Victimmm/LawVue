@@ -4,8 +4,11 @@
       <form class="layui-form " action="" onsubmit="return false">
         <div class="layui-form-item">
           <div class="layui-col-md2">
-            <div class="layui-input-block">
-              <label class="layui-form-label">审判员:</label>
+            <div class="layui-form-item">
+              <select lay-ignore v-model="data.judgeName"  @click="getJudge()" style="width:150px">
+                <option label="请输入审判员"></option>
+                <option v-for="(item,index) in data.selected_judge" :key="index" :value="item.name">{{item.name}}</option>
+              </select>
             </div>
           </div>
           <div class="layui-col-md7">
@@ -17,15 +20,11 @@
         </div>
         <div class="layui-form-item" style="margin-top: 11px;">
           <div class="layui-col-md2">
-            <div class="layui-input-block">
-              <label class="layui-form-label">
-<!--                <select v-model="data.accuser_claims[0].accuser_name" style="display: inline-block">-->
-<!--                  <option disabled value="">请选择原告</option>-->
-<!--                  <option v-for="item in this.$store.state.plaintiffname" :key="item">{{ item.message }}</option>-->
-
-<!--                </select>-->1
-                {{getPlaintiff}}
-              </label>
+            <div class="layui-form-item">
+              <select lay-ignore v-model="data.accuser_claims[0].accuser_name"  @click="getAccuser()" style="width:150px">
+                <option label="请输入原告姓名"></option>
+                <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
+              </select>
             </div>
           </div>
           <div class="layui-col-md7">
@@ -43,9 +42,8 @@
         </div>
         <div class="layui-form-item">
           <div class="layui-col-md2">
-            <div class="layui-input-block">
-              <label class="layui-form-label">事实和理由</label>
-            </div>
+              <label class="layui-form-label" style="width:100px">事实和理由</label>
+
           </div>
           <div class="layui-col-md7">
             <div class="layui-input-block">
@@ -58,12 +56,10 @@
         <template v-for="(item, index) in data.accuser_claims.slice(1)" :key='index'>
           <div class="layui-form-item" style="margin-top: 11px;">
             <div class="layui-col-md2">
-              <div class="layui-input-block">
-                <label class="layui-form-label">
-                  <input type="text" name="title" placeholder="原告简称" v-model="data.accuser_claims[index+1].accuser_name"
-                         class="layui-input" style="margin-top: -9px;">
-                </label>
-              </div>
+              <select lay-ignore v-model="data.accuser_claims[index+1].accuser_name"  @click="getAccuser()" style="width:150px">
+                <option label="请输入原告姓名"></option>
+                <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
+              </select>
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
@@ -80,9 +76,7 @@
           </div>
           <div class="layui-form-item">
             <div class="layui-col-md2">
-              <div class="layui-input-block">
-                <label class="layui-form-label">事实和理由</label>
-              </div>
+                <label class="layui-form-label" style="width:100px">事实和理由</label>
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
@@ -95,9 +89,10 @@
 
         <div class="layui-form-item">
           <div class="layui-col-md2">
-            <div class="layui-input-block">
-              <label class="layui-form-label">审判员:</label>
-            </div>
+            <select lay-ignore v-model="data.judgeName"  @click="getJudge()" style="width:150px">
+              <option label="请输入审判员"></option>
+              <option v-for="(item,index) in data.selected_judge" :key="index" :value="item.name">{{item.name}}</option>
+            </select>
           </div>
           <div class="layui-col-md7">
             <div class="layui-input-block">
@@ -109,13 +104,10 @@
 
         <div class="layui-form-item" style="margin-top: 11px;">
           <div class="layui-col-md2">
-            <div class="layui-input-block">
-              <label class="layui-form-label">
-                <input type="text" v-model="data.defendant_claims[0].defendant_name" placeholder="被告姓名"
-                       class="layui-input"
-                       style="margin-top: -9px;">
-              </label>
-            </div>
+            <select lay-ignore v-model="data.defendant_claims[0].defendant_name"  @click="getDefendant()" style="width:150px">
+              <option label="请输入被告姓名"></option>
+              <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
+            </select>
           </div>
           <div class="layui-col-md7">
             <div class="layui-input-block">
@@ -134,13 +126,10 @@
         <template v-for="(item, index) in data.defendant_claims.slice(1)" :key='index'>
           <div class="layui-form-item" style="margin-top: 11px;">
             <div class="layui-col-md2">
-              <div class="layui-input-block">
-                <label class="layui-form-label">
-                  <input type="text" v-model="data.defendant_claims[index+1].defendant_name" placeholder="被告姓名"
-                         class="layui-input"
-                         style="margin-top: -9px;">
-                </label>
-              </div>
+              <select lay-ignore v-model="data.defendant_claims[index+1].defendant_name"  @click="getDefendant()" style="width:150px">
+                <option label="请输入被告姓名"></option>
+                <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
+              </select>
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
@@ -160,9 +149,7 @@
 
         <div class="layui-form-item">
           <div class="layui-col-md2">
-            <div class="layui-input-block">
-              <label class="layui-form-label">是否反诉</label>
-            </div>
+              <label class="layui-form-label" style="width:100px">是否反诉</label>
           </div>
           <div class="layui-col-md7">
             <div class="layui-input-block">
@@ -177,13 +164,11 @@
         <div v-show="data.is_counterclaim==1">
           <div class="layui-form-item" style="margin-top: 11px;">
             <div class="layui-col-md2">
-              <div class="layui-input-block">
                 <label class="layui-form-label">
                   <input type="text" v-model="data.counterclaim_plaintiff[0].name" placeholder="反诉原告简称"
                          class="layui-input"
-                         style="margin-top: -9px;">
+                         style="margin-top: -9px; margin-left:15px;width:150px;">
                 </label>
-              </div>
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
@@ -200,9 +185,7 @@
           </div>
           <div class="layui-form-item">
             <div class="layui-col-md2">
-              <div class="layui-input-block">
-                <label class="layui-form-label">事实和理由</label>
-              </div>
+                <label class="layui-form-label" style="width:100px">事实和理由</label>
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
@@ -238,9 +221,7 @@
             </div>
             <div class="layui-form-item">
               <div class="layui-col-md2">
-                <div class="layui-input-block">
-                  <label class="layui-form-label">事实和理由</label>
-                </div>
+                <label class="layui-form-label" style="width:100px">事实和理由</label>
               </div>
               <div class="layui-col-md7">
                 <div class="layui-input-block">
@@ -254,9 +235,7 @@
 
           <div class="layui-form-item">
             <div class="layui-col-md2">
-              <div class="layui-input-block">
-                <label class="layui-form-label">反诉被告今天是否答辩</label>
-              </div>
+                <label class="layui-form-label" style="width:150px;">反诉被告今天是否答辩</label>
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
@@ -342,21 +321,63 @@ var data;
     counterclaim_plaintiff: [{name: "", claim_item: "", fact_reason: ""}],
     is_todayreply: "0",
     counterclaim_defendant: [{name: "", reply_item: ""}],
-    plaintiffname:['']
+    plaintiffname:[''],
+    selected_judge:[{name:''}],
+    selected_accuser:[{name:''}],
+    selected_defendant:[{name:''}],
   };
 
 
 export default {
   data() {
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if(wholeItem != null && "CourtInves" in wholeItem){
-      data=wholeItem.CourtInves
+    if(wholeItem != null && "CourtInves" in wholeItem) {
+      data = wholeItem.CourtInves
+      if ("judge" in wholeItem.BasicInfo) {
+        data.selected_judge = wholeItem.BasicInfo.judge
+      }
+      if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
+        for (var i = 0; i < wholeItem.PlaintiffItems.length; i++) {
+          data.selected_accuser[i] = {name: wholeItem.PlaintiffItems[i].accuser}
+        }
+      }
+      if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
+        for (var j = 0; i < wholeItem.DefendantItems.length; j++) {
+          data.selected_defendant[j] = {name: wholeItem.DefendantItems[j].defendant}
+        }
+      }
     }
+
     return {
       data: data
     }
   },
   methods: {
+    getJudge(){
+      var judge_info = JSON.parse(localStorage.getItem(this.$store.state.court_number)).BasicInfo.judge
+      this.data.selected_judge=judge_info
+    },
+    getAccuser(){
+      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      if (wholeItem != null) {
+        if ( "PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0){
+          this.data.selected_accuser=[]
+          for(var i = 0; i<wholeItem.PlaintiffItems.length; i++){
+            this.data.selected_accuser[i]={name:wholeItem.PlaintiffItems[i].accuser}
+          }
+        }
+      }
+    },
+    getDefendant(){
+      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      if (wholeItem != null) {
+        if ( "DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0){
+          for(var i = 0; i<wholeItem.DefendantItems.length; i++){
+            this.data.selected_defendant[i]={name:wholeItem.DefendantItems[i].defendant}
+          }
+        }
+      }
+    },
     add_component(datatype) {
       switch (datatype) {
         case "accuser_claims":
@@ -438,9 +459,6 @@ export default {
           wholeItem.CourtInves= this.data
           localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
         }
-      },
-      is_counterclaim:{
-        handler:'getCounterclaim'
       },
       deep: true
     },
