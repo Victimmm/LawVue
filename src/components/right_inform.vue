@@ -297,6 +297,12 @@ export default {
   },
   methods: {
     getJudge(){
+      // var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      // if (wholeItem != null) {
+      //   if ( "judge" in wholeItem.BasicInfo ){
+      //     this.data.selected_judge=wholeItem
+      //   }
+      // }
       var judge_info = JSON.parse(localStorage.getItem(this.$store.state.court_number)).BasicInfo.judge
       this.data.selected_judge=judge_info
     },

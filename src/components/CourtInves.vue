@@ -250,13 +250,10 @@
           <div v-show="data.is_todayreply==1">
             <div class="layui-form-item" style="margin-top: 11px;">
               <div class="layui-col-md2">
-                <div class="layui-input-block">
-                  <label class="layui-form-label">
-                    <input type="text" v-model="data.counterclaim_defendant[0].name" placeholder="被告姓名"
-                           class="layui-input"
-                           style="margin-top: -9px;">
-                  </label>
-                </div>
+                <select lay-ignore v-model="data.counterclaim_defendant[0].name"  @click="getDefendant()" style="width:150px">
+                  <option label="请输入被告姓名"></option>
+                  <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
+                </select>
               </div>
               <div class="layui-col-md7">
                 <div class="layui-input-block">
@@ -276,13 +273,10 @@
         <template v-for="(item, index) in data.counterclaim_defendant.slice(1)" :key='index'>
           <div class="layui-form-item" style="margin-top: 11px;">
             <div class="layui-col-md2">
-              <div class="layui-input-block">
-                <label class="layui-form-label">
-                  <input type="text" v-model="data.counterclaim_defendant[index+1].name" placeholder="被告姓名"
-                         class="layui-input"
-                         style="margin-top: -9px;">
-                </label>
-              </div>
+              <select lay-ignore v-model="data.counterclaim_defendant[index+1].name"  @click="getDefendant()" style="width:150px">
+                <option label="请输入被告姓名"></option>
+                <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
+              </select>
             </div>
             <div class="layui-col-md7">
               <div class="layui-input-block">
