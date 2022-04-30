@@ -171,8 +171,10 @@ export default {
         }
         else{
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-          wholeItem.inquiry_form=this.data
-          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          if (wholeItem != null) {
+            wholeItem.inquiry_form = this.data
+            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          }
         }
       },
       deep: true

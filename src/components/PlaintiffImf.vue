@@ -180,9 +180,7 @@ export default {
         window.layui.layer.msg('请优先完善基本信息表格');
       } else {
         this.$store.commit('HandlePlaintiffName', [this.data.accuser, this.index])
-        // var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-        // wholeItem.PlaintiffItems[this.index] = this.data
-        // localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+
       }
       // this.axios
       //     .get('https://api.coindesk.com/v1/bpi/currentprice.json')
@@ -221,8 +219,10 @@ export default {
         }
         else {
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-          wholeItem.PlaintiffItems[this.index] = this.data
-          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          if (wholeItem != null) {
+            wholeItem.PlaintiffItems[this.index] = this.data
+            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          }
         }
       },
       deep: true

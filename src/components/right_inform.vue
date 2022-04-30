@@ -25,7 +25,7 @@
     <div class="layui-form-item">
       <div class="layui-col-md2">
         <select lay-ignore v-model="data.accuser_avoid[0].name"  @click="getAccuser()" style="width:150px">
-          <option label="请输入原告姓名"></option>
+          <option label="请选择原告"></option>
           <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
         </select>
       </div>
@@ -47,7 +47,7 @@
       <div class="layui-form-item">
         <div class="layui-col-md2">
           <select lay-ignore v-model="data.accuser_avoid[index+1].name"  @click="getAccuser()" style="width:150px">
-            <option label="请输入原告姓名"></option>
+            <option label="请选择原告"></option>
             <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
           </select>
         </div>
@@ -72,7 +72,7 @@
     <div class="layui-form-item">
       <div class="layui-col-md2">
         <select lay-ignore v-model="data.defendant_avoid[0].name"  @click="getDefendant()" style="width:150px">
-          <option label="请输入被告姓名"></option>
+          <option label="请选择被告"></option>
           <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
         </select>
       </div>
@@ -95,7 +95,7 @@
       <div class="layui-form-item">
         <div class="layui-col-md2">
           <select lay-ignore v-model="data.defendant_avoid[index+1].name"  @click="getDefendant()" style="width:150px">
-            <option label="请输入被告姓名"></option>
+            <option label="请选择被告"></option>
             <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
           </select>
         </div>
@@ -120,7 +120,7 @@
     <div class="layui-form-item">
       <div class="layui-col-md2">
         <select lay-ignore v-model="data.judgeName"  @click="getJudge()" style="width:150px">
-          <option label="请输入审判员  "></option>
+          <option label="请选择审判员  "></option>
           <option v-for="(item,index) in data.selected_judge" :key="index" :value="item.name">{{item.name}}</option>
         </select>
       </div>
@@ -134,7 +134,7 @@
     <div class="layui-form-item">
       <div class="layui-col-md2">
         <select lay-ignore v-model="data.accuser_avoid[0].name"  @click="getAccuser()" style="width:150px">
-          <option label="请输入原告姓名"></option>
+          <option label="请选择原告"></option>
           <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
         </select>
       </div>
@@ -155,7 +155,7 @@
       <div class="layui-form-item">
         <div class="layui-col-md2">
           <select lay-ignore v-model="data.accuser_avoid[index+1].name"  @click="getAccuser()" style="width:150px">
-            <option label="请输入原告姓名"></option>
+            <option label="请选择原告"></option>
             <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
           </select>
         </div>
@@ -179,7 +179,7 @@
     <div class="layui-form-item">
       <div class="layui-col-md2">
         <select lay-ignore v-model="data.defendant_avoid[0].name"  @click="getDefendant()" style="width:150px">
-          <option label="请输入被告姓名"></option>
+          <option label="请选择被告"></option>
           <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
         </select>
       </div>
@@ -205,7 +205,7 @@
       <div class="layui-form-item">
         <div class="layui-col-md2">
           <select lay-ignore v-model="data.defendant_avoid[index+1].name" @click="getDefendant()" style="width:150px">
-            <option label="请输入被告姓名"></option>
+            <option label="请选择被告"></option>
             <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
           </select>
         </div>
@@ -279,7 +279,7 @@ export default {
         }
       }
       if ( "DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0){
-        for(var j = 0; i<wholeItem.DefendantItems.length; j++){
+        for(var j = 0; j<wholeItem.DefendantItems.length; j++){
           data.selected_defendant[j]={name:wholeItem.DefendantItems[j].defendant}
         }
       }
@@ -310,6 +310,7 @@ export default {
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
       if (wholeItem != null) {
         if ( "PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0){
+          this.data.selected_accuser=[]
           for(var i = 0; i<wholeItem.PlaintiffItems.length; i++){
             this.data.selected_accuser[i]={name:wholeItem.PlaintiffItems[i].accuser}
           }
@@ -320,6 +321,7 @@ export default {
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
       if (wholeItem != null) {
         if ( "DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0){
+          this.data.selected_defendant=[]
           for(var i = 0; i<wholeItem.DefendantItems.length; i++){
             this.data.selected_defendant[i]={name:wholeItem.DefendantItems[i].defendant}
           }
@@ -381,8 +383,10 @@ export default {
           // window.layui.layer.msg('请优先完善基本信息表格');
         } else {
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-          wholeItem.right_inform = this.data
-          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          if (wholeItem != null) {
+            wholeItem.right_inform = this.data
+            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          }
         }
       },
       deep: true

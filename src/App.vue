@@ -144,19 +144,27 @@ export default {
 
     var plaintiffImfTag = [{guid: this.guid()}]
     var defendantImfTag = [{guid: this.guid()}]
+    var is_counterclaim = '0'
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if (wholeItem != null && "PlaintiffItems" in wholeItem && "DefendantItems" in wholeItem) {
-      for (var i = 0; wholeItem.PlaintiffItems.length != 0 & i < wholeItem.PlaintiffItems.length - 1; i++) {
-        plaintiffImfTag.push({guid: this.guid()})
+    if (wholeItem != null) {
+      if ("PlaintiffItems" in wholeItem) {
+        for (var i = 0; wholeItem.PlaintiffItems.length != 0 & i < wholeItem.PlaintiffItems.length - 1; i++) {
+          plaintiffImfTag.push({guid: this.guid()})
+        }
       }
-      for (i = 0; wholeItem.DefendantItems.length != 0 & i < wholeItem.DefendantItems.length - 1; i++) {
-        defendantImfTag.push({guid: this.guid()})
+      if ("DefendantItems" in wholeItem) {
+        for (i = 0; wholeItem.DefendantItems.length != 0 & i < wholeItem.DefendantItems.length - 1; i++) {
+          defendantImfTag.push({guid: this.guid()})
+        }
+      }
+      if("CourtInves" in wholeItem){
+        is_counterclaim=wholeItem.CourtInves.is_counterclaim
       }
     }
     return {
       plaintiffImfTag: plaintiffImfTag,
       defendantImfTag: defendantImfTag,
-      is_counterclaim: '0',
+      is_counterclaim: is_counterclaim,
     }
   },
   components: {
@@ -305,4 +313,15 @@ body .myskin {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
+
+.divcenter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.myinput-block{
+  margin-top: 8px;
+}
+
 </style>

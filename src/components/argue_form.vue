@@ -31,23 +31,6 @@
             </button>
           </div>
         </div>
-
-        <div class="layui-form-item">
-          <div class="layui-col-md3">
-            <input type="text" v-model="data.argued_defendant[0].argue_defendant"  placeholder="被告" autocomplete="off" class="layui-input">
-          </div>
-          <div class="layui-col-md6">
-            <input type="text" v-model="data.argued_defendant[0].argue_defendant_argue" placeholder="被告辩论意见" autocomplete="off"
-                   class="layui-input" style="margin-left:12px">
-          </div>
-          <div class="layui-col-md1">
-            <button @click="add_component('argued_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                    data-type="text">
-              <i class="layui-icon">&#xe654;</i>
-            </button>
-          </div>
-        </div>
-
         <template v-for="(item, index) in data.argued_accuser.slice(1)" :key="index">
           <div class="layui-form-item">
             <div class="layui-col-md3">
@@ -65,6 +48,23 @@
             </div>
           </div>
         </template>
+        <div class="layui-form-item">
+          <div class="layui-col-md3">
+            <input type="text" v-model="data.argued_defendant[0].argue_defendant"  placeholder="被告" autocomplete="off" class="layui-input">
+          </div>
+          <div class="layui-col-md6">
+            <input type="text" v-model="data.argued_defendant[0].argue_defendant_argue" placeholder="被告辩论意见" autocomplete="off"
+                   class="layui-input" style="margin-left:12px">
+          </div>
+          <div class="layui-col-md1">
+            <button @click="add_component('argued_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                    data-type="text">
+              <i class="layui-icon">&#xe654;</i>
+            </button>
+          </div>
+        </div>
+
+
 
         <template v-for="(item, index) in data.argued_defendant.slice(1)" :key="index">
           <div class="layui-form-item">
@@ -116,6 +116,24 @@
             </div>
           </div>
 
+          <template v-for="(item, index) in data.argued_counterd.slice(1)" :key="index">
+            <div class="layui-form-item">
+              <div class="layui-col-md3">
+                <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant" placeholder="原告(反诉被告)" autoComplete="off" class="layui-input">
+              </div>
+              <div class="layui-col-md6">
+                <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant_debate" placeholder="原告(反诉被告)辩论意见" autoComplete="off"
+                       style="margin-left: 12px" class="layui-input">
+              </div>
+              <div class="layui-col-md1">
+                <button @click="delete_component('argued_counterd',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text">
+                  <i class="layui-icon">&#xe640;</i>
+                </button>
+              </div>
+            </div>
+          </template>
+
           <div class="layui-form-item">
             <div class="layui-col-md3">
               <input type="text" name="title" v-model="data.argued_countera[0].argue_counter_accuser" placeholder="被告(反诉原告)"
@@ -133,23 +151,7 @@
             </div>
           </div>
 
-          <template v-for="(item, index) in data.argued_counterd.slice(1)" :key="index">
-          <div class="layui-form-item">
-            <div class="layui-col-md3">
-              <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant" placeholder="原告(反诉被告)" autoComplete="off" class="layui-input">
-            </div>
-            <div class="layui-col-md6">
-              <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant_debate" placeholder="原告(反诉被告)辩论意见" autoComplete="off"
-                     style="margin-left: 12px" class="layui-input">
-            </div>
-            <div class="layui-col-md1">
-              <button @click="delete_component('argued_counterd',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="text">
-                <i class="layui-icon">&#xe640;</i>
-              </button>
-            </div>
-          </div>
-          </template>
+
 
           <template v-for="(item, index) in data.argued_countera.slice(1)" :key="index">
           <div class="layui-form-item">
@@ -301,8 +303,10 @@ export default {
         }
         else{
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-          wholeItem.argue_form=this.data
-          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          if (wholeItem != null) {
+            wholeItem.argue_form = this.data
+            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          }
         }
       },
       deep: true

@@ -251,7 +251,7 @@
             <div class="layui-form-item" style="margin-top: 11px;">
               <div class="layui-col-md2">
                 <select lay-ignore v-model="data.counterclaim_defendant[0].name"  @click="getDefendant()" style="width:150px">
-                  <option label="请输入被告姓名"></option>
+                  <option label="请选择反诉被告"></option>
                   <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
                 </select>
               </div>
@@ -274,7 +274,7 @@
           <div class="layui-form-item" style="margin-top: 11px;">
             <div class="layui-col-md2">
               <select lay-ignore v-model="data.counterclaim_defendant[index+1].name"  @click="getDefendant()" style="width:150px">
-                <option label="请输入被告姓名"></option>
+                <option label="请选择反诉被告"></option>
                 <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
               </select>
             </div>
@@ -336,7 +336,7 @@ export default {
         }
       }
       if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
-        for (var j = 0; i < wholeItem.DefendantItems.length; j++) {
+        for (var j = 0; j < wholeItem.DefendantItems.length; j++) {
           data.selected_defendant[j] = {name: wholeItem.DefendantItems[j].defendant}
         }
       }
@@ -366,6 +366,7 @@ export default {
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
       if (wholeItem != null) {
         if ( "DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0){
+          this.data.selected_accuser=[]
           for(var i = 0; i<wholeItem.DefendantItems.length; i++){
             this.data.selected_defendant[i]={name:wholeItem.DefendantItems[i].defendant}
           }
@@ -450,8 +451,10 @@ export default {
           // window.layui.layer.msg('请优先完善基本信息表格');
         } else {
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-          wholeItem.CourtInves= this.data
-          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          if (wholeItem != null) {
+            wholeItem.CourtInves = this.data
+            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          }
         }
       },
       deep: true

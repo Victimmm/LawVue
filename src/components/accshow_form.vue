@@ -407,9 +407,9 @@ export default {
             accshow_query_facticity: "" , //真实性理由
             accshow_query_legality: "" , //合法性理由
             accshow_query_relevace: "" , //关联性理由
-            accshow_facticity: "false" , //真实性
+            accshow_facticity: "true" , //真实性
             accshow_legality: "true", //合法性
-            accshow_relevance: "false", //关联性
+            accshow_relevance: "true", //关联性
           });
           break;
 
@@ -447,8 +447,10 @@ export default {
         }
         else{
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-          wholeItem.accshow_form=this.data
-          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          if (wholeItem != null) {
+            wholeItem.accshow_form = this.data
+            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          }
         }
       },
       deep: true

@@ -29,6 +29,7 @@ export default createStore({
 	},
 	mutations: {
 		HandlePlaintiffName(state, payload) {
+			console.log("111")
 			state.plaintiffname[payload[1]] = payload[0]
 		},
 		HandleDefendantName(state, payload) {
