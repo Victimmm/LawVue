@@ -118,8 +118,8 @@
     </div>
 
   </div>
-
 </template>
+
 
 <script>
 import BasicInfo from './components/BasicInfo.vue'
@@ -134,7 +134,6 @@ import argue_form from "@/components/argue_form";
 import final_form from "@/components/final_form";
 import mediate_form from "@/components/mediate_form";
 import delivery_form from "@/components/delivery_form";
-
 
 export default {
   name: 'App',
@@ -179,7 +178,7 @@ export default {
     argue_form,
     final_form,
     mediate_form,
-    delivery_form,
+    delivery_form
   },
   methods: {
     setCounterclaim(val) {
@@ -322,6 +321,29 @@ body .myskin {
 
 .myinput-block{
   margin-top: 8px;
+}
+
+.myradiomargin{
+width: 80%;
+  border-style:solid;
+  background-color: #fff;
+  border-width: 1px;
+  border-radius: 0 2px 2px 0;
+  border-color: #e6e6e6;
+}
+
+.myradiomargin > * {
+  margin-top: 10px;
+  line-height: 38px;
+  margin-left: 5px;
+}
+.multiselect__tags{
+  min-height: 38px;
+  border-radius: 0 2px 2px 0;
+}
+.myselect-div{
+  width: 80%;
+  float: left;
 }
 
 </style>
