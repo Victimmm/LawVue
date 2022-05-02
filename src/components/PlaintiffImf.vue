@@ -18,7 +18,7 @@
           <div class="layui-form-item" pane>
                 <label class="layui-form-label layui-form-required">原告姓名</label>
               <div class="layui-input-block">
-                <input type="text" v-model="data.accuser" placeholder="请输入原告全称" autocomplete="off" class="layui-input">
+                <input type="text" v-model="plaintiffName" placeholder="请输入原告全称" autocomplete="off" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item" pane>
@@ -32,7 +32,7 @@
           <div class="layui-form-item" pane>
                 <label class="layui-form-label">原告全称</label>
               <div class="layui-input-block">
-                <input type="text" v-model="data.accuser" placeholder="请输入原告全称" autocomplete="off" class="layui-input">
+                <input type="text" v-model="plaintiffName" placeholder="请输入原告全称" autocomplete="off" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item" pane>
@@ -89,7 +89,6 @@
 
 <script type="text/javascript">
 
-
 export default {
   props: {
     index: {
@@ -118,14 +117,24 @@ export default {
     }
     return {data: JSON.parse(JSON.stringify(data))}
   },
+  computed: {
+    plaintiffName: {
+      get () {
+        return this.$store.state.plaintiffname[this.index]
+      },
+      set (value) {
+        this.data.accuser=value
+        this.$store.commit('handlePlaintiffName', [value,this.index])
+      }
+    }
+  },
   methods: {
     onSaveClick() {
-      if (this.$store.state.court_number == "") {
-        window.layui.layer.msg('请优先完善基本信息表格');
-      } else {
-        this.$store.commit('HandlePlaintiffName', [this.data.accuser, this.index])
-
-      }
+      // if (this.$store.state.court_number == "") {
+      //   window.layui.layer.msg('请优先完善基本信息表格');
+      // } else {
+      //   this.$store.commit('HandlePlaintiffName', [this.data.accuser, this.index])
+      // }
       // this.axios
       //     .get('https://api.coindesk.com/v1/bpi/currentprice.json')
       //     .then(function (response) {
@@ -135,8 +144,6 @@ export default {
       //       console.log(error)
       //       this.errored = true
       //     })
-
-
     },
     onCloseClick() {
       // 将删除标签事件暴露除去
@@ -146,11 +153,11 @@ export default {
         wholeItem.PlaintiffItems.splice(this.index, 1)
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
-      this.$emit("deleteIndex", this.index);
+
       this.$store.commit('delete_components', ['plaintiff', this.index])
     },
     onAddClick() {
-      this.$emit("addIndex");
+      // this.$emit("addIndex");
       this.$store.commit('add_components', ['plaintiff'])
     }
   },

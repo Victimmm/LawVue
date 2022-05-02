@@ -16,7 +16,7 @@
           <div class="layui-form-item" pane>
                 <label class="layui-form-label">被告姓名</label>
               <div class="layui-input-block">
-                <input type="text" v-model="data.defendant"  placeholder="请输入被告姓名"  autocomplete="off" class="layui-input">
+                <input type="text" v-model="defendantName"  placeholder="请输入被告姓名"  autocomplete="off" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item" pane>
@@ -32,7 +32,7 @@
           <div class="layui-form-item" pane>
                 <label class="layui-form-label">被告全称</label>
               <div class="layui-input-block">
-                <input type="text" v-model="data.defendant"  required lay-verify="required" placeholder="请输入被告全称"
+                <input type="text" v-model="defendantName"  required lay-verify="required" placeholder="请输入被告全称"
                      autocomplete="off" class="layui-input">
                 </div>
           </div>
@@ -120,16 +120,26 @@
       }
       return {data:JSON.parse(JSON.stringify(data))}
 		},
-		mounted(){
-		},
+    computed: {
+      defendantName: {
+        get () {
+          return this.$store.state.defendantname[this.index]
+        },
+        set (value) {
+          this.data.defendant=value
+          this.$store.commit('handleDefendantName', [value,this.index])
+        }
+      }
+      },
 		methods :{
+
       onSaveClick(){
         if (this.$store.state.court_number == "") {
           window.layui.layer.msg('请优先完善基本信息表格');
         } else {
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           wholeItem.DefendantItems[this.index] = this.data
-          this.$store.commit('HandleDefendantName', [this.data.defendant, this.index])
+          this.$store.commit('handleDefendantName', [this.data.defendant, this.index])
           localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
         }
       },
@@ -141,11 +151,10 @@
           wholeItem.DefendantItems.splice(this.index,1)
           localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
         }
-        this.$emit("deleteIndex", this.index);
+
         this.$store.commit('delete_components',['defendant',this.index])
       },
       onAddClick(){
-        this.$emit("addIndex");
         this.$store.commit('add_components',['defendant'])
       }
 		},

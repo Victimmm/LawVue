@@ -16,9 +16,8 @@
       <fieldset class="layui-elem-field layui-field-title">
         <legend>原告信息</legend>
         <div class="layui-field-box">
-          <PlaintiffImf :index=0 @addIndex="add_plaintiffImf" :key="plaintiffImfTag[0].guid"></PlaintiffImf>
-          <PlaintiffImf v-for="(tag,index) in plaintiffImfTag.slice(1)" :key="tag.guid" @deleteIndex="del_plaintiffImf"
-                        :index="index+1" @addIndex="add_plaintiffImf"/>
+          <PlaintiffImf :index=0 :key="0"></PlaintiffImf>
+          <PlaintiffImf v-for="(tag,index) in $store.state.plaintiffname.slice(1)" :key="tag" :index="index+1"/>
         </div>
       </fieldset>
     </div>
@@ -26,10 +25,8 @@
       <fieldset class="layui-elem-field layui-field-title">
         <legend>被告信息</legend>
         <div class="layui-field-box">
-          <DefendantImf :index=0 :key=0 @addIndex="add_defendantImf"></DefendantImf>
-          <DefendantImf v-for="(tag,index) in defendantImfTag.slice(1)" :key="tag.guid" @deleteIndex="del_defendantImf"
-                        :index="index+1" @addIndex="add_defendantImf"/>
-
+          <DefendantImf :index=0 :key=0></DefendantImf>
+          <DefendantImf v-for="(tag,index) in $store.state.defendantname.slice(1)" :key="tag" :index="index+1"/>
         </div>
       </fieldset>
     </div>
@@ -52,7 +49,7 @@
       </fieldset>
     </div>
 
-    <div v-if="is_counterclaim=='1'">
+    <div v-if="$store.state.is_todayreply=='1'">
       <div id="accshow_form">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭调查-原告举证</legend>
@@ -139,30 +136,14 @@ export default {
   name: 'App',
 
   data: function () {
-
-
-    var plaintiffImfTag = [{guid: this.guid()}]
-    var defendantImfTag = [{guid: this.guid()}]
     var is_counterclaim = '0'
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null) {
-      if ("PlaintiffItems" in wholeItem) {
-        for (var i = 0; wholeItem.PlaintiffItems.length != 0 & i < wholeItem.PlaintiffItems.length - 1; i++) {
-          plaintiffImfTag.push({guid: this.guid()})
-        }
-      }
-      if ("DefendantItems" in wholeItem) {
-        for (i = 0; wholeItem.DefendantItems.length != 0 & i < wholeItem.DefendantItems.length - 1; i++) {
-          defendantImfTag.push({guid: this.guid()})
-        }
-      }
       if("CourtInves" in wholeItem){
         is_counterclaim=wholeItem.CourtInves.is_counterclaim
       }
     }
     return {
-      plaintiffImfTag: plaintiffImfTag,
-      defendantImfTag: defendantImfTag,
       is_counterclaim: is_counterclaim,
     }
   },
@@ -183,19 +164,6 @@ export default {
   methods: {
     setCounterclaim(val) {
       this.is_counterclaim = val
-    },
-    add_plaintiffImf() {
-      this.plaintiffImfTag.push({guid: this.guid()})
-    },
-    del_plaintiffImf(index) {
-      this.plaintiffImfTag.splice(index, 1);
-    },
-    add_defendantImf() {
-      this.defendantImfTag.push({guid: this.guid()})
-    },
-    del_defendantImf(index) {
-      // 从数组中移除。
-      this.defendantImfTag.splice(index, 1);
     },
     guid: function () {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -345,5 +313,4 @@ width: 80%;
   width: 80%;
   float: left;
 }
-
 </style>

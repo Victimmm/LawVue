@@ -68,10 +68,8 @@
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38" v-model="data.defendant_reply[0].name" :show-labels="false"
-                              hideSelected
-                              :options="data.defendantname" placeholder="请选择被告"
+                              :options="$store.state.defendantname" placeholder="请选择被告"
                               style="line-height: 16px;width: 250px; min-height: 38px"
-                              @open="getDefendant"
               ></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -93,7 +91,7 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;margin-top: 5px">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38" v-model="data.defendant_reply[index+1].name"
-                                :show-labels="false" hideSelected :options="data.defendantname" placeholder="请选择被告"
+                                :show-labels="false" :options="$store.state.defendantname" placeholder="请选择被告"
                                 style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
@@ -116,10 +114,10 @@
           <label class="layui-form-label">是否反诉</label>
           <div class="layui-input-block">
             <div class="myradiomargin">
-              <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim" @change="getCounterclaim"
+              <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim"
                      class="myradio" value="1"
                      title="反诉"><label>反诉</label>
-              <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim" @change="getCounterclaim"
+              <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim"
                      class="myradio" value="0"
                      title="不反诉" style="margin-left: 15px;"><label>不反诉</label>
             </div>
@@ -187,9 +185,9 @@
             <div class="layui-input-block">
               <div class="myradiomargin">
                 <input type="radio" name="is_todayreply" v-model="data.is_todayreply" class="myradio" value="1"
-                       title="答辩"><label>答辩</label>
+                       title="答辩" @change="setIsTodayReply"><label>答辩</label>
                 <input type="radio" name="is_todayreply" v-model="data.is_todayreply" class="myradio" value="0"
-                       title="不答辩" style="margin-left: 15px;"><label>不答辩</label>
+                       title="不答辩" @change="setIsTodayReply" style="margin-left: 15px;"><label>不答辩</label>
               </div>
             </div>
           </div>
@@ -198,8 +196,8 @@
             <div class="layui-form-item " pane>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
-                  <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[0].name" :show-labels="false" hideSelected
-                                  :options="data.plaintiffname" placeholder="请选择反诉被告"
+                  <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[0].name" :show-labels="false"
+                                  :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
                                   style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
@@ -222,8 +220,8 @@
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;margin-top: 5px;">
                   <div class="layui-input-inline" style="margin-left:0px ;">
                     <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[index+1].name"
-                                    :show-labels="false" hideSelected
-                                    :options="data.plaintiffname" placeholder="请选择反诉被告"
+                                    :show-labels="false"
+                                    :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
                                     style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
@@ -268,16 +266,10 @@ data = {
   accuser_claimitem_factreason: "",// 原告诉讼请求的事实及理由
   is_counterclaim: "0",
   defendant_reply: [{name: "", reply_item: ""}],
-
   counterclaim_plaintiff_claimitem: "",
   counterclaim_plaintiff_factreason: "",
   counterclaim_defendant_reply: [{name: "", reply_item: ""}],
-
   is_todayreply: "0",
-
-  plaintiffname: [''],
-  defendantname: [''],
-
 };
 
 export default {
@@ -285,18 +277,7 @@ export default {
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "CourtInves" in wholeItem) {
       data = wholeItem.CourtInves
-      if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
-        for (var i = 0; i < wholeItem.PlaintiffItems.length; i++) {
-          data.plaintiffname[i] = wholeItem.PlaintiffItems[i].accuser
-        }
-      }
-      if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
-        for (var j = 0; j < wholeItem.DefendantItems.length; j++) {
-          data.defendantname[j] = wholeItem.DefendantItems[j].defendant
-        }
-      }
     }
-
     return {
       data: data
     }
@@ -305,28 +286,6 @@ export default {
     VueMultiselect
   },
   methods: {
-    getAccuser() {
-      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-      if (wholeItem != null) {
-        if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
-          this.data.plaintiffname = []
-          for (var i = 0; i < wholeItem.PlaintiffItems.length; i++) {
-            this.data.plaintiffname[i] = wholeItem.PlaintiffItems[i].accuser
-          }
-        }
-      }
-    },
-    getDefendant() {
-      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-      if (wholeItem != null) {
-        if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
-          this.data.defendantname = []
-          for (var i = 0; i < wholeItem.DefendantItems.length; i++) {
-            this.data.defendantname[i] =  wholeItem.DefendantItems[i].defendant
-          }
-        }
-      }
-    },
     add_component(datatype) {
       switch (datatype) {
         // case "accuser_claims":
@@ -352,18 +311,18 @@ export default {
     },
     delete_component(datatype, index) {
       switch (datatype) {
-        case "accuser_claims":
-          //这里是值对应的处理
-          this.data.accuser_claims.splice(index, 1)
-          break
+        // case "accuser_claims":
+        //   //这里是值对应的处理
+        //   this.data.accuser_claims.splice(index, 1)
+        //   break
         case "defendant_reply":
           //这里是值对应的处理
           this.data.defendant_reply.splice(index, 1)
           break
-        case "counterclaim_plaintiff":
-          //这里是值对应的处理
-          this.data.counterclaim_plaintiff.splice(index, 1)
-          break
+        // case "counterclaim_plaintiff":
+        //   //这里是值对应的处理
+        //   this.data.counterclaim_plaintiff.splice(index, 1)
+        //   break
         case "counterclaim_defendant_reply":
           //这里是值对应的处理
           this.data.counterclaim_defendant_reply.splice(index, 1)
@@ -380,11 +339,11 @@ export default {
         var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
         wholeItem.CourtInves = this.data
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
-        this.$store.commit("setCounterClaim", this.data.is_counterclaim)
+        this.$store.commit("setIsTodayReply", this.data.is_todayreply)
       }
     },
-    getCounterclaim() {
-      this.$emit('setCounterclaim', this.data.is_counterclaim)
+    setIsTodayReply() {
+      this.$store.commit("setIsTodayReply", this.data.is_todayreply)
       // console.log(data.is_counterclaim)
     }
   },
