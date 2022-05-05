@@ -2,6 +2,17 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <div class="layui-bg-gray">
+
+
+    <div id="BasicState">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>基本信息陈述</legend>
+        <div class="layui-field-box">
+          <BasicState></BasicState>
+        </div>
+      </fieldset>
+
+    </div>
     <div id="BasicInfo">
       <fieldset class="layui-elem-field layui-field-title">
         <legend>基本信息</legend>
@@ -17,7 +28,7 @@
         <legend>原告信息</legend>
         <div class="layui-field-box">
           <PlaintiffImf :index=0 :key="0"></PlaintiffImf>
-          <PlaintiffImf v-for="(tag,index) in $store.state.plaintiffname.slice(1)" :key="tag" :index="index+1"/>
+          <PlaintiffImf v-for="(tag,index) in $store.state.plaintifftag.slice(1)" :key="tag" :index="index+1"/>
         </div>
       </fieldset>
     </div>
@@ -26,7 +37,7 @@
         <legend>被告信息</legend>
         <div class="layui-field-box">
           <DefendantImf :index=0 :key=0></DefendantImf>
-          <DefendantImf v-for="(tag,index) in $store.state.defendantname.slice(1)" :key="tag" :index="index+1"/>
+          <DefendantImf v-for="(tag,index) in $store.state.defendanttag.slice(1)" :key="tag" :index="index+1"/>
         </div>
       </fieldset>
     </div>
@@ -44,7 +55,7 @@
       <fieldset class="layui-elem-field layui-field-title">
         <legend>法庭调查</legend>
         <div class="layui-field-box">
-          <CourtInves @setCounterclaim='setCounterclaim'></CourtInves>
+          <CourtInves></CourtInves>
         </div>
       </fieldset>
     </div>
@@ -54,7 +65,7 @@
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭调查-原告举证</legend>
           <div class="layui-field-box">
-            <accshow_form ref="accshow_form" :is_counterclaim=this.is_counterclaim></accshow_form>
+            <accshow_form ref="accshow_form" ></accshow_form>
           </div>
         </fieldset>
       </div>
@@ -131,22 +142,10 @@ import argue_form from "@/components/argue_form";
 import final_form from "@/components/final_form";
 import mediate_form from "@/components/mediate_form";
 import delivery_form from "@/components/delivery_form";
+import BasicState from "@/components/BasicState";
 
 export default {
   name: 'App',
-
-  data: function () {
-    var is_counterclaim = '0'
-    var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if (wholeItem != null) {
-      if("CourtInves" in wholeItem){
-        is_counterclaim=wholeItem.CourtInves.is_counterclaim
-      }
-    }
-    return {
-      is_counterclaim: is_counterclaim,
-    }
-  },
   components: {
     BasicInfo,
     PlaintiffImf,
@@ -159,19 +158,8 @@ export default {
     argue_form,
     final_form,
     mediate_form,
-    delivery_form
-  },
-  methods: {
-    setCounterclaim(val) {
-      this.is_counterclaim = val
-    },
-    guid: function () {
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0,
-            v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-      });
-    }
+    delivery_form,
+    BasicState
   },
   mounted() {
     // 添加目录控件
@@ -202,9 +190,7 @@ export default {
           offset: 'r'
         });
       });
-
     })
-
   },
 }
 

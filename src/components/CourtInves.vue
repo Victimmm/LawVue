@@ -126,21 +126,17 @@
 
         <div v-show="data.is_counterclaim==1">
           <div class="layui-form-item" pane>
-            <label class="layui-form-label">
+            <div class="layui-form-label divcenter">
               反诉原告诉讼请求项
-            </label>
-
-            <div class="layui-input-block">
-              <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
-                <input type="text" v-model="data.counterclaim_plaintiff_claimitem" placeholder="诉讼请求项"
-                       autocomplete="off"
-                       class="layui-input" style="width: 90%;float: left;">
+            </div>
+            <div class="layui-input-block" contenteditable="true">
+              <textarea v-model="data.counterclaim_plaintiff_claimitem" placeholder="诉讼请求项"
+                        class="layui-textarea" style="height:40px"></textarea>
 <!--                <button @click="add_component('counterclaim_plaintiff')" type="button"-->
 <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
 <!--                        data-type="text" style="float: right;">-->
 <!--                  <i class="layui-icon">&#xe654;</i>-->
 <!--                </button>-->
-              </div>
             </div>
           </div>
 
@@ -241,14 +237,6 @@
             </div>
           </div>
         </div>
-
-
-        <div class="layui-form-item">
-          <div class="layui-input-block">
-            <button class="layui-btn" v-on:click.prevent="save_localstorage" style="display: table;margin: 0 auto;">保存
-            </button>
-          </div>
-        </div>
       </form>
     </div>
   </div>
@@ -330,16 +318,6 @@ export default {
         default:
           //这里是没有找到对应的值处理
           break
-      }
-    },
-    save_localstorage() {
-      if (this.$store.state.court_number == "") {
-        window.layui.layer.msg('请优先完善基本信息表格');
-      } else {
-        var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-        wholeItem.CourtInves = this.data
-        localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
-        this.$store.commit("setIsTodayReply", this.data.is_todayreply)
       }
     },
     setIsTodayReply() {
