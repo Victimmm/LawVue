@@ -5,7 +5,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label layui-form-required">案号 </label>
           <div class="layui-input-block">
-            <input type="text" v-model="data.court_number" name="courtNumber" lay-verify="required" placeholder="请输入案号"
+            <input type="text" v-model="data.court_number" @blur="courtNumChange()" placeholder="请输入案号"
                    autocomplete="on" class="layui-input">
           </div>
         </div>
@@ -38,7 +38,7 @@
           <div class="layui-input-block ">
             <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
               <input type="text" v-model="data.chief_judge[0].name" placeholder="审判长姓名" autocomplete="off"
-                     class="layui-input" style="width: 90%;float: left;">
+                     class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('chief_judge',0)">
               <button @click="add_component('chief_judge')" type="button"
                       class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
@@ -54,7 +54,7 @@
             <div class="layui-input-block myinput-block">
               <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
                 <input type="text" v-model="data.chief_judge[index+1].name" placeholder="审判长姓名" autocomplete="off"
-                       class="layui-input" style="width: 90%;float: left;">
+                       class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('chief_judge',index+1)">
                 <button @click="delete_component('chief_judge',index+1)" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
@@ -76,7 +76,7 @@
           <div class="layui-input-block ">
             <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
               <input type="text" v-model="data.judge[0].name" placeholder="审判员姓名" autocomplete="off" class="layui-input"
-                     style="width: 90%;float: left;">
+                     style="width: 90%;float: left;" @blur="judgeChange('judge',0)">
               <button @click="add_component('judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
@@ -87,7 +87,7 @@
             <div class="layui-input-block myinput-block">
               <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
                 <input type="text" v-model="data.judge[index+1].name" placeholder="审判员姓名" autocomplete="off"
-                       class="layui-input" style="width: 90%;float: left;">
+                       class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('judge',index+1)">
                 <button @click="delete_component('judge',index+1)" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
@@ -96,10 +96,7 @@
               </div>
             </div>
           </template>
-
         </div>
-
-
         <div class="layui-form-item" pane>
           <div class="layui-form-label divcenter">
             陪审员
@@ -108,7 +105,7 @@
           <div class="layui-input-block ">
             <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
               <input type="text" v-model="data.juror[0].name" placeholder="陪审员姓名" autocomplete="off" class="layui-input"
-                     style="width: 90%;float: left;">
+                     style="width: 90%;float: left;" @blur="judgeChange('juror',0)">
               <button @click="add_component('juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
@@ -119,7 +116,7 @@
             <div class="layui-input-block myinput-block">
               <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
                 <input type="text" v-model="data.juror[index+1].name" placeholder="陪审员姓名" autocomplete="off"
-                       class="layui-input" style="width: 90%;float: left;">
+                       class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('juror',index+1)">
                 <button @click="delete_component('juror',index+1)" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
@@ -136,7 +133,7 @@
             书记员
           </div>
           <div class="layui-input-block">
-            <input type="text" v-model="data.court_clerk" name="courtClerk" placeholder="书记员姓名" autocomplete="on"
+            <input type="text" v-model="courtClerkName" name="courtClerk" placeholder="书记员姓名" autocomplete="on"
                    class="layui-input">
           </div>
         </div>
@@ -148,11 +145,6 @@
           <div class="layui-input-block">
             <textarea required v-model="data.court_cause" name="courtCause" placeholder="请输入案由"
                       class="layui-textarea"></textarea>
-          </div>
-        </div>
-        <div class="layui-form-item">
-          <div class="layui-input-block">
-            <button class="layui-btn" @click.prevent="save_localstorage">保存</button>
           </div>
         </div>
       </form>
@@ -205,14 +197,17 @@ export default {
       switch (datatype) {
         case "chief_judge":
           //这里是值对应的处理
+          this.$store.commit('add_components', ['chief_judge'])
           this.data.chief_judge.push({name: ""})
           break
         case "judge":
           //这里是值对应的处理
+          this.$store.commit('add_components', ['judge'])
           this.data.judge.push({name: ""})
           break
         case "juror":
           //这里是值对应的处理
+          this.$store.commit('add_components', ['juror'])
           this.data.juror.push({name: ""})
           break
         default:
@@ -224,14 +219,17 @@ export default {
       switch (datatype) {
         case "chief_judge":
           //这里是值对应的处理
+          this.$store.commit('delete_components', ['chief_judge', index])
           this.data.chief_judge.splice(index, 1)
           break
         case "judge":
           //这里是值对应的处理
+          this.$store.commit('delete_components', ['judge', index])
           this.data.judge.splice(index, 1)
           break
         case "juror":
           //这里是值对应的处理
+          this.$store.commit('delete_components', ['juror', index])
           this.data.juror.splice(index, 1)
           break
         default:
@@ -251,35 +249,56 @@ export default {
         return uri + separator + key + "=" + value;
       }
     },
-    save_localstorage() {
-      var name = document.getElementById("filing_time").value;
-      console.log(name);
+    courtNumChange() {
       if (this.$store.state.court_number == "") {
         // localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data}))
-        localStorage.removeItem("CourtTemp")
-      }
-      var wholeItem = JSON.parse(localStorage.getItem(this.data.court_number))
-      if (wholeItem != null && "BasicInfo" in wholeItem) {
-        wholeItem.BasicInfo = this.data
-        localStorage.setItem(this.data.court_number, JSON.stringify(wholeItem))
-      } else {
         localStorage.setItem(this.data.court_number, JSON.stringify({
           BasicInfo: this.data,
           PlaintiffItems: [],
           DefendantItems: []
         }))
+        localStorage.removeItem("CourtTemp")
+      } else if (this.data.court_number != this.$store.state.court_number) {// 在已有案号的前提下修改案号，将之前的案号数据拷贝至新的 localstorage ，同时删除旧的
+        var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+        if (wholeItem != null && "BasicInfo" in wholeItem) {
+          wholeItem.BasicInfo = this.data
+          localStorage.setItem(this.data.court_number, JSON.stringify(wholeItem))
+          console.log(this.$store.state.court_number)
+          localStorage.removeItem(this.$store.state.court_number)
+        }
       }
+
       this.$store.commit("setCourtNum", this.data.court_number)
       var newurl = this.updateQueryStringParameter(window.location.href, 'CourtNum', this.data.court_number);
       window.history.replaceState({
         path: newurl
       }, '', newurl);
+    },
+    judgeChange(type, index) {
+      switch (type) {
+        case "chief_judge":
+          //这里是值对应的处理
+          this.$store.commit('judgeChange', ['chief_judge', index, this.data.chief_judge[index].name])
+          break
+        case "judge":
+          //这里是值对应的处理
+          this.$store.commit('judgeChange', ['judge', index, this.data.judge[index].name])
+          break
+        case "juror":
+          //这里是值对应的处理
+          this.$store.commit('judgeChange', ['juror', index, this.data.juror[index].name])
+          break
+        default:
+          //这里是没有找到对应的值处理
+          break
+      }
     }
 
   },
   watch: {
     data: {
       handler() {
+        console.log("change")
         var wholeItem
         if (this.$store.state.court_number == "") {
           // window.layui.layer.msg('请优先完善基本信息表格');
@@ -295,6 +314,17 @@ export default {
         }
       },
       deep: true
+    }
+  },
+  computed: {
+    courtClerkName: {
+      get() {
+        return this.$store.state.court_clerk
+      },
+      set(value) {
+        this.data.court_clerk = value
+        this.$store.commit('updateCourt_Clerk', value)
+      }
     }
   }
 }
