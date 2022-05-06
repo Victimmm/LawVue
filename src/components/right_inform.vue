@@ -1,230 +1,200 @@
 <template>
   <!--权利告知-->
 
-
   <div class="layui-card">
     <div class="layui-card-body>">
-      <form class="layui-form">
+      <form class="layui-form layui-form-pane">
         <div class="layui-form-item" pane>
-          <div class="layui-col-md2" style="margin-top: 70px">
-            <div class="layui-form-item">
-              <select lay-ignore v-model="data.judgeName"  @click="getJudge()" style="width:150px">
-                <option label="请输入审判员"></option>
-                <option v-for="(item,index) in data.selected_judge" :key="index" :value="item.name">{{item.name}}</option>
-              </select>
+          <label class="layui-form-label" style="line-height:180px">审判员</label>
+          <div class="layui-input-block">
+            <textarea v-model="data.judge_talk[0]" type="text" class="layui-input " style="height: 200px;">
+            </textarea>
+          </div>
+        </div>
+        <div class="layui-form-item " pane>
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-input-inline" style="margin-left:0px ;">
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accuser_avoid[0].name"
+                              :options="$store.state.plaintiffname" placeholder="请选择原告"
+                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+            </div>
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <div class="myradiomargin" style="width: 90%;float: left;">
+                  <input type="radio" value="1" v-model="data.accuser_avoid[0].is_listen" class="myradio"><label> 听清楚了 </label>
+                  <input type="radio" value="2" v-model="data.accuser_avoid[0].is_listen" class="myradio"><label> 没听清楚 </label>
+                </div>
+                <button @click="add_component('accuser_avoid')" type="button"
+                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text" style="float: right;">
+                  <i class="layui-icon">&#xe654;</i>
+                </button>
+              </div>
             </div>
           </div>
-
-        <div class="layui-col-md7">
-          <div class="layui-input-block">
-          <textarea v-model="data.judge_talk[0]" type="text" class="layui-input " style="height: 200px;">
-          </textarea>
-          </div>
+          <template v-for="(item, index) in data.accuser_avoid.slice(1)" :key='index'>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-input-inline" style="margin-left:0px ;">
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accuser_avoid[index+1].name"
+                                :options="$store.state.plaintiffname" placeholder="请选择原告"
+                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+              </div>
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <div class="myradiomargin" style="width: 90%;float: left;">
+                    <input type="radio" value="1" v-model="data.accuser_avoid[index+1].is_listen" checked class="myradio"><label> 听清楚了 </label>
+                    <input type="radio" value="2" v-model="data.accuser_avoid[index+1].is_listen" class="myradio"><label> 没听清楚 </label>
+                  </div>
+                  <button @click="delete_component('accuser_avoid',1)" type="button"
+                          class="layui-btn layui-btn-primary layui-btn-sm"
+                          data-type="text" style="float: right;">
+                    <i class="layui-icon">&#xe640;</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </template>
         </div>
-    </div>
-    <div class="layui-form-item">
-      <div class="layui-col-md2">
-        <select lay-ignore v-model="data.accuser_avoid[0].name"  @click="getAccuser()" style="width:150px">
-          <option label="请选择原告"></option>
-          <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
-        </select>
+
+
+        <div class="layui-form-item " pane>
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-input-inline" style="margin-left:0px ;">
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.defendant_avoid[0].name"
+                              :options="$store.state.defendantname" placeholder="请选择被告"
+                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+            </div>
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <div class="myradiomargin" style="width: 90%;float: left;">
+                  <input type="radio" value="1" v-model="data.defendant_avoid[0].is_listen" class="myradio"><label> 听清楚了 </label>
+                  <input type="radio" value="2" v-model="data.defendant_avoid[0].is_listen" class="myradio"><label> 没听清楚 </label>
+                </div>
+                <button @click="add_component('defendant_avoid')" type="button"
+                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text" style="float: right;">
+                  <i class="layui-icon">&#xe654;</i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <template v-for="(item, index) in data.defendant_avoid.slice(1)" :key='index'>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-input-inline" style="margin-left:0px ;">
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.defendant_avoid[index+1].name"
+                                :options="$store.state.defendantname" placeholder="请选择被告"
+                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+              </div>
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <div class="myradiomargin" style="width: 90%;float: left;">
+                    <input type="radio" value="1" v-model="data.defendant_avoid[index+1].is_listen" class="myradio" checked><label> 听清楚了 </label>
+                    <input type="radio" value="2" v-model="data.defendant_avoid[index+1].is_listen" class="myradio"><label> 没听清楚 </label>
+                  </div>
+                  <button @click="delete_component('defendant_avoid',1)" type="button"
+                          class="layui-btn layui-btn-primary layui-btn-sm"
+                          data-type="text" style="float: right;">
+                    <i class="layui-icon">&#xe640;</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+
+    <div class="layui-form-item" pane>
+      <div class="layui-form-label">
+        审判员
       </div>
-      <div class="layui-col-md7">
+      <div class="layui-input-block">
+        <textarea type="text" v-model="data.judge_talk[1]" class="layui-input" style="text-align: center; vertical-align: middle"></textarea>
+      </div>
+    </div>
+
+    <div class="layui-form-item " pane>
+      <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+        <div class="layui-input-inline" style="margin-left:0px ;">
+          <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accuser_avoid[0].name"
+                          :options="$store.state.plaintiffname" placeholder="请选择原告"
+                          style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+        </div>
         <div class="layui-input-block">
-          <input type="radio" value="1" v-model="data.accuser_avoid[0].is_listen" class="myradio"><label> 听清楚了 </label>
-          <input type="radio" value="2" v-model="data.accuser_avoid[0].is_listen" class="myradio"><label> 没听清楚 </label>
-        </div>
-      </div>
-      <div class="layui-col-md1">
-        <button @click="add_component('accuser_avoid')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                data-type="text">
-          <i class="layui-icon">&#xe654;</i>
-        </button>
-      </div>
-    </div>
-
-    <template v-for="(item, index) in data.accuser_avoid.slice(1)" :key='index'>
-      <div class="layui-form-item">
-        <div class="layui-col-md2">
-          <select lay-ignore v-model="data.accuser_avoid[index+1].name"  @click="getAccuser()" style="width:150px">
-            <option label="请选择原告"></option>
-            <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
-          </select>
-        </div>
-        <div class="layui-col-md7">
-          <div class="layui-input-block">
-            <input type="radio" value="1" v-model="data.accuser_avoid[index+1].is_listen" class="myradio"><label>
-            听清楚了 </label>
-            <input type="radio" value="2" v-model="data.accuser_avoid[index+1].is_listen" class="myradio"><label>
-            没听清楚 </label>
-          </div>
-        </div>
-        <div class="layui-col-md1">
-          <button @click="delete_component('accuser_avoid',1)" type="button"
-                  class="layui-btn layui-btn-primary layui-btn-sm"
-                  data-type="text">
-            <i class="layui-icon">&#xe640;</i>
-          </button>
-        </div>
-      </div>
-    </template>
-
-    <div class="layui-form-item">
-      <div class="layui-col-md2">
-        <select lay-ignore v-model="data.defendant_avoid[0].name"  @click="getDefendant()" style="width:150px">
-          <option label="请选择被告"></option>
-          <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
-        </select>
-      </div>
-      <div class="layui-col-md7">
-        <div class="layui-input-block">
-          <input type="radio" value="1" v-model="data.defendant_avoid[0].is_listen" class="myradio"><label>
-          听清楚了 </label>
-          <input type="radio" value="2" v-model="data.defendant_avoid[0].is_listen" class="myradio"><label>
-          没听清楚 </label>
-        </div>
-      </div>
-      <div class="layui-col-md1">
-        <button @click="add_component('defendant_avoid')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                data-type="text">
-          <i class="layui-icon">&#xe654;</i>
-        </button>
-      </div>
-    </div>
-    <template v-for="(item, index) in data.defendant_avoid.slice(1)" :key='index'>
-      <div class="layui-form-item">
-        <div class="layui-col-md2">
-          <select lay-ignore v-model="data.defendant_avoid[index+1].name"  @click="getDefendant()" style="width:150px">
-            <option label="请选择被告"></option>
-            <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
-          </select>
-        </div>
-        <div class="layui-col-md7">
-          <div class="layui-input-block">
-            <input type="radio" value="1" v-model="data.defendant_avoid[index+1].is_listen" class="myradio"><label>
-            听清楚了 </label>
-            <input type="radio" value="2" v-model="data.defendant_avoid[index+1].is_listen" class="myradio"><label>
-            没听清楚 </label>
-          </div>
-        </div>
-        <div class="layui-col-md1">
-          <button @click="delete_component('defendant_avoid',1)" type="button"
-                  class="layui-btn layui-btn-primary layui-btn-sm"
-                  data-type="text">
-            <i class="layui-icon">&#xe640;</i>
-          </button>
-        </div>
-      </div>
-    </template>
-
-    <div class="layui-form-item">
-      <div class="layui-col-md2">
-        <select lay-ignore v-model="data.judgeName"  @click="getJudge()" style="width:150px">
-          <option label="请选择审判员  "></option>
-          <option v-for="(item,index) in data.selected_judge" :key="index" :value="item.name">{{item.name}}</option>
-        </select>
-      </div>
-
-      <div class="layui-col-md7">
-        <div class="layui-input-block">
-          <textarea type="text" v-model="data.judge_talk[1]" class="layui-input"></textarea>
-        </div>
-      </div>
-    </div>
-    <div class="layui-form-item">
-      <div class="layui-col-md2">
-        <select lay-ignore v-model="data.accuser_avoid[0].name"  @click="getAccuser()" style="width:150px">
-          <option label="请选择原告"></option>
-          <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
-        </select>
-      </div>
-      <div class="layui-col-md7">
-        <div class="layui-input-block">
-          <input type="radio" value="1" v-model="data.accuser_avoid[0].is_avoid" class="myradio"><label> 不申请回避 </label>
-          <input type="radio" value="2" v-model="data.accuser_avoid[0].is_avoid" class="myradio"><label> 申请回避 </label>
-        </div>
-      </div>
-      <!--      <div class="layui-col-md1">-->
-      <!--        <button @click="add_component('accuser_avoid')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
-      <!--                data-type="text">-->
-      <!--          <i class="layui-icon">&#xe654;</i>-->
-      <!--        </button>-->
-      <!--      </div>-->
-    </div>
-    <template v-for="(item, index) in data.accuser_avoid.slice(1)" :key='index'>
-      <div class="layui-form-item">
-        <div class="layui-col-md2">
-          <select lay-ignore v-model="data.accuser_avoid[index+1].name"  @click="getAccuser()" style="width:150px">
-            <option label="请选择原告"></option>
-            <option v-for="(item,index) in data.selected_accuser" :key="index" :value="item.name">{{item.name}}</option>
-          </select>
-        </div>
-        <div class="layui-col-md7">
-          <div class="layui-input-block">
-            <input type="radio" value="1" v-model="data.accuser_avoid[index+1].is_avoid" class="myradio"><label>
-            不申请回避 </label>
-            <input type="radio" value="2" v-model="data.accuser_avoid[index+1].is_avoid" class="myradio"><label>
-            申请回避 </label>
-          </div>
-        </div>
-        <!--        <div class="layui-col-md1">-->
-        <!--          <button @click="delete_component('accuser_avoid',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
-        <!--                  data-type="text">-->
-        <!--            <i class="layui-icon">&#xe640;</i>-->
-        <!--          </button>-->
-        <!--        </div>-->
-      </div>
-    </template>
-
-    <div class="layui-form-item">
-      <div class="layui-col-md2">
-        <select lay-ignore v-model="data.defendant_avoid[0].name"  @click="getDefendant()" style="width:150px">
-          <option label="请选择被告"></option>
-          <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
-        </select>
-      </div>
-      <div class="layui-col-md7">
-        <div class="layui-form">
-          <div class="layui-input-block">
-            <input type="radio" value="1" v-model="data.defendant_avoid[0].is_avoid" class="myradio"><label>
-            不申请回避 </label>
-            <input type="radio" value="2" v-model="data.defendant_avoid[0].is_avoid" class="myradio"><label>
-            申请回避 </label>
+          <div class="myselect-div">
+            <div class="myradiomargin" style="width: 90%;float: left;">
+              <input type="radio" value="1" v-model="data.accuser_avoid[0].is_avoid" class="myradio"><label> 不申请回避 </label>
+              <input type="radio" value="2" v-model="data.accuser_avoid[0].is_avoid" class="myradio"><label> 申请回避 </label>
+            </div>
+<!--                <button @click="add_component('accuser_avoid')" type="button"-->
+<!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                        data-type="text" style="float: right;">-->
+<!--                  <i class="layui-icon">&#xe654;</i>-->
+<!--                </button>-->
           </div>
         </div>
       </div>
-      <!--      <div class="layui-col-md1">-->
-      <!--        <button @click="add_component('defendant_avoid')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
-      <!--                data-type="text">-->
-      <!--          <i class="layui-icon">&#xe654;</i>-->
-      <!--        </button>-->
-      <!--      </div>-->
-    </div>
-
-    <template v-for="(item, index) in data.defendant_avoid.slice(1)" :key='index'>
-      <div class="layui-form-item">
-        <div class="layui-col-md2">
-          <select lay-ignore v-model="data.defendant_avoid[index+1].name" @click="getDefendant()" style="width:150px">
-            <option label="请选择被告"></option>
-            <option v-for="(item,index) in data.selected_defendant" :key="index" :value="item.name">{{item.name}}</option>
-          </select>
-        </div>
-        <div class="layui-col-md7">
+      <template v-for="(item, index) in data.accuser_avoid.slice(1)" :key='index'>
+        <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+          <div class="layui-input-inline" style="margin-left:0px ;">
+            <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accuser_avoid[index+1].name"
+                            :options="$store.state.plaintiffname" placeholder="请选择原告"
+                            style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+          </div>
           <div class="layui-input-block">
-            <input type="radio" value="1" v-model="data.defendant_avoid[index+1].is_avoid" class="myradio"><label>
-            不申请回避 </label>
-            <input type="radio" value="2" v-model="data.defendant_avoid[index+1].is_avoid" class="myradio"><label>
-            申请回避 </label>
+            <div class="myselect-div">
+              <div class="myradiomargin" style="width: 90%;float: left;">
+                <input type="radio" value="1" v-model="data.accuser_avoid[0].is_avoid" class="myradio" checked><label> 不申请回避 </label>
+                <input type="radio" value="2" v-model="data.accuser_avoid[0].is_avoid" class="myradio"><label> 申请回避 </label>
+              </div>
+<!--              <button @click="delete_component('accuser_avoid',1)" type="button"-->
+<!--                      class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                      data-type="text" style="float: right;">-->
+<!--                <i class="layui-icon">&#xe640;</i>-->
+<!--              </button>-->
+            </div>
           </div>
         </div>
-        <!--        <div class="layui-col-md1">-->
-        <!--          <button @click="delete_component('defendant_avoid',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
-        <!--                  data-type="text">-->
-        <!--            <i class="layui-icon">&#xe640;</i>-->
-        <!--          </button>-->
-        <!--        </div>-->
-      </div>
-    </template>
+      </template>
+    </div>
+
+        <div class="layui-form-item " pane>
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-input-inline" style="margin-left:0px ;">
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.defendant_avoid[0].name"
+                              :options="$store.state.defendantname" placeholder="请选择被告"
+                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+            </div>
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <div class="myradiomargin" style="width: 90%;float: left;">
+                  <input type="radio" value="1" v-model="data.defendant_avoid[0].is_avoid" class="myradio"><label> 不申请回避 </label>
+                  <input type="radio" value="2" v-model="data.defendant_avoid[0].is_avoid" class="myradio"><label> 申请回避 </label>
+                </div>
+                <!--                <button @click="add_component('accuser_avoid')" type="button"-->
+                <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
+                <!--                        data-type="text" style="float: right;">-->
+                <!--                  <i class="layui-icon">&#xe654;</i>-->
+                <!--                </button>-->
+              </div>
+            </div>
+          </div>
+          <template v-for="(item, index) in data.defendant_avoid.slice(1)" :key='index'>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-input-inline" style="margin-left:0px ;">
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.defendant_avoid[index+1].name"
+                                :options="$store.state.defendantname" placeholder="请选择被告"
+                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+              </div>
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <div class="myradiomargin" style="width: 90%;float: left;">
+                    <input type="radio" value="1" v-model="data.defendant_avoid[0].is_avoid" class="myradio" checked><label> 不申请回避 </label>
+                    <input type="radio" value="2" v-model="data.defendant_avoid[0].is_avoid" class="myradio"><label> 申请回避 </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
 
     <div class="layui-form-item">
       <div class="layui-input-block">
@@ -238,6 +208,9 @@
 </template>
 
 <script type="text/javascript">
+
+import 'vue-multiselect/dist/vue-multiselect.css'
+import VueMultiselect from 'vue-multiselect'
 
 export default {
 
@@ -288,6 +261,9 @@ export default {
     return {data: data}
 
   },
+  components:{
+    VueMultiselect
+  },
   computed: {
 
   },
@@ -306,28 +282,28 @@ export default {
       var judge_info = JSON.parse(localStorage.getItem(this.$store.state.court_number)).BasicInfo.judge
       this.data.selected_judge=judge_info
     },
-    getAccuser(){
-      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-      if (wholeItem != null) {
-        if ( "PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0){
-          this.data.selected_accuser=[]
-          for(var i = 0; i<wholeItem.PlaintiffItems.length; i++){
-            this.data.selected_accuser[i]={name:wholeItem.PlaintiffItems[i].accuser}
-          }
-        }
-      }
-    },
-    getDefendant(){
-      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-      if (wholeItem != null) {
-        if ( "DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0){
-          this.data.selected_defendant=[]
-          for(var i = 0; i<wholeItem.DefendantItems.length; i++){
-            this.data.selected_defendant[i]={name:wholeItem.DefendantItems[i].defendant}
-          }
-        }
-      }
-    },
+    // getAccuser(){
+    //   var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    //   if (wholeItem != null) {
+    //     if ( "PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0){
+    //       this.data.selected_accuser=[]
+    //       for(var i = 0; i<wholeItem.PlaintiffItems.length; i++){
+    //         this.data.selected_accuser[i]={name:wholeItem.PlaintiffItems[i].accuser}
+    //       }
+    //     }
+    //   }
+    // },
+    // getDefendant(){
+    //   var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    //   if (wholeItem != null) {
+    //     if ( "DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0){
+    //       this.data.selected_defendant=[]
+    //       for(var j = 0; j<wholeItem.DefendantItems.length; j++){
+    //         this.data.selected_defendant[j]={name:wholeItem.DefendantItems[j].defendant}
+    //       }
+    //     }
+    //   }
+    // },
     add_component(datatype) {
       switch (datatype) {
         case "defendant_avoid":
