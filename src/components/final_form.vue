@@ -2,102 +2,97 @@
   <div class="layui-card">
     <div class="layui-card-body>">
       <form class="layui-form">
-        <div class="layui-form-item">
-          <div class="layui-col-md2">
-            <div class="layui-input-block">
+        <div class="layui-form-item layui-form-pane">
               <div class="layui-form-label">审判员</div>
-            </div>
-          </div>
-          <div class="layui-col-md7">
             <div class="layui-input-block">
               <textarea type="text" class="layui-input">双方发表最后陈述意见</textarea>
             </div>
-          </div>
         </div>
 
-        <div class="layui-form-item">
-          <div class="layui-col-md3">
-            <input type="text" name="title" v-model="data.finald_accuser[0].final_accuser" placeholder="原告" autocomplete="off"
-                   class="layui-input" >
-          </div>
-          <div class="layui-col-md6">
-            <input type="text" name="title" v-model="data.finald_accuser[0].final_accuser_state" placeholder="原告陈述意见" autocomplete="off"
-                   class="layui-input" style="margin-left:15px">
-          </div>
-          <div class="layui-col-md1">
-            <button @click="add_component('finald_accuser')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                    data-type="text">
-              <i class="layui-icon">&#xe654;</i>
-            </button>
-          </div>
-        </div>
+        <div class="layui-form-item" pane>
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-input-inline" style="margin-left:0px ;">
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.finald_accuser[0].final_accuser"
+                              :options="$store.state.defendantname" placeholder="请选择原告"
+                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+            </div>
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <input type="text" v-model="data.finald_accuser[0].final_accuser_state"   placeholder="原告陈述意见" autocomplete="off"
+                       class="layui-input" style="width: 90%;float: left;">
+                <button @click="add_component('finald_accuser')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text">
+                  <i class="layui-icon">&#xe654;</i>
+                </button>
+              </div>
 
-        <div class="layui-form-item">
-          <div class="layui-col-md3">
-            <input type="text" name="title"  v-model="data.finald_defendant[0].final_defendant" placeholder="被告" autocomplete="off"
-                   class="layui-input" >
+            </div>
           </div>
-          <div class="layui-col-md6">
-            <input type="text" name="title"  v-model="data.finald_defendant[0].final_defendant_state" placeholder="被告陈述意见" autocomplete="off"
-                   class="layui-input" style="margin-left:15px">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-input-inline" style="margin-left:0px ;">
+              <VueMultiselect :option-height="38"  :show-labels="false"  v-model="data.finald_defendant[0].final_defendant"
+                              :options="$store.state.defendantname" placeholder="请选择被告"
+                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+            </div>
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <input type="text"  v-model="data.finald_defendant[0].final_defendant_state" placeholder="被告陈述意见" autocomplete="off"
+                       class="layui-input" style="width: 90%;float: left;">
+                <button @click="add_component('finald_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text">
+                  <i class="layui-icon">&#xe654;</i>
+                </button>
+              </div>
+            </div>
           </div>
-          <div class="layui-col-md1">
-            <button @click="add_component('finald_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                    data-type="text">
-              <i class="layui-icon">&#xe654;</i>
-            </button>
-          </div>
-        </div>
+          <template v-for="(item, index) in data.finald_accuser.slice(1)" :key="index">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-input-inline" style="margin-left:0px ;">
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.finald_accuser[index+1].final_defendant"
+                                :options="$store.state.defendantname" placeholder="请选择原告"
+                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+              </div>
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <input type="text" v-model="data.finald_accuser[0].final_accuser_state"   placeholder="原告陈述意见" autocomplete="off"
+                         class="layui-input" style="width: 90%;float: left;">
+                  <button @click="delete_component('finald_accuser',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                          data-type="text">
+                    <i class="layui-icon">&#xe640;</i>
+                  </button>
+                </div>
 
-        <template v-for="(item, index) in data.finald_accuser.slice(1)" :key="index">
-          <div class="layui-form-item">
-            <div class="layui-col-md3">
-              <input type="text" v-model="data.finald_accuser[index+1].final_accuser"  placeholder="原告" autocomplete="off" class="layui-input">
+              </div>
             </div>
-            <div class="layui-col-md6">
-              <input type="text" v-model="data.finald_accuser[index+1].final_accuser_state"  placeholder="原告辩论意见" autocomplete="off"
-                     class="layui-input" style="margin-left:15px">
-            </div>
-            <div class="layui-col-md1">
-              <button @click="delete_component('finald_accuser',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="text">
-                <i class="layui-icon">&#xe640;</i>
-              </button>
-            </div>
-          </div>
-        </template>
+          </template>
 
-        <template v-for="(item, index) in data.finald_defendant.slice(1)" :key="index">
-          <div class="layui-form-item">
-            <div class="layui-col-md3">
-              <input type="text" name="title"  v-model="data.finald_defendant[index+1].final_defendant" placeholder="被告" autocomplete="off"
-                     class="layui-input" >
+          <template v-for="(item, index) in data.finald_defendant.slice(1)" :key="index">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-input-inline" style="margin-left:0px ;">
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.finald_defendant[index+1].final_defendant"
+                                :options="$store.state.defendantname" placeholder="请选择被告"
+                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+              </div>
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <input type="text" v-model="data.finald_defendant[index+1].final_defendant_state" placeholder="被告陈述意见" autocomplete="off"
+                         class="layui-input" style="width: 90%;float: left;">
+                  <button @click="delete_component('finald_defendant',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                          data-type="text">
+                    <i class="layui-icon">&#xe640;</i>
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="layui-col-md6">
-              <input type="text" name="title"  v-model="data.finald_defendant[index+1].final_defendant_state" placeholder="被告陈述意见" autocomplete="off"
-                     class="layui-input" style="margin-left:15px">
-            </div>
-            <div class="layui-col-md1">
-              <button @click="delete_component('finald_defendant',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="text">
-                <i class="layui-icon">&#xe640;</i>
-              </button>
-            </div>
-          </div>
-        </template>
-        <div class="layui-form-item">
-          <div class="layui-input-block">
-            <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
-          </div>
+          </template>
         </div>
-        <hr>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-
+import VueMultiselect from "vue-multiselect";
 // } else data = JSON.parse(localStorage.getItem("final_form"));
 // console.log(data);
 export default {
@@ -128,6 +123,7 @@ export default {
   },
 
   components: {
+    VueMultiselect
   },
   methods: {
     add_component(datatype) {

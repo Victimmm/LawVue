@@ -1,99 +1,114 @@
 <template>
   <div class="layui-card">
     <div class="layui-card-body>">
-      <form class="layui-form">
-        <div class="layui-form-item">
-          <div class="layui-col-md2">
-            <div class="layui-input-block">
-              <div class="layui-form-label">审判员</div>
-            </div>
-          </div>
-          <div class="layui-col-md7">
-            <div class="layui-input-block">
-              <textarea type="text" class="layui-input">举证质证结束，下面进入法庭询问</textarea>
-            </div>
+      <form class="layui-form layui-form-pane">
+        <div class="layui-form-item" pane>
+          <label class="layui-form-label" style="text-align: center">审判员</label>
+          <div class="layui-input-block">
+            <textarea type="text" class="layui-input" style="text-align: center">举证质证结束，下面进入法庭询问</textarea>
           </div>
         </div>
-        <hr>
-        <div class="layui-form-item">
-          <div class="layui-col-md2">
-            <div class="layui-input-block">
-              <label class="layui-form-label">问题：</label>
-            </div>
-          </div>
-          <div class="layui-col-md7">
-            <div class="layui-input-block">
-              <input type="text" v-model="data.inquiryd_question[0].inquiry_question"  placeholder="问题" autocomplete="off" class="layui-input"  >
-            </div>
-          </div>
-          <div class="layui-col-md1">
-            <button @click="add_component('inquiryd_question')" type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text">
-              <i class="layui-icon">&#xe654;</i>
-            </button>
-          </div>
-        </div>
-        <hr>
-        <div class="layui-form-item">
-          <div class="layui-col-md3">
-            <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser" placeholder="原告姓名" autocomplete="off" class="layui-input"  >
-          </div>
-          <div class="layui-col-md6">
-            <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser_answer" placeholder="回答" autocomplete="off" class="layui-input" style="margin-left:12px ">
-          </div>
-        </div>
-        <div class="layui-form-item">
-          <div class="layui-col-md3">
-            <input type="text" v-model="data.inquiryd_question[0].inquiry_defendant" placeholder="被告姓名" autocomplete="off" class="layui-input"  >
-          </div>
-          <div class="layui-col-md6">
-            <input type="text" v-model="data.inquiryd_question[0].inquiry_defendant_answer" placeholder="回答" autocomplete="off" class="layui-input" style="margin-left:12px ">
-          </div>
-        </div>
-
-<!--        -->
-        <template v-for="(item, index) in data.inquiryd_question.slice(1)" :key="index">
-
-          <div class="layui-form-item">
-            <div class="layui-col-md2">
-              <div class="layui-input-block">
-                <label class="layui-form-label">问题：</label>
-              </div>
-            </div>
-            <div class="layui-col-md7">
-              <div class="layui-input-block">
-                <input type="text" v-model="data.inquiryd_question[index+1].inquiry_question"  placeholder="问题" autocomplete="off" class="layui-input"  >
-              </div>
-            </div>
-            <div class="layui-col-md1">
-              <button @click="delete_component('inquiryd_question',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text">
-                <i class="layui-icon">&#xe640;</i>
+        <div class="layui-form-item" pane>
+          <label class="layui-form-label" style="text-align: center">问题</label>
+          <div class="layui-input-block">
+            <div class="myselect-div">
+              <input type="text" v-model="data.inquiryd_question[0].inquiry_question" placeholder="问题" autocomplete="off"
+                     class="layui-input" style="width: 90%;float: left;">
+              <button @click="add_component('inquiryd_question')" type="button"
+                      class="layui-btn layui-btn-primary layui-btn-sm"
+                      data-type="text" style="float: right;">
+                <i class="layui-icon">&#xe654;</i>
               </button>
             </div>
           </div>
-          <hr>
-          <div class="layui-form-item">
-            <div class="layui-col-md3">
-              <input type="text" v-model="data.inquiryd_question[index+1].inquiry_accuser" placeholder="原告姓名" autocomplete="off" class="layui-input"  >
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-input-inline" style="margin-left:0px ;">
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[0].inquiry_accuser"
+                              :options="$store.state.defendantname" placeholder="请选择原告"
+                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
             </div>
-            <div class="layui-col-md6">
-              <input type="text" v-model="data.inquiryd_question[index+1].inquiry_accuser_answer" placeholder="回答" autocomplete="off" class="layui-input" style="margin-left:12px ">
+<!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
+<!--              <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser" placeholder="原告姓名" autocomplete="off"-->
+<!--                     class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">-->
+<!--            </div>-->
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser_answer" placeholder="回答" autocomplete="off"
+                       class="layui-input" style="width: 100%;float: left;">
+                <!--                <button @click="add_component('accshowd_evidence')" type="button"-->
+                <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
+                <!--                        data-type="text" style="float: right;">-->
+                <!--                  <i class="layui-icon">&#xe654;</i>-->
+                <!--                </button>-->
+              </div>
             </div>
           </div>
-          <div class="layui-form-item">
-            <div class="layui-col-md3">
-              <input type="text" v-model="data.inquiryd_question[index+1].inquiry_defendant" placeholder="被告姓名" autocomplete="off" class="layui-input"  >
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-input-inline" style="margin-left:0px ;">
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[0].inquiry_defendant"
+                              :options="$store.state.defendantname" placeholder="请选择被告"
+                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
             </div>
-            <div class="layui-col-md6">
-              <input type="text" v-model="data.inquiryd_question[index+1].inquiry_defendant_answer" placeholder="回答" autocomplete="off" class="layui-input" style="margin-left:12px ">
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <input type="text" v-model="data.inquiryd_question[0].inquiry_defendant_answer" placeholder="回答" autocomplete="off"
+                       class="layui-input" style="width: 100%;float: left;">
+              </div>
             </div>
           </div>
-          <hr>
-        </template>
-        <div class="layui-form-item">
-          <div class="layui-input-block">
-            <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
-          </div>
+
         </div>
+        <template v-for="(item, index) in data.inquiryd_question.slice(1)" :key="index">
+          <div class="layui-form-item">
+            <label class="layui-form-label" style="text-align: center">问题</label>
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <input type="text" v-model="data.inquiryd_question[index+1].inquiry_question" placeholder="问题" autocomplete="off"
+                       class="layui-input" style="width: 90%;float: left;">
+                <button @click="delete_component('inquiryd_question',1)" type="button"
+                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text" style="float: right;">
+                  <i class="layui-icon">&#xe640;</i>
+                </button>
+              </div>
+            </div>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-input-inline" style="margin-left:0px ;">
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[0].inquiry_accuser"
+                                :options="$store.state.defendantname" placeholder="请选择原告"
+                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+              </div>
+              <!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
+              <!--              <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser" placeholder="原告姓名" autocomplete="off"-->
+              <!--                     class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">-->
+              <!--            </div>-->
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser_answer" placeholder="回答" autocomplete="off"
+                         class="layui-input" style="width: 100%;float: left;">
+                  <!--                <button @click="add_component('accshowd_evidence')" type="button"-->
+                  <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
+                  <!--                        data-type="text" style="float: right;">-->
+                  <!--                  <i class="layui-icon">&#xe654;</i>-->
+                  <!--                </button>-->
+                </div>
+              </div>
+            </div>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-input-inline" style="margin-left:0px ;">
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[index+1].inquiry_defendant"
+                                :options="$store.state.defendantname" placeholder="请选择被告"
+                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+              </div>
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <input type="text" v-model="data.inquiryd_question[index+1].inquiry_defendant_answer" placeholder="回答" autocomplete="off"
+                         class="layui-input" style="width: 100%;float: left;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
         <hr>
       </form>
     </div>
@@ -101,8 +116,9 @@
 </template>
 
 <script>
-
+import VueMultiselect from "vue-multiselect";
 export default {
+
   data() {
     var data;
     data = {
@@ -126,6 +142,7 @@ export default {
   },
 
   components: {
+    VueMultiselect
   },
   methods: {
     add_component(datatype) {
