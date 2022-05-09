@@ -3,16 +3,52 @@
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <div class="layui-bg-gray">
 
+<!--    <div id="test">-->
+<!--      <fieldset class="layui-elem-field layui-field-title">-->
+<!--        <legend>测试</legend>-->
+<!--        <div class="layui-field-box">-->
+<!--          <div class="content">-->
+<!--            <div>-->
+<!--              content-0-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              content-1-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              content-2-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              content-3-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              content-4-->
+<!--            </div>-->
+<!--          </div>-->
+<!--&lt;!&ndash;          <ul class="navs">&ndash;&gt;-->
+<!--&lt;!&ndash;            <li :class="{active: active===0}">&ndash;&gt;-->
+<!--&lt;!&ndash;              content-0&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li :class="{active: active===1}">&ndash;&gt;-->
+<!--&lt;!&ndash;              content-1&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li :class="{active: active===2}">&ndash;&gt;-->
+<!--&lt;!&ndash;              content-2&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li :class="{active: active===3}">&ndash;&gt;-->
+<!--&lt;!&ndash;              content-3&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li :class="{active: active===4}">&ndash;&gt;-->
+<!--&lt;!&ndash;              content-4&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;          </ul>&ndash;&gt;-->
 
-    <div id="BasicState">
-      <fieldset class="layui-elem-field layui-field-title">
-        <legend>基本信息陈述</legend>
-        <div class="layui-field-box">
-          <BasicState></BasicState>
-        </div>
-      </fieldset>
+<!--        </div>-->
+<!--      </fieldset>-->
+<!--    </div>-->
 
-    </div>
+
+
+
     <div id="BasicInfo">
       <fieldset class="layui-elem-field layui-field-title">
         <legend>基本信息</legend>
@@ -42,6 +78,16 @@
       </fieldset>
     </div>
 
+    <div id="BasicState">
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>基本信息陈述</legend>
+        <div class="layui-field-box">
+          <BasicState></BasicState>
+        </div>
+      </fieldset>
+    </div>
+
+
     <div id="right_inform">
       <fieldset class="layui-elem-field layui-field-title">
         <legend>权利告知</legend>
@@ -59,13 +105,13 @@
         </div>
       </fieldset>
     </div>
-
-    <div v-if="$store.state.is_todayreply=='1'">
+<!-- 反诉且今日答辩 或者不反诉的情况显示-->
+    <div v-if="($store.state.is_todayreply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='0'">
       <div id="accshow_form">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭调查-原告举证</legend>
           <div class="layui-field-box">
-            <accshow_form ref="accshow_form" ></accshow_form>
+            <accshow_form ref="accshow_form"></accshow_form>
           </div>
         </fieldset>
       </div>
@@ -124,7 +170,24 @@
         </fieldset>
       </div>
     </div>
-
+  </div>
+<!--  右侧目录 -->
+  <div style="display:none">
+    <div id="mynav">
+      <ul class="site-dir layui-layer-wrap"  style="display: block;">
+        <li ><a href="#whole_PlaintiffImf"><cite>原告信息</cite></a></li>
+        <li><a href="#whole_DefendantImf"><cite>被告信息</cite></a></li>
+        <li><a href="#right_inform"><cite>权利告知</cite></a></li>
+        <li><a href="#CourtInves1"><cite>法庭调查1</cite></a></li>
+        <li><a href="#accshow_form"><cite>法庭调查2</cite></a></li>
+        <li><a href="#defendshow_form"><cite>法庭调查3</cite></a></li>
+        <li><a href="#inquiry_form"><cite>法庭询问</cite></a></li>
+        <li><a href="#argue_form"><cite>法庭辩论</cite></a></li>
+        <li><a href="#final_form"><cite>陈述意见</cite></a></li>
+        <li><a href="#mediate_form"><cite>是否调解</cite></a></li>
+        <li><a href="#delivery_form"><cite>电子文书送达</cite></a></li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -146,6 +209,11 @@ import BasicState from "@/components/BasicState";
 
 export default {
   name: 'App',
+  data(){
+    return {
+      active: 0//当前激活的目录
+    }
+  },
   components: {
     BasicInfo,
     PlaintiffImf,
@@ -162,6 +230,7 @@ export default {
     BasicState
   },
   mounted() {
+    window.addEventListener('scroll', this.onScroll)
     // 添加目录控件
     this.$nextTick(function () {
       window.layui.use('layer', function () {
@@ -170,21 +239,7 @@ export default {
           title: '目录',
           skin: 'myskin',
           type: 1,
-          content:
-              "<ul class='site-dir layui-layer-wrap' id='content_list' style='display: block;'>" +
-              "<li><a href='#BasicInfo'><cite>基本信息</cite></a></li>" +
-              "<li><a href='#whole_PlaintiffImf'><cite>原告信息</cite></a></li>" +
-              "<li><a href='#whole_DefendantImf'><cite>被告信息</cite></a></li>" +
-              "<li><a href='#right_inform'><cite>权利告知</cite></a></li>" +
-              "<li><a href='#CourtInves1'><cite>法庭调查1</cite></a></li>" +
-              "<li><a href='#accshow_form'><cite>法庭调查2</cite></a></li>" +
-              "<li><a href='#defendshow_form'><cite>法庭调查3</cite></a></li>" +
-              "<li><a href='#inquiry_form'><cite>法庭询问</cite></a></li>" +
-              "<li><a href='#argue_form'><cite>法庭辩论</cite></a></li>" +
-              "<li><a href='#final_form'><cite>陈述意见</cite></a></li>" +
-              "<li><a href='#mediate_form'><cite>是否调解</cite></a></li>" +
-              "<li><a href='#delivery_form'><cite>电子文书送达</cite></a></li>" +
-              "</ul>",
+          content:document.getElementById("mynav").innerHTML,
           shade: 0,
           closeBtn: 0,
           offset: 'r'
@@ -192,6 +247,35 @@ export default {
       });
     })
   },
+  destroy() {
+    // 必须移除监听器，不然当该vue组件被销毁了，监听器还在就会出错
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods:{
+    // 滚动监听器
+    onScroll() {
+      // 获取所有锚点元素
+      const navContents = document.querySelectorAll('.content div')
+      // 所有锚点元素的 offsetTop
+      const offsetTopArr = []
+      navContents.forEach(item => {
+        offsetTopArr.push(item.offsetTop)
+      })
+      // 获取当前文档流的 scrollTop
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      // 定义当前点亮的导航下标
+      let navIndex = 0
+      for (let n = 0; n < offsetTopArr.length; n++) {
+        // 如果 scrollTop 大于等于第 n 个元素的 offsetTop 则说明 n-1 的内容已经完全不可见
+        // 那么此时导航索引就应该是 n 了
+        if (scrollTop >= offsetTopArr[n]) {
+          navIndex = n
+        }
+      }
+      // 把下标赋值给 vue 的 data
+      this.active = navIndex
+    }
+  }
 }
 
 
@@ -267,19 +351,19 @@ body .myskin {
   transform: rotate(-45deg);
 }
 
-.divcenter{
+.divcenter {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.myinput-block{
+.myinput-block {
   margin-top: 8px;
 }
 
-.myradiomargin{
-width: 80%;
-  border-style:solid;
+.myradiomargin {
+  width: 80%;
+  border-style: solid;
   background-color: #fff;
   border-width: 1px;
   border-radius: 0 2px 2px 0;
@@ -291,12 +375,52 @@ width: 80%;
   line-height: 38px;
   margin-left: 5px;
 }
-.multiselect__tags{
+
+.multiselect__tags {
   min-height: 38px;
   border-radius: 0 2px 2px 0;
 }
-.myselect-div{
+
+.myselect-div {
   width: 80%;
   float: left;
+}
+
+a.layui-this {
+  color: #01AAED;
+}
+
+
+
+.content {
+  background-color: white;
+  width: 500px;
+}
+.content div {
+  width: 100%;
+  height: 600px;
+  font-size: 36px;
+  padding: 20px;
+  background-color: #7ec384;
+}
+.content div:nth-child(2n) {
+  background-color: #847ec3;
+}
+/* 导航栏的样式 */
+.navs {
+  position: fixed;
+  top: 80px;
+  left: 700px;
+  background-color: #efefef;
+}
+.navs li {
+  padding: 0 20px;
+  line-height: 1.6;
+  font-size: 24px;
+}
+/* 当导航被点亮后改变颜色 */
+.navs .active{
+  color: #847ec3;
+  background-color: #e2e2e2;
 }
 </style>

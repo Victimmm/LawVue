@@ -26,6 +26,8 @@ export default createStore({
 					let jurorname=['']
 					let judgename=['']
 					let court_clerk=""
+					let is_todayreply=""
+					let is_counterclaim=""
 					var wholeItem = JSON.parse(localStorage.getItem(pair[1]))
 					if (wholeItem != null )
 					{
@@ -53,6 +55,10 @@ export default createStore({
 							}
 							court_clerk=wholeItem.BasicInfo.court_clerk
 						}
+						if("CourtInves" in wholeItem){
+							is_todayreply=wholeItem.CourtInves.is_todayreply
+							is_counterclaim=wholeItem.CourtInves.is_counterclaim
+						}
 
 					}
 					return {
@@ -63,8 +69,9 @@ export default createStore({
 						chief_judgename:chief_judgename,
 						jurorname:jurorname,
 						judgename:judgename,
-						is_todayreply:"",
+						is_todayreply:is_todayreply,
 						court_number:pair[1],
+						is_counterclaim:is_counterclaim,
 						court_clerk:court_clerk
 					}
 				}
@@ -77,9 +84,10 @@ export default createStore({
 			chief_judgename:[""],
 			jurorname:[""],
 			judgename:[""],
-			is_todayreply:"",
+			is_todayreply:"0",
 			court_number:"",
-			court_clerk:""
+			court_clerk:"",
+			is_counterclaim:"0"
 		}
 	},
 	mutations: {
@@ -98,6 +106,9 @@ export default createStore({
 		setIsTodayReply(state,payload){
 			// let data=Object.assign({},payload)
 			state.is_todayreply= payload
+		},
+		setIsCourtClaim(state,payload){
+			state.is_counterclaim = payload
 		},
 		delete_components(state, payload) {
 			switch (payload[0]) {
@@ -163,12 +174,6 @@ export default createStore({
 					break
 			}
 
-		}
-	},
-	getters: {
-		// ...
-		getPlaintiff: (state) => {
-			return state.is_counterclaim
 		}
 	}
 });

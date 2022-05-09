@@ -298,7 +298,6 @@ export default {
   watch: {
     data: {
       handler() {
-        console.log("change")
         var wholeItem
         if (this.$store.state.court_number == "") {
           // window.layui.layer.msg('请优先完善基本信息表格');

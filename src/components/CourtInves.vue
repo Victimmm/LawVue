@@ -116,10 +116,10 @@
             <div class="myradiomargin">
               <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim"
                      class="myradio" value="1"
-                     title="反诉"><label>反诉</label>
+                     title="反诉" @change="setCourterClaim()"><label>反诉</label>
               <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim"
                      class="myradio" value="0"
-                     title="不反诉" style="margin-left: 15px;"><label>不反诉</label>
+                     title="不反诉" style="margin-left: 15px;" @change="setCourterClaim()"><label>不反诉</label>
             </div>
           </div>
         </div>
@@ -323,6 +323,9 @@ export default {
     setIsTodayReply() {
       this.$store.commit("setIsTodayReply", this.data.is_todayreply)
       // console.log(data.is_counterclaim)
+    },
+    setCourterClaim(){
+      this.$store.commit("setIsCourtClaim", this.data.is_counterclaim)
     }
   },
   watch: {
