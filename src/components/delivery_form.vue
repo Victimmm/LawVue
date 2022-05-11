@@ -1,90 +1,140 @@
 <template>
   <div class="layui-card">
     <div class="layui-card-body>">
-      <form class="layui-form">
-        <div class="layui-form-item">
-          <div class="layui-col-md2">
+      <form class="layui-form layui-form-pane">
+        <div class="layui-form-item layui-form-pane">
+          <div class="layui-form-label">审判员</div>
             <div class="layui-input-block">
-              <div class="layui-form-label">审判员</div>
+              <textarea type="text" class="layui-input" style="text-align: center">当事人是否同意电子送达裁判文书？</textarea>
             </div>
-          </div>
-          <div class="layui-col-md7">
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-input-inline" style="margin-left:0px ;">
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.delivery_accuser"
+                              :options="$store.state.plaintiffname" placeholder="请选择原告"
+                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+            </div>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input ">当事人是否同意电子送达裁判文书？</textarea>
+              <div class="myselect-div">
+                <div class="myradiomargin" style="width: 100%;float: left;">
+                  <input type="radio" value="1" v-model="data.is_delivery_accuser" class="myradio">
+                  <label>同意</label>
+                  <input type="radio" value="2" v-model="data.is_delivery_accuser" class="myradio">
+                  <label>不同意</label>
+                </div>
+                <!--                <button @click="add_component('defendant_avoid')" type="button"-->
+                <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
+                <!--                        data-type="text" style="float: right;">-->
+                <!--                  <i class="layui-icon">&#xe654;</i>-->
+                <!--                </button>-->
+              </div>
             </div>
           </div>
         </div>
+<!--          <div class="layui-col-md3">-->
+<!--            <input type="text" v-model="data.delivery_accuser"  placeholder="原告" autocomplete="off" class="layui-input">-->
+<!--          </div>-->
+<!--          <div class="layui-col-md6">-->
+<!--            <div class="layui-card-body">-->
+<!--              <input type="radio" value="1" v-model="data.is_delivery_accuser" class="myradio">-->
+<!--              <label>同意</label>-->
+<!--              <input type="radio" value="2" v-model="data.is_delivery_accuser" class="myradio">-->
+<!--              <label>不同意</label>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <hr>-->
+        <div class="layui-form-item" pane>
+          <label class="layui-form-label">原告电子邮件地址</label>
+          <div class="layui-input-block">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <input type="text" v-model="data.email_accuser" placeholder="原告电子邮件地址" autocomplete="off"
+                     class="layui-input">
+            </div>
+          </div>
+        </div>
+<!--        <div class="layui-form-item">-->
+<!--          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
+<!--          <input type="text" v-model="data.email_accuser" placeholder="原告电子邮件地址" autocomplete="off"-->
+<!--                 class="layui-input">-->
+<!--            </div>-->
+<!--        </div>-->
+
         <div class="layui-form-item">
-          <div class="layui-col-md3">
-            <input type="text" v-model="data.delivery_accuser"  placeholder="原告" autocomplete="off" class="layui-input">
-          </div>
-          <div class="layui-col-md6">
-            <div class="layui-card-body">
-              <input type="radio" value="1" v-model="data.is_delivery_accuser" class="myradio">
-              <label>同意</label>
-              <input type="radio" value="2" v-model="data.is_delivery_accuser" class="myradio">
-              <label>不同意</label>
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-input-inline" style="margin-left:0px ;">
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.deliveryd_defendant[0].delivery_defendant"
+                              :options="$store.state.defendantname" placeholder="请选择被告"
+                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+            </div>
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <div class="myradiomargin" style="width: 90%;float: left;">
+                  <input type="radio" v-model="data.deliveryd_defendant[0].is_delivery_defendant" value="1" class="myradio">
+                  <label>同意</label>
+                  <input type="radio" v-model="data.deliveryd_defendant[0].is_delivery_defendant" value="2" class="myradio">
+                  <label>不同意</label>
+                </div>
+                <button @click="add_component('deliveryd_defendant')" type="button"
+                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text" style="float: right;">
+                  <i class="layui-icon">&#xe654;</i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <hr>
-        <div class="layui-col-md9">
-          <input type="text" v-model="data.email_accuser" placeholder="原告电子邮件地址" autocomplete="off"
-                 class="layui-input">
-        </div>
-        <hr>
-        <div class="layui-form-item">
-          <div class="layui-col-md3">
-            <input type="text" v-model="data.deliveryd_defendant[0].delivery_defendant" placeholder="被告" autocomplete="off" class="layui-input">
-          </div>
-          <div class="layui-col-md6">
-            <div class="layui-card-body">
-              <input type="radio" v-model="data.deliveryd_defendant[0].is_delivery_defendant" value="1" class="myradio">
-              <label>同意</label>
-              <input type="radio" v-model="data.deliveryd_defendant[0].is_delivery_defendant" value="2" class="myradio">
-              <label>不同意</label>
+
+        <div class="layui-form-item" pane>
+          <label class="layui-form-label">被告电子邮件地址</label>
+          <div class="layui-input-block">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <input type="text" v-model="data.deliveryd_defendant[0].email_defendant" placeholder="被告电子邮件地址" autocomplete="off"
+                     class="layui-input">
             </div>
           </div>
-          <div class="layui-col-md1">
-            <button @click="add_component('deliveryd_defendant')" type="button"
-                    class="layui-btn layui-btn-primary layui-btn-sm"  data-type="text">
-              <i class="layui-icon">&#xe654;</i>
-            </button>
-          </div>
         </div>
-        <div class="layui-col-md9">
-          <input type="text" v-model="data.deliveryd_defendant[0].email_defendant" name="title" placeholder="被告电子邮件地址" autocomplete="off" class="layui-input">
-        </div>
-        <hr>
+<!--        <div class="layui-form-item">-->
+<!--          <input type="text" v-model="data.deliveryd_defendant[0].email_defendant" name="title" placeholder="被告电子邮件地址" autocomplete="off" class="layui-input">-->
+<!--        </div>-->
 
         <template v-for="(item, index) in data.deliveryd_defendant.slice(1)" :key="index">
           <div class="layui-form-item">
-            <div class="layui-col-md3">
-              <input type="text" v-model="data.deliveryd_defendant[index+1].delivery_defendant" placeholder="被告" autocomplete="off" class="layui-input">
-            </div>
-            <div class="layui-col-md6">
-              <div class="layui-card-body">
-                <input type="radio" v-model="data.deliveryd_defendant[index+1].is_delivery_defendant" value="1" class="myradio">
-                <label>同意</label>
-                <input type="radio" v-model="data.deliveryd_defendant[index+1].is_delivery_defendant" value="2" class="myradio">
-                <label>不同意</label>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-input-inline" style="margin-left:0px ;">
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.deliveryd_defendant[0].delivery_defendant"
+                                :options="$store.state.defendantname" placeholder="请选择被告"
+                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+              </div>
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <div class="myradiomargin" style="width: 90%;float: left;">
+                    <input type="radio" v-model="data.deliveryd_defendant[index+1].is_delivery_defendant" value="1" class="myradio">
+                    <label>同意</label>
+                    <input type="radio" v-model="data.deliveryd_defendant[index+1].is_delivery_defendant" value="2" class="myradio">
+                    <label>不同意</label>
+                  </div>
+                  <button @click="delete_component('deliveryd_defendant',1)" type="button"
+                          class="layui-btn layui-btn-primary layui-btn-sm"
+                          data-type="text" style="float: right;">
+                    <i class="layui-icon">&#xe640;</i>
+                  </button>
+                </div>
               </div>
             </div>
-            <div class="layui-col-md1">
-              <button @click="delete_component('deliveryd_defendant',1)" type="button"
-                      class="layui-btn layui-btn-primary layui-btn-sm"  data-type="text">
-                <i class="layui-icon">&#xe640;</i>
-              </button>
+          </div>
+
+          <div class="layui-form-item" pane>
+            <label class="layui-form-label">被告电子邮件地址</label>
+            <div class="layui-input-block">
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+                <input type="text" v-model="data.deliveryd_defendant[index+1].email_defendant" placeholder="被告电子邮件地址" autocomplete="off"
+                       class="layui-input">
+              </div>
             </div>
           </div>
-          <div class="layui-col-md9">
-            <input type="text" v-model="data.deliveryd_defendant[index+1].email_defendant" name="title" placeholder="被告电子邮件地址" autocomplete="off" class="layui-input">
-          </div>
-          <hr>
         </template>
-        <div class="layui-form-item">
-            <button class="layui-btn" v-on:click.prevent="save_localstorage"  style="display: table;margin: 0 auto;">保存</button>
-        </div>
       </form>
     </div>
   </div>
@@ -92,7 +142,7 @@
 </template>
 
 <script>
-
+import VueMultiselect from "vue-multiselect";
 export default {
   data() {
     var data;
@@ -119,6 +169,7 @@ export default {
   },
 
   components: {
+    VueMultiselect
   },
   methods: {
     add_component(datatype) {
