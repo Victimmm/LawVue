@@ -24,7 +24,7 @@
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[0].inquiry_accuser"
-                              :options="$store.state.defendantname" placeholder="请选择原告"
+                              :options="$store.state.plaintiffname" placeholder="请选择原告"
                               style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
             </div>
 <!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
@@ -74,7 +74,7 @@
             </div>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[0].inquiry_accuser"
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[index+1].inquiry_accuser"
                                 :options="$store.state.defendantname" placeholder="请选择原告"
                                 style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
               </div>

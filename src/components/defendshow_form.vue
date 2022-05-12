@@ -92,7 +92,7 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_facticity" class="myradio" checked><label>是</label>
+                        <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_facticity" class="myradio" ><label>是</label>
                         <input type="radio" value="false" v-model="data.defendshowd_accuser[0].defendshow_facticity" class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -103,7 +103,7 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_legality" class="myradio" checked><label>是</label>
+                        <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_legality" class="myradio" ><label>是</label>
                         <input type="radio" value="false" v-model="data.defendshowd_accuser[0].defendshow_legality" class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -114,7 +114,7 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_relevance" class="myradio" checked><label>是</label>
+                        <input type="radio" value="true" v-model="data.defendshowd_accuser[0].defendshow_relevance" class="myradio" ><label>是</label>
                         <input type="radio" value="false" v-model="data.defendshowd_accuser[0].defendshow_relevance" class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -160,7 +160,7 @@
                     <div class="layui-input-block">
                       <div class="myselect-div">
                         <div class="myradiomargin" style="width: 100%;float: left;">
-                          <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_facticity" class="myradio" checked><label>是</label>
+                          <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_facticity" class="myradio" ><label>是</label>
                           <input type="radio" value="false" v-model="data.defendshowd_accuser[index+1].defendshow_facticity" class="myradio"><label>否</label>
                         </div>
                       </div>
@@ -171,7 +171,7 @@
                     <div class="layui-input-block">
                       <div class="myselect-div">
                         <div class="myradiomargin" style="width: 100%;float: left;">
-                          <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_legality" class="myradio" checked><label>是</label>
+                          <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_legality" class="myradio" ><label>是</label>
                           <input type="radio" value="false" v-model="data.defendshowd_accuser[index+1].defendshow_legality" class="myradio"><label>否</label>
                         </div>
                       </div>
@@ -182,7 +182,7 @@
                     <div class="layui-input-block">
                       <div class="myselect-div">
                         <div class="myradiomargin" style="width: 100%;float: left;">
-                          <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_relevance" class="myradio" checked><label>是</label>
+                          <input type="radio" value="true" v-model="data.defendshowd_accuser[index+1].defendshow_relevance" class="myradio" ><label>是</label>
                           <input type="radio" value="false" v-model="data.defendshowd_accuser[index+1].defendshow_relevance" class="myradio"><label>否</label>
                         </div>
                       </div>
@@ -226,7 +226,7 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numfacticity" class="myradio" checked><label>是</label>
+                    <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numfacticity" class="myradio" ><label>是</label>
                     <input type="radio" value="false" v-model="data.defendshowd_defendant[0].defendshow_numfacticity" class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -237,7 +237,7 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numlegality" class="myradio" checked><label>是</label>
+                    <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numlegality" class="myradio" ><label>是</label>
                     <input type="radio" value="false" v-model="data.defendshowd_defendant[0].defendshow_numlegality" class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -248,7 +248,7 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numrelevance" class="myradio" checked><label>是</label>
+                    <input type="radio" value="true" v-model="data.defendshowd_defendant[0].defendshow_numrelevance" class="myradio" ><label>是</label>
                     <input type="radio" value="false" v-model="data.defendshowd_defendant[0].defendshow_numrelevance" class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -289,7 +289,7 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numfacticity" class="myradio" checked><label>是</label>
+                    <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numfacticity" class="myradio" ><label>是</label>
                     <input type="radio" value="false" v-model="data.defendshowd_defendant[index+1].defendshow_numfacticity" class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -300,7 +300,7 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numlegality" class="myradio" checked><label>是</label>
+                    <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numlegality" class="myradio" ><label>是</label>
                     <input type="radio" value="false" v-model="data.defendshowd_defendant[index+1].defendshow_numlegality" class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -311,7 +311,7 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numrelevance" class="myradio" checked><label>是</label>
+                    <input type="radio" value="true" v-model="data.defendshowd_defendant[index+1].defendshow_numrelevance" class="myradio" ><label>是</label>
                     <input type="radio" value="false" v-model="data.defendshowd_defendant[index+1].defendshow_numrelevance" class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -325,23 +325,7 @@
             </div>
           </div>
         </template>
-        <div class="layui-form-item" pane>
-          <label class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-            <div class="layui-form-label" style="text-align: center">是否反诉</div>
-              <div class="layui-input-block">
-                <div class="myselect-div">
-                  <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" v-model="data.defendshow_is_counterclaim" class="myradio" value="1" checked>
-                    <label>反诉</label>
-                    <input type="radio" v-model="data.defendshow_is_counterclaim" class="myradio" value="0">
-                    <label>不反诉</label>
-                  </div>
-                </div>
-              </div>
-            </label>
-        </div>
-          <div v-show="data.defendshow_is_counterclaim=='1'">
-            <hr>
+          <div v-show="$store.state.is_counterclaim=='1'">
             <label class="layui-form-label" style="text-align: center">审判员</label>
             <div class="layui-input-block">
               <textarea type="text" class="layui-input" style="text-align: center">反诉原告进行举证</textarea>
@@ -430,7 +414,7 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[0].defendshow_facticity" class="myradio" checked><label>是</label>
+                        <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[0].defendshow_facticity" class="myradio" ><label>是</label>
                         <input type="radio" value="false" v-model="data.defendshowd_accuser_counter[0].defendshow_facticity" class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -441,7 +425,7 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[0].defendshow_legality" class="myradio" checked><label>是</label>
+                        <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[0].defendshow_legality" class="myradio" ><label>是</label>
                         <input type="radio" value="false" v-model="data.defendshowd_accuser_counter[0].defendshow_legality" class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -452,7 +436,7 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[0].defendshow_relevance" class="myradio" checked><label>是</label>
+                        <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[0].defendshow_relevance" class="myradio" ><label>是</label>
                         <input type="radio" value="false" v-model="data.defendshowd_accuser_counter[0].defendshow_relevance" class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -498,7 +482,7 @@
                     <div class="layui-input-block">
                       <div class="myselect-div">
                         <div class="myradiomargin" style="width: 100%;float: left;">
-                          <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[index+1].defendshow_facticity" class="myradio" checked><label>是</label>
+                          <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[index+1].defendshow_facticity" class="myradio" ><label>是</label>
                           <input type="radio" value="false" v-model="data.defendshowd_accuser_counter[index+1].defendshow_facticity" class="myradio"><label>否</label>
                         </div>
                       </div>
@@ -509,7 +493,7 @@
                     <div class="layui-input-block">
                       <div class="myselect-div">
                         <div class="myradiomargin" style="width: 100%;float: left;">
-                          <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[index+1].defendshow_legality" class="myradio" checked><label>是</label>
+                          <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[index+1].defendshow_legality" class="myradio" ><label>是</label>
                           <input type="radio" value="false" v-model="data.defendshowd_accuser_counter[index+1].defendshow_legality" class="myradio"><label>否</label>
                         </div>
                       </div>
@@ -520,7 +504,7 @@
                     <div class="layui-input-block">
                       <div class="myselect-div">
                         <div class="myradiomargin" style="width: 100%;float: left;">
-                          <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[index+1].defendshow_relevance" class="myradio" checked><label>是</label>
+                          <input type="radio" value="true" v-model="data.defendshowd_accuser_counter[index+1].defendshow_relevance" class="myradio" ed><label>是</label>
                           <input type="radio" value="false" v-model="data.defendshowd_accuser_counter[index+1].defendshow_relevance" class="myradio"><label>否</label>
                         </div>
                       </div>
@@ -564,7 +548,7 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[0].defendshow_numfacticity" class="myradio" checked><label>是</label>
+                    <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[0].defendshow_numfacticity" class="myradio" ><label>是</label>
                     <input type="radio" value="false" v-model="data.defendshowd_defendant_counter[0].defendshow_numfacticity" class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -575,7 +559,7 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[0].defendshow_numlegality" class="myradio" checked><label>是</label>
+                    <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[0].defendshow_numlegality" class="myradio" ><label>是</label>
                     <input type="radio" value="false" v-model="data.defendshowd_defendant_counter[0].defendshow_numlegality" class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -586,7 +570,7 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[0].defendshow_numrelevance" class="myradio" checked><label>是</label>
+                    <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[0].defendshow_numrelevance" class="myradio" ><label>是</label>
                     <input type="radio" value="false" v-model="data.defendshowd_defendant_counter[0].defendshow_numrelevance" class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -627,7 +611,7 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[index+1].defendshow_numfacticity" class="myradio" checked><label>是</label>
+                      <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[index+1].defendshow_numfacticity" class="myradio" ><label>是</label>
                       <input type="radio" value="false" v-model="data.defendshowd_defendant_counter[index+1].defendshow_numfacticity" class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -638,7 +622,7 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[index+1].defendshow_numlegality" class="myradio" checked><label>是</label>
+                      <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[index+1].defendshow_numlegality" class="myradio" ><label>是</label>
                       <input type="radio" value="false" v-model="data.defendshowd_defendant_counter[index+1].defendshow_numlegality" class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -649,7 +633,7 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[index+1].defendshow_numrelevance" class="myradio" checked><label>是</label>
+                      <input type="radio" value="true" v-model="data.defendshowd_defendant_counter[index+1].defendshow_numrelevance" class="myradio" ><label>是</label>
                       <input type="radio" value="false" v-model="data.defendshowd_defendant_counter[index+1].defendshow_numrelevance" class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -704,7 +688,6 @@ export default {
           defendshow_numrelevance: "",//关联性(其他被告质证))
           defendshow_query_reason:''
         }],
-        defendshow_is_counterclaim: '1',          //是否反诉
 
         //反诉后的答辩情况
         defendshowd_evidence_counter: [{
@@ -740,13 +723,17 @@ export default {
       data:data
     }
   },
-
+  computed:{
+    evidence_name:{
+      get() {
+        return this.$store.state.evidence_name[this.data.defendshow_evidence]
+      },
+    }
+  },
 
   components:{
     VueMultiselect
   },
-  // mounted(){
-  // },
   methods: {
     add_component(datatype) {
       switch(datatype){
@@ -867,7 +854,7 @@ export default {
           if (wholeItem != null) {
             wholeItem.defendshow_form = this.data
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
-            this.data.defendshow_is_counterclaim=this.$store.state.is_counterclaim
+            // this.data.defendshow_is_counterclaim=this.$store.state.is_counterclaim
           }
         }
       },

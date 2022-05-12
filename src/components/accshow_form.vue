@@ -28,10 +28,9 @@
           </div>
         </div>
         <template v-for="(item, index) in data.accshowd_evidence.slice(1)" :key="index">
-
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px; height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
-              <input type="text" v-model="data.accshowd_evidence[0].accshow_evidence" placeholder="证据名称" autocomplete="off"
+              <input type="text" v-model="data.accshowd_evidence[index+1].accshow_evidence" placeholder="证据名称" autocomplete="off"
                      class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">
             </div>
             <div class="layui-input-block">
@@ -92,7 +91,7 @@
         <div class="layui-input-block">
           <div class="myselect-div">
             <div class="myradiomargin" style="width: 100%;float: left;">
-              <input type="radio" value="true" v-model="data.accshowd_query_evidence[0]. accshow_facticity" class="myradio" checked><label>是</label>
+              <input type="radio" value="true" v-model="data.accshowd_query_evidence[0]. accshow_facticity" class="myradio" ><label>是</label>
               <input type="radio" value="false" v-model="data.accshowd_query_evidence[0].accshow_facticity" class="myradio"><label>否</label>
             </div>
           </div>
@@ -103,7 +102,7 @@
         <div class="layui-input-block">
           <div class="myselect-div">
             <div class="myradiomargin" style="width: 100%;float: left;">
-              <input type="radio" value="true" v-model="data.accshowd_query_evidence[0].accshow_legality" class="myradio" checked><label>是</label>
+              <input type="radio" value="true" v-model="data.accshowd_query_evidence[0].accshow_legality" class="myradio" ><label>是</label>
               <input type="radio" value="false" v-model="data.accshowd_query_evidence[0].accshow_legality" class="myradio"><label>否</label>
             </div>
           </div>
@@ -114,7 +113,7 @@
         <div class="layui-input-block">
           <div class="myselect-div">
             <div class="myradiomargin" style="width: 100%;float: left;">
-              <input type="radio" value="true" v-model="data.accshowd_query_evidence[0].accshow_relevance" class="myradio" checked><label>是</label>
+              <input type="radio" value="true" v-model="data.accshowd_query_evidence[0].accshow_relevance" class="myradio" ><label>是</label>
               <input type="radio" value="false" v-model="data.accshowd_query_evidence[0].accshow_relevance" class="myradio"><label>否</label>
             </div>
           </div>
@@ -123,7 +122,7 @@
       <div class="layui-form-item" pane>
         <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
         <div class="layui-input-block">
-          <textarea v-model="data.accshowd_evidence[0].accshow_fact_reason" placeholder="理由" class="layui-textarea"></textarea>
+          <textarea v-model="data.accshowd_query_evidence[0].accshow_fact_reason" placeholder="理由" class="layui-textarea"></textarea>
         </div>
       </div>
     </div>
@@ -159,7 +158,7 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 100%;float: left;">
-                  <input type="radio" value="true" v-model="data.accshowd_query_evidence[index+1].accshow_facticity" class="myradio" checked><label>是</label>
+                  <input type="radio" value="true" v-model="data.accshowd_query_evidence[index+1].accshow_facticity" class="myradio" ><label>是</label>
                   <input type="radio" value="false" v-model="data.accshowd_query_evidence[index+1].accshow_facticity" class="myradio"><label>否</label>
                 </div>
               </div>
@@ -170,7 +169,7 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 100%;float: left;">
-                  <input type="radio" value="true" v-model="data.accshowd_query_evidence[index+1].accshow_legality" class="myradio" checked><label>是</label>
+                  <input type="radio" value="true" v-model="data.accshowd_query_evidence[index+1].accshow_legality" class="myradio" ><label>是</label>
                   <input type="radio" value="false" v-model="data.accshowd_query_evidence[index+1].accshow_legality" class="myradio"><label>否</label>
                 </div>
               </div>
@@ -181,7 +180,7 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 100%;float: left;">
-                  <input type="radio" value="true" v-model="data.accshowd_query_evidence[index+1].accshow_relevance" class="myradio" checked><label>是</label>
+                  <input type="radio" value="true" v-model="data.accshowd_query_evidence[index+1].accshow_relevance" class="myradio" ><label>是</label>
                   <input type="radio" value="false" v-model="data.accshowd_query_evidence[index+1].accshow_relevance" class="myradio"><label>否</label>
                 </div>
               </div>
@@ -212,23 +211,23 @@ import VueMultiselect from "vue-multiselect";
 export default {
 
   data() {
-    var selectItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if(selectItem != null && "CourtInves" in selectItem) {
-      data = selectItem.CourtInves
-      if ("judge" in selectItem.BasicInfo) {
-        data.selected_judge = selectItem.BasicInfo.judge
-      }
-      if ("PlaintiffItems" in selectItem && selectItem.PlaintiffItems.length > 0) {
-        for (var i = 0; i < selectItem.PlaintiffItems.length; i++) {
-          data.selected_accuser[i] = {name: selectItem.PlaintiffItems[i].accuser}
-        }
-      }
-      if ("DefendantItems" in selectItem && selectItem.DefendantItems.length > 0) {
-        for (var j = 0; j < selectItem.DefendantItems.length; j++) {
-          data.selected_defendant[j] = {name: selectItem.DefendantItems[j].defendant}
-        }
-      }
-    }
+    // var selectItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    // if(selectItem != null && "CourtInves" in selectItem) {
+    //   data = selectItem.CourtInves
+    //   if ("judge" in selectItem.BasicInfo) {
+    //     data.selected_judge = selectItem.BasicInfo.judge
+    //   }
+    //   if ("PlaintiffItems" in selectItem && selectItem.PlaintiffItems.length > 0) {
+    //     for (var i = 0; i < selectItem.PlaintiffItems.length; i++) {
+    //       data.selected_accuser[i] = {name: selectItem.PlaintiffItems[i].accuser}
+    //     }
+    //   }
+    //   if ("DefendantItems" in selectItem && selectItem.DefendantItems.length > 0) {
+    //     for (var j = 0; j < selectItem.DefendantItems.length; j++) {
+    //       data.selected_defendant[j] = {name: selectItem.DefendantItems[j].defendant}
+    //     }
+    //   }
+    // }
     var data;
 // if (localStorage.getItem("accshow_form") == null) {
     data = {
