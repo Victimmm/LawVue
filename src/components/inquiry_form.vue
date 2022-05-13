@@ -21,7 +21,7 @@
               </button>
             </div>
           </div>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[0].inquiry_accuser"
                               :options="$store.state.plaintiffname" placeholder="请选择原告"
@@ -43,7 +43,7 @@
               </div>
             </div>
           </div>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[0].inquiry_defendant"
                               :options="$store.state.defendantname" placeholder="请选择被告"
@@ -72,7 +72,7 @@
                 </button>
               </div>
             </div>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[index+1].inquiry_accuser"
                                 :options="$store.state.defendantname" placeholder="请选择原告"
@@ -94,7 +94,7 @@
                 </div>
               </div>
             </div>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[index+1].inquiry_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择被告"

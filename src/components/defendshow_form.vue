@@ -29,7 +29,7 @@
             </div>
             <template v-for="(item, index) in data.defendshowd_evidence.slice(1)" :key="index">
 
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <input type="text" v-model="data.defendshowd_evidence[index+1].defendshow_evidence" placeholder="证据名称" autocomplete="off"
                          class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">
@@ -351,7 +351,7 @@
             </div>
             <template v-for="(item, index) in data.defendshowd_evidence_counter.slice(1)" :key="index">
 
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <input type="text" v-model="data.defendshowd_evidence_counter[index+1].defendshow_evidence" placeholder="证据名称" autocomplete="off"
                          class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">
@@ -674,18 +674,18 @@ export default {
         defendshowd_accuser: [{
           defendshow_accuser: "",        //原告及其他被告姓名
           defendshow_evidencenum: "",    //证据编号
-          defendshow_facticity: "",      //真实性(原告质证)
-          defendshow_legality: "", //合法性(原告质证)
-          defendshow_relevance: "",//关联性(原告质证)
+          defendshow_facticity: "true",      //真实性(原告质证)
+          defendshow_legality: "true", //合法性(原告质证)
+          defendshow_relevance: "true",//关联性(原告质证)
           defendshow_query_reason: "", //事实和理由(原告质证)
 
         }],
         defendshowd_defendant: [{
           defendshow_defendant: "",        //原告及其他被告姓名(其他被告质证)
           defendshow_numevidence: "",    //证据编号
-          defendshow_numfacticity: "",      //真实性(其他被告质证)
-          defendshow_numlegality: "", //合法性(其他被告质证))
-          defendshow_numrelevance: "",//关联性(其他被告质证))
+          defendshow_numfacticity: "true",      //真实性(其他被告质证)
+          defendshow_numlegality: "true", //合法性(其他被告质证))
+          defendshow_numrelevance: "true",//关联性(其他被告质证))
           defendshow_query_reason:''
         }],
 
@@ -699,18 +699,18 @@ export default {
         defendshowd_accuser_counter: [{
           defendshow_accuser: "",        //原告及其他被告姓名
           defendshow_evidencenum: "",    //证据编号
-          defendshow_facticity: "",      //真实性(原告质证)
-          defendshow_legality: "", //合法性(原告质证)
-          defendshow_relevance: "",//关联性(原告质证)
+          defendshow_facticity: "true",      //真实性(原告质证)
+          defendshow_legality: "true", //合法性(原告质证)
+          defendshow_relevance: "true",//关联性(原告质证)
           defendshow_query_reason: "", //事实和理由(原告质证)
 
         }],
         defendshowd_defendant_counter: [{
           defendshow_defendant: "",        //原告及其他被告姓名(其他被告质证)
           defendshow_numevidence: "",    //证据编号
-          defendshow_numfacticity: "",      //真实性(其他被告质证)
-          defendshow_numlegality: "", //合法性(其他被告质证))
-          defendshow_numrelevance: "",//关联性(其他被告质证))
+          defendshow_numfacticity: "true",      //真实性(其他被告质证)
+          defendshow_numlegality: "true", //合法性(其他被告质证))
+          defendshow_numrelevance: "true",//关联性(其他被告质证))
           defendshow_query_reason:''
         }],
       };
@@ -750,9 +750,9 @@ export default {
           this.data.defendshowd_accuser.push({
             defendshow_accuser:"",        //原告及其他被告姓名
             defendshow_evidencenum:"",    //证据编号
-            defendshow_facticity:"",      //真实性(原告质证)
-            defendshow_legality:"", //合法性(原告质证)
-            defendshow_relevance:"",//关联性(原告质证)
+            defendshow_facticity:"true",      //真实性(原告质证)
+            defendshow_legality:"true", //合法性(原告质证)
+            defendshow_relevance:"true",//关联性(原告质证)
             defendshow_query_facticity:"", //真实性理由(原告质证)
             defendshow_query_legality:"", //合法性理由(原告质证)
             defendshow_query_relevace:"", //完整性理由(原告质证)
@@ -762,9 +762,9 @@ export default {
           this.data.defendshowd_defendant.push({
             defendshow_defendant:"",        //原告及其他被告姓名(其他被告质证)
             defendshow_numevidence:"",    //证据编号
-            defendshow_numfacticity:"",      //真实性(其他被告质证)
-            defendshow_numlegality:"", //合法性(其他被告质证))
-            defendshow_numrelevance:"",//关联性(其他被告质证))
+            defendshow_numfacticity:"true",      //真实性(其他被告质证)
+            defendshow_numlegality:"true", //合法性(其他被告质证))
+            defendshow_numrelevance:"true",//关联性(其他被告质证))
             defendshow_reason_facticity:"", //真实性理由(其他被告质证)
             defendshow_reason_legality:"", //合法性理由(其他被告质证)
             defendshow_reason_relevace:"", //关联性理由(其他被告质证)
@@ -783,9 +783,9 @@ export default {
           this.data.defendshowd_accuser_counter.push({
             defendshow_accuser:"",        //原告及其他被告姓名
             defendshow_evidencenum:"",    //证据编号
-            defendshow_facticity:"",      //真实性(原告质证)
-            defendshow_legality:"", //合法性(原告质证)
-            defendshow_relevance:"",//关联性(原告质证)
+            defendshow_facticity:"true",      //真实性(原告质证)
+            defendshow_legality:"true", //合法性(原告质证)
+            defendshow_relevance:"true",//关联性(原告质证)
             defendshow_query_facticity:"", //真实性理由(原告质证)
             defendshow_query_legality:"", //合法性理由(原告质证)
             defendshow_query_relevace:"", //完整性理由(原告质证)
@@ -795,9 +795,9 @@ export default {
           this.data.defendshowd_defendant_counter.push({
             defendshow_defendant:"",        //原告及其他被告姓名(其他被告质证)
             defendshow_numevidence:"",    //证据编号
-            defendshow_numfacticity:"",      //真实性(其他被告质证)
-            defendshow_numlegality:"", //合法性(其他被告质证))
-            defendshow_numrelevance:"",//关联性(其他被告质证))
+            defendshow_numfacticity:"true",      //真实性(其他被告质证)
+            defendshow_numlegality:"true", //合法性(其他被告质证))
+            defendshow_numrelevance:"true",//关联性(其他被告质证))
             defendshow_reason_facticity:"", //真实性理由(其他被告质证)
             defendshow_reason_legality:"", //合法性理由(其他被告质证)
             defendshow_reason_relevace:"", //关联性理由(其他被告质证)

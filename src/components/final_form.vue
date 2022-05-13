@@ -10,7 +10,7 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.finald_accuser[0].final_accuser"
                               :options="$store.state.defendantname" placeholder="请选择原告"
@@ -28,7 +28,7 @@
 
             </div>
           </div>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false"  v-model="data.finald_defendant[0].final_defendant"
                               :options="$store.state.defendantname" placeholder="请选择被告"
@@ -46,7 +46,7 @@
             </div>
           </div>
           <template v-for="(item, index) in data.finald_accuser.slice(1)" :key="index">
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.finald_accuser[index+1].final_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择原告"
@@ -67,7 +67,7 @@
           </template>
 
           <template v-for="(item, index) in data.finald_defendant.slice(1)" :key="index">
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.finald_defendant[index+1].final_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择被告"

@@ -20,7 +20,7 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.argued_accuser[0].argue_accuser_argue"   placeholder="原告辩论意见" autocomplete="off"
+                <input type="text" v-model="data.argued_accuser[0].argue_accuser_argue" placeholder="原告辩论意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('argued_accuser')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text">
@@ -30,7 +30,7 @@
 
             </div>
           </div>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_defendant[0].argue_defendant"
                               :options="$store.state.defendantname" placeholder="请选择被告"
@@ -48,7 +48,7 @@
             </div>
           </div>
           <template v-for="(item, index) in data.argued_accuser.slice(1)" :key="index">
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_accuser[index+1].argue_accuser"
                                 :options="$store.state.defendantname" placeholder="请选择原告"
@@ -69,7 +69,7 @@
           </template>
 
           <template v-for="(item, index) in data.argued_defendant.slice(1)" :key="index">
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_defendant[index+1].argue_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择被告"
@@ -106,7 +106,7 @@
 
         <div v-show="data.argue_is_counterclaim=='true'">
           <div class="layui-form-item" pane>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_counterd[0].argue_counter_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择反诉被告"
@@ -123,7 +123,7 @@
                 </div>
               </div>
             </div>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_countera[0].argue_counter_accuser"
                                 :options="$store.state.defendantname" placeholder="请选择反诉原告"
@@ -141,7 +141,7 @@
               </div>
             </div>
             <template v-for="(item, index) in data.argued_counterd.slice(1)" :key="index">
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_counterd[index+1].argue_counter_defendant"
                                   :options="$store.state.defendantname" placeholder="请选择反诉被告"
@@ -161,7 +161,7 @@
             </template>
 
             <template v-for="(item, index) in data.argued_countera.slice(1)" :key="index">
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_countera[index+1].argue_counter_accuser"
                                   :options="$store.state.defendantname" placeholder="请选择反诉原告"
