@@ -33,7 +33,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">原告全称</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser" placeholder="请输入原告全称" autocomplete="off" class="layui-input">
+              <input type="text" v-model="data.accuser_fullname" placeholder="请输入原告全称" autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
@@ -46,7 +46,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">原告地址</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_address" required lay-verify="required" placeholder="请输入原告简称"
+              <input type="text" v-model="data.accuser_address" required lay-verify="required" placeholder="请输入原告地址"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
@@ -110,6 +110,7 @@ export default {
     data = {
       accuser: '',
       accuser_short: '',
+      accuser_fullname:'',
       accuser_type: "0",
       accuser_address: '',
       accuser_represent: '',

@@ -2,53 +2,6 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <div class="layui-bg-gray">
-
-<!--    <div id="test">-->
-<!--      <fieldset class="layui-elem-field layui-field-title">-->
-<!--        <legend>测试</legend>-->
-<!--        <div class="layui-field-box">-->
-<!--          <div class="content">-->
-<!--            <div>-->
-<!--              content-0-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              content-1-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              content-2-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              content-3-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              content-4-->
-<!--            </div>-->
-<!--          </div>-->
-<!--&lt;!&ndash;          <ul class="navs">&ndash;&gt;-->
-<!--&lt;!&ndash;            <li :class="{active: active===0}">&ndash;&gt;-->
-<!--&lt;!&ndash;              content-0&ndash;&gt;-->
-<!--&lt;!&ndash;            </li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <li :class="{active: active===1}">&ndash;&gt;-->
-<!--&lt;!&ndash;              content-1&ndash;&gt;-->
-<!--&lt;!&ndash;            </li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <li :class="{active: active===2}">&ndash;&gt;-->
-<!--&lt;!&ndash;              content-2&ndash;&gt;-->
-<!--&lt;!&ndash;            </li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <li :class="{active: active===3}">&ndash;&gt;-->
-<!--&lt;!&ndash;              content-3&ndash;&gt;-->
-<!--&lt;!&ndash;            </li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <li :class="{active: active===4}">&ndash;&gt;-->
-<!--&lt;!&ndash;              content-4&ndash;&gt;-->
-<!--&lt;!&ndash;            </li>&ndash;&gt;-->
-<!--&lt;!&ndash;          </ul>&ndash;&gt;-->
-
-<!--        </div>-->
-<!--      </fieldset>-->
-<!--    </div>-->
-
-
-
-
     <div id="BasicInfo">
       <fieldset class="layui-elem-field layui-field-title">
         <legend>基本信息</legend>
@@ -105,8 +58,9 @@
         </div>
       </fieldset>
     </div>
-<!-- 反诉且今日答辩 或者不反诉的情况显示-->
-    <div v-if="($store.state.is_todayreply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='0'">
+    <!-- 反诉且今日答辩 或者不反诉的情况显示-->
+    <div
+        v-if="($store.state.is_todayreply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='0'">
       <div id="accshow_form">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭调查-原告举证</legend>
@@ -171,26 +125,8 @@
       </div>
     </div>
   </div>
-<!--  右侧目录 -->
-  <div style="display:none">
-    <div id="mynav">
-      <ul class="site-dir layui-layer-wrap"  style="display: block;">
-        <li ><a href="#whole_PlaintiffImf"><cite>原告信息</cite></a></li>
-        <li><a href="#whole_DefendantImf"><cite>被告信息</cite></a></li>
-        <li><a href="#right_inform"><cite>权利告知</cite></a></li>
-        <li><a href="#CourtInves1"><cite>法庭调查1</cite></a></li>
-        <li><a href="#accshow_form"><cite>法庭调查2</cite></a></li>
-        <li><a href="#defendshow_form"><cite>法庭调查3</cite></a></li>
-        <li><a href="#inquiry_form"><cite>法庭询问</cite></a></li>
-        <li><a href="#argue_form"><cite>法庭辩论</cite></a></li>
-        <li><a href="#final_form"><cite>陈述意见</cite></a></li>
-        <li><a href="#mediate_form"><cite>是否调解</cite></a></li>
-        <li><a href="#delivery_form"><cite>电子文书送达</cite></a></li>
-      </ul>
-    </div>
-  </div>
-</template>
 
+</template>
 
 <script>
 import BasicInfo from './components/BasicInfo.vue'
@@ -209,11 +145,6 @@ import BasicState from "@/components/BasicState";
 
 export default {
   name: 'App',
-  data(){
-    return {
-      active: 0//当前激活的目录
-    }
-  },
   components: {
     BasicInfo,
     PlaintiffImf,
@@ -229,36 +160,58 @@ export default {
     delivery_form,
     BasicState
   },
+  data() {
+    return {
+      active: 0 // 当前激活的导航索引
+    }
+  },
   mounted() {
     window.addEventListener('scroll', this.onScroll)
     // 添加目录控件
     this.$nextTick(function () {
+
       window.layui.use('layer', function () {
         var layer = window.layui.layer;
         layer.open({
           title: '目录',
           skin: 'myskin',
           type: 1,
-          content:document.getElementById("mynav").innerHTML,
+          content: "      <ul class=\"site-dir layui-layer-wrap\" id=\"content_list\" style=\"display: block;\">\n" +
+              "        <li ><a href=\"#BasicInfo\"><cite>基本信息</cite></a></li>\n" +
+              "        <li ><a href=\"#whole_PlaintiffImf\"><cite>原告信息</cite></a></li>\n" +
+              "        <li><a href=\"#whole_DefendantImf\"><cite>被告信息</cite></a></li>\n" +
+              "        <li><a href=\"#BasicState\"><cite>基本信息陈述</cite></a></li>\n" +
+              "        <li><a href=\"#right_inform\"><cite>权利告知</cite></a></li>\n" +
+              "        <li><a href=\"#CourtInves1\"><cite>法庭调查</cite></a></li>\n" +
+              "        <li><a href=\"#accshow_form\"><cite>原告举证</cite></a></li>\n" +
+              "        <li><a href=\"#defendshow_form\"><cite>被告举证</cite></a></li>\n" +
+              "        <li><a href=\"#inquiry_form\"><cite>法庭询问</cite></a></li>\n" +
+              "        <li><a href=\"#argue_form\"><cite>法庭辩论</cite></a></li>\n" +
+              "        <li><a href=\"#final_form\"><cite>陈述意见</cite></a></li>\n" +
+              "        <li><a href=\"#mediate_form\"><cite>是否调解</cite></a></li>\n" +
+              "        <li><a href=\"#delivery_form\"><cite>电子文书送达</cite></a></li>\n" +
+              "      </ul>",
           shade: 0,
           closeBtn: 0,
           offset: 'r'
         });
       });
     })
+
   },
   destroy() {
     // 必须移除监听器，不然当该vue组件被销毁了，监听器还在就会出错
     window.removeEventListener('scroll', this.onScroll)
   },
-  methods:{
+  methods: {
     // 滚动监听器
     onScroll() {
       // 获取所有锚点元素
-      const navContents = document.querySelectorAll('.content div')
+      const navContents = document.querySelectorAll('fieldset')
       // 所有锚点元素的 offsetTop
       const offsetTopArr = []
       navContents.forEach(item => {
+
         offsetTopArr.push(item.offsetTop)
       })
       // 获取当前文档流的 scrollTop
@@ -274,6 +227,14 @@ export default {
       }
       // 把下标赋值给 vue 的 data
       this.active = navIndex
+      if(document.getElementById("content_list") != null){
+        // 获取钙元素下的a标签，并更改class 属性
+        for (let i = 0; i < offsetTopArr.length  ; i++) {
+          if(i != navIndex)
+            document.getElementById("content_list").children[i].children[0].removeAttribute("class")
+        }
+        document.getElementById("content_list").children[navIndex].children[0].className = "layui-this"
+      }
     }
   }
 }
@@ -390,12 +351,11 @@ a.layui-this {
   color: #01AAED;
 }
 
-
-
 .content {
   background-color: white;
   width: 500px;
 }
+
 .content div {
   width: 100%;
   height: 600px;
@@ -403,9 +363,11 @@ a.layui-this {
   padding: 20px;
   background-color: #7ec384;
 }
+
 .content div:nth-child(2n) {
   background-color: #847ec3;
 }
+
 /* 导航栏的样式 */
 .navs {
   position: fixed;
@@ -413,13 +375,15 @@ a.layui-this {
   left: 700px;
   background-color: #efefef;
 }
+
 .navs li {
   padding: 0 20px;
   line-height: 1.6;
   font-size: 24px;
 }
+
 /* 当导航被点亮后改变颜色 */
-.navs .active{
+.navs .active {
   color: #847ec3;
   background-color: #e2e2e2;
 }
