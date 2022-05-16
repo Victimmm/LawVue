@@ -12,13 +12,15 @@
           </div>
         </div>
         <div class="layui-form-item " pane>
-          <template v-for="(item, index) in this.$store.state.plaintiffname.filter(i=>i && i.trim())" :key='index'>
+          <template v-for="(item, index) in getPlaintiffName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <label class="layui-form-label">{{item}}</label>
+              <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
                 <div class="myradiomargin">
-                  <input type="radio" value="1" v-model="data.accuser_avoid[index].is_listen" class="myradio"><label> 听清楚了 </label>
-                  <input type="radio" value="2" v-model="data.accuser_avoid[index].is_listen" class="myradio"><label> 没听清楚 </label>
+                  <input type="radio" value="1" v-model="data.accuser_avoid[index].is_listen" class="myradio"><label>
+                  听清楚了 </label>
+                  <input type="radio" value="2" v-model="data.accuser_avoid[index].is_listen" class="myradio"><label>
+                  没听清楚 </label>
                 </div>
               </div>
             </div>
@@ -26,77 +28,85 @@
         </div>
 
         <div class="layui-form-item " pane>
-          <template v-for="(item, index) in $store.state.defendantname.filter(i=>i && i.trim())" :key='index'>
+          <template v-for="(item, index) in getDefendantNane" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <label class="layui-form-label">{{item}}</label>
+              <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
                 <div class="myradiomargin">
-                  <input type="radio" value="1" v-model="data.defendant_avoid[index].is_listen" class="myradio"><label> 听清楚了 </label>
-                  <input type="radio" value="2" v-model="data.defendant_avoid[index].is_listen" class="myradio"><label> 没听清楚 </label>
+                  <input type="radio" value="1" v-model="data.defendant_avoid[index].is_listen" class="myradio"><label>
+                  听清楚了 </label>
+                  <input type="radio" value="2" v-model="data.defendant_avoid[index].is_listen" class="myradio"><label>
+                  没听清楚 </label>
                 </div>
               </div>
             </div>
           </template>
         </div>
 
-    <div class="layui-form-item" pane>
-      <div class="layui-form-label">
-        审判员
-      </div>
-      <div class="layui-input-block">
-        <textarea type="text" v-model="data.judge_talk[1]" class="layui-input" style="text-align: center; vertical-align: middle"></textarea>
-      </div>
-    </div>
-
-    <div class="layui-form-item " pane>
-      <template v-for="(item, index) in $store.state.plaintiffname.filter(i=>i && i.trim())" :key='index'>
-        <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-            <label class="layui-form-label">{{item}}</label>
+        <div class="layui-form-item" pane>
+          <div class="layui-form-label">
+            审判员
+          </div>
           <div class="layui-input-block">
-            <div class="myselect-div">
-              <div class="myradiomargin" style="width: 100%;float: left;">
-                <input type="radio" value="1" v-model="data.accuser_avoid[index].is_avoid" class="myradio"><label> 不申请回避 </label>
-                <input type="radio" value="2" v-model="data.accuser_avoid[index].is_avoid" class="myradio"><label> 申请回避 </label>
-              </div>
-            </div>
+            <textarea type="text" v-model="data.judge_talk[1]" class="layui-input"
+                      style="text-align: center; vertical-align: middle"></textarea>
           </div>
         </div>
-      </template>
-    </div>
 
         <div class="layui-form-item " pane>
-          <template v-for="(item, index) in $store.state.defendantname.filter(i=>i && i.trim())" :key='index'>
+          <template v-for="(item, index) in getPlaintiffName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <div class="layui-form-label">
-                {{item}}
-              </div>
+              <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" v-model="data.defendant_avoid[index].is_avoid" class="myradio" ><label> 不申请回避 </label>
-                    <input type="radio" value="2" v-model="data.defendant_avoid[index].is_avoid" class="myradio"><label> 申请回避 </label>
+                    <input type="radio" value="1" v-model="data.accuser_avoid[index].is_avoid" class="myradio"><label>
+                    不申请回避 </label>
+                    <input type="radio" value="2" v-model="data.accuser_avoid[index].is_avoid" class="myradio"><label>
+                    申请回避 </label>
                   </div>
                 </div>
               </div>
             </div>
           </template>
         </div>
-    </form>
-  </div>
+
+        <div class="layui-form-item " pane>
+          <template v-for="(item, index) in getDefendantNane" :key='index'>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <div class="layui-form-label">
+                {{ item }}
+              </div>
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <div class="myradiomargin" style="width: 100%;float: left;">
+                    <input type="radio" value="1" v-model="data.defendant_avoid[index].is_avoid" class="myradio"><label>
+                    不申请回避 </label>
+                    <input type="radio" value="2" v-model="data.defendant_avoid[index].is_avoid" class="myradio"><label>
+                    申请回避 </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
 <script type="text/javascript">
 
 import 'vue-multiselect/dist/vue-multiselect.css'
-import { watch } from 'vue'
-import { useStore } from 'vuex'
+import {watch} from 'vue'
+import {useStore} from 'vuex'
 
 export default {
-  setup ()
-  {
+  setup() {
     const $store = useStore()
-    watch(() => $store.state.plaintiffname, (val, old) => { console.log(val, old) })
+    watch(() => $store.state.plaintiffname, (val, old) => {
+      console.log(val, old)
+    })
     return {}
   },
 
@@ -115,8 +125,14 @@ export default {
       "上述诉讼权利和义务双方是否听清？",
         "审判员：当事人对审判员和书记是否申请回避？",
       ],
-      accuser_avoid: [{is_listen: "1", is_avoid: "1"},{is_listen: "1", is_avoid: "1"},{is_listen: "1", is_avoid: "1"},{is_listen: "1", is_avoid: "1"},{is_listen: "1", is_avoid: "1"},],
-      defendant_avoid: [{is_listen: "1", is_avoid: "1"},{is_listen: "1", is_avoid: "1"},{is_listen: "1", is_avoid: "1"},{is_listen: "1", is_avoid: "1"},{is_listen: "1", is_avoid: "1"},],
+      accuser_avoid: [{is_listen: "1", is_avoid: "1"}, {is_listen: "1", is_avoid: "1"}, {
+        is_listen: "1",
+        is_avoid: "1"
+      }, {is_listen: "1", is_avoid: "1"}, {is_listen: "1", is_avoid: "1"},],
+      defendant_avoid: [{is_listen: "1", is_avoid: "1"}, {is_listen: "1", is_avoid: "1"}, {
+        is_listen: "1",
+        is_avoid: "1"
+      }, {is_listen: "1", is_avoid: "1"}, {is_listen: "1", is_avoid: "1"},],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "right_inform" in wholeItem) {
@@ -126,15 +142,33 @@ export default {
     return {data: data}
 
   },
-  components:{
-
-  },
   computed: {
-
-  },
-
-  mounted() {
-
+    getPlaintiffName: {
+      get() {
+        if (this.$store.state.is_counterclaim == "0") {
+          return this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
+            return e + '（原告）';
+          })
+        } else {
+          return this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
+            return e + '（反诉被告）';
+          })
+        }
+      }
+    },
+    getDefendantNane: {
+      get() {
+        if (this.$store.state.is_counterclaim == "0") {
+          return this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
+            return e + '（被告）';
+          })
+        } else {
+          return this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
+            return e + '（反诉原告）';
+          })
+        }
+      }
+    }
   },
   methods: {
     add_component(datatype) {
@@ -142,13 +176,13 @@ export default {
         case "defendant_avoid":
           //这里是值对应的处理
           this.data.defendant_avoid.push({
-             is_avoid: "", is_listen: "",
+            is_avoid: "", is_listen: "",
           })
           break
         case "accuser_avoid":
           //这里是值对应的处理
           this.data.accuser_avoid.push({
-             is_avoid: "", is_listen: "",
+            is_avoid: "", is_listen: "",
           })
           break
         default:
@@ -197,7 +231,7 @@ export default {
       },
       deep: true
     },
-    "$store.state.plaintiffname"(){
+    "$store.state.plaintiffname"() {
       console.log(111)
     }
   },

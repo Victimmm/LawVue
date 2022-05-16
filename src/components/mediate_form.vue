@@ -179,13 +179,13 @@ export default {
 // if (localStorage.getItem("mediate_form") == null) {
     data = {
       mediate_accuser: '',            //原告简称
-      is_mediate_accuser: '',         //原告回答
+      is_mediate_accuser: '1',         //原告回答
       mediate_plan_accuser: '',       //被告简称
       time_limit_accuser:'',
       mediated_defendant: [
         {
           mediate_defendant: "" , //被告回答
-          is_mediate_defendant: "" ,
+          is_mediate_defendant: "1" ,
           mediate_plan_defendant:"",
         },
       ],
@@ -209,7 +209,7 @@ export default {
           this.data.mediated_defendant.push({
             mediate_defendant: "" ,          //问题
             mediate_plan_defendant: "" ,     //原告简称
-            is_mediate_defendant: "" ,       //原告回答
+            is_mediate_defendant: "1" ,       //原告回答
           });
           break
         default:

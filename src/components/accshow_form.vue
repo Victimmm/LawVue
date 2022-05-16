@@ -211,23 +211,6 @@ import VueMultiselect from "vue-multiselect";
 export default {
 
   data() {
-    // var selectItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    // if(selectItem != null && "CourtInves" in selectItem) {
-    //   data = selectItem.CourtInves
-    //   if ("judge" in selectItem.BasicInfo) {
-    //     data.selected_judge = selectItem.BasicInfo.judge
-    //   }
-    //   if ("PlaintiffItems" in selectItem && selectItem.PlaintiffItems.length > 0) {
-    //     for (var i = 0; i < selectItem.PlaintiffItems.length; i++) {
-    //       data.selected_accuser[i] = {name: selectItem.PlaintiffItems[i].accuser}
-    //     }
-    //   }
-    //   if ("DefendantItems" in selectItem && selectItem.DefendantItems.length > 0) {
-    //     for (var j = 0; j < selectItem.DefendantItems.length; j++) {
-    //       data.selected_defendant[j] = {name: selectItem.DefendantItems[j].defendant}
-    //     }
-    //   }
-    // }
     var data;
 // if (localStorage.getItem("accshow_form") == null) {
     data = {
