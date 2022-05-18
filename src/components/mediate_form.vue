@@ -5,7 +5,7 @@
         <div class="layui-form-item " pane>
           <div class="layui-form-label">审判员</div>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input " style="text-align: center">当事人是否能够调解</textarea>
+              <textarea type="text" class="layui-input " style="line-height: 38px">当事人是否能够调解</textarea>
             </div>
         </div>
 
@@ -111,60 +111,6 @@
           </div>
         </div>
 
-
-<!--        <div class="layui-form-item">-->
-<!--          <div class="layui-col-md3">-->
-<!--            <input type="text" v-model="data.mediated_defendant[0].mediate_defendant" placeholder="被告" autocomplete="off" class="layui-input">-->
-<!--          </div>-->
-<!--          <div class="layui-col-md6">-->
-<!--            <div class="layui-card-body">-->
-<!--              <input type="radio" value="1" v-model="data.mediated_defendant[0].is_mediate_defendant" class="myradio" >-->
-<!--              <label>能</label>-->
-<!--              <input type="radio" value="2" v-model="data.mediated_defendant[0].is_mediate_defendant" class="myradio" >-->
-<!--              <label>不能</label>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="layui-col-md1">-->
-<!--            <button @click="add_component('mediated_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text">-->
-<!--              <i class="layui-icon">&#xe654;</i>-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="layui-form-item">-->
-<!--            <div class="layui-col-md9">-->
-<!--              <textarea v-model="data.mediated_defendant[0].mediate_plan_defendant" placeholder="调解方案" class="layui-textarea">-->
-<!--              </textarea>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <hr>-->
-
-<!--          <div class="layui-form-item">-->
-<!--            <div class="layui-col-md3">-->
-<!--              <input type="text" v-model="data.mediated_defendant[index+1].mediate_defendant" placeholder="被告" autocomplete="off" class="layui-input">-->
-<!--            </div>-->
-<!--            <div class="layui-col-md6">-->
-<!--              <div class="layui-card-body">-->
-<!--                <input type="radio" value="1" v-model="data.mediated_defendant[index+1].is_mediate_defendant" class="myradio" >-->
-<!--                <label>能</label>-->
-<!--                <input type="radio" value="2" v-model="data.mediated_defendant[index+1].is_mediate_defendant" class="myradio" >-->
-<!--                <label>不能</label>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="layui-col-md1">-->
-<!--              <button @click="delete_component('mediated_defendant',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm" data-type="text">-->
-<!--                <i class="layui-icon">&#xe640;</i>-->
-<!--              </button>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="layui-form-item">-->
-<!--            <div class="layui-col-md9">-->
-<!--              <textarea v-model="data.mediated_defendant[index+1].mediate_plan_defendant" placeholder="调解方案" class="layui-textarea">-->
-<!--              </textarea>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <hr>-->
 
       </form>
     </div>

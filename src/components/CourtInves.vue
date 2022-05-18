@@ -69,7 +69,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38" v-model="data.defendant_reply[0].name" :show-labels="false"
                               :options="$store.state.defendantname" placeholder="请选择被告"
-                              style="line-height: 16px;width: 250px; min-height: 38px"
+                              style="line-height: 16px;width: 160px; min-height: 38px"
               ></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -92,7 +92,7 @@
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38" v-model="data.defendant_reply[index+1].name"
                                 :show-labels="false" :options="$store.state.defendantname" placeholder="请选择被告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
@@ -150,32 +150,6 @@
             </div>
           </div>
 
-<!--          <template v-for="(item, index) in data.counterclaim_plaintiff.slice(1)" :key='index'>-->
-<!--            <div class="layui-form-item" style="margin-top: 11px;">-->
-<!--              <div class="layui-col-md2">-->
-<!--                <div class="layui-input-block">-->
-<!--                  <label class="layui-form-label">-->
-<!--                    <input type="text" v-model="data.counterclaim_plaintiff[index+1].name" placeholder="反诉原告简称"-->
-<!--                           class="layui-input"-->
-<!--                           style="margin-top: -9px;">-->
-<!--                  </label>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="layui-col-md7">-->
-<!--                <div class="layui-input-block">-->
-<!--                  <input type="text" v-model="data.counterclaim_plaintiff[index+1].claim_item" placeholder="诉讼请求项"-->
-<!--                         autocomplete="on" class="layui-input">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="layui-col-md1">-->
-<!--                <button type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
-<!--                        data-type="text" style="height: 38px;" @click="delete_component('counterclaim_plaintiff',1)">-->
-<!--                  <i class="layui-icon"> &#xe640;</i>-->
-<!--                </button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </template>-->
-
           <div class="layui-form-item" pane>
             <label class="layui-form-label">反诉被告今天是否答辩</label>
             <div class="layui-input-block">
@@ -194,7 +168,7 @@
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[0].name" :show-labels="false"
                                   :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
-                                  style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
@@ -218,7 +192,7 @@
                     <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[index+1].name"
                                     :show-labels="false"
                                     :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
-                                    style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                    style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">

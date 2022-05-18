@@ -5,7 +5,7 @@
         <div class="layui-form-item layui-form-pane">
           <div class="layui-form-label">审判员</div>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input" style="text-align: center">当事人是否同意电子送达裁判文书？</textarea>
+              <textarea type="text" class="layui-input" style="line-height: 38px">当事人是否同意电子送达裁判文书？</textarea>
             </div>
         </div>
         <div class="layui-form-item">

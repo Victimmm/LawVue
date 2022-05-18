@@ -6,19 +6,19 @@
       <div class="layui-form-item">
             <label class="layui-form-label" style="text-align: center">审判员</label>
           <div class="layui-input-block">
-            <textarea type="text" class="layui-input" style="text-align: center">下面进行举证质证，首先原告进行举证</textarea>
+            <textarea type="text" class="layui-input" style="line-height: 38px" value="下面进行举证质证，首先原告进行举证"></textarea>
           </div>
       </div>
       <div class="layui-form-item" pane>
         <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
           <div class="layui-input-inline" style="margin-left:0px ;">
             <input type="text" v-model="data.accshowd_evidence[0].accshow_evidence" placeholder="证据名称" autocomplete="off"
-                   class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">
+                   class="layui-input" style="line-height: 16px;width: 160px; min-height: 38px">
           </div>
           <div class="layui-input-block">
             <div class="myselect-div">
               <input type="text" v-model="data.accshowd_evidence[0].accshow_content" placeholder="证明事项" autocomplete="off"
-                     class="layui-input" style="width: 90%;float: left;">
+                     class="layui-input" style="width: 90%;float: left;margin-left:0px ;">
               <button @click="add_component('accshowd_evidence')" type="button"
                       class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
@@ -31,7 +31,7 @@
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px; height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <input type="text" v-model="data.accshowd_evidence[index+1].accshow_evidence" placeholder="证据名称" autocomplete="off"
-                     class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">
+                     class="layui-input" style="line-height: 16px;width: 160px; min-height: 38px">
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -60,7 +60,7 @@
     <div class="layui-form-item" pane>
       <label class="layui-form-label" style="text-align: center">审判员</label>
       <div class="layui-input-block">
-        <textarea type="text" class="layui-input" style="text-align: center">被告对原告提交的证据进行质证</textarea>
+        <textarea type="text" class="layui-input" style="line-height: 38px">被告对原告提交的证据进行质证</textarea>
       </div>
     </div>
 
@@ -69,7 +69,7 @@
         <div class="layui-input-inline" style="margin-left:0px ;">
           <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accshowd_query_evidence[0].accshow_defendant"
                           :options="$store.state.defendantname" placeholder="请选择被告"
-                          style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                          style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
         </div>
         <div class="layui-input-block">
           <div class="myselect-div">
@@ -136,7 +136,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accshowd_query_evidence[index+1].accshow_defendant"
                               :options="$store.state.defendantname" placeholder="请选择被告"
-                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                              style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">

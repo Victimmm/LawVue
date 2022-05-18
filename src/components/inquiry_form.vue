@@ -5,7 +5,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label" style="text-align: center">审判员</label>
           <div class="layui-input-block">
-            <textarea type="text" class="layui-input" style="text-align: center">举证质证结束，下面进入法庭询问</textarea>
+            <textarea type="text" class="layui-input" style="line-height: 38px">举证质证结束，下面进入法庭询问</textarea>
           </div>
         </div>
         <div class="layui-form-item" pane>
@@ -27,19 +27,10 @@
                               :options="$store.state.plaintiffname" placeholder="请选择原告"
                               style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
             </div>
-<!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
-<!--              <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser" placeholder="原告姓名" autocomplete="off"-->
-<!--                     class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">-->
-<!--            </div>-->
             <div class="layui-input-block">
               <div class="myselect-div">
                 <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser_answer" placeholder="回答" autocomplete="off"
                        class="layui-input" style="width: 100%;float: left;">
-                <!--                <button @click="add_component('accshowd_evidence')" type="button"-->
-                <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
-                <!--                        data-type="text" style="float: right;">-->
-                <!--                  <i class="layui-icon">&#xe654;</i>-->
-                <!--                </button>-->
               </div>
             </div>
           </div>
@@ -78,19 +69,10 @@
                                 :options="$store.state.defendantname" placeholder="请选择原告"
                                 style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
               </div>
-              <!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
-              <!--              <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser" placeholder="原告姓名" autocomplete="off"-->
-              <!--                     class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">-->
-              <!--            </div>-->
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser_answer" placeholder="回答" autocomplete="off"
                          class="layui-input" style="width: 100%;float: left;">
-                  <!--                <button @click="add_component('accshowd_evidence')" type="button"-->
-                  <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
-                  <!--                        data-type="text" style="float: right;">-->
-                  <!--                  <i class="layui-icon">&#xe654;</i>-->
-                  <!--                </button>-->
                 </div>
               </div>
             </div>
