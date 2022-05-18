@@ -103,7 +103,7 @@
           <div class="layui-form-item">
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.deliveryd_defendant[0].delivery_defendant"
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.deliveryd_defendant[index+1].delivery_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择被告"
                                 style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
               </div>
@@ -149,12 +149,12 @@ export default {
 // if (localStorage.getItem("delivery_form") == null) {
     data = {
       delivery_accuser:'',
-      is_delivery_accuser:'',
+      is_delivery_accuser:'1',
       email_accuser:'',
       deliveryd_defendant: [
         {
           delivery_defendant: '',         //问题
-          is_delivery_defendant: '',          //原告简称
+          is_delivery_defendant: '1',          //原告简称
           email_defendant: '',  //原告回答
         },
       ],
@@ -178,7 +178,7 @@ export default {
           //
           this.data.deliveryd_defendant.push({
             delivery_defendant: "" ,         //问题
-            is_delivery_defendant: "" ,          //原告简称
+            is_delivery_defendant: "1" ,          //原告简称
             email_defendant: "" ,  //原告回答
           });
           break;

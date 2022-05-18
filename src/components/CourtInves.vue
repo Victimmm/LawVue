@@ -18,8 +18,8 @@
           </div>
           <div class="layui-input-block">
             <!--            <div class="layui-input-inline " style="width: 80%; margin-left:0px;">-->
-            <input type="text" v-model="data.accuser_claimitem" placeholder="诉讼请求项" autocomplete="off"
-                   class="layui-input">
+            <textarea  v-model="data.accuser_claimitem" placeholder="诉讼请求项" autocomplete="off"
+                       class="layui-textarea"></textarea>
             <!--              <button @click="add_component('accuser_claims')" type="button"-->
             <!--                      class="layui-btn layui-btn-primary layui-btn-sm"-->
             <!--                      data-type="text" style="float: right;">-->
