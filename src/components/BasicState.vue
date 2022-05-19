@@ -1,6 +1,6 @@
 <template>
+
   <div class="layui-card">
-    <!--        <div class="layui-card-header">法庭调查</div>-->
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane" action="">
         <div class="layui-form-item" pane>

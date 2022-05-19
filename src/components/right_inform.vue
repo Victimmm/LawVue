@@ -1,9 +1,9 @@
 <template>
   <!--权利告知-->
-
   <div class="layui-card">
-    <div class="layui-card-body>">
-      <form class="layui-form layui-form-pane">
+    <div class="layui-card-body">
+      <form class="layui-form layui-form-pane" action="" >
+
         <div class="layui-form-item" pane>
           <label class="layui-form-label" style="line-height:180px">审判员</label>
           <div class="layui-input-block">
@@ -11,6 +11,7 @@
             </textarea>
           </div>
         </div>
+
         <div class="layui-form-item " pane>
           <template v-for="(item, index) in getPlaintiffName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">

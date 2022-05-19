@@ -23,7 +23,7 @@
                 <input type="text" v-model="data.argued_accuser[0].argue_accuser_argue" placeholder="原告辩论意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('argued_accuser')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text">
+                        data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
               </div>
@@ -41,7 +41,7 @@
                 <input type="text" v-model="data.argued_defendant[0].argue_defendant_argue" placeholder="被告辩论意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('argued_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text">
+                        data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
               </div>
@@ -117,7 +117,7 @@
                   <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant_debate"   placeholder="反诉被告辩论意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="add_component('argued_counterd')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text">
+                          data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
                 </div>
@@ -134,7 +134,7 @@
                   <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant_debate" placeholder="反诉原告辩论意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="add_component('argued_countera')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text">
+                          data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
                 </div>
