@@ -1,6 +1,6 @@
 <template >
   <div class="layui-card">
-    <div class="layui-card-body>">
+    <div class="layui-card-body">
       <form class="layui-form">
         <div class="layui-form-item layui-form-pane">
               <div class="layui-form-label">审判员</div>
@@ -21,7 +21,7 @@
                 <input type="text" v-model="data.finald_accuser[0].final_accuser_state"   placeholder="原告陈述意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('finald_accuser')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text">
+                        data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
               </div>
@@ -39,7 +39,7 @@
                 <input type="text"  v-model="data.finald_defendant[0].final_defendant_state" placeholder="被告陈述意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('finald_defendant')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text">
+                        data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
               </div>

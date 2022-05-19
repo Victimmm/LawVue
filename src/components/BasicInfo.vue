@@ -3,14 +3,14 @@
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane" action="">
         <div class="layui-form-item" pane>
-          <label class="layui-form-label layui-form-required">案号 </label>
+          <label class="layui-form-label">案号 </label>
           <div class="layui-input-block">
             <input type="text" v-model="data.court_number" @blur="courtNumChange()" placeholder="请输入案号"
                    autocomplete="on" class="layui-input">
           </div>
         </div>
         <div class="layui-form-item" pane>
-          <label class="layui-form-label layui-col-md2">立案时间</label>
+          <label class="layui-form-label ">立案时间</label>
           <div class="layui-input-block ">
             <input type="text" v-model="data.filing_time" id="filing_time" placeholder="请输入立案时间" autocomplete="off"
                    class="layui-input">
