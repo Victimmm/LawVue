@@ -136,14 +136,16 @@
               </div>
             </div>
           </div>
-          <div class="layui-form-item" pane>
-            <div class="layui-form-label divcenter">
-              事实和理由
-            </div>
-            <div class="layui-input-block">
+
+        </div>
+
+        <div class="layui-form-item" pane>
+          <div class="layui-form-label divcenter">
+            事实和理由
+          </div>
+          <div class="layui-input-block">
               <textarea v-model="data.accshowd_query_evidence[0].accshow_fact_reason" placeholder="理由"
                         class="layui-textarea"></textarea>
-            </div>
           </div>
         </div>
         <template v-for="(item, index) in data.accshowd_query_evidence.slice(1)" :key="index">
@@ -210,14 +212,16 @@
                 </div>
               </div>
             </div>
-            <div class="layui-form-item" pane>
-              <div class="layui-form-label divcenter">
-                事实和理由
-              </div>
-              <div class="layui-input-block">
+
+          </div>
+
+          <div class="layui-form-item" pane>
+            <div class="layui-form-label divcenter">
+              事实和理由
+            </div>
+            <div class="layui-input-block">
                 <textarea v-model="data.accshowd_query_evidence[index+1].accshow_fact_reason" placeholder="理由"
                           class="layui-textarea"></textarea>
-              </div>
             </div>
           </div>
         </template>

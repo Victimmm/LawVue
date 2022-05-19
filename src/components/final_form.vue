@@ -1,8 +1,8 @@
 <template >
   <div class="layui-card">
     <div class="layui-card-body">
-      <form class="layui-form">
-        <div class="layui-form-item layui-form-pane">
+      <form class="layui-form layui-form-pane">
+        <div class="layui-form-item" pane>
               <div class="layui-form-label">审判员</div>
             <div class="layui-input-block">
               <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">双方发表最后陈述意见</textarea>
@@ -57,7 +57,7 @@
                   <input type="text" v-model="data.finald_accuser[0].final_accuser_state"   placeholder="原告陈述意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="delete_component('finald_accuser',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text">
+                          data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
                   </button>
                 </div>
@@ -78,7 +78,7 @@
                   <input type="text" v-model="data.finald_defendant[index+1].final_defendant_state" placeholder="被告陈述意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="delete_component('finald_defendant',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text">
+                          data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
                   </button>
                 </div>

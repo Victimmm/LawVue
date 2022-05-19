@@ -324,7 +324,7 @@ body .myskin {
 }
 
 .myradiomargin {
-  width: 80%;
+  width: 100%;
   border-style: solid;
   background-color: #fff;
   border-width: 1px;
@@ -344,7 +344,7 @@ body .myskin {
 }
 
 .myselect-div {
-  width: 80%;
+  width: 100%;
   float: left;
 }
 

@@ -34,7 +34,7 @@
             调解方案
           </div>
           <div class="layui-input-block">
-                <textarea v-model="data.mediate_plan_accuser" placeholder="请输入调解方案" style="width:80%"
+                <textarea v-model="data.mediate_plan_accuser" placeholder="请输入调解方案"
                            class="layui-textarea"></textarea>
           </div>
         </div>
@@ -106,7 +106,7 @@
             调解方案
           </div>
           <div class="layui-input-block">
-                <textarea v-model="data.mediated_defendant[0].mediate_plan_defendant" placeholder="请输入调解方案" style="width:80%"
+                <textarea v-model="data.mediated_defendant[0].mediate_plan_defendant" placeholder="请输入调解方案"
                           class="layui-textarea"></textarea>
           </div>
         </div>

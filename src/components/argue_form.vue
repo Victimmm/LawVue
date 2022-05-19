@@ -59,7 +59,7 @@
                   <input type="text" v-model="data.argued_accuser[index+1].argue_accuser_argue"   placeholder="原告辩论意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="delete_component('argued_accuser',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text">
+                          data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
                   </button>
                 </div>
@@ -80,7 +80,7 @@
                   <input type="text" v-model="data.argued_defendant[index+1].argue_defendant_argue" placeholder="被告辩论意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="delete_component('argued_defendant',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text">
+                          data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
                   </button>
                 </div>

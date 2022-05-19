@@ -131,12 +131,14 @@
                 </div>
               </div>
             </div>
-            <div class="layui-form-item" pane>
-              <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
-              <div class="layui-input-block">
+
+          </div>
+
+          <div class="layui-form-item" pane>
+            <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
+            <div class="layui-input-block">
                 <textarea v-model="data.defendshowd_accuser[0].defendshow_query_reason" placeholder="理由"
                           class="layui-textarea"></textarea>
-              </div>
             </div>
           </div>
 
@@ -204,12 +206,12 @@
                   </div>
                 </div>
               </div>
-              <div class="layui-form-item" pane>
-                <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
-                <div class="layui-input-block">
+            </div>
+            <div class="layui-form-item" pane>
+              <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
+              <div class="layui-input-block">
                   <textarea v-model="data.defendshowd_accuser[index+1].defendshow_query_reason" placeholder="理由"
                             class="layui-textarea"></textarea>
-                </div>
               </div>
             </div>
           </template>
@@ -277,12 +279,14 @@
                 </div>
               </div>
             </div>
-            <div class="layui-form-item" pane>
-              <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
-              <div class="layui-input-block">
+
+          </div>
+
+          <div class="layui-form-item" pane>
+            <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
+            <div class="layui-input-block">
                 <textarea v-model="data.defendshowd_defendant[0].defendshow_query_reason" placeholder="理由"
                           class="layui-textarea"></textarea>
-              </div>
             </div>
           </div>
 
@@ -355,12 +359,14 @@
                   </div>
                 </div>
               </div>
-              <div class="layui-form-item" pane>
-                <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
-                <div class="layui-input-block">
+
+            </div>
+
+            <div class="layui-form-item" pane>
+              <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
+              <div class="layui-input-block">
                   <textarea v-model="data.defendshowd_defendant[index+1].defendshow_query_reason" placeholder="理由"
                             class="layui-textarea"></textarea>
-                </div>
               </div>
             </div>
           </template>

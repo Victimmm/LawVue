@@ -18,7 +18,7 @@
               <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
                 <div class="myradiomargin">
-                  <input type="radio" value="1" v-model="data.accuser_avoid[index].is_listen" class="myradio"><label>
+                  <input type="radio" value="1"  v-model="data.accuser_avoid[index].is_listen" class="myradio"><label>
                   听清楚了 </label>
                   <input type="radio" value="2" v-model="data.accuser_avoid[index].is_listen" class="myradio"><label>
                   没听清楚 </label>

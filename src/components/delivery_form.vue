@@ -2,13 +2,13 @@
   <div class="layui-card">
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane">
-        <div class="layui-form-item layui-form-pane">
+        <div class="layui-form-item" pane>
           <div class="layui-form-label">审判员</div>
             <div class="layui-input-block">
               <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">当事人是否同意电子送达裁判文书？</textarea>
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item" pane>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.delivery_accuser"
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div class="layui-form-item">
+        <div class="layui-form-item" pane>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.deliveryd_defendant[0].delivery_defendant"
@@ -76,7 +76,7 @@
 <!--        </div>-->
 
         <template v-for="(item, index) in data.deliveryd_defendant.slice(1)" :key="index">
-          <div class="layui-form-item">
+          <div class="layui-form-item" pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.deliveryd_defendant[index+1].delivery_defendant"
