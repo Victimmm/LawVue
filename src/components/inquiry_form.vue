@@ -5,7 +5,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label" style="text-align: center">审判员</label>
           <div class="layui-input-block">
-            <textarea type="text" class="layui-input" style="line-height: 38px">举证质证结束，下面进入法庭询问</textarea>
+            <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">举证质证结束，下面进入法庭询问</textarea>
           </div>
         </div>
         <div class="layui-form-item" pane>

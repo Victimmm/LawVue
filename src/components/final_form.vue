@@ -5,7 +5,7 @@
         <div class="layui-form-item layui-form-pane">
               <div class="layui-form-label">审判员</div>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input" style="line-height: 38px">双方发表最后陈述意见</textarea>
+              <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">双方发表最后陈述意见</textarea>
             </div>
         </div>
 

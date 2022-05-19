@@ -5,7 +5,7 @@
         <div class="layui-form-item layui-form-pane">
           <div class="layui-form-label">审判员</div>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input" style="line-height: 38px">当事人是否同意电子送达裁判文书？</textarea>
+              <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">当事人是否同意电子送达裁判文书？</textarea>
             </div>
         </div>
         <div class="layui-form-item">
@@ -23,28 +23,10 @@
                   <input type="radio" value="2" v-model="data.is_delivery_accuser" class="myradio">
                   <label>不同意</label>
                 </div>
-                <!--                <button @click="add_component('defendant_avoid')" type="button"-->
-                <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
-                <!--                        data-type="text" style="float: right;">-->
-                <!--                  <i class="layui-icon">&#xe654;</i>-->
-                <!--                </button>-->
               </div>
             </div>
           </div>
         </div>
-<!--          <div class="layui-col-md3">-->
-<!--            <input type="text" v-model="data.delivery_accuser"  placeholder="原告" autocomplete="off" class="layui-input">-->
-<!--          </div>-->
-<!--          <div class="layui-col-md6">-->
-<!--            <div class="layui-card-body">-->
-<!--              <input type="radio" value="1" v-model="data.is_delivery_accuser" class="myradio">-->
-<!--              <label>同意</label>-->
-<!--              <input type="radio" value="2" v-model="data.is_delivery_accuser" class="myradio">-->
-<!--              <label>不同意</label>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <hr>-->
         <div class="layui-form-item" pane>
           <label class="layui-form-label">原告电子邮件地址</label>
           <div class="layui-input-block">
@@ -54,12 +36,6 @@
             </div>
           </div>
         </div>
-<!--        <div class="layui-form-item">-->
-<!--          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
-<!--          <input type="text" v-model="data.email_accuser" placeholder="原告电子邮件地址" autocomplete="off"-->
-<!--                 class="layui-input">-->
-<!--            </div>-->
-<!--        </div>-->
 
         <div class="layui-form-item">
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">

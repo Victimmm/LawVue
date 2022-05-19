@@ -6,7 +6,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label" style="text-align: center">审判员</label>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input" style="line-height: 38px">被告进行举证</textarea>
+              <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">被告进行举证</textarea>
             </div>
           </div>
           <div class="layui-form-item" pane>
@@ -57,11 +57,10 @@
           </div>
 
           <div class="layui-card">
-            <div class="layui-card-body>">
               <div class="layui-form-item" pane>
                 <label class="layui-form-label" style="text-align: center">审判员</label>
                 <div class="layui-input-block">
-                  <textarea type="text" class="layui-input" style="line-height: 38px">原告及其他被告对被告提交的证据进行质证</textarea>
+                  <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">原告及其他被告对被告提交的证据进行质证</textarea>
                 </div>
               </div>
 
@@ -127,12 +126,10 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
 
           <template v-for="(item, index) in data.defendshowd_accuser.slice(1)" :key="index">
             <div class="layui-card">
-              <div class="layui-card-body>">
                 <div class="layui-form-item" pane>
                   <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                     <div class="layui-input-inline" style="margin-left:0px ;">
@@ -195,7 +192,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </template>
 
@@ -328,7 +324,7 @@
           <div v-show="$store.state.is_counterclaim=='1'">
             <label class="layui-form-label" style="text-align: center">审判员</label>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input" style="line-height: 38px">反诉原告进行举证</textarea>
+              <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">反诉原告进行举证</textarea>
             </div>
 
           <div class="layui-form-item" pane>
@@ -379,11 +375,10 @@
           </div>
 
           <div class="layui-card">
-            <div class="layui-card-body>">
               <div class="layui-form-item" pane>
                 <label class="layui-form-label" style="text-align: center">审判员</label>
                 <div class="layui-input-block">
-                  <textarea type="text" class="layui-input" style="line-height: 38px">原告及其他被告对被告提交的证据进行质证</textarea>
+                  <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">原告及其他被告对被告提交的证据进行质证</textarea>
                 </div>
               </div>
 
@@ -449,12 +444,10 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
 
           <template v-for="(item, index) in data.defendshowd_accuser_counter.slice(1)" :key="index">
             <div class="layui-card">
-              <div class="layui-card-body>">
                 <div class="layui-form-item" pane>
                   <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                     <div class="layui-input-inline" style="margin-left:0px ;">
@@ -517,7 +510,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </template>
 

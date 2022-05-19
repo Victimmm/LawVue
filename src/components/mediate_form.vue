@@ -5,7 +5,7 @@
         <div class="layui-form-item " pane>
           <div class="layui-form-label">审判员</div>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input " style="line-height: 38px">当事人是否能够调解</textarea>
+              <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">当事人是否能够调解</textarea>
             </div>
         </div>
 
