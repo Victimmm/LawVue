@@ -59,7 +59,7 @@
             事实和理由
           </div>
           <div class="layui-input-block">
-            <textarea v-model="data.accshowd_evidence[0].accshow_fact_reason" placeholder="理由"
+            <textarea v-model="data.accshow_fact_reason" placeholder="理由"
                       class="layui-textarea"></textarea>
           </div>
         </div>
@@ -83,9 +83,13 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.accshowd_query_evidence[0].accshow_query_evidence" placeholder="证据名称"
-                       autocomplete="off"
-                       class="layui-input" style="width: 90%;float: left;">
+                <VueMultiselect :option-height="38" :show-labels="false"
+                                v-model="data.accshowd_query_evidence[0].accshow_query_evidence"
+                                :options=getProofPlaintiff placeholder="请选择证据名称"
+                                style="line-height: 16px;width: 90%; min-height: 38px;float:left;"></VueMultiselect>
+<!--                <input type="text" v-model="data.accshowd_query_evidence[0].accshow_query_evidence" placeholder="证据名称"-->
+<!--                       autocomplete="off"-->
+<!--                       class="layui-input" style="width: 90%;float: left;">-->
                 <button @click="add_component('accshowd_query_evidence')" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
@@ -159,9 +163,10 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.accshowd_query_evidence[index+1].accshow_query_evidence"
-                         placeholder="证据名称" autocomplete="off"
-                         class="layui-input" style="width: 90%;float: left;">
+                  <VueMultiselect :option-height="38" :show-labels="false"
+                                  v-model="data.accshowd_query_evidence[index+1].accshow_query_evidence"
+                                  :options=getProofPlaintiff placeholder="请选择证据名称"
+                                  style="line-height: 16px;width: 90%; min-height: 38px;float:left;"></VueMultiselect>
                   <button @click="delete_component('accshowd_query_evidence',1)" type="button"
                           class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
@@ -248,19 +253,18 @@ export default {
         {
           accshow_evidence: "", //证据名称(原告举证表 原告提出)
           accshow_content: "", //证明事项(原告举证表 原告提出)
-          accshow_fact_reason: "", //事实和理由(被告质证)
         },
       ],
+      accshow_fact_reason: "", //事实和理由(原告举证)
       //第二个动态生成的json accshod_query_evidence 包含以下10个信息
       accshowd_query_evidence: [
         {
           accshow_content: "", //证明事项
-          accshow_fact_reason: "", //事实和理由
+          accshow_fact_reason: "", //真实性、合法性和相关性的事实和理由(被告质证的事实和理由)
           accshow_defendant: "", //被告姓名
           accshow_facticity: "true", //真实性
           accshow_legality: "true", //合法性
           accshow_relevance: "true", //关联性
-
         },
       ],
     }
@@ -273,12 +277,19 @@ export default {
   mount() {
 
   },
-
+  computed: {
+    getProofPlaintiff: {
+      get() {
+        return this.data.accshowd_evidence.map(function (e) {
+          return e.accshow_evidence;
+        })
+      },
+    },
+  },
   components: {
     VueMultiselect
   },
   methods: {
-
     add_component(datatype) {
       switch (datatype) {
         case "accshowd_evidence":

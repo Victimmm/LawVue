@@ -388,4 +388,13 @@ a.layui-this {
   color: #847ec3;
   background-color: #e2e2e2;
 }
+
+/* 分割线（含标题的分割线） */
+.site-border-default fieldset{border-top: 1px solid #eee;}
+.site-border-red fieldset{border-top: 1px solid #FF5722;}
+.site-border-orange fieldset{border-top: 1px solid #FFB800;}
+.site-border-green fieldset{border-top: 1px solid #009688;}
+.site-border-cyan fieldset{border-top: 1px solid #2F4056;}
+.site-border-blue fieldset{border-top: 1px solid #1E9FFF;}
+.site-border-black fieldset{border-top: 1px solid #393D49;}
 </style>
