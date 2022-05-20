@@ -85,7 +85,7 @@
         </div>
 
         <div class="layui-form-item">
-          <div class="layui-input-block" style="width: 55%">
+          <div class="layui-input-block" style="width: 80%;margin-left: 0px;">
             <button type="button" class="layui-btn layui-btn-radius layui-btn-primary" @click="onAddClick"> 添加</button>
             <button type="button" class="layui-btn layui-btn-radius layui-btn-warm" v-show="this.index!=0"
                     @click="onCloseClick"> 删除

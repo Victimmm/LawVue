@@ -13,9 +13,6 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
 
               <div class="layui-input-inline" style="margin-left:0px ;">
-<!--                <input type="text" v-model="data.defendshow_proof[0].defendshow_evidence" placeholder="证据名称"-->
-<!--                       autocomplete="off" @change="getProofDefendant"-->
-<!--                       class="layui-input" style="line-height: 16px;width: 160px; min-height: 38px">-->
                 <input type="text" v-model="data.defendshow_proof[0].defendshow_evidence" placeholder="证据名称"
                        autocomplete="off"
                        class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">
@@ -848,6 +845,7 @@ export default {
     if (wholeItem != null && "defendshow_form" in wholeItem) {
       data = wholeItem.defendshow_form
     }
+    console.log(data)
     return {
       data: data
     }

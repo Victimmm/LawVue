@@ -36,7 +36,7 @@
             审判长
           </div>
           <div class="layui-input-block ">
-            <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
+            <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.chief_judge[0].name" placeholder="审判长姓名" autocomplete="off"
                      class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('chief_judge',0)">
               <button @click="add_component('chief_judge')" type="button"
@@ -52,7 +52,7 @@
           <template v-for="(item, index) in data.chief_judge.slice(1)" :key='index'>
 
             <div class="layui-input-block myinput-block">
-              <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
+              <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
                 <input type="text" v-model="data.chief_judge[index+1].name" placeholder="审判长姓名" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('chief_judge',index+1)">
                 <button @click="delete_component('chief_judge',index+1)" type="button"
@@ -74,7 +74,7 @@
           </div>
 
           <div class="layui-input-block ">
-            <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
+            <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.judge[0].name" placeholder="审判员姓名" autocomplete="off" class="layui-input"
                      style="width: 90%;float: left;" @blur="judgeChange('judge',0)">
               <button @click="add_component('judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
@@ -85,7 +85,7 @@
           </div>
           <template v-for="(item, index) in data.judge.slice(1)" :key='index'>
             <div class="layui-input-block myinput-block">
-              <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
+              <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
                 <input type="text" v-model="data.judge[index+1].name" placeholder="审判员姓名" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('judge',index+1)">
                 <button @click="delete_component('judge',index+1)" type="button"
@@ -103,7 +103,7 @@
           </div>
 
           <div class="layui-input-block ">
-            <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
+            <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.juror[0].name" placeholder="陪审员姓名" autocomplete="off" class="layui-input"
                      style="width: 90%;float: left;" @blur="judgeChange('juror',0)">
               <button @click="add_component('juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
@@ -114,7 +114,7 @@
           </div>
           <template v-for="(item, index) in data.juror.slice(1)" :key='index'>
             <div class="layui-input-block myinput-block">
-              <div class="layui-input-inline " style="width: 80%; margin-left:0px;">
+              <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
                 <input type="text" v-model="data.juror[index+1].name" placeholder="陪审员姓名" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('juror',index+1)">
                 <button @click="delete_component('juror',index+1)" type="button"
