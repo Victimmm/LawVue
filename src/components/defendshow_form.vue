@@ -845,7 +845,6 @@ export default {
     if (wholeItem != null && "defendshow_form" in wholeItem) {
       data = wholeItem.defendshow_form
     }
-    console.log(data)
     return {
       data: data
     }

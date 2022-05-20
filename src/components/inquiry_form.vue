@@ -47,10 +47,10 @@
               </div>
             </div>
           </div>
-
         </div>
+
         <template v-for="(item, index) in data.inquiryd_question.slice(1)" :key="index">
-          <div class="layui-form-item">
+          <div class="layui-form-item" pane>
             <label class="layui-form-label" style="text-align: center">问题</label>
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -66,12 +66,12 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiryd_question[index+1].inquiry_accuser"
-                                :options="$store.state.defendantname" placeholder="请选择原告"
+                                :options="$store.state.plaintiffname" placeholder="请选择原告"
                                 style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.inquiryd_question[0].inquiry_accuser_answer" placeholder="回答" autocomplete="off"
+                  <input type="text" v-model="data.inquiryd_question[index+1].inquiry_accuser_answer" placeholder="回答" autocomplete="off"
                          class="layui-input" style="width: 100%;float: left;">
                 </div>
               </div>
