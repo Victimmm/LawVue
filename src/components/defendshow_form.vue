@@ -65,9 +65,7 @@
           </div>
 
           <div class="site-border-cyan" style="width:80%">
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-              <legend  style="font-size:14px">原告对该被告所提交证据进行质证</legend>
-            </fieldset>
+            <hr class="hr-solid-content" data-content="原告对该被告所提交证据进行质证">
           </div>
 
           <div class="layui-form-item" pane>
@@ -226,11 +224,11 @@
               </div>
             </div>
           </template>
+
           <div class="site-border-cyan" style="width:80%">
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-              <legend  style="font-size:14px">其他被告对该被告所提交证据进行质证</legend>
-            </fieldset>
+            <hr class="hr-solid-content" data-content="其他被告对该被告所提交证据进行质证">
           </div>
+
           <div class="layui-form-item" pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
@@ -391,10 +389,9 @@
             </div>
           </template>
 
+
           <div class="site-border-cyan" style="width:80%">
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-              <legend  style="font-size:14px">反诉被告进行举证</legend>
-            </fieldset>
+            <hr class="hr-solid-content" data-content="反诉被告进行举证">
           </div>
 
           <div v-show="$store.state.is_counterclaim=='1'">
@@ -456,12 +453,10 @@
                           class="layui-textarea"></textarea>
               </div>
             </div>
-
             <div class="site-border-cyan" style="width:80%">
-              <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <legend  style="font-size:14px">反诉原告对反诉被告提交的证据进行质证</legend>
-              </fieldset>
+              <hr class="hr-solid-content" data-content="反诉原告对反诉被告提交的证据进行质证">
             </div>
+
             <div class="layui-form-item" pane>
               <label class="layui-form-label" style="text-align: center">审判员</label>
               <div class="layui-input-block">

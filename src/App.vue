@@ -369,6 +369,30 @@ a.layui-this {
   background-color: #847ec3;
 }
 
+/*hr solid content样式*/
+
+.hr-solid-content{
+  /*color: #a2a9b6;*/
+  border: 0;
+  font-size: 14px;
+  padding: 1em 0;
+  position: relative;
+}
+.hr-solid-content::before {
+  content: attr(data-content);
+  font-weight: bolder;
+  position: absolute;
+  padding: 0 1ch;
+  line-height: 1px;
+  border: solid #d0d0d5;
+  border-width: 0 99vw;
+  width: fit-content;
+  /* for IE浏览器 */
+  white-space: nowrap;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 /* 导航栏的样式 */
 .navs {
   position: fixed;
@@ -383,18 +407,11 @@ a.layui-this {
   font-size: 24px;
 }
 
+
 /* 当导航被点亮后改变颜色 */
 .navs .active {
   color: #847ec3;
   background-color: #e2e2e2;
 }
 
-/* 分割线（含标题的分割线） */
-.site-border-default fieldset{border-top: 1px solid #eee;}
-.site-border-red fieldset{border-top: 1px solid #FF5722;}
-.site-border-orange fieldset{border-top: 1px solid #FFB800;}
-.site-border-green fieldset{border-top: 1px solid #009688;}
-.site-border-cyan fieldset{border-top: 1px solid #2F4056;}
-.site-border-blue fieldset{border-top: 1px solid #1E9FFF;}
-.site-border-black fieldset{border-top: 1px solid #393D49;}
 </style>

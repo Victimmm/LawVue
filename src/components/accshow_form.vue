@@ -64,6 +64,10 @@
           </div>
         </div>
 
+        <div class="site-border-cyan" style="width:80%">
+          <hr class="hr-solid-content" data-content="被告对原告提交的证据进行质证">
+        </div>
+
         <div class="layui-form-item" pane>
           <div class="layui-form-label divcenter">
             审判员
