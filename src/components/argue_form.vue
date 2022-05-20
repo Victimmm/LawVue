@@ -148,11 +148,12 @@
                                   style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
+
                   <div class="myselect-div">
                     <input type="text" v-model="data.argued_counterd[index+1].argue_counter_defendant_debate"   placeholder="反诉被告辩论意见" autocomplete="off"
                            class="layui-input" style="width: 90%;float: left;">
                     <button @click="delete_component('argued_counterd',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                            data-type="text">
+                            data-type="text" style="float: right;">
                       <i class="layui-icon">&#xe640;</i>
                     </button>
                   </div>
@@ -168,11 +169,19 @@
                                   style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
+<!--                  <div class="myselect-div">-->
+<!--                    <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant_debate" placeholder="反诉原告辩论意见" autocomplete="off"-->
+<!--                           class="layui-input" style="width: 90%;float: left;">-->
+<!--                    <button @click="add_component('argued_countera')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                            data-type="text" style="float: right;">-->
+<!--                      <i class="layui-icon">&#xe654;</i>-->
+<!--                    </button>-->
+<!--                  </div>-->
                   <div class="myselect-div">
                     <input type="text" v-model="data.argued_countera[index+1].argue_counter_defendant_debate" placeholder="反诉原告辩论意见" autocomplete="off"
                            class="layui-input" style="width: 90%;float: left;">
                     <button @click="delete_component('argued_countera',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                            data-type="text">
+                            data-type="text" style="float: right;">
                       <i class="layui-icon">&#xe640;</i>
                     </button>
                   </div>
