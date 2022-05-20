@@ -49,8 +49,8 @@
             审判员
           </div>
           <div class="layui-input-block">
-            <textarea type="text" v-model="data.judge_talk[1]" class="layui-input"
-                      style="text-align: center; vertical-align: middle"></textarea>
+            <textarea type="text" v-model="data.judge_talk[1]" class="layui-textarea"
+                      style="height:38px;min-height:38px"></textarea>
           </div>
         </div>
 

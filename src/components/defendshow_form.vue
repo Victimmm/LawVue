@@ -5,7 +5,8 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label" style="text-align: center">审判员</label>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input" style="line-height: 38px">被告进行举证</textarea>
+              <textarea type="text" class="layui-textarea"
+                        style="height:38px;min-height:38px">被告进行举证</textarea>
             </div>
           </div>
           <div class="layui-form-item" pane>
@@ -71,7 +72,8 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label" style="text-align: center">审判员</label>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-input" style="line-height: 38px">原告及其他被告对被告提交的证据进行质证</textarea>
+              <textarea type="text" class="layui-textarea"
+                        style="height:38px;min-height:38px">原告及其他被告对被告提交的证据进行质证</textarea>
             </div>
           </div>
 
@@ -389,12 +391,12 @@
             </div>
           </template>
 
-
-          <div class="site-border-cyan" style="width:80%">
-            <hr class="hr-solid-content" data-content="反诉被告进行举证">
-          </div>
-
           <div v-show="$store.state.is_counterclaim=='1'">
+
+            <div class="site-border-cyan" style="width:80%">
+              <hr class="hr-solid-content" data-content="反诉被告进行举证">
+            </div>
+
             <div class="layui-form-item" pane>
               <label class="layui-form-label" style="text-align: center">审判员</label>
               <div class="layui-input-block">
