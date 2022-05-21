@@ -131,7 +131,7 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.argued_counterd[0].argue_counter_accuser_debate" placeholder="反诉原告辩论意见" autocomplete="off"
+                  <input type="text" v-model="data.argued_countera[0].argue_counter_accuser_debate" placeholder="反诉原告辩论意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="add_component('argued_countera')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
@@ -170,7 +170,7 @@
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
-                    <input type="text" v-model="data.argued_countera[index+1].argue_counter_defendant_debate" placeholder="反诉原告辩论意见" autocomplete="off"
+                    <input type="text" v-model="data.argued_countera[index+1].argue_counter_accuser_debate" placeholder="反诉原告辩论意见" autocomplete="off"
                            class="layui-input" style="width: 90%;float: left;">
                     <button @click="delete_component('argued_countera',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                             data-type="text" style="float: right;">

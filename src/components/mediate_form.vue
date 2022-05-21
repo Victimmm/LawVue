@@ -54,19 +54,19 @@
         <div class="layui-form-item " pane>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
-              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediated_defendant[0].mediate_defendant"
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant_part[0].mediate_defendant"
                               :options="$store.state.defendantname" placeholder="请选择被告"
                               style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 90%;float: left;">
-                  <input type="radio" value="1" v-model="data.mediated_defendant[0].is_mediate_defendant" class="myradio" >
+                  <input type="radio" value="1" v-model="data.mediate_defendant_part[0].is_mediate_defendant" class="myradio" >
                   <label>能</label>
-                  <input type="radio" value="2" v-model="data.mediated_defendant[0].is_mediate_defendant" class="myradio" >
+                  <input type="radio" value="2" v-model="data.mediate_defendant_part[0].is_mediate_defendant" class="myradio" >
                   <label>不能</label>
                 </div>
-                <button @click="add_component('mediated_defendant')" type="button"
+                <button @click="add_component('mediate_defendant_part')" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe654;</i>
@@ -75,23 +75,23 @@
             </div>
           </div>
         </div>
-        <template v-for="(item, index) in data.mediated_defendant.slice(1)" :key="index">
+        <template v-for="(item, index) in data.mediate_defendant_part.slice(1)" :key="index">
           <div class="layui-form-item " pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediated_defendant[index+1].mediate_defendant"
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant_part[index+1].mediate_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择被告"
                                 style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 90%;float: left;">
-                    <input type="radio" value="1" v-model="data.mediated_defendant[index+1].is_mediate_defendant" class="myradio" >
+                    <input type="radio" value="1" v-model="data.mediate_defendant_part[index+1].is_mediate_defendant" class="myradio" >
                     <label>能</label>
-                    <input type="radio" value="2" v-model="data.mediated_defendant[index+1].is_mediate_defendant" class="myradio" >
+                    <input type="radio" value="2" v-model="data.mediate_defendant_part[index+1].is_mediate_defendant" class="myradio" >
                     <label>不能</label>
                   </div>
-                  <button @click="delete_component('mediated_defendant',1)" type="button"
+                  <button @click="delete_component('mediate_defendant_part',1)" type="button"
                           class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
@@ -106,7 +106,7 @@
             调解方案
           </div>
           <div class="layui-input-block">
-                <textarea v-model="data.mediated_defendant[0].mediate_plan_defendant" placeholder="请输入调解方案"
+                <textarea v-model="data.mediate_plan_defendant" placeholder="请输入调解方案"
                           class="layui-textarea"></textarea>
           </div>
         </div>
@@ -124,17 +124,17 @@ export default {
     var data;
 // if (localStorage.getItem("mediate_form") == null) {
     data = {
-      mediate_accuser: '',            //原告简称
-      is_mediate_accuser: '1',         //原告回答
-      mediate_plan_accuser: '',       //被告简称
-      time_limit_accuser:'',
-      mediated_defendant: [
+      mediate_accuser: '',            //原告姓名
+      is_mediate_accuser: '1',         //原告是否调解
+      mediate_plan_accuser: '',       //被告调解方案
+      time_limit_accuser:'',          //调解时限（双方统一）
+      mediate_defendant_part: [
         {
-          mediate_defendant: "" , //被告回答
-          is_mediate_defendant: "1" ,
-          mediate_plan_defendant:"",
+          mediate_defendant: "" , //被告姓名
+          is_mediate_defendant: "1" , //被告是否调解
         },
       ],
+      mediate_plan_defendant:"",
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null &&  "mediate_form" in wholeItem){
@@ -151,11 +151,10 @@ export default {
   methods: {
     add_component(datatype) {
       switch (datatype) {
-        case "mediated_defendant":
-          this.data.mediated_defendant.push({
-            mediate_defendant: "" ,          //问题
-            mediate_plan_defendant: "" ,     //原告简称
-            is_mediate_defendant: "1" ,       //原告回答
+        case "mediate_defendant_part":
+          this.data.mediate_defendant_part.push({
+            mediate_defendant: "" ,          //被告调解姓名
+            is_mediate_defendant: "1" ,       //被告是否调解
           });
           break
         default:
@@ -165,9 +164,9 @@ export default {
     },
     delete_component(datatype, index) {
       switch (datatype) {
-        case "mediated_defendant":
+        case "mediate_defendant_part":
           //这里是值对应的处理
-          this.data.mediated_defendant.splice(index, 1);
+          this.data.mediate_defendant_part.splice(index, 1);
           break;
 
         default:
