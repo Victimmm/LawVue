@@ -14,7 +14,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_accuser"
                               :options="$store.state.plaintiffname" placeholder="请选择原告"
-                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                              style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -56,7 +56,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediated_defendant[0].mediate_defendant"
                               :options="$store.state.defendantname" placeholder="请选择被告"
-                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                              style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -81,7 +81,7 @@
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediated_defendant[index+1].mediate_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择被告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">

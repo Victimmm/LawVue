@@ -15,8 +15,8 @@
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_accuser[0].argue_accuser"
-                              :options="$store.state.defendantname" placeholder="请选择原告"
-                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                              :options="$store.state.plaintiffname" placeholder="请选择原告"
+                              style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -34,7 +34,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_defendant[0].argue_defendant"
                               :options="$store.state.defendantname" placeholder="请选择被告"
-                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                              style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -51,8 +51,8 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_accuser[index+1].argue_accuser"
-                                :options="$store.state.defendantname" placeholder="请选择原告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                :options="$store.state.plaintiffname" placeholder="请选择原告"
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
@@ -73,7 +73,7 @@
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_defendant[index+1].argue_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择被告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
@@ -109,8 +109,8 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_counterd[0].argue_counter_defendant"
-                                :options="$store.state.defendantname" placeholder="请选择反诉被告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
@@ -127,11 +127,11 @@
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_countera[0].argue_counter_accuser"
                                 :options="$store.state.defendantname" placeholder="请选择反诉原告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant_debate" placeholder="反诉原告辩论意见" autocomplete="off"
+                  <input type="text" v-model="data.argued_counterd[0].argue_counter_accuser_debate" placeholder="反诉原告辩论意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="add_component('argued_countera')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
@@ -144,8 +144,8 @@
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_counterd[index+1].argue_counter_defendant"
-                                  :options="$store.state.defendantname" placeholder="请选择反诉被告"
-                                  style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                  :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
+                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
 
@@ -166,17 +166,9 @@
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argued_countera[index+1].argue_counter_accuser"
                                   :options="$store.state.defendantname" placeholder="请选择反诉原告"
-                                  style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
-<!--                  <div class="myselect-div">-->
-<!--                    <input type="text" v-model="data.argued_counterd[0].argue_counter_defendant_debate" placeholder="反诉原告辩论意见" autocomplete="off"-->
-<!--                           class="layui-input" style="width: 90%;float: left;">-->
-<!--                    <button @click="add_component('argued_countera')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
-<!--                            data-type="text" style="float: right;">-->
-<!--                      <i class="layui-icon">&#xe654;</i>-->
-<!--                    </button>-->
-<!--                  </div>-->
                   <div class="myselect-div">
                     <input type="text" v-model="data.argued_countera[index+1].argue_counter_defendant_debate" placeholder="反诉原告辩论意见" autocomplete="off"
                            class="layui-input" style="width: 90%;float: left;">

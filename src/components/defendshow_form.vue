@@ -80,7 +80,7 @@
                 <VueMultiselect :option-height="38" :show-labels="false"
                                 v-model="data.defendshowd_accuser[0].defendshow_accuser"
                                 :options="$store.state.plaintiffname" placeholder="请选择原告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
@@ -156,7 +156,7 @@
                   <VueMultiselect :option-height="38" :show-labels="false"
                                   v-model="data.defendshowd_accuser[index+1].defendshow_accuser"
                                   :options="$store.state.plaintiffname" placeholder="请选择原告"
-                                  style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
@@ -234,7 +234,7 @@
                 <VueMultiselect :option-height="38" :show-labels="false"
                                 v-model="data.defendshowd_defendant[0].defendshow_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择其他被告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
@@ -313,7 +313,7 @@
                   <VueMultiselect :option-height="38" :show-labels="false"
                                   v-model="data.defendshowd_defendant[index+1].defendshow_defendant"
                                   :options="$store.state.defendantname" placeholder="请选择被告"
-                                  style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
@@ -427,7 +427,7 @@
                   <div class="layui-input-inline" style="margin-left:0px ;">
                     <input type="text" v-model="data.defendshowd_evidence_counter[index+1].defendshow_evidence"
                            placeholder="证据名称" autocomplete="off"
-                           class="layui-input" style="line-height: 16px;width: 250px; min-height: 38px">
+                           class="layui-input" style="line-height: 16px;width: 160px; min-height: 38px">
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
@@ -469,7 +469,7 @@
                   <VueMultiselect :option-height="38" :show-labels="false"
                                   v-model="data.defendshowd_accuser_counter[0].defendshow_accuser"
                                   :options="$store.state.defendantname" placeholder="请选择反诉原告"
-                                  style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
@@ -551,7 +551,7 @@
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.defendshowd_accuser_counter[index+1].defendshow_accuser"
                                     :options="$store.state.defendantname" placeholder="请选择反诉原告"
-                                    style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                    style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">

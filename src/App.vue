@@ -61,11 +61,11 @@
     <!-- 反诉且今日答辩 或者不反诉的情况显示-->
     <div
         v-if="($store.state.is_todayreply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='0'">
-      <div id="accshow_form">
+      <div id="plaintiffshow_form">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭调查-原告举证</legend>
           <div class="layui-field-box">
-            <accshow_form ref="accshow_form"></accshow_form>
+            <plaintiffshow_form ref="plaintiffshow_form"></plaintiffshow_form>
           </div>
         </fieldset>
       </div>
@@ -97,11 +97,11 @@
         </fieldset>
       </div>
 
-      <div id="final_form">
+      <div id="state_form">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>陈述意见</legend>
           <div class="layui-field-box">
-            <final_form></final_form>
+            <state_form></state_form>
           </div>
         </fieldset>
       </div>
@@ -134,11 +134,11 @@ import PlaintiffImf from './components/PlaintiffImf.vue'
 import DefendantImf from './components/DefendantImf.vue'
 import CourtInves from './components/CourtInves.vue'
 import right_inform from "@/components/right_inform";
-import accshow_form from "@/components/accshow_form";
+import plaintiffshow_form from "@/components/plaintiffshow_form";
 import defendshow_form from "@/components/defendshow_form";
 import inquiry_form from "@/components/inquiry_form";
 import argue_form from "@/components/argue_form";
-import final_form from "@/components/final_form";
+import state_form from "@/components/state_form";
 import mediate_form from "@/components/mediate_form";
 import delivery_form from "@/components/delivery_form";
 import BasicState from "@/components/BasicState";
@@ -151,11 +151,11 @@ export default {
     DefendantImf,
     CourtInves,
     right_inform,
-    accshow_form,
+    plaintiffshow_form,
     defendshow_form,
     inquiry_form,
     argue_form,
-    final_form,
+    state_form,
     mediate_form,
     delivery_form,
     BasicState
@@ -183,11 +183,11 @@ export default {
               "        <li><a href=\"#BasicState\"><cite>基本信息陈述</cite></a></li>\n" +
               "        <li><a href=\"#right_inform\"><cite>权利告知</cite></a></li>\n" +
               "        <li><a href=\"#CourtInves1\"><cite>法庭调查</cite></a></li>\n" +
-              "        <li><a href=\"#accshow_form\"><cite>原告举证</cite></a></li>\n" +
+              "        <li><a href=\"#plaintiffshow_form\"><cite>原告举证</cite></a></li>\n" +
               "        <li><a href=\"#defendshow_form\"><cite>被告举证</cite></a></li>\n" +
               "        <li><a href=\"#inquiry_form\"><cite>法庭询问</cite></a></li>\n" +
               "        <li><a href=\"#argue_form\"><cite>法庭辩论</cite></a></li>\n" +
-              "        <li><a href=\"#final_form\"><cite>陈述意见</cite></a></li>\n" +
+              "        <li><a href=\"#state_form\"><cite>陈述意见</cite></a></li>\n" +
               "        <li><a href=\"#mediate_form\"><cite>是否调解</cite></a></li>\n" +
               "        <li><a href=\"#delivery_form\"><cite>电子文书送达</cite></a></li>\n" +
               "      </ul>",
@@ -261,7 +261,7 @@ body .myskin {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  overflow:-Scroll;
+  /*overflow:-Scroll;*/
   overflow-x:hidden
 }
 

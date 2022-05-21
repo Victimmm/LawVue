@@ -13,8 +13,8 @@
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.finald_accuser[0].final_accuser"
-                              :options="$store.state.defendantname" placeholder="请选择原告"
-                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                              :options="$store.state.plaintiffname" placeholder="请选择原告"
+                              style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -32,7 +32,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false"  v-model="data.finald_defendant[0].final_defendant"
                               :options="$store.state.defendantname" placeholder="请选择被告"
-                              style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                              style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -49,12 +49,12 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.finald_accuser[index+1].final_defendant"
-                                :options="$store.state.defendantname" placeholder="请选择原告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                :options="$store.state.plaintiffname" placeholder="请选择原告"
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.finald_accuser[0].final_accuser_state"   placeholder="原告陈述意见" autocomplete="off"
+                  <input type="text" v-model="data.finald_accuser[index+1].final_accuser_state"   placeholder="原告陈述意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="delete_component('finald_accuser',1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
@@ -71,7 +71,7 @@
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.finald_defendant[index+1].final_defendant"
                                 :options="$store.state.defendantname" placeholder="请选择被告"
-                                style="line-height: 16px;width: 250px; min-height: 38px"></VueMultiselect>
+                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
@@ -114,8 +114,8 @@ export default {
       ],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if(wholeItem!=null && "final_form" in wholeItem){
-      data=wholeItem.final_form
+    if(wholeItem!=null && "state_form" in wholeItem){
+      data=wholeItem.state_form
     }
     return {
       data: data,
@@ -175,7 +175,7 @@ export default {
         else{
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           if (wholeItem != null) {
-            wholeItem.final_form = this.data
+            wholeItem.state_form = this.data
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
           }
         }
