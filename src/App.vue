@@ -241,23 +241,16 @@ export default {
     },
     //提交 localstorage  中的数据
     onSummit() {
-      this.axios.post('http://localhost:8080/record/wholemsg', localStorage.getItem(this.$store.state.court_number))
+
+
+
+      this.axios.post('http://localhost:8080/record/add', localStorage.getItem(this.$store.state.court_number))
           .then(function (response) {
             console.log(response);
           })
           .catch(function (error) {
             console.log(error);
           });
-      // this.axios({
-      //   method: "post",
-      //   url: "http://localhost:8080/record/wholemsg", // 接口地址
-      //   data: {
-      //     "wholemsg" : localStorage.getItem(this.$store.state.court_number)
-      //   }
-      // }).then(response => {
-      //       console.log(response, "success");   // 成功的返回
-      //     })
-      //     .catch(error => console.log(error, "error")); // 失败的返回
     }
   }
 }

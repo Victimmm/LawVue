@@ -12,7 +12,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label ">立案时间</label>
           <div class="layui-input-block ">
-            <input type="text"  id="filing_time" placeholder="请输入立案时间" autocomplete="off"
+            <input type="text" id="filing_time" placeholder="请输入立案时间" autocomplete="off"
                    class="layui-input">
           </div>
         </div>
@@ -157,8 +157,8 @@
 export default {
   data() {
     var data = {
-      filing_time: "2022年04月21日",
-      court_time: "2022年04月28日 00时00分",
+      filing_time: "",
+      court_time: "",
       court_place: '',
       chief_judge: [{name: ""}],
       judge: [{name: ""}],
@@ -179,25 +179,30 @@ export default {
   //   Datepicker
   // },
   mounted() {
-    window.layui.use('laydate',  () =>{
+    window.layui.use('laydate', () => {
       var laydate = window.layui.laydate;
+      // var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      // if (wholeItem != null && "BasicInfo" in wholeItem) {
+      //       let filing_time=wholeItem.BasicInfo.filing_time
+      //       let court_time=wholeItem.BasicInfo.court_time
+      // }
       laydate.render({
         elem: '#filing_time', //指定元素
         type: 'datetime',
         format: 'yyyy年MM月dd日', //可任意组合
-        value: new Date(),
+        value: this.data.filing_time,
         change: (value) => {
-          this.data.filing_time=value
+          this.data.filing_time = value
           // console.log(value,this); //得到日期生成的值，如：2017-08-18
         }
       });
       laydate.render({
         elem: '#court_time',
         type: 'datetime',
-        value: new Date(),
+        value: this.data.court_time,
         format: 'yyyy年MM月dd日 HH时mm分', //可任意组合
         done: (value) => {
-          this.data.court_time=value
+          this.data.court_time = value
           // console.log(value); //得到日期生成的值，如：2017-08-18
         }
       });

@@ -68,21 +68,47 @@
             </div>
           </div>
         </div>
+
         <div class="layui-form-item" pane>
-          <label class="layui-form-label">委托诉讼代理人</label>
+          <div class="layui-form-label divcenter">委托诉讼代理人</div>
           <div class="layui-input-block">
-            <input type="text" v-model="data.defendant_agent" required lay-verify="required" placeholder="请输入委托诉讼代理人"
-                   autocomplete="off" class="layui-input">
+            <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
+              <input type="text" v-model="data.defendant_agent[0].agent" placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"
+                     style="width: 90%;float: left;" >
+              <button @click="add_component()" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                      data-type="text" style="float: right;">
+                <i class="layui-icon">&#xe654;</i>
+              </button>
+            </div>
+          </div>
+          <div class="layui-input-block" style="margin-top: 5px;">
+            <input type="text" v-model="data.defendant_agent[0].agent_address" required lay-verify="required"
+                   placeholder="请输入委托诉讼代理人单位" autocomplete="off" class="layui-input">
           </div>
         </div>
-        <div class="layui-form-item" pane>
-          <label class="layui-form-label">委托诉讼代理人单位</label>
-          <div class="layui-input-block">
-            <input type="text" v-model="data.defendant_agent_address" required lay-verify="required"
-                   placeholder="请输入委托诉讼代理人单位"
-                   autocomplete="off" class="layui-input">
+
+        <template v-for="( item,index) in data.defendant_agent.slice(1)" :key='index'>
+
+          <div class="layui-form-item" pane>
+            <div class="layui-form-label divcenter">委托诉讼代理人</div>
+            <div class="layui-input-block">
+              <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
+                <input type="text" v-model="data.defendant_agent[index+1].agent" placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"
+                       style="width: 90%;float: left;" >
+                <button @click="delete_component(index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text" style="float: right;">
+                  <i class="layui-icon">&#xe640;</i>
+                </button>
+              </div>
+            </div>
+            <div class="layui-input-block" style="margin-top: 5px;">
+              <input type="text" v-model="data.defendant_agent[index+1].agent_address" required lay-verify="required"
+                     placeholder="请输入委托诉讼代理人单位" autocomplete="off" class="layui-input">
+            </div>
           </div>
-        </div>
+
+        </template>
+
 
         <div class="layui-form-item">
           <div class="layui-input-block" style="width: 80%;margin-left: 0px;">
@@ -115,8 +141,7 @@ export default {
       defendant_address: '',
       defendant_representative: '',
       defendant_duty: '',
-      defendant_agent: '',
-      defendant_agent_address: '',
+      defendant_agent: [{agent:"",agent_address: ''}]
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "DefendantItems" in wholeItem) {
@@ -143,6 +168,12 @@ export default {
     }
   },
   methods: {
+    add_component(){
+      this.data.defendant_agent.push({agent:"",agent_address: ""})
+    },
+    delete_component(index){
+      this.data.defendant_agent.splice(index, 1)
+    },
     onCloseClick() {
       // 将删除标签事件暴露除去
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))

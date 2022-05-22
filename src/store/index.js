@@ -27,7 +27,7 @@ export default createStore({
                 let court_clerk = ""
                 let is_todayreply = "0"
                 let is_counterclaim = "0"
-                var wholeItem = JSON.parse(localStorage.getItem(pair[1]))
+                var wholeItem = JSON.parse(localStorage.getItem(decodeURI(pair[1])))
                 if (wholeItem != null) {
                     if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
                         for (var j = 0; j < wholeItem.PlaintiffItems.length; j++) {

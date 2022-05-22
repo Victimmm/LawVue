@@ -126,14 +126,8 @@ export default {
       "上述诉讼权利和义务双方是否听清？",
         "审判员：当事人对审判员和书记是否申请回避？",
       ],
-      accuser_avoid: [{is_listen: "1", is_avoid: "1"}, {is_listen: "1", is_avoid: "1"}, {
-        is_listen: "1",
-        is_avoid: "1"
-      }, {is_listen: "1", is_avoid: "1"}, {is_listen: "1", is_avoid: "1"},],
-      defendant_avoid: [{is_listen: "1", is_avoid: "1"}, {is_listen: "1", is_avoid: "1"}, {
-        is_listen: "1",
-        is_avoid: "1"
-      }, {is_listen: "1", is_avoid: "1"}, {is_listen: "1", is_avoid: "1"},],
+      accuser_avoid: [{is_listen: "1", is_avoid: "1"}],
+      defendant_avoid: [{is_listen: "1", is_avoid: "1"}],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "right_inform" in wholeItem) {
@@ -160,6 +154,9 @@ export default {
     getDefendantNane: {
       get() {
         if (this.$store.state.is_counterclaim == "0") {
+
+
+
           return this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
             return e + '（被告）';
           })
@@ -205,15 +202,6 @@ export default {
           //这里是没有找到对应的值处理
           break
       }
-    },
-    save_localstorage() {
-      if (this.$store.state.court_number == "") {
-        window.layui.layer.msg('请优先完善基本信息表格');
-      } else {
-        var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-        wholeItem.right_inform = this.data
-        localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
-      }
     }
   },
   watch: {
@@ -232,10 +220,21 @@ export default {
       },
       deep: true
     },
-    "$store.state.plaintiffname"() {
-      console.log(111)
+    getPlaintiffName() {
+      if(this.data.accuser_avoid.length < this.$store.state.plaintiffname.length){
+        this.data.accuser_avoid.push({
+          is_avoid: "1", is_listen: "1",
+        })
+      }
+    },
+    getDefendantNane() {
+      if(this.data.defendant_avoid.length < this.$store.state.plaintiffname.length){
+        this.data.defendant_avoid.push({
+          is_avoid: "1", is_listen: "1",
+        })
+      }
     }
-  },
+  }
 }
 </script>
 

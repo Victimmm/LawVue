@@ -71,7 +71,26 @@ export default {
       },
       set(val) {
         this.data.state_content = val
+        console.log(val)
       }
+
+    }
+  },
+  watch:{
+    data: {
+      handler() {
+        var wholeItem
+        if (this.$store.state.court_number == "") {
+          // window.layui.layer.msg('请优先完善基本信息表格');
+        } else {
+          wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+          if (wholeItem != null) {
+            wholeItem.BasicState = this.data
+            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+          }
+        }
+      },
+      deep: true
     }
   }
 }
