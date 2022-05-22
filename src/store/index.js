@@ -17,7 +17,6 @@ export default createStore({
         for (var i = 0; i < vars.length; i++) {
             var pair = vars[i].split("=");
             if (pair[0] == "CourtNum") {
-
                 let plaintiffname = [""]
                 let plaintifftag = [guid()]
                 let defendantname = [""]
@@ -75,7 +74,7 @@ export default createStore({
                     jurorname: jurorname,
                     judgename: judgename,
                     is_todayreply: is_todayreply,
-                    court_number: pair[1],
+                    court_number: decodeURI(pair[1]),
                     is_counterclaim: is_counterclaim,
                     court_clerk: court_clerk
                 }

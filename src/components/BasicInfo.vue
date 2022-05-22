@@ -12,7 +12,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label ">立案时间</label>
           <div class="layui-input-block ">
-            <input type="text" v-model="data.filing_time" id="filing_time" placeholder="请输入立案时间" autocomplete="off"
+            <input type="text"  id="filing_time" placeholder="请输入立案时间" autocomplete="off"
                    class="layui-input">
           </div>
         </div>
@@ -179,16 +179,27 @@ export default {
   //   Datepicker
   // },
   mounted() {
-    window.layui.use('laydate', function () {
+    window.layui.use('laydate',  () =>{
       var laydate = window.layui.laydate;
       laydate.render({
-        elem: '#filing_time' //指定元素
-        , format: 'yyyy年MM月dd日' //可任意组合
+        elem: '#filing_time', //指定元素
+        type: 'datetime',
+        format: 'yyyy年MM月dd日', //可任意组合
+        value: new Date(),
+        change: (value) => {
+          this.data.filing_time=value
+          // console.log(value,this); //得到日期生成的值，如：2017-08-18
+        }
       });
       laydate.render({
-        elem: '#court_time'
-        , type: 'datetime'
-        , format: 'yyyy年MM月dd日 HH时mm分' //可任意组合
+        elem: '#court_time',
+        type: 'datetime',
+        value: new Date(),
+        format: 'yyyy年MM月dd日 HH时mm分', //可任意组合
+        done: (value) => {
+          this.data.court_time=value
+          // console.log(value); //得到日期生成的值，如：2017-08-18
+        }
       });
     });
   },

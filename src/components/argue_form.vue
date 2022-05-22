@@ -2,7 +2,7 @@
 <template>
 
   <div class="layui-card">
-    <div class="layui-card-body>">
+    <div class="layui-card-body">
       <form class="layui-form layui-form-pane">
         <div class="layui-form-item" pane>
           <label class="layui-form-label" style="text-align: center">审判员</label>

@@ -60,7 +60,7 @@
     </div>
     <!-- 反诉且今日答辩 或者不反诉的情况显示-->
     <div
-        v-if="($store.state.is_todayreply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='0'">
+        v-if="( $store.state.is_todayreply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='0'">
       <div id="plaintiffshow_form">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭调查-原告举证</legend>
@@ -124,6 +124,9 @@
         </fieldset>
       </div>
     </div>
+    <button type="button" class="layui-btn layui-btn-radius layui-btn-warm"
+            @click="onSummit" style="margin: -15px 0 30px;"> 提交
+    </button>
   </div>
 
 </template>
@@ -227,14 +230,34 @@ export default {
       }
       // 把下标赋值给 vue 的 data
       this.active = navIndex
-      if(document.getElementById("content_list") != null){
+      if (document.getElementById("content_list") != null) {
         // 获取钙元素下的a标签，并更改class 属性
-        for (let i = 0; i < offsetTopArr.length  ; i++) {
-          if(i != navIndex)
+        for (let i = 0; i < offsetTopArr.length; i++) {
+          if (i != navIndex)
             document.getElementById("content_list").children[i].children[0].removeAttribute("class")
         }
         document.getElementById("content_list").children[navIndex].children[0].className = "layui-this"
       }
+    },
+    //提交 localstorage  中的数据
+    onSummit() {
+      this.axios.post('http://localhost:8080/record/wholemsg', localStorage.getItem(this.$store.state.court_number))
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      // this.axios({
+      //   method: "post",
+      //   url: "http://localhost:8080/record/wholemsg", // 接口地址
+      //   data: {
+      //     "wholemsg" : localStorage.getItem(this.$store.state.court_number)
+      //   }
+      // }).then(response => {
+      //       console.log(response, "success");   // 成功的返回
+      //     })
+      //     .catch(error => console.log(error, "error")); // 失败的返回
     }
   }
 }
@@ -261,8 +284,8 @@ body .myskin {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /*overflow:-Scroll;*/
-  overflow-x:hidden
+  overflow: -Scroll;
+  overflow-x: hidden
 }
 
 </style>
@@ -371,13 +394,14 @@ a.layui-this {
 
 /*hr solid content样式*/
 
-.hr-solid-content{
+.hr-solid-content {
   /*color: #a2a9b6;*/
   border: 0;
   font-size: 14px;
   padding: 1em 0;
   position: relative;
 }
+
 .hr-solid-content::before {
   content: attr(data-content);
   font-weight: bolder;
