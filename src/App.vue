@@ -88,11 +88,11 @@
         </fieldset>
       </div>
 
-      <div id="argue_form">
+      <div id="argueInfo">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭辩论</legend>
           <div class="layui-field-box">
-            <argue_form></argue_form>
+            <argueInfo></argueInfo>
           </div>
         </fieldset>
       </div>
@@ -140,7 +140,7 @@ import right_inform from "@/components/right_inform";
 import plaintiffshow_form from "@/components/plaintiffshow_form";
 import defendshow_form from "@/components/defendshow_form";
 import inquiry_form from "@/components/inquiry_form";
-import argue_form from "@/components/argue_form";
+import argueInfo from "@/components/argueInfo";
 import state_form from "@/components/state_form";
 import mediate_form from "@/components/mediate_form";
 import delivery_form from "@/components/delivery_form";
@@ -157,7 +157,7 @@ export default {
     plaintiffshow_form,
     defendshow_form,
     inquiry_form,
-    argue_form,
+    argueInfo,
     state_form,
     mediate_form,
     delivery_form,
@@ -189,7 +189,7 @@ export default {
               "        <li><a href=\"#plaintiffshow_form\"><cite>原告举证</cite></a></li>\n" +
               "        <li><a href=\"#defendshow_form\"><cite>被告举证</cite></a></li>\n" +
               "        <li><a href=\"#inquiry_form\"><cite>法庭询问</cite></a></li>\n" +
-              "        <li><a href=\"#argue_form\"><cite>法庭辩论</cite></a></li>\n" +
+              "        <li><a href=\"#argueInfo\"><cite>法庭辩论</cite></a></li>\n" +
               "        <li><a href=\"#state_form\"><cite>陈述意见</cite></a></li>\n" +
               "        <li><a href=\"#mediate_form\"><cite>是否调解</cite></a></li>\n" +
               "        <li><a href=\"#delivery_form\"><cite>电子文书送达</cite></a></li>\n" +
@@ -388,9 +388,9 @@ a.layui-this {
 /*hr solid content样式*/
 
 .hr-solid-content {
-  /*color: #a2a9b6;*/
+  color: #2D93CA;
   border: 0;
-  font-size: 14px;
+  font-size: 22px;
   padding: 1em 0;
   position: relative;
 }
