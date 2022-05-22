@@ -8,51 +8,23 @@
               <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">当事人是否同意电子送达裁判文书？</textarea>
             </div>
         </div>
-        <div class="layui-form-item" pane>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-            <div class="layui-input-inline" style="margin-left:0px ;">
-              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.delivery_accuser"
-                              :options="$store.state.plaintiffname" placeholder="请选择原告"
-                              style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
-            </div>
-            <div class="layui-input-block">
-              <div class="myselect-div">
-                <div class="myradiomargin" style="width: 100%;float: left;">
-                  <input type="radio" value="1" v-model="data.is_delivery_accuser" class="myradio">
-                  <label>同意</label>
-                  <input type="radio" value="2" v-model="data.is_delivery_accuser" class="myradio">
-                  <label>不同意</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-form-item" pane>
-          <label class="layui-form-label">原告电子邮件地址</label>
-          <div class="layui-input-block">
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <input type="text" v-model="data.email_accuser" placeholder="原告电子邮件地址" autocomplete="off"
-                     class="layui-input">
-            </div>
-          </div>
-        </div>
 
         <div class="layui-form-item" pane>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
-              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.deliveryd_defendant[0].delivery_defendant"
-                              :options="$store.state.defendantname" placeholder="请选择被告"
+              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.delivery_info[0].name"
+                              :options="deliveryFormGetAccuserMergeDefendant" placeholder="请选择原被告"
                               style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 90%;float: left;">
-                  <input type="radio" v-model="data.deliveryd_defendant[0].is_delivery_defendant" value="1" class="myradio">
+                  <input type="radio" v-model="data.delivery_info[0].is_delivery" value="1" class="myradio">
                   <label>同意</label>
-                  <input type="radio" v-model="data.deliveryd_defendant[0].is_delivery_defendant" value="2" class="myradio">
+                  <input type="radio" v-model="data.delivery_info[0].is_delivery" value="2" class="myradio">
                   <label>不同意</label>
                 </div>
-                <button @click="add_component('deliveryd_defendant')" type="button"
+                <button @click="add_component('delivery_info')" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe654;</i>
@@ -63,10 +35,10 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <label class="layui-form-label">被告电子邮件地址</label>
+          <label class="layui-form-label">电子邮件地址</label>
           <div class="layui-input-block">
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <input type="text" v-model="data.deliveryd_defendant[0].email_defendant" placeholder="被告电子邮件地址" autocomplete="off"
+              <input type="text" v-model="data.delivery_info[0].email" placeholder="电子邮件地址" autocomplete="off"
                      class="layui-input">
             </div>
           </div>
@@ -75,23 +47,23 @@
 <!--          <input type="text" v-model="data.deliveryd_defendant[0].email_defendant" name="title" placeholder="被告电子邮件地址" autocomplete="off" class="layui-input">-->
 <!--        </div>-->
 
-        <template v-for="(item, index) in data.deliveryd_defendant.slice(1)" :key="index">
+        <template v-for="(item, index) in data.delivery_info.slice(1)" :key="index">
           <div class="layui-form-item" pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.deliveryd_defendant[index+1].delivery_defendant"
-                                :options="$store.state.defendantname" placeholder="请选择被告"
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.delivery_info[index+1].name"
+                                :options="deliveryFormGetAccuserMergeDefendant" placeholder="请选择原被告"
                                 style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 90%;float: left;">
-                    <input type="radio" v-model="data.deliveryd_defendant[index+1].is_delivery_defendant" value="1" class="myradio">
+                    <input type="radio" v-model="data.delivery_info[index+1].is_delivery" value="1" class="myradio">
                     <label>同意</label>
-                    <input type="radio" v-model="data.deliveryd_defendant[index+1].is_delivery_defendant" value="2" class="myradio">
+                    <input type="radio" v-model="data.delivery_info[index+1].is_delivery" value="2" class="myradio">
                     <label>不同意</label>
                   </div>
-                  <button @click="delete_component('deliveryd_defendant',1)" type="button"
+                  <button @click="delete_component('delivery_info',index+1)" type="button"
                           class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
@@ -102,10 +74,10 @@
           </div>
 
           <div class="layui-form-item" pane>
-            <label class="layui-form-label">被告电子邮件地址</label>
+            <label class="layui-form-label">电子邮件地址</label>
             <div class="layui-input-block">
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                <input type="text" v-model="data.deliveryd_defendant[index+1].email_defendant" placeholder="被告电子邮件地址" autocomplete="off"
+                <input type="text" v-model="data.delivery_info[index+1].email" placeholder="电子邮件地址" autocomplete="off"
                        class="layui-input">
               </div>
             </div>
@@ -122,22 +94,18 @@ import VueMultiselect from "vue-multiselect";
 export default {
   data() {
     var data;
-// if (localStorage.getItem("delivery_form") == null) {
     data = {
-      delivery_accuser:'',
-      is_delivery_accuser:'1',
-      email_accuser:'',
-      deliveryd_defendant: [
+      delivery_info:[
         {
-          delivery_defendant: '',         //问题
-          is_delivery_defendant: '1',          //原告简称
-          email_defendant: '',  //原告回答
-        },
-      ],
+          name: "",
+          is_delivery: "1",
+          email: ""
+        }
+      ]
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if(wholeItem!=null && "delivery_form" in wholeItem){
-      data=wholeItem.delivery_form
+    if(wholeItem!=null && "deliveryInfo" in wholeItem){
+      data=wholeItem.deliveryInfo
     }
     return {
       data: data,
@@ -147,15 +115,27 @@ export default {
   components: {
     VueMultiselect
   },
+  computed:{
+    deliveryFormGetAccuserMergeDefendant: {
+      get() {
+        let string1 = this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
+          return e + '（被告）';
+        })
+        let string2 = this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
+          return e + '（原告）';
+        })
+        return string2.concat(string1)
+      },
+    },
+  },
   methods: {
     add_component(datatype) {
       switch (datatype) {
-        case "deliveryd_defendant":
-          //
-          this.data.deliveryd_defendant.push({
-            delivery_defendant: "" ,         //问题
-            is_delivery_defendant: "1" ,          //原告简称
-            email_defendant: "" ,  //原告回答
+        case "delivery_info":
+          this.data.delivery_info.push({
+            name: "",
+            is_delivery: "1",
+            email: "",
           });
           break;
 
@@ -166,9 +146,9 @@ export default {
     },
     delete_component(datatype, index) {
       switch (datatype) {
-        case "deliveryd_defendant":
+        case "delivery_info":
           //这里是值对应的处理
-          this.data.deliveryd_defendant.splice(index, 1);
+          this.data.delivery_info.splice(index, 1);
           break;
 
         default:
@@ -176,9 +156,6 @@ export default {
           break;
       }
     },
-    // save_localstorage() {
-    //   localStorage.setItem("delivery_form", JSON.stringify(this.data));
-    // },
   },
   watch: {
     data:{
@@ -190,7 +167,7 @@ export default {
         else{
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           if (wholeItem != null) {
-            wholeItem.delivery_form = this.data
+            wholeItem.deliveryInfo = this.data
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
           }
         }

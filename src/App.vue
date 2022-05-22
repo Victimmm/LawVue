@@ -79,14 +79,14 @@
         </fieldset>
       </div>
 
-      <div id="inquiry_form">
-        <fieldset class="layui-elem-field layui-field-title">
-          <legend>法庭询问</legend>
-          <div class="layui-field-box">
-            <inquiry_form></inquiry_form>
-          </div>
-        </fieldset>
-      </div>
+<!--      <div id="inquiry_form">-->
+<!--        <fieldset class="layui-elem-field layui-field-title">-->
+<!--          <legend>法庭询问</legend>-->
+<!--          <div class="layui-field-box">-->
+<!--            <inquiry_form></inquiry_form>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
 
       <div id="argueInfo">
         <fieldset class="layui-elem-field layui-field-title">
@@ -97,29 +97,29 @@
         </fieldset>
       </div>
 
-      <div id="state_form">
+      <div id="finalStatementInfo">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>陈述意见</legend>
           <div class="layui-field-box">
-            <state_form></state_form>
+            <finalStatementInfo></finalStatementInfo>
           </div>
         </fieldset>
       </div>
 
-      <div id="mediate_form">
+      <div id="mediateInfo">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>是否调解</legend>
           <div class="layui-field-box">
-            <mediate_form></mediate_form>
+            <mediateInfo></mediateInfo>
           </div>
         </fieldset>
       </div>
 
-      <div id="delivery_form">
+      <div id="deliveryInfo">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>电子文书送达</legend>
           <div class="layui-field-box">
-            <delivery_form></delivery_form>
+            <deliveryInfo></deliveryInfo>
           </div>
         </fieldset>
       </div>
@@ -139,11 +139,11 @@ import CourtInves from './components/CourtInves.vue'
 import right_inform from "@/components/right_inform";
 import plaintiffshow_form from "@/components/plaintiffshow_form";
 import defendshow_form from "@/components/defendshow_form";
-import inquiry_form from "@/components/inquiry_form";
+// import inquiry_form from "@/components/inquiry_form";
 import argueInfo from "@/components/argueInfo";
-import state_form from "@/components/state_form";
-import mediate_form from "@/components/mediate_form";
-import delivery_form from "@/components/delivery_form";
+import finalStatementInfo from "@/components/finalStatementInfo";
+import mediateInfo from "@/components/mediateInfo";
+import deliveryInfo from "@/components/deliveryInfo";
 import BasicState from "@/components/BasicState";
 
 export default {
@@ -156,11 +156,11 @@ export default {
     right_inform,
     plaintiffshow_form,
     defendshow_form,
-    inquiry_form,
+    // inquiry_form,
     argueInfo,
-    state_form,
-    mediate_form,
-    delivery_form,
+    finalStatementInfo,
+    mediateInfo,
+    deliveryInfo,
     BasicState
   },
   data() {
@@ -188,11 +188,11 @@ export default {
               "        <li><a href=\"#CourtInves1\"><cite>法庭调查</cite></a></li>\n" +
               "        <li><a href=\"#plaintiffshow_form\"><cite>原告举证</cite></a></li>\n" +
               "        <li><a href=\"#defendshow_form\"><cite>被告举证</cite></a></li>\n" +
-              "        <li><a href=\"#inquiry_form\"><cite>法庭询问</cite></a></li>\n" +
+              // "        <li><a href=\"#inquiry_form\"><cite>法庭询问</cite></a></li>\n" +
               "        <li><a href=\"#argueInfo\"><cite>法庭辩论</cite></a></li>\n" +
-              "        <li><a href=\"#state_form\"><cite>陈述意见</cite></a></li>\n" +
-              "        <li><a href=\"#mediate_form\"><cite>是否调解</cite></a></li>\n" +
-              "        <li><a href=\"#delivery_form\"><cite>电子文书送达</cite></a></li>\n" +
+              "        <li><a href=\"#finalStatementInfo\"><cite>陈述意见</cite></a></li>\n" +
+              "        <li><a href=\"#mediateInfo\"><cite>是否调解</cite></a></li>\n" +
+              "        <li><a href=\"#deliveryInfo\"><cite>电子文书送达</cite></a></li>\n" +
               "      </ul>",
           shade: 0,
           closeBtn: 0,
