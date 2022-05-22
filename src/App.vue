@@ -61,20 +61,20 @@
     <!-- 反诉且今日答辩 或者不反诉的情况显示-->
     <div
         v-if="( $store.state.is_todayreply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='0'">
-      <div id="plaintiffshow_form">
+      <div id="accuserShowInfo">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭调查-原告举证</legend>
           <div class="layui-field-box">
-            <plaintiffshow_form ref="plaintiffshow_form"></plaintiffshow_form>
+            <accuserShowInfo ref="accuserShowInfo"></accuserShowInfo>
           </div>
         </fieldset>
       </div>
 
-      <div id="defendshow_form">
+      <div id="defendShowInfo">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭调查-被告举证</legend>
           <div class="layui-field-box">
-            <defendshow_form></defendshow_form>
+            <defendShowInfo></defendShowInfo>
           </div>
         </fieldset>
       </div>
@@ -137,8 +137,8 @@ import PlaintiffImf from './components/PlaintiffImf.vue'
 import DefendantImf from './components/DefendantImf.vue'
 import CourtInves from './components/CourtInves.vue'
 import right_inform from "@/components/right_inform";
-import plaintiffshow_form from "@/components/plaintiffshow_form";
-import defendshow_form from "@/components/defendshow_form";
+import accuserShowInfo from "@/components/accuserShowInfo";
+import defendShowInfo from "@/components/defendantShowinfo";
 // import inquiry_form from "@/components/inquiry_form";
 import argueInfo from "@/components/argueInfo";
 import finalStatementInfo from "@/components/finalStatementInfo";
@@ -154,8 +154,8 @@ export default {
     DefendantImf,
     CourtInves,
     right_inform,
-    plaintiffshow_form,
-    defendshow_form,
+    accuserShowInfo,
+    defendShowInfo,
     // inquiry_form,
     argueInfo,
     finalStatementInfo,
@@ -186,8 +186,8 @@ export default {
               "        <li><a href=\"#BasicState\"><cite>基本信息陈述</cite></a></li>\n" +
               "        <li><a href=\"#right_inform\"><cite>权利告知</cite></a></li>\n" +
               "        <li><a href=\"#CourtInves1\"><cite>法庭调查</cite></a></li>\n" +
-              "        <li><a href=\"#plaintiffshow_form\"><cite>原告举证</cite></a></li>\n" +
-              "        <li><a href=\"#defendshow_form\"><cite>被告举证</cite></a></li>\n" +
+              "        <li><a href=\"#accuserShowInfo\"><cite>原告举证</cite></a></li>\n" +
+              "        <li><a href=\"#defendShowInfo\"><cite>被告举证</cite></a></li>\n" +
               // "        <li><a href=\"#inquiry_form\"><cite>法庭询问</cite></a></li>\n" +
               "        <li><a href=\"#argueInfo\"><cite>法庭辩论</cite></a></li>\n" +
               "        <li><a href=\"#finalStatementInfo\"><cite>陈述意见</cite></a></li>\n" +
