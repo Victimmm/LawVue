@@ -43,7 +43,7 @@
                   <input type="text" v-model="data.accuser_evidence[index+1].content" placeholder="证明事项"
                          autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
-                  <button @click="delete_component('accuser_evidence',1)" type="button"
+                  <button @click="delete_component('accuser_evidence',index+1)" type="button"
                           class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
@@ -168,7 +168,7 @@
                                   v-model="data.defendant_query[index+1].evidence"
                                   :options=getProofPlaintiff placeholder="请选择证据名称"
                                   style="line-height: 16px;width: 90%; min-height: 38px;float:left;"></VueMultiselect>
-                  <button @click="delete_component('defendant_query',1)" type="button"
+                  <button @click="delete_component('defendant_query',index+1)" type="button"
                           class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>

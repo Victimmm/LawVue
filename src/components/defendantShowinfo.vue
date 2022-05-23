@@ -43,7 +43,7 @@
                     <input type="text" v-model="data.defendant_evidence[index+1].content"
                            placeholder="证明事项" autocomplete="off"
                            class="layui-input" style="width: 90%;float: left;">
-                    <button @click="delete_component('defendant_evidence',1)" type="button"
+                    <button @click="delete_component('defendant_evidence',index+1)" type="button"
                             class="layui-btn layui-btn-primary layui-btn-sm"
                             data-type="text" style="float: right;">
                       <i class="layui-icon">&#xe640;</i>
@@ -164,7 +164,7 @@
                                     v-model="data.accuser_query[index+1].evidence"
                                     :options=getProofDefendant placeholder="请选择被告提交的证据名称"
                                     style="line-height: 16px;width: 90%; min-height: 38px;float:left;"></VueMultiselect>
-                    <button @click="delete_component('accuser_query',1)" type="button"
+                    <button @click="delete_component('accuser_query',index+1)" type="button"
                             class="layui-btn layui-btn-primary layui-btn-sm"
                             data-type="text" style="float: right;">
                       <i class="layui-icon">&#xe640;</i>
@@ -318,7 +318,7 @@
                                     v-model="data.other_defendant_query[index+1].evidence"
                                     :options=getProofDefendant placeholder="请选择被告提交的证据名称"
                                     style="line-height: 16px;width: 90%; min-height: 38px;float:left;"></VueMultiselect>
-                    <button @click="delete_component('other_defendant_query',1)" type="button"
+                    <button @click="delete_component('other_defendant_query',index+1)" type="button"
                             class="layui-btn layui-btn-primary layui-btn-sm"
                             data-type="text" style="float: right;">
                       <i class="layui-icon">&#xe640;</i>
@@ -431,7 +431,7 @@
                       <input type="text" v-model="data.counterclaim_defendant_evidence[index+1].content"
                              placeholder="证明事项" autocomplete="off"
                              class="layui-input" style="width: 90%;float: left;">
-                      <button @click="delete_component('counterclaim_defendant_evidence',1)" type="button"
+                      <button @click="delete_component('counterclaim_defendant_evidence',index+1)" type="button"
                               class="layui-btn layui-btn-primary layui-btn-sm"
                               data-type="text" style="float: right;">
                         <i class="layui-icon">&#xe640;</i>
@@ -553,7 +553,7 @@
                                       v-model="data.counterclaim_accuser_query[index+1].evidence"
                                       :options=getProofOfCounterDefendant placeholder="请选择反诉被告列举的证据"
                                       style="line-height: 16px;width: 90%; float: left;"></VueMultiselect>
-                      <button @click="delete_component('counterclaim_accuser_query',1)" type="button"
+                      <button @click="delete_component('counterclaim_accuser_query',index+1)" type="button"
                               class="layui-btn layui-btn-primary layui-btn-sm"
                               data-type="text" style="float: right;">
                         <i class="layui-icon">&#xe640;</i>
