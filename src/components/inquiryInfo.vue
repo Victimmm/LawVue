@@ -140,8 +140,8 @@ export default {
   }]
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if(wholeItem!=null && "inquiry_form" in wholeItem){
-      data=wholeItem.inquiry_form
+    if(wholeItem!=null && "inquiryInfo" in wholeItem){
+      data=wholeItem.inquiryInfo
     }
     return {
       data: data,
@@ -236,9 +236,6 @@ export default {
           break;
       }
     },
-    // save_localstorage() {
-    //   localStorage.setItem("inquiry_form", JSON.stringify(this.data));
-    // },
   },
   watch: {
     data:{
@@ -250,7 +247,7 @@ export default {
         else{
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           if (wholeItem != null) {
-            wholeItem.inquiry_form = this.data
+            wholeItem.inquiryInfo = this.data
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
           }
         }
