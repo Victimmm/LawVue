@@ -7,14 +7,14 @@
           <div class="layui-input-block">
             <div class="myradiomargin">
               <input type="radio" name="plaintiffType" v-model="data.defendant_type" class="myradio"
-                     value="0"><label>机构</label>
-              <input type="radio" name="plaintiffType" v-model="data.defendant_type" class="myradio" value="1"
+                     value="1"><label>机构</label>
+              <input type="radio" name="plaintiffType" v-model="data.defendant_type" class="myradio" value="2"
                      style="margin-left: 15px;"><label>个人</label>
             </div>
           </div>
         </div>
 
-        <div v-if="data.defendant_type=='1'">
+        <div v-if="data.defendant_type=='2'">
           <div class="layui-form-item" pane>
             <label class="layui-form-label">被告姓名</label>
             <div class="layui-input-block">
@@ -30,7 +30,7 @@
           </div>
         </div>
 
-        <div v-if="data.defendant_type=='0'">
+        <div v-if="data.defendant_type=='1'">
           <div class="layui-form-item" pane>
             <label class="layui-form-label">被告全称</label>
             <div class="layui-input-block">
@@ -137,7 +137,7 @@ export default {
     data = {
       defendant: '',
       defendant_short: '',
-      defendant_type: "0",
+      defendant_type: "1",
       defendant_address: '',
       defendant_representative: '',
       defendant_duty: '',
@@ -156,7 +156,7 @@ export default {
         return this.$store.state.defendantname[this.index]
       },
       set(value) {
-        if(this.data.defendant_type == "0"){
+        if(this.data.defendant_type == "1"){
           this.data.defendant_short = value
         }
         else

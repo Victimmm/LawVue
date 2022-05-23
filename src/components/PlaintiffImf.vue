@@ -6,15 +6,15 @@
           <label class="layui-form-label">原告类型</label>
           <div class="layui-input-block">
             <div class="myradiomargin">
-              <input type="radio" name="accuser_type" v-model="data.accuser_type" value="0"
-                     class="myradio"><label>机构</label>
               <input type="radio" name="accuser_type" v-model="data.accuser_type" value="1"
+                     class="myradio"><label>机构</label>
+              <input type="radio" name="accuser_type" v-model="data.accuser_type" value="2"
                      class="myradio" style="margin-left: 15px;"><label>个人</label>
             </div>
           </div>
         </div>
 
-        <div v-if="data.accuser_type=='1'">
+        <div v-if="data.accuser_type=='2'">
           <div class="layui-form-item" pane>
             <label class="layui-form-label layui-form-required">原告姓名</label>
             <div class="layui-input-block">
@@ -29,7 +29,7 @@
             </div>
           </div>
         </div>
-        <div v-if="data.accuser_type=='0'">
+        <div v-if="data.accuser_type=='1'">
           <div class="layui-form-item" pane>
             <label class="layui-form-label">原告全称</label>
             <div class="layui-input-block">
@@ -151,7 +151,7 @@ export default {
       accuser: '',
       accuser_short: '',
       accuser_fullname:'',
-      accuser_type: "0",
+      accuser_type: "1",
       accuser_address: '',
       accuser_represent: '',
       accuser_duty: '',
@@ -171,7 +171,7 @@ export default {
         return this.$store.state.plaintiffname[this.index]
       },
       set(value) {
-        if (this.data.accuser_type == "0") {
+        if (this.data.accuser_type == "1") {
           this.data.accuser_short = value
         } else {
           this.data.accuser = value

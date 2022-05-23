@@ -18,7 +18,7 @@
           </div>
           <div class="layui-input-block">
             <!--            <div class="layui-input-inline " style="width: 80%; margin-left:0px;">-->
-            <textarea  v-model="data.accuser_claimitem" placeholder="诉讼请求项" autocomplete="off"
+            <textarea  v-model="data.accuser_claim_item" placeholder="诉讼请求项" autocomplete="off"
                        class="layui-textarea"></textarea>
             <!--              <button @click="add_component('accuser_claims')" type="button"-->
             <!--                      class="layui-btn layui-btn-primary layui-btn-sm"-->
@@ -49,7 +49,7 @@
             事实和理由
           </div>
           <div class="layui-input-block">
-            <textarea v-model="data.accuser_claimitem_factreason" placeholder="请输入事实和理由"
+            <textarea v-model="data.accuser_claim_fact_reason" placeholder="请输入事实和理由"
                       class="layui-textarea"></textarea>
           </div>
         </div>
@@ -74,7 +74,7 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.defendant_reply[0].reply_item" placeholder="答辩内容"
+                <input type="text" v-model="data.defendant_reply[0].content" placeholder="答辩内容"
                        autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('defendant_reply')" type="button"
@@ -96,7 +96,7 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.defendant_reply[index+1].reply_item" placeholder="答辩内容"
+                  <input type="text" v-model="data.defendant_reply[index+1].content" placeholder="答辩内容"
                          autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="delete_component('defendant_reply',index+1)" type="button"
@@ -118,7 +118,7 @@
                      class="myradio" value="1"
                      title="反诉" @change="setCourterClaim()"><label>反诉</label>
               <input type="radio" name="is_counterclaim" v-model="data.is_counterclaim"
-                     class="myradio" value="0"
+                     class="myradio" value="2"
                      title="不反诉" style="margin-left: 15px;" @change="setCourterClaim()"><label>不反诉</label>
             </div>
           </div>
@@ -130,7 +130,7 @@
               反诉原告诉讼请求项
             </div>
             <div class="layui-input-block" contenteditable="true">
-              <textarea v-model="data.counterclaim_plaintiff_claimitem" placeholder="诉讼请求项"
+              <textarea v-model="data.counterclaim_accuser_claim_item" placeholder="诉讼请求项"
                         class="layui-textarea" style="height:40px"></textarea>
 <!--                <button @click="add_component('counterclaim_plaintiff')" type="button"-->
 <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
@@ -145,7 +145,7 @@
               事实和理由
             </div>
             <div class="layui-input-block">
-                <textarea v-model="data.counterclaim_plaintiff_factreason" placeholder="请输入事实和理由"
+                <textarea v-model="data.counterclaim_accuser_fact_reason" placeholder="请输入事实和理由"
                           class="layui-textarea"></textarea>
             </div>
           </div>
@@ -154,15 +154,15 @@
             <label class="layui-form-label">反诉被告今天是否答辩</label>
             <div class="layui-input-block">
               <div class="myradiomargin">
-                <input type="radio" name="is_todayreply" v-model="data.is_todayreply" class="myradio" value="1"
+                <input type="radio" name="counterclaim_defendant_today_is_reply" v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="1"
                        title="答辩" @change="setIsTodayReply"><label>答辩</label>
-                <input type="radio" name="is_todayreply" v-model="data.is_todayreply" class="myradio" value="0"
+                <input type="radio" name="counterclaim_defendant_today_is_reply" v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="2"
                        title="不答辩" @change="setIsTodayReply" style="margin-left: 15px;"><label>不答辩</label>
               </div>
             </div>
           </div>
 
-          <div v-show="data.is_todayreply==1">
+          <div v-show="data.counterclaim_defendant_today_is_reply==1">
             <div class="layui-form-item " pane>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
@@ -172,7 +172,7 @@
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
-                    <input type="text" v-model="data.counterclaim_defendant_reply[0].reply_item" placeholder="答辩内容"
+                    <input type="text" v-model="data.counterclaim_defendant_reply[0].content" placeholder="答辩内容"
                            autocomplete="off"
                            class="layui-input" style="width: 90%;float: left;">
                     <button @click="add_component('counterclaim_defendant_reply')" type="button"
@@ -196,7 +196,7 @@
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
-                      <input type="text" v-model="data.counterclaim_defendant_reply[index+1].reply_item" placeholder="答辩内容"
+                      <input type="text" v-model="data.counterclaim_defendant_reply[index+1].content" placeholder="答辩内容"
                              autocomplete="off"
                              class="layui-input" style="width: 90%;float: left;">
                       <button @click="delete_component('counterclaim_defendant_reply',index+1)" type="button"
@@ -222,16 +222,14 @@ import VueMultiselect from 'vue-multiselect'
 
 var data;
 data = {
-  // accuser_claims: [{accuser_name: "", claim_item: "", fact_reason: ""}],
-
-  accuser_claimitem: "",// 原告诉讼请求
-  accuser_claimitem_factreason: "",// 原告诉讼请求的事实及理由
-  is_counterclaim: "0",
-  defendant_reply: [{name: "", reply_item: ""}],
-  counterclaim_plaintiff_claimitem: "",
-  counterclaim_plaintiff_factreason: "",
-  counterclaim_defendant_reply: [{name: "", reply_item: ""}],
-  is_todayreply: "0",
+  accuser_claim_item: "",// 原告诉讼请求
+  accuser_claim_fact_reason: "",// 原告诉讼请求的事实及理由
+  is_counterclaim: "2",
+  defendant_reply: [{name: "", content: ""}],
+  counterclaim_accuser_claim_item: "",
+  counterclaim_accuser_fact_reason: "",
+  counterclaim_defendant_reply: [{name: "", content: ""}],
+  counterclaim_defendant_today_is_reply: "2",
 };
 
 export default {
@@ -256,7 +254,7 @@ export default {
         //   break
         case "defendant_reply":
           //这里是值对应的处理
-          this.data.defendant_reply.push({name: "", reply_item: ""})
+          this.data.defendant_reply.push({name: "", content: ""})
           break
         // case "counterclaim_plaintiff":
         //   //这里是值对应的处理
@@ -264,7 +262,7 @@ export default {
         //   break
         case "counterclaim_defendant_reply":
           //这里是值对应的处理
-          this.data.counterclaim_defendant_reply.push({name: "", reply_item: ""})
+          this.data.counterclaim_defendant_reply.push({name: "", content: ""})
           break
         default:
           //这里是没有找到对应的值处理
@@ -295,7 +293,7 @@ export default {
       }
     },
     setIsTodayReply() {
-      this.$store.commit("setIsTodayReply", this.data.is_todayreply)
+      this.$store.commit("setIsTodayReply", this.data.counterclaim_defendant_today_is_reply)
       // console.log(data.is_counterclaim)
     },
     setCourterClaim(){

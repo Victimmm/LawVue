@@ -24,14 +24,15 @@ export default createStore({
                 let chief_judgename = ['']
                 let jurorname = ['']
                 let judgename = ['']
+                let people_juror=['']
                 let court_clerk = ""
-                let is_todayreply = "0"
-                let is_counterclaim = "0"
+                let counterclaim_defendant_today_is_reply = "2"
+                let is_counterclaim = "2"
                 var wholeItem = JSON.parse(localStorage.getItem(decodeURI(pair[1])))
                 if (wholeItem != null) {
                     if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
                         for (var j = 0; j < wholeItem.PlaintiffItems.length; j++) {
-                            if (wholeItem.PlaintiffItems[j].accuser_type == "0")
+                            if (wholeItem.PlaintiffItems[j].accuser_type == "1")
                                 plaintiffname[j] = wholeItem.PlaintiffItems[j].accuser_short
                             else
                                 plaintiffname[j] = wholeItem.PlaintiffItems[j].accuser
@@ -40,7 +41,7 @@ export default createStore({
                     }
                     if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
                         for (j = 0; j < wholeItem.DefendantItems.length; j++) {
-                            if (wholeItem.DefendantItems[j].defendant_type == "0")
+                            if (wholeItem.DefendantItems[j].defendant_type == "1")
                                 defendantname[j] = wholeItem.DefendantItems[j].defendant_short
                             else
                                 defendantname[j] = wholeItem.DefendantItems[j].defendant
@@ -57,10 +58,13 @@ export default createStore({
                         for (j = 0; j < wholeItem.BasicInfo.juror.length; j++) {
                             jurorname[j] = wholeItem.BasicInfo.juror[j].name
                         }
+                        for (j = 0; j < wholeItem.BasicInfo.people_juror.length; j++) {
+                            people_juror[j] = wholeItem.BasicInfo.people_juror[j].name
+                        }
                         court_clerk = wholeItem.BasicInfo.court_clerk
                     }
                     if ("CourtInves" in wholeItem) {
-                        is_todayreply = wholeItem.CourtInves.is_todayreply
+                        counterclaim_defendant_today_is_reply = wholeItem.CourtInves.counterclaim_defendant_today_is_reply
                         is_counterclaim = wholeItem.CourtInves.is_counterclaim
                     }
 
@@ -73,7 +77,8 @@ export default createStore({
                     chief_judgename: chief_judgename,
                     jurorname: jurorname,
                     judgename: judgename,
-                    is_todayreply: is_todayreply,
+                    people_juror:people_juror,
+                    counterclaim_defendant_today_is_reply: counterclaim_defendant_today_is_reply,
                     court_number: decodeURI(pair[1]),
                     is_counterclaim: is_counterclaim,
                     court_clerk: court_clerk
@@ -88,7 +93,8 @@ export default createStore({
             chief_judgename: [""],
             jurorname: [""],
             judgename: [""],
-            is_todayreply: "0",
+            people_juror:[""],
+            counterclaim_defendant_today_is_reply: "2",
             court_number: "",
             court_clerk: "",
             is_counterclaim: "0"
@@ -109,7 +115,7 @@ export default createStore({
         },
         setIsTodayReply(state, payload) {
             // let data=Object.assign({},payload)
-            state.is_todayreply = payload
+            state.counterclaim_defendant_today_is_reply = payload
         },
         setIsCourtClaim(state, payload) {
             state.is_counterclaim = payload
@@ -132,6 +138,9 @@ export default createStore({
                     break
                 case 'juror':
                     state.jurorname.splice(payload[1], 1)
+                    break
+                case 'people_juror':
+                    state.people_juror.splice(payload[1], 1)
                     break
                 default:
                     //这里是没有找到对应的值处理
@@ -156,6 +165,9 @@ export default createStore({
                     break
                 case 'juror':
                     state.jurorname.push('')
+                    break
+                case 'people_juror':
+                    state.people_juror.push('')
                     break
                 default:
                     //这里是没有找到对应的值处理

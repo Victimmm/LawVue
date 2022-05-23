@@ -129,6 +129,37 @@
 
 
         <div class="layui-form-item" pane>
+          <div class="layui-form-label divcenter">
+            人民陪审员
+          </div>
+
+          <div class="layui-input-block ">
+            <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
+              <input type="text" v-model="data.people_juror[0].name" placeholder="陪审员姓名" autocomplete="off" class="layui-input"
+                     style="width: 90%;float: left;" @blur="judgeChange('people_juror',0)">
+              <button @click="add_component('people_juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                      data-type="text" style="float: right;">
+                <i class="layui-icon">&#xe654;</i>
+              </button>
+            </div>
+          </div>
+          <template v-for="(item, index) in data.people_juror.slice(1)" :key='index'>
+            <div class="layui-input-block myinput-block">
+              <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
+                <input type="text" v-model="data.people_juror[index+1].name" placeholder="人民陪审员姓名" autocomplete="off"
+                       class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('people_juror',index+1)">
+                <button @click="delete_component('people_juror',index+1)" type="button"
+                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        data-type="text" style="float: right;">
+                  <i class="layui-icon">&#xe640;</i>
+                </button>
+              </div>
+            </div>
+          </template>
+        </div>
+
+
+        <div class="layui-form-item" pane>
           <div class="layui-form-label ">
             书记员
           </div>
@@ -163,6 +194,7 @@ export default {
       chief_judge: [{name: ""}],
       judge: [{name: ""}],
       juror: [{name: ""}],
+      people_juror:[{name: ""}],
       court_clerk: '',
       court_number: '',
       court_cause: ''
@@ -226,6 +258,10 @@ export default {
           this.$store.commit('add_components', ['juror'])
           this.data.juror.push({name: ""})
           break
+        case "people_juror":
+          this.$store.commit('add_components', ['people_juror'])
+          this.data.people_juror.push({name: ""})
+          break
         default:
           //这里是没有找到对应的值处理
           break
@@ -247,6 +283,10 @@ export default {
           //这里是值对应的处理
           this.$store.commit('delete_components', ['juror', index])
           this.data.juror.splice(index, 1)
+          break
+        case "people_juror":
+          this.$store.commit('delete_components', ['people_juror', index])
+          this.data.people_juror.splice(index, 1)
           break
         default:
           //这里是没有找到对应的值处理
@@ -303,6 +343,9 @@ export default {
         case "juror":
           //这里是值对应的处理
           this.$store.commit('judgeChange', ['juror', index, this.data.juror[index].name])
+          break
+        case "people_juror":
+          this.$store.commit('judgeChange', ['people_juror', index,this.data.people_juror[index].name])
           break
         default:
           //这里是没有找到对应的值处理

@@ -60,7 +60,7 @@
     </div>
     <!-- 反诉且今日答辩 或者不反诉的情况显示-->
     <div
-        v-if="( $store.state.is_todayreply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='0'">
+        v-if="( $store.state.counterclaim_defendant_today_is_reply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='2'">
       <div id="accuserShowInfo">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>法庭调查-原告举证</legend>
@@ -241,16 +241,62 @@ export default {
     },
     //提交 localstorage  中的数据
     onSummit() {
+      let recordJson={}
+      var wholeItem= JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      if(wholeItem != null){
+        //组织数据
+        if ("PlaintiffItems" in wholeItem)
+          recordJson["basicInfo"]=wholeItem.BasicInfo
+        //原告数据
+        if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
+          let accuserInfo=[]
+          for (var j = 0; j < wholeItem.PlaintiffItems.length; j++) {
+            accuserInfo.push(wholeItem.PlaintiffItems[j])
+            if (wholeItem.PlaintiffItems[j].accuser_type == "1")
+              accuserInfo[j].accuser = wholeItem.PlaintiffItems[j].accuser_fullname
+            delete accuserInfo[j].accuser_fullname
+          }
+          recordJson["accuserInfo"]=accuserInfo
+        }
 
+        //被告数据
+        if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
+          let defendantInfo=[]
+          for ( j = 0; j < wholeItem.DefendantItems.length; j++) {
+            defendantInfo.push(wholeItem.DefendantItems[j])
+          }
+          recordJson["defendantInfo"]=defendantInfo
+        }
 
+        let courtInvestigate={}
+        //法庭调查数据，包含原被告举证表，法庭调查表三个表
+        if ("CourtInves" in wholeItem ) {
+          courtInvestigate = wholeItem.CourtInves
+          recordJson["courtInvestigate"] = courtInvestigate
+        }
 
-      this.axios.post('http://localhost:8080/record/add', localStorage.getItem(this.$store.state.court_number))
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        if("accuserShowInfo" in wholeItem){
+          var accuserShowInfo  = wholeItem.accuserShowInfo
+          // 合并法庭调查表和原告举证
+          recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"],accuserShowInfo)
+        }
+
+        if("defendantShowInfo" in wholeItem){
+          var defendantShowInfo  = wholeItem.defendantShowInfo
+          // 合并法庭调查表和原告举证以及被告举证
+          recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"],defendantShowInfo)
+        }
+      }
+
+        console.log(recordJson)
+
+      // this.axios.post('http://localhost:8080/record/add', localStorage.getItem(this.$store.state.court_number))
+      //     .then(function (response) {
+      //       console.log(response);
+      //     })
+      //     .catch(function (error) {
+      //       console.log(error);
+      //     });
     }
   }
 }
