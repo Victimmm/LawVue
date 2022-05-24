@@ -33,22 +33,24 @@
             </div>
           </div>
         </div>
-        <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
-            调解方案
+        <div v-show="data.mediate_accuser[0].is_mediate==1">
+          <div class="layui-form-item" pane>
+            <div class="layui-form-label divcenter">
+              调解方案
+            </div>
+            <div class="layui-input-block">
+                  <textarea v-model="data.mediate_accuser[0].mediate_plan" placeholder="请输入原告调解方案"
+                            class="layui-textarea"></textarea>
+            </div>
           </div>
-          <div class="layui-input-block">
-                <textarea v-model="data.mediate_accuser[0].mediate_plan" placeholder="请输入原告调解方案"
-                          class="layui-textarea"></textarea>
-          </div>
-        </div>
 
-        <div class="layui-form-item" pane>
-          <label class="layui-form-label">庭外和解时限</label>
-          <div class="layui-input-block">
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <input type="text" v-model="data.mediate_accuser[0].time_limit" placeholder="庭外和解时限" autocomplete="off"
-                     class="layui-input">
+          <div class="layui-form-item" pane>
+            <label class="layui-form-label">庭外和解时限</label>
+            <div class="layui-input-block">
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+                <input type="text" v-model="data.mediate_accuser[0].time_limit" placeholder="庭外和解时限" autocomplete="off"
+                       class="layui-input">
+              </div>
             </div>
           </div>
         </div>
@@ -78,31 +80,28 @@
               </div>
             </div>
           </div>
-          <div class="layui-form-item" pane>
-            <div class="layui-form-label divcenter">
-              调解方案
+          <div v-show="data.mediate_accuser[index+1].is_mediate==1">
+            <div class="layui-form-item" pane>
+              <div class="layui-form-label divcenter">
+                调解方案
+              </div>
+              <div class="layui-input-block">
+                  <textarea v-model="data.mediate_accuser[index+1].mediate_plan" placeholder="请输入原告调解方案"
+                            class="layui-textarea"></textarea>
+              </div>
             </div>
-            <div class="layui-input-block">
-                <textarea v-model="data.mediate_accuser[index+1].mediate_plan" placeholder="请输入原告调解方案"
-                          class="layui-textarea"></textarea>
-            </div>
-          </div>
 
-          <div class="layui-form-item" pane>
-            <label class="layui-form-label">庭外和解时限</label>
-            <div class="layui-input-block">
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                <input type="text" v-model="data.mediate_accuser[index+1].time_limit" placeholder="庭外和解时限" autocomplete="off"
-                       class="layui-input">
+            <div class="layui-form-item" pane>
+              <label class="layui-form-label">庭外和解时限</label>
+              <div class="layui-input-block">
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+                  <input type="text" v-model="data.mediate_accuser[index+1].time_limit" placeholder="庭外和解时限" autocomplete="off"
+                         class="layui-input">
+                </div>
               </div>
             </div>
           </div>
         </template>
-
-
-<!--        <div class="layui-input-inline" style="margin-left:0px ;">-->
-<!--          <textarea v-model="data.mediate_plan_accuser" placeholder="调解方案" class="layui-textarea" style="width:85%"></textarea>-->
-<!--        </div>-->
 
         <div class="layui-form-item " pane>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
@@ -128,7 +127,7 @@
             </div>
           </div>
         </div>
-        <div class="layui-form-item" pane>
+        <div class="layui-form-item" v-show="data.mediate_defendant[0].is_mediate_defendant==1" pane>
           <div class="layui-form-label divcenter">
             调解方案
           </div>
@@ -163,7 +162,7 @@
               </div>
             </div>
           </div>
-          <div class="layui-form-item" pane>
+          <div class="layui-form-item" v-show="data.mediate_defendant[index+1].is_mediate_defendant==1" pane>
             <div class="layui-form-label divcenter">
               调解方案
             </div>

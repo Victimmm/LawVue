@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div class="layui-form-item" pane>
+        <div class="layui-form-item" v-show="data.delivery_info[0].is_delivery==1" pane>
           <label class="layui-form-label">电子邮件地址</label>
           <div class="layui-input-block">
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
@@ -73,7 +73,7 @@
             </div>
           </div>
 
-          <div class="layui-form-item" pane>
+          <div class="layui-form-item" v-show="data.delivery_info[index+1].is_delivery==1" pane>
             <label class="layui-form-label">电子邮件地址</label>
             <div class="layui-input-block">
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">

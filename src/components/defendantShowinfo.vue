@@ -994,7 +994,7 @@ export default {
           this.data.counterclaim_accuser_query.push({
             counterclaim_accuser: "",        //反诉原告姓名
             evidence: "",    //反诉被告所提交的证据
-            factility: "true",      //真实性(反诉原告原告质证)
+            facticity: "true",      //真实性(反诉原告原告质证)
             legality: "true", //合法性(反诉原告质证)
             relevance: "true",//关联性(反诉原告质证)
             counterclaim_accuser_query_fact_reason: "", //事实和理由(反诉原告质证 需要动态添加)

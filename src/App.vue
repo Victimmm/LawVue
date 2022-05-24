@@ -267,6 +267,13 @@ export default {
           }
           recordJson["defendantInfo"]=defendantInfo
         }
+        // console.log(wholeItem.rightInfo)
+        //权利告知表 （目前有问题！）
+        let rightInfo={}
+        if("rightInfo" in wholeItem){
+          rightInfo  = wholeItem.rightInfo
+          recordJson["rightInfo"] = rightInfo
+        }
 
         let courtInvestigate={}
         //法庭调查数据，包含原被告举证表，法庭调查表三个表
@@ -275,6 +282,7 @@ export default {
           recordJson["courtInvestigate"] = courtInvestigate
         }
 
+        // console.log(wholeItem.accuserShowInfo)
         if("accuserShowInfo" in wholeItem){
           var accuserShowInfo  = wholeItem.accuserShowInfo
           // 合并法庭调查表和原告举证
@@ -283,9 +291,53 @@ export default {
 
         if("defendantShowInfo" in wholeItem){
           var defendantShowInfo  = wholeItem.defendantShowInfo
-          // 合并法庭调查表和原告举证以及被告举证
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"],defendantShowInfo)
         }
+
+        //法庭询问表
+        let inquiryInfo=[]
+        if("inquiryInfo" in wholeItem){
+          let inquiryInfoItem  = wholeItem.inquiryInfo
+          for(let i=0; i<inquiryInfoItem.inquiry_info.length; i++){
+            inquiryInfo.push(inquiryInfoItem.inquiry_info[i])
+          }
+          recordJson["inquiryInfo"] = inquiryInfo
+        }
+
+        //法庭辩论表
+        let argueInfo={}
+        if("argueInfo" in wholeItem){
+          argueInfo  = wholeItem.argueInfo
+          recordJson["argueInfo"] = argueInfo
+        }
+
+        //最后陈述表
+        let finalStatementInfo=[]
+        if("finalStatementInfo" in wholeItem){
+          let finalStatementInfoItem  = wholeItem.finalStatementInfo
+          for(let i=0; i<finalStatementInfoItem.final_statement_info.length; i++){
+            finalStatementInfo.push(finalStatementInfoItem.final_statement_info[i])
+          }
+          recordJson["finalStatementInfo"] = finalStatementInfo
+        }
+
+        //是否调解表
+        let mediateInfo={}
+        if("mediateInfo" in wholeItem){
+          mediateInfo  = wholeItem.mediateInfo
+          recordJson["mediateInfo"] = mediateInfo
+        }
+
+        //电子文书送达表
+        let deliveryInfo= []
+        if("deliveryInfo" in wholeItem){
+          let deliveryInfoItem  = wholeItem.deliveryInfo
+          for(let i=0; i<deliveryInfoItem.delivery_info.length; i++){
+            deliveryInfo.push(deliveryInfoItem.delivery_info[i])
+          }
+          recordJson["deliveryInfo"] = deliveryInfo
+        }
+
       }
 
         console.log(recordJson)

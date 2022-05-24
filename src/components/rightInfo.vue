@@ -129,6 +129,7 @@ export default {
       accuser_avoid: [{is_listen: "1", is_avoid: "1"}],
       defendant_avoid: [{is_listen: "1", is_avoid: "1"}],
     };
+
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "right_inform" in wholeItem) {
       data = wholeItem.right_inform
@@ -215,6 +216,7 @@ export default {
           if (wholeItem != null) {
             wholeItem.right_inform = this.data
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+
           }
         }
       },
