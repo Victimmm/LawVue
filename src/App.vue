@@ -41,11 +41,11 @@
     </div>
 
 
-    <div id="right_inform">
+    <div id="rightInfo">
       <fieldset class="layui-elem-field layui-field-title">
         <legend>权利告知</legend>
         <div class="layui-field-box">
-          <right_inform></right_inform>
+          <rightInfo></rightInfo>
         </div>
       </fieldset>
     </div>
@@ -79,14 +79,14 @@
         </fieldset>
       </div>
 
-<!--      <div id="inquiry_form">-->
-<!--        <fieldset class="layui-elem-field layui-field-title">-->
-<!--          <legend>法庭询问</legend>-->
-<!--          <div class="layui-field-box">-->
-<!--            <inquiry_form></inquiry_form>-->
-<!--          </div>-->
-<!--        </fieldset>-->
-<!--      </div>-->
+      <div id="inquiryInfo">
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>法庭询问</legend>
+          <div class="layui-field-box">
+            <inquiryInfo></inquiryInfo>
+          </div>
+        </fieldset>
+      </div>
 
       <div id="argueInfo">
         <fieldset class="layui-elem-field layui-field-title">
@@ -136,10 +136,10 @@ import BasicInfo from './components/BasicInfo.vue'
 import PlaintiffImf from './components/PlaintiffImf.vue'
 import DefendantImf from './components/DefendantImf.vue'
 import CourtInves from './components/CourtInves.vue'
-import right_inform from "@/components/right_inform";
+import rightInfo from "@/components/rightInfo";
 import accuserShowInfo from "@/components/accuserShowInfo";
 import defendShowInfo from "@/components/defendantShowinfo";
-// import inquiry_form from "@/components/inquiry_form";
+import inquiryInfo from "@/components/inquiryInfo";
 import argueInfo from "@/components/argueInfo";
 import finalStatementInfo from "@/components/finalStatementInfo";
 import mediateInfo from "@/components/mediateInfo";
@@ -153,10 +153,10 @@ export default {
     PlaintiffImf,
     DefendantImf,
     CourtInves,
-    right_inform,
+    rightInfo,
     accuserShowInfo,
     defendShowInfo,
-    // inquiry_form,
+    inquiryInfo,
     argueInfo,
     finalStatementInfo,
     mediateInfo,
@@ -184,11 +184,11 @@ export default {
               "        <li ><a href=\"#whole_PlaintiffImf\"><cite>原告信息</cite></a></li>\n" +
               "        <li><a href=\"#whole_DefendantImf\"><cite>被告信息</cite></a></li>\n" +
               "        <li><a href=\"#BasicState\"><cite>基本信息陈述</cite></a></li>\n" +
-              "        <li><a href=\"#right_inform\"><cite>权利告知</cite></a></li>\n" +
+              "        <li><a href=\"#rightInfo\"><cite>权利告知</cite></a></li>\n" +
               "        <li><a href=\"#CourtInves1\"><cite>法庭调查</cite></a></li>\n" +
               "        <li><a href=\"#accuserShowInfo\"><cite>原告举证</cite></a></li>\n" +
               "        <li><a href=\"#defendShowInfo\"><cite>被告举证</cite></a></li>\n" +
-              // "        <li><a href=\"#inquiry_form\"><cite>法庭询问</cite></a></li>\n" +
+              "        <li><a href=\"#inquiryInfo\"><cite>法庭询问</cite></a></li>\n" +
               "        <li><a href=\"#argueInfo\"><cite>法庭辩论</cite></a></li>\n" +
               "        <li><a href=\"#finalStatementInfo\"><cite>陈述意见</cite></a></li>\n" +
               "        <li><a href=\"#mediateInfo\"><cite>是否调解</cite></a></li>\n" +
