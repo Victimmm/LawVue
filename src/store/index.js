@@ -97,7 +97,7 @@ export default createStore({
             counterclaim_defendant_today_is_reply: "2",
             court_number: "",
             court_clerk: "",
-            is_counterclaim: "0"
+            is_counterclaim: "2"
         }
     },
     mutations: {
@@ -184,6 +184,9 @@ export default createStore({
                     break
                 case 'juror':
                     state.jurorname[payload[1]] = (payload[2])
+                    break
+                case 'people_juror':
+                    state.people_juror[payload[1]] = (payload[2])
                     break
                 default:
                     //这里是没有找到对应的值处理

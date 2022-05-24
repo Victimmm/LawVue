@@ -140,7 +140,7 @@ export default {
   computed: {
     getPlaintiffName: {
       get() {
-        if (this.$store.state.is_counterclaim == "0") {
+        if (this.$store.state.is_counterclaim == "2") {
           return this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
             return e + '（原告）';
           })
@@ -153,7 +153,7 @@ export default {
     },
     getDefendantNane: {
       get() {
-        if (this.$store.state.is_counterclaim == "0") {
+        if (this.$store.state.is_counterclaim == "2") {
 
 
 
@@ -228,7 +228,7 @@ export default {
       }
     },
     getDefendantNane() {
-      if(this.data.defendant_avoid.length < this.$store.state.plaintiffname.length){
+      if(this.data.defendant_avoid.length < this.$store.state.defendantname.length){
         this.data.defendant_avoid.push({
           is_avoid: "1", is_listen: "1",
         })
