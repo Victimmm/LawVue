@@ -19,23 +19,12 @@
 
         <div class="layui-form-item" pane>
           <div class="layui-form-label divcenter">
-            陈述内容（自动填充）
-          </div>
-          <div class="layui-input-block">
-{{setStateContent}}
-<!--            <textarea required v-model="setStateContent" name="courtCause"-->
-<!--                      class="layui-textarea"></textarea>-->
-          </div>
-        </div>
-
-        <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
             陈述内容
           </div>
           <div class="layui-input-block">
 
-            <textarea required v-model="data.state_content" name="courtCause"
-                      class="layui-textarea" style=""></textarea>
+            <textarea required v-model="setStateContent" name="courtCause"
+                      class="layui-textarea"></textarea>
           </div>
         </div>
 
@@ -52,48 +41,39 @@ export default {
       state_type: '0',
       state_content: ""
     }
-    let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if( wholeItem != null && "BasicState" in wholeItem){
-      return {
-        data:{
-          state_type: wholeItem.BasicState.state_type,
-          state_content: wholeItem.BasicState.state_content
-        }
-      }
-    }
     return {data: data};
   },
   computed: {
     setStateContent: {
       get() {
-        let plaintiff = this.$store.state.plaintiffname.filter(i=>i && i.trim()).join("，")
-        let defendant = this.$store.state.defendantname.filter(i=>i && i.trim()).join("，")
-        let judge = this.$store.state.judgename.filter(i=>i && i.trim()).join("，")
-        let jurorname = this.$store.state.jurorname.filter(i=>i && i.trim()).join("，")
-        let people_juror = this.$store.state.people_juror.filter(i=>i && i.trim()).join("，")
-        let court_clerk= this.$store.state.court_clerk
-        let content
+        var plaintiff = this.$store.state.plaintiffname.filter(i=>i && i.trim()).join("，")
+        var defendant = this.$store.state.defendantname.filter(i=>i && i.trim()).join("，")
+        var judge = this.$store.state.judgename.filter(i=>i && i.trim()).join("，")
+        var jurorname = this.$store.state.jurorname.filter(i=>i && i.trim()).join("，")
+        var court_clerk= this.$store.state.court_clerk
         switch (this.data.state_type) {
           case "0":
-            content = "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
+            return "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
                 "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用简易程序，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）一案，由本院审判" +
-                "员（"+judge+"）独任审判，书记员（"+court_clerk+"）担任法庭记录。"
-                break
+                "员（"+judge+"）独任审判，书记员（"+court_clerk+"）担任法庭记录。";
           case  "1":
-            content = "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
+            return "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
                 "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用普通程序独任制程序，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）一案，由本院审判" +
-                "员（"+judge+"）担任审判长，与人民陪审员（"+people_juror+"）共同组成合议庭，书记员（"+court_clerk+"）担任法庭记录。"
-            break
+                "员（"+judge+"）担任审判长，与人民陪审员（"+jurorname+"）共同组成合议庭，书记员（"+court_clerk+"）担任法庭记录。"
           case  "2":
-            content = "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
+            return "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
                 "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用普通程序合议制，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）一案，由本院审判" +
-                "员（"+judge+"）担任审判长，与陪审员（"+jurorname+"），人民陪审员（"+people_juror+"）共同组成合议庭，书记员"+court_clerk+"担任法庭记录。"
-                break
+                "员（"+judge+"）担任审判长，与陪审员（"+jurorname+"），人民陪审员__共同组成合议庭，书记员"+court_clerk+"担任法庭记录。"
           default:
-            content = ""
+            return ""
         }
-        return content
+
+      },
+      set(val) {
+        this.data.state_content = val
+        console.log(val)
       }
+
     }
   },
   watch:{

@@ -29,7 +29,7 @@
         </div>
 
         <div class="layui-form-item " pane>
-          <template v-for="(item, index) in getDefendantName" :key='index'>
+          <template v-for="(item, index) in getDefendantNane" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
@@ -73,7 +73,7 @@
         </div>
 
         <div class="layui-form-item " pane>
-          <template v-for="(item, index) in getDefendantName" :key='index'>
+          <template v-for="(item, index) in getDefendantNane" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-form-label">
                 {{ item }}
@@ -99,17 +99,17 @@
 <script type="text/javascript">
 
 import 'vue-multiselect/dist/vue-multiselect.css'
-// import {watch} from 'vue'
-// import {useStore} from 'vuex'
+import {watch} from 'vue'
+import {useStore} from 'vuex'
 
 export default {
-  // setup() {
-  //   const $store = useStore()
-  //   watch(() => $store.state.plaintiffname, (val, old) => {
-  //     console.log(val, old)
-  //   })
-  //   return {}
-  // },
+  setup() {
+    const $store = useStore()
+    watch(() => $store.state.plaintiffname, (val, old) => {
+      console.log(val, old)
+    })
+    return {}
+  },
 
   data() {
     var data;
@@ -132,8 +132,10 @@ export default {
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "right_inform" in wholeItem) {
       data = wholeItem.right_inform
+
     }
     return {data: data}
+
   },
   computed: {
     getPlaintiffName: {
@@ -149,9 +151,12 @@ export default {
         }
       }
     },
-    getDefendantName: {
+    getDefendantNane: {
       get() {
         if (this.$store.state.is_counterclaim == "0") {
+
+
+
           return this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
             return e + '（被告）';
           })
@@ -222,14 +227,13 @@ export default {
         })
       }
     },
-    getDefendantName() {
-      if(this.data.defendant_avoid.length < this.$store.state.defendantname.length){
+    getDefendantNane() {
+      if(this.data.defendant_avoid.length < this.$store.state.plaintiffname.length){
         this.data.defendant_avoid.push({
           is_avoid: "1", is_listen: "1",
         })
       }
-    },
-
+    }
   }
 }
 </script>
