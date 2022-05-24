@@ -135,7 +135,7 @@
 
           <div class="layui-input-block ">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
-              <input type="text" v-model="data.people_juror[0].name" placeholder="陪审员姓名" autocomplete="off" class="layui-input"
+              <input type="text" v-model="data.people_juror[0].name" placeholder="人民陪审员" autocomplete="off" class="layui-input"
                      style="width: 90%;float: left;" @blur="judgeChange('people_juror',0)">
               <button @click="add_component('people_juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
