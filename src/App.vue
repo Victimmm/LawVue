@@ -269,9 +269,18 @@ export default {
         }
         // console.log(wholeItem.rightInfo)
         //权利告知表 （目前有问题！）
-        let rightInfo={}
+        //accuser_avoid: [{is_listen: "1", is_avoid: "1"}],
+        // defendant_avoid: [{is_listen: "1", is_avoid: "1"}],
         if("rightInfo" in wholeItem){
-          rightInfo  = wholeItem.rightInfo
+          console.log(wholeItem.rightInfo)
+          let rightInfo  = wholeItem.rightInfo
+          for(let i=0;i<this.$store.state.plaintiffname.length;i++){
+            // console.log(i)
+            rightInfo.accuser_avoid[i]["name"]=this.$store.state.plaintiffname[i]
+          }
+          for(let i=0;i<this.$store.state.defendantname.length;i++){
+            rightInfo.defendant_avoid[i]["name"]=this.$store.state.defendantname[i]
+          }
           recordJson["rightInfo"] = rightInfo
         }
 
@@ -295,19 +304,16 @@ export default {
         }
 
         //法庭询问表
-        let inquiryInfo=[]
+        // let inquiryInfo=[]
         if("inquiryInfo" in wholeItem){
-          let inquiryInfoItem  = wholeItem.inquiryInfo
-          for(let i=0; i<inquiryInfoItem.inquiry_info.length; i++){
-            inquiryInfo.push(inquiryInfoItem.inquiry_info[i])
-          }
-          recordJson["inquiryInfo"] = inquiryInfo
+          let inquiryInfoItem  = wholeItem.inquiryInfo.inquiry_info
+          recordJson["inquiryInfo"] = inquiryInfoItem
         }
 
         //法庭辩论表
-        let argueInfo={}
+
         if("argueInfo" in wholeItem){
-          argueInfo  = wholeItem.argueInfo
+          let argueInfo  = wholeItem.argueInfo
           recordJson["argueInfo"] = argueInfo
         }
 
