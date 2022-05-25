@@ -7,7 +7,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label" style="line-height:180px">审判员</label>
           <div class="layui-input-block">
-            <textarea v-model="data.judge_talk[0]" type="text" class="layui-input " style="height: 200px;">
+            <textarea v-model="data.judge_right_duty" type="text" class="layui-input " style="height: 140px;">
             </textarea>
           </div>
         </div>
@@ -18,9 +18,9 @@
               <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
                 <div class="myradiomargin">
-                  <input type="radio" value="1"  v-model="data.accuser_avoid[index].is_listen" class="myradio"><label>
+                  <input type="radio" value="1"  v-model="data.accuser_right_duty[index].right_duty" class="myradio"><label>
                   听清楚了 </label>
-                  <input type="radio" value="2" v-model="data.accuser_avoid[index].is_listen" class="myradio"><label>
+                  <input type="radio" value="2" v-model="data.accuser_right_duty[index].right_duty" class="myradio"><label>
                   没听清楚 </label>
                 </div>
               </div>
@@ -34,9 +34,9 @@
               <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
                 <div class="myradiomargin">
-                  <input type="radio" value="1" v-model="data.defendant_avoid[index].is_listen" class="myradio"><label>
+                  <input type="radio" value="1" v-model="data.defendant_right_duty[index].right_duty" class="myradio"><label>
                   听清楚了 </label>
-                  <input type="radio" value="2" v-model="data.defendant_avoid[index].is_listen" class="myradio"><label>
+                  <input type="radio" value="2" v-model="data.defendant_right_duty[index].right_duty" class="myradio"><label>
                   没听清楚 </label>
                 </div>
               </div>
@@ -49,7 +49,7 @@
             审判员
           </div>
           <div class="layui-input-block">
-            <textarea type="text" v-model="data.judge_talk[1]" class="layui-textarea"
+            <textarea type="text" v-model="data.judge_avoid" class="layui-textarea"
                       style="height:38px;min-height:38px"></textarea>
           </div>
         </div>
@@ -61,9 +61,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" v-model="data.accuser_avoid[index].is_avoid" class="myradio"><label>
+                    <input type="radio" value="1" v-model="data.accuser_right_duty[index].avoid" class="myradio"><label>
                     不申请回避 </label>
-                    <input type="radio" value="2" v-model="data.accuser_avoid[index].is_avoid" class="myradio"><label>
+                    <input type="radio" value="2" v-model="data.accuser_right_duty[index].avoid" class="myradio"><label>
                     申请回避 </label>
                   </div>
                 </div>
@@ -81,9 +81,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" v-model="data.defendant_avoid[index].is_avoid" class="myradio"><label>
+                    <input type="radio" value="1" v-model="data.defendant_right_duty[index].avoid" class="myradio"><label>
                     不申请回避 </label>
-                    <input type="radio" value="2" v-model="data.defendant_avoid[index].is_avoid" class="myradio"><label>
+                    <input type="radio" value="2" v-model="data.defendant_right_duty[index].avoid" class="myradio"><label>
                     申请回避 </label>
                   </div>
                 </div>
@@ -114,20 +114,9 @@ export default {
   data() {
     var data;
     data = {
-      judge_talk: ["审判员：依据《中华人民共和国民事诉讼法》的规定，当事人在法庭上享有下列权利：\n" +
-      "1.原告有权承认、变更、放弃自己的诉讼请求，被告有权反驳原告的诉讼请求或提起反诉；\n" +
-      "2.当事人有权申请回避；\n" +
-      "3.当事人有权举证；\n" +
-      "4.当事人有权辩论、有权请求法庭调解\n" +
-      "当事人在享有上述权利的同时，负有以下义务：\n" +
-      "1.当事人有依法行使诉讼权利的义务；\n" +
-      "2.当事人有听从法庭指挥、遵守法庭纪律的义务；\n" +
-      "3.当事人有如实陈述事实、如实举证的义务。\n" +
-      "上述诉讼权利和义务双方是否听清？",
-        "审判员：当事人对审判员和书记是否申请回避？",
-      ],
-      accuser_avoid: [{is_listen: "1", is_avoid: "1"}],
-      defendant_avoid: [{is_listen: "1", is_avoid: "1"}],
+      judge_right_duty: "审判员：依据《中华人民共和国民事诉讼法》的规定，当事人在法庭上享有下列权利：1.原告有权承认、变更、放弃自己的诉讼请求，被告有权反驳原告的诉讼请求或提起反诉；2.当事人有权申请回避；3.当事人有权举证；4.当事人有权辩论、有权请求法庭调解,当事人在享有上述权利的同时，负有以下义务：1.当事人有依法行使诉讼权利的义务；2.当事人有听从法庭指挥、遵守法庭纪律的义务；3.当事人有如实陈述事实、如实举证的义务。上述诉讼权利和义务双方是否听清？",
+      accuser_right_duty: [{right_duty: "1", avoid: "1"}],
+      defendant_right_duty: [{right_duty: "1", avoid: "1"}],
     };
 
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
@@ -172,16 +161,16 @@ export default {
   methods: {
     add_component(datatype) {
       switch (datatype) {
-        case "defendant_avoid":
+        case "defendant_right_duty":
           //这里是值对应的处理
-          this.data.defendant_avoid.push({
-            is_avoid: "", is_listen: "",
+          this.data.defendant_right_duty.push({
+            avoid: "", right_duty: "",
           })
           break
-        case "accuser_avoid":
+        case "accuser_right_duty":
           //这里是值对应的处理
-          this.data.accuser_avoid.push({
-            is_avoid: "", is_listen: "",
+          this.data.accuser_right_duty.push({
+            avoid: "", right_duty: "",
           })
           break
         default:
@@ -191,13 +180,13 @@ export default {
     },
     delete_component(datatype, index) {
       switch (datatype) {
-        case "defendant_avoid":
+        case "defendant_right_duty":
           //这里是值对应的处理
-          this.data.defendant_avoid.splice(index, 1)
+          this.data.defendant_right_duty.splice(index, 1)
           break
-        case "accuser_avoid":
+        case "accuser_right_duty":
           //这里是值对应的处理
-          this.data.accuser_avoid.splice(index, 1)
+          this.data.accuser_right_duty.splice(index, 1)
           break
         default:
           //这里是没有找到对应的值处理
@@ -223,16 +212,16 @@ export default {
       deep: true
     },
     getPlaintiffName() {
-      if(this.data.accuser_avoid.length < this.$store.state.plaintiffname.length){
-        this.data.accuser_avoid.push({
-          is_avoid: "1", is_listen: "1",
+      if(this.data.accuser_right_duty.length < this.$store.state.plaintiffname.length){
+        this.data.accuser_right_duty.push({
+          avoid: "1", right_duty: "1",
         })
       }
     },
     getDefendantNane() {
-      if(this.data.defendant_avoid.length < this.$store.state.defendantname.length){
-        this.data.defendant_avoid.push({
-          is_avoid: "1", is_listen: "1",
+      if(this.data.defendant_right_duty.length < this.$store.state.defendantname.length){
+        this.data.defendant_right_duty.push({
+          avoid: "1", right_duty: "1",
         })
       }
     }

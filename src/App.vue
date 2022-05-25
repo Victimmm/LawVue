@@ -276,10 +276,10 @@ export default {
           let rightInfo  = wholeItem.rightInfo
           for(let i=0;i<this.$store.state.plaintiffname.length;i++){
             // console.log(i)
-            rightInfo.accuser_avoid[i]["name"]=this.$store.state.plaintiffname[i]
+            rightInfo.accuser_right_duty[i]["name"]=this.$store.state.plaintiffname[i]
           }
           for(let i=0;i<this.$store.state.defendantname.length;i++){
-            rightInfo.defendant_avoid[i]["name"]=this.$store.state.defendantname[i]
+            rightInfo.defendant_right_duty[i]["name"]=this.$store.state.defendantname[i]
           }
           recordJson["rightInfo"] = rightInfo
         }
