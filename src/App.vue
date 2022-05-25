@@ -168,6 +168,9 @@ export default {
       active: 0 // 当前激活的导航索引
     }
   },
+  beforeMount(){
+
+  },
   mounted() {
     window.addEventListener('scroll', this.onScroll)
     // 添加目录控件
@@ -247,6 +250,10 @@ export default {
         //组织数据
         if ("PlaintiffItems" in wholeItem)
           recordJson["basicInfo"]=wholeItem.BasicInfo
+        //基本信息陈述
+        if ("BasicState" in wholeItem)
+          recordJson["stateInfo"]=wholeItem.BasicState
+
         //原告数据
         if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
           let accuserInfo=[]
@@ -284,11 +291,10 @@ export default {
           recordJson["rightInfo"] = rightInfo
         }
 
-        let courtInvestigate={}
+        recordJson["courtInvestigate"]={}
         //法庭调查数据，包含原被告举证表，法庭调查表三个表
         if ("CourtInves" in wholeItem ) {
-          courtInvestigate = wholeItem.CourtInves
-          recordJson["courtInvestigate"] = courtInvestigate
+          recordJson["courtInvestigate"] =Object.assign(recordJson["courtInvestigate"],wholeItem.CourtInves)
         }
 
         // console.log(wholeItem.accuserShowInfo)
@@ -339,15 +345,15 @@ export default {
 
       }
 
-        console.log(recordJson)
+      console.log(recordJson)
 
-      // this.axios.post('http://localhost:8080/record/add', localStorage.getItem(this.$store.state.court_number))
-      //     .then(function (response) {
-      //       console.log(response);
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
+      this.axios.post('/record/add', JSON.stringify(recordJson))
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
   }
 }

@@ -7,22 +7,13 @@
           <label class="layui-form-label ">陈述类型</label>
           <div class="layui-input-block">
             <div class="myradiomargin">
-              <input type="radio" name="stateType" v-model="data.state_type" value="0"
+              <input type="radio" name="stateType" v-model="data.state_type" value="1"
                      class="myradio"><label>简易程序</label>
-              <input type="radio" name="stateType" v-model="data.state_type" value="1" class="myradio"
-                     style="margin-left: 15px;"><label>普通程序独任制</label>
               <input type="radio" name="stateType" v-model="data.state_type" value="2" class="myradio"
+                     style="margin-left: 15px;"><label>普通程序独任制</label>
+              <input type="radio" name="stateType" v-model="data.state_type" value="3" class="myradio"
                      style="margin-left: 15px;"><label>普通程序合议制</label>
             </div>
-          </div>
-        </div>
-
-        <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
-            陈述内容（自动填充）
-          </div>
-          <div class="layui-input-block">
-            {{setStateContent}}
           </div>
         </div>
 
@@ -31,9 +22,7 @@
             陈述内容
           </div>
           <div class="layui-input-block">
-
-            <textarea required v-model="data.state_content" name="courtCause"
-                      class="layui-textarea" style=""></textarea>
+            {{setStateContent}}
           </div>
         </div>
 
@@ -47,12 +36,12 @@ export default {
   name: "BasicState",
   data: function () {
     var data = {
-      state_type: '0',
+      state_type: '1',
       state_content: ""
     }
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "BasicState" in wholeItem) {
-      data = JSON.parse(window.localStorage.getItem(this.$store.state.court_number)).BasicState;
+      data = wholeItem.BasicState
     }
     return {data: data};
   },
@@ -67,23 +56,31 @@ export default {
         let court_clerk= this.$store.state.court_clerk
         let content
         switch (this.data.state_type) {
-          case "0":
+          case "1":
             content = "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
                 "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用简易程序，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）一案，由本院审判" +
                 "员（"+judge+"）独任审判，书记员（"+court_clerk+"）担任法庭记录。"
                 break
-          case  "1":
+          case  "2":
             content = "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
                 "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用普通程序独任制程序，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）一案，由本院审判" +
                 "员（"+judge+"）担任审判长，与人民陪审员（"+people_juror+"）共同组成合议庭，书记员（"+court_clerk+"）担任法庭记录。"
             break
-          case  "2":
+          case  "3":
             content = "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
                 "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用普通程序合议制，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）一案，由本院审判" +
                 "员（"+judge+"）担任审判长，与陪审员（"+jurorname+"），人民陪审员（"+people_juror+"）共同组成合议庭，书记员"+court_clerk+"担任法庭记录。"
                 break
           default:
             content = ""
+        }
+
+        let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+        if( wholeItem!= null && "BasicState" in wholeItem)
+        {
+          wholeItem.BasicState.state_type = this.data.state_type
+          wholeItem.BasicState.state_content = content
+          localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
         }
         return content
       }

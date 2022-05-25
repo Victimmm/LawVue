@@ -55,7 +55,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">法人代表</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.defendant_representative" required lay-verify="required"
+              <input type="text" v-model="data.defendant_represent" required lay-verify="required"
                      placeholder="请输入法人代表"
                      autocomplete="off" class="layui-input">
             </div>
@@ -139,7 +139,7 @@ export default {
       defendant_short: '',
       defendant_type: "1",
       defendant_address: '',
-      defendant_representative: '',
+      defendant_represent: '',
       defendant_duty: '',
       defendant_agent: [{agent:"",agent_address: ''}]
     };

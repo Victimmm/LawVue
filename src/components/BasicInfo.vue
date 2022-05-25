@@ -12,7 +12,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label ">立案时间</label>
           <div class="layui-input-block ">
-            <input type="text" id="filing_time" placeholder="请输入立案时间" autocomplete="off"
+            <input type="text" id="filing_time" v-model="data.filing_time" placeholder="请输入立案时间" autocomplete="off"
                    class="layui-input">
           </div>
         </div>
@@ -325,7 +325,7 @@ export default {
       }
 
       this.$store.commit("setCourtNum", this.data.court_number)
-      var newurl = this.updateQueryStringParameter(window.location.href, 'CourtNum', this.data.court_number);
+      var newurl = this.updateQueryStringParameter(window.location.href.split("#")[0], 'CourtNum', this.data.court_number);
       window.history.replaceState({
         path: newurl
       }, '', newurl);
