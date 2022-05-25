@@ -12,14 +12,14 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label ">立案时间</label>
           <div class="layui-input-block ">
-            <input type="text" id="filing_time" v-model="data.filing_time" placeholder="请输入立案时间" autocomplete="off"
+            <input type="text" id="filing_time"  placeholder="请输入立案时间" autocomplete="off"
                    class="layui-input">
           </div>
         </div>
         <div class="layui-form-item" pane>
           <label class="layui-form-label">开庭时间</label>
           <div class="layui-input-block">
-            <input type="text" v-model="data.court_time" id="court_time" required lay-verify="required"
+            <input type="text"  id="court_time" required lay-verify="required"
                    placeholder="请输入开庭时间"
                    autocomplete="off" class="layui-input">
           </div>
@@ -213,17 +213,12 @@ export default {
   mounted() {
     window.layui.use('laydate', () => {
       var laydate = window.layui.laydate;
-      // var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-      // if (wholeItem != null && "BasicInfo" in wholeItem) {
-      //       let filing_time=wholeItem.BasicInfo.filing_time
-      //       let court_time=wholeItem.BasicInfo.court_time
-      // }
       laydate.render({
         elem: '#filing_time', //指定元素
         type: 'datetime',
         format: 'yyyy年MM月dd日', //可任意组合
         value: this.data.filing_time,
-        change: (value) => {
+        done: (value) => {
           this.data.filing_time = value
           // console.log(value,this); //得到日期生成的值，如：2017-08-18
         }

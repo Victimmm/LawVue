@@ -342,12 +342,11 @@ export default {
           let deliveryInfoItem  = wholeItem.deliveryInfo.delivery_info
           recordJson["deliveryInfo"] = deliveryInfoItem
         }
-
       }
 
       console.log(recordJson)
 
-      this.axios.post('/record/add', JSON.stringify(recordJson))
+      this.axios.post('/record/add', recordJson)
           .then(function (response) {
             console.log(response);
           })
