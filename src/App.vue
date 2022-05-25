@@ -318,13 +318,10 @@ export default {
         }
 
         //最后陈述表
-        let finalStatementInfo=[]
+
         if("finalStatementInfo" in wholeItem){
-          let finalStatementInfoItem  = wholeItem.finalStatementInfo
-          for(let i=0; i<finalStatementInfoItem.final_statement_info.length; i++){
-            finalStatementInfo.push(finalStatementInfoItem.final_statement_info[i])
-          }
-          recordJson["finalStatementInfo"] = finalStatementInfo
+          let finalStatementInfoItem  = wholeItem.finalStatementInfo.final_statement_info
+          recordJson["finalStatementInfo"] = finalStatementInfoItem
         }
 
         //是否调解表
@@ -335,13 +332,9 @@ export default {
         }
 
         //电子文书送达表
-        let deliveryInfo= []
         if("deliveryInfo" in wholeItem){
-          let deliveryInfoItem  = wholeItem.deliveryInfo
-          for(let i=0; i<deliveryInfoItem.delivery_info.length; i++){
-            deliveryInfo.push(deliveryInfoItem.delivery_info[i])
-          }
-          recordJson["deliveryInfo"] = deliveryInfo
+          let deliveryInfoItem  = wholeItem.deliveryInfo.delivery_info
+          recordJson["deliveryInfo"] = deliveryInfoItem
         }
 
       }
