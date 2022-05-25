@@ -862,17 +862,17 @@
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <VueMultiselect :option-height="38" :show-labels="false"
-                                  v-model="data.counterclaim_defendent_query[0].counterclaim_defendent"
+                                  v-model="data.counterclaim_defendant_query[0].counterclaim_defendant"
                                   :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
                                   style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <VueMultiselect :option-height="38" :show-labels="false"
-                                    v-model="data.counterclaim_defendent_query[0].evidence"
+                                    v-model="data.counterclaim_defendant_query[0].evidence"
                                     :options=getProofOfCounterAccuser placeholder="请选择反诉原告列举的证据"
                                     style="line-height: 16px;width: 90%; float: left;"></VueMultiselect>
-                    <button @click="add_component('counterclaim_defendent_query')" type="button"
+                    <button @click="add_component('counterclaim_defendant_query')" type="button"
                             class="layui-btn layui-btn-primary layui-btn-sm"
                             data-type="text" style="float: right;">
                       <i class="layui-icon">&#xe654;</i>
@@ -889,10 +889,10 @@
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
                       <input type="radio" value="true"
-                             v-model="data.counterclaim_defendent_query[0].facticity"
+                             v-model="data.counterclaim_defendant_query[0].facticity"
                              class="myradio"><label>是</label>
                       <input type="radio" value="false"
-                             v-model="data.counterclaim_defendent_query[0].facticity"
+                             v-model="data.counterclaim_defendant_query[0].facticity"
                              class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -903,10 +903,10 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.counterclaim_defendent_query[0].legality"
+                      <input type="radio" value="true" v-model="data.counterclaim_defendant_query[0].legality"
                              class="myradio"><label>是</label>
                       <input type="radio" value="false"
-                             v-model="data.counterclaim_defendent_query[0].legality"
+                             v-model="data.counterclaim_defendant_query[0].legality"
                              class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -918,10 +918,10 @@
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
                       <input type="radio" value="true"
-                             v-model="data.counterclaim_defendent_query[0].relevance"
+                             v-model="data.counterclaim_defendant_query[0].relevance"
                              class="myradio"><label>是</label>
                       <input type="radio" value="false"
-                             v-model="data.counterclaim_defendent_query[0].relevance"
+                             v-model="data.counterclaim_defendant_query[0].relevance"
                              class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -931,27 +931,27 @@
             <div class="layui-form-item" pane>
               <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
               <div class="layui-input-block">
-                  <textarea v-model="data.counterclaim_defendent_query[0].counterclaim_defendant_query_fact_reason" placeholder="理由"
+                  <textarea v-model="data.counterclaim_defendant_query[0].counterclaim_defendant_query_fact_reason" placeholder="理由"
                             class="layui-textarea"></textarea>
               </div>
             </div>
 
-            <template v-for="(item, index) in data.counterclaim_defendent_query.slice(1)" :key="index">
+            <template v-for="(item, index) in data.counterclaim_defendant_query.slice(1)" :key="index">
               <div class="layui-form-item" pane>
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                   <div class="layui-input-inline" style="margin-left:0px ;">
                     <VueMultiselect :option-height="38" :show-labels="false"
-                                    v-model="data.counterclaim_defendent_query[index+1].counterclaim_defendent"
+                                    v-model="data.counterclaim_defendant_query[index+1].counterclaim_defendant"
                                     :options="$store.state.defendantname" placeholder="请选择反诉原告"
                                     style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <VueMultiselect :option-height="38" :show-labels="false"
-                                      v-model="data.counterclaim_defendent_query[index+1].evidence"
+                                      v-model="data.counterclaim_defendant_query[index+1].evidence"
                                       :options=getProofOfCounterAccuser placeholder="请选择反诉原告列举的证据"
                                       style="line-height: 16px;width: 90%; float: left;"></VueMultiselect>
-                      <button @click="delete_component('counterclaim_defendent_query',index+1)" type="button"
+                      <button @click="delete_component('counterclaim_defendant_query',index+1)" type="button"
                               class="layui-btn layui-btn-primary layui-btn-sm"
                               data-type="text" style="float: right;">
                         <i class="layui-icon">&#xe640;</i>
@@ -968,9 +968,9 @@
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
                         <input type="radio" value="true"
-                               v-model="data.counterclaim_defendent_query[index+1].facticity" class="myradio"><label>是</label>
+                               v-model="data.counterclaim_defendant_query[index+1].facticity" class="myradio"><label>是</label>
                         <input type="radio" value="false"
-                               v-model="data.counterclaim_defendent_query[index+1].facticity" class="myradio"><label>否</label>
+                               v-model="data.counterclaim_defendant_query[index+1].facticity" class="myradio"><label>否</label>
                       </div>
                     </div>
                   </div>
@@ -981,10 +981,10 @@
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
                         <input type="radio" value="true"
-                               v-model="data.counterclaim_defendent_query[index+1].legality"
+                               v-model="data.counterclaim_defendant_query[index+1].legality"
                                class="myradio"><label>是</label>
                         <input type="radio" value="false"
-                               v-model="data.counterclaim_defendent_query[index+1].legality"
+                               v-model="data.counterclaim_defendant_query[index+1].legality"
                                class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -996,10 +996,10 @@
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
                         <input type="radio" value="true"
-                               v-model="data.counterclaim_defendent_query[index+1].relevance" class="myradio"
+                               v-model="data.counterclaim_defendant_query[index+1].relevance" class="myradio"
                                ed><label>是</label>
                         <input type="radio" value="false"
-                               v-model="data.counterclaim_defendent_query[index+1].relevance" class="myradio"><label>否</label>
+                               v-model="data.counterclaim_defendant_query[index+1].relevance" class="myradio"><label>否</label>
                       </div>
                     </div>
                   </div>
@@ -1008,7 +1008,7 @@
               <div class="layui-form-item" pane>
                 <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
                 <div class="layui-input-block">
-                    <textarea v-model="data.counterclaim_defendent_query[index+1].counterclaim_defendant_query_fact_reason"
+                    <textarea v-model="data.counterclaim_defendant_query[index+1].counterclaim_defendant_query_fact_reason"
                               placeholder="理由" class="layui-textarea"></textarea>
                 </div>
               </div>
@@ -1088,9 +1088,9 @@ export default {
          }
        ],
        //反诉后第四个生成部分 反诉被告 (原告) 进行质证
-       counterclaim_defendent_query: [
+       counterclaim_defendant_query: [
          {
-           counterclaim_defendent: "",
+           counterclaim_defendant: "",
            evidence: "",
            facticity: "true",
            legality: "true",
@@ -1195,14 +1195,14 @@ export default {
           break
         case "counterclaim_accuser_evidence":  //反诉原告举证
           this.data.counterclaim_accuser_evidence.push({
-            counter_accuser_proof_name: "",     //证据名称(反诉原告提出新的证据)
-            counter_accuser_proof_content: "",       //证明事项(反诉原告提出)
+            evidence: "",
+            content: ""
           });
           break
-        case "counterclaim_defendent_query": //反诉原告质证
+        case "counterclaim_defendant_query": //反诉原告质证
           //这里是值对应的处理
-          this.data.counterclaim_defendent_query.push({
-            counterclaim_defendent: "",
+          this.data.counterclaim_defendant_query.push({
+            counterclaim_defendant: "",
             evidence: "",
             facticity: "true",
             legality: "true",
@@ -1246,9 +1246,9 @@ export default {
           //这里是值对应的处理
           this.data.counterclaim_accuser_evidence.splice(index, 1)
           break
-        case "counterclaim_defendent_query":
+        case "counterclaim_defendant_query":
           //这里是值对应的处理
-          this.data.counterclaim_defendent_query.splice(index, 1)
+          this.data.counterclaim_defendant_query.splice(index, 1)
           break
         default:
           //这里是没有找到对应的值处理
