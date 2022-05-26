@@ -113,9 +113,9 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 90%;float: left;">
-                  <input type="radio" value="1" v-model="data.mediate_defendant[0].is_mediate_defendant" class="myradio" >
+                  <input type="radio" value="1" v-model="data.mediate_defendant[0].is_mediate" class="myradio" >
                   <label>能</label>
-                  <input type="radio" value="2" v-model="data.mediate_defendant[0].is_mediate_defendant" class="myradio" >
+                  <input type="radio" value="2" v-model="data.mediate_defendant[0].is_mediate" class="myradio" >
                   <label>不能</label>
                 </div>
                 <button @click="add_component('mediate_defendant')" type="button"
@@ -127,12 +127,12 @@
             </div>
           </div>
         </div>
-        <div class="layui-form-item" v-show="data.mediate_defendant[0].is_mediate_defendant==1" pane>
+        <div class="layui-form-item" v-show="data.mediate_defendant[0].is_mediate==1" pane>
           <div class="layui-form-label divcenter">
             调解方案
           </div>
           <div class="layui-input-block">
-                <textarea v-model="data.mediate_defendant[0].mediate_plan_defendant" placeholder="请输入被告调解方案"
+                <textarea v-model="data.mediate_defendant[0].mediate_plan" placeholder="请输入被告调解方案"
                           class="layui-textarea"></textarea>
           </div>
         </div>
@@ -148,9 +148,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 90%;float: left;">
-                    <input type="radio" value="1" v-model="data.mediate_defendant[index+1].is_mediate_defendant" class="myradio" >
+                    <input type="radio" value="1" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" >
                     <label>能</label>
-                    <input type="radio" value="2" v-model="data.mediate_defendant[index+1].is_mediate_defendant" class="myradio" >
+                    <input type="radio" value="2" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" >
                     <label>不能</label>
                   </div>
                   <button @click="delete_component('mediate_defendant',index+1)" type="button"
@@ -162,12 +162,12 @@
               </div>
             </div>
           </div>
-          <div class="layui-form-item" v-show="data.mediate_defendant[index+1].is_mediate_defendant==1" pane>
+          <div class="layui-form-item" v-show="data.mediate_defendant[index+1].is_mediate==1" pane>
             <div class="layui-form-label divcenter">
               调解方案
             </div>
             <div class="layui-input-block">
-                <textarea v-model="data.mediate_defendant[index+1].mediate_plan_defendant" placeholder="请输入被告调解方案"
+                <textarea v-model="data.mediate_defendant[index+1].mediate_plan" placeholder="请输入被告调解方案"
                           class="layui-textarea"></textarea>
             </div>
           </div>
@@ -194,8 +194,8 @@ export default {
       mediate_defendant: [
         {
           defendant: "",
-          is_mediate_defendant: "1",
-          mediate_plan_defendant: ""
+          is_mediate: "1",
+          mediate_plan: ""
         }
       ]
     };
@@ -225,8 +225,8 @@ export default {
         case "mediate_defendant":
           this.data.mediate_defendant.push({
             defendant: "",
-            is_mediate_defendant: "1",
-            mediate_plan_defendant: ""
+            is_mediate: "1",
+            mediate_plan: ""
           });
           break
         default:

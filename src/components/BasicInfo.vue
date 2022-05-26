@@ -301,7 +301,7 @@ export default {
       }
     },
     courtNumChange() {
-      if (this.$store.state.court_number == "") {
+      if (this.data.court_number !="" &&this.$store.state.court_number == "") {
         // localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data}))
         localStorage.setItem(this.data.court_number, JSON.stringify({
           BasicInfo: this.data,

@@ -122,7 +122,6 @@ export default {
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "rightInfo" in wholeItem) {
       data = wholeItem.rightInfo
-
     }
     return {data: data}
 
@@ -144,9 +143,6 @@ export default {
     getDefendantNane: {
       get() {
         if (this.$store.state.is_counterclaim == "2") {
-
-
-
           return this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
             return e + '（被告）';
           })
@@ -163,15 +159,11 @@ export default {
       switch (datatype) {
         case "defendant_right_duty":
           //这里是值对应的处理
-          this.data.defendant_right_duty.push({
-            avoid: "", right_duty: "",
-          })
+          this.data.defendant_right_duty.push({right_duty: "1", avoid: "1"})
           break
         case "accuser_right_duty":
           //这里是值对应的处理
-          this.data.accuser_right_duty.push({
-            avoid: "", right_duty: "",
-          })
+          this.data.accuser_right_duty.push({right_duty: "1", avoid: "1"})
           break
         default:
           //这里是没有找到对应的值处理
@@ -205,24 +197,35 @@ export default {
           if (wholeItem != null) {
             wholeItem.rightInfo = this.data
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
-
           }
         }
       },
       deep: true
     },
     getPlaintiffName() {
-      if(this.data.accuser_right_duty.length < this.$store.state.plaintiffname.length){
+      if(this.data.accuser_right_duty.length < this.$store.state.plaintiffname.filter(i => i && i.trim()).length){
         this.data.accuser_right_duty.push({
           avoid: "1", right_duty: "1",
         })
       }
+
+      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      if (wholeItem != null ) {
+        wholeItem.rightInfo = this.data
+        localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+      }
+
     },
     getDefendantNane() {
-      if(this.data.defendant_right_duty.length < this.$store.state.defendantname.length){
+      if(this.data.defendant_right_duty.length < this.$store.state.defendantname.filter(i => i && i.trim()).length){
         this.data.defendant_right_duty.push({
           avoid: "1", right_duty: "1",
         })
+      }
+      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      if (wholeItem != null ) {
+        wholeItem.rightInfo = this.data
+        localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
     }
   }

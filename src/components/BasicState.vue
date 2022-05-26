@@ -76,8 +76,9 @@ export default {
         }
 
         let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-        if( wholeItem!= null && "BasicState" in wholeItem)
+        if( wholeItem!= null )
         {
+          wholeItem.BasicState={}
           wholeItem.BasicState.state_type = this.data.state_type
           wholeItem.BasicState.state_content = content
           localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))

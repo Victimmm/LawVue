@@ -146,6 +146,7 @@ import mediateInfo from "@/components/mediateInfo";
 import deliveryInfo from "@/components/deliveryInfo";
 import BasicState from "@/components/BasicState";
 
+
 export default {
   name: 'App',
   components: {
@@ -168,14 +169,10 @@ export default {
       active: 0 // 当前激活的导航索引
     }
   },
-  beforeMount(){
-
-  },
   mounted() {
     window.addEventListener('scroll', this.onScroll)
     // 添加目录控件
     this.$nextTick(function () {
-
       window.layui.use('layer', function () {
         var layer = window.layui.layer;
         layer.open({
@@ -244,113 +241,113 @@ export default {
     },
     //提交 localstorage  中的数据
     onSummit() {
-      let recordJson={}
-      var wholeItem= JSON.parse(localStorage.getItem(this.$store.state.court_number))
-      if(wholeItem != null){
+      let recordJson = {}
+      var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      if (wholeItem != null) {
         //组织数据
         if ("PlaintiffItems" in wholeItem)
-          recordJson["basicInfo"]=wholeItem.BasicInfo
+          recordJson["basicInfo"] = wholeItem.BasicInfo
         //基本信息陈述
         if ("BasicState" in wholeItem)
-          recordJson["stateInfo"]=wholeItem.BasicState
+          recordJson["stateInfo"] = wholeItem.BasicState
 
         //原告数据
         if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
-          let accuserInfo=[]
+          let accuserInfo = []
           for (var j = 0; j < wholeItem.PlaintiffItems.length; j++) {
             accuserInfo.push(wholeItem.PlaintiffItems[j])
             if (wholeItem.PlaintiffItems[j].accuser_type == "1")
               accuserInfo[j].accuser = wholeItem.PlaintiffItems[j].accuser_fullname
             delete accuserInfo[j].accuser_fullname
           }
-          recordJson["accuserInfo"]=accuserInfo
+          recordJson["accuserInfo"] = accuserInfo
         }
 
         //被告数据
         if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
-          let defendantInfo=[]
-          for ( j = 0; j < wholeItem.DefendantItems.length; j++) {
+          let defendantInfo = []
+          for (j = 0; j < wholeItem.DefendantItems.length; j++) {
             defendantInfo.push(wholeItem.DefendantItems[j])
           }
-          recordJson["defendantInfo"]=defendantInfo
+          recordJson["defendantInfo"] = defendantInfo
         }
         // console.log(wholeItem.rightInfo)
         //权利告知表 （目前有问题！）
         //accuser_avoid: [{is_listen: "1", is_avoid: "1"}],
         // defendant_avoid: [{is_listen: "1", is_avoid: "1"}],
-        if("rightInfo" in wholeItem){
-          console.log(wholeItem.rightInfo)
-          let rightInfo  = wholeItem.rightInfo
-          for(let i=0;i<this.$store.state.plaintiffname.length;i++){
+        if ("rightInfo" in wholeItem) {
+          let rightInfo = wholeItem.rightInfo
+          for (let i = 0; i < this.$store.state.plaintiffname.length; i++) {
             // console.log(i)
-            rightInfo.accuser_right_duty[i]["name"]=this.$store.state.plaintiffname[i]
+            rightInfo.accuser_right_duty[i]["accuser"] = this.$store.state.plaintiffname[i]
           }
-          for(let i=0;i<this.$store.state.defendantname.length;i++){
-            rightInfo.defendant_right_duty[i]["name"]=this.$store.state.defendantname[i]
+          for (let i = 0; i < this.$store.state.defendantname.length; i++) {
+            rightInfo.defendant_right_duty[i]["defendant"] = this.$store.state.defendantname[i]
           }
           recordJson["rightInfo"] = rightInfo
         }
 
-        recordJson["courtInvestigate"]={}
+        recordJson["courtInvestigate"] = {}
         //法庭调查数据，包含原被告举证表，法庭调查表三个表
-        if ("CourtInves" in wholeItem ) {
-          recordJson["courtInvestigate"] =Object.assign(recordJson["courtInvestigate"],wholeItem.CourtInves)
+        if ("CourtInves" in wholeItem) {
+          recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], wholeItem.CourtInves)
         }
 
         // console.log(wholeItem.accuserShowInfo)
-        if("accuserShowInfo" in wholeItem){
-          var accuserShowInfo  = wholeItem.accuserShowInfo
+        if ("accuserShowInfo" in wholeItem) {
+          var accuserShowInfo = wholeItem.accuserShowInfo
           // 合并法庭调查表和原告举证
-          recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"],accuserShowInfo)
+          recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], accuserShowInfo)
         }
 
-        if("defendantShowInfo" in wholeItem){
-          var defendantShowInfo  = wholeItem.defendantShowInfo
-          recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"],defendantShowInfo)
+        if ("defendantShowInfo" in wholeItem) {
+          var defendantShowInfo = wholeItem.defendantShowInfo
+          recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], defendantShowInfo)
         }
 
         //法庭询问表
         // let inquiryInfo=[]
-        if("inquiryInfo" in wholeItem){
-          let inquiryInfoItem  = wholeItem.inquiryInfo.inquiry_info
+        if ("inquiryInfo" in wholeItem) {
+          let inquiryInfoItem = wholeItem.inquiryInfo.inquiry_info
           recordJson["inquiryInfo"] = inquiryInfoItem
         }
 
         //法庭辩论表
 
-        if("argueInfo" in wholeItem){
-          let argueInfo  = wholeItem.argueInfo
+        if ("argueInfo" in wholeItem) {
+          let argueInfo = wholeItem.argueInfo
           recordJson["argueInfo"] = argueInfo
         }
 
         //最后陈述表
 
-        if("finalStatementInfo" in wholeItem){
-          let finalStatementInfoItem  = wholeItem.finalStatementInfo.final_statement_info
+        if ("finalStatementInfo" in wholeItem) {
+          let finalStatementInfoItem = wholeItem.finalStatementInfo.final_statement_info
           recordJson["finalStatementInfo"] = finalStatementInfoItem
         }
 
         //是否调解表
-        let mediateInfo={}
-        if("mediateInfo" in wholeItem){
-          mediateInfo  = wholeItem.mediateInfo
+        let mediateInfo = {}
+        if ("mediateInfo" in wholeItem) {
+          mediateInfo = wholeItem.mediateInfo
           recordJson["mediateInfo"] = mediateInfo
         }
 
         //电子文书送达表
-        if("deliveryInfo" in wholeItem){
-          let deliveryInfoItem  = wholeItem.deliveryInfo.delivery_info
+        if ("deliveryInfo" in wholeItem) {
+          let deliveryInfoItem = wholeItem.deliveryInfo.delivery_info
           recordJson["deliveryInfo"] = deliveryInfoItem
         }
       }
 
-      console.log(recordJson)
-
       this.axios.post('/record/add', recordJson)
-          .then(function (response) {
-            console.log(response);
+          .then(function () {
+            // handle success
+            window.location.href = '/view/record'
+            // console.log(response);
           })
           .catch(function (error) {
+            // handle error
             console.log(error);
           });
     }

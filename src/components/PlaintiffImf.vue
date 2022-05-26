@@ -18,7 +18,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label layui-form-required">原告姓名</label>
             <div class="layui-input-block">
-              <input type="text" v-model="plaintiffName" placeholder="请输入原告全称" autocomplete="off" class="layui-input">
+              <input type="text" v-model="plaintiffName" placeholder="请输入原告姓名" autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
@@ -218,7 +218,5 @@ export default {
       deep: true
     }
   }
-
-
 }
 </script>

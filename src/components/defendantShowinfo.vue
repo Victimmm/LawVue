@@ -842,7 +842,7 @@
             <div class="layui-form-item" pane>
               <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
               <div class="layui-input-block">
-                <textarea v-model="data.counterclaim_accuser_fact_reason" placeholder="理由"
+                <textarea v-model="data.counterclaim_accuser_evidence_fact_reason" placeholder="理由"
                           class="layui-textarea"></textarea>
               </div>
             </div>
@@ -1079,7 +1079,7 @@ export default {
            other_counterclaim_defendant_query_fact_reason: ""
          }
        ],
-       counterclaim_accuser_fact_reason:"", //反诉原告的事实与理由
+       // counterclaim_accuser_fact_reason:"", //反诉原告 诉讼请求项的事实与理由
        //反诉后第三个生成部分 反诉原告 (原告) 进行举证
        counterclaim_accuser_evidence:[
          {
@@ -1087,6 +1087,8 @@ export default {
            content: ""
          }
        ],
+       //反诉原告提出的证据的 事实和理由
+       counterclaim_accuser_evidence_fact_reason:"",
        //反诉后第四个生成部分 反诉被告 (原告) 进行质证
        counterclaim_defendant_query: [
          {
