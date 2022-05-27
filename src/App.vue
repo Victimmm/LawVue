@@ -2,6 +2,7 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <div class="layui-bg-gray">
+    <form class="layui-form">
     <div id="BasicInfo">
       <fieldset class="layui-elem-field layui-field-title">
         <legend>基本信息</legend>
@@ -124,9 +125,10 @@
         </fieldset>
       </div>
     </div>
-    <button type="button" class="layui-btn layui-btn-radius layui-btn-warm"
-            @click="onSummit" style="margin: -15px 0 30px;"> 提交
+    <button type="button" class="layui-btn layui-btn-radius layui-btn-warm " lay-submit
+            @click="onSummit"  style="margin: -15px 0 30px;"> 提交
     </button>
+    </form>
   </div>
 
 </template>
@@ -169,7 +171,13 @@ export default {
       active: 0 // 当前激活的导航索引
     }
   },
+
   mounted() {
+    window.layui.use('form','layedit', () => {
+      var form = window.layui.form
+      form.render()
+      // , element = layui.element
+    });
     window.addEventListener('scroll', this.onScroll)
     // 添加目录控件
     this.$nextTick(function () {
@@ -450,10 +458,10 @@ export default {
 
         //电子文书送达表
         if ("deliveryInfo" in wholeItem) {
-          let deliveryInfoItem = wholeItem.deliveryInfo.delivery_info
           recordJson["deliveryInfo"] = deliveryInfoItem
         }
-      }
+      }  let deliveryInfoItem = wholeItem.deliveryInfo.delivery_info
+
 
       this.axios.post('/record/add', recordJson)
           .then(function () {

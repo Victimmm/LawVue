@@ -18,7 +18,7 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.final_statement_info[0].final_statement"   placeholder="陈述意见" autocomplete="off"
+                <input type="text" v-model="data.final_statement_info[0].final_statement" lay-verify="required"  placeholder="陈述意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('final_statement_info')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">

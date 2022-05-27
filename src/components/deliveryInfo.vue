@@ -19,9 +19,9 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 90%;float: left;">
-                  <input type="radio" v-model="data.delivery_info[0].is_delivery" value="1" class="myradio">
+                  <input type="radio"  lay-ignore=""  v-model="data.delivery_info[0].is_delivery" value="1" class="myradio">
                   <label>同意</label>
-                  <input type="radio" v-model="data.delivery_info[0].is_delivery" value="2" class="myradio">
+                  <input type="radio" lay-ignore="" v-model="data.delivery_info[0].is_delivery" value="2" class="myradio">
                   <label>不同意</label>
                 </div>
                 <button @click="add_component('delivery_info')" type="button"
@@ -34,12 +34,12 @@
           </div>
         </div>
 
-        <div class="layui-form-item" v-show="data.delivery_info[0].is_delivery==1" pane>
+        <div class="layui-form-item layui-form-required" v-show="data.delivery_info[0].is_delivery==1" pane>
           <label class="layui-form-label">电子邮件地址</label>
           <div class="layui-input-block">
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <input type="text" v-model="data.delivery_info[0].email" placeholder="电子邮件地址" autocomplete="off"
-                     class="layui-input">
+              <input type="text" v-model="data.delivery_info[0].email"  placeholder="电子邮件地址" autocomplete="off"
+                     class=" layui-input " lay-verify="required">
             </div>
           </div>
         </div>
@@ -115,6 +115,15 @@ export default {
   components: {
     VueMultiselect
   },
+
+  mounted() {
+    window.layui.use('form', () => {
+      var form = window.layui.form
+          form.render()
+          // , element = layui.element
+    });
+  },
+
   computed:{
     deliveryFormGetAccuserMergeDefendant: {
       get() {

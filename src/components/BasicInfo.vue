@@ -5,14 +5,14 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label">案号 </label>
           <div class="layui-input-block">
-            <input type="text" v-model="data.court_number" @blur="courtNumChange()" placeholder="请输入案号"
+            <input type="text" v-model="data.court_number" @blur="courtNumChange()"  lay-verify="required" placeholder="请输入案号"
                    autocomplete="on" class="layui-input">
           </div>
         </div>
         <div class="layui-form-item" pane>
           <label class="layui-form-label ">立案时间</label>
           <div class="layui-input-block ">
-            <input type="text" id="filing_time"  placeholder="请输入立案时间" autocomplete="off"
+            <input type="text" id="filing_time"  placeholder="请输入立案时间" autocomplete="off" lay-verify="required"
                    class="layui-input">
           </div>
         </div>
@@ -32,12 +32,12 @@
           </div>
         </div>
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label divcenter" >
             审判长
           </div>
           <div class="layui-input-block ">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
-              <input type="text" v-model="data.chief_judge[0].name" placeholder="审判长姓名" autocomplete="off"
+              <input type="text" v-model="data.chief_judge[0].name" placeholder="审判长姓名" autocomplete="off" lay-verify="required"
                      class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('chief_judge',0)">
               <button @click="add_component('chief_judge')" type="button"
                       class="layui-btn layui-btn-primary layui-btn-sm"
@@ -76,7 +76,7 @@
           <div class="layui-input-block ">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.judge[0].name" placeholder="审判员姓名" autocomplete="off" class="layui-input"
-                     style="width: 90%;float: left;" @blur="judgeChange('judge',0)">
+                     style="width: 90%;float: left;" @blur="judgeChange('judge',0)" lay-verify="required" >
               <button @click="add_component('judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
@@ -105,7 +105,7 @@
           <div class="layui-input-block ">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.juror[0].name" placeholder="陪审员姓名" autocomplete="off" class="layui-input"
-                     style="width: 90%;float: left;" @blur="judgeChange('juror',0)">
+                     style="width: 90%;float: left;" @blur="judgeChange('juror',0)" lay-verify="required" >
               <button @click="add_component('juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
@@ -136,7 +136,7 @@
           <div class="layui-input-block ">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.people_juror[0].name" placeholder="人民陪审员姓名" autocomplete="off" class="layui-input"
-                     style="width: 90%;float: left;" @blur="judgeChange('people_juror',0)">
+                     style="width: 90%;float: left;" @blur="judgeChange('people_juror',0)" lay-verify="required" >
               <button @click="add_component('people_juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
@@ -164,7 +164,7 @@
             书记员
           </div>
           <div class="layui-input-block">
-            <input type="text" v-model="courtClerkName" name="courtClerk" placeholder="书记员姓名" autocomplete="off"
+            <input type="text" v-model="courtClerkName" name="courtClerk" placeholder="书记员姓名" lay-verify="required"  autocomplete="off"
                    class="layui-input">
           </div>
         </div>
@@ -174,7 +174,7 @@
             案由
           </div>
           <div class="layui-input-block">
-            <textarea required v-model="data.court_cause" name="courtCause" placeholder="请输入案由"
+            <textarea required v-model="data.court_cause" name="courtCause" lay-verify="required"  placeholder="请输入案由"
                       class="layui-textarea"></textarea>
           </div>
         </div>

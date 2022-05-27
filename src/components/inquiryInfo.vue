@@ -12,7 +12,7 @@
           <label class="layui-form-label" style="text-align: center">问题</label>
           <div class="layui-input-block">
             <div class="myselect-div">
-              <input type="text" v-model="data.inquiry_info[0].inquiry_question" placeholder="问题" autocomplete="off"
+              <input type="text" v-model="data.inquiry_info[0].inquiry_question" lay-verify="required" placeholder="问题" autocomplete="off"
                      class="layui-input" style="width: 90%;float: left;">
               <button @click="add_component('inquiry_info')" type="button"
                       class="layui-btn layui-btn-primary layui-btn-sm"
@@ -29,11 +29,11 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.inquiry_info[0].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
+                <input type="text" v-model="data.inquiry_info[0].inquiry_answer[0].answer" lay-verify="required" placeholder="回答" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('inquiry_reply',0)" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text" style="float: right;width:">
+                        data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
               </div>

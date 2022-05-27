@@ -6,9 +6,9 @@
           <label class="layui-form-label">原告类型</label>
           <div class="layui-input-block">
             <div class="myradiomargin">
-              <input type="radio" name="accuser_type" v-model="data.accuser_type" value="1"
+              <input type="radio" lay-ignore="" name="accuser_type" v-model="data.accuser_type" value="1"
                      class="myradio"><label>机构</label>
-              <input type="radio" name="accuser_type" v-model="data.accuser_type" value="2"
+              <input type="radio" name="accuser_type" lay-ignore="" v-model="data.accuser_type" value="2"
                      class="myradio" style="margin-left: 15px;"><label>个人</label>
             </div>
           </div>
@@ -18,13 +18,13 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label layui-form-required">原告姓名</label>
             <div class="layui-input-block">
-              <input type="text" v-model="plaintiffName" placeholder="请输入原告姓名" autocomplete="off" class="layui-input">
+              <input type="text" v-model="plaintiffName" lay-verify="required"  placeholder="请输入原告姓名" autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label layui-form-required">原告住址</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_address" placeholder="请输入原告住址" autocomplete="off"
+              <input type="text" v-model="data.accuser_address" placeholder="请输入原告住址" autocomplete="off" lay-verify="required"
                      class="layui-input">
             </div>
           </div>
@@ -33,7 +33,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">原告全称</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser" placeholder="请输入原告全称" autocomplete="off" class="layui-input">
+              <input type="text" v-model="data.accuser" placeholder="请输入原告全称" lay-verify="required"  autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
@@ -71,7 +71,7 @@
           <div class="layui-form-label divcenter">委托诉讼代理人</div>
           <div class="layui-input-block">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
-              <input type="text" v-model="data.accuser_agent[0].agent" placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"
+              <input type="text" v-model="data.accuser_agent[0].agent" placeholder="请输入委托诉讼代理人" lay-verify="required"  autocomplete="off" class="layui-input"
                      style="width: 90%;float: left;" >
               <button @click="add_component()" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
@@ -91,7 +91,7 @@
             <div class="layui-form-label divcenter">委托诉讼代理人</div>
             <div class="layui-input-block">
               <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
-                <input type="text" v-model="data.accuser_agent[index+1].agent" placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"
+                <input type="text" v-model="data.accuser_agent[index+1].agent" placeholder="请输入委托诉讼代理人"  autocomplete="off" class="layui-input"
                        style="width: 90%;float: left;" >
                 <button @click="delete_component(index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
@@ -100,7 +100,7 @@
               </div>
             </div>
             <div class="layui-input-block" style="margin-top: 5px;">
-              <input type="text" v-model="data.accuser_agent[index+1].agent_address" required lay-verify="required"
+              <input type="text" v-model="data.accuser_agent[index+1].agent_address"
                      placeholder="请输入委托诉讼代理人单位" autocomplete="off" class="layui-input">
             </div>
           </div>

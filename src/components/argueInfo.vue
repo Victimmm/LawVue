@@ -20,7 +20,7 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.argue[0].argue" placeholder="辩论意见" autocomplete="off"
+                <input type="text" v-model="data.argue[0].argue" placeholder="辩论意见" autocomplete="off" lay-verify="required"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
@@ -77,7 +77,7 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.counterclaim_argue[0].argue"   placeholder="辩论意见" autocomplete="off"
+                  <input type="text" v-model="data.counterclaim_argue[0].argue" lay-verify="required"  placeholder="辩论意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="add_component('counterclaim_argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">

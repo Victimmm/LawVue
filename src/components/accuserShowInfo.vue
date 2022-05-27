@@ -14,13 +14,13 @@
         <div class="layui-form-item" pane>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
-              <input type="text" v-model="data.accuser_evidence[0].evidence" placeholder="证据名称"
+              <input type="text" v-model="data.accuser_evidence[0].evidence" lay-verify="required" placeholder="证据名称"
                      autocomplete="off"
                      class="layui-input" style="line-height: 16px;width: 160px; min-height: 38px">
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.accuser_evidence[0].content" placeholder="证明事项"
+                <input type="text" v-model="data.accuser_evidence[0].content" lay-verify="required" placeholder="证明事项"
                        autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;margin-left:0px ;">
                 <button @click="add_component('accuser_evidence')" type="button"
@@ -59,7 +59,7 @@
             事实和理由
           </div>
           <div class="layui-input-block">
-            <textarea v-model="data.accuser_evidence_fact_reason" placeholder="理由"
+            <textarea v-model="data.accuser_evidence_fact_reason" lay-verify="required" placeholder="理由"
                       class="layui-textarea"></textarea>
           </div>
         </div>
@@ -73,7 +73,7 @@
             审判员
           </div>
           <div class="layui-input-block">
-            <textarea  class="layui-textarea" value="被告对原告提交的证据进行质证" style="height: 38px;min-height: 38px"></textarea>
+            <textarea  class="layui-textarea" style="height: 38px;min-height: 38px">被告对原告提交的证据进行质证</textarea>
           </div>
         </div>
 
@@ -82,7 +82,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38" :show-labels="false"
                               v-model="data.defendant_query[0].defendant"
-                              :options="$store.state.defendantname" placeholder="请选择被告"
+                              :options="$store.state.defendantname"  placeholder="请选择被告"
                               style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -107,9 +107,9 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 100%;float: left;">
-                  <input type="radio" value="true" v-model="data.defendant_query[0]. facticity"
+                  <input type="radio" value="true" lay-ignore="" v-model="data.defendant_query[0]. facticity"
                          class="myradio"><label>是</label>
-                  <input type="radio" value="false" v-model="data.defendant_query[0].facticity"
+                  <input type="radio" value="false" lay-ignore="" v-model="data.defendant_query[0].facticity"
                          class="myradio"><label>否</label>
                 </div>
               </div>
@@ -120,9 +120,9 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 100%;float: left;">
-                  <input type="radio" value="true" v-model="data.defendant_query[0].legality"
+                  <input type="radio" value="true" lay-ignore="" v-model="data.defendant_query[0].legality"
                          class="myradio"><label>是</label>
-                  <input type="radio" value="false" v-model="data.defendant_query[0].legality"
+                  <input type="radio" value="false" lay-ignore="" v-model="data.defendant_query[0].legality"
                          class="myradio"><label>否</label>
                 </div>
               </div>
@@ -133,9 +133,9 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 100%;float: left;">
-                  <input type="radio" value="true" v-model="data.defendant_query[0].relevance"
+                  <input type="radio" value="true" lay-ignore="" v-model="data.defendant_query[0].relevance"
                          class="myradio"><label>是</label>
-                  <input type="radio" value="false" v-model="data.defendant_query[0].relevance"
+                  <input type="radio" value="false" lay-ignore="" v-model="data.defendant_query[0].relevance"
                          class="myradio"><label>否</label>
                 </div>
               </div>
@@ -149,7 +149,7 @@
             事实和理由
           </div>
           <div class="layui-input-block">
-              <textarea v-model="data.defendant_query[0].defendant_query_fact_reason" placeholder="理由"
+              <textarea v-model="data.defendant_query[0].defendant_query_fact_reason" lay-verify="required" placeholder="理由"
                         class="layui-textarea"></textarea>
           </div>
         </div>
@@ -184,9 +184,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendant_query[index+1].facticity"
+                    <input type="radio" value="true" lay-ignore="" v-model="data.defendant_query[index+1].facticity"
                            class="myradio"><label>是</label>
-                    <input type="radio" value="false" v-model="data.defendant_query[index+1].facticity"
+                    <input type="radio" value="false" lay-ignore="" v-model="data.defendant_query[index+1].facticity"
                            class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -197,9 +197,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendant_query[index+1].legality"
+                    <input type="radio" value="true" lay-ignore="" v-model="data.defendant_query[index+1].legality"
                            class="myradio"><label>是</label>
-                    <input type="radio" value="false" v-model="data.defendant_query[index+1].legality"
+                    <input type="radio" value="false" lay-ignore="" v-model="data.defendant_query[index+1].legality"
                            class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -210,9 +210,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.defendant_query[index+1].relevance"
+                    <input type="radio" value="true" lay-ignore="" v-model="data.defendant_query[index+1].relevance"
                            class="myradio"><label>是</label>
-                    <input type="radio" value="false" v-model="data.defendant_query[index+1].relevance"
+                    <input type="radio" value="false" lay-ignore="" v-model="data.defendant_query[index+1].relevance"
                            class="myradio"><label>否</label>
                   </div>
                 </div>
