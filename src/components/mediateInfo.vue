@@ -20,9 +20,9 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 90%;float: left;">
-                  <input type="radio" value="1" class="myradio" lay-ignore="" v-model="data.mediate_accuser[0].is_mediate">
+                  <input type="radio" value="1" class="myradio" lay-ignore v-model="data.mediate_accuser[0].is_mediate">
                   <label>能</label>
-                  <input type="radio" value="2" class="myradio" lay-ignore="" v-model="data.mediate_accuser[0].is_mediate">
+                  <input type="radio" value="2" class="myradio" lay-ignore v-model="data.mediate_accuser[0].is_mediate">
                   <label>不能</label>
                 </div>
                 <button @click="add_component('mediate_accuser')" type="button"
@@ -67,9 +67,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 90%;float: left;">
-                    <input type="radio" value="1" class="myradio" v-model="data.mediate_accuser[index+1].is_mediate" lay-ignore="">
+                    <input type="radio" value="1" class="myradio" v-model="data.mediate_accuser[index+1].is_mediate" lay-ignore>
                     <label>能</label>
-                    <input type="radio" value="2" class="myradio" v-model="data.mediate_accuser[index+1].is_mediate" lay-ignore="">
+                    <input type="radio" value="2" class="myradio" v-model="data.mediate_accuser[index+1].is_mediate" lay-ignore>
                     <label>不能</label>
                   </div>
                   <button @click="delete_component('mediate_accuser',index+1)" type="button"
@@ -115,9 +115,9 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 90%;float: left;">
-                  <input type="radio" value="1" v-model="data.mediate_defendant[0].is_mediate" lay-ignore="" class="myradio" >
+                  <input type="radio" value="1" v-model="data.mediate_defendant[0].is_mediate" lay-ignore class="myradio" >
                   <label>能</label>
-                  <input type="radio" value="2" v-model="data.mediate_defendant[0].is_mediate" lay-ignore="" class="myradio" >
+                  <input type="radio" value="2" v-model="data.mediate_defendant[0].is_mediate" lay-ignore class="myradio" >
                   <label>不能</label>
                 </div>
                 <button @click="add_component('mediate_defendant')" type="button"
@@ -150,9 +150,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 90%;float: left;">
-                    <input type="radio" value="1" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" lay-ignore="">
+                    <input type="radio" value="1" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" lay-ignore>
                     <label>能</label>
-                    <input type="radio" value="2" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" lay-ignore="">
+                    <input type="radio" value="2" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" lay-ignore>
                     <label>不能</label>
                   </div>
                   <button @click="delete_component('mediate_defendant',index+1)" type="button"

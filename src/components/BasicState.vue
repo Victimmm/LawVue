@@ -7,11 +7,11 @@
           <label class="layui-form-label ">陈述类型</label>
           <div class="layui-input-block">
             <div class="myradiomargin">
-              <input type="radio" lay-ignore="" name="stateType" v-model="data.state_type" value="1"
+              <input type="radio" lay-ignore name="stateType" v-model="data.state_type" value="1"
                      class="myradio"><label>简易程序</label>
-              <input type="radio" lay-ignore="" name="stateType" v-model="data.state_type" value="2" class="myradio"
+              <input type="radio" lay-ignore name="stateType" v-model="data.state_type" value="2" class="myradio"
                      style="margin-left: 15px;"><label>普通程序独任制</label>
-              <input type="radio" lay-ignore="" name="stateType" v-model="data.state_type" value="3" class="myradio"
+              <input type="radio" lay-ignore name="stateType" v-model="data.state_type" value="3" class="myradio"
                      style="margin-left: 15px;"><label>普通程序合议制</label>
             </div>
           </div>

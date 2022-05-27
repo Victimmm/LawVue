@@ -20,9 +20,9 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <div class="myradiomargin" style="width: 90%;float: left;">
-                  <input type="radio"  lay-ignore=""  v-model="data.delivery_info[0].is_delivery" value="1" class="myradio">
+                  <input type="radio"  lay-ignore  v-model="data.delivery_info[0].is_delivery" value="1" class="myradio">
                   <label>同意</label>
-                  <input type="radio" lay-ignore="" v-model="data.delivery_info[0].is_delivery" value="2" class="myradio">
+                  <input type="radio" lay-ignore v-model="data.delivery_info[0].is_delivery" value="2" class="myradio">
                   <label>不同意</label>
                 </div>
                 <button @click="add_component('delivery_info')" type="button"
@@ -60,9 +60,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 90%;float: left;">
-                    <input type="radio" v-model="data.delivery_info[index+1].is_delivery" value="1" class="myradio">
+                    <input type="radio"  lay-ignore v-model="data.delivery_info[index+1].is_delivery" value="1" class="myradio">
                     <label>同意</label>
-                    <input type="radio" v-model="data.delivery_info[index+1].is_delivery" value="2" class="myradio">
+                    <input type="radio" lay-ignore v-model="data.delivery_info[index+1].is_delivery" value="2" class="myradio">
                     <label>不同意</label>
                   </div>
                   <button @click="delete_component('delivery_info',index+1)" type="button"

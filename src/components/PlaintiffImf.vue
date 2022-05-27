@@ -6,9 +6,9 @@
           <label class="layui-form-label">原告类型</label>
           <div class="layui-input-block">
             <div class="myradiomargin">
-              <input type="radio" lay-ignore="" name="accuser_type" v-model="data.accuser_type" value="1"
+              <input type="radio" lay-ignore name="accuser_type" v-model="data.accuser_type" value="1"
                      class="myradio"><label>机构</label>
-              <input type="radio" name="accuser_type" lay-ignore="" v-model="data.accuser_type" value="2"
+              <input type="radio" name="accuser_type" lay-ignore v-model="data.accuser_type" value="2"
                      class="myradio" style="margin-left: 15px;"><label>个人</label>
             </div>
           </div>

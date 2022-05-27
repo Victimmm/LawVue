@@ -18,9 +18,9 @@
               <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
                 <div class="myradiomargin">
-                  <input type="radio" value="1" lay-ignore="" v-model="data.accuser_right_duty[index].right_duty" class="myradio"><label>
+                  <input type="radio" value="1" lay-ignore v-model="data.accuser_right_duty[index].right_duty" class="myradio"><label>
                   听清楚了 </label>
-                  <input type="radio" value="2" lay-ignore="" v-model="data.accuser_right_duty[index].right_duty" class="myradio"><label>
+                  <input type="radio" value="2" lay-ignore v-model="data.accuser_right_duty[index].right_duty" class="myradio"><label>
                   没听清楚 </label>
                 </div>
               </div>
@@ -34,9 +34,9 @@
               <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
                 <div class="myradiomargin">
-                  <input type="radio" value="1" lay-ignore="" v-model="data.defendant_right_duty[index].right_duty" class="myradio"><label>
+                  <input type="radio" value="1" lay-ignore v-model="data.defendant_right_duty[index].right_duty" class="myradio"><label>
                   听清楚了 </label>
-                  <input type="radio" value="2" lay-ignore="" v-model="data.defendant_right_duty[index].right_duty" class="myradio"><label>
+                  <input type="radio" value="2" lay-ignore v-model="data.defendant_right_duty[index].right_duty" class="myradio"><label>
                   没听清楚 </label>
                 </div>
               </div>
@@ -61,9 +61,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" lay-ignore="" v-model="data.accuser_right_duty[index].avoid" class="myradio"><label>
+                    <input type="radio" value="1" lay-ignore v-model="data.accuser_right_duty[index].avoid" class="myradio"><label>
                     不申请回避 </label>
-                    <input type="radio" value="2" lay-ignore="" v-model="data.accuser_right_duty[index].avoid" class="myradio"><label>
+                    <input type="radio" value="2" lay-ignore v-model="data.accuser_right_duty[index].avoid" class="myradio"><label>
                     申请回避 </label>
                   </div>
                 </div>
@@ -81,9 +81,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" lay-ignore="" v-model="data.defendant_right_duty[index].avoid" class="myradio"><label>
+                    <input type="radio" value="1" lay-ignore v-model="data.defendant_right_duty[index].avoid" class="myradio"><label>
                     不申请回避 </label>
-                    <input type="radio" value="2" lay-ignore="" v-model="data.defendant_right_duty[index].avoid" class="myradio"><label>
+                    <input type="radio" value="2" lay-ignore v-model="data.defendant_right_duty[index].avoid" class="myradio"><label>
                     申请回避 </label>
                   </div>
                 </div>
