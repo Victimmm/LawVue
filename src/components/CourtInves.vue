@@ -69,6 +69,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;" >
               <VueMultiselect :option-height="38"  v-model="data.defendant_reply[0].name" :show-labels="false"
                               :options="$store.state.defendantname" placeholder="请选择被告"
+                              lay-verify="vueselect"
                               style="line-height: 16px;width: 160px; min-height: 38px"
               ></VueMultiselect>
             </div>
@@ -124,7 +125,7 @@
           </div>
         </div>
 
-        <div v-show="data.is_counterclaim==1">
+        <div v-if="data.is_counterclaim==1">
           <div class="layui-form-item" pane>
             <div class="layui-form-label divcenter">
               反诉原告诉讼请求项
@@ -162,12 +163,13 @@
             </div>
           </div>
 
-          <div v-show="data.counterclaim_defendant_today_is_reply==1">
+          <div v-if="data.counterclaim_defendant_today_is_reply==1">
             <div class="layui-form-item " pane>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[0].name" :show-labels="false"
                                   :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
+                                  lay-verify="vueselect"
                                   style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">

@@ -16,6 +16,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argue[0].name"
                               :options="getAccuserMergeDefendant" placeholder="请选择原被告"
+                              lay-verify="vueselect"
                               style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -67,12 +68,13 @@
 <!--          </div>-->
 <!--        </div>-->
 
-        <div v-show="$store.state.is_counterclaim=='1'">
+        <div v-if="$store.state.is_counterclaim=='1'">
           <div class="layui-form-item" pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.counterclaim_argue[0].name"
                                 :options="getCounterAccuserMergeDefendant" placeholder="请选择反诉角色"
+                                lay-verify="vueselect"
                                 style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">

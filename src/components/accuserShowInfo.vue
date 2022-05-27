@@ -83,6 +83,7 @@
               <VueMultiselect :option-height="38" :show-labels="false"
                               v-model="data.defendant_query[0].defendant"
                               :options="$store.state.defendantname"  placeholder="请选择被告"
+                              lay-verify="vueselect"
                               style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -90,6 +91,7 @@
                 <VueMultiselect :option-height="38" :show-labels="false"
                                 v-model="data.defendant_query[0].evidence"
                                 :options=getProofPlaintiff placeholder="请选择证据名称"
+                                lay-verify="vueselect"
                                 style="line-height: 16px;width: 90%; min-height: 38px;float:left;"></VueMultiselect>
                 <button @click="add_component('defendant_query')" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"

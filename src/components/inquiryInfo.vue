@@ -25,6 +25,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiry_info[0].inquiry_answer[0].name"
                               :options="inquiryFormGetAccuserMergeDefendant" placeholder="请选择原被告"
+                              lay-verify="vueselect"
                               style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">

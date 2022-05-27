@@ -14,6 +14,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.delivery_info[0].name"
                               :options="deliveryFormGetAccuserMergeDefendant" placeholder="请选择原被告"
+                              lay-verify="vueselect"
                               style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -34,12 +35,13 @@
           </div>
         </div>
 
-        <div class="layui-form-item layui-form-required" v-show="data.delivery_info[0].is_delivery==1" pane>
+        <div class="layui-form-item layui-form-required" v-if="data.delivery_info[0].is_delivery==1" pane>
           <label class="layui-form-label">电子邮件地址</label>
           <div class="layui-input-block">
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <input type="text" v-model="data.delivery_info[0].email"  placeholder="电子邮件地址" autocomplete="off"
-                     class=" layui-input " lay-verify="required">
+                     lay-verify="email"
+                     class=" layui-input " layui-verify="required">
             </div>
           </div>
         </div>
@@ -73,11 +75,12 @@
             </div>
           </div>
 
-          <div class="layui-form-item" v-show="data.delivery_info[index+1].is_delivery==1" pane>
+          <div class="layui-form-item" v-if="data.delivery_info[index+1].is_delivery==1" pane>
             <label class="layui-form-label">电子邮件地址</label>
             <div class="layui-input-block">
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                 <input type="text" v-model="data.delivery_info[index+1].email" placeholder="电子邮件地址" autocomplete="off"
+                       layui-verify="email"
                        class="layui-input">
               </div>
             </div>

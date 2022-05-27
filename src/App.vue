@@ -2,7 +2,7 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <div class="layui-bg-gray">
-    <form class="layui-form">
+    <form class="layui-form" action="" onsubmit="return false">
     <div id="BasicInfo">
       <fieldset class="layui-elem-field layui-field-title">
         <legend>基本信息</legend>
@@ -125,8 +125,8 @@
         </fieldset>
       </div>
     </div>
-    <button type="button" class="layui-btn layui-btn-radius layui-btn-warm " lay-submit
-            @click="onSummit"  style="margin: -15px 0 30px;"> 提交
+    <button type="button" class="layui-btn layui-btn-radius layui-btn-warm " lay-submit lay-filter="onSubmit"
+              style="margin: -15px 0 30px;"> 提交
     </button>
     </form>
   </div>
@@ -173,11 +173,24 @@ export default {
   },
 
   mounted() {
-    window.layui.use('form','layedit', () => {
+    window.layui.use('form', () => {
       var form = window.layui.form
       form.render()
       // , element = layui.element
+      form.on('submit(onSubmit)', ()=>{
+        this.onSummit()
+        return false;
+      });
+      form.verify({
+        vueselect:function(value, item){
+          if(item.getElementsByClassName("multiselect__single").length==0){
+              let selecthoder=item.getElementsByClassName("multiselect__placeholder")[0].innerHTML
+            return selecthoder;
+          }
+        }
+      });
     });
+
     window.addEventListener('scroll', this.onScroll)
     // 添加目录控件
     this.$nextTick(function () {
@@ -257,63 +270,25 @@ export default {
         //基本信息
         if ("BasicInfo" in wholeItem){
           let basicInfo = wholeItem.BasicInfo
-          for(let item in basicInfo ){
-            if(basicInfo[item] == ""){
-              window.layui.layer.msg('请完善基本信息表格');
-              return
-            } else if(typeof (basicInfo[item]) == "object"){ // 处理基本信息表中的 数组
-              if(basicInfo[item][0]["name"] == ""){
-                window.layui.layer.msg('请完善基本信息表格');
-                return
-              }
-            }
-          }
           recordJson["basicInfo"] = basicInfo
         }
 
         //基本信息陈述
         if ("BasicState" in wholeItem){
           let stateInfo = wholeItem.BasicState
-          if(stateInfo.state_content == "" || stateInfo.state_type == ""){
-            window.layui.layer.msg('请完善基本信息陈诉表格');
-            return
-          }
           recordJson["stateInfo"] = stateInfo
         }
 
 
         //原告数据
         if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
+
           let accuserInfo = []
+
           for (var j = 0; j < wholeItem.PlaintiffItems.length; j++) {
             let plaintiffItem=wholeItem.PlaintiffItems[j]
             accuserInfo.push(plaintiffItem)
-            if (plaintiffItem.accuser_type == "1"){
-              for(let item in plaintiffItem ){
-                //当为机构时，所有数据都不能为空
-                if(plaintiffItem[item] == ""){
-                  window.layui.layer.msg('请完善原告信息表格');
-                  return
-                } else if(typeof (plaintiffItem[item]) == "object"){ // 处理表中的 数组,第一个数组元素的键值对不能为空
-                  if(plaintiffItem[item][0]["agent"] == "" ||plaintiffItem[item][0]["agent_address"] == "" ){
-                    window.layui.layer.msg('请完善原告信息表格');
-                    return
-                  }
-                }
-              }
-            }else{
-              for(let item in plaintiffItem ){
-                //当为个人时
-                if(plaintiffItem[item] == "" && item!="accuser_duty" && item!="accuser_represent" && item!="accuser_short"){
-                  window.layui.layer.msg('请完善原告信息表格');
-                  return
-                } else if(typeof (plaintiffItem[item]) == "object"){ // 处理基本信息表中的 数组
-                  if(plaintiffItem[item][0]["agent"] == "" ||plaintiffItem[item][0]["agent_address"] == "" ){
-                    window.layui.layer.msg('请完善原告信息表格');
-                    return
-                  }
-                }
-              }
+            if (plaintiffItem.accuser_type == "2"){
               accuserInfo[j].accuser_short = wholeItem.PlaintiffItems[j].accuser
             }
           }
@@ -322,44 +297,27 @@ export default {
 
         //被告数据
         if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
+
           let defendantInfo = []
           for (j = 0; j < wholeItem.DefendantItems.length; j++) {
-            let defendantItem=wholeItem.DefendantItems[j]
+              let defendantItem=wholeItem.DefendantItems[j]
 
-            defendantInfo.push(defendantItem)
-            if (defendantItem.defendant_type == "1"){
-              for(let item in defendantItem ){
-                //当为机构时，所有数据都不能为空
-                if(defendantItem[item] == ""){
-                  window.layui.layer.msg('请完善被告信息表格');
-                  return
-                } else if(typeof (defendantItem[item]) == "object"){ // 处理表中的 数组,第一个数组元素的键值对不能为空
-                  if(defendantItem[item][0]["agent"] == "" ||defendantItem[item][0]["agent_address"] == "" ){
-                    window.layui.layer.msg('请完善被告信息表格');
-                    return
-                  }
-                }
+              defendantInfo.push(defendantItem)
+              if (defendantItem.defendant_type == "2"){
+                defendantInfo[j].defendant_short = defendantInfo[j].defendant
               }
-            }else{
-              for(let item in defendantItem ){
-                //当为个人时
-                if(defendantItem[item] == "" && item!="defendant_duty" && item!="defendant_represent" && item!="defendant_short"){
-                  window.layui.layer.msg('请完善被告信息表格');
-                  return
-                } else if(typeof (defendantItem[item]) == "object"){ // 处理基本信息表中的 数组
-                  if(defendantItem[item][0]["agent"] == "" ||defendantItem[item][0]["agent_address"] == "" ){
-                    window.layui.layer.msg('请完善被告信息表格');
-                    return
-                  }
-                }
-              }
-              defendantInfo[j].defendant_short = defendantInfo[j].defendant
             }
-          }
+
           recordJson["defendantInfo"] = defendantInfo
+        }else {//没有被告数据
+          window.layui.layer.msg('请完善被告信息表格');
+          return
         }
+
+
         // defendant_avoid: [{is_listen: "1", is_avoid: "1"}],
         if ("rightInfo" in wholeItem) {
+
           let rightInfo = wholeItem.rightInfo
           for (let i = 0; i < this.$store.state.plaintiffname.length; i++) {
             // console.log(i)
@@ -374,46 +332,9 @@ export default {
         recordJson["courtInvestigate"] = {}
         //法庭调查数据，包含原被告举证表，法庭调查表三个表
         if ("CourtInves" in wholeItem) {
+
           let courtInvestigate = wholeItem.CourtInves
-          for(let item in courtInvestigate ){
-            //当为机构时，所有数据都不能为空
-            if(courtInvestigate[item] == ""){
-
-              if(courtInvestigate.is_counterclaim == "2" && (item == "accuser_claim_item" || item == "accuser_claim_fact_reason" || item == "is_counterclaim") ){
-                window.layui.layer.msg('请完善法庭调查信息表格');
-                return
-              }else if(courtInvestigate.is_counterclaim == "1"){
-                window.layui.layer.msg('请完善法庭调查信息表格');
-                return
-              }
-
-            } else if(typeof (courtInvestigate[item]) == "object"){ // 处理表中的 数组,第一个数组元素的键值对不能为空
-
-              if(courtInvestigate.is_counterclaim == "2" && item == "defendant_reply"){
-
-                if(courtInvestigate[item][0].name == "" || courtInvestigate[item][0].content==""){
-                  window.layui.layer.msg('请完善法庭调查信息表格')
-                  return
-                }
-              }
-              else if(courtInvestigate.is_counterclaim == "1" ){
-                if(courtInvestigate.counterclaim_defendant_today_is_reply == "1" && (item =="counterclaim_defendant_reply" || item == "defendant_reply")){
-                  if(courtInvestigate[item][0].name == "" || courtInvestigate[item][0].content==""){
-                    window.layui.layer.msg('请完善法庭调查信息表格')
-                    return
-                  }
-                }
-                else if(courtInvestigate.counterclaim_defendant_today_is_reply == "1" && item == "defendant_reply"){
-                  if(courtInvestigate[item][0].name == "" || courtInvestigate[item][0].content==""){
-                    window.layui.layer.msg('请完善法庭调查信息表格')
-                    return
-                  }
-                }
-              }
-
-            }
-          }
-          recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], wholeItem.CourtInves)
+          recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], courtInvestigate)
         }
 
         // console.log(wholeItem.accuserShowInfo)
@@ -458,9 +379,10 @@ export default {
 
         //电子文书送达表
         if ("deliveryInfo" in wholeItem) {
+          let deliveryInfoItem = wholeItem.deliveryInfo.delivery_info
           recordJson["deliveryInfo"] = deliveryInfoItem
         }
-      }  let deliveryInfoItem = wholeItem.deliveryInfo.delivery_info
+      }
 
 
       this.axios.post('/record/add', recordJson)

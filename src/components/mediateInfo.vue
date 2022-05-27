@@ -14,6 +14,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_accuser[0].accuser"
                               :options="$store.state.plaintiffname" placeholder="请选择原告"
+                              lay-verify="vueselect"
                               style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -33,7 +34,7 @@
             </div>
           </div>
         </div>
-        <div v-show="data.mediate_accuser[0].is_mediate==1">
+        <div v-if="data.mediate_accuser[0].is_mediate==1">
           <div class="layui-form-item" pane>
             <div class="layui-form-label divcenter">
               调解方案
@@ -80,7 +81,7 @@
               </div>
             </div>
           </div>
-          <div v-show="data.mediate_accuser[index+1].is_mediate==1">
+          <div v-if="data.mediate_accuser[index+1].is_mediate==1">
             <div class="layui-form-item" pane>
               <div class="layui-form-label divcenter">
                 调解方案
@@ -108,6 +109,7 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant[0].defendant"
                               :options="$store.state.defendantname" placeholder="请选择被告"
+                              lay-verify="vueselect"
                               style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -127,7 +129,7 @@
             </div>
           </div>
         </div>
-        <div class="layui-form-item" v-show="data.mediate_defendant[0].is_mediate==1" pane>
+        <div class="layui-form-item" v-if="data.mediate_defendant[0].is_mediate==1" pane>
           <div class="layui-form-label divcenter">
             调解方案
           </div>
@@ -162,7 +164,7 @@
               </div>
             </div>
           </div>
-          <div class="layui-form-item" v-show="data.mediate_defendant[index+1].is_mediate==1" pane>
+          <div class="layui-form-item" v-if="data.mediate_defendant[index+1].is_mediate==1" pane>
             <div class="layui-form-label divcenter">
               调解方案
             </div>
