@@ -244,21 +244,70 @@ export default {
       let recordJson = {}
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
       if (wholeItem != null) {
-        //组织数据
-        if ("PlaintiffItems" in wholeItem)
-          recordJson["basicInfo"] = wholeItem.BasicInfo
+        //组织数据,同时检查数据
+
+        //基本信息
+        if ("BasicInfo" in wholeItem){
+          let basicInfo = wholeItem.BasicInfo
+          for(let item in basicInfo ){
+            if(basicInfo[item] == ""){
+              window.layui.layer.msg('请完善基本信息表格');
+              return
+            } else if(typeof (basicInfo[item]) == "object"){ // 处理基本信息表中的 数组
+              if(basicInfo[item][0]["name"] == ""){
+                window.layui.layer.msg('请完善基本信息表格');
+                return
+              }
+            }
+          }
+          recordJson["basicInfo"] = basicInfo
+        }
+
         //基本信息陈述
-        if ("BasicState" in wholeItem)
-          recordJson["stateInfo"] = wholeItem.BasicState
+        if ("BasicState" in wholeItem){
+          let stateInfo = wholeItem.BasicState
+          if(stateInfo.state_content == "" || stateInfo.state_type == ""){
+            window.layui.layer.msg('请完善基本信息陈诉表格');
+            return
+          }
+          recordJson["stateInfo"] = stateInfo
+        }
+
 
         //原告数据
         if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
           let accuserInfo = []
           for (var j = 0; j < wholeItem.PlaintiffItems.length; j++) {
-            accuserInfo.push(wholeItem.PlaintiffItems[j])
-            if (wholeItem.PlaintiffItems[j].accuser_type == "1")
-              accuserInfo[j].accuser = wholeItem.PlaintiffItems[j].accuser_fullname
-            delete accuserInfo[j].accuser_fullname
+            let plaintiffItem=wholeItem.PlaintiffItems[j]
+            accuserInfo.push(plaintiffItem)
+            if (plaintiffItem.accuser_type == "1"){
+              for(let item in plaintiffItem ){
+                //当为机构时，所有数据都不能为空
+                if(plaintiffItem[item] == ""){
+                  window.layui.layer.msg('请完善原告信息表格');
+                  return
+                } else if(typeof (plaintiffItem[item]) == "object"){ // 处理表中的 数组,第一个数组元素的键值对不能为空
+                  if(plaintiffItem[item][0]["agent"] == "" ||plaintiffItem[item][0]["agent_address"] == "" ){
+                    window.layui.layer.msg('请完善原告信息表格');
+                    return
+                  }
+                }
+              }
+            }else{
+              for(let item in plaintiffItem ){
+                //当为个人时
+                if(plaintiffItem[item] == "" && item!="accuser_duty" && item!="accuser_represent" && item!="accuser_short"){
+                  window.layui.layer.msg('请完善原告信息表格');
+                  return
+                } else if(typeof (plaintiffItem[item]) == "object"){ // 处理基本信息表中的 数组
+                  if(plaintiffItem[item][0]["agent"] == "" ||plaintiffItem[item][0]["agent_address"] == "" ){
+                    window.layui.layer.msg('请完善原告信息表格');
+                    return
+                  }
+                }
+              }
+              accuserInfo[j].accuser_short = wholeItem.PlaintiffItems[j].accuser
+            }
           }
           recordJson["accuserInfo"] = accuserInfo
         }
@@ -267,13 +316,40 @@ export default {
         if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
           let defendantInfo = []
           for (j = 0; j < wholeItem.DefendantItems.length; j++) {
-            defendantInfo.push(wholeItem.DefendantItems[j])
+            let defendantItem=wholeItem.DefendantItems[j]
+
+            defendantInfo.push(defendantItem)
+            if (defendantItem.defendant_type == "1"){
+              for(let item in defendantItem ){
+                //当为机构时，所有数据都不能为空
+                if(defendantItem[item] == ""){
+                  window.layui.layer.msg('请完善被告信息表格');
+                  return
+                } else if(typeof (defendantItem[item]) == "object"){ // 处理表中的 数组,第一个数组元素的键值对不能为空
+                  if(defendantItem[item][0]["agent"] == "" ||defendantItem[item][0]["agent_address"] == "" ){
+                    window.layui.layer.msg('请完善被告信息表格');
+                    return
+                  }
+                }
+              }
+            }else{
+              for(let item in defendantItem ){
+                //当为个人时
+                if(defendantItem[item] == "" && item!="defendant_duty" && item!="defendant_represent" && item!="defendant_short"){
+                  window.layui.layer.msg('请完善被告信息表格');
+                  return
+                } else if(typeof (defendantItem[item]) == "object"){ // 处理基本信息表中的 数组
+                  if(defendantItem[item][0]["agent"] == "" ||defendantItem[item][0]["agent_address"] == "" ){
+                    window.layui.layer.msg('请完善被告信息表格');
+                    return
+                  }
+                }
+              }
+              defendantInfo[j].defendant_short = defendantInfo[j].defendant
+            }
           }
           recordJson["defendantInfo"] = defendantInfo
         }
-        // console.log(wholeItem.rightInfo)
-        //权利告知表 （目前有问题！）
-        //accuser_avoid: [{is_listen: "1", is_avoid: "1"}],
         // defendant_avoid: [{is_listen: "1", is_avoid: "1"}],
         if ("rightInfo" in wholeItem) {
           let rightInfo = wholeItem.rightInfo
@@ -290,6 +366,45 @@ export default {
         recordJson["courtInvestigate"] = {}
         //法庭调查数据，包含原被告举证表，法庭调查表三个表
         if ("CourtInves" in wholeItem) {
+          let courtInvestigate = wholeItem.CourtInves
+          for(let item in courtInvestigate ){
+            //当为机构时，所有数据都不能为空
+            if(courtInvestigate[item] == ""){
+
+              if(courtInvestigate.is_counterclaim == "2" && (item == "accuser_claim_item" || item == "accuser_claim_fact_reason" || item == "is_counterclaim") ){
+                window.layui.layer.msg('请完善法庭调查信息表格');
+                return
+              }else if(courtInvestigate.is_counterclaim == "1"){
+                window.layui.layer.msg('请完善法庭调查信息表格');
+                return
+              }
+
+            } else if(typeof (courtInvestigate[item]) == "object"){ // 处理表中的 数组,第一个数组元素的键值对不能为空
+
+              if(courtInvestigate.is_counterclaim == "2" && item == "defendant_reply"){
+
+                if(courtInvestigate[item][0].name == "" || courtInvestigate[item][0].content==""){
+                  window.layui.layer.msg('请完善法庭调查信息表格')
+                  return
+                }
+              }
+              else if(courtInvestigate.is_counterclaim == "1" ){
+                if(courtInvestigate.counterclaim_defendant_today_is_reply == "1" && (item =="counterclaim_defendant_reply" || item == "defendant_reply")){
+                  if(courtInvestigate[item][0].name == "" || courtInvestigate[item][0].content==""){
+                    window.layui.layer.msg('请完善法庭调查信息表格')
+                    return
+                  }
+                }
+                else if(courtInvestigate.counterclaim_defendant_today_is_reply == "1" && item == "defendant_reply"){
+                  if(courtInvestigate[item][0].name == "" || courtInvestigate[item][0].content==""){
+                    window.layui.layer.msg('请完善法庭调查信息表格')
+                    return
+                  }
+                }
+              }
+
+            }
+          }
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], wholeItem.CourtInves)
         }
 
