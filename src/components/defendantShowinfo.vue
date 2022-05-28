@@ -81,7 +81,7 @@
                                 v-model="data.accuser_query[0].accuser"
                                 :options="$store.state.plaintiffname" placeholder="请选择原告"
                                 lay-verify="vueselect"
-                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
@@ -158,7 +158,7 @@
                   <VueMultiselect :option-height="38" :show-labels="false"
                                   v-model="data.accuser_query[index+1].accuser"
                                   :options="$store.state.plaintiffname" placeholder="请选择原告"
-                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
@@ -182,9 +182,9 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.accuser_query[index+1].facticity"
+                      <input type="radio" value="true" lay-ignore v-model="data.accuser_query[index+1].facticity"
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false" v-model="data.accuser_query[index+1].facticity"
+                      <input type="radio" value="false" lay-ignore v-model="data.accuser_query[index+1].facticity"
                              class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -195,9 +195,9 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.accuser_query[index+1].legality"
+                      <input type="radio" value="true" lay-ignore v-model="data.accuser_query[index+1].legality"
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false" v-model="data.accuser_query[index+1].legality"
+                      <input type="radio" value="false" lay-ignore v-model="data.accuser_query[index+1].legality"
                              class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -208,9 +208,9 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.accuser_query[index+1].relevance"
+                      <input type="radio" value="true" lay-ignore v-model="data.accuser_query[index+1].relevance"
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false" v-model="data.accuser_query[index+1].relevance"
+                      <input type="radio" value="false" lay-ignore v-model="data.accuser_query[index+1].relevance"
                              class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -237,7 +237,7 @@
                                 v-model="data.other_defendant_query[0].defendant"
                                 :options="$store.state.defendantname" placeholder="请选择其他被告"
                                 lay-verify="vueselect"
-                                style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
@@ -314,7 +314,7 @@
                   <VueMultiselect :option-height="38" :show-labels="false"
                                   v-model="data.other_defendant_query[index+1].defendant"
                                   :options="$store.state.defendantname" placeholder="请选择被告"
-                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
@@ -429,7 +429,7 @@
                   <div class="layui-input-inline" style="margin-left:0px ;">
                     <input type="text" v-model="data.counterclaim_defendant_evidence[index+1].evidence"
                            placeholder="证据名称" autocomplete="off"
-                           class="layui-input" style="line-height: 16px;width: 160px; min-height: 38px">
+                           class="layui-input" style="line-height: 16px;width: 210px; min-height: 38px">
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
@@ -472,7 +472,7 @@
                                   v-model="data.counterclaim_accuser_query[0].counterclaim_accuser"
                                   :options="$store.state.defendantname" placeholder="请选择反诉原告"
                                   lay-verify="vueselect"
-                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
@@ -553,7 +553,7 @@
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.counterclaim_accuser_query[index+1].counterclaim_accuser"
                                     :options="$store.state.defendantname" placeholder="请选择反诉原告"
-                                    style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                    style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
@@ -642,7 +642,7 @@
                                   v-model="data.other_counterclaim_defendant_query[0].other_counterclaim_defendant"
                                   :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
                                   lay-verify="vueselect"
-                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
@@ -721,7 +721,7 @@
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.other_counterclaim_defendant_query[index+1].other_counterclaim_defendant"
                                     :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
-                                    style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                    style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
@@ -831,7 +831,7 @@
                   <div class="layui-input-inline" style="margin-left:0px ;">
                     <input type="text" v-model="data.counterclaim_accuser_evidence[index+1].evidence"
                            placeholder="证据名称" autocomplete="off"
-                           class="layui-input" style="line-height: 16px;width: 160px; min-height: 38px">
+                           class="layui-input" style="line-height: 16px;width: 210px; min-height: 38px">
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
@@ -875,7 +875,7 @@
                                   v-model="data.counterclaim_defendant_query[0].counterclaim_defendant"
                                   :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
                                   lay-verify="vueselect"
-                                  style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                  style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
@@ -955,7 +955,7 @@
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.counterclaim_defendant_query[index+1].counterclaim_defendant"
                                     :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
-                                    style="line-height: 16px;width: 160px; min-height: 38px"></VueMultiselect>
+                                    style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
