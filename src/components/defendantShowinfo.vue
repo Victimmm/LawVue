@@ -106,9 +106,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" lay-ignore v-model="data.accuser_query[0].facticity"
+                    <input type="radio" value="1" lay-ignore v-model="data.accuser_query[0].facticity"
                            class="myradio"><label>是</label>
-                    <input type="radio" value="false" lay-ignore v-model="data.accuser_query[0].facticity"
+                    <input type="radio" value="2" lay-ignore v-model="data.accuser_query[0].facticity"
                            class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -119,9 +119,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" lay-ignore v-model="data.accuser_query[0].legality"
+                    <input type="radio" value="1" lay-ignore v-model="data.accuser_query[0].legality"
                            class="myradio"><label>是</label>
-                    <input type="radio" value="false" lay-ignore v-model="data.accuser_query[0].legality"
+                    <input type="radio" value="2" lay-ignore v-model="data.accuser_query[0].legality"
                            class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -132,9 +132,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" lay-ignore v-model="data.accuser_query[0].relevance"
+                    <input type="radio" value="1" lay-ignore v-model="data.accuser_query[0].relevance"
                            class="myradio"><label>是</label>
-                    <input type="radio" value="false" lay-ignore v-model="data.accuser_query[0].relevance"
+                    <input type="radio" value="2" lay-ignore v-model="data.accuser_query[0].relevance"
                            class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -182,9 +182,9 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" lay-ignore v-model="data.accuser_query[index+1].facticity"
+                      <input type="radio" value="1" lay-ignore v-model="data.accuser_query[index+1].facticity"
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false" lay-ignore v-model="data.accuser_query[index+1].facticity"
+                      <input type="radio" value="2" lay-ignore v-model="data.accuser_query[index+1].facticity"
                              class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -195,9 +195,9 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" lay-ignore v-model="data.accuser_query[index+1].legality"
+                      <input type="radio" value="1" lay-ignore v-model="data.accuser_query[index+1].legality"
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false" lay-ignore v-model="data.accuser_query[index+1].legality"
+                      <input type="radio" value="2" lay-ignore v-model="data.accuser_query[index+1].legality"
                              class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -208,9 +208,9 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" lay-ignore v-model="data.accuser_query[index+1].relevance"
+                      <input type="radio" value="1" lay-ignore v-model="data.accuser_query[index+1].relevance"
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false" lay-ignore v-model="data.accuser_query[index+1].relevance"
+                      <input type="radio" value="2" lay-ignore v-model="data.accuser_query[index+1].relevance"
                              class="myradio"><label>否</label>
                     </div>
                   </div>
@@ -262,9 +262,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.other_defendant_query[0].facticity" lay-ignore
+                    <input type="radio" value="1" v-model="data.other_defendant_query[0].facticity" lay-ignore
                            class="myradio"><label>是</label>
-                    <input type="radio" value="false" v-model="data.other_defendant_query[0].facticity" lay-ignore
+                    <input type="radio" value="2" v-model="data.other_defendant_query[0].facticity" lay-ignore
                            class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -275,9 +275,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.other_defendant_query[0].legality" lay-ignore
+                    <input type="radio" value="1" v-model="data.other_defendant_query[0].legality" lay-ignore
                            class="myradio"><label>是</label>
-                    <input type="radio" value="false" v-model="data.other_defendant_query[0].legality" lay-ignore
+                    <input type="radio" value="2" v-model="data.other_defendant_query[0].legality" lay-ignore
                            class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -288,9 +288,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="true" v-model="data.other_defendant_query[0].relevance" lay-ignore
+                    <input type="radio" value="1" v-model="data.other_defendant_query[0].relevance" lay-ignore
                            class="myradio"><label>是</label>
-                    <input type="radio" value="false" v-model="data.other_defendant_query[0].relevance" lay-ignore
+                    <input type="radio" value="2" v-model="data.other_defendant_query[0].relevance" lay-ignore
                            class="myradio"><label>否</label>
                   </div>
                 </div>
@@ -337,10 +337,10 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true"
+                      <input type="radio" value="1"
                              v-model="data.other_defendant_query[index+1].facticity" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.other_defendant_query[index+1].facticity" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -352,10 +352,10 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true"
+                      <input type="radio" value="1"
                              v-model="data.other_defendant_query[index+1].legality" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.other_defendant_query[index+1].legality" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -367,10 +367,10 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true"
+                      <input type="radio" value="1"
                              v-model="data.other_defendant_query[index+1].relevance" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.other_defendant_query[index+1].relevance" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -497,11 +497,11 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true"
+                      <input type="radio" value="1"
                              v-model="data.counterclaim_accuser_query[0].facticity" lay-ignore
 
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.counterclaim_accuser_query[0].facticity" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -513,9 +513,9 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.counterclaim_accuser_query[0].legality" lay-ignore
+                      <input type="radio" value="1" v-model="data.counterclaim_accuser_query[0].legality" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.counterclaim_accuser_query[0].legality" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -527,10 +527,10 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true"
+                      <input type="radio" value="1"
                              v-model="data.counterclaim_accuser_query[0].relevance" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.counterclaim_accuser_query[0].relevance" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -577,9 +577,9 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true"
+                        <input type="radio" value="1"
                                v-model="data.counterclaim_accuser_query[index+1].facticity" lay-ignore  class="myradio"><label>是</label>
-                        <input type="radio" value="false"
+                        <input type="radio" value="2"
                                v-model="data.counterclaim_accuser_query[index+1].facticity" lay-ignore  class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -590,10 +590,10 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true"
+                        <input type="radio" value="1"
                                v-model="data.counterclaim_accuser_query[index+1].legality" lay-ignore
                                class="myradio"><label>是</label>
-                        <input type="radio" value="false"
+                        <input type="radio" value="2"
                                v-model="data.counterclaim_accuser_query[index+1].legality" lay-ignore
                                class="myradio"><label>否</label>
                       </div>
@@ -605,10 +605,10 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true"
+                        <input type="radio" value="1"
                                v-model="data.counterclaim_accuser_query[index+1].relevance" class="myradio" lay-ignore
                                ed><label>是</label>
-                        <input type="radio" value="false"
+                        <input type="radio" value="2"
                                v-model="data.counterclaim_accuser_query[index+1].relevance"  lay-ignore class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -667,10 +667,10 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true"
+                      <input type="radio" value="1"
                              v-model="data.other_counterclaim_defendant_query[0].facticity" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.other_counterclaim_defendant_query[0].facticity" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -682,9 +682,9 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.other_counterclaim_defendant_query[0].legality" lay-ignore
+                      <input type="radio" value="1" v-model="data.other_counterclaim_defendant_query[0].legality" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.other_counterclaim_defendant_query[0].legality" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -696,10 +696,10 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true"
+                      <input type="radio" value="1"
                              v-model="data.other_counterclaim_defendant_query[0].relevance" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.other_counterclaim_defendant_query[0].relevance" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -745,10 +745,10 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true"
+                        <input type="radio" value="1"
                                v-model="data.other_counterclaim_defendant_query[index+1].facticity" lay-ignore
                                class="myradio"><label>是</label>
-                        <input type="radio" value="false"
+                        <input type="radio" value="2"
                                v-model="data.other_counterclaim_defendant_query[index+1].facticity" lay-ignore
                                class="myradio"><label>否</label>
                       </div>
@@ -760,9 +760,9 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true" v-model="data.other_counterclaim_defendant_query[index+1].legality" lay-ignore
+                        <input type="radio" value="1" v-model="data.other_counterclaim_defendant_query[index+1].legality" lay-ignore
                                class="myradio"><label>是</label>
-                        <input type="radio" value="false"
+                        <input type="radio" value="2"
                                v-model="data.other_counterclaim_defendant_query[index+1].legality" lay-ignore
                                class="myradio"><label>否</label>
                       </div>
@@ -774,10 +774,10 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true"
+                        <input type="radio" value="1"
                                v-model="data.other_counterclaim_defendant_query[index+1].relevance" lay-ignore
                                class="myradio"><label>是</label>
-                        <input type="radio" value="false"
+                        <input type="radio" value="2"
                                v-model="data.other_counterclaim_defendant_query[index+1].relevance" lay-ignore
                                class="myradio"><label>否</label>
                       </div>
@@ -900,10 +900,10 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true"
+                      <input type="radio" value="1"
                              v-model="data.counterclaim_defendant_query[0].facticity" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.counterclaim_defendant_query[0].facticity" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -915,9 +915,9 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true" v-model="data.counterclaim_defendant_query[0].legality" lay-ignore
+                      <input type="radio" value="1" v-model="data.counterclaim_defendant_query[0].legality" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.counterclaim_defendant_query[0].legality" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -929,10 +929,10 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="true"
+                      <input type="radio" value="1"
                              v-model="data.counterclaim_defendant_query[0].relevance" lay-ignore
                              class="myradio"><label>是</label>
-                      <input type="radio" value="false"
+                      <input type="radio" value="2"
                              v-model="data.counterclaim_defendant_query[0].relevance" lay-ignore
                              class="myradio"><label>否</label>
                     </div>
@@ -979,9 +979,9 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true"
+                        <input type="radio" value="1"
                                v-model="data.counterclaim_defendant_query[index+1].facticity" lay-ignore class="myradio"><label>是</label>
-                        <input type="radio" value="false"
+                        <input type="radio" value="2"
                                v-model="data.counterclaim_defendant_query[index+1].facticity" lay-ignore class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -992,10 +992,10 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true"
+                        <input type="radio" value="1"
                                v-model="data.counterclaim_defendant_query[index+1].legality" lay-ignore
                                class="myradio"><label>是</label>
-                        <input type="radio" value="false"
+                        <input type="radio" value="2"
                                v-model="data.counterclaim_defendant_query[index+1].legality" lay-ignore
                                class="myradio"><label>否</label>
                       </div>
@@ -1007,10 +1007,10 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <div class="myradiomargin" style="width: 100%;float: left;">
-                        <input type="radio" value="true"
+                        <input type="radio" value="1"
                                v-model="data.counterclaim_defendant_query[index+1].relevance" class="myradio" lay-ignore
                                ><label>是</label>
-                        <input type="radio" value="false"
+                        <input type="radio" value="2"
                                v-model="data.counterclaim_defendant_query[index+1].relevance" lay-ignore class="myradio"><label>否</label>
                       </div>
                     </div>
@@ -1049,18 +1049,18 @@ export default {
         accuser_query: [{
           accuser: "",        //原告及其他被告姓名
           evidence: "",    //证据
-          facticity: "true",      //真实性(原告质证)
-          legality: "true", //合法性(原告质证)
-          relevance: "true",//关联性(原告质证)
+          facticity: "1",      //真实性(原告质证)
+          legality: "1", //合法性(原告质证)
+          relevance: "1",//关联性(原告质证)
           accuser_query_fact_reason: "", //事实和理由(原告质证)
         }],
 //其他被告质证环节
         other_defendant_query: [{
           defendant: "",        //其他被告姓名(其他被告质证)
           evidence: "",    //证据
-          facticity: "true",      //真实性(其他被告质证)
-          legality: "true", //合法性(其他被告质证))
-          relevance: "true",//关联性(其他被告质证))
+          facticity: "1",      //真实性(其他被告质证)
+          legality: "1", //合法性(其他被告质证))
+          relevance: "1",//关联性(其他被告质证))
           other_defendant_query_fact_reason: '' //其他被告的关联合法性事实理由 动态添加
         }],
 
@@ -1076,18 +1076,18 @@ export default {
         counterclaim_accuser_query: [{
           counterclaim_accuser: "",        //反诉原告姓名
           evidence: "",    //反诉原告质证证据名称
-          facticity: "true",      //真实性(反诉原告质证)
-          legality: "true", //合法性(反诉原告质证)
-          relevance: "true",//关联性(反诉原告质证)
+          facticity: "1",      //真实性(反诉原告质证)
+          legality: "1", //合法性(反诉原告质证)
+          relevance: "1",//关联性(反诉原告质证)
           counterclaim_accuser_query_fact_reason: "", //事实和理由(反诉原告质证 需要动态添加)
         }],
        other_counterclaim_defendant_query: [
          {
            other_counterclaim_defendant: "",
            evidence: "",
-           facticity: "true",
-           legality: "true",
-           relevance: "true",
+           facticity: "1",
+           legality: "1",
+           relevance: "1",
            other_counterclaim_defendant_query_fact_reason: ""
          }
        ],
@@ -1106,9 +1106,9 @@ export default {
          {
            counterclaim_defendant: "",
            evidence: "",
-           facticity: "true",
-           legality: "true",
-           relevance: "true",
+           facticity: "1",
+           legality: "1",
+           relevance: "1",
            counterclaim_defendant_query_fact_reason: ""
          }
        ],
@@ -1163,9 +1163,9 @@ export default {
           this.data.accuser_query.push({
             accuser: "",        //原告质证表 原告姓名
             evidence: "",    //被告所提出的证据名称
-            facticity: "true",      //真实性(原告质证)
-            legality: "true", //合法性(原告质证)
-            relevance: "true",//关联性(原告质证)
+            facticity: "1",      //真实性(原告质证)
+            legality: "1", //合法性(原告质证)
+            relevance: "1",//关联性(原告质证)
             accuser_query_fact_reason:"", //真实合法关联性理由(原告质证 动态添加)
           })
           break
@@ -1173,9 +1173,9 @@ export default {
           this.data.other_defendant_query.push({
             defendant: "",        //其他被告姓名(其他被告质证)
             evidence: "",    //证据编号
-            facticity: "true",      //真实性(其他被告质证)
-            legality: "true", //合法性(其他被告质证))
-            relevance: "true",//关联性(其他被告质证))
+            facticity: "1",      //真实性(其他被告质证)
+            legality: "1", //合法性(其他被告质证))
+            relevance: "1",//关联性(其他被告质证))
             other_defendant_query_fact_reason: ''
           })
           break
@@ -1190,9 +1190,9 @@ export default {
           this.data.counterclaim_accuser_query.push({
             counterclaim_accuser: "",        //反诉原告姓名
             evidence: "",    //反诉被告所提交的证据
-            facticity: "true",      //真实性(反诉原告原告质证)
-            legality: "true", //合法性(反诉原告质证)
-            relevance: "true",//关联性(反诉原告质证)
+            facticity: "1",      //真实性(反诉原告原告质证)
+            legality: "1", //合法性(反诉原告质证)
+            relevance: "1",//关联性(反诉原告质证)
             counterclaim_accuser_query_fact_reason: "", //事实和理由(反诉原告质证 需要动态添加)
           })
           break
@@ -1201,9 +1201,9 @@ export default {
           this.data.other_counterclaim_defendant_query.push({
             other_counterclaim_defendant: "",        //其他反诉被告姓名
             evidence: "",    //反诉原告所提交的证据
-            facticity: "true",      //真实性
-            legality: "true", //合法性
-            relevance: "true",//关联性
+            facticity: "1",      //真实性
+            legality: "1", //合法性
+            relevance: "1",//关联性
             other_counterclaim_defendant_query_fact_reason: "", //事实和理由(其他反诉被告质证的事实和理由 需要动态添加)
           })
           break
@@ -1218,9 +1218,9 @@ export default {
           this.data.counterclaim_defendant_query.push({
             counterclaim_defendant: "",
             evidence: "",
-            facticity: "true",
-            legality: "true",
-            relevance: "true",
+            facticity: "1",
+            legality: "1",
+            relevance: "1",
             counterclaim_defendant_query_fact_reason: ""
           })
           break
