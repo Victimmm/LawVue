@@ -48,10 +48,14 @@ export default {
   computed: {
     setStateContent: {
       get() {
-        let plaintiff = this.$store.state.plaintiffname.filter(i=>i && i.trim()).join("，")
-        let defendant = this.$store.state.defendantname.filter(i=>i && i.trim()).join("，")
-        let judge = this.$store.state.judgename.filter(i=>i && i.trim()).join("，")
-        let jurorname = this.$store.state.jurorname.filter(i=>i && i.trim()).join("，")
+        let plaintiff = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
+          return e.accuser;
+        }).join("，")
+        let defendant = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+          return e.defendant;
+        }).join("，")
+        let judge = this.$store.state.judge_name.filter(i => i && i.trim()).join("，")
+        let jurorname = this.$store.state.juror_name.filter(i=>i && i.trim()).join("，")
         let people_juror = this.$store.state.people_juror.filter(i=>i && i.trim()).join("，")
         let court_clerk= this.$store.state.court_clerk
         let content
@@ -64,7 +68,7 @@ export default {
           case  "2":
             content = "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
                 "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用普通程序独任制程序，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）一案，由本院审判" +
-                "员（"+judge+"）担任审判长，与人民陪审员（"+people_juror+"）共同组成合议庭，书记员（"+court_clerk+"）担任法庭记录。"
+                "员（"+judge+"）担任审判长，书记员（"+court_clerk+"）担任法庭记录。"
             break
           case  "3":
             content = "审判员：当事人身份经核对无误，法庭宣布双方当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +

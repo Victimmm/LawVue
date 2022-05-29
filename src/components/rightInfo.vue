@@ -58,6 +58,7 @@
           <template v-for="(item, index) in getPlaintiffName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <label class="layui-form-label">{{ item }}</label>
+<!--              <input type="hidden" v-model="data.accuser_right_duty.name" > -->
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
@@ -116,8 +117,8 @@ export default {
     data = {
       judge_right_duty: "审判员：依据《中华人民共和国民事诉讼法》的规定，当事人在法庭上享有下列权利：1.原告有权承认、变更、放弃自己的诉讼请求，被告有权反驳原告的诉讼请求或提起反诉；2.当事人有权申请回避；3.当事人有权举证；4.当事人有权辩论、有权请求法庭调解,当事人在享有上述权利的同时，负有以下义务：1.当事人有依法行使诉讼权利的义务；2.当事人有听从法庭指挥、遵守法庭纪律的义务；3.当事人有如实陈述事实、如实举证的义务。上述诉讼权利和义务双方是否听清？",
       judge_avoid: "审判员：当事人对审判员和书记是否申请回避？",
-      accuser_right_duty: [{right_duty: "1", avoid: "1"}],
-      defendant_right_duty: [{right_duty: "1", avoid: "1"}],
+      accuser_right_duty: [{name:"",right_duty: "1", avoid: "1"}],
+      defendant_right_duty: [{name:"",right_duty: "1", avoid: "1"}],
     };
 
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
@@ -131,12 +132,12 @@ export default {
     getPlaintiffName: {
       get() {
         if (this.$store.state.is_counterclaim == "2") {
-          return this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
-            return e + '（原告）';
+          return this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
+            return e.accuser + '（原告）';
           })
         } else {
-          return this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
-            return e + '（反诉被告）';
+          return this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
+            return e.accuser + '（反诉被告）';
           })
         }
       }
@@ -144,12 +145,12 @@ export default {
     getDefendantNane: {
       get() {
         if (this.$store.state.is_counterclaim == "2") {
-          return this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
-            return e + '（被告）';
+          return this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+            return e.defendant + '（被告）';
           })
         } else {
-          return this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
-            return e + '（反诉原告）';
+          return this.$store.state.defendant.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+            return e.defendant + '（反诉原告）';
           })
         }
       }
@@ -204,9 +205,9 @@ export default {
       deep: true
     },
     getPlaintiffName() {
-      if(this.data.accuser_right_duty.length < this.$store.state.plaintiffname.filter(i => i && i.trim()).length){
+      if(this.data.accuser_right_duty.length < this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).length){
         this.data.accuser_right_duty.push({
-          avoid: "1", right_duty: "1",
+          name:"",avoid: "1", right_duty: "1",
         })
       }
 
@@ -218,9 +219,9 @@ export default {
 
     },
     getDefendantNane() {
-      if(this.data.defendant_right_duty.length < this.$store.state.defendantname.filter(i => i && i.trim()).length){
+      if(this.data.defendant_right_duty.length < this.$store.state.defendant_item.filter(i => i.defendant && i.defendant.trim()).length){
         this.data.defendant_right_duty.push({
-          avoid: "1", right_duty: "1",
+          name:"",avoid: "1", right_duty: "1",
         })
       }
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))

@@ -18,16 +18,17 @@
         <legend>原告信息</legend>
         <div class="layui-field-box">
           <PlaintiffImf :index=0 :key="0"></PlaintiffImf>
-          <PlaintiffImf v-for="(tag,index) in $store.state.plaintifftag.slice(1)" :key="tag" :index="index+1"/>
+          <PlaintiffImf v-for="(item,index) in $store.state.plaintiff_item.slice(1)" :key="item.tag" :index="index+1"/>
         </div>
       </fieldset>
     </div>
+
     <div id="whole_DefendantImf">
       <fieldset class="layui-elem-field layui-field-title">
         <legend>被告信息</legend>
         <div class="layui-field-box">
           <DefendantImf :index=0 :key=0></DefendantImf>
-          <DefendantImf v-for="(tag,index) in $store.state.defendanttag.slice(1)" :key="tag" :index="index+1"/>
+          <DefendantImf v-for="(item,index) in $store.state.defendant_item.slice(1)" :key="item.tag" :index="index+1"/>
         </div>
       </fieldset>
     </div>
@@ -51,80 +52,80 @@
       </fieldset>
     </div>
 
-    <div id="CourtInves1">
-      <fieldset class="layui-elem-field layui-field-title">
-        <legend>法庭调查</legend>
-        <div class="layui-field-box">
-          <CourtInves></CourtInves>
-        </div>
-      </fieldset>
-    </div>
-    <!-- 反诉且今日答辩 或者不反诉的情况显示-->
-    <div
-        v-if="( $store.state.counterclaim_defendant_today_is_reply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='2'">
-      <div id="accuserShowInfo">
-        <fieldset class="layui-elem-field layui-field-title">
-          <legend>法庭调查-原告举证</legend>
-          <div class="layui-field-box">
-            <accuserShowInfo ref="accuserShowInfo"></accuserShowInfo>
-          </div>
-        </fieldset>
-      </div>
+<!--    <div id="CourtInves1">-->
+<!--      <fieldset class="layui-elem-field layui-field-title">-->
+<!--        <legend>法庭调查</legend>-->
+<!--        <div class="layui-field-box">-->
+<!--          <CourtInves></CourtInves>-->
+<!--        </div>-->
+<!--      </fieldset>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; 反诉且今日答辩 或者不反诉的情况显示&ndash;&gt;-->
+<!--    <div-->
+<!--        v-if="( $store.state.counterclaim_defendant_today_is_reply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='2'">-->
+<!--      <div id="accuserShowInfo">-->
+<!--        <fieldset class="layui-elem-field layui-field-title">-->
+<!--          <legend>法庭调查-原告举证</legend>-->
+<!--          <div class="layui-field-box">-->
+<!--            <accuserShowInfo ref="accuserShowInfo"></accuserShowInfo>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
 
-      <div id="defendShowInfo">
-        <fieldset class="layui-elem-field layui-field-title">
-          <legend>法庭调查-被告举证</legend>
-          <div class="layui-field-box">
-            <defendShowInfo></defendShowInfo>
-          </div>
-        </fieldset>
-      </div>
+<!--      <div id="defendShowInfo">-->
+<!--        <fieldset class="layui-elem-field layui-field-title">-->
+<!--          <legend>法庭调查-被告举证</legend>-->
+<!--          <div class="layui-field-box">-->
+<!--            <defendShowInfo></defendShowInfo>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
 
-      <div id="inquiryInfo">
-        <fieldset class="layui-elem-field layui-field-title">
-          <legend>法庭询问</legend>
-          <div class="layui-field-box">
-            <inquiryInfo></inquiryInfo>
-          </div>
-        </fieldset>
-      </div>
+<!--      <div id="inquiryInfo">-->
+<!--        <fieldset class="layui-elem-field layui-field-title">-->
+<!--          <legend>法庭询问</legend>-->
+<!--          <div class="layui-field-box">-->
+<!--            <inquiryInfo></inquiryInfo>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
 
-      <div id="argueInfo">
-        <fieldset class="layui-elem-field layui-field-title">
-          <legend>法庭辩论</legend>
-          <div class="layui-field-box">
-            <argueInfo></argueInfo>
-          </div>
-        </fieldset>
-      </div>
+<!--      <div id="argueInfo">-->
+<!--        <fieldset class="layui-elem-field layui-field-title">-->
+<!--          <legend>法庭辩论</legend>-->
+<!--          <div class="layui-field-box">-->
+<!--            <argueInfo></argueInfo>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
 
-      <div id="finalStatementInfo">
-        <fieldset class="layui-elem-field layui-field-title">
-          <legend>陈述意见</legend>
-          <div class="layui-field-box">
-            <finalStatementInfo></finalStatementInfo>
-          </div>
-        </fieldset>
-      </div>
+<!--      <div id="finalStatementInfo">-->
+<!--        <fieldset class="layui-elem-field layui-field-title">-->
+<!--          <legend>最后陈述意见</legend>-->
+<!--          <div class="layui-field-box">-->
+<!--            <finalStatementInfo></finalStatementInfo>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
 
-      <div id="mediateInfo">
-        <fieldset class="layui-elem-field layui-field-title">
-          <legend>是否调解</legend>
-          <div class="layui-field-box">
-            <mediateInfo></mediateInfo>
-          </div>
-        </fieldset>
-      </div>
+<!--      <div id="mediateInfo">-->
+<!--        <fieldset class="layui-elem-field layui-field-title">-->
+<!--          <legend>是否调解</legend>-->
+<!--          <div class="layui-field-box">-->
+<!--            <mediateInfo></mediateInfo>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
 
-      <div id="deliveryInfo">
-        <fieldset class="layui-elem-field layui-field-title">
-          <legend>电子文书送达</legend>
-          <div class="layui-field-box">
-            <deliveryInfo></deliveryInfo>
-          </div>
-        </fieldset>
-      </div>
-    </div>
+<!--      <div id="deliveryInfo">-->
+<!--        <fieldset class="layui-elem-field layui-field-title">-->
+<!--          <legend>电子裁判文书送达</legend>-->
+<!--          <div class="layui-field-box">-->
+<!--            <deliveryInfo></deliveryInfo>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
+<!--    </div>-->
     <button type="button" class="layui-btn layui-btn-radius layui-btn-warm " lay-submit lay-filter="onSubmit"
               style="margin: -15px 0 30px;"> 提交
     </button>
@@ -137,15 +138,15 @@
 import BasicInfo from './components/BasicInfo.vue'
 import PlaintiffImf from './components/PlaintiffImf.vue'
 import DefendantImf from './components/DefendantImf.vue'
-import CourtInves from './components/CourtInves.vue'
+// import CourtInves from './components/CourtInves.vue'
 import rightInfo from "@/components/rightInfo";
-import accuserShowInfo from "@/components/accuserShowInfo";
-import defendShowInfo from "@/components/defendantShowinfo";
-import inquiryInfo from "@/components/inquiryInfo";
-import argueInfo from "@/components/argueInfo";
-import finalStatementInfo from "@/components/finalStatementInfo";
-import mediateInfo from "@/components/mediateInfo";
-import deliveryInfo from "@/components/deliveryInfo";
+// import accuserShowInfo from "@/components/accuserShowInfo";
+// import defendShowInfo from "@/components/defendantShowinfo";
+// import inquiryInfo from "@/components/inquiryInfo";
+// import argueInfo from "@/components/argueInfo";
+// import finalStatementInfo from "@/components/finalStatementInfo";
+// import mediateInfo from "@/components/mediateInfo";
+// import deliveryInfo from "@/components/deliveryInfo";
 import BasicState from "@/components/BasicState";
 
 
@@ -155,15 +156,15 @@ export default {
     BasicInfo,
     PlaintiffImf,
     DefendantImf,
-    CourtInves,
+    // CourtInves,
     rightInfo,
-    accuserShowInfo,
-    defendShowInfo,
-    inquiryInfo,
-    argueInfo,
-    finalStatementInfo,
-    mediateInfo,
-    deliveryInfo,
+    // accuserShowInfo,
+    // defendShowInfo,
+    // inquiryInfo,
+    // argueInfo,
+    // finalStatementInfo,
+    // mediateInfo,
+    // deliveryInfo,
     BasicState
   },
   data() {

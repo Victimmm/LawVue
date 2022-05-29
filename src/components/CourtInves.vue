@@ -70,6 +70,7 @@
               <VueMultiselect :option-height="38"  v-model="data.defendant_reply[0].name" :show-labels="false"
                               :options="$store.state.defendantname" placeholder="请选择被告"
                               lay-verify="vueselect"
+                              :taggable="true"
                               style="line-height: 16px;width: 210px; min-height: 38px"
               ></VueMultiselect>
             </div>

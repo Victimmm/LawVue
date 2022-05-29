@@ -17,46 +17,44 @@ export default createStore({
         for (var i = 0; i < vars.length; i++) {
             var pair = vars[i].split("=");
             if (pair[0] == "CourtNum") {
-                let plaintiffname = [""]
-                let plaintifftag = [guid()]
-                let defendantname = [""]
-                let defendanttag = [guid()]
-                let chief_judgename = ['']
-                let jurorname = ['']
-                let judgename = ['']
+                let plaintiff_item = [{accuser:"",accuser_short: "",tag:guid()}]
+                let defendant_item = [{defendant:"",defendant_short: "",tag:guid()}]
+                let chief_judge_name = ['']
+                let juror_name = ['']
+                let judge_name = ['']
                 let people_juror=['']
                 let court_clerk = ""
                 let counterclaim_defendant_today_is_reply = "2"
                 let is_counterclaim = "2"
-                var wholeItem = JSON.parse(localStorage.getItem(decodeURI(pair[1])))
+                let wholeItem = JSON.parse(localStorage.getItem(decodeURI(pair[1])))
                 if (wholeItem != null) {
                     if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
                         for (var j = 0; j < wholeItem.PlaintiffItems.length; j++) {
-                            if (wholeItem.PlaintiffItems[j].accuser_type == "1")
-                                plaintiffname[j] = wholeItem.PlaintiffItems[j].accuser_short
-                            else
-                                plaintiffname[j] = wholeItem.PlaintiffItems[j].accuser
-                            plaintifftag[j] = guid()
+                            let plaintiff={accuser:"",accuser_short: "",tag:guid()}
+                            plaintiff.accuser_short = wholeItem.PlaintiffItems[j].accuser_short
+                            plaintiff.accuser = wholeItem.PlaintiffItems[j].accuser
+                            plaintiff.tag = guid()
+                            plaintiff_item[j]=plaintiff
                         }
                     }
                     if ("DefendantItems" in wholeItem && wholeItem.DefendantItems.length > 0) {
                         for (j = 0; j < wholeItem.DefendantItems.length; j++) {
-                            if (wholeItem.DefendantItems[j].defendant_type == "1")
-                                defendantname[j] = wholeItem.DefendantItems[j].defendant_short
-                            else
-                                defendantname[j] = wholeItem.DefendantItems[j].defendant
-                            defendanttag[j] = guid()
+                            let defendant={}
+                            defendant.defendant_short = wholeItem.DefendantItems[j].defendant_short
+                            defendant.defendant = wholeItem.DefendantItems[j].defendant
+                            defendant.tag = guid()
+                            defendant_item[j]=defendant
                         }
                     }
                     if ("BasicInfo" in wholeItem) {
                         for (j = 0; j < wholeItem.BasicInfo.chief_judge.length; j++) {
-                            chief_judgename[j] = wholeItem.BasicInfo.chief_judge[j].name
+                            chief_judge_name[j] = wholeItem.BasicInfo.chief_judge[j].name
                         }
                         for (j = 0; j < wholeItem.BasicInfo.judge.length; j++) {
-                            judgename[j] = wholeItem.BasicInfo.judge[j].name
+                            judge_name[j] = wholeItem.BasicInfo.judge[j].name
                         }
                         for (j = 0; j < wholeItem.BasicInfo.juror.length; j++) {
-                            jurorname[j] = wholeItem.BasicInfo.juror[j].name
+                            juror_name[j] = wholeItem.BasicInfo.juror[j].name
                         }
                         for (j = 0; j < wholeItem.BasicInfo.people_juror.length; j++) {
                             people_juror[j] = wholeItem.BasicInfo.people_juror[j].name
@@ -70,13 +68,11 @@ export default createStore({
 
                 }
                 return {
-                    plaintiffname: plaintiffname,
-                    plaintifftag: plaintifftag,
-                    defendantname: defendantname,
-                    defendanttag: defendanttag,
-                    chief_judgename: chief_judgename,
-                    jurorname: jurorname,
-                    judgename: judgename,
+                    plaintiff_item: plaintiff_item,
+                    defendant_item: defendant_item,
+                    chief_judge_name: chief_judge_name,
+                    juror_name: juror_name,
+                    judge_name: judge_name,
                     people_juror:people_juror,
                     counterclaim_defendant_today_is_reply: counterclaim_defendant_today_is_reply,
                     court_number: decodeURI(pair[1]),
@@ -86,13 +82,11 @@ export default createStore({
             }
         }
         return {
-            plaintiffname: [""],
-            plaintifftag: [guid()],
-            defendantname: [""],
-            defendanttag: [guid()],
-            chief_judgename: [""],
-            jurorname: [""],
-            judgename: [""],
+            plaintiff_item:[{accuser:"",accuser_short: "",tag:guid()}],
+            defendant_item: [{defendant:"",defendant_short: "",tag:guid()}],
+            chief_judge_name: [""],
+            juror_name: [""],
+            judge_name: [""],
             people_juror:[""],
             counterclaim_defendant_today_is_reply: "2",
             court_number: "",
@@ -104,11 +98,17 @@ export default createStore({
         updateCourt_Clerk(state, payload) {
             state.court_clerk = payload
         },
-        handlePlaintiffName(state, payload) {
-            state.plaintiffname[payload[1]] = payload[0]
+        handlePlaintiffItem(state, payload) {
+            if(payload[1]=="accuser")
+                state.plaintiff_item[payload[2]].accuser = payload[0]
+            else
+                state.plaintiff_item[payload[2]].accuser_short = payload[0]
         },
-        handleDefendantName(state, payload) {
-            state.defendantname[payload[1]] = payload[0]
+        handleDefendantItem(state, payload) {
+            if(payload[1]=="defendant")
+                state.defendant_item[payload[2]].defendant = payload[0]
+            else
+                state.defendant_item[payload[2]].defendant_short = payload[0]
         },
         setCourtNum(state, payload) {
             state.court_number = payload
@@ -123,21 +123,19 @@ export default createStore({
         delete_components(state, payload) {
             switch (payload[0]) {
                 case 'plaintiff':
-                    state.plaintiffname.splice(payload[1], 1);
-                    state.plaintifftag.splice(payload[1], 1)
+                    state.plaintiff_item.splice(payload[1], 1);
                     break
                 case 'defendant':
-                    state.defendantname.splice(payload[1], 1);
-                    state.defendanttag.splice(payload[1], 1);
+                    state.defendant_item.splice(payload[1], 1);
                     break
                 case 'chief_judge':
-                    state.chief_judgename.splice(payload[1], 1)
+                    state.chief_judge_name.splice(payload[1], 1)
                     break
                 case 'judge':
-                    state.judgename.splice(payload[1], 1)
+                    state.judge_name.splice(payload[1], 1)
                     break
                 case 'juror':
-                    state.jurorname.splice(payload[1], 1)
+                    state.juror_name.splice(payload[1], 1)
                     break
                 case 'people_juror':
                     state.people_juror.splice(payload[1], 1)
@@ -150,21 +148,19 @@ export default createStore({
         add_components(state, payload) {
             switch (payload[0]) {
                 case 'plaintiff':
-                    state.plaintiffname.push("")
-                    state.plaintifftag.push(guid())
+                    state.plaintiff_item.push({accuser:"",accuser_short: "",tag:guid()})
                     break
                 case 'defendant':
-                    state.defendantname.push("")
-                    state.defendanttag.push(guid())
+                    state.defendant_item.push({defendant:"",defendant_short: "",tag:guid()})
                     break
                 case 'chief_judge':
-                    state.chief_judgename.push('')
+                    state.chief_judge_name.push('')
                     break
                 case 'judge':
-                    state.judgename.push('')
+                    state.judge_name.push('')
                     break
                 case 'juror':
-                    state.jurorname.push('')
+                    state.juror_name.push('')
                     break
                 case 'people_juror':
                     state.people_juror.push('')
@@ -177,13 +173,13 @@ export default createStore({
         judgeChange(state, payload) {
             switch (payload[0]) {
                 case 'chief_judge':
-                    state.chief_judgename[payload[1]] = (payload[2])
+                    state.chief_judge_name[payload[1]] = (payload[2])
                     break
                 case 'judge':
-                    state.judgename[payload[1]] = (payload[2])
+                    state.judge_name[payload[1]] = (payload[2])
                     break
                 case 'juror':
-                    state.jurorname[payload[1]] = (payload[2])
+                    state.juror_name[payload[1]] = (payload[2])
                     break
                 case 'people_juror':
                     state.people_juror[payload[1]] = (payload[2])

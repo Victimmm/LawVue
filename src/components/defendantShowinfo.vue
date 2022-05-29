@@ -302,7 +302,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label" style="text-align: center;line-height: 70px">事实和理由</label>
             <div class="layui-input-block">
-                <textarea v-model="data.other_defendant_query[0].counterclaim_accuser_query_fact_reason" lay-verify="required"  placeholder="理由"
+                <textarea v-model="data.other_defendant_query[0].other_defendant_query_fact_reason" lay-verify="required"  placeholder="理由"
                           class="layui-textarea"></textarea>
             </div>
           </div>

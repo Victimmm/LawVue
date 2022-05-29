@@ -18,13 +18,13 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">被告姓名</label>
             <div class="layui-input-block">
-              <input type="text" v-model="defendantName" lay-verify="required" placeholder="请输入被告姓名" autocomplete="off" class="layui-input">
+              <input type="text" v-model="defendantFullName"  placeholder="请输入被告姓名" autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label">被告住址</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.defendant_address" lay-verify="required" placeholder="请输入被告住址"
+              <input type="text" v-model="data.defendant_address"  placeholder="请输入被告住址"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
@@ -34,28 +34,28 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">被告全称</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.defendant" required lay-verify="required" placeholder="请输入被告全称"
+              <input type="text" v-model="defendantFullName" required  placeholder="请输入被告全称"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label">被告简称</label>
             <div class="layui-input-block">
-              <input type="text" v-model="defendantName" lay-verify="required" placeholder="请输入被告简称"
+              <input type="text" v-model="defendantShortName"  placeholder="请输入被告简称"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label">被告地址</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.defendant_address" lay-verify="required" placeholder="请输入被告地址"
+              <input type="text" v-model="data.defendant_address"  placeholder="请输入被告地址"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label">法人代表</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.defendant_represent" lay-verify="required"
+              <input type="text" v-model="data.defendant_represent" 
                      placeholder="请输入法人代表"
                      autocomplete="off" class="layui-input">
             </div>
@@ -63,7 +63,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">法人职务</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.defendant_duty" lay-verify="required" placeholder="请输入法人职务"
+              <input type="text" v-model="data.defendant_duty"  placeholder="请输入法人职务"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
@@ -73,7 +73,7 @@
           <div class="layui-form-label divcenter">委托诉讼代理人</div>
           <div class="layui-input-block">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
-              <input type="text" v-model="data.defendant_agent[0].agent" lay-verify="required" placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"
+              <input type="text" v-model="data.defendant_agent[0].agent"  placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"
                      style="width: 90%;float: left;" >
               <button @click="add_component()" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
@@ -82,7 +82,7 @@
             </div>
           </div>
           <div class="layui-input-block" style="margin-top: 5px;">
-            <input type="text" v-model="data.defendant_agent[0].agent_address" lay-verify="required"
+            <input type="text" v-model="data.defendant_agent[0].agent_address" 
                    placeholder="请输入委托诉讼代理人单位" autocomplete="off" class="layui-input">
           </div>
         </div>
@@ -109,15 +109,10 @@
 
         </template>
 
-
-        <div class="layui-form-item">
-          <div class="layui-input-block" style="width: 80%;margin-left: 0px;">
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-primary" @click="onAddClick"> 添加</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-warm" v-show="this.index!=0"
-                    @click="onCloseClick"> 删除
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-primary" @click="onAddClick"> 添加被告信息</button>
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger" v-show="this.index!=0"
+                    @click="onCloseClick"> 删除被告信息
             </button>
-          </div>
-        </div>
       </form>
     </div>
   </div>
@@ -151,19 +146,22 @@ export default {
     return {data: JSON.parse(JSON.stringify(data))}
   },
   computed: {
-    defendantName: {
+    defendantFullName:{
       get() {
-        return this.$store.state.defendantname[this.index]
+        return this.$store.state.defendant_item[this.index].defendant
       },
       set(value) {
-        if(this.data.defendant_type == "1"){
-          this.data.defendant_short = value
-        }
-        else
-        {
           this.data.defendant = value
-        }
-        this.$store.commit('handleDefendantName', [value, this.index])
+        this.$store.commit('handleDefendantItem', [value,"defendant", this.index])
+      }
+    },
+    defendantShortName:{
+      get() {
+        return this.$store.state.defendant_item[this.index].defendant_short
+      },
+      set(value) {
+        this.data.defendant = value
+        this.$store.commit('handleDefendantItem', [value,"defendant_short", this.index])
       }
     }
   },
