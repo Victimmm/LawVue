@@ -16,12 +16,11 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argue[0].name"
                               :options="getAccuserMergeDefendant" placeholder="请选择原被告"
-                              lay-verify="vueselect"
                               style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.argue[0].argue" placeholder="辩论意见" autocomplete="off" lay-verify="required"
+                <input type="text" v-model="data.argue[0].argue" placeholder="辩论意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
@@ -42,11 +41,15 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <input type="text" v-model="data.argue[index+1].argue" placeholder="辩论意见" autocomplete="off"
-                         class="layui-input" style="width: 90%;float: left;">
-                  <button @click="delete_component('argue',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text" style="float: right;">
-                    <i class="layui-icon">&#xe640;</i>
-                  </button>
+                         class="layui-input" style="width: 80%;float: left;">
+                    <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                            data-type="text" style="float: right;">
+                      <i class="layui-icon">&#xe654;</i>
+                    </button>
+                    <button @click="delete_component('argue',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                            data-type="text" style="float: right;">
+                      <i class="layui-icon">&#xe640;</i>
+                    </button>
                 </div>
 
               </div>
@@ -54,32 +57,17 @@
           </template>
         </div>
 
-<!--        <div class="layui-form-item" pane>-->
-<!--          <div class="layui-form-label">是否反诉</div>-->
-<!--          <div class="layui-input-block">-->
-<!--            <div class="myselect-div">-->
-<!--              <div class="myradiomargin" style="width: 100%;float: left;">-->
-<!--                <input type="radio" v-model="data.argue_is_counterclaim" class="myradio" value="1" >-->
-<!--                <label>反诉</label>-->
-<!--                <input type="radio" v-model="data.argue_is_counterclaim" class="myradio" value="2">-->
-<!--                <label>不反诉</label>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
         <div v-if="$store.state.is_counterclaim=='1'">
           <div class="layui-form-item" pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.counterclaim_argue[0].name"
                                 :options="getCounterAccuserMergeDefendant" placeholder="请选择反诉角色"
-                                lay-verify="vueselect"
                                 style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.counterclaim_argue[0].argue" lay-verify="required"  placeholder="辩论意见" autocomplete="off"
+                  <input type="text" v-model="data.counterclaim_argue[0].argue" placeholder="辩论意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="add_component('counterclaim_argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
@@ -97,14 +85,17 @@
                                   style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
-
                   <div class="myselect-div">
                     <input type="text" v-model="data.counterclaim_argue[index+1].argue"   placeholder="辩论意见" autocomplete="off"
-                           class="layui-input" style="width: 90%;float: left;">
-                    <button @click="delete_component('counterclaim_argue',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                            data-type="text" style="float: right;">
-                      <i class="layui-icon">&#xe640;</i>
-                    </button>
+                           class="layui-input" style="width: 80%;float: left;">
+                      <button @click="add_component('counterclaim_argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                              data-type="text" style="float: right;">
+                        <i class="layui-icon">&#xe654;</i>
+                      </button>
+                      <button @click="delete_component('counterclaim_argue',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                              data-type="text" style="float: right;">
+                        <i class="layui-icon">&#xe640;</i>
+                      </button>
                   </div>
                 </div>
               </div>
@@ -194,22 +185,35 @@ export default {
   computed: {
     getAccuserMergeDefendant: {
       get() {
-        let string1 = this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
-          return e + '（被告）';
+        let string1 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+          if(e.defendant=="undefined"){
+            return e.defendant_short + '（被告）';
+          }
+          else return e.defendant + '（被告）';
         })
-        let string2 = this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
-          return e + '（原告）';
+        let string2 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
+          if(e.accuser=="undefined"){
+            return e.accuser_short + '（原告）';
+          }
+          else return e.accuser + '（原告）';
         })
         return string2.concat(string1)
       },
+
     },
     getCounterAccuserMergeDefendant:{
       get() {
-        let string1=this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
-          return e + '（反诉原告）';
+        let string1=this.$store.state.defendant_item.filter(i => i.defendant_short && i.defendant_short.trim()).map(function (e) {
+          if(e.defendant=="undefined"){
+            return e.defendant_short + '（反诉原告）';
+          }
+          else return e.defendant_short + '（反诉原告）';
         })
-        let string2=this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
-          return e + '（反诉被告）';
+        let string2=this.$store.state.plaintiff_item.filter(i => i.accuser_short && i.accuser_short.trim()).map(function (e) {
+          if(e.accuser=="undefined"){
+            return e.accuser_short + '（反诉被告）';
+          }
+          else return e.accuser_short + '（反诉被告）';
         })
         return string2.concat(string1)
       },

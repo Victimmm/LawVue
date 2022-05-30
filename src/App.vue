@@ -90,14 +90,14 @@
 <!--        </fieldset>-->
 <!--      </div>-->
 
-<!--      <div id="argueInfo">-->
-<!--        <fieldset class="layui-elem-field layui-field-title">-->
-<!--          <legend>法庭辩论</legend>-->
-<!--          <div class="layui-field-box">-->
-<!--            <argueInfo></argueInfo>-->
-<!--          </div>-->
-<!--        </fieldset>-->
-<!--      </div>-->
+      <div id="argueInfo">
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>法庭辩论</legend>
+          <div class="layui-field-box">
+            <argueInfo></argueInfo>
+          </div>
+        </fieldset>
+      </div>
 
 <!--      <div id="finalStatementInfo">-->
 <!--        <fieldset class="layui-elem-field layui-field-title">-->
@@ -143,7 +143,7 @@ import rightInfo from "@/components/rightInfo";
 // import accuserShowInfo from "@/components/accuserShowInfo";
 // import defendShowInfo from "@/components/defendantShowinfo";
 // import inquiryInfo from "@/components/inquiryInfo";
-// import argueInfo from "@/components/argueInfo";
+import argueInfo from "@/components/argueInfo";
 // import finalStatementInfo from "@/components/finalStatementInfo";
 // import mediateInfo from "@/components/mediateInfo";
 // import deliveryInfo from "@/components/deliveryInfo";
@@ -161,7 +161,7 @@ export default {
     // accuserShowInfo,
     // defendShowInfo,
     // inquiryInfo,
-    // argueInfo,
+    argueInfo,
     // finalStatementInfo,
     // mediateInfo,
     // deliveryInfo,
