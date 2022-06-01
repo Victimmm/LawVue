@@ -109,8 +109,8 @@
 
         </template>
 
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-primary" @click="onAddClick"> 添加被告信息</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger" v-show="this.index!=0"
+            <button type="button" class="layui-btn layui-btn-radius  layui-btn-sm" @click="onAddClick"> 添加被告信息</button>
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-sm" v-show="this.index!=0"
                     @click="onCloseClick"> 删除被告信息
             </button>
       </form>
@@ -160,7 +160,7 @@ export default {
         return this.$store.state.defendant_item[this.index].defendant_short
       },
       set(value) {
-        this.data.defendant = value
+        this.data.defendant_short = value
         this.$store.commit('handleDefendantItem', [value,"defendant_short", this.index])
       }
     }
@@ -188,6 +188,9 @@ export default {
   watch: {
     data: {
       handler() {
+        if(this.data.defendant_type=="2"){
+          this.data.defendant_short=""
+        }
         //如何根据数据存储
         if (this.$store.state.court_number == "") {
           // window.layui.layer.msg('请优先完善基本信息表格');

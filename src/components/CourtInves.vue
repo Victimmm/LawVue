@@ -68,7 +68,7 @@
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;" >
               <VueMultiselect :option-height="38"  v-model="data.defendant_reply[0].name" :show-labels="false"
-                              :options="$store.state.defendantname" placeholder="请选择被告"
+                              :options="getDefendantName" placeholder="请选择被告"
                               lay-verify="vueselect"
                               :taggable="true"
                               style="line-height: 16px;width: 210px; min-height: 38px"
@@ -93,7 +93,7 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;margin-top: 5px">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38" v-model="data.defendant_reply[index+1].name"
-                                :show-labels="false" :options="$store.state.defendantname" placeholder="请选择被告"
+                                :show-labels="false" :options="getDefendantName" placeholder="请选择被告"
                                 style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
@@ -169,7 +169,7 @@
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
                   <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[0].name" :show-labels="false"
-                                  :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
+                                  :options="getAccuserName" placeholder="请选择反诉被告"
                                   lay-verify="vueselect"
                                   style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
@@ -194,7 +194,7 @@
                   <div class="layui-input-inline" style="margin-left:0px ;">
                     <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[index+1].name"
                                     :show-labels="false"
-                                    :options="$store.state.plaintiffname" placeholder="请选择反诉被告"
+                                    :options="getAccuserName" placeholder="请选择反诉被告"
                                     style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
@@ -247,6 +247,18 @@ export default {
   },
   components: {
     VueMultiselect
+  },
+  computed:{
+    getDefendantName:{
+      get(){
+        return this.$store.state.defendant_item.map(e => e.defendant_short==''?e.defendant:e.defendant_short).filter(i => i && i.trim())
+      }
+    },
+    getAccuserName:{
+      get(){
+        return this.$store.state.plaintiff_item.map(e => e.accuser_short==''?e.accuser:e.accuser_short).filter(i => i && i.trim())
+      }
+    }
   },
   methods: {
     add_component(datatype) {

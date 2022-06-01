@@ -107,8 +107,8 @@
 
         </template>
 
-        <button type="button" class="layui-btn layui-btn-radius layui-btn-primary" @click="onAddClick"> 添加原告信息</button>
-        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger" v-show="this.index!=0"
+        <button type="button" class="layui-btn layui-btn-radius layui-btn-sm" @click="onAddClick"> 添加原告信息</button>
+        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-sm" v-show="this.index!=0"
                 @click="onCloseClick"> 删除原告信息
         </button>
       </form>
@@ -188,6 +188,9 @@ export default {
   watch: {
     data: {
       handler() {
+        if(this.data.accuser_type=="1"){
+          this.data.accuser_short=""
+        }
         //如何根据数据存储
         if (this.$store.state.court_number == "") {
           window.layui.layer.msg('请优先完善基本信息表格');
