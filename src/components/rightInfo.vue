@@ -117,8 +117,8 @@ export default {
     data = {
       judge_right_duty: "审判员：依据《中华人民共和国民事诉讼法》的规定，当事人在法庭上享有下列权利：1.原告有权承认、变更、放弃自己的诉讼请求，被告有权反驳原告的诉讼请求或提起反诉；2.当事人有权申请回避；3.当事人有权举证；4.当事人有权辩论、有权请求法庭调解,当事人在享有上述权利的同时，负有以下义务：1.当事人有依法行使诉讼权利的义务；2.当事人有听从法庭指挥、遵守法庭纪律的义务；3.当事人有如实陈述事实、如实举证的义务。上述诉讼权利和义务双方是否听清？",
       judge_avoid: "审判员：当事人对审判员和书记是否申请回避？",
-      accuser_right_duty: [{name:"",right_duty: "1", avoid: "1"}],
-      defendant_right_duty: [{name:"",right_duty: "1", avoid: "1"}],
+      accuser_right_duty: [{right_duty: "1", avoid: "1"}],
+      defendant_right_duty: [{right_duty: "1", avoid: "1"}],
     };
 
     let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
@@ -132,26 +132,20 @@ export default {
     getPlaintiffName: {
       get() {
         if (this.$store.state.is_counterclaim === "2") {
-          return this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-            return e.accuser + '（原告）';
-          })
+          return this.$store.state.plaintiff_item.map(e => e.accuser_short==''?e.accuser:e.accuser_short + '（原告）').filter(i => i && i.trim())
         } else {
-          return this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-            return e.accuser + '（反诉被告）';
-          })
+          return this.$store.state.plaintiff_item.map(e => e.accuser_short==''?e.accuser:e.accuser_short + '（反诉被告）').filter(i => i && i.trim())
         }
       }
     },
     getDefendantNane: {
       get() {
         if (this.$store.state.is_counterclaim === "2") {
-          return this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-            return e.defendant + '（被告）';
-          })
+          return this.$store.state.defendant_item.map(e => e.defendant_short==''?e.defendant:e.defendant_short + "（被告）").filter(i => i && i.trim())
+
         } else {
-          return this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-            return e.defendant + '（反诉原告）';
-          })
+          return this.$store.state.defendant_item.map(e => e.defendant_short==''?e.defendant:e.defendant_short + "（反诉原告）").filter(i => i && i.trim())
+
         }
       }
     }
@@ -161,11 +155,11 @@ export default {
       switch (datatype) {
         case "defendant_right_duty":
           //这里是值对应的处理
-          this.data.defendant_right_duty.push({name:"",right_duty: "1", avoid: "1"})
+          this.data.defendant_right_duty.push({right_duty: "1", avoid: "1"})
           break
         case "accuser_right_duty":
           //这里是值对应的处理
-          this.data.accuser_right_duty.push({name:"",right_duty: "1", avoid: "1"})
+          this.data.accuser_right_duty.push({right_duty: "1", avoid: "1"})
           break
         default:
           //这里是没有找到对应的值处理
@@ -207,7 +201,6 @@ export default {
             }
           }
           this.$emit("setIsAvoid",is_avoid)
-
 
           let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           if (wholeItem != null) {
