@@ -71,14 +71,14 @@
         </fieldset>
       </div>
 
-<!--      <div id="defendShowInfo">-->
-<!--        <fieldset class="layui-elem-field layui-field-title">-->
-<!--          <legend>法庭调查-被告举证</legend>-->
-<!--          <div class="layui-field-box">-->
-<!--            <defendShowInfo></defendShowInfo>-->
-<!--          </div>-->
-<!--        </fieldset>-->
-<!--      </div>-->
+      <div id="defendShowInfo">
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>法庭调查-被告举证</legend>
+          <div class="layui-field-box">
+            <defendShowInfo></defendShowInfo>
+          </div>
+        </fieldset>
+      </div>
 
 <!--      <div id="inquiryInfo">-->
 <!--        <fieldset class="layui-elem-field layui-field-title">-->
@@ -150,7 +150,7 @@ import DefendantImf from './components/DefendantImf.vue'
 import CourtInves from './components/CourtInves.vue'
 import rightInfo from "@/components/rightInfo";
 import accuserShowInfo from "@/components/accuserShowInfo";
-// import defendShowInfo from "@/components/defendantShowinfo";
+import defendShowInfo from "@/components/defendantShowinfo";
 // import inquiryInfo from "@/components/inquiryInfo";
 // import argueInfo from "@/components/argueInfo";
 import finalStatementInfo from "@/components/finalStatementInfo";
@@ -168,7 +168,7 @@ export default {
     CourtInves,
     rightInfo,
     accuserShowInfo,
-    // defendShowInfo,
+    defendShowInfo,
     // inquiryInfo,
     // argueInfo,
     finalStatementInfo,
@@ -205,14 +205,6 @@ export default {
       form.on('submit(onSubmit)', ()=>{
         this.onSummit()
         return false;
-      });
-      form.verify({
-        vueselect:function(value, item){
-          if(item.getElementsByClassName("multiselect__single").length==0){
-              let selecthoder=item.getElementsByClassName("multiselect__placeholder")[0].innerHTML
-            return selecthoder;
-          }
-        }
       });
     });
 
@@ -308,7 +300,6 @@ export default {
           recordJson["stateInfo"] = stateInfo
         }
 
-
         //原告数据
         if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
 
@@ -338,22 +329,16 @@ export default {
             }
 
           recordJson["defendantInfo"] = defendantInfo
-        }else {//没有被告数据
-          window.layui.layer.msg('请完善被告信息表格');
-          return
         }
 
-
-        // defendant_avoid: [{is_listen: "1", is_avoid: "1"}],
         if ("rightInfo" in wholeItem) {
-
           let rightInfo = wholeItem.rightInfo
-          for (let i = 0; i < this.$store.state.plaintiffname.length; i++) {
+          for (let i = 0; i < this.$store.state.plaintiff_item.length; i++) {
             // console.log(i)
-            rightInfo.accuser_right_duty[i]["accuser"] = this.$store.state.plaintiffname[i]
+            rightInfo.accuser_right_duty[i]["accuser"] = this.$store.state.plaintiff_item[i].accuser_short == "" ? this.$store.state.plaintiff_item[i].accuser:this.$store.state.plaintiff_item[i].accuser_short
           }
-          for (let i = 0; i < this.$store.state.defendantname.length; i++) {
-            rightInfo.defendant_right_duty[i]["defendant"] = this.$store.state.defendantname[i]
+          for (let i = 0; i < this.$store.state.defendant_item.length; i++) {
+            rightInfo.defendant_right_duty[i]["defendant"] = this.$store.state.defendant_item[i].defendant_short=="" ? this.$store.state.defendant_item[i].defendant:this.$store.state.defendant_item[i].defendant_short
           }
           recordJson["rightInfo"] = rightInfo
         }
@@ -361,7 +346,6 @@ export default {
         recordJson["courtInvestigate"] = {}
         //法庭调查数据，包含原被告举证表，法庭调查表三个表
         if ("CourtInves" in wholeItem) {
-
           let courtInvestigate = wholeItem.CourtInves
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], courtInvestigate)
         }
@@ -369,12 +353,19 @@ export default {
         // console.log(wholeItem.accuserShowInfo)
         if ("accuserShowInfo" in wholeItem) {
           var accuserShowInfo = wholeItem.accuserShowInfo
-          // 合并法庭调查表和原告举证
+
+          accuserShowInfo.defendant_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),defendant:e.defendant.join("**")})
+          // 合并法庭调查表和原告举
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], accuserShowInfo)
         }
 
         if ("defendantShowInfo" in wholeItem) {
           var defendantShowInfo = wholeItem.defendantShowInfo
+          defendantShowInfo.accuser_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),accuser:e.accuser.join("**")})
+          defendantShowInfo.other_defendant_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),defendant:e.defendant.join("**")})
+          defendantShowInfo.counterclaim_defendant_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),counterclaim_defendant:e.counterclaim_defendant.join("**")})
+          defendantShowInfo.other_counterclaim_defendant_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),other_counterclaim_defendant:e.other_counterclaim_defendant.join("**")})
+          defendantShowInfo.counterclaim_accuser_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),counterclaim_accuser:e.counterclaim_accuser.join("**")})
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], defendantShowInfo)
         }
 

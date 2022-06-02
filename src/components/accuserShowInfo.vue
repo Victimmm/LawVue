@@ -14,13 +14,13 @@
         <!--        <div class="layui-form-item" pane>-->
         <!--          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
         <!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
-        <!--              <input type="text" v-model="data.accuser_evidence[0].evidence" lay-verify="required" placeholder="证据名称"-->
+        <!--              <input type="text" v-model="data.accuser_evidence[0].evidence"  placeholder="证据名称"-->
         <!--                     autocomplete="off"-->
         <!--                     class="layui-input" style="line-height: 16px;width: 210px; min-height: 38px">-->
         <!--            </div>-->
         <!--            <div class="layui-input-block">-->
         <!--              <div class="myselect-div">-->
-        <!--                <input type="text" v-model="data.accuser_evidence[0].content" lay-verify="required" placeholder="证明事项"-->
+        <!--                <input type="text" v-model="data.accuser_evidence[0].content"  placeholder="证明事项"-->
         <!--                       autocomplete="off"-->
         <!--                       class="layui-input" style="width: 90%;float: left;margin-left:0px ;">-->
         <!--                <button @click="add_component('accuser_evidence')" type="button"-->
@@ -76,13 +76,13 @@
             证明事项
           </div>
           <div class="layui-input-block">
-            <input type="text" v-model="data.accuser_evidence[0].content" lay-verify="required" placeholder="证据证明事项"
+            <input type="text" v-model="data.accuser_evidence[0].content"  placeholder="证据证明事项"
                    class="layui-input">
           </div>
         </div>
 
         <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('accuser_evidence')"> 添加证据</button>
+          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('accuser_evidence',1)"> 添加证据</button>
 
         </div>
 
@@ -109,21 +109,17 @@
               证明事项
             </div>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_evidence[index+1].content" lay-verify="required" placeholder="证据证明事项"
+              <input type="text" v-model="data.accuser_evidence[index+1].content"  placeholder="证据证明事项"
                      class="layui-input">
             </div>
           </div>
 
           <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('accuser_evidence',0)"> 添加证据</button>
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('accuser_evidence',index+2)"> 添加证据</button>
             <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('accuser_evidence',index+1)"> 删除证据
             </button>
           </div>
         </template>
-
-
-
-
 
         <div class="site-border-cyan" style="width:80%">
           <hr class="hr-solid-content" data-content="被告对原告提交的证据进行质证">
@@ -142,7 +138,7 @@
           <div class="layui-form-label divcenter">
             请选择被告
           </div>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
             <div class="layui-input-block">
               <div class="myselect-div">
                 <VueMultiselect :option-height="38" :show-labels="false"
@@ -152,7 +148,9 @@
                                 :group-select="true"
                                 group-values="defendant_name"
                                 :multiple="true"
-                                style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
+                                :close-on-select="false"
+                                style="line-height: 16px; min-height: 38px;float:left;">
+                </VueMultiselect>
               </div>
             </div>
           </div>
@@ -162,7 +160,7 @@
           <div class="layui-form-label divcenter">
             请选择证据
           </div>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
             <div class="layui-input-block">
               <div class="myselect-div">
                 <VueMultiselect :option-height="38" :show-labels="false"
@@ -172,6 +170,7 @@
                                 :group-select="true"
                                 group-values="option_label"
                                 :multiple="true"
+                                :close-on-select="false"
                                 style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
               </div>
             </div>
@@ -180,7 +179,7 @@
 
         <div class="layui-form-item" pane style="margin-top: -10px;">
           <div class="layui-form-label divcenter">
-            三性判断
+            三性质证
           </div>
           <div class="layui-input-block">
             <div class="layui-input-inline" style="width:33%;margin-left: 0">
@@ -218,7 +217,7 @@
             事实和理由
           </div>
           <div class="layui-input-block">
-              <textarea v-model="data.defendant_query[0].defendant_query_fact_reason" lay-verify="required"
+              <textarea v-model="data.defendant_query[0].defendant_query_fact_reason" 
                         placeholder="理由"
                         class="layui-textarea"></textarea>
           </div>
@@ -234,7 +233,7 @@
             <div class="layui-form-label divcenter">
               请选择被告
             </div>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <VueMultiselect :option-height="38" :show-labels="false"
@@ -244,6 +243,7 @@
                                   :group-select="true"
                                   group-values="defendant_name"
                                   :multiple="true"
+                                  :close-on-select="false"
                                   style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
                 </div>
               </div>
@@ -254,7 +254,7 @@
             <div class="layui-form-label divcenter">
               请选择证据
             </div>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <VueMultiselect :option-height="38" :show-labels="false"
@@ -264,6 +264,7 @@
                                   :group-select="true"
                                   group-values="option_label"
                                   :multiple="true"
+                                  :close-on-select="false"
                                   style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
                 </div>
               </div>
@@ -310,7 +311,7 @@
               事实和理由
             </div>
             <div class="layui-input-block">
-              <textarea v-model="data.defendant_query[index+1].defendant_query_fact_reason" lay-verify="required"
+              <textarea v-model="data.defendant_query[index+1].defendant_query_fact_reason" 
                         placeholder="理由"
                         class="layui-textarea"></textarea>
             </div>
@@ -346,8 +347,8 @@ export default {
       // accuser_evidence_fact_reason: "", //事实和理由(原告举证)
       defendant_query: [
         {
-          defendant: "", //被告姓名
-          evidence: "", //证据名称
+          defendant: [], //被告姓名
+          evidence: [], //证据名称
           defendant_query_fact_reason: "", //真实性、合法性和相关性的事实和理由(被告质证的事实和理由)
           facticity: "1", //真实性
           legality: "1", //合法性
@@ -380,7 +381,7 @@ export default {
     getProofPlaintiff: {
       get() {
         let option_label = this.data.accuser_evidence.filter(i => i.evidence).map(e =>{
-          return "证据"+this.numberToChinese(e.serial) + " ： " + e.evidence;
+          return "证据"+this.numberToChinese(e.serial) + ":" + e.evidence;
         })
         // let optionn_label={evidence_serial:evidence_serial,name_serial:name_serial}
 
@@ -392,26 +393,35 @@ export default {
     VueMultiselect
   },
   methods: {
-    add_component(datatype) {
+    add_component(datatype,index) {
       switch (datatype) {
         case "accuser_evidence":
           //accuser_evidence 模块的数据加入
-          this.data.accuser_evidence.push({
-            serial: this.data.accuser_evidence.length+1,//证据序号，自增
-            evidence: "", //证据名称(原告举证表 原告提出)
-            content: "", //证明事项(原告举证表 原告提出)
-            evidence_type: ""//证据类型，原件或者复印件
-          });
+          // this.data.accuser_evidence.push({
+          //   serial: this.data.accuser_evidence.length+1,//证据序号，自增
+          //   evidence: "", //证据名称(原告举证表 原告提出)
+          //   content: "", //证明事项(原告举证表 原告提出)
+          //   evidence_type: ""//证据类型，原件或者复印件
+          // });
+          this.data.accuser_evidence.splice(index,0,{
+              serial: 0,//证据序号，自增
+              evidence: "", //证据名称(原告举证表 原告提出)
+              content: "", //证明事项(原告举证表 原告提出)
+              evidence_type: ""//证据类型，原件或者复印件
+          })
+          for (let i=0 ;i < this.data.accuser_evidence.length;i++){
+            this.data.accuser_evidence[i].serial= i+1
+          }
           break;
         case "defendant_query":
           //这里是值对应的处理
           this.data.defendant_query.push({
-            defendant_query_fact_reason: "", //事实和理由
-            defendant: "", //被告姓名
-            evidence: "", //证据名称 （被告质证）
+            defendant: [], //被告姓名
+            evidence: [], //证据名称 （被告质证）
             facticity: "1", //真实性
             legality: "1", //合法性
             relevance: "1", //关联性
+            defendant_query_fact_reason: "", //事实和理由
           });
           break;
 
