@@ -10,7 +10,6 @@
           <BasicInfo></BasicInfo>
         </div>
       </fieldset>
-
     </div>
 
     <div id="whole_PlaintiffImf">
@@ -99,32 +98,41 @@
 <!--        </fieldset>-->
 <!--      </div>-->
 
-<!--      <div id="finalStatementInfo">-->
-<!--        <fieldset class="layui-elem-field layui-field-title">-->
-<!--          <legend>最后陈述意见</legend>-->
-<!--          <div class="layui-field-box">-->
-<!--            <finalStatementInfo></finalStatementInfo>-->
-<!--          </div>-->
-<!--        </fieldset>-->
-<!--      </div>-->
+      <div id="finalStatementInfo">
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>最后陈述意见</legend>
+          <div class="layui-field-box">
+            <finalStatementInfo></finalStatementInfo>
+          </div>
+        </fieldset>
+      </div>
 
-<!--      <div id="mediateInfo">-->
-<!--        <fieldset class="layui-elem-field layui-field-title">-->
-<!--          <legend>是否调解</legend>-->
-<!--          <div class="layui-field-box">-->
-<!--            <mediateInfo></mediateInfo>-->
-<!--          </div>-->
-<!--        </fieldset>-->
-<!--      </div>-->
+      <div id="mediateInfo">
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>是否调解</legend>
+          <div class="layui-field-box">
+            <mediateInfo></mediateInfo>
+          </div>
+        </fieldset>
+      </div>
 
-<!--      <div id="deliveryInfo">-->
-<!--        <fieldset class="layui-elem-field layui-field-title">-->
-<!--          <legend>电子裁判文书送达</legend>-->
-<!--          <div class="layui-field-box">-->
-<!--            <deliveryInfo></deliveryInfo>-->
-<!--          </div>-->
-<!--        </fieldset>-->
-<!--      </div>-->
+      <div id="deliveryInfo">
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>电子裁判文书送达</legend>
+          <div class="layui-field-box">
+            <deliveryInfo></deliveryInfo>
+          </div>
+        </fieldset>
+      </div>
+
+      <div id="summarizeInfo">
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>审判员最后陈述</legend>
+          <div class="layui-field-box">
+            <summarizeInfo></summarizeInfo>
+          </div>
+        </fieldset>
+      </div>
     </div>
 </div>
     <button type="button" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-lg" lay-submit lay-filter="onSubmit"
@@ -145,11 +153,11 @@ import accuserShowInfo from "@/components/accuserShowInfo";
 // import defendShowInfo from "@/components/defendantShowinfo";
 // import inquiryInfo from "@/components/inquiryInfo";
 // import argueInfo from "@/components/argueInfo";
-// import finalStatementInfo from "@/components/finalStatementInfo";
-// import mediateInfo from "@/components/mediateInfo";
-// import deliveryInfo from "@/components/deliveryInfo";
+import finalStatementInfo from "@/components/finalStatementInfo";
+import mediateInfo from "@/components/mediateInfo";
+import deliveryInfo from "@/components/deliveryInfo";
 import BasicState from "@/components/BasicState";
-
+import summarizeInfo from "@/components/summarizeInfo";
 
 export default {
   name: 'App',
@@ -163,10 +171,11 @@ export default {
     // defendShowInfo,
     // inquiryInfo,
     // argueInfo,
-    // finalStatementInfo,
-    // mediateInfo,
-    // deliveryInfo,
-    BasicState
+    finalStatementInfo,
+    mediateInfo,
+    deliveryInfo,
+    BasicState,
+    summarizeInfo,
   },
   data:function () {
     let is_avoid="1"
@@ -230,6 +239,7 @@ export default {
               "        <li><a href=\"#finalStatementInfo\"><cite>陈述意见</cite></a></li>\n" +
               "        <li><a href=\"#mediateInfo\"><cite>是否调解</cite></a></li>\n" +
               "        <li><a href=\"#deliveryInfo\"><cite>电子文书送达</cite></a></li>\n" +
+              "        <li><a href=\"#summarizeInfo\"><cite>审判员最后陈述</cite></a></li>\n" +
               "      </ul>",
           shade: 0,
           closeBtn: 0,
@@ -400,6 +410,11 @@ export default {
         if ("deliveryInfo" in wholeItem) {
           let deliveryInfoItem = wholeItem.deliveryInfo.delivery_info
           recordJson["deliveryInfo"] = deliveryInfoItem
+        }
+        //审判员最后陈述意见
+        if ("summarize" in wholeItem) {
+          let summarizeInfo = wholeItem.summarizeInfo
+          recordJson["summarizeInfo"] = summarizeInfo
         }
       }
 

@@ -13,7 +13,7 @@
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_accuser[0].accuser"
-                              :options="$store.state.plaintiffname" placeholder="请选择原告"
+                              :options="get_accuser_name" placeholder="请选择原告"
                               lay-verify="vueselect"
                               style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
             </div>
@@ -61,7 +61,7 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_accuser[index+1].accuser"
-                                :options="$store.state.plaintiffname" placeholder="请选择原告"
+                                :options="get_accuser_name" placeholder="请选择原告"
                                 style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
@@ -108,7 +108,7 @@
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant[0].defendant"
-                              :options="$store.state.defendantname" placeholder="请选择被告"
+                              :options="get_defendant_name" placeholder="请选择被告"
                               lay-verify="vueselect"
                               style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
             </div>
@@ -144,7 +144,7 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant[index+1].defendant"
-                                :options="$store.state.defendantname" placeholder="请选择被告"
+                                :options="get_defendant_name" placeholder="请选择被告"
                                 style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
@@ -174,6 +174,17 @@
             </div>
           </div>
         </template>
+        <div v-if="show_final_mediate==1">
+        <div class="layui-form-item" pane>
+          <div class="layui-form-label divcenter" >
+            最终认定调解方案
+          </div>
+          <div class="layui-input-block">
+                  <textarea v-model="data.final_mediate" placeholder="请填写原被告都统一且法院最终确认的调解方案"
+                            class="layui-textarea"></textarea>
+          </div>
+        </div>
+        </div>
       </form>
     </div>
   </div>
@@ -199,7 +210,8 @@ export default {
           is_mediate: "1",
           mediate_plan: ""
         }
-      ]
+      ],
+      final_mediate:'',
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null &&  "mediateInfo" in wholeItem){
@@ -209,7 +221,64 @@ export default {
       data: data,
     };
   },
-
+  computed:{
+    get_defendant_name:{
+      get(){
+        let string1 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+          if(e.defendant=="undefined"){
+            return e.defendant_short + '（被告）';
+          }
+          else return e.defendant + '（被告）';
+        })
+        // let string2 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
+        //   if(e.accuser=="undefined"){
+        //     return e.accuser_short + '（原告）';
+        //   }
+        //   else return e.accuser + '（原告）';
+        // })
+        return string1
+      },
+    },
+    get_accuser_name:{
+      get(){
+        let string2 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
+          if(e.accuser=="undefined"){
+            return e.accuser_short + '（原告）';
+          }
+          else return e.accuser + '（原告）';
+        })
+        return string2
+    },
+    },
+    show_final_mediate:{
+      get(){
+        let flag_accuser=0
+        for (let i = 0;i<this.data.mediate_accuser.length; i++)
+        {
+          if (this.data.mediate_accuser[i].is_mediate==2){
+            flag_accuser=1
+          }
+        }
+        let flag_defendant=0
+        for (let i = 0;i<this.data.mediate_defendant.length; i++)
+        {
+          if (this.data.mediate_defendant[i].is_mediate==2){
+            flag_defendant=1
+          }
+        }
+        if (flag_accuser == 1 || flag_defendant ==1){
+          // flag_accuser=0
+          // flag_defendant=0
+          return 0  //不显示
+        }
+        else {
+          // flag_accuser=0
+          // flag_defendant=0
+          return 1
+        } //显示
+        }
+    },
+  },
   components: {
     VueMultiselect
   },

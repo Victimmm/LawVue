@@ -19,7 +19,7 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.final_statement_info[0].final_statement" lay-verify="required"  placeholder="陈述意见" autocomplete="off"
+                <input type="text" v-model="data.final_statement_info[0].final_statement"   placeholder="最后陈述意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('final_statement_info')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
@@ -39,7 +39,7 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.final_statement_info[index+1].final_statement"   placeholder="陈述意见" autocomplete="off"
+                  <input type="text" v-model="data.final_statement_info[index+1].final_statement"   placeholder="最后陈述意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="delete_component('final_statement_info',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                           data-type="text" style="float: right;">
@@ -81,11 +81,17 @@ export default {
 computed:{
   finalStateFormGetAccuserMergeDefendant: {
     get() {
-      let string1 = this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
-        return e + '（被告）';
+      let string1 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+        if(e.defendant=="undefined"){
+          return e.defendant_short + '（被告）';
+        }
+        else return e.defendant + '（被告）';
       })
-      let string2 = this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
-        return e + '（原告）';
+      let string2 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
+        if(e.accuser=="undefined"){
+          return e.accuser_short + '（原告）';
+        }
+        else return e.accuser + '（原告）';
       })
       return string2.concat(string1)
     },

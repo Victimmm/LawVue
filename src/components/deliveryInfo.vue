@@ -14,7 +14,6 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.delivery_info[0].name"
                               :options="deliveryFormGetAccuserMergeDefendant" placeholder="请选择原被告"
-                              lay-verify="vueselect"
                               style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -40,8 +39,16 @@
           <div class="layui-input-block">
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <input type="text" v-model="data.delivery_info[0].email"  placeholder="电子邮件地址" autocomplete="off"
-                     lay-verify="email"
-                     class=" layui-input " layui-verify="required">
+                     class=" layui-input ">
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item layui-form-required" v-if="data.delivery_info[0].is_delivery==2" pane>
+          <label class="layui-form-label">纸质文书送达地址</label>
+          <div class="layui-input-block">
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+              <input type="text" v-model="data.delivery_info[0].email"  placeholder="纸质文书送达地址" autocomplete="off"
+                     class=" layui-input ">
             </div>
           </div>
         </div>
@@ -85,6 +92,17 @@
               </div>
             </div>
           </div>
+
+          <div class="layui-form-item" v-if="data.delivery_info[index+1].is_delivery==2" pane>
+            <label class="layui-form-label">纸质文书送达地址</label>
+            <div class="layui-input-block">
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+                <input type="text" v-model="data.delivery_info[index+1].email" placeholder="纸质文书送达地址" autocomplete="off"
+                       layui-verify="email"
+                       class="layui-input">
+              </div>
+            </div>
+          </div>
         </template>
       </form>
     </div>
@@ -103,8 +121,10 @@ export default {
           name: "",
           is_delivery: "1",
           email: ""
-        }
-      ]
+        },
+      ],
+      clerk_statement:'',
+      clerk_statement_list:['审判员最后陈述',]
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null && "deliveryInfo" in wholeItem){
@@ -130,11 +150,17 @@ export default {
   computed:{
     deliveryFormGetAccuserMergeDefendant: {
       get() {
-        let string1 = this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
-          return e + '（被告）';
+        let string1 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+          if(e.defendant=="undefined"){
+            return e.defendant_short + '（被告）';
+          }
+          else return e.defendant + '（被告）';
         })
-        let string2 = this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
-          return e + '（原告）';
+        let string2 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
+          if(e.accuser=="undefined"){
+            return e.accuser_short + '（原告）';
+          }
+          else return e.accuser + '（原告）';
         })
         return string2.concat(string1)
       },
