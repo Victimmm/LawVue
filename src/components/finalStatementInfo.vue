@@ -3,51 +3,51 @@
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane">
         <div class="layui-form-item" pane>
-              <div class="layui-form-label">审判员</div>
-            <div class="layui-input-block">
-              <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">双方发表最后陈述意见</textarea>
-            </div>
+          <div class="layui-form-label">审判员</div>
+          <div class="layui-input-block">
+            <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">双方发表最后陈述意见</textarea>
+          </div>
         </div>
 
-<!--        <div class="layui-form-item" pane>-->
-<!--          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
-<!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
-<!--              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.final_statement_info[0].name"-->
-<!--                              :options="finalStateFormGetAccuserMergeDefendant" placeholder="请选择原被告"-->
-<!--                              lay-verify="vueselect"-->
-<!--                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>-->
-<!--            </div>-->
-<!--            <div class="layui-input-block">-->
-<!--              <div class="myselect-div">-->
-<!--                <input type="text" v-model="data.final_statement_info[0].final_statement"   placeholder="最后陈述意见" autocomplete="off"-->
-<!--                       class="layui-input" style="width: 90%;float: left;">-->
-<!--                <button @click="add_component('final_statement_info')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
-<!--                        data-type="text" style="float: right;">-->
-<!--                  <i class="layui-icon">&#xe654;</i>-->
-<!--                </button>-->
-<!--              </div>-->
+        <!--        <div class="layui-form-item" pane>-->
+        <!--          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
+        <!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
+        <!--              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.final_statement_info[0].name"-->
+        <!--                              :options="finalStateFormGetAccuserMergeDefendant" placeholder="请选择原被告"-->
+        <!--                              lay-verify="vueselect"-->
+        <!--                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>-->
+        <!--            </div>-->
+        <!--            <div class="layui-input-block">-->
+        <!--              <div class="myselect-div">-->
+        <!--                <input type="text" v-model="data.final_statement_info[0].final_statement"   placeholder="最后陈述意见" autocomplete="off"-->
+        <!--                       class="layui-input" style="width: 90%;float: left;">-->
+        <!--                <button @click="add_component('final_statement_info')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
+        <!--                        data-type="text" style="float: right;">-->
+        <!--                  <i class="layui-icon">&#xe654;</i>-->
+        <!--                </button>-->
+        <!--              </div>-->
 
-<!--            </div>-->
-<!--          </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
 
-          <template v-for="(item, index) in getPlaintiffName" :key="index">
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
+        <template v-for="(item, index) in getPlaintiffName" :key="index">
+          <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
 
-                <label class="layui-form-label">{{ item }}</label>
+            <label class="layui-form-label">{{ item }}</label>
 
-              <div class="layui-input-block">
-                <div class="myselect-div">
-                  <input type="text" v-model="data.final_statement_info[index].final_statement"  placeholder="最后陈述意见" autocomplete="off"
-                         class="layui-input" style="width: 90%;float: left;">
-<!--                  <button @click="delete_component('final_statement_info',index)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
-<!--                          data-type="text" style="float: right;">-->
-<!--                    <i class="layui-icon">&#xe640;</i>-->
-<!--                  </button>-->
-                </div>
-
+            <div class="layui-input-block">
+              <div class="myselect-div">
+                <input type="text" v-model="data.final_statement_info[index].final_statement"  placeholder="最后陈述意见" autocomplete="off"
+                       class="layui-input" style="width: 90%;float: left;">
+                <!--                  <button @click="delete_component('final_statement_info',index)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
+                <!--                          data-type="text" style="float: right;">-->
+                <!--                    <i class="layui-icon">&#xe640;</i>-->
+                <!--                  </button>-->
               </div>
+
             </div>
-          </template>
+          </div>
+        </template>
       </form>
     </div>
   </div>
@@ -62,10 +62,10 @@ export default {
     var data;
 // if (localStorage.getItem("final_form") == null) {
     data = {
-    final_statement_info:[{
-      name: "", //原告
-      final_statement: "", //最后陈述意见
-    }]
+      final_statement_info:[{
+        name: "", //原告
+        final_statement: "", //最后陈述意见
+      }]
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null && "finalStatementInfo" in wholeItem){
@@ -75,35 +75,31 @@ export default {
       data: data,
     };
   },
-computed:{
-  // getvalue:{
-  //   get(){
-  //     if()
-  //   },
-  // },
-  getPlaintiffName: {
-    get() {
-      // let string1 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
-      // let string2 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
-      // string1=string2.concat(string1)
-        let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-          return e.accuser + '（原告）';
-        })
-        let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-          return e.defendant + '（被告）';
-        })
-      return string1.concat(string2)
+  computed:{
+    // getvalue:{
+    //   get(){
+    //     if()
+    //   },
+    // },
+    getPlaintiffName: {
+      get() {
+        // let string1 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
+        // let string2 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
+        // string1=string2.concat(string1)
+        let string1 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
+        let string2 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
+        return string1.concat(string2)
 
-    }
+      }
+    },
+    // finalStateFormGetAccuserMergeDefendant: {
+    //   get() {
+    //     let string1 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
+    //     let string2 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
+    //     return string2.concat(string1)
+    //   },
+    // },
   },
-  // finalStateFormGetAccuserMergeDefendant: {
-  //   get() {
-  //     let string1 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
-  //     let string2 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
-  //     return string2.concat(string1)
-  //   },
-  // },
-},
   // components: {
   //   VueMultiselect
   // },
