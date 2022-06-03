@@ -22,9 +22,8 @@
               <div class="myselect-div">
                 <input type="text" v-model="data.argue[0].argue" placeholder="辩论意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
-                <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text" style="float: right;">
-                  <i class="layui-icon">&#xe654;</i>
+                <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                        data-type="text" style="float: right;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">添加
                 </button>
               </div>
 
@@ -42,13 +41,11 @@
                 <div class="myselect-div">
                   <input type="text" v-model="data.argue[index+1].argue" placeholder="辩论意见" autocomplete="off"
                          class="layui-input" style="width: 80%;float: left;">
-                    <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                            data-type="text" style="float: right;">
-                      <i class="layui-icon">&#xe654;</i>
+                    <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                            data-type="text" style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">添加
                     </button>
-                    <button @click="delete_component('argue',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                            data-type="text" style="float: right;">
-                      <i class="layui-icon">&#xe640;</i>
+                    <button @click="delete_component('argue',index+1)" type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
+                            data-type="text" style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">删除
                     </button>
                 </div>
 
@@ -67,6 +64,7 @@
                   <div class="myselect-div">
                     <input type="text" v-model="data.argue[0].argue" placeholder="辩论意见" autocomplete="off"
                            class="layui-input" style="width: 90%;float: left;">
+
                     <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                             data-type="text" style="float: right;">
                       <i class="layui-icon">&#xe654;</i>
@@ -102,10 +100,6 @@
               </template>
             </div>
           </template>
-          <div style="margin-top:10px;margin-bottom: 10px">
-            <button type="button" class="layui-btn layui-btn-radius" > 添加辩论信息</button>
-            <!--        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger"  > 删除辩论信息</button>-->
-          </div>
         </div>
 
         <div v-if="$store.state.is_counterclaim=='1'">
@@ -120,9 +114,8 @@
                 <div class="myselect-div">
                   <input type="text" v-model="data.counterclaim_argue[0].argue" placeholder="辩论意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
-                  <button @click="add_component('counterclaim_argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text" style="float: right;">
-                    <i class="layui-icon">&#xe654;</i>
+                  <button @click="add_component('counterclaim_argue')" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                          data-type="text" style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">添加
                   </button>
                 </div>
               </div>
@@ -139,14 +132,12 @@
                   <div class="myselect-div">
                     <input type="text" v-model="data.counterclaim_argue[index+1].argue"   placeholder="辩论意见" autocomplete="off"
                            class="layui-input" style="width: 80%;float: left;">
-                      <button @click="add_component('counterclaim_argue')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                              data-type="text" style="float: right;">
-                        <i class="layui-icon">&#xe654;</i>
-                      </button>
-                      <button @click="delete_component('counterclaim_argue',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                              data-type="text" style="float: right;">
-                        <i class="layui-icon">&#xe640;</i>
-                      </button>
+                    <button @click="add_component('counterclaim_argue')" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                            data-type="text" style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">添加
+                    </button>
+                    <button @click="delete_component('counterclaim_argue',index+1)" type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
+                            data-type="text" style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">删除
+                    </button>
                   </div>
                 </div>
               </div>
@@ -166,29 +157,29 @@ export default {
   data() {
     var data;
     data = {
-      argue:[
+      argue: [
         {
-          name: "" ,                  //原告/被告
-          argue: "" ,            //辩论意见
+          name: "",                  //原告/被告
+          argue: "",            //辩论意见
         }
       ],
-      counterclaim_argue:[
+      counterclaim_argue: [
         {
-          name:"" ,       //反诉原告/反诉被告
+          name: "",       //反诉原告/反诉被告
           argue: "",      //辩论意见
         }
       ],
 
     }
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if(wholeItem!=null && "argueInfo" in wholeItem){
-      data=wholeItem.argueInfo
+    if (wholeItem != null && "argueInfo" in wholeItem) {
+      data = wholeItem.argueInfo
     }
     return {
       data: data,
     };
   },
-  mounted(){
+  mounted() {
 
   },
   updated: function () {
@@ -202,13 +193,13 @@ export default {
       switch (datatype) {
         case "argue":
           this.data.argue.push({
-            name: "" ,                  //原被告
-            argue: "" ,            //原被告辩论意见
+            name: "",                  //原被告
+            argue: "",            //原被告辩论意见
           });
           break;
         case "counterclaim_argue":
           this.data.counterclaim_argue.push({
-            name:"" ,       //反诉原告/反诉被告
+            name: "",       //反诉原告/反诉被告
             argue: "", //辩论意见
           });
           break;
@@ -236,57 +227,36 @@ export default {
   computed: {
     getAccuserMergeDefendant: {
       get() {
-        let string1 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-          if(e.defendant=="undefined"){
-            return e.defendant_short + '（被告）';
-          }
-          else return e.defendant + '（被告）';
-        })
-        let string2 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
-          if(e.accuser=="undefined"){
-            return e.accuser_short + '（原告）';
-          }
-          else return e.accuser + '（原告）';
-        })
+        let string1 = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short) + '（被告）').filter(i => i && i.trim())
+        let string2 = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short) + '（原告）').filter(i => i && i.trim())
         return string2.concat(string1)
-      },
 
+      }
     },
-    getCounterAccuserMergeDefendant:{
-      get() {
-        let string1=this.$store.state.defendant_item.filter(i => i.defendant_short && i.defendant_short.trim()).map(function (e) {
-          if(e.defendant=="undefined"){
-            return e.defendant_short + '（反诉原告）';
-          }
-          else return e.defendant_short + '（反诉原告）';
-        })
-        let string2=this.$store.state.plaintiff_item.filter(i => i.accuser_short && i.accuser_short.trim()).map(function (e) {
-          if(e.accuser=="undefined"){
-            return e.accuser_short + '（反诉被告）';
-          }
-          else return e.accuser_short + '（反诉被告）';
-        })
-        return string2.concat(string1)
+      getCounterAccuserMergeDefendant: {
+        get() {
+          let string3 = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short) + '（反诉原告）').filter(i => i && i.trim())
+          let string4 = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short) + '（反诉被告）').filter(i => i && i.trim())
+          return string4.concat(string3)
+        },
       },
-  },
-},
-  watch: {
-    data:{
-      handler() {
-        //如何根据数据存储
-        if (this.$store.state.court_number == "") {
-          // window.layui.layer.msg('请优先完善基本信息表格');
-        }
-        else{
-          var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-          if (wholeItem != null) {
-            wholeItem.argueInfo = this.data
-            localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+    watch: {
+      data: {
+        handler() {
+          //如何根据数据存储
+          if (this.$store.state.court_number == "") {
+            // window.layui.layer.msg('请优先完善基本信息表格');
+          } else {
+            var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+            if (wholeItem != null) {
+              wholeItem.argueInfo = this.data
+              localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+            }
           }
-        }
-      },
-      deep: true
-    }
+        },
+        deep: true
+      }
+    },
   },
 }
 </script>

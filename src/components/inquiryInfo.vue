@@ -12,25 +12,24 @@
           <label class="layui-form-label" style="text-align: center">问题</label>
           <div class="layui-input-block">
             <div class="myselect-div">
-              <input type="text" v-model="data.inquiry_info[0].inquiry_question" lay-verify="required" placeholder="问题" autocomplete="off"
-                     class="layui-input" style="width: 90%;float: left;">
-              <button @click="add_component('inquiry_info')" type="button"
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="text" style="float: right;">
-                <i class="layui-icon">&#xe654;</i>
-              </button>
+              <input type="text" v-model="data.inquiry_info[0].inquiry_question"  placeholder="问题" autocomplete="off"
+                     class="layui-input" style="width: 100%;float: left;">
+<!--              <button @click="add_component('inquiry_info')" type="button"-->
+<!--                      class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                      data-type="text" style="float: right;">-->
+<!--                <i class="layui-icon">&#xe654;</i>-->
+<!--              </button>-->
             </div>
           </div>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiry_info[0].inquiry_answer[0].name"
                               :options="inquiryFormGetAccuserMergeDefendant" placeholder="请选择原被告"
-                              lay-verify="vueselect"
                               style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.inquiry_info[0].inquiry_answer[0].answer" lay-verify="required" placeholder="回答" autocomplete="off"
+                <input type="text" v-model="data.inquiry_info[0].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('inquiry_reply',0)" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"
@@ -61,6 +60,11 @@
             </div>
           </template>
         </div>
+        <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info')"> 添加问题</button>
+<!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题-->
+<!--          </button>-->
+        </div>
 
         <template v-for="(item, index) in data.inquiry_info.slice(1)" :key="index">
           <div class="layui-form-item" pane>
@@ -68,12 +72,12 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <input type="text" v-model="data.inquiry_info[index+1].inquiry_question" placeholder="问题" autocomplete="off"
-                       class="layui-input" style="width: 90%;float: left;">
-                <button @click="delete_component('inquiry_info',index+1)" type="button"
-                        class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text" style="float: right;">
-                  <i class="layui-icon">&#xe640;</i>
-                </button>
+                       class="layui-input" style="width: 100%;float: left;">
+<!--                <button @click="delete_component('inquiry_info',index+1)" type="button"-->
+<!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                        data-type="text" style="float: right;">-->
+<!--                  <i class="layui-icon">&#xe640;</i>-->
+<!--                </button>-->
               </div>
             </div>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
@@ -115,7 +119,13 @@
               </div>
             </template>
           </div>
+          <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info')"> 添加问题</button>
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题
+            </button>
+          </div>
         </template>
+
         <hr>
       </form>
     </div>
@@ -151,13 +161,9 @@ export default {
   computed:{
     inquiryFormGetAccuserMergeDefendant: {
       get() {
-        let string1 = this.$store.state.defendantname.filter(i => i && i.trim()).map(function (e) {
-          return e + '（被告）';
-        })
-        let string2 = this.$store.state.plaintiffname.filter(i => i && i.trim()).map(function (e) {
-          return e + '（原告）';
-        })
-        return string2.concat(string1)
+            let string1 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
+            let string2 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
+            return string2.concat(string1)
       },
     },
   },

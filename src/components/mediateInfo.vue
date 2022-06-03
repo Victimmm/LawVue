@@ -180,7 +180,7 @@
             最终认定调解方案
           </div>
           <div class="layui-input-block">
-                  <textarea v-model="data.final_mediate" placeholder="请填写原被告都统一且法院最终确认的调解方案"
+                  <textarea v-model="data.final_mediate_plan" placeholder="请填写原被告都统一且法院最终确认的调解方案"
                             class="layui-textarea"></textarea>
           </div>
         </div>
@@ -211,7 +211,7 @@ export default {
           mediate_plan: ""
         }
       ],
-      final_mediate:'',
+      final_mediate_plan:'',
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null &&  "mediateInfo" in wholeItem){
@@ -224,29 +224,13 @@ export default {
   computed:{
     get_defendant_name:{
       get(){
-        let string1 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-          if(e.defendant=="undefined"){
-            return e.defendant_short + '（被告）';
-          }
-          else return e.defendant + '（被告）';
-        })
-        // let string2 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
-        //   if(e.accuser=="undefined"){
-        //     return e.accuser_short + '（原告）';
-        //   }
-        //   else return e.accuser + '（原告）';
-        // })
+        let string1 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
         return string1
       },
     },
     get_accuser_name:{
       get(){
-        let string2 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
-          if(e.accuser=="undefined"){
-            return e.accuser_short + '（原告）';
-          }
-          else return e.accuser + '（原告）';
-        })
+        let string2 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
         return string2
     },
     },
@@ -267,13 +251,9 @@ export default {
           }
         }
         if (flag_accuser == 1 || flag_defendant ==1){
-          // flag_accuser=0
-          // flag_defendant=0
           return 0  //不显示
         }
         else {
-          // flag_accuser=0
-          // flag_defendant=0
           return 1
         } //显示
         }

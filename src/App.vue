@@ -80,32 +80,32 @@
         </fieldset>
       </div>
 
-<!--      <div id="inquiryInfo">-->
-<!--        <fieldset class="layui-elem-field layui-field-title">-->
-<!--          <legend>法庭询问</legend>-->
-<!--          <div class="layui-field-box">-->
-<!--            <inquiryInfo></inquiryInfo>-->
-<!--          </div>-->
-<!--        </fieldset>-->
-<!--      </div>-->
-
-<!--      <div id="argueInfo">-->
-<!--        <fieldset class="layui-elem-field layui-field-title">-->
-<!--          <legend>法庭辩论</legend>-->
-<!--          <div class="layui-field-box">-->
-<!--            <argueInfo></argueInfo>-->
-<!--          </div>-->
-<!--        </fieldset>-->
-<!--      </div>-->
-
-      <div id="finalStatementInfo">
+      <div id="inquiryInfo">
         <fieldset class="layui-elem-field layui-field-title">
-          <legend>最后陈述意见</legend>
+          <legend>法庭询问</legend>
           <div class="layui-field-box">
-            <finalStatementInfo></finalStatementInfo>
+            <inquiryInfo></inquiryInfo>
           </div>
         </fieldset>
       </div>
+
+      <div id="argueInfo">
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>法庭辩论</legend>
+          <div class="layui-field-box">
+            <argueInfo></argueInfo>
+          </div>
+        </fieldset>
+      </div>
+
+<!--      <div id="finalStatementInfo">-->
+<!--        <fieldset class="layui-elem-field layui-field-title">-->
+<!--          <legend>最后陈述意见</legend>-->
+<!--          <div class="layui-field-box">-->
+<!--            <finalStatementInfo></finalStatementInfo>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
 
       <div id="mediateInfo">
         <fieldset class="layui-elem-field layui-field-title">
@@ -151,9 +151,9 @@ import CourtInves from './components/CourtInves.vue'
 import rightInfo from "@/components/rightInfo";
 import accuserShowInfo from "@/components/accuserShowInfo";
 import defendShowInfo from "@/components/defendantShowinfo";
-// import inquiryInfo from "@/components/inquiryInfo";
-// import argueInfo from "@/components/argueInfo";
-import finalStatementInfo from "@/components/finalStatementInfo";
+import inquiryInfo from "@/components/inquiryInfo";
+import argueInfo from "@/components/argueInfo";
+// import finalStatementInfo from "@/components/finalStatementInfo";
 import mediateInfo from "@/components/mediateInfo";
 import deliveryInfo from "@/components/deliveryInfo";
 import BasicState from "@/components/BasicState";
@@ -169,9 +169,9 @@ export default {
     rightInfo,
     accuserShowInfo,
     defendShowInfo,
-    // inquiryInfo,
-    // argueInfo,
-    finalStatementInfo,
+    inquiryInfo,
+    argueInfo,
+    // finalStatementInfo,
     mediateInfo,
     deliveryInfo,
     BasicState,
