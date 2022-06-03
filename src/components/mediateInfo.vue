@@ -14,7 +14,6 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_accuser[0].accuser"
                               :options="get_accuser_name" placeholder="请选择原告"
-                              lay-verify="vueselect"
                               style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -40,7 +39,7 @@
               调解方案
             </div>
             <div class="layui-input-block">
-                  <textarea v-model="data.mediate_accuser[0].mediate_plan" lay-verify="required" placeholder="请输入原告调解方案"
+                  <textarea v-model="data.mediate_accuser[0].mediate_plan"  placeholder="请输入原告调解方案"
                             class="layui-textarea"></textarea>
             </div>
           </div>
@@ -49,7 +48,7 @@
             <label class="layui-form-label">庭外和解时限</label>
             <div class="layui-input-block">
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                <input type="text" v-model="data.mediate_accuser[0].time_limit" lay-verify="required" placeholder="庭外和解时限" autocomplete="off"
+                <input type="text" v-model="data.mediate_accuser[0].time_limit" placeholder="庭外和解时限" autocomplete="off"
                        class="layui-input">
               </div>
             </div>
@@ -109,7 +108,6 @@
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant[0].defendant"
                               :options="get_defendant_name" placeholder="请选择被告"
-                              lay-verify="vueselect"
                               style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
@@ -134,7 +132,7 @@
             调解方案
           </div>
           <div class="layui-input-block">
-                <textarea v-model="data.mediate_defendant[0].mediate_plan" lay-verify="required" placeholder="请输入被告调解方案"
+                <textarea v-model="data.mediate_defendant[0].mediate_plan" placeholder="请输入被告调解方案"
                           class="layui-textarea"></textarea>
           </div>
         </div>
