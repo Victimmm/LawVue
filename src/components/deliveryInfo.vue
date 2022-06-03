@@ -52,9 +52,6 @@
             </div>
           </div>
         </div>
-<!--        <div class="layui-form-item">-->
-<!--          <input type="text" v-model="data.deliveryd_defendant[0].email_defendant" name="title" placeholder="被告电子邮件地址" autocomplete="off" class="layui-input">-->
-<!--        </div>-->
 
         <template v-for="(item, index) in data.delivery_info.slice(1)" :key="index">
           <div class="layui-form-item" pane>
@@ -148,19 +145,9 @@ export default {
   computed:{
     deliveryFormGetAccuserMergeDefendant: {
       get() {
-        let string1 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-          if(e.defendant=="undefined"){
-            return e.defendant_short + '（被告）';
-          }
-          else return e.defendant + '（被告）';
-        })
-        let string2 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
-          if(e.accuser=="undefined"){
-            return e.accuser_short + '（原告）';
-          }
-          else return e.accuser + '（原告）';
-        })
-        return string2.concat(string1)
+        let string1 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
+        let string2 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
+        return string1.concat(string2)
       },
     },
   },
