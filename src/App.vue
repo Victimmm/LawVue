@@ -354,18 +354,18 @@ export default {
         if ("accuserShowInfo" in wholeItem) {
           var accuserShowInfo = wholeItem.accuserShowInfo
 
-          accuserShowInfo.defendant_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),defendant:e.defendant.join("**")})
+          accuserShowInfo.defendant_query.forEach( e => {e.evidence=e.evidence.join("**") ,e.defendant=e.defendant.join("**")})
           // 合并法庭调查表和原告举
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], accuserShowInfo)
         }
 
         if ("defendantShowInfo" in wholeItem) {
           var defendantShowInfo = wholeItem.defendantShowInfo
-          defendantShowInfo.accuser_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),accuser:e.accuser.join("**")})
-          defendantShowInfo.other_defendant_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),defendant:e.defendant.join("**")})
-          defendantShowInfo.counterclaim_defendant_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),counterclaim_defendant:e.counterclaim_defendant.join("**")})
-          defendantShowInfo.other_counterclaim_defendant_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),other_counterclaim_defendant:e.other_counterclaim_defendant.join("**")})
-          defendantShowInfo.counterclaim_accuser_query.forEach( (e,index,arr) => arr[index]={evidence:e.evidence.join("**"),counterclaim_accuser:e.counterclaim_accuser.join("**")})
+          defendantShowInfo.accuser_query.forEach( e => {e.evidence=e.evidence.join("**") ,e.accuser=e.accuser.join("**")})
+          defendantShowInfo.other_defendant_query.forEach( e => {e.evidence=e.evidence.join("**") ,e.defendant=e.defendant.join("**")})
+          defendantShowInfo.counterclaim_defendant_query.forEach( e => {e.evidence=e.evidence.join("**") ,e.counterclaim_defendant=e.counterclaim_defendant.join("**")})
+          defendantShowInfo.other_counterclaim_defendant_query.forEach( e => {e.evidence=e.evidence.join("**") ,e.other_counterclaim_defendant=e.other_counterclaim_defendant.join("**")})
+          defendantShowInfo.counterclaim_accuser_query.forEach( e=> {e.evidence=e.evidence.join("**") ,e.counterclaim_accuser=e.counterclaim_accuser.join("**")})
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], defendantShowInfo)
         }
 
@@ -387,6 +387,18 @@ export default {
 
         if ("finalStatementInfo" in wholeItem) {
           let finalStatementInfoItem = wholeItem.finalStatementInfo.final_statement_info
+
+          let plaintiff= this.$store.state.plaintiff_item.map(e => (e.accuser_short==''?e.accuser:e.accuser_short)+"（原告）").filter(i => i && i.trim())
+
+          let defendant= this.$store.state.defendant_item.map(e => (e.defendant_short==''?e.defendant:e.defendant_short)+"（被告）").filter(i => i && i.trim())
+
+          let plaintiff_defendant=plaintiff.concat(defendant)
+          console.log(plaintiff_defendant)
+          for (let i = 0; i < plaintiff_defendant.length; i++) {
+            finalStatementInfoItem[i].name =plaintiff_defendant[i]
+          }
+
+
           recordJson["finalStatementInfo"] = finalStatementInfoItem
         }
 
@@ -402,13 +414,12 @@ export default {
           let deliveryInfoItem = wholeItem.deliveryInfo.delivery_info
           recordJson["deliveryInfo"] = deliveryInfoItem
         }
-        //审判员最后陈述意见
-        if ("summarize" in wholeItem) {
-          let summarizeInfo = wholeItem.summarizeInfo
-          recordJson["summarizeInfo"] = summarizeInfo
+        //审判员最后陈述意
+        if ("summarizeInfo" in wholeItem) {
+          let summarize = wholeItem.summarizeInfo
+          recordJson["summarize"] = summarize
         }
       }
-
 
       this.axios.post('/record/add', recordJson)
           .then(function () {

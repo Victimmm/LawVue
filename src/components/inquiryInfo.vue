@@ -14,11 +14,6 @@
             <div class="myselect-div">
               <input type="text" v-model="data.inquiry_info[0].inquiry_question"  placeholder="问题" autocomplete="off"
                      class="layui-input" style="width: 100%;float: left;">
-<!--              <button @click="add_component('inquiry_info')" type="button"-->
-<!--                      class="layui-btn layui-btn-primary layui-btn-sm"-->
-<!--                      data-type="text" style="float: right;">-->
-<!--                <i class="layui-icon">&#xe654;</i>-->
-<!--              </button>-->
             </div>
           </div>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">

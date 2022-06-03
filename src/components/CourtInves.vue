@@ -230,7 +230,7 @@ data = {
   counterclaim_accuser_claim_item: "",
   counterclaim_accuser_fact_reason: "",
   counterclaim_defendant_reply: [{name: "", content: ""}],
-  counterclaim_defendant_today_is_reply: "2",
+  counterclaim_defendant_today_is_reply: "1",
 };
 
 export default {

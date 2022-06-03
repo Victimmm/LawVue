@@ -188,7 +188,7 @@ export default {
   watch: {
     data: {
       handler() {
-        if(this.data.accuser_type=="1"){
+        if(this.data.accuser_type=="2"){
           this.data.accuser_short=""
         }
         //如何根据数据存储

@@ -203,11 +203,12 @@ export default {
       court_clerk: '',
       court_number:'（'+new Date().getFullYear()+'）京0108民初XXX号',
       court_cause:"",
-      court_cause_list: ['买卖纠纷合同','异议登记不当损害赔偿纠纷','股权质权纠纷','物业服务合同纠纷','借用合同纠纷']
+      court_cause_list: []
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "BasicInfo" in wholeItem) {
       data = JSON.parse(window.localStorage.getItem(this.$store.state.court_number)).BasicInfo;
+      return {data: data}
     }
     // else if (window.localStorage.getItem("CourtTemp") != null) {
     //   data = JSON.parse(window.localStorage.getItem("CourtTemp"))
@@ -218,6 +219,31 @@ export default {
     VueMultiselect
   },
   mounted() {
+    this.$nextTick(function () {
+      // 仅在整个视图都被渲染之后才会运行的代码
+      if(this.data.court_number== '（'+new Date().getFullYear()+'）京0108民初XXX号' && this.$store.state.court_number==""){
+      Promise.all([this.axios.get('/record/clerk/relation')])
+          .then( (results) => {
+            const relation = results[0].data.data;
+
+            this.data.court_place=relation.court_place
+            this.data.court_clerk=relation.court_clerk
+
+            this.$store.commit('updateCourt_Clerk', relation.court_clerk)
+            this.data.judge[0]= {name : relation.judge}
+            this.$store.commit('judgeChange', ['judge', 0, this.data.judge[0].name])
+          })
+          .then(function () {
+
+          });
+      }
+      this.axios.get('/record/court/cause').then((result) =>{
+        const court_cause_list = result.data.data;
+        this.data.court_cause_list=court_cause_list
+      })
+    })
+
+
     window.layui.use('laydate', () => {
       var laydate = window.layui.laydate;
       laydate.render({
