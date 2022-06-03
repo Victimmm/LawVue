@@ -98,14 +98,14 @@
         </fieldset>
       </div>
 
-<!--      <div id="finalStatementInfo">-->
-<!--        <fieldset class="layui-elem-field layui-field-title">-->
-<!--          <legend>最后陈述意见</legend>-->
-<!--          <div class="layui-field-box">-->
-<!--            <finalStatementInfo></finalStatementInfo>-->
-<!--          </div>-->
-<!--        </fieldset>-->
-<!--      </div>-->
+      <div id="finalStatementInfo">
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>最后陈述意见</legend>
+          <div class="layui-field-box">
+            <finalStatementInfo></finalStatementInfo>
+          </div>
+        </fieldset>
+      </div>
 
       <div id="mediateInfo">
         <fieldset class="layui-elem-field layui-field-title">
@@ -153,7 +153,7 @@ import accuserShowInfo from "@/components/accuserShowInfo";
 import defendShowInfo from "@/components/defendantShowinfo";
 import inquiryInfo from "@/components/inquiryInfo";
 import argueInfo from "@/components/argueInfo";
-// import finalStatementInfo from "@/components/finalStatementInfo";
+import finalStatementInfo from "@/components/finalStatementInfo";
 import mediateInfo from "@/components/mediateInfo";
 import deliveryInfo from "@/components/deliveryInfo";
 import BasicState from "@/components/BasicState";
@@ -171,7 +171,7 @@ export default {
     defendShowInfo,
     inquiryInfo,
     argueInfo,
-    // finalStatementInfo,
+    finalStatementInfo,
     mediateInfo,
     deliveryInfo,
     BasicState,

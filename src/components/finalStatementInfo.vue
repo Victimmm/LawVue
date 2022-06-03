@@ -32,17 +32,17 @@
 
           <template v-for="(item, index) in getPlaintiffName" :key="index">
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
-              <div class="layui-input-inline" style="margin-left:0px ;">
+
                 <label class="layui-form-label">{{ item }}</label>
-              </div>
+
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" value="getvalue" v-model="data.final_statement_info[index+1].final_statement"   placeholder="最后陈述意见" autocomplete="off"
+                  <input type="text" v-model="data.final_statement_info[index].final_statement"  placeholder="最后陈述意见" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
-                  <button @click="delete_component('final_statement_info',index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text" style="float: right;">
-                    <i class="layui-icon">&#xe640;</i>
-                  </button>
+<!--                  <button @click="delete_component('final_statement_info',index)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                          data-type="text" style="float: right;">-->
+<!--                    <i class="layui-icon">&#xe640;</i>-->
+<!--                  </button>-->
                 </div>
 
               </div>
@@ -89,10 +89,10 @@ computed:{
         let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
           return e.accuser + '（原告）';
         })
-        let string2 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-          return e.accuser + '（反诉被告）';
+        let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+          return e.defendant + '（被告）';
         })
-      return string2.concat(string1)
+      return string1.concat(string2)
 
     }
   },
@@ -132,9 +132,6 @@ computed:{
           break;
       }
     },
-    // save_localstorage() {
-    //   localStorage.setItem("final_form", JSON.stringify(this.data));
-    // },
   },
   watch: {
     data:{
@@ -155,9 +152,15 @@ computed:{
     },
     getPlaintiffName() {
       if (this.data.final_statement_info.length < (this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).length+this.$store.state.defendant_item.filter(i => i.defendant && i.defendant.trim()).length)) {
+        let statement=''
+        // if (name.search("原告") != -1){
+        //   statement="坚持诉讼请求"
+        // } else {
+        //   statement="坚持答辩意见"
+        // }
         this.data.final_statement_info.push({
           name: "", //原被告
-          final_statement: "", //最后陈述意见
+          final_statement: statement, //最后陈述意见
         })
       }
     }
