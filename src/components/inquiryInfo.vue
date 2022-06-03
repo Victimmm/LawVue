@@ -61,7 +61,7 @@
           </template>
         </div>
         <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info')"> 添加问题</button>
+          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info',1)"> 添加问题</button>
 <!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题-->
 <!--          </button>-->
         </div>
@@ -120,7 +120,7 @@
             </template>
           </div>
           <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info')"> 添加问题</button>
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info',index+2)"> 添加问题</button>
             <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题
             </button>
           </div>
@@ -193,7 +193,7 @@ export default {
           break;
         case "inquiry_info":
           //
-          this.data.inquiry_info.push({
+          this.data.inquiry_info.splice(index,0,{
             inquiry_question: "",
             inquiry_answer: [{
               name:"",
