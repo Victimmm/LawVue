@@ -5,7 +5,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label">案号 </label>
           <div class="layui-input-block">
-            <input type="text" v-model="data.court_number" @blur="courtNumChange()"   placeholder="请输入案号"
+            <input type="text" v-model="data.court_number" @blur="courtNumChange()"  lay-verify="digital" placeholder="请输入案号"
                    autocomplete="on" class="layui-input">
           </div>
         </div>
@@ -37,7 +37,7 @@
             书记员
           </div>
           <div class="layui-input-block">
-            <input type="text" v-model="courtClerkName" name="courtClerk" placeholder="书记员姓名"   autocomplete="off"
+            <input type="text" v-model="courtClerkName" name="courtClerk" placeholder="书记员姓名"  lay-verify="required"  autocomplete="off"
                    class="layui-input">
           </div>
         </div>
@@ -49,7 +49,7 @@
 
           <div class="layui-input-block ">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
-              <input type="text" v-model="data.judge[0].name" placeholder="审判员姓名" autocomplete="off" class="layui-input"
+              <input type="text" v-model="data.judge[0].name" placeholder="审判员姓名" lay-verify="required"  autocomplete="off" class="layui-input"
                      style="width: 90%;float: left;" @blur="judgeChange('judge',0)"  >
               <button @click="add_component('judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
@@ -246,6 +246,7 @@ export default {
 
     window.layui.use('laydate', () => {
       var laydate = window.layui.laydate;
+      // var form = window.layui.form;
       laydate.render({
         elem: '#filing_time', //指定元素
         type: 'datetime',
@@ -266,6 +267,14 @@ export default {
           // console.log(value); //得到日期生成的值，如：2017-08-18
         }
       });
+      // form.verify({
+      //   // court_number : function(value) {
+      //   court_number : function(value) {
+      //       if (!value || value=="（2022）京0108民初XXX号") {
+      //         return "案号不能为空或者默认值";
+      //       }
+      //     }
+      // });
     });
   },
   methods: {
