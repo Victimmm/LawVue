@@ -354,7 +354,7 @@
                   <div class="myselect-div">
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.counterclaim_defendant_query[index].counterclaim_defendant"
-                                    :options=getAccuserName placeholder="请选择反诉被告"
+                                    :options=getCounterDefendantName placeholder="请选择反诉被告"
                                     group-label="accuser"
                                     :group-select="true"
                                     group-values="accuser_name"
@@ -534,7 +534,7 @@
                   <div class="myselect-div">
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.counterclaim_accuser_query[index].counterclaim_accuser"
-                                    :options=getDefendantName placeholder="请选择反诉原告"
+                                    :options=getCounterAccuserName placeholder="请选择反诉原告"
                                     group-label="defendant"
                                     :group-select="true"
                                     group-values="defendant_name"
@@ -637,7 +637,7 @@
                   <div class="myselect-div">
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.other_counterclaim_defendant_query[index].other_counterclaim_defendant"
-                                    :options=getAccuserName placeholder="请选择其他反诉被告"
+                                    :options=getCounterDefendantName placeholder="请选择其他反诉被告"
                                     group-label="accuser"
                                     :group-select="true"
                                     group-values="accuser_name"
@@ -853,6 +853,18 @@ export default {
       get() {
         let accuser = this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short).filter(i => i && i.trim())
         return [{accuser: "全选原告", accuser_name: accuser}]
+      }
+    },
+    getCounterDefendantName: {
+      get() {
+        let accuser = this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short).filter(i => i && i.trim())
+        return [{accuser: "全选反诉被告", accuser_name: accuser}]
+      }
+    },
+    getCounterAccuserName: {
+      get() {
+        let defendant = this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short).filter(i => i && i.trim())
+        return [{defendant: "全选反诉原告", defendant_name: defendant}]
       }
     },
     getProofDefendant: {

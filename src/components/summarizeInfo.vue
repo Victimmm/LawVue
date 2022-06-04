@@ -22,8 +22,8 @@ export default {
       summarize:'',
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if(wholeItem!=null &&  "summarizeInfo" in wholeItem){
-      data=wholeItem.summarizeInfo
+    if(wholeItem!=null &&  "summarize" in wholeItem){
+      data=wholeItem.summarize
     }
     return {
       data: data,
@@ -39,7 +39,7 @@ export default {
         else{
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           if (wholeItem != null) {
-            wholeItem.summarizeInfo = this.data
+            wholeItem.summarize = this.data
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
           }
         }
