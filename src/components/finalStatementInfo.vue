@@ -83,14 +83,16 @@ export default {
     // },
     getPlaintiffName: {
       get() {
+
         // let string1 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
         // let string2 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
-        // string1=string2.concat(string1)
+        // return string2.concat(string1)
+
         let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-          return e.accuser + '（原告）';
+          return e.accuser_short==''?e.accuser:e.accuser_short + '（原告）';
         })
         let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-          return e.defendant + '（被告）';
+          return e.defendant_short==''?e.defendant:e.defendant_short + '（被告）';
         })
         return string1.concat(string2)
 
