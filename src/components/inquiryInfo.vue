@@ -10,12 +10,16 @@
         </div>
         <div class="layui-form-item" pane>
           <label class="layui-form-label" style="text-align: center">问题</label>
-          <div class="layui-input-block">
-            <div class="myselect-div">
-              <input type="text" v-model="data.inquiry_info[0].inquiry_question"  placeholder="问题" autocomplete="off"
-                     class="layui-input" style="width: 100%;float: left;">
-            </div>
-          </div>
+              <div class="layui-input-block" contenteditable="true" >
+                <VueMultiselect :option-height="38" v-model="data.inquiry_info[0].inquiry_question"
+                                :show-labels="false"
+                                :options="data.question_list" placeholder="问题"
+                                :taggable="true"
+                                @tag="addTag"
+                                style="line-height: 16px; min-height: 38px"></VueMultiselect>
+              </div>
+<!--              <input type="text" v-model="data.inquiry_info[0].inquiry_question"  placeholder="问题" autocomplete="off"-->
+<!--                     class="layui-input" style="width: 100%;float: left;">-->
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiry_info[0].inquiry_answer[0].name"
@@ -64,17 +68,22 @@
         <template v-for="(item, index) in data.inquiry_info.slice(1)" :key="index">
           <div class="layui-form-item" pane>
             <label class="layui-form-label" style="text-align: center">问题</label>
-            <div class="layui-input-block">
-              <div class="myselect-div">
-                <input type="text" v-model="data.inquiry_info[index+1].inquiry_question" placeholder="问题" autocomplete="off"
-                       class="layui-input" style="width: 100%;float: left;">
+              <div class="layui-input-block" contenteditable="true" >
+                <VueMultiselect :option-height="38" v-model="data.inquiry_info[index+1].inquiry_question"
+                                :show-labels="false"
+                                :options="data.question_list" placeholder="问题"
+                                :taggable="true"
+                                @tag="addTag"
+                                style="line-height: 16px; min-height: 38px"></VueMultiselect>
+              </div>
+<!--                <input type="text" v-model="data.inquiry_info[index+1].inquiry_question" placeholder="问题" autocomplete="off"-->
+<!--                       class="layui-input" style="width: 100%;float: left;">-->
 <!--                <button @click="delete_component('inquiry_info',index+1)" type="button"-->
 <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
 <!--                        data-type="text" style="float: right;">-->
 <!--                  <i class="layui-icon">&#xe640;</i>-->
 <!--                </button>-->
-              </div>
-            </div>
+
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiry_info[index+1].inquiry_answer[0].name"
@@ -143,7 +152,8 @@ export default {
           answer:"",
         }
   ]
-  }]
+  }],
+      question_list: ["问题列表项1","问题列表项2",],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null && "inquiryInfo" in wholeItem){
@@ -166,6 +176,11 @@ export default {
     VueMultiselect
   },
   methods: {
+    addTag(newTag){
+      let tag=newTag
+      this.data.question_list.push(tag)
+      // this.data.inquiry_info[0]=tag
+    },
 
 // {
 //   inquiry_info:[{
