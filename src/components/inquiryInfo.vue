@@ -3,13 +3,13 @@
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane">
         <div class="layui-form-item" pane>
-          <label class="layui-form-label" style="text-align: center">审判员</label>
+          <label class="layui-form-label">审判员</label>
           <div class="layui-input-block">
             <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">举证质证结束，下面进入法庭询问</textarea>
           </div>
         </div>
         <div class="layui-form-item" pane>
-          <label class="layui-form-label" style="text-align: center">问题</label>
+          <label class="layui-form-label" >问题</label>
               <div class="layui-input-block" contenteditable="true" >
                 <VueMultiselect :option-height="38" v-model="data.inquiry_info[0].inquiry_question"
                                 :show-labels="false"
@@ -67,7 +67,7 @@
 
         <template v-for="(item, index) in data.inquiry_info.slice(1)" :key="index">
           <div class="layui-form-item" pane>
-            <label class="layui-form-label" style="text-align: center">问题</label>
+            <label class="layui-form-label">问题</label>
               <div class="layui-input-block" contenteditable="true" >
                 <VueMultiselect :option-height="38" v-model="data.inquiry_info[index+1].inquiry_question"
                                 :show-labels="false"

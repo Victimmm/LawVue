@@ -35,7 +35,7 @@
         </div>
         <div v-if="data.mediate_accuser[0].is_mediate==1">
           <div class="layui-form-item" pane>
-            <div class="layui-form-label divcenter">
+            <div class="layui-form-label" style="line-height: 80px">
               调解方案
             </div>
             <div class="layui-input-block">
@@ -82,7 +82,7 @@
           </div>
           <div v-if="data.mediate_accuser[index+1].is_mediate==1">
             <div class="layui-form-item" pane>
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label" style="line-height: 80px">
                 调解方案
               </div>
               <div class="layui-input-block">
@@ -128,7 +128,7 @@
           </div>
         </div>
         <div class="layui-form-item" v-if="data.mediate_defendant[0].is_mediate==1" pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label" style="line-height: 80px">
             调解方案
           </div>
           <div class="layui-input-block">
@@ -163,7 +163,7 @@
             </div>
           </div>
           <div class="layui-form-item" v-if="data.mediate_defendant[index+1].is_mediate==1" pane>
-            <div class="layui-form-label divcenter">
+            <div class="layui-form-label" style="line-height: 80px">
               调解方案
             </div>
             <div class="layui-input-block">
@@ -174,7 +174,7 @@
         </template>
         <div v-if="show_final_mediate==1">
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter" >
+          <div class="layui-form-label" style="line-height: 80px">
             最终认定调解方案
           </div>
           <div class="layui-input-block">

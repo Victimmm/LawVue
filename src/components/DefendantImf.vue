@@ -34,7 +34,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">被告全称</label>
             <div class="layui-input-block">
-              <input type="text" v-model="defendantFullName" required  placeholder="请输入被告全称"
+              <input type="text" v-model="defendantFullName"  placeholder="请输入被告全称"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">委托诉讼代理人</div>
+          <div class="layui-form-label" style="line-height: 70px">委托诉讼代理人</div>
           <div class="layui-input-block">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.defendant_agent[0].agent"  placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"
@@ -90,7 +90,7 @@
         <template v-for="( item,index) in data.defendant_agent.slice(1)" :key='index'>
 
           <div class="layui-form-item" pane>
-            <div class="layui-form-label divcenter">委托诉讼代理人</div>
+            <div class="layui-form-label" style="line-height: 70px">委托诉讼代理人</div>
             <div class="layui-input-block">
               <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
                 <input type="text" v-model="data.defendant_agent[index+1].agent" placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"

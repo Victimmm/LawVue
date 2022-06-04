@@ -5,7 +5,7 @@
       <form class="layui-form layui-form-pane" action="" >
 
         <div class="layui-form-item" pane>
-          <label class="layui-form-label" style="line-height:180px">审判员</label>
+          <label class="layui-form-label" style="line-height:120px">审判员</label>
           <div class="layui-input-block">
             <textarea v-model="data.judge_right_duty" type="text" class="layui-input " style="height: 140px;">
             </textarea>

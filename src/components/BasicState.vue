@@ -4,7 +4,7 @@
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane" action="">
         <div class="layui-form-item" pane>
-          <label class="layui-form-label ">陈述类型</label>
+          <label class="layui-form-label">陈述类型</label>
           <div class="layui-input-block">
             <div class="myradiomargin">
               <input type="radio" lay-ignore name="stateType" v-model="data.state_type" value="1"
@@ -18,7 +18,7 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label" style="line-height: 70px">
             陈述内容
           </div>
           <div class="layui-input-block">

@@ -46,7 +46,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">原告地址</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_address" required  placeholder="请输入原告地址"
+              <input type="text" v-model="data.accuser_address" placeholder="请输入原告地址"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
@@ -54,21 +54,21 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label layui-form-required">法人代表</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_represent" required  placeholder="请输入法人代表"
+              <input type="text" v-model="data.accuser_represent"  placeholder="请输入法人代表"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label layui-form-required">法人职务</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_duty" required  placeholder="请输入法人职务"
+              <input type="text" v-model="data.accuser_duty" placeholder="请输入法人职务"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">委托诉讼代理人</div>
+          <div class="layui-form-label" style="line-height: 70px">委托诉讼代理人</div>
           <div class="layui-input-block">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.accuser_agent[0].agent" placeholder="请输入委托诉讼代理人"   autocomplete="off" class="layui-input"
@@ -80,7 +80,7 @@
             </div>
           </div>
           <div class="layui-input-block" style="margin-top: 5px;">
-            <input type="text" v-model="data.accuser_agent[0].agent_address" required 
+            <input type="text" v-model="data.accuser_agent[0].agent_address"
                    placeholder="请输入委托诉讼代理人单位" autocomplete="off" class="layui-input">
           </div>
         </div>
@@ -88,7 +88,7 @@
         <template v-for="( item,index) in data.accuser_agent.slice(1)" :key='index'>
 
           <div class="layui-form-item" pane>
-            <div class="layui-form-label divcenter">委托诉讼代理人</div>
+            <div class="layui-form-label" style="line-height: 70px">委托诉讼代理人</div>
             <div class="layui-input-block">
               <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
                 <input type="text" v-model="data.accuser_agent[index+1].agent" placeholder="请输入委托诉讼代理人"  autocomplete="off" class="layui-input"

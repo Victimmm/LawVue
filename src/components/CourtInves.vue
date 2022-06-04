@@ -13,7 +13,7 @@
         </div>
 
         <div class="layui-form-item " pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label" style="line-height: 70px">
             原告诉讼请求项
           </div>
           <div class="layui-input-block">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label" style="line-height: 70px">
             事实和理由
           </div>
           <div class="layui-input-block">
@@ -127,7 +127,7 @@
 
         <div v-if="data.is_counterclaim==1">
           <div class="layui-form-item" pane>
-            <div class="layui-form-label divcenter">
+            <div class="layui-form-label" style="line-height: 80px">
               反诉原告诉讼请求项
             </div>
             <div class="layui-input-block" contenteditable="true">
@@ -142,7 +142,7 @@
           </div>
 
           <div class="layui-form-item" pane>
-            <div class="layui-form-label divcenter">
+            <div class="layui-form-label" style="line-height: 80px">
               事实和理由
             </div>
             <div class="layui-input-block">

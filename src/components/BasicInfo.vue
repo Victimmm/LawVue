@@ -43,7 +43,7 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label ">
             审判员
           </div>
 
@@ -73,7 +73,7 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter" >
+          <div class="layui-form-label " >
             审判长
           </div>
           <div class="layui-input-block ">
@@ -107,7 +107,7 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label ">
             陪审员
           </div>
 
@@ -138,7 +138,7 @@
 
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label ">
             人民陪审员
           </div>
 
@@ -168,7 +168,7 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label ">
             案由
           </div>
           <div class="layui-input-block" contenteditable="true" >

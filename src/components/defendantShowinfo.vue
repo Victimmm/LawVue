@@ -43,7 +43,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 证明事项
               </div>
               <div class="layui-input-block">
@@ -77,7 +77,7 @@
 
           <template v-for="(item,index) in data.accuser_query" :key="index">
             <div class="layui-form-item" pane>
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择原告
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -98,7 +98,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择证据
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -119,7 +119,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 三性质证
               </div>
               <div class="layui-input-block">
@@ -154,7 +154,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label" style="line-height: 80px">
                 事实和理由
               </div>
               <div class="layui-input-block">
@@ -181,7 +181,7 @@
 
           <template v-for="(item,index) in data.other_defendant_query" :key="index">
             <div class="layui-form-item" pane>
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择其他被告
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -202,7 +202,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择证据
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -223,7 +223,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 三性质证
               </div>
               <div class="layui-input-block">
@@ -258,7 +258,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label" style="line-height: 80px">
                 事实和理由
               </div>
               <div class="layui-input-block">
@@ -312,7 +312,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 证明事项
               </div>
               <div class="layui-input-block">
@@ -346,7 +346,7 @@
 
           <template v-for="(item,index) in data.counterclaim_defendant_query" :key="index">
             <div class="layui-form-item" pane>
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择反诉被告
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -367,7 +367,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择反诉原告提交的证据
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -388,7 +388,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 三性质证
               </div>
               <div class="layui-input-block">
@@ -427,7 +427,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label" style="line-height: 80px">
                 事实和理由
               </div>
               <div class="layui-input-block">
@@ -491,7 +491,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 证明事项
               </div>
               <div class="layui-input-block">
@@ -526,7 +526,7 @@
 
           <template v-for="(item,index) in data.counterclaim_accuser_query" :key="index">
             <div class="layui-form-item" pane>
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择反诉原告
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -547,7 +547,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择证据
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -568,7 +568,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 三性质证
               </div>
               <div class="layui-input-block">
@@ -603,7 +603,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label" style="line-height: 80px">
                 事实和理由
               </div>
               <div class="layui-input-block">
@@ -629,7 +629,7 @@
 
           <template v-for="(item,index) in data.other_counterclaim_defendant_query" :key="index">
             <div class="layui-form-item" pane>
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择其他反诉被告
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -650,7 +650,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 请选择证据
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
@@ -671,7 +671,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label">
                 三性质证
               </div>
               <div class="layui-input-block">
@@ -712,7 +712,7 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label divcenter">
+              <div class="layui-form-label" style="line-height: 80px">
                 事实和理由
               </div>
               <div class="layui-input-block">
