@@ -18,13 +18,13 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label layui-form-required">原告姓名</label>
             <div class="layui-input-block">
-              <input type="text" v-model="plaintiffFullName"   placeholder="请输入原告姓名" autocomplete="off" class="layui-input">
+              <input type="text" v-model="plaintiffFullName"  lay-verify="required" placeholder="请输入原告姓名" autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label layui-form-required">原告住址</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_address" placeholder="请输入原告住址" autocomplete="off" 
+              <input type="text" v-model="data.accuser_address" lay-verify="required" placeholder="请输入原告住址" autocomplete="off"
                      class="layui-input">
             </div>
           </div>
@@ -33,20 +33,20 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">原告全称</label>
             <div class="layui-input-block">
-              <input type="text" v-model="plaintiffFullName" placeholder="请输入原告全称"   autocomplete="off" class="layui-input">
+              <input type="text" v-model="plaintiffFullName" lay-verify="required" placeholder="请输入原告全称"   autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label layui-form-required">原告简称</label>
             <div class="layui-input-block">
-              <input type="text" v-model="plaintiffShortName"  placeholder="请输入原告简称"
+              <input type="text" v-model="plaintiffShortName" lay-verify="required" placeholder="请输入原告简称"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label">原告地址</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_address" placeholder="请输入原告地址"
+              <input type="text" v-model="data.accuser_address" lay-verify="required" placeholder="请输入原告地址"
                      autocomplete="off" class="layui-input">
             </div>
           </div>

@@ -3,9 +3,9 @@
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane" action="">
         <div class="layui-form-item" pane>
-          <label class="layui-form-label">案号 </label>
+          <label class="layui-form-label">案号</label>
           <div class="layui-input-block">
-            <input type="text" v-model="data.court_number" @blur="courtNumChange()"  lay-verify="digital" placeholder="请输入案号"
+            <input type="text" v-model="data.court_number" @blur="courtNumChange()"  lay-verify="court_number" placeholder="请输入案号"
                    autocomplete="on" class="layui-input">
           </div>
         </div>
@@ -267,14 +267,19 @@ export default {
           // console.log(value); //得到日期生成的值，如：2017-08-18
         }
       });
-      // form.verify({
-      //   // court_number : function(value) {
-      //   court_number : function(value) {
-      //       if (!value || value=="（2022）京0108民初XXX号") {
-      //         return "案号不能为空或者默认值";
-      //       }
-      //     }
-      // });
+      window.layui.use('form', () => {
+        var form = window.layui.form
+        form.render()
+        form.verify({
+          // court_number : function(value) {
+          court_number : function(value) {
+              if (!value || value=="（2022）京0108民初XXX号") {
+                return "案号不能为空或者默认值";
+              }
+            }
+        });
+      });
+
     });
   },
   methods: {
