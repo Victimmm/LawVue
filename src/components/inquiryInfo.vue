@@ -153,7 +153,7 @@ export default {
         }
   ]
   }],
-      question_list: ["问题列表项1","问题列表项2",],
+      question_list: ["问题列表项1","问题列表项2"],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null && "inquiryInfo" in wholeItem){
@@ -166,8 +166,8 @@ export default {
   computed:{
     inquiryFormGetAccuserMergeDefendant: {
       get() {
-            let string1 = this.$store.state.defendant_item.map(e =>(e.defendant_short==''?e.defendant:e.defendant_short)+'（被告）').filter(i => i && i.trim())
-            let string2 = this.$store.state.plaintiff_item.map(e =>(e.accuser_short==''?e.accuser:e.accuser_short)+'（原告）').filter(i => i && i.trim())
+            let string1 = this.$store.state.defendant_item.map(e =>e.defendant_short==''?e.defendant:e.defendant_short+'（被告）').filter(i => i && i.trim())
+            let string2 = this.$store.state.plaintiff_item.map(e =>e.accuser_short==''?e.accuser:e.accuser_short+'（原告）').filter(i => i && i.trim())
             return string2.concat(string1)
       },
     },

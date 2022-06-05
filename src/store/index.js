@@ -24,7 +24,7 @@ export default createStore({
                 let judge_name = ['']
                 let people_juror=['']
                 let court_clerk = ""
-                let counterclaim_defendant_today_is_reply = "2"
+                let counterclaim_defendant_today_is_reply = "1"
                 let is_counterclaim = "2"
                 let wholeItem = JSON.parse(localStorage.getItem(decodeURI(pair[1])))
                 if (wholeItem != null) {
@@ -88,7 +88,7 @@ export default createStore({
             juror_name: [""],
             judge_name: [""],
             people_juror:[""],
-            counterclaim_defendant_today_is_reply: "2",
+            counterclaim_defendant_today_is_reply: "1",
             court_number: "",
             court_clerk: "",
             is_counterclaim: "2"

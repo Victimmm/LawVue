@@ -393,7 +393,6 @@ export default {
           let defendant= this.$store.state.defendant_item.map(e => (e.defendant_short==''?e.defendant:e.defendant_short)+"（被告）").filter(i => i && i.trim())
 
           let plaintiff_defendant=plaintiff.concat(defendant)
-          console.log(plaintiff_defendant)
           for (let i = 0; i < plaintiff_defendant.length; i++) {
             finalStatementInfoItem[i].name =plaintiff_defendant[i]
           }
@@ -421,9 +420,20 @@ export default {
         }
       }
 
-      this.axios.post('/record/add', recordJson)
-          .then(function () {
+      let requestType="1"
+      if(window.location.pathname == "/view/record/detail/"){
+        requestType="2"
+      }
+
+
+      this.axios.post('/record/add', {recordJson,requestType})
+          .then(function (result) {
             // handle success
+            console.log(result.data)
+            if(result.data=="案号不能重复"){
+              window.layui.layer.msg(result.data);
+              return
+            }
             window.location.href = '/view/record'
             // console.log(response);
           })

@@ -247,16 +247,18 @@ export default {
   computed: {
     getAccuserMergeDefendant: {
       get() {
-        let string1 = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short) + '（被告）').filter(i => i && i.trim())
-        let string2 = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short) + '（原告）').filter(i => i && i.trim())
+        let string1 = this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short + '（被告）').filter(i => i && i.trim())
+        let string2 = this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short + '（原告）').filter(i => i && i.trim())
+
         return string2.concat(string1)
 
       }
     },
     getCounterAccuserMergeDefendant: {
       get() {
-        let string3 = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short) + '（反诉原告）').filter(i => i && i.trim())
-        let string4 = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short) + '（反诉被告）').filter(i => i && i.trim())
+        let string3 = this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short + '（反诉原告）').filter(i => i && i.trim())
+
+        let string4 = this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short + '（反诉被告）').filter(i => i && i.trim())
         return string4.concat(string3)
       },
     },
