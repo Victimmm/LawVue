@@ -359,6 +359,9 @@ export default {
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], accuserShowInfo)
         }
 
+
+
+
         if ("defendantShowInfo" in wholeItem) {
           var defendantShowInfo = wholeItem.defendantShowInfo
           defendantShowInfo.accuser_query.forEach( e => {e.evidence=e.evidence.join("**") ,e.accuser=e.accuser.join("**")})
@@ -414,8 +417,8 @@ export default {
           recordJson["deliveryInfo"] = deliveryInfoItem
         }
         //审判员最后陈述意
-        if ("summarizeInfo" in wholeItem) {
-          let summarize = wholeItem.summarizeInfo
+        if ("summarize" in wholeItem) {
+          let summarize = wholeItem.summarize
           recordJson["summarize"] = summarize
         }
       }
