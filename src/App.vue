@@ -427,7 +427,7 @@ export default {
       if(window.location.pathname == "/view/record/detail/"){
         requestType="2"
       }
-
+      // console.log(recordJson)
 
       this.axios.post('/record/add', {recordJson,requestType})
           .then(function (result) {
@@ -525,7 +525,7 @@ body .myskin {
 .divcenter {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /*justify-content: center;*/
 }
 
 .myinput-block {
