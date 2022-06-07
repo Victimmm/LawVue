@@ -18,7 +18,7 @@
         </div>
 
         <div class="layui-form-item" pane>
-          <div class="layui-form-label divcenter">
+          <div class="layui-form-label divcenter" >
             陈述内容
           </div>
           <div class="layui-input-block">

@@ -121,211 +121,131 @@
           </div>
         </template>
 
-        <div class="site-border-cyan" style="width:80%">
-          <hr class="hr-solid-content" data-content="被告对原告提交的证据进行质证">
-        </div>
-
-        <div class="layui-form-item" pane>
-          <div class="layui-form-label ">
-            审判员
-          </div>
-          <div class="layui-input-block">
-            <textarea class="layui-textarea" style="height: 38px;min-height: 38px">被告对原告提交的证据进行质证</textarea>
-          </div>
-        </div>
-
-        <div class="layui-form-item" pane>
-          <div class="layui-form-label ">
-            请选择被告
-          </div>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-            <div class="layui-input-block">
-              <div class="myselect-div">
-                <VueMultiselect :option-height="38" :show-labels="false"
-                                v-model="data.defendant_query[0].defendant"
-                                :options=getDefendantName placeholder="请选择被告"
-                                group-label="defendant"
-                                :group-select="true"
-                                group-values="defendant_name"
-                                :multiple="true"
-                                :close-on-select="false"
-                                style="line-height: 16px; min-height: 38px;float:left;">
-                </VueMultiselect>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="layui-form-item" pane style="margin-top: -10px;">
-          <div class="layui-form-label ">
-            请选择证据
-          </div>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-            <div class="layui-input-block">
-              <div class="myselect-div">
-                <VueMultiselect :option-height="38" :show-labels="false"
-                                v-model="data.defendant_query[0].evidence"
-                                :options=getProofPlaintiff placeholder="请选择证据"
-                                group-label="evidence"
-                                :group-select="true"
-                                group-values="option_label"
-                                :multiple="true"
-                                :close-on-select="false"
-                                style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="layui-form-item" pane style="margin-top: -10px;">
-          <div class="layui-form-label ">
-            三性质证
-          </div>
-          <div class="layui-input-block">
-            <div class="layui-input-inline" style="width:33%;margin-left: 0">
-              <div class="myradiomargin">
-                <label>真实性：</label>
-                <input type="radio" lay-ignore  value="1" v-model="data.defendant_query[0].facticity"
-                       class="myradio"><label>是</label>
-                <input type="radio"  lay-ignore value="2" v-model="data.defendant_query[0].facticity"
-                       class="myradio" style="margin-left: 15px;"><label>否</label>
-              </div>
-            </div>
-            <div class="layui-input-inline" style="width:33%;margin-left: 0">
-              <div class="myradiomargin">
-                <label>合法性：</label>
-                <input type="radio" lay-ignore value="1" v-model="data.defendant_query[0].legality"
-                       class="myradio"><label>是</label>
-                <input type="radio" lay-ignore value="2" v-model="data.defendant_query[0].legality"
-                       class="myradio" style="margin-left: 15px;"><label>否</label>
-              </div>
-            </div>
-            <div class="layui-input-inline" style="width:34%;margin-left: 0">
-              <div class="myradiomargin">
-                <label>相关性：</label>
-                <input type="radio" lay-ignore value="1" v-model="data.defendant_query[0].relevance"
-                       class="myradio"><label>是</label>
-                <input type="radio" lay-ignore value="2" v-model="data.defendant_query[0].relevance"
-                       class="myradio" style="margin-left: 15px;"><label>否</label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="layui-form-item" pane style="margin-top: -10px;">
-          <div class="layui-form-label" style="line-height: 80px">
-            事实和理由
-          </div>
-          <div class="layui-input-block">
-              <textarea v-model="data.defendant_query[0].defendant_query_fact_reason" 
-                        placeholder="理由"
-                        class="layui-textarea"></textarea>
-          </div>
-        </div>
-
-        <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('defendant_query')"> 添加被告质证</button>
-        </div>
-
-        <template v-for="(item,index) in data.defendant_query.slice(1)" :key="index">
-
-          <div class="layui-form-item" pane>
-            <div class="layui-form-label">
-              请选择被告
-            </div>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-              <div class="layui-input-block">
-                <div class="myselect-div">
-                  <VueMultiselect :option-height="38" :show-labels="false"
-                                  v-model="data.defendant_query[index+1].defendant"
-                                  :options=getDefendantName placeholder="请选择被告"
-                                  group-label="defendant"
-                                  :group-select="true"
-                                  group-values="defendant_name"
-                                  :multiple="true"
-                                  :close-on-select="false"
-                                  style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="layui-form-item" pane style="margin-top: -10px;">
-            <div class="layui-form-label">
-              请选择证据
-            </div>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-              <div class="layui-input-block">
-                <div class="myselect-div">
-                  <VueMultiselect :option-height="38" :show-labels="false"
-                                  v-model="data.defendant_query[index+1].evidence"
-                                  :options=getProofPlaintiff placeholder="请选择证据"
-                                  group-label="evidence"
-                                  :group-select="true"
-                                  group-values="option_label"
-                                  :multiple="true"
-                                  :close-on-select="false"
-                                  style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="layui-form-item" pane style="margin-top: -10px;">
-            <div class="layui-form-label">
-              三性质证
-            </div>
-            <div class="layui-input-block">
-              <div class="layui-input-inline" style="width:33%;margin-left: 0">
-                <div class="myradiomargin">
-                  <label>真实性：</label>
-                  <input type="radio" lay-ignore  value="1" v-model="data.defendant_query[index+1].facticity"
-                         class="myradio"><label>是</label>
-                  <input type="radio" lay-ignore value="2" v-model="data.defendant_query[index+1].facticity"
-                         class="myradio" style="margin-left: 15px;"><label>否</label>
-                </div>
-              </div>
-              <div class="layui-input-inline" style="width:33%;margin-left: 0">
-                <div class="myradiomargin">
-                  <label>合法性：</label>
-                  <input type="radio" lay-ignore value="1" v-model="data.defendant_query[index+1].legality"
-                         class="myradio"><label>是</label>
-                  <input type="radio" lay-ignore value="2" v-model="data.defendant_query[index+1].legality"
-                         class="myradio" style="margin-left: 15px;"><label>否</label>
-                </div>
-              </div>
-              <div class="layui-input-inline" style="width:34%;margin-left: 0">
-                <div class="myradiomargin">
-                  <label>相关性：</label>
-                  <input type="radio" lay-ignore value="1" v-model="data.defendant_query[index+1].relevance"
-                         class="myradio"><label>是</label>
-                  <input type="radio" lay-ignore value="2" v-model="data.defendant_query[index+1].relevance"
-                         class="myradio" style="margin-left: 15px;"><label>否</label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="layui-form-item" pane style="margin-top: -10px;">
-            <div class="layui-form-label" style="line-height: 80px">
-              事实和理由
-            </div>
-            <div class="layui-input-block">
-              <textarea v-model="data.defendant_query[index+1].defendant_query_fact_reason" 
-                        placeholder="理由"
-                        class="layui-textarea"></textarea>
-            </div>
-          </div>
-
-          <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('defendant_query')"> 添加被告质证</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('defendant_query',index+1)"> 删除被告质证
-            </button>
-          </div>
-        </template>
       </form>
     </div>
   </div>
+
+<div id="defendant_query">
+  <fieldset class="layui-elem-field layui-field-title">
+    <legend>法庭调查-被告质证</legend>
+    <div class="layui-field-box">
+  <div class="layui-card">
+    <div class="layui-card-body">
+      <form class="layui-form layui-form-pane">
+    <div class="layui-form-item" pane>
+      <div class="layui-form-label ">
+        审判员
+      </div>
+      <div class="layui-input-block">
+        <textarea class="layui-textarea" style="height: 38px;min-height: 38px">被告对原告提交的证据进行质证</textarea>
+      </div>
+    </div>
+
+
+    <template v-for="(item,index) in data.defendant_query" :key="index">
+
+      <div class="layui-form-item" pane>
+        <div class="layui-form-label">
+          请选择被告
+        </div>
+        <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+          <div class="layui-input-block">
+            <div class="myselect-div">
+              <VueMultiselect :option-height="38" :show-labels="false"
+                              v-model="data.defendant_query[index].defendant"
+                              :options=getDefendantName placeholder="请选择被告"
+                              group-label="defendant"
+                              :group-select="true"
+                              group-values="defendant_name"
+                              :multiple="true"
+                              :close-on-select="false"
+                              :searchable="false"
+                              style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-form-item" pane style="margin-top: -10px;">
+        <div class="layui-form-label">
+          请选择证据
+        </div>
+        <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+          <div class="layui-input-block">
+            <div class="myselect-div">
+              <VueMultiselect :option-height="38" :show-labels="false"
+                              v-model="data.defendant_query[index].evidence"
+                              :options=getProofPlaintiff placeholder="请选择证据"
+                              group-label="evidence"
+                              :group-select="true"
+                              group-values="option_label"
+                              :multiple="true"
+                              :close-on-select="false"
+                              :searchable="false"
+                              style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-form-item" pane style="margin-top: -10px;">
+        <div class="layui-form-label">
+          三性质证
+        </div>
+        <div class="layui-input-block">
+          <div class="layui-input-inline" style="width:33%;margin-left: 0">
+            <div class="myradiomargin">
+              <label>真实性：</label>
+              <input type="radio" lay-ignore  value="1" v-model="data.defendant_query[index].facticity"
+                     class="myradio"><label>是</label>
+              <input type="radio" lay-ignore value="2" v-model="data.defendant_query[index].facticity"
+                     class="myradio" style="margin-left: 15px;"><label>否</label>
+            </div>
+          </div>
+          <div class="layui-input-inline" style="width:33%;margin-left: 0">
+            <div class="myradiomargin">
+              <label>合法性：</label>
+              <input type="radio" lay-ignore value="1" v-model="data.defendant_query[index].legality"
+                     class="myradio"><label>是</label>
+              <input type="radio" lay-ignore value="2" v-model="data.defendant_query[index].legality"
+                     class="myradio" style="margin-left: 15px;"><label>否</label>
+            </div>
+          </div>
+          <div class="layui-input-inline" style="width:34%;margin-left: 0">
+            <div class="myradiomargin">
+              <label>相关性：</label>
+              <input type="radio" lay-ignore value="1" v-model="data.defendant_query[index].relevance"
+                     class="myradio"><label>是</label>
+              <input type="radio" lay-ignore value="2" v-model="data.defendant_query[index].relevance"
+                     class="myradio" style="margin-left: 15px;"><label>否</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-form-item" pane style="margin-top: -10px;">
+        <div class="layui-form-label" style="line-height: 80px">
+          事实和理由
+        </div>
+        <div class="layui-input-block">
+              <textarea v-model="data.defendant_query[index].defendant_query_fact_reason"
+                        placeholder="理由"
+                        class="layui-textarea"></textarea>
+        </div>
+      </div>
+
+      <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+        <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('defendant_query')"> 添加被告质证</button>
+        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0" @click="delete_component('defendant_query',index)"> 删除被告质证
+        </button>
+      </div>
+    </template>
+      </form>
+    </div>
+  </div>
+    </div>
+  </fieldset>
+</div>
 </template>
 
 <script>

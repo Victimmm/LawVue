@@ -178,6 +178,7 @@
                             :options="data.court_cause_list" placeholder="请选择案由"
                             :taggable="true"
                             @tag="addTag"
+                            lay-verify="vueselect"
                             style="line-height: 16px; min-height: 38px"></VueMultiselect>
           </div>
         </div>
@@ -273,10 +274,14 @@ export default {
         form.verify({
           // court_number : function(value) {
           court_number : function(value) {
-              if (!value || value=="（2022）京0108民初XXX号") {
+              if (!value || value=='（'+new Date().getFullYear()+'）京0108民初XXX号') {
                 return "案号不能为空或者默认值";
               }
-            }
+            },
+          vueselect: () => { //value：表单的值、item：表单的DOM对象
+            if (this.data.court_cause == "")
+              return "请完善案由"
+          }
         });
       });
 

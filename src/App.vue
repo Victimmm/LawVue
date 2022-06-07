@@ -141,6 +141,11 @@
     </form>
   </div>
 
+  <div id="navtest" style="display: none">
+    <ul class="site-dir layui-layer-wrap" id="content_list_temp" style="display: block;">
+
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -202,37 +207,25 @@ export default {
       var form = window.layui.form
       form.render()
       // , element = layui.element
-      form.on('submit(onSubmit)', ()=>{
+      form.on('submit(onSubmit)', () => {
         this.onSummit()
         return false;
-      });
-    });
+      })
+    })
 
     window.addEventListener('scroll', this.onScroll)
     // 添加目录控件
     this.$nextTick(function () {
-      window.layui.use('layer', function () {
+      window.layui.use('layer',  () =>{
         var layer = window.layui.layer;
         layer.open({
           title: '目录',
           skin: 'myskin',
           type: 1,
-          content: "      <ul class=\"site-dir layui-layer-wrap\" id=\"content_list\" style=\"display: block;\">\n" +
-              "        <li ><a href=\"#BasicInfo\"><cite>基本信息</cite></a></li>\n" +
-              "        <li ><a href=\"#whole_PlaintiffImf\"><cite>原告信息</cite></a></li>\n" +
-              "        <li><a href=\"#whole_DefendantImf\"><cite>被告信息</cite></a></li>\n" +
-              "        <li><a href=\"#BasicState\"><cite>基本信息陈述</cite></a></li>\n" +
-              "        <li><a href=\"#rightInfo\"><cite>权利告知</cite></a></li>\n" +
-              "        <li><a href=\"#CourtInves1\"><cite>法庭调查</cite></a></li>\n" +
-              "        <li><a href=\"#accuserShowInfo\"><cite>原告举证</cite></a></li>\n" +
-              "        <li><a href=\"#defendShowInfo\"><cite>被告举证</cite></a></li>\n" +
-              "        <li><a href=\"#inquiryInfo\"><cite>法庭询问</cite></a></li>\n" +
-              "        <li><a href=\"#argueInfo\"><cite>法庭辩论</cite></a></li>\n" +
-              "        <li><a href=\"#finalStatementInfo\"><cite>陈述意见</cite></a></li>\n" +
-              "        <li><a href=\"#mediateInfo\"><cite>是否调解</cite></a></li>\n" +
-              "        <li><a href=\"#deliveryInfo\"><cite>电子文书送达</cite></a></li>\n" +
-              "        <li><a href=\"#summarizeInfo\"><cite>审判员最后陈述</cite></a></li>\n" +
-              "      </ul>",
+          content:
+this.active
+
+          ,
           shade: 0,
           closeBtn: 0,
           offset: 'r'
@@ -251,14 +244,26 @@ export default {
     },
     // 滚动监听器
     onScroll() {
+
+      //              "        <li ><a href=\"#BasicInfo\"><cite>基本信息</cite></a></li>\n" +
+
+
       // 获取所有锚点元素
       const navContents = document.querySelectorAll('fieldset')
       // 所有锚点元素的 offsetTop
       const offsetTopArr = []
+      const title=[]
       navContents.forEach(item => {
-
+        title.push(item.getElementsByTagName('legend')[0].innerHTML)
         offsetTopArr.push(item.offsetTop)
       })
+
+      // //从不反诉转为反诉
+      // if(this.$store.state.is_counterclaim== "1" && title.length == 17){
+      //   let nav_ul=document.createElement('ul').className="site-dir layui-layer-wrap"
+      //   let content=
+      // }
+
       // 获取当前文档流的 scrollTop
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       // 定义当前点亮的导航下标
@@ -272,14 +277,14 @@ export default {
       }
       // 把下标赋值给 vue 的 data
       this.active = navIndex
-      if (document.getElementById("content_list") != null) {
-        // 获取钙元素下的a标签，并更改class 属性
-        for (let i = 0; i < offsetTopArr.length; i++) {
-          if (i != navIndex)
-            document.getElementById("content_list").children[i].children[0].removeAttribute("class")
-        }
-        document.getElementById("content_list").children[navIndex].children[0].className = "layui-this"
-      }
+      // if (document.getElementById("content_list") != null) {
+      //   // 获取钙元素下的a标签，并更改class 属性
+      //   for (let i = 0; i < offsetTopArr.length; i++) {
+      //     if (i != navIndex)
+      //       document.getElementById("content_list").children[i].children[0].removeAttribute("class")
+      //   }
+      //   document.getElementById("content_list").children[navIndex].children[0].className = "layui-this"
+      // }
     },
     //提交 localstorage  中的数据
     onSummit() {
@@ -437,6 +442,7 @@ export default {
               window.layui.layer.msg(result.data);
               return
             }
+
             window.location.href = '/view/record'
             // console.log(response);
           })
@@ -625,4 +631,7 @@ a.layui-this {
   background-color: #e2e2e2;
 }
 
+#content_list{
+  display: block;
+}
 </style>

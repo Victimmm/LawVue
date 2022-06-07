@@ -212,7 +212,7 @@ export default {
       deep: true
     },
     getPlaintiffName() {
-      if(this.data.accuser_right_duty.length < this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).length){
+      if(this.data.accuser_right_duty.length < this.$store.state.plaintiff_item.length){
         this.data.accuser_right_duty.push({
           name:"",avoid: "1", right_duty: "1",
         })
@@ -225,7 +225,7 @@ export default {
       }
     },
     getDefendantNane() {
-      if(this.data.defendant_right_duty.length < this.$store.state.defendant_item.filter(i => i.defendant && i.defendant.trim()).length){
+      if(this.data.defendant_right_duty.length < this.$store.state.defendant_item.length){
         this.data.defendant_right_duty.push({
           name:"",avoid: "1", right_duty: "1",
         })
