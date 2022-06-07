@@ -177,21 +177,10 @@ export default {
     VueMultiselect
   },
   mounted() {
-    this.$nextTick(function () {
-      // 仅在整个视图都被渲染之后才会运行的代码
-      if(this.data.court_number== '（'+new Date().getFullYear()+'）京0108民初XXX号' && this.$store.state.court_number==""){
-
       this.axios.get('/record/question').then((result) =>{
         const question_list = result.data.data;
         this.data.question_list=question_list
       })
-      }
-
-    // this.axios.get('/record/court/cause').then((result) =>{
-    //   const court_cause_list = result.data.data;
-    //   this.data.court_cause_list=court_cause_list
-    // })
-  })
   },
 
   methods: {
