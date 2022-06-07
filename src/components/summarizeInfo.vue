@@ -23,7 +23,7 @@ export default {
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null &&  "summarize" in wholeItem){
-      data=wholeItem.summarize
+      data.summarize=wholeItem.summarize
     }
     return {
       data: data,

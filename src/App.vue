@@ -427,12 +427,13 @@ this.active
           recordJson["summarize"] = summarizeInfo
         }
       }
+      console.log(recordJson)
 
       let requestType="1"
       if(window.location.pathname == "/view/record/detail/"){
         requestType="2"
       }
-      // console.log(recordJson)
+      console.log(recordJson.summarize)
 
       this.axios.post('/record/add', {recordJson,requestType})
           .then(function (result) {
