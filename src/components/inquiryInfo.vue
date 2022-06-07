@@ -10,16 +10,16 @@
         </div>
         <div class="layui-form-item" pane>
           <label class="layui-form-label" >问题</label>
-              <div class="layui-input-block" contenteditable="true" >
-                <VueMultiselect :option-height="38" v-model="data.inquiry_info[0].inquiry_question"
-                                :show-labels="false"
-                                :options="data.question_list" placeholder="问题"
-                                :taggable="true"
-                                @tag="addTag"
-                                style="line-height: 16px; min-height: 38px"></VueMultiselect>
-              </div>
-<!--              <input type="text" v-model="data.inquiry_info[0].inquiry_question"  placeholder="问题" autocomplete="off"-->
-<!--                     class="layui-input" style="width: 100%;float: left;">-->
+          <div class="layui-input-block" contenteditable="true" >
+            <VueMultiselect :option-height="38" v-model="data.inquiry_info[0].inquiry_question"
+                            :show-labels="false"
+                            :options="data.question_list" placeholder="问题"
+                            :taggable="true"
+                            @tag="addTag"
+                            style="line-height: 16px; min-height: 38px"></VueMultiselect>
+          </div>
+          <!--              <input type="text" v-model="data.inquiry_info[0].inquiry_question"  placeholder="问题" autocomplete="off"-->
+          <!--                     class="layui-input" style="width: 100%;float: left;">-->
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiry_info[0].inquiry_answer[0].name"
@@ -61,28 +61,28 @@
         </div>
         <div class="layui-form-item" style="width:100%;margin-top: -10px;">
           <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info',1)"> 添加问题</button>
-<!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题-->
-<!--          </button>-->
+          <!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题-->
+          <!--          </button>-->
         </div>
 
         <template v-for="(item, index) in data.inquiry_info.slice(1)" :key="index">
           <div class="layui-form-item" pane>
             <label class="layui-form-label">问题</label>
-              <div class="layui-input-block" contenteditable="true" >
-                <VueMultiselect :option-height="38" v-model="data.inquiry_info[index+1].inquiry_question"
-                                :show-labels="false"
-                                :options="data.question_list" placeholder="问题"
-                                :taggable="true"
-                                @tag="addTag"
-                                style="line-height: 16px; min-height: 38px"></VueMultiselect>
-              </div>
-<!--                <input type="text" v-model="data.inquiry_info[index+1].inquiry_question" placeholder="问题" autocomplete="off"-->
-<!--                       class="layui-input" style="width: 100%;float: left;">-->
-<!--                <button @click="delete_component('inquiry_info',index+1)" type="button"-->
-<!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
-<!--                        data-type="text" style="float: right;">-->
-<!--                  <i class="layui-icon">&#xe640;</i>-->
-<!--                </button>-->
+            <div class="layui-input-block" contenteditable="true" >
+              <VueMultiselect :option-height="38" v-model="data.inquiry_info[index+1].inquiry_question"
+                              :show-labels="false"
+                              :options="data.question_list" placeholder="问题"
+                              :taggable="true"
+                              @tag="addTag"
+                              style="line-height: 16px; min-height: 38px"></VueMultiselect>
+            </div>
+            <!--                <input type="text" v-model="data.inquiry_info[index+1].inquiry_question" placeholder="问题" autocomplete="off"-->
+            <!--                       class="layui-input" style="width: 100%;float: left;">-->
+            <!--                <button @click="delete_component('inquiry_info',index+1)" type="button"-->
+            <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
+            <!--                        data-type="text" style="float: right;">-->
+            <!--                  <i class="layui-icon">&#xe640;</i>-->
+            <!--                </button>-->
 
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
@@ -151,9 +151,10 @@ export default {
           name:"",
           answer:"",
         }
-  ]
-  }],
-      question_list: ["问题列表项1","问题列表项2"],
+        ]
+      }],
+      question:"",
+      question_list: []
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null && "inquiryInfo" in wholeItem){
@@ -166,39 +167,45 @@ export default {
   computed:{
     inquiryFormGetAccuserMergeDefendant: {
       get() {
-            let string1 = this.$store.state.defendant_item.map(e =>e.defendant_short==''?e.defendant:e.defendant_short+'（被告）').filter(i => i && i.trim())
-            let string2 = this.$store.state.plaintiff_item.map(e =>e.accuser_short==''?e.accuser:e.accuser_short+'（原告）').filter(i => i && i.trim())
-            return string2.concat(string1)
+        let string1 = this.$store.state.defendant_item.map(e =>e.defendant_short==''?e.defendant:e.defendant_short+'（被告）').filter(i => i && i.trim())
+        let string2 = this.$store.state.plaintiff_item.map(e =>e.accuser_short==''?e.accuser:e.accuser_short+'（原告）').filter(i => i && i.trim())
+        return string2.concat(string1)
       },
     },
   },
   components: {
     VueMultiselect
   },
+  mounted() {
+    this.axios.get('/record/question').then((result) =>{
+      const question_list = result.data.data;
+      this.data.question_list=question_list
+    })
+    // this.axios.get('/record/court/cause').then((result) =>{
+    //   const court_cause_list = result.data.data;
+    //   this.data.court_cause_list=court_cause_list
+    // })
+  },
+
   methods: {
     addTag(newTag){
       let tag=newTag
       this.data.question_list.push(tag)
-      // this.data.inquiry_info[0]=tag
+      this.data.question=tag
     },
+    // addTag(newTag){
+    //   let tag=newTag
+    //   this.data.court_cause_list.push(tag)
+    //   this.data.court_cause=tag
+    // },
 
-// {
-//   inquiry_info:[{
-//     inquiry_question: "问题",
-//     inquiry_answer: [{
-//       name:"张三（原告）",
-//       answer:"答案",
-//     }
-//     ]
-//   }]
-// }
     add_component(datatype,index) {
       switch (datatype) {
         case "inquiry_reply":
           //
           this.data.inquiry_info[index].inquiry_answer.push({
-              name:"",
-              answer:"",
+            name:"",
+            answer:"",
           });
           break;
         case "inquiry_info":
@@ -224,16 +231,6 @@ export default {
       }
     },
 
-    // {
-//   inquiry_info:[{
-//     inquiry_question: "问题",
-//     inquiry_answer: [{
-//       name:"张三（原告）",
-//       answer:"答案",
-//     }
-//     ]
-//   }]
-// }
     delete_component(datatype, inquiry_info_index, inquiry_answer_index) {
       switch (datatype) {
         case "inquiry_reply":

@@ -421,10 +421,10 @@ this.active
           let deliveryInfoItem = wholeItem.deliveryInfo.delivery_info
           recordJson["deliveryInfo"] = deliveryInfoItem
         }
-        //审判员最后陈述意
+        //审判员最后陈述
         if ("summarize" in wholeItem) {
-          let summarize = wholeItem.summarize
-          recordJson["summarize"] = summarize
+          let summarizeInfo = wholeItem.summarize.summarize
+          recordJson["summarize"] = summarizeInfo
         }
       }
 

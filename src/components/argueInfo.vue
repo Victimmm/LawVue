@@ -20,10 +20,10 @@
             <div class="layui-input-block">
               <div class="myselect-div">
                 <input type="text" v-model="data.argue[0].argue" placeholder="辩论意见" autocomplete="off"
-                       class="layui-input" style="width: 90%;float: left;">
+                       class="layui-input" style="width: 85%;float: left;">
                 <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                         data-type="text"
-                        style="float: right;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">添加
+                        style="float: right;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 5px;margin-left: 5px">添加
                 </button>
               </div>
 
@@ -40,16 +40,16 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <input type="text" v-model="data.argue[index+1].argue" placeholder="辩论意见" autocomplete="off"
-                         class="layui-input" style="width: 80%;float: left;">
+                         class="layui-input" style="width: 85%;float: left;">
                   <button @click="add_component('argue')" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                           data-type="text"
-                          style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">
+                          style="float: right;margin-left:5px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 5px;">
                     添加
                   </button>
                   <button @click="delete_component('argue',index+1)" type="button"
                           class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
                           data-type="text"
-                          style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">
+                          style="float: right;margin-left:5px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 5px;">
                     删除
                   </button>
                 </div>
@@ -68,7 +68,7 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <input type="text" v-model="data.argue[0].argue" placeholder="辩论意见" autocomplete="off"
-                           class="layui-input" style="width: 90%;float: left;">
+                           class="layui-input" style="width: 85%;float: left;">
 
                     <button @click="add_component('argue')" type="button"
                             class="layui-btn layui-btn-primary layui-btn-sm"
@@ -90,7 +90,7 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                       <input type="text" v-model="data.argue[index+1].argue" placeholder="辩论意见" autocomplete="off"
-                             class="layui-input" style="width: 80%;float: left;">
+                             class="layui-input" style="width: 85%;float: left;">
                       <button @click="add_component('argue')" type="button"
                               class="layui-btn layui-btn-primary layui-btn-sm"
                               data-type="text" style="float: right;">
@@ -121,11 +121,11 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <input type="text" v-model="data.counterclaim_argue[0].argue" placeholder="辩论意见" autocomplete="off"
-                         class="layui-input" style="width: 90%;float: left;">
+                         class="layui-input" style="width: 85%;float: left;">
                   <button @click="add_component('counterclaim_argue')" type="button"
                           class="layui-btn layui-btn-radius layui-btn-xs"
                           data-type="text"
-                          style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">
+                          style="float: right;margin-left:5px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 5px;">
                     添加
                   </button>
                 </div>
@@ -144,17 +144,17 @@
                   <div class="myselect-div">
                     <input type="text" v-model="data.counterclaim_argue[index+1].argue" placeholder="辩论意见"
                            autocomplete="off"
-                           class="layui-input" style="width: 80%;float: left;">
+                           class="layui-input" style="width: 85%;float: left;">
                     <button @click="add_component('counterclaim_argue')" type="button"
                             class="layui-btn layui-btn-radius layui-btn-xs"
                             data-type="text"
-                            style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">
+                            style="float: right;margin-left:5px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 5px;">
                       添加
                     </button>
                     <button @click="delete_component('counterclaim_argue',index+1)" type="button"
                             class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
                             data-type="text"
-                            style="float: right;margin-left:10px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 10px">
+                            style="float: right;margin-left:5px;height:30px;margin-top: 5px;margin-bottom: 5px;padding: 0 5px;">
                       删除
                     </button>
                   </div>
