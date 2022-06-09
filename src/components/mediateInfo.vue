@@ -48,7 +48,7 @@
             <label class="layui-form-label">庭外和解时限</label>
             <div class="layui-input-block">
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                <input type="text" v-model="data.mediate_accuser[0].time_limit" placeholder="庭外和解时限" autocomplete="off"
+                <input type="text" v-model="data.mediate_accuser[0].time_limit" placeholder="请输入庭外和解时限" autocomplete="off"
                        class="layui-input">
               </div>
             </div>
@@ -95,7 +95,7 @@
               <label class="layui-form-label">庭外和解时限</label>
               <div class="layui-input-block">
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                  <input type="text" v-model="data.mediate_accuser[index+1].time_limit" placeholder="庭外和解时限" autocomplete="off"
+                  <input type="text" v-model="data.mediate_accuser[index+1].time_limit" placeholder="请输入庭外和解时限" autocomplete="off"
                          class="layui-input">
                 </div>
               </div>

@@ -38,7 +38,7 @@
           <label class="layui-form-label">电子邮件地址</label>
           <div class="layui-input-block">
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <input type="text" v-model="data.delivery_info[0].email"  placeholder="电子邮件地址" autocomplete="off"
+              <input type="text" v-model="data.delivery_info[0].email"  placeholder="请输入电子邮件地址" autocomplete="off"
                      class=" layui-input ">
             </div>
           </div>
@@ -47,7 +47,7 @@
           <label class="layui-form-label">纸质文书送达地址</label>
           <div class="layui-input-block">
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <input type="text" v-model="data.delivery_info[0].email"  placeholder="纸质文书送达地址" autocomplete="off"
+              <input type="text" v-model="data.delivery_info[0].email"  placeholder="请输入纸质文书送达地址" autocomplete="off"
                      class=" layui-input ">
             </div>
           </div>
@@ -83,7 +83,7 @@
             <label class="layui-form-label">电子邮件地址</label>
             <div class="layui-input-block">
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                <input type="text" v-model="data.delivery_info[index+1].email" placeholder="电子邮件地址" autocomplete="off"
+                <input type="text" v-model="data.delivery_info[index+1].email" placeholder="请输入电子邮件地址" autocomplete="off"
                        class="layui-input">
               </div>
             </div>
@@ -93,7 +93,7 @@
             <label class="layui-form-label">纸质文书送达地址</label>
             <div class="layui-input-block">
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                <input type="text" v-model="data.delivery_info[index+1].email" placeholder="纸质文书送达地址" autocomplete="off"
+                <input type="text" v-model="data.delivery_info[index+1].email" placeholder="请输入纸质文书送达地址" autocomplete="off"
                        class="layui-input">
               </div>
             </div>

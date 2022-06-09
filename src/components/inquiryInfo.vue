@@ -28,7 +28,7 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.inquiry_info[0].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
+                <input type="text" v-model="data.inquiry_info[0].inquiry_answer[0].answer" placeholder="请输入回答" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('inquiry_reply',0)" type="button"
                         class="layui-btn layui-btn-primary layui-btn-sm"
@@ -47,7 +47,7 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.inquiry_info[0].inquiry_answer[bindex+1].answer" placeholder="回答" autocomplete="off"
+                  <input type="text" v-model="data.inquiry_info[0].inquiry_answer[bindex+1].answer" placeholder="请输入回答" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="delete_component('inquiry_reply',0,bindex+1)" type="button"
                           class="layui-btn layui-btn-primary layui-btn-sm"
@@ -92,7 +92,7 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.inquiry_info[index+1].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
+                  <input type="text" v-model="data.inquiry_info[index+1].inquiry_answer[0].answer" placeholder="请输入回答" autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="add_component('inquiry_answer',index+1)" type="button"
                           class="layui-btn layui-btn-primary layui-btn-sm"
@@ -111,7 +111,7 @@
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
-                    <input type="text" v-model="data.inquiry_info[index+1].inquiry_answer[aindex+1].answer" placeholder="回答" autocomplete="off"
+                    <input type="text" v-model="data.inquiry_info[index+1].inquiry_answer[aindex+1].answer" placeholder="请输入回答" autocomplete="off"
                            class="layui-input" style="width: 90%;float: left;">
                     <button @click="delete_component('inquiry_answer',index+1,aindex+1)" type="button"
                             class="layui-btn layui-btn-primary layui-btn-sm"

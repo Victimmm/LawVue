@@ -23,7 +23,7 @@
                                     style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
                   </div>
                   <div class="layui-input-inline" style="width:70%;margin-left: 0">
-                    <input type="text" placeholder="证据名称" class="layui-input"
+                    <input type="text" placeholder="请输入证据名称" class="layui-input"
                            v-model="data.defendant_evidence[index].evidence">
                   </div>
                 </div>
@@ -36,7 +36,7 @@
               </div>
               <div class="layui-input-block">
                 <input type="text" v-model="data.defendant_evidence[index].content"
-                       placeholder="证据证明事项"
+                       placeholder="请输入证据证明事项"
                        class="layui-input">
               </div>
             </div>
@@ -154,7 +154,7 @@
                   </div>
                   <div class="layui-input-block">
               <textarea v-model="data.accuser_query[index].accuser_query_fact_reason"
-                        placeholder="理由"
+                        placeholder="请输入事实和理由"
                         class="layui-textarea"></textarea>
                   </div>
                 </div>
@@ -267,7 +267,7 @@
                   </div>
                   <div class="layui-input-block">
               <textarea v-model="data.other_defendant_query[index].other_defendant_query_fact_reason"
-                        placeholder="理由"
+                        placeholder="请输入事实和理由"
                         class="layui-textarea"></textarea>
                   </div>
                 </div>
@@ -318,7 +318,7 @@
                                           style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
                         </div>
                         <div class="layui-input-inline" style="width:70%;margin-left: 0">
-                          <input type="text" placeholder="证据名称" class="layui-input"
+                          <input type="text" placeholder="请输入证据名称" class="layui-input"
                                  v-model="data.counterclaim_accuser_evidence[index].evidence">
                         </div>
                       </div>
@@ -331,7 +331,7 @@
                     </div>
                     <div class="layui-input-block">
                       <input type="text" v-model="data.counterclaim_accuser_evidence[index].content"
-                             placeholder="证据证明事项"
+                             placeholder="请输入证据证明事项"
                              class="layui-input">
                     </div>
                   </div>
@@ -456,7 +456,7 @@
                   </div>
                   <div class="layui-input-block">
               <textarea v-model="data.counterclaim_defendant_query[index].counterclaim_defendant_query_fact_reason"
-                        placeholder="理由"
+                        placeholder="请输入事实和理由"
                         class="layui-textarea"></textarea>
                   </div>
                 </div>
@@ -581,7 +581,7 @@
                   </div>
                   <div class="layui-input-block">
               <textarea v-model="data.counterclaim_defendant_query[index].counterclaim_defendant_query_fact_reason"
-                        placeholder="理由"
+                        placeholder="请输入事实和理由"
                         class="layui-textarea"></textarea>
                   </div>
                 </div>
@@ -702,7 +702,7 @@
                   </div>
                   <div class="layui-input-block">
               <textarea v-model="data.counterclaim_accuser_query[index].counterclaim_accuser_query_fact_reason"
-                        placeholder="理由"
+                        placeholder="请输入事实和理由"
                         class="layui-textarea"></textarea>
                   </div>
                 </div>
@@ -822,7 +822,7 @@
                   <div class="layui-input-block">
               <textarea
                   v-model="data.other_counterclaim_defendant_query[index].other_counterclaim_defendant_query_fact_reason"
-                  placeholder="理由"
+                  placeholder="请输入事实和理由"
                   class="layui-textarea"></textarea>
                   </div>
                 </div>

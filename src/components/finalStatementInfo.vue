@@ -37,7 +37,7 @@
 
             <div class="layui-input-block">
               <div class="myselect-div">
-                <input type="text" v-model="data.final_statement_info[index].final_statement"  placeholder="最后陈述意见" autocomplete="off"
+                <input type="text" v-model="data.final_statement_info[index].final_statement"  placeholder="请输入最后陈述意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <!--                  <button @click="delete_component('final_statement_info',index)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"-->
                 <!--                          data-type="text" style="float: right;">-->

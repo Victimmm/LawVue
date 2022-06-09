@@ -65,7 +65,7 @@
                                 style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
               </div>
               <div class="layui-input-inline" style="width:70%;margin-left: 0">
-                <input type="text" placeholder="证据名称" class="layui-input" v-model="data.accuser_evidence[0].evidence">
+                <input type="text" placeholder="请输入证据名称" class="layui-input" v-model="data.accuser_evidence[0].evidence">
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
             证明事项
           </div>
           <div class="layui-input-block">
-            <input type="text" v-model="data.accuser_evidence[0].content"  placeholder="证据证明事项"
+            <input type="text" v-model="data.accuser_evidence[0].content"  placeholder="请输入证据证明事项"
                    class="layui-input">
           </div>
         </div>
@@ -98,7 +98,7 @@
                                   style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
                 </div>
                 <div class="layui-input-inline" style="width:70%;margin-left: 0">
-                  <input type="text"  placeholder="证据名称" class="layui-input" v-model="data.accuser_evidence[index+1].evidence">
+                  <input type="text"  placeholder="请输入证据名称" class="layui-input" v-model="data.accuser_evidence[index+1].evidence">
                 </div>
               </div>
             </div>
@@ -109,7 +109,7 @@
               证明事项
             </div>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_evidence[index+1].content"  placeholder="证据证明事项"
+              <input type="text" v-model="data.accuser_evidence[index+1].content"  placeholder="请输入证据证明事项"
                      class="layui-input">
             </div>
           </div>
@@ -229,7 +229,7 @@
         </div>
         <div class="layui-input-block">
               <textarea v-model="data.defendant_query[index].defendant_query_fact_reason"
-                        placeholder="理由"
+                        placeholder="请输入事实和理由"
                         class="layui-textarea"></textarea>
         </div>
       </div>

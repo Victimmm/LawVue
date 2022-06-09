@@ -18,7 +18,7 @@
           </div>
           <div class="layui-input-block">
             <!--            <div class="layui-input-inline " style="width: 80%; margin-left:0px;">-->
-            <textarea  v-model="data.accuser_claim_item" placeholder="诉讼请求项"  autocomplete="off"
+            <textarea  v-model="data.accuser_claim_item" placeholder="请输入诉讼请求项"  autocomplete="off"
                        class="layui-textarea"></textarea>
             <!--              <button @click="add_component('accuser_claims')" type="button"-->
             <!--                      class="layui-btn layui-btn-primary layui-btn-sm"-->
@@ -75,7 +75,7 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div " >
-                <input type="text" v-model="data.defendant_reply[0].content"  placeholder="答辩内容"
+                <input type="text" v-model="data.defendant_reply[0].content"  placeholder="请输入答辩内容"
                        autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <button @click="add_component('defendant_reply')" type="button"
@@ -97,7 +97,7 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <input type="text" v-model="data.defendant_reply[index+1].content" placeholder="答辩内容"
+                  <input type="text" v-model="data.defendant_reply[index+1].content" placeholder="请输入答辩内容"
                          autocomplete="off"
                          class="layui-input" style="width: 90%;float: left;">
                   <button @click="delete_component('defendant_reply',index+1)" type="button"
@@ -131,7 +131,7 @@
               反诉原告诉讼请求项
             </div>
             <div class="layui-input-block" contenteditable="true">
-              <textarea v-model="data.counterclaim_accuser_claim_item" placeholder="诉讼请求项" 
+              <textarea v-model="data.counterclaim_accuser_claim_item" placeholder="请输入诉讼请求项"
                         class="layui-textarea" style="height:40px"></textarea>
 <!--                <button @click="add_component('counterclaim_plaintiff')" type="button"-->
 <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
@@ -173,7 +173,7 @@
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
-                    <input type="text" v-model="data.counterclaim_defendant_reply[0].content"  placeholder="答辩内容"
+                    <input type="text" v-model="data.counterclaim_defendant_reply[0].content"  placeholder="请输入答辩内容"
                            autocomplete="off"
                            class="layui-input" style="width: 90%;float: left;">
                     <button @click="add_component('counterclaim_defendant_reply')" type="button"
@@ -197,7 +197,7 @@
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
-                      <input type="text" v-model="data.counterclaim_defendant_reply[index+1].content" placeholder="答辩内容"
+                      <input type="text" v-model="data.counterclaim_defendant_reply[index+1].content" placeholder="请输入答辩内容"
                              autocomplete="off"
                              class="layui-input" style="width: 90%;float: left;">
                       <button @click="delete_component('counterclaim_defendant_reply',index+1)" type="button"
