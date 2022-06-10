@@ -1,4 +1,4 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <div class="layui-card">
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane">
@@ -31,13 +31,13 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-form-label">
+              <div class="layui-form-label divcenter">
                 证明事项
               </div>
               <div class="layui-input-block">
-                <input type="text" v-model="data.defendant_evidence[index].content"
+                <textarea type="text" v-model="data.defendant_evidence[index].content"
                        placeholder="请输入证据证明事项"
-                       class="layui-input">
+                       class="layui-textarea"></textarea>
               </div>
             </div>
 
@@ -326,13 +326,13 @@
                   </div>
 
                   <div class="layui-form-item" pane style="margin-top: -10px;">
-                    <div class="layui-form-label">
+                    <div class="layui-form-label divcenter">
                       证明事项
                     </div>
                     <div class="layui-input-block">
-                      <input type="text" v-model="data.counterclaim_accuser_evidence[index].content"
+                      <textarea type="text" v-model="data.counterclaim_accuser_evidence[index].content"
                              placeholder="请输入证据证明事项"
-                             class="layui-input">
+                                class="layui-textarea"></textarea>
                     </div>
                   </div>
 

@@ -153,8 +153,8 @@ export default {
         }
         ]
       }],
-      // question:"",
-      question_list: []
+      question:"",
+      question_list: [],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null && "inquiryInfo" in wholeItem){
@@ -187,13 +187,13 @@ export default {
     addTag(newTag){
       let tag=newTag
       this.data.question_list.push(tag)
-      // this.data.question=tag
+      this.data.question=tag
     },
-    // addTag(newTag){
-    //   let tag=newTag
-    //   this.data.court_cause_list.push(tag)
-    //   this.data.court_cause=tag
-    // },
+    addTag(newTag){
+      let tag=newTag
+      this.data.court_cause_list.push(tag)
+      this.data.court_cause=tag
+    },
 
     add_component(datatype,index) {
       switch (datatype) {

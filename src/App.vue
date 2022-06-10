@@ -124,7 +124,8 @@
           </div>
         </fieldset>
       </div>
-
+    </div>
+  </div>
       <div id="summarizeInfo">
         <fieldset class="layui-elem-field layui-field-title">
           <legend>审判员最后陈述</legend>
@@ -133,8 +134,8 @@
           </div>
         </fieldset>
       </div>
-    </div>
-</div>
+
+
     <button type="button" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-lg" lay-submit lay-filter="onSubmit"
               style="margin: -15px 0 30px; width: 150px"> 提交
     </button>
@@ -503,6 +504,15 @@ body .myskin {
   -webkit-appearance: none; /**隐藏原生控件**/
 }
 
+
+textarea::-ms-input-placeholder{
+  line-height:normal
+
+}
+textarea::-webkit-input-placeholder{
+  line-height:normal
+}
+
 /**选择后的样式**/
 .myradio:checked {
   background-color: #5fb778;
@@ -534,6 +544,7 @@ body .myskin {
   align-items: center;
   /*justify-content: center;*/
 }
+
 
 .myinput-block {
   margin-top: 8px;

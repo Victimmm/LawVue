@@ -72,12 +72,12 @@
         </div>
 
         <div class="layui-form-item" pane style="margin-top: -10px;">
-          <div class="layui-form-label">
+          <div class="layui-form-label divcenter">
             证明事项
           </div>
           <div class="layui-input-block">
-            <input type="text" v-model="data.accuser_evidence[0].content"  placeholder="请输入证据证明事项"
-                   class="layui-input">
+            <textarea type="text" v-model="data.accuser_evidence[0].content"  placeholder="请输入证据证明事项"
+                   class="layui-textarea"></textarea>
           </div>
         </div>
 
@@ -105,12 +105,12 @@
           </div>
 
           <div class="layui-form-item" pane style="margin-top: -10px;">
-            <div class="layui-form-label">
+            <div class="layui-form-label divcenter">
               证明事项
             </div>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_evidence[index+1].content"  placeholder="请输入证据证明事项"
-                     class="layui-input">
+              <textarea type="text" v-model="data.accuser_evidence[index+1].content"  placeholder="请输入证据证明事项"
+                     class="layui-textarea"></textarea>
             </div>
           </div>
 

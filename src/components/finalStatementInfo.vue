@@ -33,7 +33,7 @@
         <template v-for="(item, index) in getPlaintiffName" :key="index">
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 38px;">
 
-            <label class="layui-form-label">{{ item }}</label>
+            <label class="layui-form-label" name="index">{{ item }}</label>
 
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -63,7 +63,7 @@ export default {
 // if (localStorage.getItem("final_form") == null) {
     data = {
       final_statement_info:[{
-        name: "", //原告
+        name: "", //原被告
         final_statement: "", //最后陈述意见
       }]
     };
@@ -89,10 +89,10 @@ export default {
         // return string2.concat(string1)
 
         let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-          return e.accuser_short==''?e.accuser:e.accuser_short + '（原告）';
+          return '(原）' + (e.accuser_short==''?e.accuser:e.accuser_short) ;
         })
         let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-          return e.defendant_short==''?e.defendant:e.defendant_short + '（被告）';
+          return '(被）' + (e.defendant_short==''?e.defendant:e.defendant_short) ;
         })
         return string1.concat(string2)
 

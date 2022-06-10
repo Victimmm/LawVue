@@ -222,14 +222,16 @@ export default {
   computed:{
     get_defendant_name:{
       get(){
-        let string1 = this.$store.state.defendant_item.map(e =>e.defendant_short==''?e.defendant:e.defendant_short+'（被告）').filter(i => i && i.trim())
-        return string1
+        return this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+          return '(被）' + (e.defendant_short==''?e.defendant:e.defendant_short) ;
+        })
       },
     },
     get_accuser_name:{
       get(){
-        let string2 = this.$store.state.plaintiff_item.map(e =>e.accuser_short==''?e.accuser:e.accuser_short+'（原告）').filter(i => i && i.trim())
-        return string2
+        return this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
+          return '(原）' + (e.accuser_short==''?e.accuser:e.accuser_short) ;
+        })
     },
     },
     show_final_mediate:{

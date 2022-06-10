@@ -28,6 +28,13 @@
                      autocomplete="off" class="layui-input">
             </div>
           </div>
+          <div class="layui-form-item"  pane>
+            <label class="layui-form-label divcenter">被告基本信息</label>
+            <div class="layui-input-block">
+              <textarea type="text" v-model="data.defendant_info" placeholder="请输入被告基本信息"
+                     autocomplete="off" class="layui-input" style="height:80px;line-height:normal"></textarea>
+            </div>
+          </div>
         </div>
 
         <div v-if="data.defendant_type=='1'">
@@ -72,18 +79,17 @@
         <div class="layui-form-item" pane>
           <div class="layui-form-label" style="line-height: 70px">委托诉讼代理人</div>
           <div class="layui-input-block">
+            <input type="text" v-model="data.defendant_agent[0].agent"  placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input">
+          </div>
+          <div class="layui-input-block" style="margin-top: 5px;">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
-              <input type="text" v-model="data.defendant_agent[0].agent"  placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"
-                     style="width: 90%;float: left;" >
+              <input type="text" v-model="data.defendant_agent[0].agent_address"
+                     placeholder="请输入委托诉讼代理人单位及职务" autocomplete="off" class="layui-input" style="width: 90%;float: left;" >
               <button @click="add_component()" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
               </button>
             </div>
-          </div>
-          <div class="layui-input-block" style="margin-top: 5px;">
-            <input type="text" v-model="data.defendant_agent[0].agent_address" 
-                   placeholder="请输入委托诉讼代理人单位" autocomplete="off" class="layui-input">
           </div>
         </div>
 
@@ -92,21 +98,21 @@
           <div class="layui-form-item" pane>
             <div class="layui-form-label" style="line-height: 70px">委托诉讼代理人</div>
             <div class="layui-input-block">
-              <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
+
                 <input type="text" v-model="data.defendant_agent[index+1].agent" placeholder="请输入委托诉讼代理人" autocomplete="off" class="layui-input"
-                       style="width: 90%;float: left;" >
+                       style="width: 100%;float: left;" >
+            </div>
+            <div class="layui-input-block" style="margin-top: 5px;">
+              <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
+                <input type="text" v-model="data.defendant_agent[index+1].agent_address"
+                         placeholder="请输入委托诉讼代理人单位及职务" autocomplete="off" class="layui-input" style="width: 90%;float: left;">
                 <button @click="delete_component(index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe640;</i>
                 </button>
               </div>
             </div>
-            <div class="layui-input-block" style="margin-top: 5px;">
-              <input type="text" v-model="data.defendant_agent[index+1].agent_address"
-                     placeholder="请输入委托诉讼代理人单位" autocomplete="off" class="layui-input">
-            </div>
           </div>
-
         </template>
 
             <button type="button" class="layui-btn layui-btn-radius  layui-btn-sm" @click="onAddClick"> 添加被告信息</button>
@@ -133,6 +139,7 @@ export default {
       defendant: '',
       defendant_short: '',
       defendant_type: "1",
+      defendant_info:"",
       defendant_address: '',
       defendant_represent: '',
       defendant_duty: '',

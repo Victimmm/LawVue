@@ -28,6 +28,13 @@
                      class="layui-input">
             </div>
           </div>
+          <div class="layui-form-item"  pane>
+            <label class="layui-form-label divcenter">原告基本信息</label>
+            <div class="layui-input-block">
+              <textarea type="text" v-model="data.accuser_info" placeholder="请输入原告基本信息"
+                        autocomplete="off" class="layui-input" style="height:80px;line-height:normal"></textarea>
+            </div>
+          </div>
         </div>
         <div v-if="data.accuser_type=='1'">
           <div class="layui-form-item" pane>
@@ -72,16 +79,18 @@
           <div class="layui-input-block">
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.accuser_agent[0].agent" placeholder="请输入委托诉讼代理人"   autocomplete="off" class="layui-input"
-                     style="width: 90%;float: left;" >
+                     style="width: 100%;float: left;" >
+            </div>
+          </div>
+          <div class="layui-input-block" style="margin-top: 5px;" >
+            <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
+              <input type="text" v-model="data.accuser_agent[0].agent_address"
+                     placeholder="请输入委托诉讼代理人单位及职务" autocomplete="off" class="layui-input" style="width: 90%; margin-left:0px;float:left;">
               <button @click="add_component()" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
               </button>
             </div>
-          </div>
-          <div class="layui-input-block" style="margin-top: 5px;">
-            <input type="text" v-model="data.accuser_agent[0].agent_address"
-                   placeholder="请输入委托诉讼代理人单位" autocomplete="off" class="layui-input">
           </div>
         </div>
 
@@ -90,18 +99,21 @@
           <div class="layui-form-item" pane>
             <div class="layui-form-label" style="line-height: 70px">委托诉讼代理人</div>
             <div class="layui-input-block">
-              <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
+
                 <input type="text" v-model="data.accuser_agent[index+1].agent" placeholder="请输入委托诉讼代理人"  autocomplete="off" class="layui-input"
-                       style="width: 90%;float: left;" >
+                       style="width: 100%;float: left;" >
+
+
+            </div>
+            <div class="layui-input-block" style="margin-top: 5px;">
+              <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
+                <input type="text" v-model="data.accuser_agent[index+1].agent_address"
+                       placeholder="请输入委托诉讼代理人单位及职务" autocomplete="off" class="layui-input" style="width: 90%;float: left;">
                 <button @click="delete_component(index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe640;</i>
                 </button>
               </div>
-            </div>
-            <div class="layui-input-block" style="margin-top: 5px;">
-              <input type="text" v-model="data.accuser_agent[index+1].agent_address"
-                     placeholder="请输入委托诉讼代理人单位" autocomplete="off" class="layui-input">
             </div>
           </div>
 
@@ -135,6 +147,7 @@ export default {
       accuser_address: '',
       accuser_represent: '',
       accuser_duty: '',
+      accuser_info:'',
       accuser_agent:[{agent:"",agent_address: ""}]
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
