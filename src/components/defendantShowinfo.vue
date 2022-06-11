@@ -1,4 +1,4 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
   <div class="layui-card">
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane">
@@ -295,9 +295,9 @@
         <div class="layui-card">
           <div class="layui-card-body">
             <form class="layui-form layui-form-pane">
-                <div class="site-border-cyan" style="width:80%">
-                  <hr class="hr-solid-content" data-content="反诉原告进行举证">
-                </div>
+<!--                <div class="site-border-cyan" style="width:80%">-->
+<!--                  <hr class="hr-solid-content" data-content="反诉原告进行举证">-->
+<!--                </div>-->
 
                 <div class="layui-form-item" pane>
                   <label class="layui-form-label" style="text-align: center">审判员</label>

@@ -18,21 +18,22 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <div class="myradiomargin" style="width: 90%;float: left;">
+                <div class="myradiomargin" style="width: 100%;float: left;">
                   <input type="radio"  lay-ignore  v-model="data.delivery_info[0].is_delivery" value="1" class="myradio">
                   <label>同意</label>
                   <input type="radio" lay-ignore v-model="data.delivery_info[0].is_delivery" value="2" class="myradio">
                   <label>不同意</label>
                 </div>
-                <button @click="add_component('delivery_info')" type="button"
-                        class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text" style="float: right;">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
+<!--                <button @click="add_component('delivery_info')" type="button"-->
+<!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                        data-type="text" style="float: right;">-->
+<!--                  <i class="layui-icon">&#xe654;</i>-->
+<!--                </button>-->
               </div>
             </div>
           </div>
         </div>
+
 
         <div class="layui-form-item layui-form-required" v-if="data.delivery_info[0].is_delivery==1" pane>
           <label class="layui-form-label">电子邮件地址</label>
@@ -43,6 +44,8 @@
             </div>
           </div>
         </div>
+
+
         <div class="layui-form-item layui-form-required" v-if="data.delivery_info[0].is_delivery==2" pane>
           <label class="layui-form-label">纸质文书送达地址</label>
           <div class="layui-input-block">
@@ -51,6 +54,12 @@
                      class=" layui-input ">
             </div>
           </div>
+        </div>
+
+        <div class="layui-form-item" style="width:100%;margin-top: 10px;">
+          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('delivery_info',index+1)"> 添加问题</button>
+          <!--            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题-->
+          <!--            </button>-->
         </div>
 
         <template v-for="(item, index) in data.delivery_info.slice(1)" :key="index">
@@ -97,6 +106,12 @@
                        class="layui-input">
               </div>
             </div>
+          </div>
+
+          <div class="layui-form-item" style="width:100%;margin-top: 10px;">
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('delivery_info',index+1)"> 添加问题</button>
+                        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('delivery_info',index+1)"> 删除问题
+                        </button>
           </div>
         </template>
       </form>
