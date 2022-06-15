@@ -204,7 +204,7 @@ export default {
       court_clerk: '',
       court_number:'（'+new Date().getFullYear()+'）京0108民初XXX号',
       court_cause:"",
-      court_cause_list: []
+      court_cause_list: ["买卖纠纷合同"]
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "BasicInfo" in wholeItem) {
