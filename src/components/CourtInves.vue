@@ -18,8 +18,8 @@
           </div>
           <div class="layui-input-block">
             <!--            <div class="layui-input-inline " style="width: 80%; margin-left:0px;">-->
-            <textarea  v-model="data.accuser_claim_item" placeholder="请输入诉讼请求项"  autocomplete="off"
-                       class="layui-textarea"></textarea>
+            <textarea v-model="data.accuser_claim_item" placeholder="请输入诉讼请求项" autocomplete="off"
+                      class="layui-textarea"></textarea>
           </div>
 
         </div>
@@ -29,198 +29,179 @@
             事实和理由
           </div>
           <div class="layui-input-block">
-            <textarea v-model="data.accuser_claim_fact_reason"  placeholder="请输入事实和理由"
+            <textarea v-model="data.accuser_claim_fact_reason" placeholder="请输入事实和理由"
                       class="layui-textarea"></textarea>
           </div>
         </div>
 
-        <div class="layui-form-item " pane>
-          <div class="layui-form-label">
-            审判员
-          </div>
-          <div class="layui-input-block">
-            <input type="text" autocomplete="off" class="layui-input"
-                   value="对于原告的诉讼请求及事实理由，被告进行答辩。">
-          </div>
-        </div>
+      </form>
+    </div>
+  </div>
 
-        <div class="layui-form-item" pane>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-            <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
-              <VueMultiselect :option-height="38"  v-model="data.defendant_reply[0].name" :show-labels="false"
-                              :options="getDefendantName" placeholder="请选择被告"
-                              :taggable="true"
-                              style="line-height: 16px;width: 210px; min-height: 38px;border: none;"
-              ></VueMultiselect>
-            </div>
-            <div class="layui-input-block">
-              <div class="myselect-div " >
-                <textarea type="text" v-model="data.defendant_reply[0].content"  placeholder="请输入答辩内容"
-                          autocomplete="off"
-                          class="layui-textarea" style="width: 100%;float: left;min-height:100px"></textarea>
-                <!--                <button @click="add_component('defendant_reply')" type="button"-->
-                <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
-                <!--                        data-type="text" style="float: right;margin-top:31px;">-->
-                <!--                  <i class="layui-icon">&#xe654;</i>-->
-                <!--                </button>-->
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-form-item" style="width:100%;">
-          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('defendant_reply')">添加答辩内容</button>
-          <!--              <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('defendant_reply',index+1)"> 删除答辩内容-->
-          <!--              </button>-->
-        </div>
-        <template v-for="(item, index) in data.defendant_reply.slice(1)" :key='index'>
-          <div class="layui-form-item" pane>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-              <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;;">
-                <VueMultiselect :option-height="38" v-model="data.defendant_reply[index+1].name"
-                                :show-labels="false" :options="getDefendantName" placeholder="请选择被告"
-                                style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+
+  <fieldset class="layui-elem-field layui-field-title" id="defendant_reply">
+    <legend>法庭调查-被告答辩</legend>
+    <div class="layui-field-box">
+      <div class="layui-card">
+        <div class="layui-card-body">
+          <form class="layui-form layui-form-pane">
+            <div class="layui-form-item " pane>
+              <div class="layui-form-label">
+                审判员
               </div>
               <div class="layui-input-block">
-                <div class="myselect-div">
-                <textarea type="text" v-model="data.defendant_reply[index+1].content"  placeholder="请输入答辩内容"
+                <input type="text" autocomplete="off" class="layui-input"
+                       value="对于原告的诉讼请求及事实理由，被告进行答辩。">
+              </div>
+            </div>
+
+            <template v-for="(item, index) in data.defendant_reply" :key='index'>
+              <div class="layui-form-item" pane>
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                  <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;;">
+                    <VueMultiselect :option-height="38" v-model="data.defendant_reply[index].name"
+                                    :show-labels="false" :options="getDefendantName" placeholder="请选择被告"
+                                    style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                  </div>
+                  <div class="layui-input-block">
+                    <div class="myselect-div">
+                <textarea type="text" v-model="data.defendant_reply[index].content" placeholder="请输入答辩内容"
                           autocomplete="off"
                           class="layui-textarea" style="width: 100%;float: left;min-height:100px"></textarea>
-                  <!--                <input type="text" v-model="data.defendant_reply[index+1].content" placeholder="请输入答辩内容"-->
-                  <!--                       autocomplete="off"-->
-                  <!--                       class="layui-input" style="width: 90%;float: left;">-->
-                  <!--                <button @click="delete_component('defendant_reply',index+1)" type="button"-->
-                  <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
-                  <!--                        data-type="text" style="float: right;">-->
-                  <!--                  <i class="layui-icon">&#xe640;</i>-->
-                  <!--                </button>-->
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="layui-form-item" style="width:100%;">
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('defendant_reply')">添加答辩内容</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('defendant_reply',index+1)"> 删除答辩内容
-            </button>
-          </div>
-        </template>
 
-
-        <div class="layui-form-item" pane>
-          <label class="layui-form-label">是否反诉</label>
-          <div class="layui-input-block">
-            <div class="myradiomargin">
-              <input type="radio" name="is_counterclaim" lay-ignore="" v-model="data.is_counterclaim"
-                     class="myradio" value="1"
-                     title="反诉" @change="setCourterClaim()"><label>反诉</label>
-              <input type="radio" name="is_counterclaim" lay-ignore="" v-model="data.is_counterclaim"
-                     class="myradio" value="2"
-                     title="不反诉" style="margin-left: 15px;" @change="setCourterClaim()"><label>不反诉</label>
-            </div>
-          </div>
-        </div>
-
-        <div v-if="data.is_counterclaim==1">
-          <div class="layui-form-item" pane>
-            <div class="layui-form-label" style="line-height: 80px">
-              反诉原告诉讼请求项
-            </div>
-            <div class="layui-input-block" contenteditable="true">
-              <textarea v-model="data.counterclaim_accuser_claim_item" placeholder="请输入诉讼请求项"
-                        class="layui-textarea" style="height:40px"></textarea>
-              <!--                <button @click="add_component('counterclaim_plaintiff')" type="button"-->
-              <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
-              <!--                        data-type="text" style="float: right;">-->
-              <!--                  <i class="layui-icon">&#xe654;</i>-->
-              <!--                </button>-->
-            </div>
-          </div>
-
-          <div class="layui-form-item" pane>
-            <div class="layui-form-label" style="line-height: 80px">
-              事实和理由
-            </div>
-            <div class="layui-input-block">
-                <textarea v-model="data.counterclaim_accuser_fact_reason" placeholder="请输入事实和理由"
-                          class="layui-textarea"></textarea>
-            </div>
-          </div>
-
-          <div class="layui-form-item" pane>
-            <label class="layui-form-label">反诉被告今天是否答辩</label>
-            <div class="layui-input-block">
-              <div class="myradiomargin">
-                <input type="radio" lay-ignore="" name="counterclaim_defendant_today_is_reply" v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="1"
-                       title="答辩" @change="setIsTodayReply"><label>答辩</label>
-                <input type="radio" lay-ignore="" name="counterclaim_defendant_today_is_reply" v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="2"
-                       title="不答辩" @change="setIsTodayReply" style="margin-left: 15px;"><label>不答辩</label>
-              </div>
-            </div>
-          </div>
-
-          <div v-if="data.counterclaim_defendant_today_is_reply==1">
-            <div class="layui-form-item " pane>
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-                <div class="layui-input-inline" style="margin-left:0px ;margin-top: 31px;">
-                  <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[0].name" :show-labels="false"
-                                  :options="getAccuserName" placeholder="请选择反诉被告"
-                                  style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-                </div>
-                <div class="layui-input-block">
-                  <div class="myselect-div">
-                    <textarea type="text" v-model="data.counterclaim_defendant_reply[0].content"  placeholder="请输入答辩内容"
-                              autocomplete="off"
-                              class="layui-input" style="width: 100%;float: left;min-height: 100px"></textarea>
-                    <!--                    <button @click="add_component('counterclaim_defendant_reply')" type="button"-->
-                    <!--                            class="layui-btn layui-btn-primary layui-btn-sm"-->
-                    <!--                            data-type="text" style="float: right;">-->
-                    <!--                      <i class="layui-icon">&#xe654;</i>-->
-                    <!--                    </button>-->
+                    </div>
                   </div>
                 </div>
               </div>
+              <div class="layui-form-item" style="width:100%;">
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                        @click="add_component('defendant_reply')">添加答辩内容
+                </button>
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0"
+                        @click="delete_component('defendant_reply',index)"> 删除答辩内容
+                </button>
+              </div>
+            </template>
+
+            <div class="layui-form-item" pane>
+              <label class="layui-form-label">是否反诉</label>
+              <div class="layui-input-block">
+                <div class="myradiomargin">
+                  <input type="radio" name="is_counterclaim" lay-ignore="" v-model="data.is_counterclaim"
+                         class="myradio" value="1"
+                         title="反诉" @change="setCourterClaim()"><label>反诉</label>
+                  <input type="radio" name="is_counterclaim" lay-ignore="" v-model="data.is_counterclaim"
+                         class="myradio" value="2"
+                         title="不反诉" style="margin-left: 15px;" @change="setCourterClaim()"><label>不反诉</label>
+                </div>
+              </div>
             </div>
-            <div class="layui-form-item" style="width:100%;">
-              <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('counterclaim_defendant_reply')">添加反诉被告答辩内容</button>
-              <!--                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('defendant_reply',index+1)"> 删除答辩内容-->
-              <!--                </button>-->
+          </form>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_claim_item" v-if="data.is_counterclaim==1">
+    <legend>法庭调查-反诉原告的诉讼请求项</legend>
+    <div class="layui-field-box">
+      <div class="layui-card">
+        <div class="layui-card-body">
+          <form class="layui-form layui-form-pane">
+            <div class="layui-form-item" pane>
+              <div class="layui-form-label" style="line-height: 80px">
+                反诉原告诉讼请求项
+              </div>
+              <div class="layui-input-block" contenteditable="true">
+              <textarea v-model="data.counterclaim_accuser_claim_item" placeholder="请输入诉讼请求项"
+                        class="layui-textarea" style="height:40px"></textarea>
+              </div>
             </div>
 
+            <div class="layui-form-item" pane>
+              <div class="layui-form-label" style="line-height: 80px">
+                事实和理由
+              </div>
+              <div class="layui-input-block">
+                <textarea v-model="data.counterclaim_accuser_fact_reason" placeholder="请输入事实和理由"
+                          class="layui-textarea"></textarea>
+              </div>
+            </div>
 
-            <template v-for="(item, index) in data.counterclaim_defendant_reply.slice(1)" :key='index'>
+            <div class="layui-form-item" pane>
+              <label class="layui-form-label">反诉被告今天是否答辩</label>
+              <div class="layui-input-block">
+                <div class="myradiomargin">
+                  <input type="radio" lay-ignore="" name="counterclaim_defendant_today_is_reply"
+                         v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="1"
+                         title="答辩" @change="setIsTodayReply"><label>答辩</label>
+                  <input type="radio" lay-ignore="" name="counterclaim_defendant_today_is_reply"
+                         v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="2"
+                         title="不答辩" @change="setIsTodayReply" style="margin-left: 15px;"><label>不答辩</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_defendant_reply" v-if="data.counterclaim_defendant_today_is_reply==1 && data.is_counterclaim==1">
+    <legend>法庭调查-反诉被告答辩</legend>
+    <div class="layui-field-box">
+      <div class="layui-card">
+        <div class="layui-card-body">
+          <form class="layui-form layui-form-pane">
+            <template v-for="(item, index) in data.counterclaim_defendant_reply" :key='index'>
               <div class="layui-form-item " pane>
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                   <div class="layui-input-inline" style="margin-left:0px ;margin-top: 31px;">
-                    <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[index+1].name"
+                    <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[index].name"
                                     :show-labels="false"
                                     :options="getAccuserName" placeholder="请选择反诉被告"
                                     style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
                     <div class="myselect-div">
-                      <textarea type="text" v-model="data.counterclaim_defendant_reply[index+1].content" placeholder="请输入答辩内容"
+                      <textarea type="text" v-model="data.counterclaim_defendant_reply[index].content"
+                                placeholder="请输入答辩内容"
                                 autocomplete="off"
                                 class="layui-input" style="width: 100%;float: left;min-height:100px"></textarea>
-                      <!--                      <button @click="delete_component('counterclaim_defendant_reply',index+1)" type="button"-->
-                      <!--                              class="layui-btn layui-btn-primary layui-btn-sm"-->
-                      <!--                              data-type="text" style="float: right;">-->
-                      <!--                        <i class="layui-icon">&#xe640;</i>-->
-                      <!--                      </button>-->
+
                     </div>
                   </div>
                 </div>
               </div>
               <div class="layui-form-item" style="width:100%;">
-                <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('counterclaim_defendant_reply')">添加反诉被告答辩内容</button>
-                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('counterclaim_defendant_reply',index+1)"> 删除答辩内容
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                        @click="add_component('counterclaim_defendant_reply')">添加反诉被告答辩内容
+                </button>
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
+                        v-if="index != 0"
+                        @click="delete_component('counterclaim_defendant_reply',index)"> 删除答辩内容
                 </button>
               </div>
             </template>
-            <!--            </div>-->
-          </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
-  </div>
+  </fieldset>
+
+<!--  <fieldset class="layui-elem-field layui-field-title" id="defendant_reply">-->
+<!--    <legend>法庭调查-被告答辩</legend>-->
+<!--    <div class="layui-field-box">-->
+<!--      <div class="layui-card">-->
+<!--        <div class="layui-card-body">-->
+<!--          <form class="layui-form layui-form-pane">-->
+
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </fieldset>-->
+
 </template>
 
 <script>
@@ -252,15 +233,15 @@ export default {
   components: {
     VueMultiselect
   },
-  computed:{
-    getDefendantName:{
-      get(){
-        return this.$store.state.defendant_item.map(e => e.defendant_short==''?e.defendant:e.defendant_short).filter(i => i && i.trim())
+  computed: {
+    getDefendantName: {
+      get() {
+        return this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short).filter(i => i && i.trim())
       }
     },
-    getAccuserName:{
-      get(){
-        return this.$store.state.plaintiff_item.map(e => e.accuser_short==''?e.accuser:e.accuser_short).filter(i => i && i.trim())
+    getAccuserName: {
+      get() {
+        return this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short).filter(i => i && i.trim())
       }
     }
   },
@@ -315,7 +296,7 @@ export default {
       this.$store.commit("setIsTodayReply", this.data.counterclaim_defendant_today_is_reply)
       // console.log(data.is_counterclaim)
     },
-    setCourterClaim(){
+    setCourterClaim() {
       this.$store.commit("setIsCourtClaim", this.data.is_counterclaim)
     }
   },

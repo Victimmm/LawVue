@@ -117,11 +117,6 @@
     </form>
   </div>
 
-  <div id="navtest" style="display: none">
-    <ul class="site-dir layui-layer-wrap" id="content_list_temp" style="display: block;">
-
-    </ul>
-  </div>
 </template>
 
 <script>
@@ -198,12 +193,15 @@ export default {
           title: '目录',
           skin: 'myskin',
           type: 1,
-          content: "    <ul class=\"site-dir layui-layer-wrap\" id=\"content_list_temp\" style=\"display: block;\">\n" +
+          content: "    <ul class=\"site-dir layui-layer-wrap\" id=\"content_list\" style=\"display: block;\">\n" +
               "\n" +
               "    </ul>",
           shade: 0,
           closeBtn: 0,
-          offset: 'r'
+          offset: 'r',
+          success: ()=>{
+            this.navChange()
+          }
         });
       });
     })
@@ -245,14 +243,14 @@ export default {
       }
       // 把下标赋值给 vue 的 data
       this.active = navIndex
-      // if (document.getElementById("content_list") != null) {
-      //   // 获取钙元素下的a标签，并更改class 属性
-      //   for (let i = 0; i < offsetTopArr.length; i++) {
-      //     if (i != navIndex)
-      //       document.getElementById("content_list").children[i].children[0].removeAttribute("class")
-      //   }
-      //   document.getElementById("content_list").children[navIndex].children[0].className = "layui-this"
-      // }
+      if (document.getElementById("content_list") != null) {
+        // 获取钙元素下的a标签，并更改class 属性
+        for (let i = 0; i < offsetTopArr.length; i++) {
+          if (i != navIndex)
+            document.getElementById("content_list").children[i].children[0].removeAttribute("class")
+        }
+        document.getElementById("content_list").children[navIndex].children[0].className = "layui-this"
+      }
     },
     //提交 localstorage  中的数据
     onSummit() {
@@ -438,31 +436,40 @@ export default {
       const id_list = []
       const title = []
       let innerhtml=""
-      navContents.forEach(item => {
-        title.push(item.getElementsByTagName('legend')[0].innerHTML)
-        id_list.push(item.getAttribute("id"))
-        innerhtml= innerhtml +"        <li ><a href='#BasicInfo'><cite>基本信息</cite></a></li>\n"
+      this.$nextTick(function(){
+        navContents.forEach(item => {
+          title.push(item.getElementsByTagName('legend')[0].innerHTML)
+          id_list.push(item.getAttribute("id"))
+          innerhtml= innerhtml +"        <li ><a href='#"+item.getAttribute("id")+"'><cite>"+item.getElementsByTagName('legend')[0].innerHTML+"<cite></a></li>\n"
+        })
+        document.getElementById("content_list").innerHTML=innerhtml
+        this.onScroll()
       })
+
 
       //              "        <li ><a href=\"#BasicInfo\"><cite>基本信息</cite></a></li>\n" +
 
 
-
-      console.log(title,id_list)
     }
   },
   watch: {
     "$store.state.is_counterclaim" ()
     {
+      setTimeout( ()=>{
         this.navChange()
+      },1000);
     },
     "$store.state.counterclaim_defendant_today_is_reply" ()
     {
-      this.navChange()
+      setTimeout( ()=>{
+        this.navChange()
+      },1000);
     },
     is_avoid ()
     {
-      this.navChange()
+      setTimeout( ()=>{
+        this.navChange()
+      },1000);
     },
 
   }
