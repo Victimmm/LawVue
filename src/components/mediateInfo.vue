@@ -18,21 +18,22 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <div class="myradiomargin" style="width: 90%;float: left;">
+                <div class="myradiomargin" style="width: 100%;float: left;">
                   <input type="radio" value="1" class="myradio" lay-ignore v-model="data.mediate_accuser[0].is_mediate">
                   <label>能</label>
                   <input type="radio" value="2" class="myradio" lay-ignore v-model="data.mediate_accuser[0].is_mediate">
                   <label>不能</label>
                 </div>
-                <button @click="add_component('mediate_accuser')" type="button"
-                        class="layui-btn layui-btn-primary layui-btn-sm"
-                        data-type="text" style="float: right;">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
+<!--                <button @click="add_component('mediate_accuser')" type="button"-->
+<!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                        data-type="text" style="float: right;">-->
+<!--                  <i class="layui-icon">&#xe654;</i>-->
+<!--                </button>-->
               </div>
             </div>
           </div>
         </div>
+
         <div v-if="data.mediate_accuser[0].is_mediate==1">
           <div class="layui-form-item" pane>
             <div class="layui-form-label" style="line-height: 80px">
@@ -54,6 +55,11 @@
             </div>
           </div>
         </div>
+        <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_accuser',1)"> 添加原告</button>
+          <!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_accuser',index+1)"> 删除原告-->
+          <!--          </button>-->
+        </div>
 
         <template v-for="(item, index) in data.mediate_accuser.slice(1)" :key="index">
           <div class="layui-form-item " pane>
@@ -65,17 +71,17 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <div class="myradiomargin" style="width: 90%;float: left;">
+                  <div class="myradiomargin" style="width: 100%;float: left;">
                     <input type="radio" value="1" class="myradio" v-model="data.mediate_accuser[index+1].is_mediate" lay-ignore>
                     <label>能</label>
                     <input type="radio" value="2" class="myradio" v-model="data.mediate_accuser[index+1].is_mediate" lay-ignore>
                     <label>不能</label>
                   </div>
-                  <button @click="delete_component('mediate_accuser',index+1)" type="button"
-                          class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text" style="float: right;">
-                    <i class="layui-icon">&#xe640;</i>
-                  </button>
+<!--                  <button @click="delete_component('mediate_accuser',index+1)" type="button"-->
+<!--                          class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                          data-type="text" style="float: right;">-->
+<!--                    <i class="layui-icon">&#xe640;</i>-->
+<!--                  </button>-->
                 </div>
               </div>
             </div>
@@ -101,6 +107,9 @@
               </div>
             </div>
           </div>
+          <button type="button" style="margin-bottom:15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_accuser',1)"> 添加原告</button>
+          <button type="button" style="margin-bottom:15px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_accuser',index+1)"> 删除原告
+          </button>
         </template>
 
         <div class="layui-form-item " pane>
@@ -137,6 +146,10 @@
           </div>
         </div>
 
+          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" style="margin-bottom: 15px" @click="add_component('mediate_defendant',1)"> 添加被告</button>
+          <!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_defendant',index+1)"> 删除被告-->
+          <!--          </button>-->
+
         <template v-for="(item, index) in data.mediate_defendant.slice(1)" :key="index">
           <div class="layui-form-item " pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
@@ -171,6 +184,9 @@
                           class="layui-textarea"></textarea>
             </div>
           </div>
+          <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_defendant',1)"> 添加被告</button>
+          <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_defendant',index+1)"> 删除被告
+          </button>
         </template>
         <div v-if="show_final_mediate==1">
         <div class="layui-form-item" pane>
