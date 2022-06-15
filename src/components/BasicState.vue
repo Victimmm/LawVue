@@ -21,7 +21,7 @@
           <div class="layui-form-label divcenter" >
             陈述内容
           </div>
-          <div class="layui-input-block">
+          <div class="layui-input-block" style="text-align:left;padding: 5px 7px 5px">
             {{setStateContent}}
           </div>
         </div>

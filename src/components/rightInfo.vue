@@ -100,18 +100,8 @@
 <script type="text/javascript">
 
 import 'vue-multiselect/dist/vue-multiselect.css'
-import {watch} from 'vue'
-import {useStore} from 'vuex'
 
 export default {
-  setup() {
-    const $store = useStore()
-    watch(() => $store.state.plaintiffname, (val, old) => {
-      console.log(val, old)
-    })
-    return {}
-  },
-
   data() {
     let data;
     data = {
@@ -208,7 +198,7 @@ export default {
     getPlaintiffName() {
       if(this.data.accuser_right_duty.length < this.$store.state.plaintiff_item.length){
         this.data.accuser_right_duty.push({
-          name:"",avoid: "1", right_duty: "1",
+          right_duty: "1", avoid: "1"
         })
       }
 
@@ -221,7 +211,7 @@ export default {
     getDefendantNane() {
       if(this.data.defendant_right_duty.length < this.$store.state.defendant_item.length){
         this.data.defendant_right_duty.push({
-          name:"",avoid: "1", right_duty: "1",
+          right_duty: "1",avoid: "1"
         })
       }
       let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))

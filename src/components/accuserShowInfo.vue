@@ -11,82 +11,7 @@
           </div>
         </div>
 
-        <!--        <div class="layui-form-item" pane>-->
-        <!--          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
-        <!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
-        <!--              <input type="text" v-model="data.accuser_evidence[0].evidence"  placeholder="证据名称"-->
-        <!--                     autocomplete="off"-->
-        <!--                     class="layui-input" style="line-height: 16px;width: 210px; min-height: 38px">-->
-        <!--            </div>-->
-        <!--            <div class="layui-input-block">-->
-        <!--              <div class="myselect-div">-->
-        <!--                <input type="text" v-model="data.accuser_evidence[0].content"  placeholder="证明事项"-->
-        <!--                       autocomplete="off"-->
-        <!--                       class="layui-input" style="width: 90%;float: left;margin-left:0px ;">-->
-        <!--                <button @click="add_component('accuser_evidence')" type="button"-->
-        <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
-        <!--                        data-type="text" style="float: right;">-->
-        <!--                  <i class="layui-icon">&#xe654;</i>-->
-        <!--                </button>-->
-        <!--              </div>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--          <template v-for="(item, index) in data.accuser_evidence.slice(1)" :key="index">-->
-        <!--            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px; height: 38px;">-->
-        <!--              <div class="layui-input-inline" style="margin-left:0px ;">-->
-        <!--                <input type="text" v-model="data.accuser_evidence[index+1].evidence" placeholder="证据名称"-->
-        <!--                       autocomplete="off"-->
-        <!--                       class="layui-input" style="line-height: 16px;width: 210px; min-height: 38px">-->
-        <!--              </div>-->
-        <!--              <div class="layui-input-block">-->
-        <!--                <div class="myselect-div">-->
-        <!--                  <input type="text" v-model="data.accuser_evidence[index+1].content" placeholder="证明事项"-->
-        <!--                         autocomplete="off"-->
-        <!--                         class="layui-input" style="width: 90%;float: left;">-->
-        <!--                  <button @click="delete_component('accuser_evidence',index+1)" type="button"-->
-        <!--                          class="layui-btn layui-btn-primary layui-btn-sm"-->
-        <!--                          data-type="text" style="float: right;">-->
-        <!--                    <i class="layui-icon">&#xe640;</i>-->
-        <!--                  </button>-->
-        <!--                </div>-->
-        <!--              </div>-->
-        <!--            </div>-->
-        <!--          </template>-->
-        <!--        </div>-->
-
-        <div class="layui-form-item" pane>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-            <label class="layui-form-label">证据 {{ numberToChinese(data.accuser_evidence[0].serial) }}</label>
-            <div class="layui-input-block">
-              <div class="layui-input-inline" style="width:30%;margin-left: 0">
-                <VueMultiselect :option-height="38" :show-labels="false"
-                                v-model="data.accuser_evidence[0].evidence_type"
-                                :options="['复印件','原件']" placeholder="请选择证据类型"
-                                style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
-              </div>
-              <div class="layui-input-inline" style="width:70%;margin-left: 0">
-                <input type="text" placeholder="请输入证据名称" class="layui-input" v-model="data.accuser_evidence[0].evidence">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="layui-form-item" pane style="margin-top: -10px;">
-          <div class="layui-form-label divcenter">
-            证明事项
-          </div>
-          <div class="layui-input-block">
-            <textarea type="text" v-model="data.accuser_evidence[0].content"  placeholder="请输入证据证明事项"
-                   class="layui-textarea"></textarea>
-          </div>
-        </div>
-
-        <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('accuser_evidence',1)"> 添加证据</button>
-
-        </div>
-
-        <template v-for="(item ,index) in data.accuser_evidence.slice(1)" :key="index">
+        <template v-for="(item ,index) in data.accuser_evidence" :key="index">
           <div class="layui-form-item" pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <label class="layui-form-label">证据 {{ numberToChinese(item.serial) }}</label>
@@ -109,8 +34,8 @@
               证明事项
             </div>
             <div class="layui-input-block">
-              <textarea type="text" v-model="data.accuser_evidence[index+1].content"  placeholder="请输入证据证明事项"
-                     class="layui-textarea"></textarea>
+              <input type="text" v-model="data.accuser_evidence[index+1].content"  placeholder="证据证明事项"
+                     class="layui-input">
             </div>
           </div>
 

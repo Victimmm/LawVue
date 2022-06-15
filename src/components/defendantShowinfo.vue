@@ -54,8 +54,7 @@
     </div>
   </div>
 
-  <div id="accuser_query">
-    <fieldset class="layui-elem-field layui-field-title">
+    <fieldset class="layui-elem-field layui-field-title" id="accuser_query">
       <legend>法庭调查-原告质证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
@@ -70,48 +69,50 @@
                 </div>
               </div>
 
-              <template v-for="(item,index) in data.accuser_query" :key="index">
-                <div class="layui-form-item" pane>
-                  <div class="layui-form-label">
-                    请选择原告
-                  </div>
-                  <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-                    <div class="layui-input-block">
-                      <div class="myselect-div">
-                        <VueMultiselect :option-height="38" :show-labels="false"
-                                        v-model="data.accuser_query[index].accuser"
-                                        :options=getAccuserName placeholder="请选择原告"
-                                        group-label="accuser"
-                                        :group-select="true"
-                                        group-values="accuser_name"
-                                        :multiple="true"
-                                        :close-on-select="false"
-                                        style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
-                      </div>
+            <template v-for="(item,index) in data.accuser_query" :key="index">
+              <div class="layui-form-item" pane>
+                <div class="layui-form-label">
+                  请选择原告
+                </div>
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                  <div class="layui-input-block">
+                    <div class="myselect-div">
+                      <VueMultiselect :option-height="38" :show-labels="false"
+                                      v-model="data.accuser_query[index].accuser"
+                                      :options=getAccuserName placeholder="请选择原告"
+                                      group-label="accuser"
+                                      :group-select="true"
+                                      group-values="accuser_name"
+                                      :multiple="true"
+                                      :close-on-select="false"
+                                      :searchable="false"
+                                      style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div class="layui-form-item" pane style="margin-top: -10px;">
-                  <div class="layui-form-label">
-                    请选择证据
-                  </div>
-                  <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-                    <div class="layui-input-block">
-                      <div class="myselect-div">
-                        <VueMultiselect :option-height="38" :show-labels="false"
-                                        v-model="data.accuser_query[index].evidence"
-                                        :options=getProofDefendant placeholder="请选择证据"
-                                        group-label="evidence"
-                                        :group-select="true"
-                                        group-values="option_label"
-                                        :multiple="true"
-                                        :close-on-select="false"
-                                        style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
-                      </div>
+              <div class="layui-form-item" pane style="margin-top: -10px;">
+                <div class="layui-form-label">
+                  请选择证据
+                </div>
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                  <div class="layui-input-block">
+                    <div class="myselect-div">
+                      <VueMultiselect :option-height="38" :show-labels="false"
+                                      v-model="data.accuser_query[index].evidence"
+                                      :options=getProofDefendant placeholder="请选择证据"
+                                      group-label="evidence"
+                                      :group-select="true"
+                                      group-values="option_label"
+                                      :multiple="true"
+                                      :close-on-select="false"
+                                      :searchable="false"
+                                      style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
                     </div>
                   </div>
                 </div>
+              </div>
 
                 <div class="layui-form-item" pane style="margin-top: -10px;">
                   <div class="layui-form-label">
@@ -148,16 +149,16 @@
                   </div>
                 </div>
 
-                <div class="layui-form-item" pane style="margin-top: -10px;">
-                  <div class="layui-form-label" style="line-height: 80px">
-                    事实和理由
-                  </div>
-                  <div class="layui-input-block">
+              <div class="layui-form-item" pane style="margin-top: -10px;">
+                <div class="layui-form-label" style="line-height: 80px">
+                  事实和理由
+                </div>
+                <div class="layui-input-block">
               <textarea v-model="data.accuser_query[index].accuser_query_fact_reason"
                         placeholder="请输入事实和理由"
                         class="layui-textarea"></textarea>
-                  </div>
                 </div>
+              </div>
 
                 <div class="layui-form-item" style="width:100%;margin-top: -10px;">
                   <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
@@ -169,15 +170,13 @@
                 </div>
               </template>
 
-            </form>
-          </div>
+          </form>
         </div>
       </div>
-    </fieldset>
-  </div>
+    </div>
+  </fieldset>
 
-  <div id="other_defendant_query">
-    <fieldset class="layui-elem-field layui-field-title">
+    <fieldset class="layui-elem-field layui-field-title" id="other_defendant_query">
       <legend>法庭调查-其他被告质证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
@@ -267,7 +266,7 @@
                   </div>
                   <div class="layui-input-block">
               <textarea v-model="data.other_defendant_query[index].other_defendant_query_fact_reason"
-                        placeholder="请输入事实和理由"
+                        placeholder="理由"
                         class="layui-textarea"></textarea>
                   </div>
                 </div>
@@ -286,18 +285,17 @@
         </div>
       </div>
     </fieldset>
-  </div>
 
-  <div v-if="$store.state.is_counterclaim=='1'" id="counterclaim_accuser_evidence">
-    <fieldset class="layui-elem-field layui-field-title">
+  <div v-if="$store.state.is_counterclaim=='1'" >
+    <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_evidence">
       <legend>法庭调查-反诉原告举证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
           <div class="layui-card-body">
             <form class="layui-form layui-form-pane">
-<!--                <div class="site-border-cyan" style="width:80%">-->
-<!--                  <hr class="hr-solid-content" data-content="反诉原告进行举证">-->
-<!--                </div>-->
+                <div class="site-border-cyan" style="width:80%">
+                  <hr class="hr-solid-content" data-content="反诉原告进行举证">
+                </div>
 
                 <div class="layui-form-item" pane>
                   <label class="layui-form-label" style="text-align: center">审判员</label>
@@ -318,7 +316,7 @@
                                           style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
                         </div>
                         <div class="layui-input-inline" style="width:70%;margin-left: 0">
-                          <input type="text" placeholder="请输入证据名称" class="layui-input"
+                          <input type="text" placeholder="证据名称" class="layui-input"
                                  v-model="data.counterclaim_accuser_evidence[index].evidence">
                         </div>
                       </div>
@@ -326,13 +324,13 @@
                   </div>
 
                   <div class="layui-form-item" pane style="margin-top: -10px;">
-                    <div class="layui-form-label divcenter">
+                    <div class="layui-form-label">
                       证明事项
                     </div>
                     <div class="layui-input-block">
-                      <textarea type="text" v-model="data.counterclaim_accuser_evidence[index].content"
-                             placeholder="请输入证据证明事项"
-                                class="layui-textarea"></textarea>
+                      <input type="text" v-model="data.counterclaim_accuser_evidence[index].content"
+                             placeholder="证据证明事项"
+                             class="layui-input">
                     </div>
                   </div>
 
@@ -353,8 +351,8 @@
     </fieldset>
   </div>
 
-  <div v-if="$store.state.is_counterclaim=='1'" id="counterclaim_defendant_query">
-    <fieldset class="layui-elem-field layui-field-title">
+  <div v-if="$store.state.is_counterclaim=='1'" >
+    <fieldset class="layui-elem-field layui-field-title" id="counterclaim_defendant_query">
       <legend>法庭调查-反诉被告质证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
@@ -456,7 +454,7 @@
                   </div>
                   <div class="layui-input-block">
               <textarea v-model="data.counterclaim_defendant_query[index].counterclaim_defendant_query_fact_reason"
-                        placeholder="请输入事实和理由"
+                        placeholder="理由"
                         class="layui-textarea"></textarea>
                   </div>
                 </div>
@@ -478,8 +476,8 @@
     </fieldset>
   </div>
 
-  <div v-if="$store.state.is_counterclaim=='1'" id="counterclaim_defendant_evidence">
-    <fieldset class="layui-elem-field layui-field-title">
+  <div v-if="$store.state.is_counterclaim=='1'" >
+    <fieldset class="layui-elem-field layui-field-title" id="counterclaim_defendant_evidence">
       <legend>法庭调查-反诉被告举证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
@@ -581,7 +579,7 @@
                   </div>
                   <div class="layui-input-block">
               <textarea v-model="data.counterclaim_defendant_query[index].counterclaim_defendant_query_fact_reason"
-                        placeholder="请输入事实和理由"
+                        placeholder="理由"
                         class="layui-textarea"></textarea>
                   </div>
                 </div>
@@ -603,8 +601,8 @@
     </fieldset>
   </div>
 
-  <div v-if="$store.state.is_counterclaim=='1'" id="counterclaim_accuser_query">
-    <fieldset class="layui-elem-field layui-field-title">
+  <div v-if="$store.state.is_counterclaim=='1'" >
+    <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_query">
       <legend>法庭调查-反诉原告质证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
@@ -702,7 +700,7 @@
                   </div>
                   <div class="layui-input-block">
               <textarea v-model="data.counterclaim_accuser_query[index].counterclaim_accuser_query_fact_reason"
-                        placeholder="请输入事实和理由"
+                        placeholder="理由"
                         class="layui-textarea"></textarea>
                   </div>
                 </div>
@@ -724,8 +722,8 @@
     </fieldset>
   </div>
 
-  <div v-if="$store.state.is_counterclaim=='1'" id="other_counterclaim_defendant_query">
-    <fieldset class="layui-elem-field layui-field-title">
+  <div v-if="$store.state.is_counterclaim=='1'" >
+    <fieldset class="layui-elem-field layui-field-title" id="other_counterclaim_defendant_query">
       <legend>法庭调查-其他反诉被告质证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
@@ -822,7 +820,7 @@
                   <div class="layui-input-block">
               <textarea
                   v-model="data.other_counterclaim_defendant_query[index].other_counterclaim_defendant_query_fact_reason"
-                  placeholder="请输入事实和理由"
+                  placeholder="理由"
                   class="layui-textarea"></textarea>
                   </div>
                 </div>
