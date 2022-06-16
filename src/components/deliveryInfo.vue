@@ -110,7 +110,7 @@
 
           <div class="layui-form-item" style="width:100%;margin-top: 10px;">
             <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('delivery_info',index+1)"> 添加问题</button>
-                        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('delivery_info',index+1)"> 删除问题
+                        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" @click="delete_component('delivery_info',index+1)"> 删除问题
                         </button>
           </div>
         </template>

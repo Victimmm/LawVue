@@ -77,7 +77,7 @@
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                         @click="add_component('defendant_reply')">添加答辩内容
                 </button>
-                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0"
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0"
                         @click="delete_component('defendant_reply',index)"> 删除答辩内容
                 </button>
               </div>

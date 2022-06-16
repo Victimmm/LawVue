@@ -45,7 +45,7 @@
               <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                       @click="add_component('defendant_evidence',index+1)"> 添加证据
               </button>
-              <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px"
                       @click="delete_component('defendant_evidence',index)" v-if="index != 0"> 删除证据
               </button>
             </div>
@@ -164,7 +164,7 @@
                   <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                           @click="add_component('accuser_query',index+1)"> 添加原告质证
                   </button>
-                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0"
+                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0" style="margin-left:5px"
                           @click="delete_component('accuser_query',index)"> 删除原告质证
                   </button>
                 </div>
@@ -275,7 +275,7 @@
                   <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                           @click="add_component('other_defendant_query',index+1)"> 添加其他被告质证
                   </button>
-                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0"
+                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0" style="margin-left:5px"
                           @click="delete_component('other_defendant_query',index)"> 删除其他被告质证
                   </button>
                 </div>
@@ -338,7 +338,7 @@
                     <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                             @click="add_component('counterclaim_accuser_evidence',index+1)"> 添加证据
                     </button>
-                    <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
+                    <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px"
                             @click="delete_component('counterclaim_accuser_evidence',index)"> 删除证据
                     </button>
                   </div>
@@ -463,7 +463,7 @@
                   <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                           @click="add_component('counterclaim_defendant_query',index+1)"> 添加反诉被告质证
                   </button>
-                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0"
+                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0"
                           @click="delete_component('counterclaim_defendant_query',index)"> 删除反诉被告质证
                   </button>
                 </div>
@@ -588,7 +588,7 @@
                   <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                           @click="add_component('counterclaim_defendant_query',index+1)"> 添加反诉被告质证
                   </button>
-                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0"
+                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0" style="margin-left:5px"
                           @click="delete_component('counterclaim_defendant_query',index)"> 删除反诉被告质证
                   </button>
                 </div>
@@ -709,7 +709,7 @@
                   <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                           @click="add_component('counterclaim_accuser_query',index+1)"> 添加反诉原告质证
                   </button>
-                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0"
+                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0" style="margin-left:5px"
                           @click="delete_component('counterclaim_accuser_query',index)"> 删除反诉原告质证
                   </button>
                 </div>
@@ -829,7 +829,7 @@
                   <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                           @click="add_component('other_counterclaim_defendant_query',index+1)"> 添加其他反诉被告质证
                   </button>
-                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0"
+                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0" style="margin-left:5px"
                           @click="delete_component('other_counterclaim_defendant_query',index)"> 删除其他反诉被告质证
                   </button>
                 </div>

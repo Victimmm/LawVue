@@ -116,7 +116,7 @@
         </template>
 
             <button type="button" class="layui-btn layui-btn-radius  layui-btn-sm" @click="onAddClick"> 添加被告信息</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-sm" v-show="this.index!=0"
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-sm" style="margin-left:5px" v-show="this.index!=0"
                     @click="onCloseClick"> 删除被告信息
             </button>
       </form>

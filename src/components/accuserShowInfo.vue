@@ -41,7 +41,7 @@
 
           <div class="layui-form-item" style="width:100%;margin-top: -10px;">
             <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('accuser_evidence',index+1)"> 添加证据</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('accuser_evidence',index)"> 删除证据
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" @click="delete_component('accuser_evidence',index)"> 删除证据
             </button>
           </div>
         </template>
@@ -160,7 +160,7 @@
 
       <div class="layui-form-item" style="width:100%;margin-top: -10px;">
         <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('defendant_query')"> 添加被告质证</button>
-        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0" @click="delete_component('defendant_query',index)"> 删除被告质证
+        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0" @click="delete_component('defendant_query',index)"> 删除被告质证
         </button>
       </div>
     </template>

@@ -108,7 +108,7 @@
             </div>
           </div>
           <button type="button" style="margin-bottom:15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_accuser',1)"> 添加原告</button>
-          <button type="button" style="margin-bottom:15px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_accuser',index+1)"> 删除原告
+          <button type="button" style="margin-bottom:15px ;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_accuser',index+1)"> 删除原告
           </button>
         </template>
 
@@ -185,7 +185,7 @@
             </div>
           </div>
           <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_defendant',1)"> 添加被告</button>
-          <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_defendant',index+1)"> 删除被告
+          <button type="button" style="margin-bottom: 15px;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_defendant',index+1)"> 删除被告
           </button>
         </template>
         <div v-if="show_final_mediate==1">
