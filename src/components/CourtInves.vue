@@ -50,14 +50,14 @@
               <VueMultiselect :option-height="38"  v-model="data.defendant_reply[0].name" :show-labels="false"
                               :options="getDefendantName" placeholder="请选择被告"
                               :taggable="true"
-                              style="line-height: 16px;width: 210px; min-height: 38px;border: none;"
+                              style="line-height: 16px;width: 210px; min-height: 38px;"
               ></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div " >
                 <textarea type="text" v-model="data.defendant_reply[0].content"  placeholder="请输入答辩内容"
                           autocomplete="off"
-                          class="layui-textarea" style="width: 100%;float: left;min-height:100px"></textarea>
+                          class="layui-textarea" style="width: 100%;float: left;min-height:100px;min-width:100%"></textarea>
                 <!--                <button @click="add_component('defendant_reply')" type="button"-->
                 <!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
                 <!--                        data-type="text" style="float: right;margin-top:31px;">-->

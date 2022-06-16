@@ -148,10 +148,10 @@ export default {
     inquiryFormGetAccuserMergeDefendant: {
       get() {
         let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-          return '(原）' + (e.accuser_short==''?e.accuser:e.accuser_short) ;
+          return  (e.accuser_short==''?e.accuser:e.accuser_short) + '(原告）' ;
         })
         let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-          return '(被）' + (e.defendant_short==''?e.defendant:e.defendant_short) ;
+          return (e.defendant_short==''?e.defendant:e.defendant_short) + '(被告）' ;
         })
         return string2.concat(string1)
       },
@@ -166,6 +166,15 @@ export default {
         this.data.question_list=question_list
       })
     if (this.data.question_list.length != 0){
+      var origin_data = [{
+            inquiry_question: "",
+            inquiry_answer: [{
+              name:"",
+              answer:"",
+            }
+            ]
+          }]
+      this.data.inquiry_info = origin_data
       this.data.inquiry_info[0].inquiry_question = this.data.question_list[0]
       for(let p=1; p < this.data.question_list.length; p++){
         let question=this.data.question_list[p]

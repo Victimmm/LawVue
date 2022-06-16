@@ -18,12 +18,12 @@
               <div class="layui-input-block">
                 <div class="layui-input-inline" style="width:30%;margin-left: 0">
                   <VueMultiselect :option-height="38" :show-labels="false"
-                                  v-model="data.accuser_evidence[index+1].evidence_type"
+                                  v-model="data.accuser_evidence[index].evidence_type"
                                   :options="['复印件','原件']" placeholder="请选择证据类型"
                                   style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
                 </div>
                 <div class="layui-input-inline" style="width:70%;margin-left: 0">
-                  <input type="text"  placeholder="请输入证据名称" class="layui-input" v-model="data.accuser_evidence[index+1].evidence">
+                  <input type="text"  placeholder="请输入证据名称" class="layui-input" v-model="data.accuser_evidence[index].evidence">
                 </div>
               </div>
             </div>
@@ -34,8 +34,8 @@
               证明事项
             </div>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_evidence[index+1].content"  placeholder="证据证明事项"
-                     class="layui-input">
+              <textarea type="text" v-model="data.accuser_evidence[index].content"  placeholder="证据证明事项"
+                     class="layui-textarea"></textarea>
             </div>
           </div>
 

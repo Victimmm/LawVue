@@ -72,17 +72,17 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <div class="myradiomargin" style="width: 90%;float: left;">
+                  <div class="myradiomargin" style="width: 100%;float: left;">
                     <input type="radio"  lay-ignore v-model="data.delivery_info[index+1].is_delivery" value="1" class="myradio">
                     <label>同意</label>
                     <input type="radio" lay-ignore v-model="data.delivery_info[index+1].is_delivery" value="2" class="myradio">
                     <label>不同意</label>
                   </div>
-                  <button @click="delete_component('delivery_info',index+1)" type="button"
-                          class="layui-btn layui-btn-primary layui-btn-sm"
-                          data-type="text" style="float: right;">
-                    <i class="layui-icon">&#xe640;</i>
-                  </button>
+<!--                  <button @click="delete_component('delivery_info',index+1)" type="button"-->
+<!--                          class="layui-btn layui-btn-primary layui-btn-sm"-->
+<!--                          data-type="text" style="float: right;">-->
+<!--                    <i class="layui-icon">&#xe640;</i>-->
+<!--                  </button>-->
                 </div>
               </div>
             </div>
@@ -161,10 +161,10 @@ export default {
     deliveryFormGetAccuserMergeDefendant: {
       get() {
         let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-          return '(原）' + (e.accuser_short==''?e.accuser:e.accuser_short) ;
+          return (e.accuser_short==''?e.accuser:e.accuser_short) + '（原告）'  ;
         })
         let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-          return '(被）' + (e.defendant_short==''?e.defendant:e.defendant_short) ;
+          return (e.defendant_short==''?e.defendant:e.defendant_short)  + '（被告）'  ;
         })
         return string1.concat(string2)
       },

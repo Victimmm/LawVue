@@ -101,15 +101,16 @@
                 <deliveryInfo></deliveryInfo>
               </div>
             </fieldset>
-
+        </div>
+      </div>
             <fieldset class="layui-elem-field layui-field-title" id="summarizeInfo">
               <legend>审判员最后陈述</legend>
               <div class="layui-field-box">
                 <summarizeInfo></summarizeInfo>
               </div>
             </fieldset>
-        </div>
-      </div>
+
+
       <button type="button" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-lg" lay-submit
               lay-filter="onSubmit"
               style="margin: -15px 0 30px; width: 150px"> 提交

@@ -328,9 +328,9 @@
                       证明事项
                     </div>
                     <div class="layui-input-block">
-                      <input type="text" v-model="data.counterclaim_accuser_evidence[index].content"
+                      <textarea type="text" v-model="data.counterclaim_accuser_evidence[index].content"
                              placeholder="证据证明事项"
-                             class="layui-input">
+                             class="layui-textarea"></textarea>
                     </div>
                   </div>
 
