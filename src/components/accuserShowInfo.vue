@@ -34,14 +34,14 @@
               证明事项
             </div>
             <div class="layui-input-block">
-              <textarea type="text" v-model="data.accuser_evidence[index].content"  placeholder="证据证明事项"
-                     class="layui-textarea"></textarea>
+              <input type="text" v-model="data.accuser_evidence[index].content"  placeholder="证据证明事项"
+                     class="layui-input">
             </div>
           </div>
 
           <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('accuser_evidence',index+2)"> 添加证据</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('accuser_evidence',index+1)"> 删除证据
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('accuser_evidence',index+1)"> 添加证据</button>
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('accuser_evidence',index)"> 删除证据
             </button>
           </div>
         </template>
@@ -50,8 +50,7 @@
     </div>
   </div>
 
-<div id="defendant_query">
-  <fieldset class="layui-elem-field layui-field-title">
+  <fieldset class="layui-elem-field layui-field-title" id="defendant_query">
     <legend>法庭调查-被告质证</legend>
     <div class="layui-field-box">
   <div class="layui-card">
@@ -170,7 +169,6 @@
   </div>
     </div>
   </fieldset>
-</div>
 </template>
 
 <script>
