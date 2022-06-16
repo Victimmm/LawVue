@@ -122,14 +122,14 @@ export default {
     getPlaintiffName: {
       get(){
         return this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-          return '(原）' + (e.accuser_short==''?e.accuser:e.accuser_short) ;
+          return  (e.accuser_short==''?e.accuser:e.accuser_short) + '（原告）' ;
         })
       },
     },
     getDefendantNane: {
       get() {
           return this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-            return '(被）' + (e.defendant_short==''?e.defendant:e.defendant_short) ;
+            return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;
           })
       }
     }

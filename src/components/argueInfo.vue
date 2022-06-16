@@ -73,10 +73,6 @@
                           style="float: right;height:100px;width:15%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
-<!--                  <button @click="add_component('counterclaim_argue')" type="button" class="layui-btn layui-btn-radius layui-btn-xs"-->
-<!--                          data-type="text"-->
-<!--                          style="float: right;height:100px;width:15%">添加-->
-<!--                  </button>-->
                 </div>
               </div>
             </div>
