@@ -128,7 +128,7 @@
                   <label>不能</label>
                 </div>
                 <button @click="add_component('mediate_defendant')" type="button"
-                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        class="layui-btn layui-btn-sm"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
@@ -167,7 +167,7 @@
                     <label>不能</label>
                   </div>
                   <button @click="delete_component('mediate_defendant',index+1)" type="button"
-                          class="layui-btn layui-btn-primary layui-btn-sm"
+                          class="layui-btn layui-btn-sm layui-btn-danger"
                           data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
                   </button>

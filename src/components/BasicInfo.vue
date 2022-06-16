@@ -51,7 +51,7 @@
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.judge[0].name" placeholder="请输入审判员姓名" lay-verify="required"  autocomplete="off" class="layui-input"
                      style="width: 90%;float: left;" @blur="judgeChange('judge',0)"  >
-              <button @click="add_component('judge')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+              <button @click="add_component('judge')" type="button" class="layui-btn layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
               </button>
@@ -63,7 +63,7 @@
                 <input type="text" v-model="data.judge[index+1].name" placeholder="请输入审判员姓名" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('judge',index+1)">
                 <button @click="delete_component('judge',index+1)" type="button"
-                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        class="layui-btn layui-btn-sm layui-btn-danger"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe640;</i>
                 </button>
@@ -81,7 +81,7 @@
               <input type="text" v-model="data.chief_judge[0].name" placeholder="请输入审判长姓名" autocomplete="off"
                      class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('chief_judge',0)">
               <button @click="add_component('chief_judge')" type="button"
-                      class="layui-btn layui-btn-primary layui-btn-sm"
+                      class="layui-btn layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
               </button>
@@ -97,7 +97,7 @@
                 <input type="text" v-model="data.chief_judge[index+1].name" placeholder="请输入审判长姓名" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('chief_judge',index+1)">
                 <button @click="delete_component('chief_judge',index+1)" type="button"
-                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        class="layui-btn layui-btn-sm layui-btn-danger"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe640;</i>
                 </button>
@@ -115,7 +115,7 @@
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.juror[0].name" placeholder="请输入陪审员姓名" autocomplete="off" class="layui-input"
                      style="width: 90%;float: left;" @blur="judgeChange('juror',0)"  >
-              <button @click="add_component('juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+              <button @click="add_component('juror')" type="button" class="layui-btn layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
               </button>
@@ -127,7 +127,7 @@
                 <input type="text" v-model="data.juror[index+1].name" placeholder="请输入陪审员姓名" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('juror',index+1)">
                 <button @click="delete_component('juror',index+1)" type="button"
-                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        class="layui-btn layui-btn-sm layui-btn-danger"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe640;</i>
                 </button>
@@ -146,7 +146,7 @@
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.people_juror[0].name" placeholder="请输入人民陪审员姓名" autocomplete="off" class="layui-input"
                      style="width: 90%;float: left;" @blur="judgeChange('people_juror',0)"  >
-              <button @click="add_component('people_juror')" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+              <button @click="add_component('people_juror')" type="button" class="layui-btn layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
               </button>
@@ -158,7 +158,7 @@
                 <input type="text" v-model="data.people_juror[index+1].name" placeholder="请输入人民陪审员姓名" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;" @blur="judgeChange('people_juror',index+1)">
                 <button @click="delete_component('people_juror',index+1)" type="button"
-                        class="layui-btn layui-btn-primary layui-btn-sm"
+                        class="layui-btn layui-btn-sm layui-btn-danger"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe640;</i>
                 </button>

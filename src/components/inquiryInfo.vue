@@ -24,10 +24,10 @@
             <div class="layui-input-block">
               <div class="myselect-div " >
               <textarea type="text" v-model="data.inquiry_info[0].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
-                        class="layui-textarea"  style="width: 90%;float: left;min-height:100px"></textarea>
-                <button @click="add_component('inquiry_reply',0)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                        data-type="text"
-                        style="float: right;height:30px;margin-top: 5px;margin-top: 30px;padding: 0 5px;margin-left: 5px">添加
+                        class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                <button type="button" @click="add_component('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                        style="float: right;height:100px;width:15%">
+                  <i class="layui-icon">&#xe654;</i>
                 </button>
               </div>
             </div>
@@ -42,10 +42,14 @@
               <div class="layui-input-block">
                 <div class="myselect-div " >
                   <textarea type="text" v-model="data.inquiry_info[0].inquiry_answer[bindex+1].answer" placeholder="回答" autocomplete="off"
-                        class="layui-textarea"  style="width: 90%;float: left;min-height:100px"></textarea>
-                  <button @click="delete_component('inquiry_reply',0,bindex+1)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                        class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                  <button type="button" @click="delete_component('inquiry_reply',0,bindex+1)" class="layui-btn layui-btn-danger layui-btn-sm"
                           data-type="text"
-                          style="float: right;height:30px;margin-top: 5px;margin-top: 30px;padding: 0 5px;margin-left: 5px">删除
+                          style="float: right;height:100px;width:7.5%">
+                    <i class="layui-icon">&#xe640;</i></button>
+                  <button type="button" @click="add_component('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                          style="float: right;height:100px;width:7.5%">
+                    <i class="layui-icon">&#xe654;</i>
                   </button>
                 </div>
               </div>
@@ -73,16 +77,16 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div " >
-              <textarea type="text" v-model="data.inquiry_info[index+1].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
-                        class="layui-textarea"  style="width: 90%;float: left;min-height:100px"></textarea>
-                  <button @click="add_component('inquiry_answer',index+1)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                          data-type="text"
-                          style="float: right;height:30px;margin-top: 5px;margin-top: 30px;padding: 0 5px;margin-left: 5px">添加
+                  <textarea type="text" v-model="data.inquiry_info[index+1].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
+                        class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+<!--                  <button type="button" @click="delete_component('inquiry_answer',index+1)" class="layui-btn layui-btn-danger layui-btn-sm"-->
+<!--                          data-type="text"-->
+<!--                          style="float: right;height:100px;width:7.5%">-->
+<!--                    <i class="layui-icon">&#xe640;</i></button>-->
+                  <button type="button" @click="add_component('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                          style="float: right;height:100px;width:15%">
+                    <i class="layui-icon">&#xe654;</i>
                   </button>
-                  <!--                <button @click="add_component('inquiry_reply',0)" type="button"-->
-                  <!--                        class="layui-btn layui-btn-radius layui-btn-xs"-->
-                  <!--                        data-type="text" style="float: right;">-->
-                  <!--                </button>-->
                 </div>
               </div>
             </div>
@@ -96,11 +100,19 @@
                 <div class="layui-input-block">
                   <div class="myselect-div " >
                   <textarea type="text" v-model="data.inquiry_info[index+1].inquiry_answer[aindex+1].answer" placeholder="回答" autocomplete="off"
-                            class="layui-textarea"  style="width: 90%;float: left;min-height:100px"></textarea>
-                    <button @click="delete_component('inquiry_answer',index+1,aindex+1)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                            class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                    <button type="button" @click="delete_component('inquiry_answer',index+1,aindex+1)" class="layui-btn layui-btn-danger layui-btn-sm"
                             data-type="text"
-                            style="float: right;height:30px;margin-top: 5px;margin-top: 30px;padding: 0 5px;margin-left: 5px">删除
+                            style="float: right;height:100px;width:7.5%">
+                      <i class="layui-icon">&#xe640;</i></button>
+                    <button type="button" @click="add_component('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                            style="float: right;height:100px;width:7.5%">
+                      <i class="layui-icon">&#xe654;</i>
                     </button>
+<!--                    <button @click="delete_component('inquiry_answer',index+1,aindex+1)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"-->
+<!--                            data-type="text"-->
+<!--                            style="float: right;height:30px;margin-top: 5px;margin-top: 30px;padding: 0 5px;margin-left: 5px">删除-->
+<!--                    </button>-->
                   </div>
                 </div>
               </div>

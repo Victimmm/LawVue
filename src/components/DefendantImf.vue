@@ -85,7 +85,7 @@
             <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
               <input type="text" v-model="data.defendant_agent[0].agent_address"
                      placeholder="请输入委托诉讼代理人单位及职务" autocomplete="off" class="layui-input" style="width: 90%;float: left;" >
-              <button @click="add_component()" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+              <button @click="add_component()" type="button" class="layui-btn layui-btn-sm"
                       data-type="text" style="float: right;">
                 <i class="layui-icon">&#xe654;</i>
               </button>
@@ -106,7 +106,7 @@
               <div class="layui-input-inline " style="width: 100%; margin-left:0px;">
                 <input type="text" v-model="data.defendant_agent[index+1].agent_address"
                          placeholder="请输入委托诉讼代理人单位及职务" autocomplete="off" class="layui-input" style="width: 90%;float: left;">
-                <button @click="delete_component(index+1)" type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                <button @click="delete_component(index+1)" type="button" class="layui-btn layui-btn-sm layui-btn-danger"
                         data-type="text" style="float: right;">
                   <i class="layui-icon">&#xe640;</i>
                 </button>
