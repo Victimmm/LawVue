@@ -36,14 +36,14 @@
           </div>
         </fieldset>
 
-
         <fieldset class="layui-elem-field layui-field-title" id="rightInfo">
           <legend>权利告知</legend>
           <div class="layui-field-box">
             <rightInfo @SetIsAvoid="SetIsAvoid"></rightInfo>
           </div>
         </fieldset>
-      <div v-if="is_avoid=='1'">
+
+      <div v-if="is_avoid =='2'">
           <fieldset class="layui-elem-field layui-field-title" id="CourtInves1">
             <legend>法庭调查-原告诉讼请求</legend>
             <div class="layui-field-box">
@@ -114,7 +114,10 @@
       <button type="button" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-lg" lay-submit
               lay-filter="onSubmit"
               style="margin: -15px 0 30px; width: 150px"> 提交
-    </button>
+      </button>
+      <button type="button" class="layui-btn layui-btn-radius layui-btn-lg" @click="back()"
+              style="margin: -15px 5px 30px; width: 150px;"> 返回
+      </button>
     </form>
   </div>
 
@@ -155,17 +158,17 @@ export default {
     summarizeInfo,
   },
   data: function () {
-    let is_avoid = "1"
+    let is_avoid = "2"
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "rightInfo" in wholeItem) {
       for (let i in wholeItem.rightInfo.accuser_right_duty) {
-        if (wholeItem.rightInfo.accuser_right_duty[i].avoid == "2") {
-          is_avoid = "2"
+        if (wholeItem.rightInfo.accuser_right_duty[i].avoid == "1") {
+          is_avoid = "1"
         }
       }
       for (let i in wholeItem.rightInfo.defendant_right_duty) {
-        if (wholeItem.rightInfo.defendant_right_duty[i].avoid == "2") {
-          is_avoid = "2"
+        if (wholeItem.rightInfo.defendant_right_duty[i].avoid == "1") {
+          is_avoid = "1"
         }
       }
     }
@@ -428,6 +431,9 @@ export default {
             // handle error
             console.log(error);
           });
+    },
+    back(){
+      window.location.href = '/view/record'
     },
 
     navChange(){

@@ -121,17 +121,17 @@
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
-                <div class="myradiomargin" style="width: 90%;float: left;">
+                <div class="myradiomargin" style="width: 100%;float: left;">
                   <input type="radio" value="1" v-model="data.mediate_defendant[0].is_mediate" lay-ignore class="myradio" >
                   <label>能</label>
                   <input type="radio" value="2" v-model="data.mediate_defendant[0].is_mediate" lay-ignore class="myradio" >
                   <label>不能</label>
                 </div>
-                <button @click="add_component('mediate_defendant')" type="button"
-                        class="layui-btn layui-btn-sm"
-                        data-type="text" style="float: right;">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
+<!--                <button @click="add_component('mediate_defendant')" type="button"-->
+<!--                        class="layui-btn layui-btn-sm"-->
+<!--                        data-type="text" style="float: right;">-->
+<!--                  <i class="layui-icon">&#xe654;</i>-->
+<!--                </button>-->
               </div>
             </div>
           </div>

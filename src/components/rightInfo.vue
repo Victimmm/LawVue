@@ -62,9 +62,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" lay-ignore v-model="data.accuser_right_duty[index].avoid" class="myradio"><label>
-                    不申请回避 </label>
                     <input type="radio" value="2" lay-ignore v-model="data.accuser_right_duty[index].avoid" class="myradio"><label>
+                    不申请回避 </label>
+                    <input type="radio" value="1" lay-ignore v-model="data.accuser_right_duty[index].avoid" class="myradio"><label>
                     申请回避 </label>
                   </div>
                 </div>
@@ -82,9 +82,9 @@
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" lay-ignore v-model="data.defendant_right_duty[index].avoid" class="myradio"><label>
-                    不申请回避 </label>
                     <input type="radio" value="2" lay-ignore v-model="data.defendant_right_duty[index].avoid" class="myradio"><label>
+                    不申请回避 </label>
+                    <input type="radio" value="1" lay-ignore v-model="data.defendant_right_duty[index].avoid" class="myradio"><label>
                     申请回避 </label>
                   </div>
                 </div>
@@ -107,8 +107,8 @@ export default {
     data = {
       judge_right_duty: "审判员：依据《中华人民共和国民事诉讼法》的规定，当事人在法庭上享有下列权利：1.原告有权承认、变更、放弃自己的诉讼请求，被告有权反驳原告的诉讼请求或提起反诉；2.当事人有权申请回避；3.当事人有权举证；4.当事人有权辩论、有权请求法庭调解,当事人在享有上述权利的同时，负有以下义务：1.当事人有依法行使诉讼权利的义务；2.当事人有听从法庭指挥、遵守法庭纪律的义务；3.当事人有如实陈述事实、如实举证的义务。上述诉讼权利和义务双方是否听清？",
       judge_avoid: "审判员：当事人对审判员和书记是否申请回避？",
-      accuser_right_duty: [{right_duty: "1", avoid: "1"}],
-      defendant_right_duty: [{right_duty: "1", avoid: "1"}],
+      accuser_right_duty: [{right_duty: "1", avoid: "2"}],
+      defendant_right_duty: [{right_duty: "1", avoid: "2"}],
     };
 
     let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
@@ -139,11 +139,11 @@ export default {
       switch (datatype) {
         case "defendant_right_duty":
           //这里是值对应的处理
-          this.data.defendant_right_duty.push({right_duty: "1", avoid: "1"})
+          this.data.defendant_right_duty.push({right_duty: "1", avoid: "2"})
           break
         case "accuser_right_duty":
           //这里是值对应的处理
-          this.data.accuser_right_duty.push({right_duty: "1", avoid: "1"})
+          this.data.accuser_right_duty.push({right_duty: "1", avoid: "2"})
           break
         default:
           //这里是没有找到对应的值处理
@@ -173,15 +173,15 @@ export default {
         if (this.$store.state.court_number == "") {
           window.layui.layer.msg('请优先完善基本信息表格');
         } else {
-          let is_avoid="1";
+          let is_avoid="2";
           for (let i in this.data.accuser_right_duty){
-            if(this.data.accuser_right_duty[i].avoid=="2"){
-              is_avoid="2"
+            if(this.data.accuser_right_duty[i].avoid=="1"){
+              is_avoid="1"
             }
           }
           for (let i in  this.data.defendant_right_duty){
-            if(this.data.defendant_right_duty[i].avoid=="2"){
-              is_avoid="2"
+            if(this.data.defendant_right_duty[i].avoid=="1"){
+              is_avoid="1"
             }
           }
           this.$emit("setIsAvoid",is_avoid)
@@ -198,7 +198,7 @@ export default {
     getPlaintiffName() {
       if(this.data.accuser_right_duty.length < this.$store.state.plaintiff_item.length){
         this.data.accuser_right_duty.push({
-          right_duty: "1", avoid: "1"
+          right_duty: "1", avoid: "2"
         })
       }
 
@@ -211,7 +211,7 @@ export default {
     getDefendantNane() {
       if(this.data.defendant_right_duty.length < this.$store.state.defendant_item.length){
         this.data.defendant_right_duty.push({
-          right_duty: "1",avoid: "1"
+          right_duty: "1",avoid: "2"
         })
       }
       let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))

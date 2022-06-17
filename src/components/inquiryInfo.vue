@@ -120,7 +120,7 @@
           </div>
           <div class="layui-form-item" style="width:100%;margin-top: -10px;">
             <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info',index+2)"> 添加问题</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left: 5px" @click="delete_component('inquiry_info',index+1)"> 删除问题
             </button>
           </div>
         </template>
@@ -146,7 +146,6 @@ export default {
         }
         ]
       }],
-      question_list: [],
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null && "inquiryInfo" in wholeItem){
@@ -154,6 +153,7 @@ export default {
     }
     return {
       data: data,
+      question_list: [],
     };
   },
   computed:{
@@ -174,11 +174,11 @@ export default {
   },
   mounted() {
       this.axios.get('/record/question').then((result) =>{
-        const question_list = result.data.data;
-        this.data.question_list=question_list
-      })
-    if (this.data.question_list.length != 0){
-      var origin_data = [{
+        const questions = result.data.data;
+        this.question_list = questions
+
+        if (this.question_list.length != 0){
+          var origin_data = [{
             inquiry_question: "",
             inquiry_answer: [{
               name:"",
@@ -186,25 +186,31 @@ export default {
             }
             ]
           }]
-      this.data.inquiry_info = origin_data
-      this.data.inquiry_info[0].inquiry_question = this.data.question_list[0]
-      for(let p=1; p < this.data.question_list.length; p++){
-        let question=this.data.question_list[p]
-        this.data.inquiry_info.push({
-          inquiry_question: question,
-          inquiry_answer: [{
-            name:"",
-            answer:"",
-          }],
-        });
-      }
-    }
+          this.data.inquiry_info = origin_data
+          this.data.inquiry_info[0].inquiry_question = this.question_list[0]
+          for(let p=1; p < this.question_list.length; p++){
+            let question=this.question_list[p]
+            this.data.inquiry_info.push({
+              inquiry_question: question,
+              inquiry_answer: [{
+                name:"",
+                answer:"",
+              }],
+            });
+          }
+        }
+      })
+    // this.axios.post('/record/add', {recordJson, requestType})
+    //     .then(function (result) {
+
+
+
   },
 
   methods: {
     addTag(newTag){
       let tag=newTag
-      this.data.question_list.push(tag)
+      this.question_list.push(tag)
       // this.data.question=tag
     },
     // addTag(newTag){
@@ -281,7 +287,33 @@ export default {
         }
       },
       deep: true
-    }
+    },
+    // question_list:{
+    //   handler() {
+    //     if (this.question_list.length != 0) {
+    //       var origin_data = [{
+    //         inquiry_question: "",
+    //         inquiry_answer: [{
+    //           name: "",
+    //           answer: "",
+    //         }
+    //         ]
+    //       }]
+    //       this.data.inquiry_info = origin_data
+    //       this.data.inquiry_info[0].inquiry_question = this.question_list[0]
+    //       for (let p = 1; p < this.question_list.length; p++) {
+    //         let question = this.question_list[p]
+    //         this.data.inquiry_info.push({
+    //           inquiry_question: question,
+    //           inquiry_answer: [{
+    //             name: "",
+    //             answer: "",
+    //           }],
+    //         });
+    //       }
+    //     }
+    //   }
+    // }
   },
 }
 
