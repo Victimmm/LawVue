@@ -204,6 +204,8 @@ export default {
           closeBtn: 0,
           offset: 'r',
           success: ()=>{
+
+
             this.navChange()
           }
         });
