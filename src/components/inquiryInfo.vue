@@ -173,11 +173,15 @@ export default {
     VueMultiselect
   },
   mounted() {
+    if(JSON.parse(localStorage.getItem(this.$store.state.court_number)) != null){
+      let inquiry_data_recall = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      // console.log(inquiry_data_recall.inquiryInfo)
+      this.data = inquiry_data_recall.inquiryInfo
+    }else{
       this.axios.get('/record/question').then((result) =>{
         const questions = result.data.data;
         this.question_list = questions
-
-        if (this.question_list.length != 0){
+        if (this.question_list.length != 0 ){
           var origin_data = [{
             inquiry_question: "",
             inquiry_answer: [{
@@ -200,8 +204,9 @@ export default {
           }
         }
       })
-    // this.axios.post('/record/add', {recordJson, requestType})
-    //     .then(function (result) {
+    }
+
+
 
 
 

@@ -412,6 +412,7 @@ export default {
           let summarizeInfo = wholeItem.summarize.summarize
           recordJson["summarize"] = summarizeInfo
         }
+        console.log(recordJson)
       }
       let requestType = "1"
       if (window.location.pathname == "/view/record/detail/") {
@@ -434,6 +435,7 @@ export default {
             console.log(error);
           });
     },
+
     back(){
       window.location.href = '/view/record'
     },
