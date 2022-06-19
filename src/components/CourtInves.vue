@@ -39,9 +39,9 @@
   </div>
 
 
-  <fieldset class="layui-elem-field layui-field-title" id="defendant_reply">
+  <fieldset class="layui-elem-field layui-field-title" id="defendant_reply" style="margin-top:28px">
     <legend>法庭调查-被告答辩</legend>
-    <div class="layui-field-box">
+    <div class="layui-field-box" >
       <div class="layui-card">
         <div class="layui-card-body">
           <form class="layui-form layui-form-pane">
@@ -102,7 +102,7 @@
     </div>
   </fieldset>
 
-  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_claim_item" v-if="data.is_counterclaim==1">
+  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_claim_item" v-if="data.is_counterclaim==1" >
     <legend>法庭调查-反诉原告的诉讼请求项</legend>
     <div class="layui-field-box">
       <div class="layui-card">
