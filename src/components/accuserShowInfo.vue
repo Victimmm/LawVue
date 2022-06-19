@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <fieldset class="layui-elem-field layui-field-title" id="defendant_query">
+  <fieldset class="layui-elem-field layui-field-title" id="defendant_query" style="margin-top:28px">
     <legend>法庭调查-被告质证</legend>
     <div class="layui-field-box">
   <div class="layui-card">

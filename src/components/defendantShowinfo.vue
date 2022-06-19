@@ -1,5 +1,5 @@
-<template>
-  <div class="layui-card">
+<template >
+  <div class="layui-card" >
     <div class="layui-card-body">
       <form class="layui-form layui-form-pane">
         <div class="layui-form-item" pane>
@@ -54,7 +54,7 @@
     </div>
   </div>
 
-    <fieldset class="layui-elem-field layui-field-title" id="accuser_query">
+    <fieldset class="layui-elem-field layui-field-title" id="accuser_query" style="margin-top:28px">
       <legend>法庭调查-原告质证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
@@ -293,9 +293,9 @@
         <div class="layui-card">
           <div class="layui-card-body">
             <form class="layui-form layui-form-pane">
-                <div class="site-border-cyan" style="width:80%">
-                  <hr class="hr-solid-content" data-content="反诉原告进行举证">
-                </div>
+<!--                <div class="site-border-cyan" style="width:80%">-->
+<!--                  <hr class="hr-solid-content" data-content="反诉原告进行举证">-->
+<!--                </div>-->
 
                 <div class="layui-form-item" pane>
                   <label class="layui-form-label" style="text-align: center">审判员</label>

@@ -53,21 +53,21 @@
         <!--    &lt;!&ndash; 反诉且今日答辩 或者不反诉的情况显示&ndash;&gt;-->
         <div
             v-if="( $store.state.counterclaim_defendant_today_is_reply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='2'">
-            <fieldset class="layui-elem-field layui-field-title" id="accuserShowInfo">
+            <fieldset class="layui-elem-field layui-field-title" id="accuserShowInfo" style="margin-top:-28px">
               <legend>法庭调查-原告举证</legend>
               <div class="layui-field-box">
                 <accuserShowInfo ref="accuserShowInfo"></accuserShowInfo>
               </div>
             </fieldset>
 
-            <fieldset class="layui-elem-field layui-field-title" id="defendShowInfo">
+            <fieldset class="layui-elem-field layui-field-title" id="defendShowInfo" style="margin-top:-35px">
               <legend>法庭调查-被告举证</legend>
               <div class="layui-field-box">
                 <defendShowInfo></defendShowInfo>
               </div>
             </fieldset>
 
-            <fieldset class="layui-elem-field layui-field-title" id="inquiryInfo">
+            <fieldset class="layui-elem-field layui-field-title" id="inquiryInfo" style="margin-top:-28px">
               <legend>法庭询问</legend>
               <div class="layui-field-box">
                 <inquiryInfo></inquiryInfo>
