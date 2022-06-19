@@ -419,15 +419,21 @@ export default {
       }
 
       this.axios.post('/record/add', {recordJson, requestType})
-          .then(function (result) {
+          .then( (result)=> {
             // handle success
             if (result.data.data == "案号不能重复") {
               window.layer.msg(result.data.data, {icon: 5, time: 1500});
               return
             }
 
-            window.location.href = '/view/record'
+            this.axios({
+              method: 'post',
+              url: '/record/generate',
+              data: {courtNumber:this.$store.state.court_number}
+            })
+
             // console.log(response);
+            window.location.href = '/view/record'
           })
           .catch(function (error) {
             // handle error
