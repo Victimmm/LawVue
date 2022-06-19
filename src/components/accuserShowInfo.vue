@@ -34,8 +34,8 @@
               证明事项
             </div>
             <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_evidence[index].content"  placeholder="证据证明事项"
-                     class="layui-input">
+              <textarea type="text" v-model="data.accuser_evidence[index].content"  placeholder="证据证明事项"
+                     class="layui-textarea"></textarea>
             </div>
           </div>
 
