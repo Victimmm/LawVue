@@ -413,6 +413,7 @@ export default {
           recordJson["summarize"] = summarizeInfo
         }
       }
+
       let requestType = "1"
       if (window.location.pathname == "/view/record/detail/") {
         requestType = "2"
