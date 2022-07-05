@@ -57,8 +57,12 @@
               <div class="myselect-div " >
               <textarea type="text" v-model="data.accuser_claim_judge_inquiry[0].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
                         class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
+                        data-type="text"
+                        style="float: right;height:100px;width:7.5%">
+                  <i class="layui-icon">&#xe640;</i></button>
                 <button type="button" @click="add_component_accuser_claim('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
-                        style="float: right;height:100px;width:15%">
+                        style="float: right;height:100px;width:7.5%">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
               </div>
@@ -115,8 +119,12 @@
                   <!--                          data-type="text"-->
                   <!--                          style="float: right;height:100px;width:7.5%">-->
                   <!--                    <i class="layui-icon">&#xe640;</i></button>-->
+                  <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
+                          data-type="text"
+                          style="float: right;height:100px;width:7.5%">
+                    <i class="layui-icon">&#xe640;</i></button>
                   <button type="button" @click="add_component_accuser_claim('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
-                          style="float: right;height:100px;width:15%">
+                          style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
                 </div>
@@ -229,8 +237,12 @@
                   <div class="myselect-div " >
               <textarea type="text" v-model="data.defendant_reply_judge_inquiry[0].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
                         class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                    <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
+                            data-type="text"
+                            style="float: right;height:100px;width:7.5%">
+                      <i class="layui-icon">&#xe640;</i></button>
                     <button type="button" @click="add_component_defendant_reply('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
-                            style="float: right;height:100px;width:15%">
+                            style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe654;</i>
                     </button>
                   </div>
@@ -287,8 +299,12 @@
                       <!--                          data-type="text"-->
                       <!--                          style="float: right;height:100px;width:7.5%">-->
                       <!--                    <i class="layui-icon">&#xe640;</i></button>-->
+                      <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
+                              data-type="text"
+                              style="float: right;height:100px;width:7.5%">
+                        <i class="layui-icon">&#xe640;</i></button>
                       <button type="button" @click="add_component_defendant_reply('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
-                              style="float: right;height:100px;width:15%">
+                              style="float: right;height:100px;width:7.5%">
                         <i class="layui-icon">&#xe654;</i>
                       </button>
                     </div>
@@ -464,28 +480,20 @@ data = {
   counterclaim_accuser_fact_reason: "",
   counterclaim_defendant_reply: [{name: "", content: ""}],
   counterclaim_defendant_today_is_reply: "1",
-  accuser_claim_judge_inquiry:[{
+  accuser_claim_judge_inquiry:[{  //原告诉称后的审判员问答对
     inquiry_question:"",
     inquiry_answer:[{
       name:"",
       answer:"",
     }]
   }],
-  defendant_reply_judge_inquiry:[{
+  defendant_reply_judge_inquiry:[{  //被告答辩后的审判员问答对
     inquiry_question:"",
     inquiry_answer:[{
       name:"",
       answer:"",
     }]
   }]
-  // inquiry_info:[{
-  //   inquiry_question: "",
-  //   inquiry_answer: [{
-  //     name:"",
-  //     answer:"",
-  //   }
-  //   ]
-  // }],
 };
 
 export default {

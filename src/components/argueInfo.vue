@@ -21,10 +21,15 @@
               <div class="myselect-div " >
                 <textarea type="text" v-model="data.argue[0].argue" placeholder="请输入辩论意见" autocomplete="off"
                     class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
+                        data-type="text"
+                        style="float: right;height:100px;width:7.5%">
+                  <i class="layui-icon">&#xe640;</i></button>
                 <button type="button" @click="add_component('argue')" class="layui-btn layui-btn-sm" data-type="text"
-                        style="float: right;height:100px;width:15%;">
+                        style="float: right;height:100px;width:7.5%;">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
+
               </div>
             </div>
           </div>
@@ -69,8 +74,12 @@
                 <div class="myselect-div " >
                 <textarea type="text" v-model="data.counterclaim_argue[0].argue" placeholder="请输入辩论意见" autocomplete="off"
                           class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                  <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
+                          data-type="text"
+                          style="float: right;height:100px;width:7.5%">
+                    <i class="layui-icon">&#xe640;</i></button>
                   <button type="button" @click="add_component('counterclaim_argue')" class="layui-btn layui-btn-sm" data-type="text"
-                          style="float: right;height:100px;width:15%">
+                          style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
                 </div>

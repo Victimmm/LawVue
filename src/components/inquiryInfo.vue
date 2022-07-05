@@ -25,8 +25,12 @@
               <div class="myselect-div " >
               <textarea type="text" v-model="data.inquiry_info[0].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
                         class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
+                        data-type="text"
+                        style="float: right;height:100px;width:7.5%">
+                  <i class="layui-icon">&#xe640;</i></button>
                 <button type="button" @click="add_component('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
-                        style="float: right;height:100px;width:15%">
+                        style="float: right;height:100px;width:7.5%">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
               </div>
@@ -79,14 +83,15 @@
                 <div class="myselect-div " >
                   <textarea type="text" v-model="data.inquiry_info[index+1].inquiry_answer[0].answer" placeholder="回答" autocomplete="off"
                         class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
-<!--                  <button type="button" @click="delete_component('inquiry_answer',index+1)" class="layui-btn layui-btn-danger layui-btn-sm"-->
-<!--                          data-type="text"-->
-<!--                          style="float: right;height:100px;width:7.5%">-->
-<!--                    <i class="layui-icon">&#xe640;</i></button>-->
+                  <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
+                          data-type="text"
+                          style="float: right;height:100px;width:7.5%">
+                    <i class="layui-icon">&#xe640;</i></button>
                   <button type="button" @click="add_component('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
-                          style="float: right;height:100px;width:15%">
+                          style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
+
                 </div>
               </div>
             </div>
