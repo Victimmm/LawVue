@@ -29,6 +29,15 @@
           </div>
         </fieldset>
 
+      <fieldset class="layui-elem-field layui-field-title" id="whole_third_party">
+        <legend>第三人信息</legend>
+        <div class="layui-field-box">
+          <thirdPartyInfo :index=0 :key=0></thirdPartyInfo>
+          <thirdPartyInfo v-for="(item,index) in $store.state.third_party_item.slice(1)" :key="item.tag"
+                        :index="index+1"/>
+        </div>
+      </fieldset>
+
         <fieldset class="layui-elem-field layui-field-title" id="BasicState">
           <legend>基本信息陈述</legend>
           <div class="layui-field-box">
@@ -127,6 +136,7 @@
 import BasicInfo from './components/BasicInfo.vue'
 import PlaintiffImf from './components/PlaintiffImf.vue'
 import DefendantImf from './components/DefendantImf.vue'
+import thirdPartyInfo from'./components/thirdPratyInfo.vue'
 import CourtInves from './components/CourtInves.vue'
 import rightInfo from "@/components/rightInfo";
 import accuserShowInfo from "@/components/accuserShowInfo";
@@ -145,6 +155,7 @@ export default {
     BasicInfo,
     PlaintiffImf,
     DefendantImf,
+    thirdPartyInfo,
     CourtInves,
     rightInfo,
     accuserShowInfo,
@@ -308,6 +319,21 @@ export default {
           recordJson["defendantInfo"] = defendantInfo
         }
 
+        if ("thirdPartyInfo" in wholeItem && wholeItem.thirdPartyInfo.length > 0) {
+
+          let thirdPartyInfo = []
+          for (j = 0; j < wholeItem.thirdPartyInfo.length; j++) {
+            let thirdPartyItem = wholeItem.thirdPartyInfo[j]
+
+            thirdPartyInfo.push(thirdPartyItem)
+            if (thirdPartyItem.defendant_type == "2") {
+              thirdPartyInfo[j].defendant_short = thirdPartyInfo[j].defendant
+            }
+          }
+
+          recordJson["thirdPartyInfo"] = thirdPartyInfo
+        }
+
         if ("rightInfo" in wholeItem) {
           let rightInfo = {accuser_right_duty: [], defendant_right_duty: []}
           // wholeItem.rightInfo
@@ -384,14 +410,6 @@ export default {
         if ("finalStatementInfo" in wholeItem) {
           let finalStatementInfoItem = wholeItem.finalStatementInfo.final_statement_info
 
-          // let plaintiff = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short) + "（原告）").filter(i => i && i.trim())
-          //
-          // let defendant = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short) + "（被告）").filter(i => i && i.trim())
-          //
-          // let plaintiff_defendant = plaintiff.concat(defendant)
-          // for (let i = 0; i < plaintiff_defendant.length; i++) {
-          //   finalStatementInfoItem[i].name = plaintiff_defendant[i]
-          // }
           recordJson["finalStatementInfo"] = finalStatementInfoItem
         }
 

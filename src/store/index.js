@@ -19,6 +19,7 @@ export default createStore({
             if (pair[0] == "CourtNum") {
                 let plaintiff_item = [{accuser:"",accuser_short: "",tag:guid()}]
                 let defendant_item = [{defendant:"",defendant_short: "",tag:guid()}]
+                let third_party_item = [{third_party:"",third_party_short: "",tag:guid()}]
                 let chief_judge_name = ['']
                 let juror_name = ['']
                 let judge_name = ['']
@@ -44,6 +45,15 @@ export default createStore({
                             defendant.defendant = wholeItem.DefendantItems[j].defendant
                             defendant.tag = guid()
                             defendant_item[j]=defendant
+                        }
+                    }
+                    if ("thirdPratyInfo" in wholeItem && wholeItem.thirdPratyInfo.length > 0) {
+                        for (j = 0; j < wholeItem.thirdPratyInfo.length; j++) {
+                            let thirdParty={}
+                            thirdParty.third_party_short = wholeItem.thirdPratyInfo[j].third_party_short
+                            thirdParty.third_party = wholeItem.thirdPratyInfo[j].third_party
+                            thirdParty.tag = guid()
+                            third_party_item[j]=thirdParty
                         }
                     }
                     if ("BasicInfo" in wholeItem) {
@@ -84,6 +94,7 @@ export default createStore({
         return {
             plaintiff_item:[{accuser:"",accuser_short: "",tag:guid()}],
             defendant_item: [{defendant:"",defendant_short: "",tag:guid()}],
+            third_party_item: [{third_party:"",third_party_short: "",tag:guid()}],
             chief_judge_name: [""],
             juror_name: [""],
             judge_name: [""],
@@ -110,6 +121,12 @@ export default createStore({
             else
                 state.defendant_item[payload[2]].defendant_short = payload[0]
         },
+        handlethirdPartyItem(state, payload) {
+            if(payload[1]=="third_party")
+                state.third_party_item[payload[2]].third_party = payload[0]
+            else
+                state.third_party_item[payload[2]].third_party_short = payload[0]
+        },
         setCourtNum(state, payload) {
             state.court_number = payload
         },
@@ -127,6 +144,9 @@ export default createStore({
                     break
                 case 'defendant':
                     state.defendant_item.splice(payload[1], 1);
+                    break
+                case 'third_party':
+                    state.third_party_item.splice(payload[1], 1);
                     break
                 case 'chief_judge':
                     state.chief_judge_name.splice(payload[1], 1)
@@ -152,6 +172,9 @@ export default createStore({
                     break
                 case 'defendant':
                     state.defendant_item.push({defendant:"",defendant_short: "",tag:guid()})
+                    break
+                case 'third_party':
+                    state.third_party_item.push({third_party:"",third_party_short: "",tag:guid()})
                     break
                 case 'chief_judge':
                     state.chief_judge_name.push('')

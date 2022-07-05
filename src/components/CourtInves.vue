@@ -34,19 +34,15 @@
           </div>
         </div>
 
-        <div class="layui-form-item" pane>
+        <div class="layui-form-item" style="margin-bottom: -20px" pane>
           <label class="layui-form-label">审判员</label>
-          <div class="layui-input-block">
-            <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">原告诉讼陈述结束，审判员就以上诉讼请求进行询问</textarea>
-          </div>
-        </div>
-
-        <div class="layui-form-item" pane>
-          <label class="layui-form-label">问题</label>
           <div class="layui-input-block" >
             <input type="text" v-model="data.accuser_claim_judge_inquiry[0].inquiry_question" placeholder="问题" autocomplete="off"
                    class="layui-input" style="width: 100%;float: left;">
           </div>
+        </div>
+
+          <div class="layui-form-item" pane>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
             <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accuser_claim_judge_inquiry[0].inquiry_answer[0].name"
@@ -99,12 +95,14 @@
         </div>
 
         <template v-for="(item, index) in data.accuser_claim_judge_inquiry.slice(1)" :key="index">
-          <div class="layui-form-item" pane>
-            <label class="layui-form-label">问题</label>
+          <div class="layui-form-item" style="margin-bottom: -20px" pane>
+            <label class="layui-form-label">审判员</label>
             <div class="layui-input-block" >
               <input type="text" v-model="data.accuser_claim_judge_inquiry[index+1].inquiry_question" placeholder="问题" autocomplete="off"
                      class="layui-input" style="width: 100%;float: left;">
             </div>
+          </div>
+          <div class="layui-form-item" pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
               <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accuser_claim_judge_inquiry[index+1].inquiry_answer[0].name"
@@ -214,19 +212,15 @@
               </div>
             </template>
 
-            <div class="layui-form-item" pane>
+            <div class="layui-form-item" style="margin-bottom: -15px" pane>
               <label class="layui-form-label">审判员</label>
-              <div class="layui-input-block">
-                <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">原告诉讼陈述结束，审判员就以上诉讼请求进行询问</textarea>
-              </div>
-            </div>
-
-            <div class="layui-form-item" pane>
-              <label class="layui-form-label">问题</label>
               <div class="layui-input-block" >
                 <input type="text" v-model="data.defendant_reply_judge_inquiry[0].inquiry_question" placeholder="问题" autocomplete="off"
                        class="layui-input" style="width: 100%;float: left;">
               </div>
+            </div>
+
+            <div class="layui-form-item" pane>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                 <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
                   <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.defendant_reply_judge_inquiry[0].inquiry_answer[0].name"
@@ -279,12 +273,14 @@
             </div>
 
             <template v-for="(item, index) in data.defendant_reply_judge_inquiry.slice(1)" :key="index">
-              <div class="layui-form-item" pane>
-                <label class="layui-form-label">问题</label>
+              <div class="layui-form-item" style="margin-bottom: -15px" pane>
+                <label class="layui-form-label">审判员</label>
                 <div class="layui-input-block" >
                   <input type="text" v-model="data.defendant_reply_judge_inquiry[index+1].inquiry_question" placeholder="问题" autocomplete="off"
                          class="layui-input" style="width: 100%;float: left;">
                 </div>
+              </div>
+              <div class="layui-form-item" pane>
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                   <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
                     <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.defendant_reply_judge_inquiry[index+1].inquiry_answer[0].name"
