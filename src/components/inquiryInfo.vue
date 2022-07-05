@@ -173,8 +173,8 @@ export default {
     VueMultiselect
   },
   mounted() {
-    if(JSON.parse(localStorage.getItem(this.$store.state.court_number)) != null){
-      let inquiry_data_recall = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    let inquiry_data_recall = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    if(inquiry_data_recall != null && "inquiryInfo" in inquiry_data_recall){
       // console.log(inquiry_data_recall.inquiryInfo)
       this.data = inquiry_data_recall.inquiryInfo
     }else{
