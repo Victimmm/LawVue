@@ -21,13 +21,7 @@
               <input type="text" v-model="plaintiffFullName"  lay-verify="required" placeholder="请输入原告姓名" autocomplete="off" class="layui-input">
             </div>
           </div>
-          <div class="layui-form-item" pane>
-            <label class="layui-form-label layui-form-required">原告住址</label>
-            <div class="layui-input-block">
-              <input type="text" v-model="data.accuser_address" lay-verify="required" placeholder="请输入原告住址" autocomplete="off"
-                     class="layui-input">
-            </div>
-          </div>
+          
           <div class="layui-form-item"  pane>
             <label class="layui-form-label divcenter">原告基本信息</label>
             <div class="layui-input-block">

@@ -21,13 +21,7 @@
               <input type="text" v-model="third_partyFullName"  placeholder="请输入第三人姓名" lay-verify="required" autocomplete="off" class="layui-input">
             </div>
           </div>
-          <div class="layui-form-item" pane>
-            <label class="layui-form-label">第三人住址</label>
-            <div class="layui-input-block">
-              <input type="text" v-model="data.third_party_address" lay-verify="required" placeholder="请输入第三人住址"
-                     autocomplete="off" class="layui-input">
-            </div>
-          </div>
+
           <div class="layui-form-item"  pane>
             <label class="layui-form-label divcenter">第三人基本信息</label>
             <div class="layui-input-block">
