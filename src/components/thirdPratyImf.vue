@@ -146,12 +146,19 @@ export default {
       third_party_agent: [{agent:"",agent_address: ''}]
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if (wholeItem != null && "thirdPartyInfo" in wholeItem) {
-      var thirdPartyInfo = wholeItem.thirdPartyInfo
-      data = (this.index < thirdPartyInfo.length) ? thirdPartyInfo[this.index] : data
+    if (wholeItem != null && "thirdPartyItems" in wholeItem) {
+      var thirdPartyItems = wholeItem.thirdPartyItems
+      data = (this.index < thirdPartyItems.length) ? thirdPartyItems[this.index] : data
     }
     return {data: JSON.parse(JSON.stringify(data))}
   },
+    // var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+    // if (wholeItem != null && "thirdPartyItems" in wholeItem) {
+    //   var thirdPartyItems = wholeItem.thirdPartyItems
+    //   data = (this.index < thirdPartyItems.length) ? thirdPartyItems[this.index] : data
+    // }
+    // return {data: JSON.parse(JSON.stringify(data))}
+  // },
   computed: {
     third_partyFullName:{
       get() {
@@ -182,8 +189,8 @@ export default {
     onCloseClick() {
       // 将删除标签事件暴露除去
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-      if (wholeItem != null && this.index < wholeItem.thirdPartyInfo.length) {
-        wholeItem.thirdPartyInfo.splice(this.index, 1)
+      if (wholeItem != null && this.index < wholeItem.thirdPartyItems.length) {
+        wholeItem.thirdPartyItems.splice(this.index, 1)
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
       this.$store.commit('delete_components', ['third_party', this.index])
@@ -204,7 +211,7 @@ export default {
         } else {
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           if (wholeItem != null) {
-            wholeItem.thirdPartyInfo = this.data
+            wholeItem.thirdPartyItems[this.index] = this.data
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
           }
         }

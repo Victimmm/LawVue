@@ -47,15 +47,24 @@ export default createStore({
                             defendant_item[j]=defendant
                         }
                     }
-                    if ("thirdPratyInfo" in wholeItem && wholeItem.thirdPratyInfo.length > 0) {
-                        for (j = 0; j < wholeItem.thirdPratyInfo.length; j++) {
+                    if ("thirdPartyItems" in wholeItem && wholeItem.thirdPartyItems.length > 0) {
+                        for (j = 0; j < wholeItem.thirdPartyItems.length; j++) {
                             let thirdParty={}
-                            thirdParty.third_party_short = wholeItem.thirdPratyInfo[j].third_party_short
-                            thirdParty.third_party = wholeItem.thirdPratyInfo[j].third_party
+                            thirdParty.third_party_short = wholeItem.thirdPartyItems[j].third_party_short
+                            thirdParty.third_party = wholeItem.thirdPartyItems[j].third_party
                             thirdParty.tag = guid()
                             third_party_item[j]=thirdParty
                         }
                     }
+                    // if ("thirdPartyItems" in wholeItem && wholeItem.thirdPartyItems.length > 0) {
+                    //     for (j = 0; j < wholeItem.thirdPartyItems.length; j++) {
+                    //         let thirdParty={}
+                    //         thirdParty.third_party_short = wholeItem.thirdPartyItems[j].third_party_short
+                    //         thirdParty.third_party = wholeItem.thirdPartyItems[j].third_party
+                    //         thirdParty.tag = guid()
+                    //         third_party_item[j]=thirdParty
+                    //     }
+                    // }
                     if ("BasicInfo" in wholeItem) {
                         for (j = 0; j < wholeItem.BasicInfo.chief_judge.length; j++) {
                             chief_judge_name[j] = wholeItem.BasicInfo.chief_judge[j].name
@@ -80,6 +89,7 @@ export default createStore({
                 return {
                     plaintiff_item: plaintiff_item,
                     defendant_item: defendant_item,
+                    third_party_item:third_party_item,
                     chief_judge_name: chief_judge_name,
                     juror_name: juror_name,
                     judge_name: judge_name,

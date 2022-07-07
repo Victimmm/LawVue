@@ -25,7 +25,7 @@
                         data-type="text"
                         style="float: right;height:100px;width:7.5%">
                   <i class="layui-icon">&#xe640;</i></button>
-                <button type="button" @click="add_component('argue')" class="layui-btn layui-btn-sm" data-type="text"
+                <button type="button" @click="add_component('argue',1)" class="layui-btn layui-btn-sm" data-type="text"
                         style="float: right;height:100px;width:7.5%;">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
@@ -50,7 +50,7 @@
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe640;</i>
                   </button>
-                  <button type="button" @click="add_component('argue')" class="layui-btn layui-btn-sm" data-type="text"
+                  <button type="button" @click="add_component('argue',index+2)" class="layui-btn layui-btn-sm" data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
@@ -78,7 +78,7 @@
                           data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe640;</i></button>
-                  <button type="button" @click="add_component('counterclaim_argue')" class="layui-btn layui-btn-sm" data-type="text"
+                  <button type="button" @click="add_component('counterclaim_argue',1)" class="layui-btn layui-btn-sm" data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
@@ -102,7 +102,7 @@
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe640;</i>
                     </button>
-                    <button type="button" @click="add_component('counterclaim_argue')" class="layui-btn layui-btn-sm" data-type="text"
+                    <button type="button" @click="add_component('counterclaim_argue',index+2)" class="layui-btn layui-btn-sm" data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe654;</i>
                     </button>
@@ -156,16 +156,29 @@ export default {
     VueMultiselect
   },
   methods: {
-    add_component(datatype) {
+    add_component(datatype,index) {
       switch (datatype) {
+        // this.data.accuser_claim_judge_inquiry.splice(index,0,{
+        //   inquiry_question: "",
+        //   inquiry_answer: [{
+        //     name:"",
+        //     answer:"",
+        //   }],
+        // });
         case "argue":
-          this.data.argue.push({
+          this.data.argue.splice(index,0,{
             name: "",                  //原被告
             argue: "",            //原被告辩论意见
           });
           break;
+        // case "argue":
+        //   this.data.argue[index].push({
+        //     name: "",                  //原被告
+        //     argue: "",            //原被告辩论意见
+        //   });
+        //   break;
         case "counterclaim_argue":
-          this.data.counterclaim_argue.push({
+          this.data.counterclaim_argue.splice(index,0,{
             name: "",       //反诉原告/反诉被告
             argue: "", //辩论意见
           });

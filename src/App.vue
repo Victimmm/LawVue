@@ -29,11 +29,11 @@
           </div>
         </fieldset>
 
-      <fieldset class="layui-elem-field layui-field-title" id="whole_third_party">
+      <fieldset class="layui-elem-field layui-field-title" id="whole_thirdPartyImf">
         <legend>第三人信息</legend>
         <div class="layui-field-box">
-          <thirdPartyInfo :index=0 :key=0></thirdPartyInfo>
-          <thirdPartyInfo v-for="(item,index) in $store.state.third_party_item.slice(1)" :key="item.tag"
+          <thirdPartyImf :index=0 :key=0></thirdPartyImf>
+          <thirdPartyImf v-for="(item,index) in $store.state.third_party_item.slice(1)" :key="item.tag"
                         :index="index+1"/>
         </div>
       </fieldset>
@@ -136,7 +136,7 @@
 import BasicInfo from './components/BasicInfo.vue'
 import PlaintiffImf from './components/PlaintiffImf.vue'
 import DefendantImf from './components/DefendantImf.vue'
-import thirdPartyInfo from'./components/thirdPratyInfo.vue'
+import thirdPartyImf from'./components/thirdPratyImf.vue'
 import CourtInves from './components/CourtInves.vue'
 import rightInfo from "@/components/rightInfo";
 import accuserShowInfo from "@/components/accuserShowInfo";
@@ -155,7 +155,7 @@ export default {
     BasicInfo,
     PlaintiffImf,
     DefendantImf,
-    thirdPartyInfo,
+    thirdPartyImf,
     CourtInves,
     rightInfo,
     accuserShowInfo,
@@ -319,20 +319,35 @@ export default {
           recordJson["defendantInfo"] = defendantInfo
         }
 
-        if ("thirdPartyInfo" in wholeItem && wholeItem.thirdPartyInfo.length > 0) {
+        if ("thirdPartyItems" in wholeItem && wholeItem.thirdPartyItems.length > 0) {
 
           let thirdPartyInfo = []
-          for (j = 0; j < wholeItem.thirdPartyInfo.length; j++) {
-            let thirdPartyItem = wholeItem.thirdPartyInfo[j]
+          for (j = 0; j < wholeItem.thirdPartyItems.length; j++) {
+            let ThirdPartyItem = wholeItem.thirdPartyItems[j]
 
-            thirdPartyInfo.push(thirdPartyItem)
-            if (thirdPartyItem.defendant_type == "2") {
-              thirdPartyInfo[j].defendant_short = thirdPartyInfo[j].defendant
+            thirdPartyInfo.push(ThirdPartyItem)
+            if (ThirdPartyItem.defendant_type == "2") {
+              thirdPartyInfo[j].third_party_short = thirdPartyInfo[j].third_party
             }
           }
 
           recordJson["thirdPartyInfo"] = thirdPartyInfo
         }
+
+        // if ("thirdPartyImf" in wholeItem && wholeItem.thirdPartyImf.length > 0) {
+        //
+        //   let thirdPartyInfo = []
+        //   for (j = 0; j < wholeItem.thirdPartyImf.length; j++) {
+        //     let thirdPartyItem = wholeItem.thirdPartyImf[j]
+        //
+        //     thirdPartyInfo.push(thirdPartyItem)
+        //     if (thirdPartyItem.third_party_type == "2") {
+        //       thirdPartyInfo[j].third_party_short = thirdPartyInfo[j].third_party
+        //     }
+        //   }
+        //
+        //   recordJson["thirdPartyInfo"] = thirdPartyInfo
+        // }
 
         if ("rightInfo" in wholeItem) {
           let rightInfo = {accuser_right_duty: [], defendant_right_duty: []}
