@@ -47,23 +47,16 @@ export default createStore({
                             defendant_item[j]=defendant
                         }
                     }
-                    if ("thirdPartyItems" in wholeItem && wholeItem.thirdPartyItems.length > 0) {
-                        for (j = 0; j < wholeItem.thirdPartyItems.length; j++) {
+                    if ("thirdPartyInfo" in wholeItem && wholeItem.thirdPartyInfo.length > 0) {
+                        for (j = 0; j < wholeItem.thirdPartyInfo.length; j++) {
                             let thirdParty={}
-                            thirdParty.third_party_short = wholeItem.thirdPartyItems[j].third_party_short
-                            thirdParty.third_party = wholeItem.thirdPartyItems[j].third_party
+                            thirdParty.third_party_short = wholeItem.thirdPartyInfo[j].third_party_short
+                            thirdParty.third_party = wholeItem.thirdPartyInfo[j].third_party
                             thirdParty.tag = guid()
                             third_party_item[j]=thirdParty
                         }
                     }
-                    // if ("thirdPartyItems" in wholeItem && wholeItem.thirdPartyItems.length > 0) {
-                    //     for (j = 0; j < wholeItem.thirdPartyItems.length; j++) {
-                    //         let thirdParty={}
-                    //         thirdParty.third_party_short = wholeItem.thirdPartyItems[j].third_party_short
-                    //         thirdParty.third_party = wholeItem.thirdPartyItems[j].third_party
-                    //         thirdParty.tag = guid()
-                    //         third_party_item[j]=thirdParty
-                    //     }
+                   
                     // }
                     if ("BasicInfo" in wholeItem) {
                         for (j = 0; j < wholeItem.BasicInfo.chief_judge.length; j++) {

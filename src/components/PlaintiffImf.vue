@@ -21,7 +21,7 @@
               <input type="text" v-model="plaintiffFullName"  lay-verify="required" placeholder="请输入原告姓名" autocomplete="off" class="layui-input">
             </div>
           </div>
-          
+
           <div class="layui-form-item"  pane>
             <label class="layui-form-label divcenter">原告基本信息</label>
             <div class="layui-input-block">

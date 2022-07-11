@@ -18,7 +18,7 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">第三人姓名</label>
             <div class="layui-input-block">
-              <input type="text" v-model="third_partyFullName"  placeholder="请输入第三人姓名" lay-verify="required" autocomplete="off" class="layui-input">
+              <input type="text" v-model="third_partyFullName"  placeholder="请输入第三人姓名"  autocomplete="off" class="layui-input">
             </div>
           </div>
 
@@ -35,21 +35,21 @@
           <div class="layui-form-item" pane>
             <label class="layui-form-label">第三人全称</label>
             <div class="layui-input-block">
-              <input type="text" v-model="third_partyFullName"  lay-verify="required" placeholder="请输入第三人全称"
+              <input type="text" v-model="third_partyFullName" placeholder="请输入第三人全称"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label">第三人简称</label>
             <div class="layui-input-block">
-              <input type="text" v-model="third_partyShortName" lay-verify="required" placeholder="请输入第三人简称"
+              <input type="text" v-model="third_partyShortName" placeholder="请输入第三人简称"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item" pane>
             <label class="layui-form-label">第三人地址</label>
             <div class="layui-input-block">
-              <input type="text" v-model="data.third_party_address" lay-verify="required" placeholder="请输入第三人地址"
+              <input type="text" v-model="data.third_party_address" placeholder="请输入第三人地址"
                      autocomplete="off" class="layui-input">
             </div>
           </div>
@@ -140,19 +140,13 @@ export default {
       third_party_agent: [{agent:"",agent_address: ''}]
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    if (wholeItem != null && "thirdPartyItems" in wholeItem) {
-      var thirdPartyItems = wholeItem.thirdPartyItems
-      data = (this.index < thirdPartyItems.length) ? thirdPartyItems[this.index] : data
+    if (wholeItem != null && "thirdPartyInfo" in wholeItem) {
+      var thirdPartyInfo = wholeItem.thirdPartyInfo
+      data = (this.index < thirdPartyInfo.length) ? thirdPartyInfo[this.index] : data
     }
     return {data: JSON.parse(JSON.stringify(data))}
   },
-    // var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-    // if (wholeItem != null && "thirdPartyItems" in wholeItem) {
-    //   var thirdPartyItems = wholeItem.thirdPartyItems
-    //   data = (this.index < thirdPartyItems.length) ? thirdPartyItems[this.index] : data
-    // }
-    // return {data: JSON.parse(JSON.stringify(data))}
-  // },
+
   computed: {
     third_partyFullName:{
       get() {
@@ -183,8 +177,8 @@ export default {
     onCloseClick() {
       // 将删除标签事件暴露除去
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
-      if (wholeItem != null && this.index < wholeItem.thirdPartyItems.length) {
-        wholeItem.thirdPartyItems.splice(this.index, 1)
+      if (wholeItem != null && this.index < wholeItem.thirdPartyInfo.length) {
+        wholeItem.thirdPartyInfo.splice(this.index, 1)
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
       this.$store.commit('delete_components', ['third_party', this.index])
@@ -205,7 +199,7 @@ export default {
         } else {
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           if (wholeItem != null) {
-            wholeItem.thirdPartyItems[this.index] = this.data
+            wholeItem.thirdPartyInfo[this.index] = this.data
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
           }
         }

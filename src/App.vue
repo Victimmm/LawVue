@@ -113,7 +113,7 @@
         </div>
       </div>
             <fieldset class="layui-elem-field layui-field-title" id="summarizeInfo">
-              <legend>审判员最后陈述</legend>
+              <legend>审判员询问</legend>
               <div class="layui-field-box">
                 <summarizeInfo></summarizeInfo>
               </div>
@@ -319,35 +319,18 @@ export default {
           recordJson["defendantInfo"] = defendantInfo
         }
 
-        if ("thirdPartyItems" in wholeItem && wholeItem.thirdPartyItems.length > 0) {
-
+        if ("thirdPartyInfo" in wholeItem && wholeItem.thirdPartyInfo.length > 0) {
           let thirdPartyInfo = []
-          for (j = 0; j < wholeItem.thirdPartyItems.length; j++) {
-            let ThirdPartyItem = wholeItem.thirdPartyItems[j]
-
+          for (j = 0; j < wholeItem.thirdPartyInfo.length; j++) {
+            let ThirdPartyItem = wholeItem.thirdPartyInfo[j]
             thirdPartyInfo.push(ThirdPartyItem)
             if (ThirdPartyItem.defendant_type == "2") {
               thirdPartyInfo[j].third_party_short = thirdPartyInfo[j].third_party
             }
           }
-
           recordJson["thirdPartyInfo"] = thirdPartyInfo
         }
 
-        // if ("thirdPartyImf" in wholeItem && wholeItem.thirdPartyImf.length > 0) {
-        //
-        //   let thirdPartyInfo = []
-        //   for (j = 0; j < wholeItem.thirdPartyImf.length; j++) {
-        //     let thirdPartyItem = wholeItem.thirdPartyImf[j]
-        //
-        //     thirdPartyInfo.push(thirdPartyItem)
-        //     if (thirdPartyItem.third_party_type == "2") {
-        //       thirdPartyInfo[j].third_party_short = thirdPartyInfo[j].third_party
-        //     }
-        //   }
-        //
-        //   recordJson["thirdPartyInfo"] = thirdPartyInfo
-        // }
 
         if ("rightInfo" in wholeItem) {
           let rightInfo = {accuser_right_duty: [], defendant_right_duty: []}
@@ -370,6 +353,10 @@ export default {
         if ("CourtInves" in wholeItem) {
           let courtInvestigate = wholeItem.CourtInves
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], courtInvestigate)
+          let judge_inquiry1 = wholeItem.CourtInves.judge_inquiry_after_accuser_claim
+          recordJson["judge_inquiry_after_accuser_claim"] = judge_inquiry1
+          let judge_inquiry2 = wholeItem.CourtInves.judge_inquiry_after_defendant_reply
+          recordJson["judge_inquiry_after_defendant_reply"] = judge_inquiry2
         }
 
         // console.log(wholeItem.accuserShowInfo)
@@ -444,6 +431,8 @@ export default {
         if ("summarize" in wholeItem) {
           let summarizeInfo = wholeItem.summarize.summarize
           recordJson["summarize"] = summarizeInfo
+          let summarize_judge_inqury = wholeItem.summarize.summarize_inquiry
+          recordJson["judge_inquiry_before_summarize"] = summarize_judge_inqury
         }
         console.log(recordJson)
       }

@@ -364,7 +364,7 @@ export default {
           BasicInfo: this.data,
           PlaintiffItems: [],
           DefendantItems: [],
-          thirdPartyItems: [],
+          thirdPartyInfo: [],
         }))
         localStorage.removeItem("CourtTemp")
       } else if (this.data.court_number != this.$store.state.court_number) {// 在已有案号的前提下修改案号，将之前的案号数据拷贝至新的 localstorage ，同时删除旧的
