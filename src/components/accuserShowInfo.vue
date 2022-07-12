@@ -23,7 +23,8 @@
                                   style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
                 </div>
                 <div class="layui-input-inline" style="width:70%;margin-left: 0">
-                  <input type="text"  placeholder="请输入证据名称" class="layui-input" v-model="data.accuser_evidence[index].evidence">
+                  <input type="text" placeholder="请输入证据名称" class="layui-input"
+                         v-model="data.accuser_evidence[index].evidence">
                 </div>
               </div>
             </div>
@@ -34,14 +35,18 @@
               证明事项
             </div>
             <div class="layui-input-block">
-              <textarea type="text" v-model="data.accuser_evidence[index].content"  placeholder="证据证明事项"
-                     class="layui-textarea"></textarea>
+              <textarea type="text" v-model="data.accuser_evidence[index].content" placeholder="证据证明事项"
+                        class="layui-textarea"></textarea>
             </div>
           </div>
 
           <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('accuser_evidence',index+1)"> 添加证据</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" @click="delete_component('accuser_evidence',index)"> 删除证据
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                    @click="add_component('accuser_evidence',index+1)"> 添加证据
+            </button>
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
+                    v-if="index!=0"
+                    style="margin-left:5px" @click="delete_component('accuser_evidence',index)"> 删除证据
             </button>
           </div>
         </template>
@@ -50,125 +55,150 @@
     </div>
   </div>
 
-  <fieldset class="layui-elem-field layui-field-title" id="defendant_query" style="margin-top:28px">
-    <legend>法庭调查-被告质证</legend>
+  <fieldset class="layui-elem-field layui-field-title" id="defendant_and_other_accuser_query" style="margin-top:28px">
+    <legend>被告质证</legend>
     <div class="layui-field-box">
-  <div class="layui-card">
-    <div class="layui-card-body">
-      <form class="layui-form layui-form-pane">
-    <div class="layui-form-item" pane>
-      <div class="layui-form-label ">
-        审判员
-      </div>
-      <div class="layui-input-block">
-        <textarea class="layui-textarea" style="height: 38px;min-height: 38px">被告对原告提交的证据进行质证</textarea>
-      </div>
-    </div>
-
-
-    <template v-for="(item,index) in data.defendant_query" :key="index">
-
-      <div class="layui-form-item" pane>
-        <div class="layui-form-label">
-          请选择被告
-        </div>
-        <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-          <div class="layui-input-block">
-            <div class="myselect-div">
-              <VueMultiselect :option-height="38" :show-labels="false"
-                              v-model="data.defendant_query[index].defendant"
-                              :options=getDefendantName placeholder="请选择被告"
-                              group-label="defendant"
-                              :group-select="true"
-                              group-values="defendant_name"
-                              :multiple="true"
-                              :close-on-select="false"
-                              :searchable="false"
-                              style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
+      <div class="layui-card">
+        <div class="layui-card-body">
+          <form class="layui-form layui-form-pane">
+            <div class="layui-form-item" pane>
+              <div class="layui-form-label ">
+                审判员
+              </div>
+              <div class="layui-input-block">
+                <textarea class="layui-textarea" style="height: 38px;min-height: 38px">被告及其他原告对原告提交的证据进行质证</textarea>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="layui-form-item" pane style="margin-top: -10px;">
-        <div class="layui-form-label">
-          请选择证据
-        </div>
-        <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-          <div class="layui-input-block">
-            <div class="myselect-div">
-              <VueMultiselect :option-height="38" :show-labels="false"
-                              v-model="data.defendant_query[index].evidence"
-                              :options=getProofPlaintiff placeholder="请选择证据"
-                              group-label="evidence"
-                              :group-select="true"
-                              group-values="option_label"
-                              :multiple="true"
-                              :close-on-select="false"
-                              :searchable="false"
-                              style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="layui-form-item" pane style="margin-top: -10px;">
-        <div class="layui-form-label">
-          三性质证
-        </div>
-        <div class="layui-input-block">
-          <div class="layui-input-inline" style="width:33%;margin-left: 0">
-            <div class="myradiomargin">
-              <label>真实性：</label>
-              <input type="radio" lay-ignore  value="1" v-model="data.defendant_query[index].facticity"
-                     class="myradio"><label>是</label>
-              <input type="radio" lay-ignore value="2" v-model="data.defendant_query[index].facticity"
-                     class="myradio" style="margin-left: 15px;"><label>否</label>
-            </div>
-          </div>
-          <div class="layui-input-inline" style="width:33%;margin-left: 0">
-            <div class="myradiomargin">
-              <label>合法性：</label>
-              <input type="radio" lay-ignore value="1" v-model="data.defendant_query[index].legality"
-                     class="myradio"><label>是</label>
-              <input type="radio" lay-ignore value="2" v-model="data.defendant_query[index].legality"
-                     class="myradio" style="margin-left: 15px;"><label>否</label>
-            </div>
-          </div>
-          <div class="layui-input-inline" style="width:34%;margin-left: 0">
-            <div class="myradiomargin">
-              <label>相关性：</label>
-              <input type="radio" lay-ignore value="1" v-model="data.defendant_query[index].relevance"
-                     class="myradio"><label>是</label>
-              <input type="radio" lay-ignore value="2" v-model="data.defendant_query[index].relevance"
-                     class="myradio" style="margin-left: 15px;"><label>否</label>
-            </div>
-          </div>
-        </div>
-      </div>
+            <template v-for="(item,index) in data.defendant_and_other_accuser_query" :key="index">
 
-      <div class="layui-form-item" pane style="margin-top: -10px;">
-        <div class="layui-form-label" style="line-height: 80px">
-          事实和理由
-        </div>
-        <div class="layui-input-block">
-              <textarea v-model="data.defendant_query[index].defendant_query_fact_reason"
+              <div class="layui-form-item" pane>
+                <div class="layui-form-label">
+                  请选择质证人
+                </div>
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                  <div class="layui-input-block">
+                    <div class="myselect-div">
+                      <VueMultiselect :option-height="38" :show-labels="false"
+                                      v-model="data.defendant_and_other_accuser_query[index].name"
+                                      :options=getCrossExaminationName placeholder="请选择质证人"
+                                      group-label="type"
+                                      :group-select="true"
+                                      group-values="name"
+                                      :multiple="true"
+                                      :close-on-select="false"
+                                      :searchable="false"
+                                      style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="layui-form-item" pane style="margin-top: -10px;">
+                <div class="layui-form-label">
+                  请选择证据
+                </div>
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                  <div class="layui-input-block">
+                    <div class="myselect-div">
+                      <VueMultiselect :option-height="38" :show-labels="false"
+                                      v-model="data.defendant_and_other_accuser_query[index].evidence"
+                                      :options=getProofPlaintiff placeholder="请选择证据"
+                                      group-label="evidence"
+                                      :group-select="true"
+                                      group-values="option_label"
+                                      :multiple="true"
+                                      :close-on-select="false"
+                                      :searchable="false"
+                                      style="line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="layui-form-item" pane style="margin-top: -10px;">
+                <div class="layui-form-label">
+                  三性质证
+                </div>
+                <div class="layui-input-block">
+                  <div class="layui-input-inline" style="width:33%;margin-left: 0">
+                    <div class="myradiomargin">
+                      <label>真实性：</label>
+                      <input type="radio" lay-ignore value="1"
+                             v-model="data.defendant_and_other_accuser_query[index].facticity"
+                             class="myradio"><label>是</label>
+                      <input type="radio" lay-ignore value="2"
+                             v-model="data.defendant_and_other_accuser_query[index].facticity"
+                             class="myradio" style="margin-left: 15px;"><label>否</label>
+                    </div>
+                  </div>
+                  <div class="layui-input-inline" style="width:33%;margin-left: 0">
+                    <div class="myradiomargin">
+                      <label>合法性：</label>
+                      <input type="radio" lay-ignore value="1"
+                             v-model="data.defendant_and_other_accuser_query[index].legality"
+                             class="myradio"><label>是</label>
+                      <input type="radio" lay-ignore value="2"
+                             v-model="data.defendant_and_other_accuser_query[index].legality"
+                             class="myradio" style="margin-left: 15px;"><label>否</label>
+                    </div>
+                  </div>
+                  <div class="layui-input-inline" style="width:34%;margin-left: 0">
+                    <div class="myradiomargin">
+                      <label>相关性：</label>
+                      <input type="radio" lay-ignore value="1"
+                             v-model="data.defendant_and_other_accuser_query[index].relevance"
+                             class="myradio"><label>是</label>
+                      <input type="radio" lay-ignore value="2"
+                             v-model="data.defendant_and_other_accuser_query[index].relevance"
+                             class="myradio" style="margin-left: 15px;"><label>否</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="layui-form-item" pane style="margin-top: -10px;">
+                <div class="layui-form-label" style="line-height: 80px">
+                  事实和理由
+                </div>
+                <div class="layui-input-block">
+              <textarea v-model="data.defendant_and_other_accuser_query[index].fact_reason"
                         placeholder="请输入事实和理由"
                         class="layui-textarea"></textarea>
+                </div>
+              </div>
+
+              <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                        @click="add_component('defendant_and_other_accuser_query')"> 添加质证
+                </button>
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
+                        style="margin-left:5px" v-if="index!=0"
+                        @click="delete_component('defendant_and_other_accuser_query',index)"> 删除质证
+                </button>
+              </div>
+            </template>
+
+            <div class="layui-form-item" pane>
+              <label class="layui-form-label">被告是否举证</label>
+              <div class="layui-input-block">
+                <div class="myradiomargin">
+                  <input type="radio" name="is_defendant_evidence" lay-ignore v-model="setIsDefendantEvidence"
+                         class="myradio"
+                         value="1"><label>是 </label>
+                  <input type="radio" name="is_defendant_evidence" lay-ignore v-model="setIsDefendantEvidence"
+                         class="myradio" value="2"
+                         style="margin-left: 15px;"><label>否</label>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-
-      <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-        <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('defendant_query')"> 添加被告质证</button>
-        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0" @click="delete_component('defendant_query',index)"> 删除被告质证
-        </button>
-      </div>
-    </template>
-      </form>
-    </div>
-  </div>
     </div>
   </fieldset>
+
 </template>
 
 <script>
@@ -188,16 +218,17 @@ export default {
         evidence_type: ""//证据类型，原件或者复印件
       }],
       // accuser_evidence_fact_reason: "", //事实和理由(原告举证)
-      defendant_query: [
+      defendant_and_other_accuser_query: [
         {
-          defendant: [], //被告姓名
+          name: [], //质证者姓名
           evidence: [], //证据名称
-          defendant_query_fact_reason: "", //真实性、合法性和相关性的事实和理由(被告质证的事实和理由)
+          fact_reason: "", //真实性、合法性和相关性的事实和理由(被告质证的事实和理由)
           facticity: "1", //真实性
           legality: "1", //合法性
           relevance: "1", //关联性
         }
       ],
+      is_defendant_evidence: "2",
     }
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "accuserShowInfo" in wholeItem) {
@@ -210,10 +241,18 @@ export default {
   },
   computed: {
 
-    getDefendantName: {
+    //组合 原告、被告以及第三人
+    getCrossExaminationName: {
       get() {
         let defendant = this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short).filter(i => i && i.trim())
-        return [{defendant: "全选被告", defendant_name: defendant}]
+        let accuser = this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short).filter(i => i && i.trim())
+        let thirdparty = this.$store.state.third_party_item.map(e => e.third_party_short == '' ? e.third_party : e.third_party_short).filter(i => i && i.trim())
+
+
+        return [{type: "全选被告", name: defendant},
+          {type: "全选原告", name: accuser},
+          {type: "全选第三人", name: thirdparty}
+        ]
       }
     },
     getAccuserName: {
@@ -221,22 +260,32 @@ export default {
         return this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short).filter(i => i && i.trim())
       }
     },
+    //获取证据名称
     getProofPlaintiff: {
       get() {
-        let option_label = this.data.accuser_evidence.filter(i => i.evidence).map(e =>{
-          return "证据"+this.numberToChinese(e.serial) + ":" + e.evidence;
+        let option_label = this.data.accuser_evidence.filter(i => i.evidence).map(e => {
+          return "证据" + this.numberToChinese(e.serial) + ":" + e.evidence;
         })
         // let optionn_label={evidence_serial:evidence_serial,name_serial:name_serial}
 
         return [{evidence: "全选证据", option_label: option_label}]
       },
+    },
+    setIsDefendantEvidence:{
+      get() {
+        return this.$store.state.is_defendant_evidence
+      },
+      set(value) {
+        this.data.is_defendant_evidence = value
+        this.$store.commit('setIsDefendantEvidence', value )
+      }
     }
   },
   components: {
     VueMultiselect
   },
   methods: {
-    add_component(datatype,index) {
+    add_component(datatype, index) {
       switch (datatype) {
         case "accuser_evidence":
           //accuser_evidence 模块的数据加入
@@ -246,25 +295,25 @@ export default {
           //   content: "", //证明事项(原告举证表 原告提出)
           //   evidence_type: ""//证据类型，原件或者复印件
           // });
-          this.data.accuser_evidence.splice(index,0,{
-              serial: 0,//证据序号，自增
-              evidence: "", //证据名称(原告举证表 原告提出)
-              content: "", //证明事项(原告举证表 原告提出)
-              evidence_type: ""//证据类型，原件或者复印件
+          this.data.accuser_evidence.splice(index, 0, {
+            serial: 0,//证据序号，自增
+            evidence: "", //证据名称(原告举证表 原告提出)
+            content: "", //证明事项(原告举证表 原告提出)
+            evidence_type: ""//证据类型，原件或者复印件
           })
-          for (let i=0 ;i < this.data.accuser_evidence.length;i++){
-            this.data.accuser_evidence[i].serial= i+1
+          for (let i = 0; i < this.data.accuser_evidence.length; i++) {
+            this.data.accuser_evidence[i].serial = i + 1
           }
           break;
-        case "defendant_query":
+        case "defendant_and_other_accuser_query":
           //这里是值对应的处理
-          this.data.defendant_query.push({
-            defendant: [], //被告姓名
+          this.data.defendant_and_other_accuser_query.push({
+            name: [], //被告姓名
             evidence: [], //证据名称 （被告质证）
             facticity: "1", //真实性
             legality: "1", //合法性
             relevance: "1", //关联性
-            defendant_query_fact_reason: "", //事实和理由
+            fact_reason: "", //事实和理由
           });
           break;
 
@@ -278,13 +327,13 @@ export default {
         case "accuser_evidence":
           //这里是值对应的处理
           this.data.accuser_evidence.splice(index, 1);
-          for (let i=0 ;i < this.data.accuser_evidence.length;i++){
-            this.data.accuser_evidence[i].serial= i+1
+          for (let i = 0; i < this.data.accuser_evidence.length; i++) {
+            this.data.accuser_evidence[i].serial = i + 1
           }
           break;
-        case "defendant_query":
+        case "defendant_and_other_accuser_query":
           //这里是值对应的处理
-          this.data.defendant_query.splice(index, 1);
+          this.data.defendant_and_other_accuser_query.splice(index, 1);
           break;
 
         default:
@@ -323,7 +372,7 @@ export default {
       if (a.length > 1) // 加上小数部分(如果有小数部分)
       {
         re += BB[6];
-        for ( i = 0; i < a[1].length; i++)
+        for (i = 0; i < a[1].length; i++)
           re += AA[a[1].charAt(i)];
       }
       if (re == '一十')

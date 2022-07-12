@@ -54,7 +54,7 @@
 
       <div v-if="is_avoid =='2'">
           <fieldset class="layui-elem-field layui-field-title" id="CourtInves1">
-            <legend>法庭调查-原告诉讼请求</legend>
+            <legend>原告诉讼请求</legend>
             <div class="layui-field-box">
               <CourtInves></CourtInves>
             </div>
@@ -63,14 +63,14 @@
         <div
             v-if="( $store.state.counterclaim_defendant_today_is_reply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='2'">
             <fieldset class="layui-elem-field layui-field-title" id="accuserShowInfo" style="margin-top:-28px">
-              <legend>法庭调查-原告举证</legend>
+              <legend>原告举证</legend>
               <div class="layui-field-box">
                 <accuserShowInfo ref="accuserShowInfo"></accuserShowInfo>
               </div>
             </fieldset>
 
-            <fieldset class="layui-elem-field layui-field-title" id="defendShowInfo" style="margin-top:-35px">
-              <legend>法庭调查-被告举证</legend>
+            <fieldset v-if="$store.state.is_defendant_evidence=='1'" class="layui-elem-field layui-field-title" id="defendShowInfo" style="margin-top:-35px" >
+              <legend>被告举证</legend>
               <div class="layui-field-box">
                 <defendShowInfo></defendShowInfo>
               </div>
@@ -363,23 +363,20 @@ export default {
         if ("accuserShowInfo" in wholeItem) {
           var accuserShowInfo = wholeItem.accuserShowInfo
 
-          accuserShowInfo.defendant_query.forEach(e => {
-            e.evidence = e.evidence.join("**") , e.defendant = e.defendant.join("**")
+          accuserShowInfo.defendant_and_other_accuser_query.forEach(e => {
+            e.evidence = e.evidence.join("**") , e.name = e.name.join("**")
           })
           // 合并法庭调查表和原告举
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], accuserShowInfo)
         }
 
-
-
-
         if ("defendantShowInfo" in wholeItem) {
           var defendantShowInfo = wholeItem.defendantShowInfo
-          defendantShowInfo.accuser_query.forEach(e => {
-            e.evidence = e.evidence.join("**") , e.accuser = e.accuser.join("**")
+          defendantShowInfo.defendant_evidence.forEach(e => {
+            e.defendant = e.defendant.join("**")
           })
-          defendantShowInfo.other_defendant_query.forEach(e => {
-            e.evidence = e.evidence.join("**") , e.defendant = e.defendant.join("**")
+          defendantShowInfo.accuser_and_other_defendant_query.forEach(e => {
+            e.evidence = e.evidence.join("**") , e.name = e.name.join("**")
           })
           defendantShowInfo.counterclaim_defendant_query.forEach(e => {
             e.evidence = e.evidence.join("**") , e.counterclaim_defendant = e.counterclaim_defendant.join("**")

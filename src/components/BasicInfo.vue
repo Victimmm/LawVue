@@ -358,6 +358,9 @@ export default {
       }
     },
     courtNumChange() {
+      if (this.data.court_number == '（'+new Date().getFullYear()+'）京0108民初XXX号'){
+        return
+      }
       if (this.data.court_number != '（'+new Date().getFullYear()+'）京0108民初XXX号' && this.$store.state.court_number == '') {
         // localStorage.setItem(this.data.court_number,JSON.stringify({BasicInfo:this.data}))
         localStorage.setItem(this.data.court_number, JSON.stringify({
