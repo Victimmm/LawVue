@@ -3,121 +3,122 @@
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <div class="layui-bg-gray">
     <form class="layui-form" action="" onsubmit="return false">
-        <fieldset class="layui-elem-field layui-field-title" id="BasicInfo">
-          <legend>基本信息</legend>
-          <div class="layui-field-box">
-            <BasicInfo></BasicInfo>
-          </div>
-        </fieldset>
+      <fieldset class="layui-elem-field layui-field-title" id="BasicInfo">
+        <legend>基本信息</legend>
+        <div class="layui-field-box">
+          <BasicInfo></BasicInfo>
+        </div>
+      </fieldset>
 
-        <fieldset class="layui-elem-field layui-field-title" id="whole_PlaintiffImf">
-          <legend>原告信息</legend>
-          <div class="layui-field-box">
-            <PlaintiffImf :index=0 :key="0"></PlaintiffImf>
-            <PlaintiffImf v-for="(item,index) in $store.state.plaintiff_item.slice(1)" :key="item.tag"
-                          :index="index+1"/>
-          </div>
-        </fieldset>
+      <fieldset class="layui-elem-field layui-field-title" id="whole_PlaintiffImf">
+        <legend>原告信息</legend>
+        <div class="layui-field-box">
+          <PlaintiffImf :index=0 :key="0"></PlaintiffImf>
+          <PlaintiffImf v-for="(item,index) in $store.state.plaintiff_item.slice(1)" :key="item.tag"
+                        :index="index+1"/>
+        </div>
+      </fieldset>
 
 
-        <fieldset class="layui-elem-field layui-field-title" id="whole_DefendantImf">
-          <legend>被告信息</legend>
-          <div class="layui-field-box">
-            <DefendantImf :index=0 :key=0></DefendantImf>
-            <DefendantImf v-for="(item,index) in $store.state.defendant_item.slice(1)" :key="item.tag"
-                          :index="index+1"/>
-          </div>
-        </fieldset>
+      <fieldset class="layui-elem-field layui-field-title" id="whole_DefendantImf">
+        <legend>被告信息</legend>
+        <div class="layui-field-box">
+          <DefendantImf :index=0 :key=0></DefendantImf>
+          <DefendantImf v-for="(item,index) in $store.state.defendant_item.slice(1)" :key="item.tag"
+                        :index="index+1"/>
+        </div>
+      </fieldset>
 
       <fieldset class="layui-elem-field layui-field-title" id="whole_thirdPartyImf">
         <legend>第三人信息</legend>
         <div class="layui-field-box">
           <thirdPartyImf :index=0 :key=0></thirdPartyImf>
           <thirdPartyImf v-for="(item,index) in $store.state.third_party_item.slice(1)" :key="item.tag"
-                        :index="index+1"/>
+                         :index="index+1"/>
         </div>
       </fieldset>
 
-        <fieldset class="layui-elem-field layui-field-title" id="BasicState">
-          <legend>基本信息陈述</legend>
-          <div class="layui-field-box">
-            <BasicState></BasicState>
-          </div>
-        </fieldset>
+      <fieldset class="layui-elem-field layui-field-title" id="BasicState">
+        <legend>基本信息陈述</legend>
+        <div class="layui-field-box">
+          <BasicState></BasicState>
+        </div>
+      </fieldset>
 
-        <fieldset class="layui-elem-field layui-field-title" id="rightInfo">
-          <legend>权利告知</legend>
-          <div class="layui-field-box">
-            <rightInfo @SetIsAvoid="SetIsAvoid"></rightInfo>
-          </div>
-        </fieldset>
+      <fieldset class="layui-elem-field layui-field-title" id="rightInfo">
+        <legend>权利告知</legend>
+        <div class="layui-field-box">
+          <rightInfo @SetIsAvoid="SetIsAvoid"></rightInfo>
+        </div>
+      </fieldset>
 
       <div v-if="is_avoid =='2'">
-          <fieldset class="layui-elem-field layui-field-title" id="CourtInves1">
-            <legend>原告诉讼请求</legend>
-            <div class="layui-field-box">
-              <CourtInves></CourtInves>
-            </div>
-          </fieldset>
+        <fieldset class="layui-elem-field layui-field-title" id="CourtInves1">
+          <legend>原告诉讼请求</legend>
+          <div class="layui-field-box">
+            <CourtInves></CourtInves>
+          </div>
+        </fieldset>
         <!--    &lt;!&ndash; 反诉且今日答辩 或者不反诉的情况显示&ndash;&gt;-->
         <div
             v-if="( $store.state.counterclaim_defendant_today_is_reply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='2'">
-            <fieldset class="layui-elem-field layui-field-title" id="accuserShowInfo" style="margin-top:-28px">
-              <legend>原告举证</legend>
-              <div class="layui-field-box">
-                <accuserShowInfo ref="accuserShowInfo"></accuserShowInfo>
-              </div>
-            </fieldset>
+          <fieldset class="layui-elem-field layui-field-title" id="accuserShowInfo" style="margin-top:-28px">
+            <legend>原告举证</legend>
+            <div class="layui-field-box">
+              <accuserShowInfo ref="accuserShowInfo"></accuserShowInfo>
+            </div>
+          </fieldset>
 
-            <fieldset v-if="$store.state.is_defendant_evidence=='1'" class="layui-elem-field layui-field-title" id="defendShowInfo" style="margin-top:-35px" >
-              <legend>被告举证</legend>
-              <div class="layui-field-box">
-                <defendShowInfo></defendShowInfo>
-              </div>
-            </fieldset>
+          <fieldset v-if="$store.state.is_defendant_evidence=='1'" class="layui-elem-field layui-field-title"
+                    id="defendShowInfo" style="margin-top:-35px">
+            <legend>被告举证</legend>
+            <div class="layui-field-box">
+              <defendShowInfo></defendShowInfo>
+            </div>
+          </fieldset>
 
-            <fieldset class="layui-elem-field layui-field-title" id="inquiryInfo" style="margin-top:-28px">
-              <legend>法庭询问</legend>
-              <div class="layui-field-box">
-                <inquiryInfo></inquiryInfo>
-              </div>
-            </fieldset>
+          <fieldset class="layui-elem-field layui-field-title" id="inquiryInfo" style="margin-top:-28px">
+            <legend>法庭询问</legend>
+            <div class="layui-field-box">
+              <inquiryInfo></inquiryInfo>
+            </div>
+          </fieldset>
 
-            <fieldset class="layui-elem-field layui-field-title" id="argueInfo">
-              <legend>法庭辩论</legend>
-              <div class="layui-field-box">
-                <argueInfo></argueInfo>
-              </div>
-            </fieldset>
+          <fieldset class="layui-elem-field layui-field-title" id="argueInfo">
+            <legend>法庭辩论</legend>
+            <div class="layui-field-box">
+              <argueInfo></argueInfo>
+            </div>
+          </fieldset>
 
-            <fieldset class="layui-elem-field layui-field-title" id="finalStatementInfo">
-              <legend>最后陈述意见</legend>
-              <div class="layui-field-box">
-                <finalStatementInfo></finalStatementInfo>
-              </div>
-            </fieldset>
+          <fieldset class="layui-elem-field layui-field-title" id="finalStatementInfo">
+            <legend>最后陈述意见</legend>
+            <div class="layui-field-box">
+              <finalStatementInfo></finalStatementInfo>
+            </div>
+          </fieldset>
 
-            <fieldset class="layui-elem-field layui-field-title" id="mediateInfo">
-              <legend>是否调解</legend>
-              <div class="layui-field-box">
-                <mediateInfo></mediateInfo>
-              </div>
-            </fieldset>
+          <fieldset class="layui-elem-field layui-field-title" id="mediateInfo">
+            <legend>是否调解</legend>
+            <div class="layui-field-box">
+              <mediateInfo></mediateInfo>
+            </div>
+          </fieldset>
 
-            <fieldset class="layui-elem-field layui-field-title" id="deliveryInfo">
-              <legend>电子裁判文书送达</legend>
-              <div class="layui-field-box">
-                <deliveryInfo></deliveryInfo>
-              </div>
-            </fieldset>
+          <fieldset class="layui-elem-field layui-field-title" id="deliveryInfo">
+            <legend>电子裁判文书送达</legend>
+            <div class="layui-field-box">
+              <deliveryInfo></deliveryInfo>
+            </div>
+          </fieldset>
         </div>
       </div>
-            <fieldset class="layui-elem-field layui-field-title" id="summarizeInfo">
-              <legend>审判员询问</legend>
-              <div class="layui-field-box">
-                <summarizeInfo></summarizeInfo>
-              </div>
-            </fieldset>
+      <fieldset class="layui-elem-field layui-field-title" id="summarizeInfo">
+        <legend>审判员询问</legend>
+        <div class="layui-field-box">
+          <summarizeInfo></summarizeInfo>
+        </div>
+      </fieldset>
 
 
       <button type="button" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-lg" lay-submit
@@ -136,7 +137,7 @@
 import BasicInfo from './components/BasicInfo.vue'
 import PlaintiffImf from './components/PlaintiffImf.vue'
 import DefendantImf from './components/DefendantImf.vue'
-import thirdPartyImf from'./components/thirdPratyImf.vue'
+import thirdPartyImf from './components/thirdPratyImf.vue'
 import CourtInves from './components/CourtInves.vue'
 import rightInfo from "@/components/rightInfo";
 import accuserShowInfo from "@/components/accuserShowInfo";
@@ -214,7 +215,7 @@ export default {
           shade: 0,
           closeBtn: 0,
           offset: 'r',
-          success: ()=>{
+          success: () => {
 
 
             this.navChange()
@@ -227,6 +228,22 @@ export default {
   destroy() {
     // 必须移除监听器，不然当该vue组件被销毁了，监听器还在就会出错
     window.removeEventListener('scroll', this.onScroll)
+  },
+  computed: {
+    //组合 原告、被告以及第三人
+    getCrossExaminationName: {
+      get() {
+        let defendant = this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short).filter(i => i && i.trim())
+        let accuser = this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short).filter(i => i && i.trim())
+        let thirdparty = this.$store.state.third_party_item.map(e => e.third_party_short == '' ? e.third_party : e.third_party_short).filter(i => i && i.trim())
+
+        return [
+          accuser,
+          defendant,
+          thirdparty
+        ]
+      }
+    }
   },
   methods: {
     SetIsAvoid(value) {
@@ -363,6 +380,7 @@ export default {
         if ("accuserShowInfo" in wholeItem) {
           var accuserShowInfo = wholeItem.accuserShowInfo
 
+          //将数组拼接成字符串
           accuserShowInfo.defendant_and_other_accuser_query.forEach(e => {
             e.evidence = e.evidence.join("**") , e.name = e.name.join("**")
           })
@@ -372,6 +390,27 @@ export default {
 
         if ("defendantShowInfo" in wholeItem) {
           var defendantShowInfo = wholeItem.defendantShowInfo
+
+
+          // //区分name数组中的人员类别
+          // for(let i=0;i<defendantShowInfo.accuser_and_other_defendant_query.length;i++)
+          // {
+          //   for(let j=0; j<defendantShowInfo.accuser_and_other_defendant_query[i].name.length;j++){
+          //     let e = defendantShowInfo.accuser_and_other_defendant_query[i].name[j]
+          //     if (this.getCrossExaminationName[0].indexOf(e) != -1) {
+          //       console.log(e + "（原告）")
+          //       defendantShowInfo.accuser_and_other_defendant_query[i].name[j] = e + "（原告）"
+          //     } else if (this.getCrossExaminationName[1].indexOf(e) != -1) {
+          //       console.log(e + "（被告）")
+          //       defendantShowInfo.accuser_and_other_defendant_query[i].name[j] = e + "（被告）"
+          //     } else if (this.getCrossExaminationName[2].indexOf(e) != -1) {
+          //       console.log(e + "（第三人）")
+          //       defendantShowInfo.accuser_and_other_defendant_query[i].name[j] = e + "（第三人）"
+          //     }
+          //   }
+          // }
+
+
           defendantShowInfo.defendant_evidence.forEach(e => {
             e.defendant = e.defendant.join("**")
           })
@@ -440,7 +479,7 @@ export default {
       }
 
       this.axios.post('/record/add', {recordJson, requestType})
-          .then( (result)=> {
+          .then((result) => {
             // handle success
             if (result.data.data == "案号不能重复") {
               window.layer.msg(result.data.data, {icon: 5, time: 1500});
@@ -450,7 +489,7 @@ export default {
             this.axios({
               method: 'post',
               url: '/record/generate',
-              data: {courtNumber:this.$store.state.court_number}
+              data: {courtNumber: this.$store.state.court_number}
             })
 
             // console.log(response);
@@ -462,22 +501,22 @@ export default {
           });
     },
 
-    back(){
+    back() {
       window.location.href = '/view/record'
     },
 
-    navChange(){
+    navChange() {
       const navContents = document.querySelectorAll('fieldset')
       const id_list = []
       const title = []
-      let innerhtml=""
-      this.$nextTick(function(){
+      let innerhtml = ""
+      this.$nextTick(function () {
         navContents.forEach(item => {
           title.push(item.getElementsByTagName('legend')[0].innerHTML)
           id_list.push(item.getAttribute("id"))
-          innerhtml= innerhtml +"        <li ><a href='#"+item.getAttribute("id")+"'><cite>"+item.getElementsByTagName('legend')[0].innerHTML+"<cite></a></li>\n"
+          innerhtml = innerhtml + "        <li ><a href='#" + item.getAttribute("id") + "'><cite>" + item.getElementsByTagName('legend')[0].innerHTML + "<cite></a></li>\n"
         })
-        document.getElementById("content_list").innerHTML=innerhtml
+        document.getElementById("content_list").innerHTML = innerhtml
         this.onScroll()
       })
 
@@ -488,23 +527,20 @@ export default {
     }
   },
   watch: {
-    "$store.state.is_counterclaim" ()
-    {
-      setTimeout( ()=>{
+    "$store.state.is_counterclaim"() {
+      setTimeout(() => {
         this.navChange()
-      },1000);
+      }, 1000);
     },
-    "$store.state.counterclaim_defendant_today_is_reply" ()
-    {
-      setTimeout( ()=>{
+    "$store.state.counterclaim_defendant_today_is_reply"() {
+      setTimeout(() => {
         this.navChange()
-      },1000);
+      }, 1000);
     },
-    is_avoid ()
-    {
-      setTimeout( ()=>{
+    is_avoid() {
+      setTimeout(() => {
         this.navChange()
-      },1000);
+      }, 1000);
     },
 
   }
@@ -559,12 +595,13 @@ body .myskin {
 }
 
 
-textarea::-ms-input-placeholder{
-  line-height:normal
+textarea::-ms-input-placeholder {
+  line-height: normal
 
 }
-textarea::-webkit-input-placeholder{
-  line-height:normal
+
+textarea::-webkit-input-placeholder {
+  line-height: normal
 }
 
 /**选择后的样式**/
