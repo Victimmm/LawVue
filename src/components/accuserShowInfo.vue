@@ -56,7 +56,7 @@
   </div>
 
   <fieldset class="layui-elem-field layui-field-title" id="defendant_and_other_accuser_query" style="margin-top:28px">
-    <legend>被告质证</legend>
+    <legend>被告及其他原告质证</legend>
     <div class="layui-field-box">
       <div class="layui-card">
         <div class="layui-card-body">
@@ -83,9 +83,6 @@
                       <VueMultiselect :option-height="38" :show-labels="false"
                                       v-model="data.defendant_and_other_accuser_query[index].name"
                                       :options=getCrossExaminationName placeholder="请选择质证人"
-                                      group-label="type"
-                                      :group-select="true"
-                                      group-values="name"
                                       :multiple="true"
                                       :close-on-select="false"
                                       :searchable="false"
@@ -244,15 +241,10 @@ export default {
     //组合 原告、被告以及第三人
     getCrossExaminationName: {
       get() {
-        let defendant = this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short).filter(i => i && i.trim())
-        let accuser = this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short).filter(i => i && i.trim())
-        let thirdparty = this.$store.state.third_party_item.map(e => e.third_party_short == '' ? e.third_party : e.third_party_short).filter(i => i && i.trim())
-
-
-        return [{type: "全选被告", name: defendant},
-          {type: "全选原告", name: accuser},
-          {type: "全选第三人", name: thirdparty}
-        ]
+        let defendant = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short)+"（被告）").filter(i => i && i!= "（被告）")
+        let accuser = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short)+"（原告）").filter(i => i && i!= "（原告）")
+        let thirdparty = this.$store.state.third_party_item.map(e => (e.third_party_short == '' ? e.third_party : e.third_party_short)+"（第三人）").filter(i => i && i!= "（第三人）")
+        return accuser.concat(defendant).concat(thirdparty)
       }
     },
     getAccuserName: {
