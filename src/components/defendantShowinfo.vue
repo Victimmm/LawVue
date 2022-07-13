@@ -19,7 +19,7 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <VueMultiselect :option-height="38" :show-labels="false"
-                                    v-model="data.defendant_evidence[index].defendant"
+                                    v-model="data.defendant_evidence[index].name"
                                     :options=getDefendantName placeholder="请选择被告"
                                     group-label="defendant"
                                     :group-select="true"
@@ -760,7 +760,7 @@ export default {
     var data = {
       //第一个动态生成的json defendant_evidence 包含以下3个信息
       defendant_evidence: [{
-        defendant:[],
+        name:[],
         serial: 1,//证据序号，自增
         evidence: "", //证据名称(原告举证表 原告提出)
         content: "", //证明事项(原告举证表 原告提出)
@@ -915,7 +915,7 @@ export default {
           //accshowd_evidence 模块的数据加入
           this.data.defendant_evidence.splice(index, 0,
               {
-                defendant:[],
+                name:[],
                 serial: 1,//证据序号，自增
                 evidence: "", //证据名称(原告举证表 原告提出)
                 content: "", //证明事项(原告举证表 原告提出)
