@@ -189,7 +189,10 @@ export default {
         let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
           return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;
         })
-        return string2.concat(string1)
+        let string3 = this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
+          return (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）' ;
+        })
+        return string2.concat(string1).concat(string3)
       },
     },
   },

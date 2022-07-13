@@ -213,19 +213,22 @@ export default {
         let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
           return  (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）';
         })
-        return string1.concat(string2)
+        let string3 = this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
+          return  (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）';
+        })
+        return string1.concat(string2).concat(string3)
 
       }
     },
     getCounterAccuserMergeDefendant: {
       get() {
-        let string3 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
+        let string4 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
           return  (e.accuser_short==''?e.accuser:e.accuser_short) + '（反诉被告）' ;
         })
-        let string4 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+        let string5 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
           return (e.defendant_short==''?e.defendant:e.defendant_short) + '（反诉原告）' ;
         })
-        return string3.concat(string4)
+        return string4.concat(string5)
       },
     },
   },

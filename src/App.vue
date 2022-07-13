@@ -345,6 +345,10 @@ export default {
             rightInfo.defendant_right_duty[i] = wholeItem.rightInfo.defendant_right_duty[i]
             rightInfo.defendant_right_duty[i]["defendant"] = this.$store.state.defendant_item[i].defendant_short == "" ? this.$store.state.defendant_item[i].defendant : this.$store.state.defendant_item[i].defendant_short
           }
+          for (let i = 0; i < this.$store.state.third_party_item.length; i++) {
+            rightInfo.third_party_right_duty[i] = wholeItem.rightInfo.third_party_right_duty[i]
+            rightInfo.third_party_right_duty[i]["third_party"] = this.$store.state.third_party_item[i].third_party_short == "" ? this.$store.state.third_party_item[i].third_party : this.$store.state.third_party_item[i].third_party_short
+          }
           recordJson["rightInfo"] = rightInfo
         }
 

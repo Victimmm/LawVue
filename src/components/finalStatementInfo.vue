@@ -79,7 +79,6 @@ export default {
     }
     return {
       name_list: [],
-      // pre_name_list: [],
       data: data,
     };
 
@@ -95,7 +94,10 @@ export default {
         let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
           return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;
         })
-        return string1.concat(string2)
+        let string3 = this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
+          return (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）' ;
+        })
+        return string1.concat(string2).concat(string3)
 
       }
     },
@@ -186,7 +188,10 @@ export default {
       let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
         return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;
       })
-      this.name_list = string1.concat(string2)
+      let string3 = this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
+        return (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）' ;
+      })
+      this.name_list = string1.concat(string2).concat(string3)
       // console.log(this.name_list)
       // if (this.name_list.length > 1){
       //   this.data.pre_name_list = this.name_list

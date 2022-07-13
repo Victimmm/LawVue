@@ -44,6 +44,22 @@
           </template>
         </div>
 
+        <div class="layui-form-item " pane>
+          <template v-for="(item, index) in getThirdPartyNane" :key='index'>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
+              <label class="layui-form-label">{{ item }}</label>
+              <div class="layui-input-block">
+                <div class="myradiomargin">
+                  <input type="radio" value="1" lay-ignore v-model="data.third_party_right_duty[index].right_duty" class="myradio"><label>
+                  听清楚了 </label>
+                  <input type="radio" value="2" lay-ignore v-model="data.third_party_right_duty[index].right_duty" class="myradio"><label>
+                  没听清楚 </label>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+
         <div class="layui-form-item" pane>
           <div class="layui-form-label">
             审判员
@@ -92,6 +108,27 @@
             </div>
           </template>
         </div>
+
+        <div class="layui-form-item " pane>
+          <template v-for="(item, index) in getThirdPartyNane" :key='index'>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
+              <div class="layui-form-label">
+                {{ item }}
+              </div>
+              <div class="layui-input-block">
+                <div class="myselect-div">
+                  <div class="myradiomargin" style="width: 100%;float: left;">
+                    <input type="radio" value="2" lay-ignore v-model="data.third_party_right_duty[index].avoid" class="myradio"><label>
+                    不申请回避 </label>
+                    <input type="radio" value="1" lay-ignore v-model="data.third_party_right_duty[index].avoid" class="myradio"><label>
+                    申请回避 </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+
       </form>
     </div>
   </div>
@@ -109,7 +146,29 @@ export default {
       judge_avoid: "审判员：当事人对审判员和书记是否申请回避？",
       accuser_right_duty: [{right_duty: "1", avoid: "2"}],
       defendant_right_duty: [{right_duty: "1", avoid: "2"}],
+      third_party_right_duty: [{right_duty: "1", avoid: "2"}],
     };
+
+    // const courtCause = '权利告知'
+    // this.axios.post('/record/judge/speak', courtCause )
+    //     .then(function (response) {
+    //       this.judge_right_duty = response.data.value;
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+
+    // axios.get('/record/judge/speak', {
+    //   params: {
+    //     ID: "权利告知"
+    //   }
+    // }).then(function (response) {
+    //   const judge_speak = response.data.value;
+    //   this.judge_right_duty = judge_speak
+    // }).catch(function (error) {
+    //   console.log(error);
+    // });
+
 
     let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "rightInfo" in wholeItem) {
@@ -131,6 +190,13 @@ export default {
           return this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
             return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;
           })
+      }
+    },
+    getThirdPartyNane: {
+      get() {
+        return this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
+          return (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）' ;
+        })
       }
     }
   },
@@ -184,6 +250,11 @@ export default {
               is_avoid="1"
             }
           }
+          for (let i in  this.data.third_party_right_duty){
+            if(this.data.third_party_right_duty[i].avoid=="1"){
+              is_avoid="1"
+            }
+          }
           this.$emit("setIsAvoid",is_avoid)
 
           let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
@@ -211,6 +282,18 @@ export default {
     getDefendantNane() {
       if(this.data.defendant_right_duty.length < this.$store.state.defendant_item.length){
         this.data.defendant_right_duty.push({
+          right_duty: "1",avoid: "2"
+        })
+      }
+      let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
+      if (wholeItem != null ) {
+        wholeItem.rightInfo = this.data
+        localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
+      }
+    },
+    getThirdPartyNane() {
+      if(this.data.third_party_right_duty.length < this.$store.state.third_party_item.length){
+        this.data.third_party_right_duty.push({
           right_duty: "1",avoid: "2"
         })
       }
