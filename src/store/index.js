@@ -27,6 +27,7 @@ export default createStore({
                 let court_clerk = ""
                 let counterclaim_defendant_today_is_reply = "1"
                 let is_counterclaim = "2"
+                let is_defendant_evidence = "2"
                 let wholeItem = JSON.parse(localStorage.getItem(decodeURI(pair[1])))
                 if (wholeItem != null) {
                     if ("PlaintiffItems" in wholeItem && wholeItem.PlaintiffItems.length > 0) {
@@ -77,6 +78,10 @@ export default createStore({
                         counterclaim_defendant_today_is_reply = wholeItem.CourtInves.counterclaim_defendant_today_is_reply
                         is_counterclaim = wholeItem.CourtInves.is_counterclaim
                     }
+                    if("accuserShowInfo" in wholeItem){
+                        is_defendant_evidence = wholeItem.accuserShowInfo.is_defendant_evidence
+                    }
+
 
                 }
                 return {
@@ -90,7 +95,8 @@ export default createStore({
                     counterclaim_defendant_today_is_reply: counterclaim_defendant_today_is_reply,
                     court_number: decodeURI(pair[1]),
                     is_counterclaim: is_counterclaim,
-                    court_clerk: court_clerk
+                    court_clerk: court_clerk,
+                    is_defendant_evidence:is_defendant_evidence
                 }
             }
         }
@@ -105,7 +111,8 @@ export default createStore({
             counterclaim_defendant_today_is_reply: "1",
             court_number: "",
             court_clerk: "",
-            is_counterclaim: "2"
+            is_counterclaim: "2",
+            is_defendant_evidence:"2"
         }
     },
     mutations: {
@@ -139,6 +146,9 @@ export default createStore({
         },
         setIsCourtClaim(state, payload) {
             state.is_counterclaim = payload
+        },
+        setIsDefendantEvidence(state, payload){
+            state.is_defendant_evidence = payload
         },
         delete_components(state, payload) {
             switch (payload[0]) {

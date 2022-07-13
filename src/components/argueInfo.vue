@@ -6,7 +6,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label">审判员</label>
           <div class="layui-input-block">
-            <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">法庭调查结束，下面进行法庭辩论，首先原告发表辩论意见。</textarea>
+            <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">法庭询问结束，下面进行法庭辩论，首先原告发表辩论意见。</textarea>
           </div>
         </div>
 
