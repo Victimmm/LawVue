@@ -372,13 +372,13 @@ export default {
         recordJson["courtInvestigate"] = {}
         //法庭调查数据，包含原被告举证表，法庭调查表三个表
         if ("CourtInves" in wholeItem) {
-          let judge_inquiry1 = wholeItem.CourtInves.judge_inquiry_after_accuser_claim
-          recordJson["judge_inquiry_after_accuser_claim"] = judge_inquiry1
-          let judge_inquiry2 = wholeItem.CourtInves.judge_inquiry_after_defendant_reply
-          recordJson["judge_inquiry_after_defendant_reply"] = judge_inquiry2
+          // let judge_inquiry1 = wholeItem.CourtInves.judge_inquiry_after_accuser_claim
+          // recordJson["judge_inquiry_after_accuser_claim"] = judge_inquiry1
+          // let judge_inquiry2 = wholeItem.CourtInves.judge_inquiry_after_defendant_reply
+          // recordJson["judge_inquiry_after_defendant_reply"] = judge_inquiry2
           let courtInvestigate = wholeItem.CourtInves
-          delete courtInvestigate.judge_inquiry_after_accuser_claim
-          delete courtInvestigate.judge_inquiry_after_defendant_reply
+          // delete courtInvestigate.judge_inquiry_after_accuser_claim
+          // delete courtInvestigate.judge_inquiry_after_defendant_reply
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], courtInvestigate)
         }
 
@@ -423,15 +423,15 @@ export default {
           defendantShowInfo.accuser_and_other_defendant_query.forEach(e => {
             e.evidence = e.evidence.join("**") , e.name = e.name.join("**")
           })
-          defendantShowInfo.counterclaim_defendant_query.forEach(e => {
-            e.evidence = e.evidence.join("**") , e.counterclaim_defendant = e.counterclaim_defendant.join("**")
-          })
-          defendantShowInfo.other_counterclaim_defendant_query.forEach(e => {
-            e.evidence = e.evidence.join("**") , e.other_counterclaim_defendant = e.other_counterclaim_defendant.join("**")
-          })
-          defendantShowInfo.counterclaim_accuser_query.forEach(e => {
-            e.evidence = e.evidence.join("**") , e.counterclaim_accuser = e.counterclaim_accuser.join("**")
-          })
+          // defendantShowInfo.counterclaim_defendant_query.forEach(e => {
+          //   e.evidence = e.evidence.join("**") , e.counterclaim_defendant = e.counterclaim_defendant.join("**")
+          // })
+          // defendantShowInfo.other_counterclaim_defendant_query.forEach(e => {
+          //   e.evidence = e.evidence.join("**") , e.other_counterclaim_defendant = e.other_counterclaim_defendant.join("**")
+          // })
+          // defendantShowInfo.counterclaim_accuser_query.forEach(e => {
+          //   e.evidence = e.evidence.join("**") , e.counterclaim_accuser = e.counterclaim_accuser.join("**")
+          // })
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], defendantShowInfo)
         }
 
