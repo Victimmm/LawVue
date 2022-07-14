@@ -341,7 +341,7 @@ export default {
           for (j = 0; j < wholeItem.thirdPartyInfo.length; j++) {
             let ThirdPartyItem = wholeItem.thirdPartyInfo[j]
             thirdPartyInfo.push(ThirdPartyItem)
-            if (ThirdPartyItem.defendant_type == "2") {
+            if (ThirdPartyItem.third_party_type == "2") {
               thirdPartyInfo[j].third_party_short = thirdPartyInfo[j].third_party
             }
           }

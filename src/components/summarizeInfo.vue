@@ -174,8 +174,12 @@ export default {
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null &&  "summarize" in wholeItem){
-      data =wholeItem.summarize
+      data = wholeItem.summarize
     }
+    if(wholeItem!=null && "judge_inquiry_before_summarize" in wholeItem){
+      data.summarize_inquiry = wholeItem.judge_inquiry_before_summarize
+    }
+
     return {
       data: data,
     };
@@ -263,6 +267,7 @@ export default {
           var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
           if (wholeItem != null) {
             wholeItem.summarize = this.data
+            //
             localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
           }
         }

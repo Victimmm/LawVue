@@ -29,7 +29,7 @@
         </div>
 
         <div class="layui-form-item " pane>
-          <template v-for="(item, index) in getDefendantNane" :key='index'>
+          <template v-for="(item, index) in getDefendantName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
               <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="layui-form-item " pane>
-          <template v-for="(item, index) in getThirdPartyNane" :key='index'>
+          <template v-for="(item, index) in getThirdPartyName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
               <label class="layui-form-label">{{ item }}</label>
               <div class="layui-input-block">
@@ -90,7 +90,7 @@
         </div>
 
         <div class="layui-form-item " pane>
-          <template v-for="(item, index) in getDefendantNane" :key='index'>
+          <template v-for="(item, index) in getDefendantName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
               <div class="layui-form-label">
                 {{ item }}
@@ -110,7 +110,7 @@
         </div>
 
         <div class="layui-form-item " pane>
-          <template v-for="(item, index) in getThirdPartyNane" :key='index'>
+          <template v-for="(item, index) in getThirdPartyName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
               <div class="layui-form-label">
                 {{ item }}
@@ -149,27 +149,6 @@ export default {
       third_party_right_duty: [{right_duty: "1", avoid: "2"}],
     };
 
-    // const courtCause = '权利告知'
-    // this.axios.post('/record/judge/speak', courtCause )
-    //     .then(function (response) {
-    //       this.judge_right_duty = response.data.value;
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-
-    // axios.get('/record/judge/speak', {
-    //   params: {
-    //     ID: "权利告知"
-    //   }
-    // }).then(function (response) {
-    //   const judge_speak = response.data.value;
-    //   this.judge_right_duty = judge_speak
-    // }).catch(function (error) {
-    //   console.log(error);
-    // });
-
-
     let wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "rightInfo" in wholeItem) {
       data = wholeItem.rightInfo
@@ -185,14 +164,14 @@ export default {
         })
       },
     },
-    getDefendantNane: {
+    getDefendantName: {
       get() {
           return this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
             return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;
           })
       }
     },
-    getThirdPartyNane: {
+    getThirdPartyName: {
       get() {
         return this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
           return (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）' ;
@@ -279,7 +258,7 @@ export default {
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
     },
-    getDefendantNane() {
+    getDefendantName() {
       if(this.data.defendant_right_duty.length < this.$store.state.defendant_item.length){
         this.data.defendant_right_duty.push({
           right_duty: "1",avoid: "2"
@@ -291,7 +270,7 @@ export default {
         localStorage.setItem(this.$store.state.court_number, JSON.stringify(wholeItem))
       }
     },
-    getThirdPartyNane() {
+    getThirdPartyName() {
       if(this.data.third_party_right_duty.length < this.$store.state.third_party_item.length){
         this.data.third_party_right_duty.push({
           right_duty: "1",avoid: "2"
