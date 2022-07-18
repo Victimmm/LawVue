@@ -9,12 +9,14 @@
           </div>
         </div>
 
-        <div class="layui-form-item" pane>
-          <label class="layui-form-label">问题</label>
+        <div class="layui-form-item" style="margin-bottom: -15px" pane>
+          <label class="layui-form-label">审判员</label>
           <div class="layui-input-block" >
             <input type="text" v-model="data.inquiry_info[0].inquiry_question" placeholder="问题" autocomplete="off"
                    class="layui-input" style="width: 100%;float: left;">
           </div>
+        </div>
+        <div class="layui-form-item" pane>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
             <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
               <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiry_info[0].inquiry_answer[0].name"
@@ -29,7 +31,7 @@
                         data-type="text"
                         style="float: right;height:100px;width:7.5%">
                   <i class="layui-icon">&#xe640;</i></button>
-                <button type="button" @click="add_component('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                <button type="button" @click="add_component('inquiry_reply',0, 1)" class="layui-btn layui-btn-sm" data-type="text"
                         style="float: right;height:100px;width:7.5%">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
@@ -51,7 +53,7 @@
                           data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe640;</i></button>
-                  <button type="button" @click="add_component('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                  <button type="button" @click="add_component('inquiry_reply',0,bindex+2)" class="layui-btn layui-btn-sm" data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
@@ -67,12 +69,14 @@
         </div>
 
         <template v-for="(item, index) in data.inquiry_info.slice(1)" :key="index">
-          <div class="layui-form-item" pane>
-            <label class="layui-form-label">问题</label>
+          <div class="layui-form-item" style="margin-bottom: -15px" pane>
+            <label class="layui-form-label">审判员</label>
             <div class="layui-input-block" >
               <input type="text" v-model="data.inquiry_info[index+1].inquiry_question" placeholder="问题" autocomplete="off"
                      class="layui-input" style="width: 100%;float: left;">
             </div>
+          </div>
+          <div class="layui-form-item" pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
               <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiry_info[index+1].inquiry_answer[0].name"
@@ -87,7 +91,7 @@
                           data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe640;</i></button>
-                  <button type="button" @click="add_component('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                  <button type="button" @click="add_component('inquiry_answer',index+1,1)" class="layui-btn layui-btn-sm" data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
@@ -110,7 +114,7 @@
                             data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe640;</i></button>
-                    <button type="button" @click="add_component('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                    <button type="button" @click="add_component('inquiry_answer',index+1,aindex+2)" class="layui-btn layui-btn-sm" data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe654;</i>
                     </button>
@@ -232,18 +236,19 @@ export default {
     //   this.data.court_cause=tag
     // },
 
-    add_component(datatype,index) {
+    add_component(datatype,index_info_index,inquiry_answer_index) {
       switch (datatype) {
+
         case "inquiry_reply":
           //
-          this.data.inquiry_info[index].inquiry_answer.push({
+          this.data.inquiry_info[index_info_index].inquiry_answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
           });
           break;
         case "inquiry_info":
           //
-          this.data.inquiry_info.splice(index,0,{
+          this.data.inquiry_info.splice(index_info_index,0,{
             inquiry_question: "",
             inquiry_answer: [{
               name:"",
@@ -253,7 +258,7 @@ export default {
           break;
         case "inquiry_answer":
           //
-          this.data.inquiry_info[index].inquiry_answer.push({
+          this.data.inquiry_info[index_info_index].inquiry_answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
           });
@@ -301,32 +306,6 @@ export default {
       },
       deep: true
     },
-    // question_list:{
-    //   handler() {
-    //     if (this.question_list.length != 0) {
-    //       var origin_data = [{
-    //         inquiry_question: "",
-    //         inquiry_answer: [{
-    //           name: "",
-    //           answer: "",
-    //         }
-    //         ]
-    //       }]
-    //       this.data.inquiry_info = origin_data
-    //       this.data.inquiry_info[0].inquiry_question = this.question_list[0]
-    //       for (let p = 1; p < this.question_list.length; p++) {
-    //         let question = this.question_list[p]
-    //         this.data.inquiry_info.push({
-    //           inquiry_question: question,
-    //           inquiry_answer: [{
-    //             name: "",
-    //             answer: "",
-    //           }],
-    //         });
-    //       }
-    //     }
-    //   }
-    // }
   },
 }
 

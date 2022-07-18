@@ -231,16 +231,16 @@ export default {
   },
   computed: {
     //组合 原告、被告以及第三人
-    getCrossExaminationName: {
+      getCrossExaminationName: {
       get() {
         let defendant = this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short).filter(i => i && i.trim())
         let accuser = this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short).filter(i => i && i.trim())
-        let thirdparty = this.$store.state.third_party_item.map(e => e.third_party_short == '' ? e.third_party : e.third_party_short).filter(i => i && i.trim())
+        let third_party = this.$store.state.third_party_item.map(e => e.third_party_short == '' ? e.third_party : e.third_party_short).filter(i => i && i.trim())
 
         return [
           accuser,
           defendant,
-          thirdparty
+          third_party
         ]
       }
     }

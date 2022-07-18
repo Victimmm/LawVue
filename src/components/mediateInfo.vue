@@ -150,17 +150,12 @@
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
-                  <div class="myradiomargin" style="width: 90%;float: left;">
+                  <div class="myradiomargin" style="width: 10 0%;float: left;">
                     <input type="radio" value="1" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" lay-ignore>
                     <label>能</label>
                     <input type="radio" value="2" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" lay-ignore>
                     <label>不能</label>
                   </div>
-                  <button @click="delete_component('mediate_defendant',index+1)" type="button"
-                          class="layui-btn layui-btn-sm layui-btn-danger"
-                          data-type="text" style="float: right;">
-                    <i class="layui-icon">&#xe640;</i>
-                  </button>
                 </div>
               </div>
             </div>
@@ -228,11 +223,6 @@
                     <input type="radio" value="2" v-model="data.mediate_third_party[index+1].is_mediate" class="myradio" lay-ignore>
                     <label>不能</label>
                   </div>
-<!--                  <button @click="delete_component('mediate_third_party',index+1)" type="button"-->
-<!--                          class="layui-btn layui-btn-sm layui-btn-danger"-->
-<!--                          data-type="text" style="float: right;">-->
-<!--                    <i class="layui-icon">&#xe640;</i>-->
-<!--                  </button>-->
                 </div>
               </div>
             </div>
@@ -246,8 +236,8 @@
                           class="layui-textarea"></textarea>
             </div>
           </div>
-          <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_third_party',1)"> 添加被告</button>
-          <button type="button" style="margin-bottom: 15px;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_third_party',index+1)"> 删除被告
+          <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_third_party',1)"> 添加第三人</button>
+          <button type="button" style="margin-bottom: 15px;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_third_party',index+1)"> 删除第三人
           </button>
         </template>
 

@@ -25,7 +25,7 @@
                         data-type="text"
                         style="float: right;height:100px;width:7.5%">
                   <i class="layui-icon">&#xe640;</i></button>
-                <button type="button" @click="add_component('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                <button type="button" @click="add_component('inquiry_reply',0,1)" class="layui-btn layui-btn-sm" data-type="text"
                         style="float: right;height:100px;width:7.5%">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
@@ -47,7 +47,7 @@
                           data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe640;</i></button>
-                  <button type="button" @click="add_component('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                  <button type="button" @click="add_component('inquiry_reply',0,bindex+2)" class="layui-btn layui-btn-sm" data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
@@ -89,7 +89,7 @@
                           data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe640;</i></button>
-                  <button type="button" @click="add_component('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                  <button type="button" @click="add_component('inquiry_answer',index+1,1)" class="layui-btn layui-btn-sm" data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
@@ -111,7 +111,7 @@
                             data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe640;</i></button>
-                    <button type="button" @click="add_component('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                    <button type="button" @click="add_component('inquiry_answer',index+1,aindex+2)" class="layui-btn layui-btn-sm" data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe654;</i>
                     </button>
@@ -204,18 +204,18 @@ export default {
     VueMultiselect
   },
   methods:{
-    add_component(datatype,index) {
+    add_component(datatype,index_of_index,inquiry_answer_index) {
       switch (datatype) {
         case "inquiry_reply":
           //
-          this.data.summarize_inquiry[index].answer.push({
+          this.data.summarize_inquiry[index_of_index].answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
           });
           break;
         case "inquiry_info":
           //
-          this.data.summarize_inquiry.splice(index,0,{
+          this.data.summarize_inquiry.splice(index_of_index,0,{
             question: "",
             answer: [{
               name:"",
@@ -225,7 +225,7 @@ export default {
           break;
         case "inquiry_answer":
           //
-          this.data.summarize_inquiry[index].answer.push({
+          this.data.summarize_inquiry[index_of_index].answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
           });

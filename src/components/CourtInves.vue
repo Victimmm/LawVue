@@ -66,7 +66,7 @@
                         data-type="text"
                         style="float: right;height:100px;width:7.5%">
                   <i class="layui-icon">&#xe640;</i></button>
-                <button type="button" @click="add_component_accuser_claim('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                <button type="button" @click="add_component_accuser_claim('inquiry_reply',0,1)" class="layui-btn layui-btn-sm" data-type="text"
                         style="float: right;height:100px;width:7.5%">
                   <i class="layui-icon">&#xe654;</i>
                 </button>
@@ -88,7 +88,7 @@
                           data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe640;</i></button>
-                  <button type="button" @click="add_component_accuser_claim('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                  <button type="button" @click="add_component_accuser_claim('inquiry_reply',0,bindex+2)" class="layui-btn layui-btn-sm" data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
@@ -130,7 +130,7 @@
                           data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe640;</i></button>
-                  <button type="button" @click="add_component_accuser_claim('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                  <button type="button" @click="add_component_accuser_claim('inquiry_answer',index+1,1)" class="layui-btn layui-btn-sm" data-type="text"
                           style="float: right;height:100px;width:7.5%">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
@@ -152,7 +152,7 @@
                             data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe640;</i></button>
-                    <button type="button" @click="add_component_accuser_claim('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                    <button type="button" @click="add_component_accuser_claim('inquiry_answer',index+1,aindex+2)" class="layui-btn layui-btn-sm" data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe654;</i>
                     </button>
@@ -255,7 +255,7 @@
                             data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe640;</i></button>
-                    <button type="button" @click="add_component_defendant_reply('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                    <button type="button" @click="add_component_defendant_reply('inquiry_reply',0,1)" class="layui-btn layui-btn-sm" data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe654;</i>
                     </button>
@@ -277,7 +277,7 @@
                               data-type="text"
                               style="float: right;height:100px;width:7.5%">
                         <i class="layui-icon">&#xe640;</i></button>
-                      <button type="button" @click="add_component_defendant_reply('inquiry_reply',0)" class="layui-btn layui-btn-sm" data-type="text"
+                      <button type="button" @click="add_component_defendant_reply('inquiry_reply',0,bindex+1)" class="layui-btn layui-btn-sm" data-type="text"
                               style="float: right;height:100px;width:7.5%">
                         <i class="layui-icon">&#xe654;</i>
                       </button>
@@ -319,7 +319,7 @@
                               data-type="text"
                               style="float: right;height:100px;width:7.5%">
                         <i class="layui-icon">&#xe640;</i></button>
-                      <button type="button" @click="add_component_defendant_reply('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                      <button type="button" @click="add_component_defendant_reply('inquiry_answer',index+1,1)" class="layui-btn layui-btn-sm" data-type="text"
                               style="float: right;height:100px;width:7.5%">
                         <i class="layui-icon">&#xe654;</i>
                       </button>
@@ -341,7 +341,7 @@
                                 data-type="text"
                                 style="float: right;height:100px;width:7.5%">
                           <i class="layui-icon">&#xe640;</i></button>
-                        <button type="button" @click="add_component_defendant_reply('inquiry_answer',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                        <button type="button" @click="add_component_defendant_reply('inquiry_answer',index+1,aindex+2)" class="layui-btn layui-btn-sm" data-type="text"
                                 style="float: right;height:100px;width:7.5%">
                           <i class="layui-icon">&#xe654;</i>
                         </button>
@@ -566,18 +566,18 @@ export default {
       }
     },
 
-    add_component_accuser_claim(datatype,index) {
+    add_component_accuser_claim(datatype,index_info_index,inquiry_answer_index) {
       switch (datatype) {
         case "inquiry_reply":
           //
-          this.data.judge_inquiry_after_accuser_claim[index].answer.push({
+          this.data.judge_inquiry_after_accuser_claim[index_info_index].answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
           });
           break;
         case "inquiry_info":
           //
-          this.data.judge_inquiry_after_accuser_claim.splice(index,0,{
+          this.data.judge_inquiry_after_accuser_claim.splice(index_info_index,0,{
             question: "",
             answer: [{
               name:"",
@@ -587,7 +587,7 @@ export default {
           break;
         case "inquiry_answer":
           //
-          this.data.judge_inquiry_after_accuser_claim[index].answer.push({
+          this.data.judge_inquiry_after_accuser_claim[index_info_index].answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
           });
@@ -598,17 +598,17 @@ export default {
       }
     },
 
-    add_component_defendant_reply(datatype,index) {
+    add_component_defendant_reply(datatype,index_info_index,inquiry_answer_index) {
       switch (datatype) {
         case "inquiry_reply":
-          this.data.judge_inquiry_after_defendant_reply[index].answer.push({
+          this.data.judge_inquiry_after_defendant_reply[index_info_index].answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
           });
           break;
         case "inquiry_info":
           //
-          this.data.judge_inquiry_after_defendant_reply.splice(index,0,{
+          this.data.judge_inquiry_after_defendant_reply.splice(index_info_index,0,{
             question: "",
             answer: [{
               name:"",
@@ -618,7 +618,7 @@ export default {
           break;
         case "inquiry_answer":
           //
-          this.data.judge_inquiry_after_defendant_reply[index].answer.push({
+          this.data.judge_inquiry_after_defendant_reply[index_info_index].answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
           });
