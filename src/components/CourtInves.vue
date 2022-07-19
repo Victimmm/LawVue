@@ -213,7 +213,7 @@
               </div>
               <div class="layui-form-item" style="width:100%;">
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                        @click="add_component('defendant_reply')">添加答辩内容
+                        @click="add_component('defendant_reply',index+1)">添加答辩内容
                 </button>
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0"
                         @click="delete_component('defendant_reply',index)"> 删除答辩内容
@@ -277,7 +277,7 @@
                               data-type="text"
                               style="float: right;height:100px;width:7.5%">
                         <i class="layui-icon">&#xe640;</i></button>
-                      <button type="button" @click="add_component_defendant_reply('inquiry_reply',0,bindex+1)" class="layui-btn layui-btn-sm" data-type="text"
+                      <button type="button" @click="add_component_defendant_reply('inquiry_reply',0,bindex+2)" class="layui-btn layui-btn-sm" data-type="text"
                               style="float: right;height:100px;width:7.5%">
                         <i class="layui-icon">&#xe654;</i>
                       </button>
@@ -455,7 +455,7 @@
               </div>
               <div class="layui-form-item" style="width:100%;">
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                        @click="add_component('counterclaim_defendant_reply')">添加反诉被告答辩内容
+                        @click="add_component('counterclaim_defendant_reply',index)">添加反诉被告答辩内容
                 </button>
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
                         v-if="index != 0"
@@ -542,7 +542,7 @@ export default {
     },
   },
   methods: {
-    add_component(datatype) {
+    add_component(datatype,index) {
       switch (datatype) {
           // case "accuser_claims":
           //   //这里是值对应的处理
@@ -550,7 +550,7 @@ export default {
           //   break
         case "defendant_reply":
           //这里是值对应的处理
-          this.data.defendant_reply.push({name: "", content: ""})
+          this.data.defendant_reply.splice(index,0,{name: "", content: ""})
           break
           // case "counterclaim_plaintiff":
           //   //这里是值对应的处理
@@ -558,7 +558,7 @@ export default {
           //   break
         case "counterclaim_defendant_reply":
           //这里是值对应的处理
-          this.data.counterclaim_defendant_reply.push({name: "", content: ""})
+          this.data.counterclaim_defendant_reply.splice(index,0,{name: "", content: ""})
           break
         default:
           //这里是没有找到对应的值处理
