@@ -154,7 +154,6 @@ export default {
       data = wholeItem.rightInfo
     }
     return {data: data}
-
   },
   computed: {
     getPlaintiffName: {

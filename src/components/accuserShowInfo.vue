@@ -70,9 +70,7 @@
               </div>
             </div>
 
-
             <template v-for="(item,index) in data.defendant_and_other_accuser_query" :key="index">
-
               <div class="layui-form-item" pane>
                 <div class="layui-form-label">
                   请选择质证人
@@ -168,7 +166,7 @@
 
               <div class="layui-form-item" style="width:100%;margin-top: -10px;">
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                        @click="add_component('defendant_and_other_accuser_query')"> 添加质证
+                        @click="add_component('defendant_and_other_accuser_query',index+1)"> 添加质证
                 </button>
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
                         style="margin-left:5px" v-if="index!=0"
@@ -299,7 +297,7 @@ export default {
           break;
         case "defendant_and_other_accuser_query":
           //这里是值对应的处理
-          this.data.defendant_and_other_accuser_query.push({
+          this.data.defendant_and_other_accuser_query.splice(index,0,{
             name: [], //被告姓名
             evidence: [], //证据名称 （被告质证）
             facticity: "1", //真实性
