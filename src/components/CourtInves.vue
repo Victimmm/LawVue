@@ -213,10 +213,10 @@
               </div>
               <div class="layui-form-item" style="width:100%;">
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                        @click="add_component('defendant_reply',index+1)">添加答辩内容
+                        @click="add_component('defendant_reply',index+1)">添加其他被告答辩
                 </button>
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0"
-                        @click="delete_component('defendant_reply',index)"> 删除答辩内容
+                        @click="delete_component('defendant_reply',index)"> 删除其他被告答辩
                 </button>
               </div>
             </template>
@@ -355,7 +355,7 @@
                 </template>
               </div>
               <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-                <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component_accuser_claim('inquiry_info',index+2)"> 添加问题</button>
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component_defendant_reply('inquiry_info',index+2)"> 添加问题</button>
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left: 5px" @click="remove_component_defendant_reply('inquiry_info',index+1)"> 删除问题
                 </button>
               </div>

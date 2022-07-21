@@ -29,6 +29,26 @@
         </div>
       </fieldset>
 
+  <div class="layui-card">
+    <div class="layui-card-body">
+      <form class="layui-form layui-form-pane" action="">
+        <div class="layui-form-item" pane>
+          <label class="layui-form-label">是否有第三人？</label>
+          <div class="layui-input-block">
+            <div class="myradiomargin">
+              <input type="radio" name="is_counterclaim" lay-ignore v-model="hide_third_party"
+                     class="myradio" value="1"
+                     title="是"><label>是</label>
+              <input type="radio" name="is_counterclaim" lay-ignore v-model="hide_third_party"
+                     class="myradio" value="2"
+                     title="否" style="margin-left: 15px;"><label>否</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div v-if = "hide_third_party == '1'">
       <fieldset class="layui-elem-field layui-field-title" id="whole_thirdPartyImf">
         <legend>第三人信息</legend>
         <div class="layui-field-box">
@@ -37,6 +57,7 @@
                          :index="index+1"/>
         </div>
       </fieldset>
+  </div>
 
       <fieldset class="layui-elem-field layui-field-title" id="BasicState">
         <legend>基本信息陈述</legend>
@@ -170,6 +191,7 @@ export default {
     summarizeInfo,
   },
   data: function () {
+    let hide_third_party = "2"
     let is_avoid = "2"
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "rightInfo" in wholeItem) {
@@ -186,7 +208,8 @@ export default {
     }
     return {
       active: 0, // 当前激活的导航索引
-      is_avoid: is_avoid//是否申请回避
+      is_avoid: is_avoid ,//是否申请回避
+      hide_third_party: hide_third_party //是否显示第三人
     }
   },
   mounted() {
