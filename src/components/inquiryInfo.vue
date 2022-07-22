@@ -5,7 +5,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label">审判员</label>
           <div class="layui-input-block">
-            <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">举证质证结束，下面进入法庭询问</textarea>
+            <textarea type="text" class="layui-textarea" v-model="data.judge_inquiry" style="height: 38px;min-height:38px"></textarea>
           </div>
         </div>
 
@@ -155,6 +155,7 @@ export default {
         }
         ]
       }],
+      judge_inquiry:"举证质证结束，下面进入法庭询问。",
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null && "inquiryInfo" in wholeItem){

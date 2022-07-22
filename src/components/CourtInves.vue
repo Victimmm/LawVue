@@ -8,7 +8,7 @@
           </div>
           <div class="layui-input-block">
             <input type="text" autocomplete="off" class="layui-input"
-                   value="下面进行法庭调查，原告陈述诉讼请求和事实理由">
+                   v-model="data.judge_accuser_claim_item">
           </div>
         </div>
 
@@ -189,7 +189,7 @@
               </div>
               <div class="layui-input-block">
                 <input type="text" autocomplete="off" class="layui-input"
-                       value="对于原告的诉讼请求及事实理由，被告进行答辩。">
+                      v-model="data.judge_defendant_reply">
               </div>
             </div>
 
@@ -499,7 +499,10 @@ data = {
       name:"",
       answer:"",
     }]
-  }]
+  }],
+  judge_accuser_claim_item:"下面进行法庭调查，原告陈述诉讼请求和事实理由。",
+  judge_defendant_reply:"对于原告的诉讼请求及事实理由，被告进行答辩。",
+
 };
 
 export default {

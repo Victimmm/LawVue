@@ -5,7 +5,7 @@
         <div class="layui-form-item" pane>
           <div class="layui-form-label">审判员</div>
             <div class="layui-input-block">
-              <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">当事人是否同意电子送达裁判文书？</textarea>
+              <textarea type="text" class="layui-textarea" v-model="data.judge_delivery" style="height: 38px;min-height:38px"></textarea>
             </div>
         </div>
 
@@ -134,7 +134,8 @@ export default {
         },
       ],
       clerk_statement:'',
-      clerk_statement_list:['审判员最后陈述',]
+      clerk_statement_list:['审判员最后陈述',],
+      judge_delivery:"当事人是否同意电子送达裁判文书？"
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null && "deliveryInfo" in wholeItem){

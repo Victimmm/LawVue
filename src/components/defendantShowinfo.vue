@@ -5,8 +5,8 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label" style="text-align: center">审判员</label>
           <div class="layui-input-block">
-              <textarea type="text" class="layui-textarea"
-                        style="height:38px;min-height:38px">被告进行举证</textarea>
+              <textarea type="text" class="layui-textarea" v-model="data.judge_defendant_evidence"
+                        style="height:38px;min-height:38px"></textarea>
           </div>
         </div>
           <template v-for="(item ,index) in data.defendant_evidence" :key="index">
@@ -85,8 +85,8 @@
               <div class="layui-form-item" pane>
                 <label class="layui-form-label" style="text-align: center">审判员</label>
                 <div class="layui-input-block">
-                        <textarea type="text" class="layui-textarea"
-                                  style="height:38px;min-height:38px">原告及其他被告对被告提交的证据进行质证</textarea>
+                        <textarea type="text" class="layui-textarea" v-model="data.judge_accuser_and_other_defendant_query"
+                                  style="height:38px;min-height:38px"></textarea>
                 </div>
               </div>
 
@@ -832,8 +832,8 @@ export default {
         }
       ],
       // counterclaim_accuser_fact_reason:"", //反诉原告 诉讼请求项的事实与理由
-
-
+      judge_accuser_and_other_defendant_query:"原告及其他被告对被告提交的证据进行质证。",
+      judge_defendant_evidence:"被告进行举证",
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "defendantShowInfo" in wholeItem) {

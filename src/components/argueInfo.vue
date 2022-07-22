@@ -6,7 +6,7 @@
         <div class="layui-form-item" pane>
           <label class="layui-form-label">审判员</label>
           <div class="layui-input-block">
-            <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">法庭询问结束，下面进行法庭辩论，首先原告发表辩论意见。</textarea>
+            <textarea type="text" v-model="data.judge_argue" class="layui-textarea" style="height: 38px;min-height:38px"></textarea>
           </div>
         </div>
 
@@ -139,7 +139,7 @@ export default {
           argue: "",      //辩论意见
         }
       ],
-
+      judge_argue:"法庭询问结束，下面进行法庭辩论，首先原告发表辩论意见。",
     }
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "argueInfo" in wholeItem) {

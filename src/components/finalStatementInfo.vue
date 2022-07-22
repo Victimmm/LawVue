@@ -5,7 +5,7 @@
         <div class="layui-form-item" pane>
           <div class="layui-form-label">审判员</div>
           <div class="layui-input-block">
-            <textarea type="text" class="layui-textarea" style="height: 38px;min-height:38px">双方发表最后陈述意见</textarea>
+            <textarea type="text" class="layui-textarea" v-model="data.judge_finalstatement" style="height: 38px;min-height:38px"></textarea>
           </div>
         </div>
 
@@ -71,6 +71,7 @@ export default {
         name: "", //原被告
         final_statement: "", //最后陈述意见
       }],
+      judge_finalstatement:"双方发表最后陈述意见。",
     };
 
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))

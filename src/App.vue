@@ -373,9 +373,10 @@ export default {
 
 
         if ("rightInfo" in wholeItem) {
-          let rightInfo = {accuser_right_duty: [], defendant_right_duty: [], third_party_right_duty:[]}
-          // wholeItem.rightInfo
+          let rightInfo = {
+            accuser_right_duty: [], defendant_right_duty: [], third_party_right_duty:[]}
 
+          // wholeItem.rightInfo
           for (let i = 0; i < this.$store.state.plaintiff_item.length; i++) {
             // console.log(i)
             rightInfo.accuser_right_duty[i] = wholeItem.rightInfo.accuser_right_duty[i]
@@ -389,6 +390,8 @@ export default {
             rightInfo.third_party_right_duty[i] = wholeItem.rightInfo.third_party_right_duty[i]
             rightInfo.third_party_right_duty[i]["third_party"] = this.$store.state.third_party_item[i].third_party_short == "" ? this.$store.state.third_party_item[i].third_party : this.$store.state.third_party_item[i].third_party_short
           }
+          recordJson["judge_right_duty"] = wholeItem.rightInfo.judge_right_duty
+          recordJson["judge_avoid"] =  wholeItem.rightInfo.judge_avoid
           recordJson["rightInfo"] = rightInfo
         }
 
@@ -402,6 +405,8 @@ export default {
           let courtInvestigate = wholeItem.CourtInves
           // delete courtInvestigate.judge_inquiry_after_accuser_claim
           // delete courtInvestigate.judge_inquiry_after_defendant_reply
+          recordJson["judge_accuser_claim_item"] = courtInvestigate.judge_accuser_claim_item
+          recordJson["judge_defendant_reply"] = courtInvestigate.judge_defendant_reply
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], courtInvestigate)
         }
 
@@ -413,6 +418,9 @@ export default {
           accuserShowInfo.defendant_and_other_accuser_query.forEach(e => {
             e.evidence = e.evidence.join("**") , e.name = e.name.join("**")
           })
+
+          recordJson["judge_defendant_and_other_accuser_query"] = accuserShowInfo.judge_defendant_and_other_accuser_query
+          recordJson["judge_accuser_evidence"] = accuserShowInfo.judge_accuser_evidence
           // 合并法庭调查表和原告举
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], accuserShowInfo)
         }
@@ -455,6 +463,9 @@ export default {
           // defendantShowInfo.counterclaim_accuser_query.forEach(e => {
           //   e.evidence = e.evidence.join("**") , e.counterclaim_accuser = e.counterclaim_accuser.join("**")
           // })
+
+          recordJson["judge_accuser_and_other_defendant_query"] = defendantShowInfo.judge_accuser_and_other_defendant_query
+          recordJson["judge_defendant_evidence"] = defendantShowInfo.judge_defendant_evidence
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], defendantShowInfo)
         }
 
@@ -462,6 +473,7 @@ export default {
         // let inquiryInfo=[]
         if ("inquiryInfo" in wholeItem) {
           let inquiryInfoItem = wholeItem.inquiryInfo.inquiry_info
+          recordJson["judge_inquiry"]=wholeItem.inquiryInfo.judge_inquiry
           recordJson["inquiryInfo"] = inquiryInfoItem
         }
 
@@ -469,6 +481,7 @@ export default {
 
         if ("argueInfo" in wholeItem) {
           let argueInfo = wholeItem.argueInfo
+          recordJson["judge_argue"] = argueInfo.judge_argue
           recordJson["argueInfo"] = argueInfo
         }
 
@@ -476,7 +489,7 @@ export default {
 
         if ("finalStatementInfo" in wholeItem) {
           let finalStatementInfoItem = wholeItem.finalStatementInfo.final_statement_info
-
+          recordJson["judge_finalstatement"] = wholeItem.finalStatementInfo.judge_finalstatement
           recordJson["finalStatementInfo"] = finalStatementInfoItem
         }
 
@@ -484,12 +497,14 @@ export default {
         let mediateInfo = {}
         if ("mediateInfo" in wholeItem) {
           mediateInfo = wholeItem.mediateInfo
+          recordJson["judge_mediate"]=mediateInfo.judge_mediate
           recordJson["mediateInfo"] = mediateInfo
         }
 
         //电子文书送达表
         if ("deliveryInfo" in wholeItem) {
           let deliveryInfoItem = wholeItem.deliveryInfo.delivery_info
+          recordJson["judge_delivery"]=wholeItem.deliveryInfo.judge_delivery
           recordJson["deliveryInfo"] = deliveryInfoItem
         }
         //审判员最后陈述

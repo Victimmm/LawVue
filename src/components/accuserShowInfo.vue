@@ -7,7 +7,7 @@
             审判员
           </div>
           <div class="layui-input-block">
-            <textarea class="layui-textarea" value="下面进行举证质证，首先原告进行举证" style="height: 38px;min-height: 38px"></textarea>
+            <textarea class="layui-textarea" v-model="data.judge_accuser_evidence" style="height: 38px;min-height: 38px"></textarea>
           </div>
         </div>
 
@@ -66,7 +66,7 @@
                 审判员
               </div>
               <div class="layui-input-block">
-                <textarea class="layui-textarea" style="height: 38px;min-height: 38px">被告及其他原告对原告提交的证据进行质证</textarea>
+                <textarea class="layui-textarea" v-model="data.judge_defendant_and_other_accuser_query" style="height: 38px;min-height: 38px"></textarea>
               </div>
             </div>
 
@@ -224,6 +224,8 @@ export default {
         }
       ],
       is_defendant_evidence: "2",
+      judge_defendant_and_other_accuser_query:"被告及其他原告对原告提交的证据进行质证。",
+      judge_accuser_evidence:"下面进行举证质证，首先原告进行举证。",
     }
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "accuserShowInfo" in wholeItem) {
