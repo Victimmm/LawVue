@@ -6,9 +6,9 @@
           <label class="layui-form-label">被告类型</label>
           <div class="layui-input-block">
             <div class="myradiomargin">
-              <input type="radio" name="plaintiffType" lay-ignore v-model="data.defendant_type" class="myradio"
-                     value="1"><label>机构</label>
-              <input type="radio" name="plaintiffType" lay-ignore v-model="data.defendant_type" class="myradio" value="2"
+              <input type="radio" name="plaintiffType" lay-ignore v-model="data.defendant_type" class="myradio" value="1" @change="clear_vuex_defendant_item"
+                     ><label>机构</label>
+              <input type="radio" name="plaintiffType" lay-ignore v-model="data.defendant_type" class="myradio" value="2" @change="clear_vuex_defendant_item"
                      style="margin-left: 15px;"><label>个人</label>
             </div>
           </div>
@@ -171,6 +171,10 @@ export default {
     },
     delete_component(index){
       this.data.defendant_agent.splice(index, 1)
+    },
+    clear_vuex_defendant_item(){          //不加这个会导致vuex中数据存乱了
+      this.$store.state.defendant_item[this.index].defendant_short = ""
+      this.$store.state.defendant_item[this.index].defendant = ""
     },
     onCloseClick() {
       // 将删除标签事件暴露除去

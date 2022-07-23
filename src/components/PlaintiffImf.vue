@@ -6,9 +6,9 @@
           <label class="layui-form-label">原告类型</label>
           <div class="layui-input-block">
             <div class="myradiomargin">
-              <input type="radio" lay-ignore name="accuser_type" v-model="data.accuser_type" value="1"
+              <input type="radio" lay-ignore name="accuser_type" v-model="data.accuser_type" value="1" @change="clear_vuex_plaintiff_item()"
                      class="myradio"><label>机构</label>
-              <input type="radio" name="accuser_type" lay-ignore v-model="data.accuser_type" value="2"
+              <input type="radio" name="accuser_type" lay-ignore v-model="data.accuser_type" value="2" @change="clear_vuex_plaintiff_item()"
                      class="myradio" style="margin-left: 15px;"><label>个人</label>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default {
           this.data.accuser = value
           this.$store.commit('handlePlaintiffItem', [value, "accuser", this.index])
       }
-    }
+    },
   },
   methods: {
     add_component(){
@@ -177,6 +177,10 @@ export default {
     },
     delete_component(index){
       this.data.accuser_agent.splice(index, 1)
+    },
+    clear_vuex_plaintiff_item(){        //不加这个会导致vuex中数据存乱了
+      this.$store.state.plaintiff_item[this.index].accuser_short = ""
+      this.$store.state.plaintiff_item[this.index].accuser = ""
     },
     onCloseClick() {
       // 将删除标签事件暴露除去
@@ -197,7 +201,14 @@ export default {
       handler() {
         if(this.data.accuser_type=="2"){
           this.data.accuser_short=""
+          // this.$store.state.plaintiff_item[this.index].accuser_short = ""
+          // this.$store.state.plaintiff_item[this.index].accuser = ""
         }
+        // if(this.data.accuser_type=="1"){
+        //   this.data.accuser_short=""
+        //   this.$store.state.plaintiff_item[this.index].accuser_short = ""
+        //   this.$store.state.plaintiff_item[this.index].accuser = ""
+        // }
         //如何根据数据存储
         if (this.$store.state.court_number == "") {
           window.layui.layer.msg('请优先完善基本信息表格');

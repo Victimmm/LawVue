@@ -160,6 +160,7 @@ export default {
       get(){
         return this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
           return  (e.accuser_short==''?e.accuser:e.accuser_short) + '（原告）' ;
+          // return  (e.accuser_short==''?e.accuser:e.accuser_short) + '（原告）' ;
         })
       },
     },
