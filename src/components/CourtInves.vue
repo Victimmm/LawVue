@@ -225,6 +225,56 @@
         </div>
       </div>
 
+    <fieldset class="layui-elem-field layui-field-title"  style="margin-top:28px">
+      <legend>第三人诉称</legend>
+      <div class="layui-field-box" >
+        <div class="layui-card">
+          <div class="layui-card-body">
+            <form class="layui-form layui-form-pane">
+              <div class="layui-form-item " pane>
+                <div class="layui-form-label">
+                  审判员
+                </div>
+                <div class="layui-input-block">
+                  <input type="text" autocomplete="off" class="layui-input" value="请输入第三人述称">
+                </div>
+              </div>
+
+              <template v-for="(item, index) in data.third_party_claim" :key='index'>
+                <div class="layui-form-item" pane>
+                  <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                    <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;;">
+                      <VueMultiselect :option-height="38" v-model="data.third_party_claim[index].name"
+                                      :show-labels="false" :options="getThirdPartyName" placeholder="请选择第三人"
+                                      style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                    </div>
+                    <div class="layui-input-block">
+                      <div class="myselect-div">
+                <textarea type="text" v-model="data.third_party_claim[index].content" placeholder="请输入第三人述称"
+                          autocomplete="off"
+                          class="layui-textarea" style="width: 100%;float: left;min-height:100px"></textarea>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="layui-form-item" style="width:100%;">
+                  <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                          @click="add_component('third_party_claim',index+1)">添加第三人述称
+                  </button>
+                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0"
+                          @click="delete_component('third_party_claim',index)"> 删除第三人述称
+                  </button>
+                </div>
+              </template>
+            </form>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+
+
 <fieldset class="layui-elem-field layui-field-title">
     <legend>审判员询问</legend>
     <div class="layui-field-box" >
@@ -482,6 +532,7 @@ data = {
   accuser_claim_fact_reason: "",// 原告诉讼请求的事实及理由
   is_counterclaim: "2",
   defendant_reply: [{name: "", content: ""}],
+  third_party_claim:[{name: "", content: ""}], //添加第三述称
   counterclaim_accuser_claim_item: "",
   counterclaim_accuser_fact_reason: "",
   counterclaim_defendant_reply: [{name: "", content: ""}],
@@ -529,6 +580,11 @@ export default {
         return this.$store.state.plaintiff_item.map(e => e.accuser_short == '' ? e.accuser : e.accuser_short).filter(i => i && i.trim())
       }
     },
+    getThirdPartyName: {
+      get() {
+        return this.$store.state.third_party_item.map(e => e.third_party_short == '' ? e.third_party : e.third_party_short).filter(i => i && i.trim())
+      }
+    },
     getAccuserMergeDefendant: {
       get() {
         let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
@@ -559,6 +615,10 @@ export default {
           //   //这里是值对应的处理
           //   this.data.counterclaim_plaintiff.push({name: "", claim_item: "", fact_reason: ""})
           //   break
+        case "third_party_claim":  //第三人述称
+          //这里是值对应的处理
+          this.data.third_party_claim.splice(index,0,{name: "", content: ""})
+          break
         case "counterclaim_defendant_reply":
           //这里是值对应的处理
           this.data.counterclaim_defendant_reply.splice(index,0,{name: "", content: ""})
@@ -641,6 +701,11 @@ export default {
         case "defendant_reply":
           //这里是值对应的处理
           this.data.defendant_reply.splice(index, 1)
+          break
+        //第三人述称
+        case "third_party_claim":
+          //这里是值对应的处理
+          this.data.third_party_claim.splice(index, 1)
           break
           // case "counterclaim_plaintiff":
           //   //这里是值对应的处理
