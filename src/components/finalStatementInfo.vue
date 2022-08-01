@@ -12,11 +12,11 @@
         <div class="layui-form-item" pane>
           <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
             <div class="layui-input-inline" style="margin-left:0px ;">
-              <input type="text" v-model="data.final_statement_info[0].name" placeholder="请输入原被告" autocomplete="off"
-                     class="layui-input" style="width: 100%;float: left;">
-<!--              <VueMultiselect :option-height="38" :show-labels="false" v-model="data.final_statement_info[0].name"-->
-<!--                              :options="getPlaintiffName" placeholder="请选择原被告"-->
-<!--                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>-->
+<!--              <input type="text" v-model="data.final_statement_info[0].name" placeholder="请输入原被告" autocomplete="off"-->
+<!--                     class="layui-input" style="width: 100%;float: left;">-->
+              <VueMultiselect :option-height="38" :show-labels="false" v-model="data.final_statement_info[0].name"
+                              :options="getPlaintiffName" placeholder="请选择原被告"
+                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">
               <div class="myselect-div">
@@ -36,8 +36,11 @@
           <div class="layui-form-item" pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
-                <input type="text" v-model="data.final_statement_info[index+1].name" placeholder="请输入原被告" autocomplete="off"
-                     class="layui-input" style="width: 100%;float: left;">
+                <VueMultiselect :option-height="38" :show-labels="false" v-model="data.final_statement_info[index+1].name"
+                                :options="getPlaintiffName" placeholder="请选择原被告"
+                                style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+<!--                <input type="text" v-model="data.final_statement_info[index+1].name" placeholder="请输入原被告" autocomplete="off"-->
+<!--                     class="layui-input" style="width: 100%;float: left;">-->
               </div>
 
             <div class="layui-input-block">
@@ -59,7 +62,7 @@
 </template>
 
 <script>
-// import VueMultiselect from "vue-multiselect";
+import VueMultiselect from "vue-multiselect";
 // } else data = JSON.parse(localStorage.getItem("final_form"));
 // console.log(data);
 export default {
@@ -104,7 +107,7 @@ export default {
     },
   },
   components: {
-    // VueMultiselect
+    VueMultiselect
   },
   methods: {
     add_component(datatype) {
@@ -149,68 +152,56 @@ export default {
       },
       deep: true
     },
-    name_list: {
-      handler() {
-        var origin_data = [{
-          name: "", //原被告
-          final_statement: "", //最后陈述意见
-        }]
-        this.data.final_statement_info = origin_data
+    // name_list: {
+    //   handler() {
+    //     var origin_data = [{
+    //       name: "", //原被告
+    //       final_statement: "", //最后陈述意见
+    //     }]
+    //     this.data.final_statement_info = origin_data
+    //
+    //     if (this.name_list != '') {
+    //       this.data.final_statement_info[0].name = this.name_list[0]
+    //       if (this.name_list[0].search("原告") != -1) {
+    //         this.data.final_statement_info[0].final_statement = "坚持诉讼请求"
+    //       } else {
+    //         this.data.final_statement_info[0].final_statement = "坚持答辩意见"
+    //       }
+    //       for (let p = 1; p < this.name_list.length; p++) {
+    //         let name = this.name_list[p]
+    //         let statement = ''
+    //         if (name.search("原告") != -1) {
+    //           statement = "坚持诉讼请求"
+    //         } else {
+    //           statement = "坚持答辩意见"
+    //         }
+    //         this.data.final_statement_info.push({
+    //           name: name, //原被告
+    //           final_statement: statement, //最后陈述意见
+    //         });
+    //       }
+    //     }
+    //   },
+    // },
 
-        if (this.name_list != '') {
-          this.data.final_statement_info[0].name = this.name_list[0]
-          if (this.name_list[0].search("原告") != -1) {
-            this.data.final_statement_info[0].final_statement = "坚持诉讼请求"
-          } else {
-            this.data.final_statement_info[0].final_statement = "坚持答辩意见"
-          }
-          for (let p = 1; p < this.name_list.length; p++) {
-            let name = this.name_list[p]
-            let statement = ''
-            if (name.search("原告") != -1) {
-              statement = "坚持诉讼请求"
-            } else {
-              statement = "坚持答辩意见"
-            }
-            this.data.final_statement_info.push({
-              name: name, //原被告
-              final_statement: statement, //最后陈述意见
-            });
-          }
-        }
-      },
-    },
 
-
-    getPlaintiffName() {
-      let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-        return (e.accuser_short==''?e.accuser:e.accuser_short) + '（原告）' ;
-      })
-      let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
-        return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;
-      })
-      let string3 = this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
-        return (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）' ;
-      })
-      this.name_list = string1.concat(string2).concat(string3)
+    // getPlaintiffName() {
+    //   let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
+    //     return (e.accuser_short==''?e.accuser:e.accuser_short) + '（原告）' ;
+    //   })
+    //   let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+    //     return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;
+    //   })
+    //   let string3 = this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
+    //     return (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）' ;
+    //   })
+    //   this.name_list = string1.concat(string2).concat(string3)
       // console.log(this.name_list)
       // if (this.name_list.length > 1){
       //   this.data.pre_name_list = this.name_list
       // }
 
-      // if (this.data.final_statement_info.length < (this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).length+this.$store.state.defendant_item.filter(i => i.defendant && i.defendant.trim()).length)) {
-      //   let statement=''
-      //   if (name.search("原告") != -1){
-      //     statement="坚持诉讼请求"
-      //   } else {
-      //     statement="坚持答辩意见"
-      //   }
-      //   this.data.final_statement_info.push({
-      //     name: "", //原被告
-      //     final_statement: statement, //最后陈述意见
-      //   })
-      // }
-    },
+    // },
 
   },
 }

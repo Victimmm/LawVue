@@ -226,7 +226,7 @@
       </div>
 
     <fieldset class="layui-elem-field layui-field-title"  style="margin-top:28px">
-      <legend>第三人诉称</legend>
+      <legend>第三人述称</legend>
       <div class="layui-field-box" >
         <div class="layui-card">
           <div class="layui-card-body">
@@ -240,17 +240,17 @@
                 </div>
               </div>
 
-              <template v-for="(item, index) in data.third_party_claim" :key='index'>
+              <template v-for="(item, index) in data.third_party_state" :key='index'>
                 <div class="layui-form-item" pane>
                   <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                     <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;;">
-                      <VueMultiselect :option-height="38" v-model="data.third_party_claim[index].name"
+                      <VueMultiselect :option-height="38" v-model="data.third_party_state[index].name"
                                       :show-labels="false" :options="getThirdPartyName" placeholder="请选择第三人"
                                       style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                     </div>
                     <div class="layui-input-block">
                       <div class="myselect-div">
-                <textarea type="text" v-model="data.third_party_claim[index].content" placeholder="请输入第三人述称"
+                <textarea type="text" v-model="data.third_party_state[index].state" placeholder="请输入第三人述称"
                           autocomplete="off"
                           class="layui-textarea" style="width: 100%;float: left;min-height:100px"></textarea>
 
@@ -532,7 +532,7 @@ data = {
   accuser_claim_fact_reason: "",// 原告诉讼请求的事实及理由
   is_counterclaim: "2",
   defendant_reply: [{name: "", content: ""}],
-  third_party_claim:[{name: "", content: ""}], //添加第三述称
+  third_party_state:[{name: "", state: ""}], //添加第三述称
   counterclaim_accuser_claim_item: "",
   counterclaim_accuser_fact_reason: "",
   counterclaim_defendant_reply: [{name: "", content: ""}],
@@ -617,7 +617,7 @@ export default {
           //   break
         case "third_party_claim":  //第三人述称
           //这里是值对应的处理
-          this.data.third_party_claim.splice(index,0,{name: "", content: ""})
+          this.data.third_party_state.splice(index,0,{name: "", state: ""})
           break
         case "counterclaim_defendant_reply":
           //这里是值对应的处理
@@ -705,7 +705,7 @@ export default {
         //第三人述称
         case "third_party_claim":
           //这里是值对应的处理
-          this.data.third_party_claim.splice(index, 1)
+          this.data.third_party_state.splice(index, 1)
           break
           // case "counterclaim_plaintiff":
           //   //这里是值对应的处理
