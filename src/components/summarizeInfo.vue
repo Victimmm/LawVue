@@ -134,8 +134,8 @@
     </div>
   </div>
 
-        <fieldset class="layui-elem-field layui-field-title" id="summarizeInfo">
-          <legend>审判员最后陈述</legend>
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>休（闭）庭信息</legend>
           <form class="layui-form">
             <div class="layui-card">
               <div class="layui-card-body">

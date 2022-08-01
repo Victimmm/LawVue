@@ -20,7 +20,7 @@
                   <div class="myselect-div">
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.defendant_evidence[index].name"
-                                    :options=getDefendantName placeholder="请选择被告"
+                                    :options=getDefendantThirdPartyName placeholder="请选择被告"
                                     group-label="defendant"
                                     :group-select="true"
                                     group-values="defendant_name"
@@ -76,7 +76,7 @@
   </div>
 
     <fieldset class="layui-elem-field layui-field-title" id="accuser_query" style="margin-top:28px">
-      <legend>原告及其他被告质证</legend>
+      <legend>被告及其他当事人质证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
           <div class="layui-card-body">
@@ -844,10 +844,13 @@ export default {
     }
   },
   computed: {
-    getDefendantName: {
+    getDefendantThirdPartyName: {
       get() {
         let defendant = this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short).filter(i => i && i.trim())
-        return [{defendant: "全选被告", defendant_name: defendant}]
+        let third_party = this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
+          return (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）' ;})
+        let defendant_thirdParty=defendant.concat(third_party)
+        return [{defendant: "全选被告第三人", defendant_name: defendant_thirdParty},]
       }
     },
     getAccuserName: {

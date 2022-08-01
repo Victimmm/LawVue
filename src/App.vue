@@ -4,7 +4,7 @@
   <div class="layui-bg-gray">
     <form class="layui-form" action="" onsubmit="return false">
       <fieldset class="layui-elem-field layui-field-title" id="BasicInfo">
-        <legend>基本信息</legend>
+        <legend>案件信息</legend>
         <div class="layui-field-box">
           <BasicInfo></BasicInfo>
         </div>
@@ -60,14 +60,14 @@
 <!--  </div>-->
 
       <fieldset class="layui-elem-field layui-field-title" id="BasicState">
-        <legend>基本信息陈述</legend>
+        <legend>开庭信息陈述</legend>
         <div class="layui-field-box">
           <BasicState></BasicState>
         </div>
       </fieldset>
 
       <fieldset class="layui-elem-field layui-field-title" id="rightInfo">
-        <legend>权利告知</legend>
+        <legend>权利义务告知</legend>
         <div class="layui-field-box">
           <rightInfo @SetIsAvoid="SetIsAvoid"></rightInfo>
         </div>
@@ -75,7 +75,7 @@
 
       <div v-if="is_avoid =='2'">
         <fieldset class="layui-elem-field layui-field-title" id="CourtInves1">
-          <legend>原告诉讼请求</legend>
+          <legend>原告诉讼与事由</legend>
           <div class="layui-field-box">
             <CourtInves></CourtInves>
           </div>
@@ -113,21 +113,21 @@
           </fieldset>
 
           <fieldset class="layui-elem-field layui-field-title" id="finalStatementInfo">
-            <legend>最后陈述意见</legend>
+            <legend>最后陈述</legend>
             <div class="layui-field-box">
               <finalStatementInfo></finalStatementInfo>
             </div>
           </fieldset>
 
           <fieldset class="layui-elem-field layui-field-title" id="mediateInfo">
-            <legend>是否调解</legend>
+            <legend>法庭调解</legend>
             <div class="layui-field-box">
               <mediateInfo></mediateInfo>
             </div>
           </fieldset>
 
           <fieldset class="layui-elem-field layui-field-title" id="deliveryInfo">
-            <legend>电子裁判文书送达</legend>
+            <legend>电子送达</legend>
             <div class="layui-field-box">
               <deliveryInfo></deliveryInfo>
             </div>
