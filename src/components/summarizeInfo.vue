@@ -1,138 +1,154 @@
 <template>
-  <div class="layui-card">
-    <div class="layui-card-body">
-      <form class="layui-form layui-form-pane" action="">
-        <div class="layui-form-item" style="margin-bottom: -20px" pane>
-          <label class="layui-form-label">审判员</label>
-          <div class="layui-input-block" >
-            <input type="text" v-model="data.summarize_inquiry[0].question" placeholder="问题" autocomplete="off"
-                   class="layui-input" style="width: 100%;float: left;">
-          </div>
+    <fieldset class="layui-elem-field layui-field-title" id="summarizeInfo">
+      <legend>审判员询问</legend>
+      <div class="layui-input-inline">
+        <!--          可折叠按钮 默认显示-->
+        <div v-show = 'isShow.summarize_inquiry_show == 0'>
+          <button type="button" class="layui-btn" @click="isShowSummarizeInquiry" style="background: 0;">
+            <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>
+          </button>
         </div>
+        <div v-show = 'isShow.summarize_inquiry_show == 1'>
+          <button type="button" class="layui-btn" @click="isShowSummarizeInquiry" style="background: 0;">
+            <i class="layui-icon" style="color: darkgrey">&#xe619;</i>
+          </button>
+        </div>
+      </div>
+      <div class="layui-card" v-show = 'isShow.summarize_inquiry_show == 1'>
+        <div class="layui-card-body" >
+          <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item" style="margin-bottom: -20px" pane>
+              <label class="layui-form-label">审判员</label>
+              <div class="layui-input-block" >
+                <input type="text" v-model="data.summarize_inquiry[0].question" placeholder="问题" autocomplete="off"
+                       class="layui-input" style="width: 100%;float: left;">
+              </div>
+            </div>
 
-        <div class="layui-form-item" pane>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-            <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
-              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[0].answer[0].name"
-                              :options="getAccuserMergeDefendant" placeholder="请选择原被告"
-                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-            </div>
-            <div class="layui-input-block">
-              <div class="myselect-div " >
-                    <textarea type="text" v-model="data.summarize_inquiry[0].answer[0].answer" placeholder="回答" autocomplete="off"
-                              class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
-                <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
-                        data-type="text"
-                        style="float: right;height:100px;width:7.5%">
-                  <i class="layui-icon">&#xe640;</i></button>
-                <button type="button" @click="add_component('inquiry_reply',0,1)" class="layui-btn layui-btn-sm" data-type="text"
-                        style="float: right;height:100px;width:7.5%">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <template v-for="(bitem, bindex) in data.summarize_inquiry[0].answer.slice(1)" :key="bindex">
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 100px;">
-              <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[0].answer[bindex+1].name"
-                                :options="getAccuserMergeDefendant" placeholder="请选择原被告"
-                                style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-              </div>
-              <div class="layui-input-block">
-                <div class="myselect-div " >
-                  <textarea type="text" v-model="data.summarize_inquiry[0].answer[bindex+1].answer" placeholder="回答" autocomplete="off"
-                            class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
-                  <button type="button" @click="delete_component('inquiry_reply',0,bindex+1)" class="layui-btn layui-btn-danger layui-btn-sm"
-                          data-type="text"
-                          style="float: right;height:100px;width:7.5%">
-                    <i class="layui-icon">&#xe640;</i></button>
-                  <button type="button" @click="add_component('inquiry_reply',0,bindex+2)" class="layui-btn layui-btn-sm" data-type="text"
-                          style="float: right;height:100px;width:7.5%">
-                    <i class="layui-icon">&#xe654;</i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </template>
-        </div>
-        <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info',1)"> 添加问题</button>
-          <!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题-->
-          <!--          </button>-->
-        </div>
-
-        <template v-for="(item, index) in data.summarize_inquiry.slice(1)" :key="index">
-          <div class="layui-form-item" style="margin-bottom: -20px" pane>
-            <label class="layui-form-label">审判员</label>
-            <div class="layui-input-block" >
-              <input type="text" v-model="data.summarize_inquiry[index+1].question" placeholder="问题" autocomplete="off"
-                     class="layui-input" style="width: 100%;float: left;">
-            </div>
-          </div>
-          <div class="layui-form-item" pane>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-              <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[index+1].answer[0].name"
-                                :options="getAccuserMergeDefendant" placeholder="请选择原被告"
-                                style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-              </div>
-              <div class="layui-input-block">
-                <div class="myselect-div " >
-                  <textarea type="text" v-model="data.summarize_inquiry[index+1].answer[0].answer" placeholder="回答" autocomplete="off"
-                            class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
-                  <!--                  <button type="button" @click="delete_component('inquiry_answer',index+1)" class="layui-btn layui-btn-danger layui-btn-sm"-->
-                  <!--                          data-type="text"-->
-                  <!--                          style="float: right;height:100px;width:7.5%">-->
-                  <!--                    <i class="layui-icon">&#xe640;</i></button>-->
-                  <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
-                          data-type="text"
-                          style="float: right;height:100px;width:7.5%">
-                    <i class="layui-icon">&#xe640;</i></button>
-                  <button type="button" @click="add_component('inquiry_answer',index+1,1)" class="layui-btn layui-btn-sm" data-type="text"
-                          style="float: right;height:100px;width:7.5%">
-                    <i class="layui-icon">&#xe654;</i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <template v-for="(aitem, aindex) in data.summarize_inquiry[index+1].answer.slice(1)" :key="aindex">
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 100px;">
+            <div class="layui-form-item" pane>
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                 <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
-                  <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[index+1].answer[aindex+1].name"
+                  <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[0].answer[0].name"
                                   :options="getAccuserMergeDefendant" placeholder="请选择原被告"
                                   style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div " >
-                  <textarea type="text" v-model="data.summarize_inquiry[index+1].answer[aindex+1].answer" placeholder="回答" autocomplete="off"
-                            class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
-                    <button type="button" @click="delete_component('inquiry_answer',index+1,aindex+1)" class="layui-btn layui-btn-danger layui-btn-sm"
+                        <textarea type="text" v-model="data.summarize_inquiry[0].answer[0].answer" placeholder="回答" autocomplete="off"
+                                  class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                    <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
                             data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe640;</i></button>
-                    <button type="button" @click="add_component('inquiry_answer',index+1,aindex+2)" class="layui-btn layui-btn-sm" data-type="text"
+                    <button type="button" @click="add_component('inquiry_reply',0,1)" class="layui-btn layui-btn-sm" data-type="text"
                             style="float: right;height:100px;width:7.5%">
                       <i class="layui-icon">&#xe654;</i>
                     </button>
-                    <!--                    <button @click="delete_component('inquiry_answer',index+1,aindex+1)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"-->
-                    <!--                            data-type="text"-->
-                    <!--                            style="float: right;height:30px;margin-top: 5px;margin-top: 30px;padding: 0 5px;margin-left: 5px">删除-->
-                    <!--                    </button>-->
                   </div>
                 </div>
               </div>
+              <template v-for="(bitem, bindex) in data.summarize_inquiry[0].answer.slice(1)" :key="bindex">
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 100px;">
+                  <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
+                    <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[0].answer[bindex+1].name"
+                                    :options="getAccuserMergeDefendant" placeholder="请选择原被告"
+                                    style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                  </div>
+                  <div class="layui-input-block">
+                    <div class="myselect-div " >
+                      <textarea type="text" v-model="data.summarize_inquiry[0].answer[bindex+1].answer" placeholder="回答" autocomplete="off"
+                                class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                      <button type="button" @click="delete_component('inquiry_reply',0,bindex+1)" class="layui-btn layui-btn-danger layui-btn-sm"
+                              data-type="text"
+                              style="float: right;height:100px;width:7.5%">
+                        <i class="layui-icon">&#xe640;</i></button>
+                      <button type="button" @click="add_component('inquiry_reply',0,bindex+2)" class="layui-btn layui-btn-sm" data-type="text"
+                              style="float: right;height:100px;width:7.5%">
+                        <i class="layui-icon">&#xe654;</i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info',1)"> 添加问题</button>
+              <!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('inquiry_info',index+1)"> 删除问题-->
+              <!--          </button>-->
+            </div>
+
+            <template v-for="(item, index) in data.summarize_inquiry.slice(1)" :key="index">
+              <div class="layui-form-item" style="margin-bottom: -20px" pane>
+                <label class="layui-form-label">审判员</label>
+                <div class="layui-input-block" >
+                  <input type="text" v-model="data.summarize_inquiry[index+1].question" placeholder="问题" autocomplete="off"
+                         class="layui-input" style="width: 100%;float: left;">
+                </div>
+              </div>
+              <div class="layui-form-item" pane>
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                  <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
+                    <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[index+1].answer[0].name"
+                                    :options="getAccuserMergeDefendant" placeholder="请选择原被告"
+                                    style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                  </div>
+                  <div class="layui-input-block">
+                    <div class="myselect-div " >
+                      <textarea type="text" v-model="data.summarize_inquiry[index+1].answer[0].answer" placeholder="回答" autocomplete="off"
+                                class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                      <!--                  <button type="button" @click="delete_component('inquiry_answer',index+1)" class="layui-btn layui-btn-danger layui-btn-sm"-->
+                      <!--                          data-type="text"-->
+                      <!--                          style="float: right;height:100px;width:7.5%">-->
+                      <!--                    <i class="layui-icon">&#xe640;</i></button>-->
+                      <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
+                              data-type="text"
+                              style="float: right;height:100px;width:7.5%">
+                        <i class="layui-icon">&#xe640;</i></button>
+                      <button type="button" @click="add_component('inquiry_answer',index+1,1)" class="layui-btn layui-btn-sm" data-type="text"
+                              style="float: right;height:100px;width:7.5%">
+                        <i class="layui-icon">&#xe654;</i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <template v-for="(aitem, aindex) in data.summarize_inquiry[index+1].answer.slice(1)" :key="aindex">
+                  <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 100px;">
+                    <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
+                      <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[index+1].answer[aindex+1].name"
+                                      :options="getAccuserMergeDefendant" placeholder="请选择原被告"
+                                      style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                    </div>
+                    <div class="layui-input-block">
+                      <div class="myselect-div " >
+                      <textarea type="text" v-model="data.summarize_inquiry[index+1].answer[aindex+1].answer" placeholder="回答" autocomplete="off"
+                                class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                        <button type="button" @click="delete_component('inquiry_answer',index+1,aindex+1)" class="layui-btn layui-btn-danger layui-btn-sm"
+                                data-type="text"
+                                style="float: right;height:100px;width:7.5%">
+                          <i class="layui-icon">&#xe640;</i></button>
+                        <button type="button" @click="add_component('inquiry_answer',index+1,aindex+2)" class="layui-btn layui-btn-sm" data-type="text"
+                                style="float: right;height:100px;width:7.5%">
+                          <i class="layui-icon">&#xe654;</i>
+                        </button>
+                        <!--                    <button @click="delete_component('inquiry_answer',index+1,aindex+1)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"-->
+                        <!--                            data-type="text"-->
+                        <!--                            style="float: right;height:30px;margin-top: 5px;margin-top: 30px;padding: 0 5px;margin-left: 5px">删除-->
+                        <!--                    </button>-->
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info',index+2)"> 添加问题</button>
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left: 5px" @click="delete_component('inquiry_info',index+1)"> 删除问题
+                </button>
+              </div>
             </template>
-          </div>
-          <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info',index+2)"> 添加问题</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left: 5px" @click="delete_component('inquiry_info',index+1)"> 删除问题
-            </button>
-          </div>
-        </template>
-      </form>
-    </div>
-  </div>
+          </form>
+        </div>
+      </div>
+  </fieldset>
 
         <fieldset class="layui-elem-field layui-field-title">
           <legend>休（闭）庭信息</legend>
@@ -182,6 +198,7 @@ export default {
 
     return {
       data: data,
+      isShow:{summarize_inquiry_show: 1}
     };
   },
   computed:{
@@ -204,6 +221,14 @@ export default {
     VueMultiselect
   },
   methods:{
+    isShowSummarizeInquiry(){
+      if(this.isShow.summarize_inquiry_show == 1){
+        this.isShow.summarize_inquiry_show = 0
+      }
+      else{
+        this.isShow.summarize_inquiry_show = 1
+      }
+    },
     add_component(datatype,index_of_index,inquiry_answer_index) {
       switch (datatype) {
         case "inquiry_reply":

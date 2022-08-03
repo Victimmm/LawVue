@@ -33,7 +33,7 @@
           <legend>第三人信息</legend>
         <div class="layui-input-inline">
 <!--          可折叠按钮 默认显示-->
-          <div v-show='isShow.third_party_show == 0'>
+          <div v-show = 'isShow.third_party_show == 0'>
             <button type="button" class="layui-btn" @click="isShowThirdParty" style="background: 0;">
               <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>
             </button>
@@ -44,7 +44,7 @@
             </button>
           </div>
         </div>
-        <div v-show='isShow.third_party_show == 1'>
+        <div v-show = 'isShow.third_party_show == 1'>
           <div class="layui-field-box">
             <thirdPartyImf :index=0 :key=0></thirdPartyImf>
             <thirdPartyImf v-for="(item,index) in $store.state.third_party_item.slice(1)" :key="item.tag"
@@ -129,12 +129,10 @@
           </fieldset>
         </div>
       </div>
-      <fieldset class="layui-elem-field layui-field-title" id="summarizeInfo">
-        <legend>审判员询问</legend>
+
         <div class="layui-field-box">
           <summarizeInfo></summarizeInfo>
         </div>
-      </fieldset>
 
 
       <button type="button" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-lg" lay-submit
@@ -266,7 +264,7 @@ export default {
     }
   },
   methods: {
-    isShowThirdParty(){
+    isShowThirdParty(){ //第三人信息是否折叠 默认为 1 不折叠
       if(this.isShow.third_party_show == 1){
         this.isShow.third_party_show = 0
       }

@@ -40,7 +40,20 @@
 
     <fieldset class="layui-elem-field layui-field-title">
       <legend>审判员询问</legend>
-      <div class="layui-card">
+      <div class="layui-input-inline">
+        <!--          可折叠按钮 默认显示-->
+        <div v-show = 'isShow.judge_inquiry1_show == 0'>
+          <button type="button" class="layui-btn" @click="isShowJudgeInquiry1" style="background: 0;">
+            <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>
+          </button>
+        </div>
+        <div v-show = 'isShow.judge_inquiry1_show == 1'>
+          <button type="button" class="layui-btn" @click="isShowJudgeInquiry1" style="background: 0;">
+            <i class="layui-icon" style="color: darkgrey">&#xe619;</i>
+          </button>
+        </div>
+      </div>
+      <div class="layui-card" v-show = 'isShow.judge_inquiry1_show == 1'>
       <div class="layui-card-body">
         <form class="layui-form layui-form-pane" action="" onsubmit="return false">
           <div class="layui-form-item" style="margin-bottom: -20px" pane>
@@ -225,60 +238,74 @@
         </div>
       </div>
 
-    <fieldset class="layui-elem-field layui-field-title"  style="margin-top:28px">
-      <legend>第三人述称</legend>
-      <div class="layui-field-box" >
-        <div class="layui-card">
-          <div class="layui-card-body">
-            <form class="layui-form layui-form-pane">
-              <div class="layui-form-item " pane>
-                <div class="layui-form-label">
-                  审判员
+    <div v-show = 'this.$store.state.third_party_item[0].third_party != null'>
+      <fieldset class="layui-elem-field layui-field-title"  style="margin-top:28px">
+        <legend>第三人述称</legend>
+        <div class="layui-field-box" >
+          <div class="layui-card">
+            <div class="layui-card-body">
+              <form class="layui-form layui-form-pane">
+                <div class="layui-form-item " pane>
+                  <div class="layui-form-label">
+                    审判员
+                  </div>
+                  <div class="layui-input-block">
+                    <input type="text" autocomplete="off" class="layui-input" value="请输入第三人述称">
+                  </div>
                 </div>
-                <div class="layui-input-block">
-                  <input type="text" autocomplete="off" class="layui-input" value="请输入第三人述称">
-                </div>
-              </div>
 
-              <template v-for="(item, index) in data.third_party_state" :key='index'>
-                <div class="layui-form-item" pane>
-                  <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-                    <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;;">
-                      <VueMultiselect :option-height="38" v-model="data.third_party_state[index].name"
-                                      :show-labels="false" :options="getThirdPartyName" placeholder="请选择第三人"
-                                      style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-                    </div>
-                    <div class="layui-input-block">
-                      <div class="myselect-div">
+                <template v-for="(item, index) in data.third_party_state" :key='index'>
+                  <div class="layui-form-item" pane>
+                    <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                      <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;;">
+                        <VueMultiselect :option-height="38" v-model="data.third_party_state[index].name"
+                                        :show-labels="false" :options="getThirdPartyName" placeholder="请选择第三人"
+                                        style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                      </div>
+                      <div class="layui-input-block">
+                        <div class="myselect-div">
                 <textarea type="text" v-model="data.third_party_state[index].state" placeholder="请输入第三人述称"
                           autocomplete="off"
                           class="layui-textarea" style="width: 100%;float: left;min-height:100px"></textarea>
 
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="layui-form-item" style="width:100%;">
-                  <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                          @click="add_component('third_party_claim',index+1)">添加第三人述称
-                  </button>
-                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0"
-                          @click="delete_component('third_party_claim',index)"> 删除第三人述称
-                  </button>
-                </div>
-              </template>
-            </form>
+                  <div class="layui-form-item" style="width:100%;">
+                    <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                            @click="add_component('third_party_claim',index+1)">添加第三人述称
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0"
+                            @click="delete_component('third_party_claim',index)"> 删除第三人述称
+                    </button>
+                  </div>
+                </template>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </fieldset>
-
+      </fieldset>
+    </div>
 
 
 <fieldset class="layui-elem-field layui-field-title">
     <legend>审判员询问</legend>
     <div class="layui-field-box" >
-      <div class="layui-card">
+      <div class="layui-input-inline">
+        <!--          可折叠按钮 默认显示-->
+        <div v-show = 'isShow.judge_inquiry2_show == 0'>
+          <button type="button" class="layui-btn" @click="isShowJudgeInquiry2" style="background: 0;">
+            <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>
+          </button>
+        </div>
+        <div v-show = 'isShow.judge_inquiry2_show == 1'>
+          <button type="button" class="layui-btn" @click="isShowJudgeInquiry2" style="background: 0;">
+            <i class="layui-icon" style="color: darkgrey">&#xe619;</i>
+          </button>
+        </div>
+      </div>
+      <div class="layui-card" v-show = 'isShow.judge_inquiry2_show == 1'>
         <div class="layui-card-body">
           <form class="layui-form layui-form-pane">
             <div class="layui-form-item" style="margin-bottom: -15px" pane>
@@ -563,7 +590,11 @@ export default {
       data = wholeItem.CourtInves
     }
     return {
-      data: data
+      data: data,
+      isShow:{
+        judge_inquiry1_show : 1, //judge_inquiry_after_accuser_claim
+        judge_inquiry2_show : 1, //judge_inquiry_after_defendant_reply
+      }
     }
   },
   components: {
@@ -601,6 +632,22 @@ export default {
     },
   },
   methods: {
+    isShowJudgeInquiry1(){ //被告答辩 (前) 的审判员询问
+      if(this.isShow.judge_inquiry1_show == 1){
+        this.isShow.judge_inquiry1_show = 0
+      }
+      else{
+        this.isShow.judge_inquiry1_show = 1
+      }
+    },
+    isShowJudgeInquiry2(){ //被告答辩 (后) 的审判员询问
+      if(this.isShow.judge_inquiry2_show == 1){
+        this.isShow.judge_inquiry2_show = 0
+      }
+      else{
+        this.isShow.judge_inquiry2_show = 1
+      }
+    },
     add_component(datatype,index) {
       switch (datatype) {
           // case "accuser_claims":
