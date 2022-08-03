@@ -10,56 +10,68 @@
           </div>
         </div>
 
-        <div class="layui-form-item" pane>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-            <div class="layui-input-inline" style="margin-left:0px;margin-top:30px ;">
-              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argue[0].name"
-                              :options="getAccuserMergeDefendant" placeholder="请选择原被告"
-                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-            </div>
-            <div class="layui-input-block">
-              <div class="myselect-div " >
-                <textarea type="text" v-model="data.argue[0].argue" placeholder="请输入辩论意见" autocomplete="off"
-                    class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
-                <button type="button"  class="layui-btn layui-btn-disabled layui-btn-sm"
-                        data-type="text"
-                        style="float: right;height:100px;width:7.5%">
-                  <i class="layui-icon">&#xe640;</i></button>
-                <button type="button" @click="add_component('argue',1)" class="layui-btn layui-btn-sm" data-type="text"
-                        style="float: right;height:100px;width:7.5%;">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
-
-              </div>
-            </div>
-          </div>
-
-          <template v-for="(item, index) in data.argue.slice(1)" :key="index">
-            <div class="layui-inline" style="width: 100%;margin-top:5px;margin-bottom:0px;">
+        <template v-for="(item, index) in data.argue" :key="index">
+          <div class="layui-form-item" pane>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
               <div class="layui-input-inline" style="margin-left:0px;margin-top:30px ;">
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argue[index+1].name"
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argue[index].name"
                                 :options="getAccuserMergeDefendant" placeholder="请选择原被告"
                                 style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div " >
-                    <textarea type="text" v-model="data.argue[index+1].argue" placeholder="请输入辩论意见" autocomplete="off"
-                              class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
-                  <button type="button" @click="delete_component('argue',index+1)" class="layui-btn layui-btn-danger layui-btn-sm"
-                          data-type="text"
-                          style="float: right;height:100px;width:7.5%">
-                    <i class="layui-icon">&#xe640;</i>
-                  </button>
-                  <button type="button" @click="add_component('argue',index+2)" class="layui-btn layui-btn-sm" data-type="text"
-                          style="float: right;height:100px;width:7.5%">
-                    <i class="layui-icon">&#xe654;</i>
-                  </button>
+                  <textarea type="text" v-model="data.argue[index].argue" placeholder="请输入辩论意见" autocomplete="off"
+                      class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                        <button type="button" @click="delete_component('argue',index)" :class=buttonClassDisabled
+                                data-type="text"
+                                style="float: right;height:100px;width:7.5%">
+                          <i class="layui-icon">&#xe640;</i>
+                        </button>
+                        <button type="button" @click="add_component('argue',index+1)" class="layui-btn layui-btn-sm" data-type="text"
+                                style="float: right;height:100px;width:7.5%">
+                          <i class="layui-icon">&#xe654;</i>
+                        </button>
+<!--                  <button type="button"  :class=buttonClassDisabled-->
+<!--                          data-type="text"-->
+<!--                          style="float: right;height:100px;width:7.5%">-->
+<!--                    <i class="layui-icon">&#xe640;</i></button>-->
+<!--                  <button type="button" @click="add_component('argue',1)" class='layui-btn layui-btn-sm'-->
+<!--                          style="float: right;height:100px;width:7.5%;">-->
+<!--                    <i class="layui-icon">&#xe654;</i>-->
+<!--                  </button>-->
 
                 </div>
               </div>
             </div>
-          </template>
-        </div>
+          </div>
+        </template>
+
+<!--          <template v-for="(item, index) in data.argue.slice(1)" :key="index">-->
+<!--            <div class="layui-inline" style="width: 100%;margin-top:5px;margin-bottom:0px;">-->
+<!--              <div class="layui-input-inline" style="margin-left:0px;margin-top:30px ;">-->
+<!--                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argue[index+1].name"-->
+<!--                                :options="getAccuserMergeDefendant" placeholder="请选择原被告"-->
+<!--                                style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>-->
+<!--              </div>-->
+<!--              <div class="layui-input-block">-->
+<!--                <div class="myselect-div " >-->
+<!--                    <textarea type="text" v-model="data.argue[index+1].argue" placeholder="请输入辩论意见" autocomplete="off"-->
+<!--                              class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>-->
+<!--                  <button type="button" @click="delete_component('argue',index+1)" :class=buttonClassDisabled-->
+<!--                          data-type="text"-->
+<!--                          style="float: right;height:100px;width:7.5%">-->
+<!--                    <i class="layui-icon">&#xe640;</i>-->
+<!--                  </button>-->
+<!--                  <button type="button" @click="add_component('argue',index+2)" class="layui-btn layui-btn-sm" data-type="text"-->
+<!--                          style="float: right;height:100px;width:7.5%">-->
+<!--                    <i class="layui-icon">&#xe654;</i>-->
+<!--                  </button>-->
+
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </template>-->
+<!--        </div>-->
 
 
         <div v-if="$store.state.is_counterclaim=='1'">
@@ -205,6 +217,16 @@ export default {
     },
   },
   computed: {
+    buttonClassDisabled:{
+      get(){
+        if(this.data.argue.length > 1){
+          return('layui-btn layui-btn-danger layui-btn-sm')
+        }
+        else{
+          return('layui-btn layui-btn-disabled layui-btn-sm')
+        }
+      }
+    },
     getAccuserMergeDefendant: {
       get() {
         let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {

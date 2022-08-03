@@ -28,13 +28,15 @@
 <!--                                style="line-height: 16px; min-height: 38px;float:left;width: 90%;"></VueMultiselect>-->
                 <input type="text" v-model="data.final_statement_info[0].final_statement"   placeholder="请输入最后陈述意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
-                <button @click="add_component('final_statement_info')" type="button" class="layui-btn layui-btn-sm"
-                        data-type="text" style="float: right;">
-                  <i class="layui-icon">&#xe654;</i>
-                </button>
-                <div v-show="index!='0'">
+                <div v-show="index == '0'">
+                  <button @click="add_component('final_statement_info')" type="button" class="layui-btn layui-btn-sm"
+                          data-type="text" style="float: right;">
+                    <i class="layui-icon">&#xe654;</i>
+                  </button>
+                </div>
+                <div v-show="index != '0'">
                   <button @click="delete_component('final_statement_info',index)" type="button" class="layui-btn layui-btn-sm layui-btn-danger"
-                          data-type="text" style="float: right;margin-right:5px">
+                          data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
                   </button>
                 </div>
