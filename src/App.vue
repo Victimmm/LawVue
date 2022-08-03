@@ -29,35 +29,30 @@
         </div>
       </fieldset>
 
-<!--  <div class="layui-card">-->
-<!--    <div class="layui-card-body">-->
-<!--      <form class="layui-form layui-form-pane" action="">-->
-<!--        <div class="layui-form-item" pane>-->
-<!--          <label class="layui-form-label">是否有第三人？</label>-->
-<!--          <div class="layui-input-block">-->
-<!--            <div class="myradiomargin">-->
-<!--              <input type="radio" name="is_counterclaim" lay-ignore v-model="hide_third_party"-->
-<!--                     class="myradio" value="1"-->
-<!--                     title="是"><label>是</label>-->
-<!--              <input type="radio" name="is_counterclaim" lay-ignore v-model="hide_third_party"-->
-<!--                     class="myradio" value="2"-->
-<!--                     title="否" style="margin-left: 15px;"><label>否</label>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div v-if = "hide_third_party == '1'">-->
       <fieldset class="layui-elem-field layui-field-title" id="whole_thirdPartyImf">
-        <legend>第三人信息</legend>
-        <div class="layui-field-box">
-          <thirdPartyImf :index=0 :key=0></thirdPartyImf>
-          <thirdPartyImf v-for="(item,index) in $store.state.third_party_item.slice(1)" :key="item.tag"
-                         :index="index+1"/>
+          <legend>第三人信息</legend>
+        <div class="layui-input-inline">
+<!--          可折叠按钮 默认显示-->
+          <div v-show='isShow.third_party_show == 0'>
+            <button type="button" class="layui-btn" @click="isShowThirdParty" style="background: 0;">
+              <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>
+            </button>
+          </div>
+          <div v-show = 'isShow.third_party_show == 1'>
+            <button type="button" class="layui-btn" @click="isShowThirdParty" style="background: 0;">
+              <i class="layui-icon" style="color: darkgrey">&#xe619;</i>
+            </button>
+          </div>
+        </div>
+        <div v-show='isShow.third_party_show == 1'>
+          <div class="layui-field-box">
+            <thirdPartyImf :index=0 :key=0></thirdPartyImf>
+            <thirdPartyImf v-for="(item,index) in $store.state.third_party_item.slice(1)" :key="item.tag"
+                           :index="index+1"/>
+          </div>
         </div>
       </fieldset>
-<!--  </div>-->
+
 
       <fieldset class="layui-elem-field layui-field-title" id="BasicState">
         <legend>开庭信息陈述</legend>
@@ -209,7 +204,9 @@ export default {
     return {
       active: 0, // 当前激活的导航索引
       is_avoid: is_avoid ,//是否申请回避
-      // hide_third_party: hide_third_party //是否显示第三人
+      isShow:{
+        third_party_show: 1,
+      }
     }
   },
   mounted() {
@@ -269,6 +266,14 @@ export default {
     }
   },
   methods: {
+    isShowThirdParty(){
+      if(this.isShow.third_party_show == 1){
+        this.isShow.third_party_show = 0
+      }
+      else{
+        this.isShow.third_party_show = 1
+      }
+    },
     SetIsAvoid(value) {
       this.is_avoid = value
     },
