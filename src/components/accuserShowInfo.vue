@@ -172,7 +172,7 @@
   </div>
 
   <fieldset class="layui-elem-field layui-field-title" id="defendant_and_other_accuser_query" style="margin-top:28px">
-    <legend>被告及其他原告质证</legend>
+    <legend>被告及其他当事人质证</legend>
     <div class="layui-field-box">
       <div class="layui-card">
         <div class="layui-card-body">
