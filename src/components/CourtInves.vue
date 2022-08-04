@@ -34,6 +34,47 @@
                       class="layui-textarea"></textarea>
           </div>
         </div>
+
+        <div class="layui-form-item" pane>
+          <label class="layui-form-label">是否变更诉讼请求项</label>
+          <div class="layui-input-block">
+            <div class="myradiomargin">
+              <input type="radio" lay-ignore="" name="ischange"
+                     v-model="data.accuser_claim_item_change" class="myradio" value="1"
+              > <label>是</label>
+              <input type="radio" lay-ignore="" name="ischange"
+                     v-model="data.accuser_claim_item_change" class="myradio" value="2"
+                     style="margin-left: 15px;"><label>否</label>
+            </div>
+          </div>
+        </div>
+
+        <div id="claimchange" v-if="data.accuser_claim_item_change=='1'">
+
+          <div class="layui-form-item " pane>
+            <div class="layui-form-label" style="line-height: 70px">
+              原告变更诉讼请求项
+            </div>
+            <div class="layui-input-block">
+
+            <textarea v-model="data.changed_claim_item" placeholder="请输入变更诉讼请求项" autocomplete="off"
+                      class="layui-textarea"></textarea>
+            </div>
+
+          </div>
+
+          <div class="layui-form-item" pane>
+            <div class="layui-form-label" style="line-height: 70px">
+              事实和理由
+            </div>
+            <div class="layui-input-block">
+            <textarea v-model="data.changed_claim_fact_reason" placeholder="请输入事实和理由"
+                      class="layui-textarea"></textarea>
+            </div>
+          </div>
+
+        </div>
+
       </form>
     </div>
   </div>
@@ -459,7 +500,8 @@
   </fieldset>
   </fieldset>
 
-  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_claim_item" v-if="data.is_counterclaim==1" >
+  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_claim_item"
+            v-if="data.is_counterclaim==1">
     <legend>反诉原告的诉讼请求项</legend>
     <div class="layui-field-box">
       <div class="layui-card">
@@ -504,7 +546,8 @@
     </div>
   </fieldset>
 
-  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_defendant_reply" v-if="data.counterclaim_defendant_today_is_reply==1 && data.is_counterclaim==1">
+  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_defendant_reply"
+            v-if="data.counterclaim_defendant_today_is_reply==1 && data.is_counterclaim==1">
     <legend>反诉被告答辩</legend>
     <div class="layui-field-box">
       <div class="layui-card">
@@ -578,9 +621,11 @@ data = {
       answer:"",
     }]
   }],
-  judge_accuser_claim_item:"下面进行法庭调查，原告陈述诉讼请求和事实理由。",
-  judge_defendant_reply:"对于原告的诉讼请求及事实理由，被告进行答辩。",
-
+  judge_accuser_claim_item: "下面进行法庭调查，原告陈述诉讼请求和事实理由。",
+  judge_defendant_reply: "对于原告的诉讼请求及事实理由，被告进行答辩。",
+  accuser_claim_item_change: "2",
+  changed_claim_item: "",
+  changed_claim_fact_reason: ""
 };
 
 export default {
@@ -618,8 +663,8 @@ export default {
     },
     getAccuserMergeDefendant: {
       get() {
-        let string1 = this.$store.state.plaintiff_item.filter(i=> i.accuser && i.accuser.trim()).map(function (e) {
-          return  (e.accuser_short==''?e.accuser:e.accuser_short) + '（原告）' ;
+        let string1 = this.$store.state.plaintiff_item.filter(i => i.accuser && i.accuser.trim()).map(function (e) {
+          return (e.accuser_short == '' ? e.accuser : e.accuser_short) + '（原告）';
         })
         let string2 = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
           return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;
