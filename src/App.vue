@@ -404,6 +404,7 @@ export default {
           let courtInvestigate = wholeItem.CourtInves
           recordJson["judge_accuser_claim_item"] = courtInvestigate.judge_accuser_claim_item
           recordJson["judge_defendant_reply"] = courtInvestigate.judge_defendant_reply
+          recordJson["third_party_state"] = courtInvestigate.third_party_state
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], courtInvestigate)
         }
 
