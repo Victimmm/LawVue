@@ -279,7 +279,7 @@
         </div>
       </div>
 
-    <div v-show = 'this.$store.state.third_party_item[0].third_party != null'>
+    <div v-show = 'this.$store.state.third_party_item[0].third_party != ""'>
       <fieldset class="layui-elem-field layui-field-title"  style="margin-top:28px">
         <legend>第三人述称</legend>
         <div class="layui-field-box" >
