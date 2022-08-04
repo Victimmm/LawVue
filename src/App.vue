@@ -401,13 +401,7 @@ export default {
         recordJson["courtInvestigate"] = {}
         //法庭调查数据，包含原被告举证表，法庭调查表三个表
         if ("CourtInves" in wholeItem) {
-          // let judge_inquiry1 = wholeItem.CourtInves.judge_inquiry_after_accuser_claim
-          // recordJson["judge_inquiry_after_accuser_claim"] = judge_inquiry1
-          // let judge_inquiry2 = wholeItem.CourtInves.judge_inquiry_after_defendant_reply
-          // recordJson["judge_inquiry_after_defendant_reply"] = judge_inquiry2
           let courtInvestigate = wholeItem.CourtInves
-          // delete courtInvestigate.judge_inquiry_after_accuser_claim
-          // delete courtInvestigate.judge_inquiry_after_defendant_reply
           recordJson["judge_accuser_claim_item"] = courtInvestigate.judge_accuser_claim_item
           recordJson["judge_defendant_reply"] = courtInvestigate.judge_defendant_reply
           recordJson["courtInvestigate"] = Object.assign(recordJson["courtInvestigate"], courtInvestigate)

@@ -26,7 +26,7 @@
 <!--                                :options=option_statement placeholder="请选择陈述意见"-->
 <!--                                :taggable="true"-->
 <!--                                style="line-height: 16px; min-height: 38px;float:left;width: 90%;"></VueMultiselect>-->
-                <input type="text" v-model="data.final_statement_info[0].final_statement"   placeholder="请输入最后陈述意见" autocomplete="off"
+                <input type="text" v-model="data.final_statement_info[index].final_statement"   placeholder="请输入最后陈述意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
                 <div v-show="index == '0'">
                   <button @click="add_component('final_statement_info')" type="button" class="layui-btn layui-btn-sm"
