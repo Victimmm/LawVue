@@ -79,21 +79,22 @@
     </div>
   </div>
 
-    <fieldset class="layui-elem-field layui-field-title">
-      <legend>审判员询问</legend>
-      <div class="layui-input-inline">
-        <!--          可折叠按钮 默认显示-->
-        <div v-show = 'isShow.judge_inquiry1_show == 0'>
-          <button type="button" class="layui-btn" @click="isShowJudgeInquiry1" style="background: 0;">
-            <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>
-          </button>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 25px">
+      <legend>审判员询问
+        <div class="layui-input-inline">
+          <!--          可折叠按钮 默认显示-->
+          <div v-show = 'isShow.judge_inquiry1_show == 0'>
+            <button type="button" class="layui-btn" @click="isShowJudgeInquiry1" style="background: 0;">
+              <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>
+            </button>
+          </div>
+          <div v-show = 'isShow.judge_inquiry1_show == 1'>
+            <button type="button" class="layui-btn" @click="isShowJudgeInquiry1" style="background: 0;">
+              <i class="layui-icon" style="color: darkgrey">&#xe619;</i>
+            </button>
+          </div>
         </div>
-        <div v-show = 'isShow.judge_inquiry1_show == 1'>
-          <button type="button" class="layui-btn" @click="isShowJudgeInquiry1" style="background: 0;">
-            <i class="layui-icon" style="color: darkgrey">&#xe619;</i>
-          </button>
-        </div>
-      </div>
+      </legend>
       <div class="layui-card" v-show = 'isShow.judge_inquiry1_show == 1'>
       <div class="layui-card-body">
         <form class="layui-form layui-form-pane" action="" onsubmit="return false">
@@ -230,8 +231,6 @@
       </div>
     </fieldset>
 
-
-  <fieldset class="layui-elem-field layui-field-title" id="defendant_reply" style="margin-top:28px">
     <legend>被告答辩</legend>
     <div class="layui-field-box" >
       <div class="layui-card">
@@ -330,9 +329,8 @@
     </div>
 
 
-<fieldset class="layui-elem-field layui-field-title">
-    <legend>审判员询问</legend>
-    <div class="layui-field-box" >
+<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 0px">
+    <legend>审判员询问
       <div class="layui-input-inline">
         <!--          可折叠按钮 默认显示-->
         <div v-show = 'isShow.judge_inquiry2_show == 0'>
@@ -346,6 +344,8 @@
           </button>
         </div>
       </div>
+    </legend>
+    <div class="layui-field-box" >
       <div class="layui-card" v-show = 'isShow.judge_inquiry2_show == 1'>
         <div class="layui-card-body">
           <form class="layui-form layui-form-pane">
@@ -497,7 +497,6 @@
         </div>
       </div>
     </div>
-  </fieldset>
   </fieldset>
 
   <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_claim_item"

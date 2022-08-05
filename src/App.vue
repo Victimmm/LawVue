@@ -30,7 +30,7 @@
       </fieldset>
 
       <fieldset class="layui-elem-field layui-field-title" id="whole_thirdPartyImf">
-          <legend>第三人信息</legend>
+        <legend >第三人信息
         <div class="layui-input-inline">
 <!--          可折叠按钮 默认显示-->
           <div v-show = 'isShow.third_party_show == 0'>
@@ -44,6 +44,7 @@
             </button>
           </div>
         </div>
+        </legend>
         <div v-show = 'isShow.third_party_show == 1'>
           <div class="layui-field-box">
             <thirdPartyImf :index=0 :key=0></thirdPartyImf>
@@ -70,7 +71,7 @@
 
       <div v-if="is_avoid =='2'">
         <fieldset class="layui-elem-field layui-field-title" id="CourtInves1">
-          <legend>原告诉讼与事由</legend>
+          <legend>原告诉求与事由</legend>
           <div class="layui-field-box">
             <CourtInves></CourtInves>
           </div>
@@ -121,7 +122,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="layui-elem-field layui-field-title" id="deliveryInfo">
+          <fieldset class="layui-elem-field layui-field-title" id="deliveryInfo" style="margin-bottom: -5px">
             <legend>电子送达</legend>
             <div class="layui-field-box">
               <deliveryInfo></deliveryInfo>
