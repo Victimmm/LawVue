@@ -447,7 +447,7 @@ export default {
           // }
 
 
-          defendantShowInfo.defendant_evidence.forEach(e => {
+          defendantShowInfo.defendant_and_third_evidence.forEach(e => {
             e.name = e.name.join("**")
           })
           defendantShowInfo.accuser_and_other_defendant_query.forEach(e => {

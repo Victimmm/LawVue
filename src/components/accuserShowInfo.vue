@@ -7,7 +7,8 @@
             审判员
           </div>
           <div class="layui-input-block">
-            <textarea class="layui-textarea" v-model="data.judge_accuser_evidence" style="height: 38px;min-height: 38px"></textarea>
+            <textarea class="layui-textarea" v-model="data.judge_accuser_evidence"
+                      style="height: 38px;min-height: 38px"></textarea>
           </div>
         </div>
 
@@ -56,66 +57,89 @@
             <div class="myradiomargin">
               <input type="radio" lay-ignore="" name="iswitness"
                      v-model="data.accuser_is_witness" class="myradio" value="1"
-                      ><label>是</label>
+              ><label>是</label>
               <input type="radio" lay-ignore="" name="iswitness"
                      v-model="data.accuser_is_witness" class="myradio" value="2"
-                      style="margin-left: 15px;"><label>否</label>
+                     style="margin-left: 15px;"><label>否</label>
             </div>
           </div>
         </div>
 
         <div id="witness" v-if="data.accuser_is_witness=='1'">
-        <template  v-for="(item ,index) in data.accuser_evidence_witness" :key="index">
-          <div class="layui-form-item" pane>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <label class="layui-form-label">证据 {{ numberToChinese(item.serial) }}</label>
-              <div class="layui-input-block">
+          <template v-for="(item ,index) in data.accuser_evidence_witness" :key="index">
+            <div class="layui-form-item" pane>
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+                <label class="layui-form-label">证据 {{ numberToChinese(item.serial) }}</label>
+                <div class="layui-input-block">
                   <input type="text" placeholder="请输入证据名称" class="layui-input"
-                         v-model="data.accuser_evidence_witness[index].witness_name">
+                         v-model="data.accuser_evidence_witness[index].evidence">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="layui-form-item" pane style="margin-top: -10px;">
-            <div class="layui-form-label divcenter">
-              证明事项
-            </div>
-            <div class="layui-input-block">
+            <div class="layui-form-item" pane style="margin-top: -10px;">
+              <div class="layui-form-label divcenter">
+                证明事项
+              </div>
+              <div class="layui-input-block">
               <textarea type="text" v-model="data.accuser_evidence_witness[index].content" placeholder="证据证明事项"
                         class="layui-textarea"></textarea>
+              </div>
             </div>
-          </div>
 
-          <div class="layui-form-item" pane style="margin-top: -10px;">
+            <div class="layui-form-item" pane style="margin-top: -10px;">
               <div class="layui-inline" style="width: 50%">
                 <label class="layui-form-label" style="width: 210px">证人名称</label>
                 <div class="layui-input-inline" style="margin-left: 210px">
-                <input type="text" placeholder="请输入证据名称" class="layui-input"
-                       v-model="data.accuser_evidence_witness[index].evidence">
+                  <input type="text" placeholder="请输入证据名称" class="layui-input"
+                         v-model="data.accuser_evidence_witness[index].witness_name">
                 </div>
               </div>
               <div class="layui-inline" style="width: 50% ">
                 <label class="layui-form-label" style="width: 210px">证人类型</label>
                 <div class="layui-input-inline" style="margin-left: 210px">
-                  <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accuser_evidence_witness[index].witness_type"
+                  <VueMultiselect :option-height="38" :show-labels="false"
+                                  v-model="data.accuser_evidence_witness[index].witness_type"
                                   :options="data.witness_type" placeholder="请选择证人类型"
                                   style="line-height:16px;min-height: 38px"></VueMultiselect>
                 </div>
               </div>
-          </div>
+            </div>
+
+<!--            <div class="layui-form-item" pane style="margin-top: -10px;">-->
+<!--                <div class="layui-input-inline" style="width:50%;margin-left: 0">-->
+<!--                    <label class="layui-form-label" style="width: 210px">证人名称</label>-->
+<!--                    <div class="layui-input-inline" style="margin-left: 210px">-->
+<!--                      <input type="text" placeholder="请输入证据名称" class="layui-input"-->
+<!--                             v-model="data.accuser_evidence_witness[index].witness_name">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="layui-input-inline" style="width:50%;margin-left: 0">-->
+<!--                  <div class="myradiomargin">-->
+<!--                    <label>合法性：</label>-->
+<!--                    <input type="radio" lay-ignore value="1"-->
+<!--                           v-model="data.defendant_and_other_accuser_query[index].legality"-->
+<!--                           class="myradio"><label>是</label>-->
+<!--                    <input type="radio" lay-ignore value="2"-->
+<!--                           v-model="data.defendant_and_other_accuser_query[index].legality"-->
+<!--                           class="myradio" style="margin-left: 15px;"><label>否</label>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
 
 
-          <template v-for="(item, QAindex) in data.accuser_evidence_witness[index].witness_testimony" :key="QAindex">
-            <div class="layui-form-item" pane style="margin-top: -10px;">
+            <template v-for="(item, QAindex) in data.accuser_evidence_witness[index].witness_testimony" :key="QAindex">
+              <div class="layui-form-item" pane style="margin-top: -10px;">
 
-              <div class="layui-inline" style="width: 100%;">
-                <div class="layui-input-inline" style="margin-left:0px;" >
-                  <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].quizzer"
-                                  :options="getQuizzerName" placeholder="请选择提问者"
-                                  style="width: 210px; line-height:16px;min-height: 38px"></VueMultiselect>
-                </div>
-                <div class="layui-input-block">
-                  <div class="myselect-div">
+                <div class="layui-inline" style="width: 100%;">
+                  <div class="layui-input-inline" style="margin-left:0px;">
+                    <VueMultiselect :option-height="38" :show-labels="false"
+                                    v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].quizzer"
+                                    :options="getQuizzerName" placeholder="请选择提问者"
+                                    style="width: 210px; line-height:16px;min-height: 38px"></VueMultiselect>
+                  </div>
+                  <div class="layui-input-block">
+                    <div class="myselect-div">
                       <VueMultiselect :option-height="38" :show-labels="false"
                                       v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].question"
                                       :options=data.question_list placeholder="请选择或输入问题列表"
@@ -123,48 +147,49 @@
                                       :taggable="true"
                                       @tag="add_question"
                                       style="width:85%;line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
-                    <button @click="add_component('witnessQA',index,QAindex+1)" type="button" class="layui-btn layui-btn-sm"
-                            data-type="text" >
-                      <i class="layui-icon">&#xe654;</i>
-                    </button>
+                      <button @click="add_component('witnessQA',index,QAindex+1)" type="button"
+                              class="layui-btn layui-btn-sm"
+                              data-type="text">
+                        <i class="layui-icon">&#xe654;</i>
+                      </button>
 
-                    <button @click="delete_component('witnessQA',index,QAindex)" type="button"
-                            class="layui-btn layui-btn-sm layui-btn-danger"
-                            data-type="text" style="float: right;">
-                      <i class="layui-icon">&#xe640;</i>
-                    </button>
+                      <button @click="delete_component('witnessQA',index,QAindex)" type="button"
+                              class="layui-btn layui-btn-sm layui-btn-danger"
+                              data-type="text" style="float: right;">
+                        <i class="layui-icon">&#xe640;</i>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
-                <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
-                  <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].responder"
-                                  :options="getResponderName" placeholder="请选择回答者"
-                                  style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-                </div>
-                <div class="layui-input-block">
-                  <div class="myselect-div">
-                  <textarea type="text" v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].answer" placeholder="回答" autocomplete="off"
+              <div class="layui-form-item" pane style="margin-top: -10px;">
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                  <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;">
+                    <VueMultiselect :option-height="38" :show-labels="false"
+                                    v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].responder"
+                                    :options="getResponderName" placeholder="请选择回答者"
+                                    style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                  </div>
+                  <div class="layui-input-block">
+                    <div class="myselect-div">
+                  <textarea type="text" v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].answer"
+                            placeholder="回答" autocomplete="off"
                             class="layui-textarea"></textarea>
-
-
+                    </div>
                   </div>
                 </div>
               </div>
+            </template>
+
+            <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                      @click="add_component('accuser_evidence_witness',index+1)"> 添加人证
+              </button>
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
+                      style="margin-left:5px" @click="delete_component('accuser_evidence_witness',index)"> 删除人证
+              </button>
             </div>
           </template>
-
-          <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                    @click="add_component('accuser_evidence_witness',index+1)"> 添加人证
-            </button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
-                    style="margin-left:5px" @click="delete_component('accuser_evidence_witness',index)"> 删除人证
-            </button>
-          </div>
-        </template>
         </div>
 
       </form>
@@ -182,7 +207,8 @@
                 审判员
               </div>
               <div class="layui-input-block">
-                <textarea class="layui-textarea" v-model="data.judge_defendant_and_other_accuser_query" style="height: 38px;min-height: 38px"></textarea>
+                <textarea class="layui-textarea" v-model="data.judge_defendant_and_other_accuser_query"
+                          style="height: 38px;min-height: 38px"></textarea>
               </div>
             </div>
 
@@ -291,24 +317,41 @@
               </div>
             </template>
 
-            <div class="layui-form-item" pane>
-              <label class="layui-form-label">被告是否举证</label>
-              <div class="layui-input-block">
-                <div class="myradiomargin">
-                  <input type="radio" name="is_defendant_evidence" lay-ignore v-model="setIsDefendantEvidence"
-                         class="myradio"
-                         value="1"><label>是 </label>
-                  <input type="radio" name="is_defendant_evidence" lay-ignore v-model="setIsDefendantEvidence"
-                         class="myradio" value="2"
-                         style="margin-left: 15px;"><label>否</label>
-                </div>
-              </div>
-            </div>
+
           </form>
         </div>
       </div>
     </div>
   </fieldset>
+
+
+  <fieldset class="layui-elem-field layui-field-title" id="2" style="margin-top:28px">
+    <legend></legend>
+    <div class="layui-field-box">
+      <div class="layui-card">
+        <div class="layui-card-body">
+          <form class="layui-form layui-form-pane">
+          <div class="layui-form-item" pane>
+            <label class="layui-form-label">被告是否举证</label>
+            <div class="layui-input-block">
+              <div class="myradiomargin">
+                <input type="radio" name="is_defendant_evidence" lay-ignore v-model="setIsDefendantEvidence"
+                       class="myradio"
+                       value="1"><label>是 </label>
+                <input type="radio" name="is_defendant_evidence" lay-ignore v-model="setIsDefendantEvidence"
+                       class="myradio" value="2"
+                       style="margin-left: 15px;"><label>否</label>
+              </div>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+
+
 
 </template>
 
@@ -353,28 +396,44 @@ export default {
       //   "responder":"回答者（证人/鉴定人/勘验人/原告/被告/第三人，需要标明身份，例如：李四（证人））",
       //   "answer":"答案"
       // }]
-      accuser_evidence_witness:[
+      accuser_evidence_witness: [
         {
           serial: 1,//证据序号，自增
-          evidence:"",
-          witness_name:"",
-          witness_type:"",
-          content:"",
-          witness_testimony:[{
-            quizzer:"",
-            question:"",
-            responder:"",
-            answer:""
+          evidence: "",
+          witness_name: "",
+          witness_type: "",
+          content: "",
+          witness_testimony: [{
+            quizzer: "",
+            question: "",
+            responder: "",
+            answer: ""
           }]
         }
       ],
-      question_list:["问题1","问题2"],
-      witness_type:["证人","鉴定人","勘验人"],
-      is_defendant_evidence: "2",
+      question_list: [
+        " 传唤原告/被告申请的证人/鉴定人/勘验人某某某出庭作证？",
+        "证人某某某报告一下自然人情况/或鉴定人/勘验人资质情况。",
+        "鉴定人 / 勘验人报告一下你在某鉴定工作或勘验工作中的职责分工？",
+        "证人某某报告一下你与当事人某某某之间的身份关系？",
+        "证人某某宣读一下《作证保证书》。",
+        "《作证保证书》上的签字是否是你的真实签名？",
+        "证人对《作证保证书》中告知的如实作证的法律义务及作伪证的法律后果是否清楚？",
+        "证人，书面证人证言是否是你亲笔签字？鉴定人 / 勘验人，鉴定意见 / 勘验结果报告中的署名是否是你亲笔书写？",
+        "证人，下面对待证的事实进行作证陈述？（鉴定人或勘验人可以无需先进行作证陈述）。",
+        "原告 / 被告，下面由你方对证人 / 鉴定人 / 勘验人进行主询问？",
+        "被告 / 原告，下面由你方对证人 / 鉴定人 / 勘验人进行反询问？",
+        "原告 / 被告，你方是否还有补充的问题？",
+        "被告 / 原告，你方是否还有补充的问题？",
+        "证人 / 鉴定人 / 勘验人，是否还有补充的作证陈述？",
+        "请证人 / 鉴定人 / 勘验人退庭，到等候席休息等候，待庭审结束，阅读笔录确认无误后签字。"
+      ],
+      witness_type: ["证人", "鉴定人", "勘验人"],
+      is_defendant_evidence:"2",
       accuser_is_witness:"1",
       judge_defendant_and_other_accuser_query:"被告及其他原告对原告提交的证据进行质证。",
       judge_accuser_evidence:"下面进行举证质证，首先原告进行举证。",
-    }
+  }
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "accuserShowInfo" in wholeItem) {
       data = wholeItem.accuserShowInfo
@@ -389,9 +448,9 @@ export default {
     //组合 原告、被告以及第三人
     getCrossExaminationName: {
       get() {
-        let defendant = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short)+"（被告）").filter(i => i && i!= "（被告）")
-        let accuser = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short)+"（原告）").filter(i => i && i!= "（原告）")
-        let thirdparty = this.$store.state.third_party_item.map(e => (e.third_party_short == '' ? e.third_party : e.third_party_short)+"（第三人）").filter(i => i && i!= "（第三人）")
+        let defendant = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short) + "（被告）").filter(i => i && i != "（被告）")
+        let accuser = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short) + "（原告）").filter(i => i && i != "（原告）")
+        let thirdparty = this.$store.state.third_party_item.map(e => (e.third_party_short == '' ? e.third_party : e.third_party_short) + "（第三人）").filter(i => i && i != "（第三人）")
         return accuser.concat(defendant).concat(thirdparty)
       }
     },
@@ -413,29 +472,29 @@ export default {
     },
     getQuizzerName: {
       get() {
-        let defendant = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short)+"（被告）").filter(i => i && i!= "（被告）")
-        let accuser = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short)+"（原告）").filter(i => i && i!= "（原告）")
-        let thirdparty = this.$store.state.third_party_item.map(e => (e.third_party_short == '' ? e.third_party : e.third_party_short)+"（第三人）").filter(i => i && i!= "（第三人）")
-        let judge = this.$store.state.judge_name.filter(i => i && i.trim()).map(e => e+"（审判员）")
-        let chief_judge_name= this.$store.state.chief_judge_name.filter(i => i && i.trim()).map(e => e+"（审判长）")
+        let defendant = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short) + "（被告）").filter(i => i && i != "（被告）")
+        let accuser = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short) + "（原告）").filter(i => i && i != "（原告）")
+        let thirdparty = this.$store.state.third_party_item.map(e => (e.third_party_short == '' ? e.third_party : e.third_party_short) + "（第三人）").filter(i => i && i != "（第三人）")
+        let judge = this.$store.state.judge_name.filter(i => i && i.trim()).map(e => e + "（审判员）")
+        let chief_judge_name = this.$store.state.chief_judge_name.filter(i => i && i.trim()).map(e => e + "（审判长）")
         return judge.concat(chief_judge_name).concat(accuser).concat(defendant).concat(thirdparty)
       }
     },
     getResponderName: {
       get() {
-        let defendant = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short)+"（被告）").filter(i => i && i!= "（被告）")
-        let accuser = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short)+"（原告）").filter(i => i && i!= "（原告）")
-        let thirdparty = this.$store.state.third_party_item.map(e => (e.third_party_short == '' ? e.third_party : e.third_party_short)+"（第三人）").filter(i => i && i!= "（第三人）")
-        return ["证人"].concat(accuser).concat(defendant).concat(thirdparty)
+        let defendant = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short) + "（被告）").filter(i => i && i != "（被告）")
+        let accuser = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short) + "（原告）").filter(i => i && i != "（原告）")
+        let thirdparty = this.$store.state.third_party_item.map(e => (e.third_party_short == '' ? e.third_party : e.third_party_short) + "（第三人）").filter(i => i && i != "（第三人）")
+        return ["证人","鉴定人","勘验人"].concat(accuser).concat(defendant).concat(thirdparty)
       }
     },
-    setIsDefendantEvidence:{
+    setIsDefendantEvidence: {
       get() {
         return this.$store.state.is_defendant_evidence
       },
       set(value) {
         this.data.is_defendant_evidence = value
-        this.$store.commit('setIsDefendantEvidence', value )
+        this.$store.commit('setIsDefendantEvidence', value)
       }
     }
   },
@@ -443,12 +502,12 @@ export default {
     VueMultiselect
   },
   methods: {
-    add_question(newTag){
-      let tag=newTag
+    add_question(newTag) {
+      let tag = newTag
       this.data.question_list.push(tag)
       // this.data.accuser_evidence_witness[index].witness_testimony[QAindex].question=tag
     },
-    add_component(datatype, index,QAindex) {
+    add_component(datatype, index, QAindex) {
       switch (datatype) {
         case "accuser_evidence":
           //accuser_evidence 模块的数据加入
@@ -467,14 +526,14 @@ export default {
           for (let i = 0; i < this.data.accuser_evidence.length; i++) {
             this.data.accuser_evidence[i].serial = i + 1
           }
-          for(let i = 0;i < this.data.accuser_evidence_witness.length; i++){
+          for (let i = 0; i < this.data.accuser_evidence_witness.length; i++) {
             this.data.accuser_evidence_witness[i].serial = this.data.accuser_evidence.length + i + 1;
           }
 
           break;
         case "defendant_and_other_accuser_query":
           //这里是值对应的处理
-          this.data.defendant_and_other_accuser_query.splice(index,0,{
+          this.data.defendant_and_other_accuser_query.splice(index, 0, {
             name: [], //被告姓名
             evidence: [], //证据名称 （被告质证）
             facticity: "1", //真实性
@@ -484,29 +543,29 @@ export default {
           });
           break;
         case "accuser_evidence_witness":
-          this.data.accuser_evidence_witness.splice(index,0,{
+          this.data.accuser_evidence_witness.splice(index, 0, {
             serial: 1,//证据序号，自增
-            evidence:"",
-            witness_name:"",
-            witness_type:"",
-            content:"",
-            witness_testimony:[{
-              quizzer:"",
-              question:"",
-              responder:"",
-              answer:""
+            evidence: "",
+            witness_name: "",
+            witness_type: "",
+            content: "",
+            witness_testimony: [{
+              quizzer: "",
+              question: "",
+              responder: "",
+              answer: ""
             }]
           });
-          for(let i = 0;i < this.data.accuser_evidence_witness.length;i++){
+          for (let i = 0; i < this.data.accuser_evidence_witness.length; i++) {
             this.data.accuser_evidence_witness[i].serial = this.data.accuser_evidence.length + i + 1;
           }
           break;
         case "witnessQA":
-          this.data.accuser_evidence_witness[index].witness_testimony.splice(QAindex,0,{
-            quizzer:"",
-            question:"",
-            responder:"",
-            answer:""
+          this.data.accuser_evidence_witness[index].witness_testimony.splice(QAindex, 0, {
+                quizzer: "",
+                question: "",
+                responder: "",
+                answer: ""
               }
           )
           break;
@@ -515,10 +574,10 @@ export default {
           break;
       }
     },
-    delete_component(datatype, index,QAindex) {
+    delete_component(datatype, index, QAindex) {
       switch (datatype) {
         case "accuser_evidence":
-          if(this.data.accuser_evidence.length<2){
+          if (this.data.accuser_evidence.length < 2) {
             window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
             return;
           }
@@ -527,12 +586,12 @@ export default {
           for (let i = 0; i < this.data.accuser_evidence.length; i++) {
             this.data.accuser_evidence[i].serial = i + 1
           }
-          for(let i = 0;i < this.data.accuser_evidence_witness.length;i++){
+          for (let i = 0; i < this.data.accuser_evidence_witness.length; i++) {
             this.data.accuser_evidence_witness[i].serial = this.data.accuser_evidence.length + i + 1;
           }
           break;
         case "defendant_and_other_accuser_query":
-          if(this.data.defendant_and_other_accuser_query.length<2){
+          if (this.data.defendant_and_other_accuser_query.length < 2) {
             window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
             return;
           }
@@ -540,21 +599,21 @@ export default {
           this.data.defendant_and_other_accuser_query.splice(index, 1);
           break;
         case "accuser_evidence_witness":
-          if(this.data.accuser_evidence_witness.length<2){
+          if (this.data.accuser_evidence_witness.length < 2) {
             window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
             return;
           }
           this.data.accuser_evidence_witness.splice(index, 1);
-          for(let i = 0;i < this.data.accuser_evidence_witness.length;i++){
+          for (let i = 0; i < this.data.accuser_evidence_witness.length; i++) {
             this.data.accuser_evidence_witness[i].serial = this.data.accuser_evidence.length + i + 1;
           }
           break;
         case "witnessQA":
-          if(this.data.accuser_evidence_witness[index].witness_testimony.length<2){
+          if (this.data.accuser_evidence_witness[index].witness_testimony.length < 2) {
             window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
             return;
           }
-          this.data.accuser_evidence_witness[index].witness_testimony.splice(QAindex,1,)
+          this.data.accuser_evidence_witness[index].witness_testimony.splice(QAindex, 1,)
           break;
         default:
           //这里是没有找到对应的值处理
@@ -619,15 +678,15 @@ export default {
       },
       deep: true
     },
-    accuser_is_witness:{
+    accuser_is_witness: {
       handler() {
-        if(this.data.accuser_is_witness == '1'){
-          for(let i = 0;i < this.data.accuser_evidence_witness.length;i++){
+        if (this.data.accuser_is_witness == '1') {
+          for (let i = 0; i < this.data.accuser_evidence_witness.length; i++) {
             this.data.accuser_evidence_witness[i].serial = this.data.accuser_evidence.length + i + 1;
           }
         }
       },
-      immediate:true
+      immediate: true
     }
 
   },

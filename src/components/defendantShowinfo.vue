@@ -9,7 +9,7 @@
                         style="height:38px;min-height:38px"></textarea>
           </div>
         </div>
-          <template v-for="(item ,index) in data.defendant_evidence" :key="index">
+          <template v-for="(item ,index) in data.defendant_and_third_evidence" :key="index">
 
             <div class="layui-form-item" pane>
               <div class="layui-form-label">
@@ -19,7 +19,7 @@
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <VueMultiselect :option-height="38" :show-labels="false"
-                                    v-model="data.defendant_evidence[index].name"
+                                    v-model="data.defendant_and_third_evidence[index].name"
                                     :options=getDefendantThirdPartyName placeholder="请选择被告"
                                     group-label="defendant"
                                     :group-select="true"
@@ -39,13 +39,13 @@
                 <div class="layui-input-block">
                   <div class="layui-input-inline" style="width:30%;margin-left: 0">
                     <VueMultiselect :option-height="38" :show-labels="false"
-                                    v-model="data.defendant_evidence[index].evidence_type"
+                                    v-model="data.defendant_and_third_evidence[index].evidence_type"
                                     :options="['复印件','原件']" placeholder="请选择证据类型"
                                     style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
                   </div>
                   <div class="layui-input-inline" style="width:70%;margin-left: 0">
                     <input type="text" placeholder="请输入证据名称" class="layui-input"
-                           v-model="data.defendant_evidence[index].evidence">
+                           v-model="data.defendant_and_third_evidence[index].evidence">
                   </div>
                 </div>
               </div>
@@ -56,7 +56,7 @@
                 证明事项
               </div>
               <div class="layui-input-block">
-                <textarea type="text" v-model="data.defendant_evidence[index].content"
+                <textarea type="text" v-model="data.defendant_and_third_evidence[index].content"
                        placeholder="请输入证据证明事项"
                        class="layui-textarea"></textarea>
               </div>
@@ -64,10 +64,10 @@
 
             <div class="layui-form-item" style="width:100%;margin-top: -10px;">
               <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                      @click="add_component('defendant_evidence',index+1)"> 添加证据
+                      @click="add_component('defendant_and_third_evidence',index+1)"> 添加证据
               </button>
               <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px"
-                      @click="delete_component('defendant_evidence',index)" v-if="index != 0"> 删除证据
+                      @click="delete_component('defendant_and_third_evidence',index)" v-if="index != 0"> 删除证据
               </button>
             </div>
           </template>
@@ -876,8 +876,8 @@ import VueMultiselect from "vue-multiselect";
 export default {
   data() {
     var data = {
-      //第一个动态生成的json defendant_evidence 包含以下3个信息
-      defendant_evidence: [{
+      //第一个动态生成的json defendant_and_third_evidence 包含以下3个信息
+      defendant_and_third_evidence: [{
         name:[],
         serial: 1,//证据序号，自增
         evidence: "", //证据名称(原告举证表 原告提出)
@@ -979,7 +979,7 @@ export default {
       data: data
     }
   },
-  computed: {
+  computed:  {
     getQuizzerName: {
       get() {
         let defendant = this.$store.state.defendant_item.map(e => (e.defendant_short == '' ? e.defendant : e.defendant_short)+"（被告）").filter(i => i && i!= "（被告）")
@@ -1027,7 +1027,7 @@ export default {
     },
     getProofDefendant: {
       get() {
-        let option_label = this.data.defendant_evidence.filter(i => i.evidence).map(e => {
+        let option_label = this.data.defendant_and_third_evidence.filter(i => i.evidence).map(e => {
           return "证据" + this.numberToChinese(e.serial) + " ： " + e.evidence;
         })
 
@@ -1068,9 +1068,9 @@ export default {
   methods: {
     add_component(datatype, index,QAindex) {
       switch (datatype) {
-        case "defendant_evidence":
+        case "defendant_and_third_evidence":
           //accshowd_evidence 模块的数据加入
-          this.data.defendant_evidence.splice(index, 0,
+          this.data.defendant_and_third_evidence.splice(index, 0,
               {
                 name:[],
                 serial: 1,//证据序号，自增
@@ -1079,8 +1079,8 @@ export default {
                 evidence_type: ""//证据类型，原件或者复印件
               }
           )
-          for (let i = 0; i < this.data.defendant_evidence.length; i++) {
-            this.data.defendant_evidence[i].serial = i + 1
+          for (let i = 0; i < this.data.defendant_and_third_evidence.length; i++) {
+            this.data.defendant_and_third_evidence[i].serial = i + 1
           }
           break
         case "accuser_and_other_defendant_query":
@@ -1165,7 +1165,7 @@ export default {
             }]
           });
           for(let i = 0;i < this.data.defendant_and_third_evidence_witness.length;i++){
-            this.data.defendant_and_third_evidence_witness[i].serial = this.data.defendant_evidence.length + i + 1;
+            this.data.defendant_and_third_evidence_witness[i].serial = this.data.defendant_and_third_evidence.length + i + 1;
           }
           break;
         case "witnessQA":
@@ -1185,11 +1185,11 @@ export default {
     },
     delete_component(datatype, index,QAindex) {
       switch (datatype) {
-        case "defendant_evidence":
+        case "defendant_and_third_evidence":
           //这里是值对应的处理
-          this.data.defendant_evidence.splice(index, 1)
-          for (let i = 0; i < this.data.defendant_evidence.length; i++) {
-            this.data.defendant_evidence[i].serial = i + 1
+          this.data.defendant_and_third_evidence.splice(index, 1)
+          for (let i = 0; i < this.data.defendant_and_third_evidence.length; i++) {
+            this.data.defendant_and_third_evidence[i].serial = i + 1
           }
           break
         case "accuser_and_other_defendant_query":
@@ -1224,7 +1224,7 @@ export default {
           }
           this.data.defendant_and_third_evidence_witness.splice(index, 1);
           for(let i = 0;i < this.data.defendant_and_third_evidence_witness.length;i++){
-            this.data.defendant_and_third_evidence_witness[i].serial = this.data.defendant_evidence.length + i + 1;
+            this.data.defendant_and_third_evidence_witness[i].serial = this.data.defendant_and_third_evidence.length + i + 1;
           }
           break;
         case "witnessQA":
@@ -1300,7 +1300,7 @@ export default {
       handler() {
         if(this.data.defendant_is_witness == '1'){
           for(let i = 0;i < this.data.defendant_and_third_evidence_witness.length;i++){
-            this.data.defendant_and_third_evidence_witness[i].serial = this.data.defendant_evidence.length + i + 1;
+            this.data.defendant_and_third_evidence_witness[i].serial = this.data.defendant_and_third_evidence.length + i + 1;
           }
         }
       },
