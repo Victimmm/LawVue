@@ -31,19 +31,19 @@
 
       <fieldset class="layui-elem-field layui-field-title" id="whole_thirdPartyImf">
         <legend >第三人信息
-        <div class="layui-input-inline">
-<!--          可折叠按钮 默认显示-->
-          <div v-show = 'isShow.third_party_show == 0'>
-            <button type="button" class="layui-btn" @click="isShowThirdParty" style="background: 0;">
-              <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>
-            </button>
-          </div>
-          <div v-show = 'isShow.third_party_show == 1'>
-            <button type="button" class="layui-btn" @click="isShowThirdParty" style="background: 0;">
-              <i class="layui-icon" style="color: darkgrey">&#xe619;</i>
-            </button>
-          </div>
-        </div>
+<!--        <div class="layui-input-inline">-->
+<!--&lt;!&ndash;          可折叠按钮 默认显示&ndash;&gt;-->
+<!--          <div v-show = 'isShow.third_party_show == 0'>-->
+<!--            <button type="button" class="layui-btn" @click="isShowThirdParty" style="background: 0;">-->
+<!--              <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          <div v-show = 'isShow.third_party_show == 1'>-->
+<!--            <button type="button" class="layui-btn" @click="isShowThirdParty" style="background: 0;">-->
+<!--              <i class="layui-icon" style="color: darkgrey">&#xe619;</i>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </div>-->
         </legend>
         <div v-show = 'isShow.third_party_show == 1'>
           <div class="layui-field-box">

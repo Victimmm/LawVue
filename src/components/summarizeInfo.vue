@@ -1,19 +1,19 @@
 <template>
     <fieldset class="layui-elem-field layui-field-title" id="summarizeInfo">
       <legend>审判员询问
-        <div class="layui-input-inline">
-          <!--          可折叠按钮 默认显示-->
-          <div v-show = 'isShow.summarize_inquiry_show == 0'>
-            <button type="button" class="layui-btn" @click="isShowSummarizeInquiry" style="background: 0;">
-              <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>
-            </button>
-          </div>
-          <div v-show = 'isShow.summarize_inquiry_show == 1'>
-            <button type="button" class="layui-btn" @click="isShowSummarizeInquiry" style="background: 0;">
-              <i class="layui-icon" style="color: darkgrey">&#xe619;</i>
-            </button>
-          </div>
-        </div>
+<!--        <div class="layui-input-inline">-->
+<!--          &lt;!&ndash;          可折叠按钮 默认显示&ndash;&gt;-->
+<!--          <div v-show = 'isShow.summarize_inquiry_show == 0'>-->
+<!--            <button type="button" class="layui-btn" @click="isShowSummarizeInquiry" style="background: 0;">-->
+<!--              <i class="layui-icon" style="color: darkgrey">&#xe61a;</i>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          <div v-show = 'isShow.summarize_inquiry_show == 1'>-->
+<!--            <button type="button" class="layui-btn" @click="isShowSummarizeInquiry" style="background: 0;">-->
+<!--              <i class="layui-icon" style="color: darkgrey">&#xe619;</i>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </div>-->
       </legend>
 
       <div class="layui-card" v-show = 'isShow.summarize_inquiry_show == 1'>
