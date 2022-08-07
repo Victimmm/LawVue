@@ -9,85 +9,80 @@
             </div>
         </div>
 
-        <div class="layui-form-item " pane>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-            <div class="layui-input-inline" style="margin-left:0px ;">
-              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_accuser[0].accuser"
-                              :options="get_accuser_name" placeholder="请选择原告"
-                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-            </div>
-            <div class="layui-input-block">
-              <div class="myselect-div">
-                <div class="myradiomargin" style="width: 100%;float: left;">
-                  <input type="radio" value="1" class="myradio" lay-ignore v-model="data.mediate_accuser[0].is_mediate">
-                  <label>能</label>
-                  <input type="radio" value="2" class="myradio" lay-ignore v-model="data.mediate_accuser[0].is_mediate">
-                  <label>不能</label>
-                </div>
-<!--                <button @click="add_component('mediate_accuser')" type="button"-->
-<!--                        class="layui-btn layui-btn-primary layui-btn-sm"-->
-<!--                        data-type="text" style="float: right;">-->
-<!--                  <i class="layui-icon">&#xe654;</i>-->
-<!--                </button>-->
-              </div>
-            </div>
-          </div>
-        </div>
+<!--        <div class="layui-form-item " pane>-->
+<!--          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
+<!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
+<!--              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_accuser[0].accuser"-->
+<!--                              :options="get_accuser_name" placeholder="请选择原告"-->
+<!--                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>-->
+<!--            </div>-->
+<!--            <div class="layui-input-block">-->
+<!--              <div class="myselect-div">-->
+<!--                <div class="myradiomargin" style="width: 100%;float: left;">-->
+<!--                  <input type="radio" value="1" class="myradio" lay-ignore v-model="data.mediate_accuser[0].is_mediate">-->
+<!--                  <label>能</label>-->
+<!--                  <input type="radio" value="2" class="myradio" lay-ignore v-model="data.mediate_accuser[0].is_mediate">-->
+<!--                  <label>不能</label>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div v-if="data.mediate_accuser[0].is_mediate==1">
-          <div class="layui-form-item" pane>
-            <div class="layui-form-label" style="line-height: 80px">
-              调解方案
-            </div>
-            <div class="layui-input-block">
-                  <textarea v-model="data.mediate_accuser[0].mediate_plan"  placeholder="请输入原告调解方案"
-                            class="layui-textarea"></textarea>
-            </div>
-          </div>
+<!--        <div v-if="data.mediate_accuser[0].is_mediate==1">-->
+<!--          <div class="layui-form-item" pane>-->
+<!--            <div class="layui-form-label" style="line-height: 80px">-->
+<!--              调解方案-->
+<!--            </div>-->
+<!--            <div class="layui-input-block">-->
+<!--                  <textarea v-model="data.mediate_accuser[0].mediate_plan"  placeholder="请输入原告调解方案"-->
+<!--                            class="layui-textarea"></textarea>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="layui-form-item" pane>
-            <label class="layui-form-label">庭外和解时限</label>
-            <div class="layui-input-block">
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                <input type="text" v-model="data.mediate_accuser[0].time_limit" placeholder="请输入庭外和解时限" autocomplete="off"
-                       class="layui-input">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-form-item" style="width:100%;margin-top: -10px;">
-          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_accuser',1)"> 添加原告</button>
-          <!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_accuser',index+1)"> 删除原告-->
-          <!--          </button>-->
-        </div>
+<!--          <div class="layui-form-item" pane>-->
+<!--            <label class="layui-form-label">庭外和解时限</label>-->
+<!--            <div class="layui-input-block">-->
+<!--              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
+<!--                <input type="text" v-model="data.mediate_accuser[0].time_limit" placeholder="请输入庭外和解时限" autocomplete="off"-->
+<!--                       class="layui-input">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="layui-form-item" style="width:100%;margin-top: -10px;">-->
+<!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_accuser',1)"> 添加原告</button>-->
+<!--          &lt;!&ndash;          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_accuser',index+1)"> 删除原告&ndash;&gt;-->
+<!--          &lt;!&ndash;          </button>&ndash;&gt;-->
+<!--        </div>-->
 
-        <template v-for="(item, index) in data.mediate_accuser.slice(1)" :key="index">
+        <template v-for="(item, index) in data.mediate_accuser" :key="index">
           <div class="layui-form-item " pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_accuser[index+1].accuser"
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_accuser[index].accuser"
                                 :options="get_accuser_name" placeholder="请选择原告"
                                 style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" class="myradio" v-model="data.mediate_accuser[index+1].is_mediate" lay-ignore>
+                    <input type="radio" value="1" class="myradio" v-model="data.mediate_accuser[index].is_mediate" lay-ignore>
                     <label>能</label>
-                    <input type="radio" value="2" class="myradio" v-model="data.mediate_accuser[index+1].is_mediate" lay-ignore>
+                    <input type="radio" value="2" class="myradio" v-model="data.mediate_accuser[index].is_mediate" lay-ignore>
                     <label>不能</label>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div v-if="data.mediate_accuser[index+1].is_mediate==1">
+          <div v-if="data.mediate_accuser[index].is_mediate==1">
             <div class="layui-form-item" pane>
               <div class="layui-form-label" style="line-height: 80px">
                 调解方案
               </div>
               <div class="layui-input-block">
-                  <textarea v-model="data.mediate_accuser[index+1].mediate_plan" placeholder="请输入原告调解方案"
+                  <textarea v-model="data.mediate_accuser[index].mediate_plan" placeholder="请输入原告调解方案"
                             class="layui-textarea"></textarea>
               </div>
             </div>
@@ -96,148 +91,148 @@
               <label class="layui-form-label">庭外和解时限</label>
               <div class="layui-input-block">
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                  <input type="text" v-model="data.mediate_accuser[index+1].time_limit" placeholder="请输入庭外和解时限" autocomplete="off"
+                  <input type="text" v-model="data.mediate_accuser[index].time_limit" placeholder="请输入庭外和解时限" autocomplete="off"
                          class="layui-input">
                 </div>
               </div>
             </div>
           </div>
-          <button type="button" style="margin-bottom:15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_accuser',index+2)"> 添加原告</button>
-          <button type="button" style="margin-bottom:15px ;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_accuser',index+1)"> 删除原告
+          <button type="button" style="margin-bottom:15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_accuser',index+1)"> 添加原告</button>
+          <button type="button" style="margin-bottom:15px ;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_accuser',index)"> 删除原告
           </button>
         </template>
 
-        <div class="layui-form-item " pane>
-          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-            <div class="layui-input-inline" style="margin-left:0px ;">
-              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant[0].defendant"
-                              :options="get_defendant_name" placeholder="请选择被告"
-                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-            </div>
-            <div class="layui-input-block">
-              <div class="myselect-div">
-                <div class="myradiomargin" style="width: 100%;float: left;">
-                  <input type="radio" value="1" v-model="data.mediate_defendant[0].is_mediate" lay-ignore class="myradio" >
-                  <label>能</label>
-                  <input type="radio" value="2" v-model="data.mediate_defendant[0].is_mediate" lay-ignore class="myradio" >
-                  <label>不能</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-form-item" v-if="data.mediate_defendant[0].is_mediate==1" pane>
-          <div class="layui-form-label" style="line-height: 80px">
-            调解方案
-          </div>
-          <div class="layui-input-block">
-                <textarea v-model="data.mediate_defendant[0].mediate_plan" placeholder="请输入被告调解方案"
-                          class="layui-textarea"></textarea>
-          </div>
-        </div>
+<!--        <div class="layui-form-item " pane>-->
+<!--          <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
+<!--            <div class="layui-input-inline" style="margin-left:0px ;">-->
+<!--              <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant[0].defendant"-->
+<!--                              :options="get_defendant_name" placeholder="请选择被告"-->
+<!--                              style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>-->
+<!--            </div>-->
+<!--            <div class="layui-input-block">-->
+<!--              <div class="myselect-div">-->
+<!--                <div class="myradiomargin" style="width: 100%;float: left;">-->
+<!--                  <input type="radio" value="1" v-model="data.mediate_defendant[0].is_mediate" lay-ignore class="myradio" >-->
+<!--                  <label>能</label>-->
+<!--                  <input type="radio" value="2" v-model="data.mediate_defendant[0].is_mediate" lay-ignore class="myradio" >-->
+<!--                  <label>不能</label>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="layui-form-item" v-if="data.mediate_defendant[0].is_mediate==1" pane>-->
+<!--          <div class="layui-form-label" style="line-height: 80px">-->
+<!--            调解方案-->
+<!--          </div>-->
+<!--          <div class="layui-input-block">-->
+<!--                <textarea v-model="data.mediate_defendant[0].mediate_plan" placeholder="请输入被告调解方案"-->
+<!--                          class="layui-textarea"></textarea>-->
+<!--          </div>-->
+<!--        </div>-->
 
-          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" style="margin-bottom: 15px" @click="add_component('mediate_defendant',1)"> 添加被告</button>
+<!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" style="margin-bottom: 15px" @click="add_component('mediate_defendant',1)"> 添加被告</button>-->
           <!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_defendant',index+1)"> 删除被告-->
           <!--          </button>-->
 
-        <template v-for="(item, index) in data.mediate_defendant.slice(1)" :key="index">
+        <template v-for="(item, index) in data.mediate_defendant" :key="index">
           <div class="layui-form-item " pane>
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <div class="layui-input-inline" style="margin-left:0px ;">
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant[index+1].defendant"
+                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_defendant[index].defendant"
                                 :options="get_defendant_name" placeholder="请选择被告"
                                 style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
                 <div class="myselect-div">
                   <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" lay-ignore>
+                    <input type="radio" value="1" v-model="data.mediate_defendant[index].is_mediate" class="myradio" lay-ignore>
                     <label>能</label>
-                    <input type="radio" value="2" v-model="data.mediate_defendant[index+1].is_mediate" class="myradio" lay-ignore>
+                    <input type="radio" value="2" v-model="data.mediate_defendant[index].is_mediate" class="myradio" lay-ignore>
                     <label>不能</label>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="layui-form-item" v-if="data.mediate_defendant[index+1].is_mediate==1" pane>
+          <div class="layui-form-item" v-if="data.mediate_defendant[index].is_mediate==1" pane>
             <div class="layui-form-label" style="line-height: 80px">
               调解方案
             </div>
             <div class="layui-input-block">
-                <textarea v-model="data.mediate_defendant[index+1].mediate_plan" placeholder="请输入被告调解方案"
+                <textarea v-model="data.mediate_defendant[index].mediate_plan" placeholder="请输入被告调解方案"
                           class="layui-textarea"></textarea>
             </div>
           </div>
-          <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_defendant',index+2)"> 添加被告</button>
-          <button type="button" style="margin-bottom: 15px;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_defendant',index+1)"> 删除被告
+          <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_defendant',index+1)"> 添加被告</button>
+          <button type="button" style="margin-bottom: 15px;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_defendant',index)"> 删除被告
           </button>
         </template>
-        <div v-if="$store.state.third_party_item[0].third_party != 0">
-          <div class="layui-form-item " pane>
-            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-              <div class="layui-input-inline" style="margin-left:0px ;">
-                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_third_party[0].third_party"
-                                :options="get_third_party_name" placeholder="请选择第三人"
-                                style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-              </div>
-              <div class="layui-input-block">
-                <div class="myselect-div">
-                  <div class="myradiomargin" style="width: 100%;float: left;">
-                    <input type="radio" value="1" v-model="data.mediate_third_party[0].is_mediate" lay-ignore class="myradio" >
-                    <label>能</label>
-                    <input type="radio" value="2" v-model="data.mediate_third_party[0].is_mediate" lay-ignore class="myradio" >
-                    <label>不能</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="layui-form-item" v-if="data.mediate_third_party[0].is_mediate==1" pane>
-            <div class="layui-form-label" style="line-height: 80px">
-              调解方案
-            </div>
-            <div class="layui-input-block">
-                  <textarea v-model="data.mediate_third_party[0].mediate_plan" placeholder="请输入第三人调解方案"
-                            class="layui-textarea"></textarea>
-            </div>
-          </div>
+        <div v-if="   $store.state.third_party_item[0].third_party != 0">
+<!--          <div class="layui-form-item " pane>-->
+<!--            <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">-->
+<!--              <div class="layui-input-inline" style="margin-left:0px ;">-->
+<!--                <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_third_party[0].third_party"-->
+<!--                                :options="get_third_party_name" placeholder="请选择第三人"-->
+<!--                                style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>-->
+<!--              </div>-->
+<!--              <div class="layui-input-block">-->
+<!--                <div class="myselect-div">-->
+<!--                  <div class="myradiomargin" style="width: 100%;float: left;">-->
+<!--                    <input type="radio" value="1" v-model="data.mediate_third_party[0].is_mediate" lay-ignore class="myradio" >-->
+<!--                    <label>能</label>-->
+<!--                    <input type="radio" value="2" v-model="data.mediate_third_party[0].is_mediate" lay-ignore class="myradio" >-->
+<!--                    <label>不能</label>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="layui-form-item" v-if="data.mediate_third_party[0].is_mediate==1" pane>-->
+<!--            <div class="layui-form-label" style="line-height: 80px">-->
+<!--              调解方案-->
+<!--            </div>-->
+<!--            <div class="layui-input-block">-->
+<!--                  <textarea v-model="data.mediate_third_party[0].mediate_plan" placeholder="请输入第三人调解方案"-->
+<!--                            class="layui-textarea"></textarea>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" style="margin-bottom: 15px" @click="add_component('mediate_third_party',1)"> 添加第三人</button>
+<!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" style="margin-bottom: 15px" @click="add_component('mediate_third_party',1)"> 添加第三人</button>-->
           <!--          <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_defendant',index+1)"> 删除被告-->
           <!--          </button>-->
 
-          <template v-for="(item, index) in data.mediate_third_party.slice(1)" :key="index">
+          <template v-for="(item, index) in data.mediate_third_party" :key="index">
             <div class="layui-form-item " pane>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
                 <div class="layui-input-inline" style="margin-left:0px ;">
-                  <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_third_party[index+1].third_party"
+                  <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.mediate_third_party[index].third_party"
                                   :options="get_third_party_name" placeholder="请选择第三人"
                                   style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <div class="myradiomargin" style="width: 100%;float: left;">
-                      <input type="radio" value="1" v-model="data.mediate_third_party[index+1].is_mediate" class="myradio" lay-ignore>
+                      <input type="radio" value="1" v-model="data.mediate_third_party[index].is_mediate" class="myradio" lay-ignore>
                       <label>能</label>
-                      <input type="radio" value="2" v-model="data.mediate_third_party[index+1].is_mediate" class="myradio" lay-ignore>
+                      <input type="radio" value="2" v-model="data.mediate_third_party[index].is_mediate" class="myradio" lay-ignore>
                       <label>不能</label>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="layui-form-item" v-if="data.mediate_third_party[index+1].is_mediate==1" pane>
+            <div class="layui-form-item" v-if="data.mediate_third_party[index].is_mediate==1" pane>
               <div class="layui-form-label" style="line-height: 80px">
                 调解方案
               </div>
               <div class="layui-input-block">
-                  <textarea v-model="data.mediate_third_party[index+1].mediate_plan" placeholder="请输入第三人调解方案"
+                  <textarea v-model="data.mediate_third_party[index].mediate_plan" placeholder="请输入第三人调解方案"
                             class="layui-textarea"></textarea>
               </div>
             </div>
-            <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_third_party',index+2)"> 添加第三人</button>
-            <button type="button" style="margin-bottom: 15px;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_third_party',index+1)"> 删除第三人
+            <button type="button" style="margin-bottom: 15px" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('mediate_third_party',index+1)"> 添加第三人</button>
+            <button type="button" style="margin-bottom: 15px;margin-left:5px" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" @click="delete_component('mediate_third_party',index)"> 删除第三人
             </button>
           </template>
         </div>
@@ -387,15 +382,27 @@ export default {
     delete_component(datatype, index) {
       switch (datatype) {
         case "mediate_accuser":
+          if (this.data.mediate_accuser.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
           //这里是值对应的处理
           this.data.mediate_accuser.splice(index, 1);
           break;
         case "mediate_defendant":
           //这里是值对应的处理
+          if (this.data.mediate_defendant.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
           this.data.mediate_defendant.splice(index, 1);
           break;
         case "mediate_third_party":
           //这里是值对应的处理
+          if (this.data.mediate_third_party.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
           this.data.mediate_third_party.splice(index, 1);
           break;
         default:
