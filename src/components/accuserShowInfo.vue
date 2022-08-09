@@ -43,10 +43,10 @@
 
           <div class="layui-form-item" style="width:100%;margin-top: -10px;">
             <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                    @click="add_component('accuser_evidence',index+1)"> 添加证据
+                    @click="add_component('accuser_evidence',index+1)"> 添加物证
             </button>
             <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
-                    style="margin-left:5px" @click="delete_component('accuser_evidence',index)"> 删除证据
+                    style="margin-left:5px" @click="delete_component('accuser_evidence',index)"> 删除物证
             </button>
           </div>
         </template>
@@ -88,77 +88,46 @@
             </div>
 
             <div class="layui-form-item" pane style="margin-top: -10px;">
-              <div class="layui-inline" style="width: 50%">
-                <label class="layui-form-label" style="width: 210px">证人名称</label>
-                <div class="layui-input-inline" style="margin-left: 210px">
-                  <input type="text" placeholder="请输入证据名称" class="layui-input"
-                         v-model="data.accuser_evidence_witness[index].witness_name">
-                </div>
-              </div>
-              <div class="layui-inline" style="width: 50% ">
-                <label class="layui-form-label" style="width: 210px">证人类型</label>
-                <div class="layui-input-inline" style="margin-left: 210px">
-                  <VueMultiselect :option-height="38" :show-labels="false"
-                                  v-model="data.accuser_evidence_witness[index].witness_type"
-                                  :options="data.witness_type" placeholder="请选择证人类型"
-                                  style="line-height:16px;min-height: 38px"></VueMultiselect>
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
+                <label class="layui-form-label">证人名称</label>
+                <div class="layui-input-block">
+                  <div class="layui-input-inline" style="width:70%;margin-left: 0">
+                    <input type="text" placeholder="请输入证人姓名" class="layui-input"
+                           v-model="data.accuser_evidence_witness[index].witness_name">
+                  </div>
+                  <div class="layui-input-inline" style="width:30%;margin-left: 0">
+                    <VueMultiselect :option-height="38" :show-labels="false"
+                                    v-model="data.accuser_evidence_witness[index].witness_type"
+                                    :options="data.witness_type" placeholder="请选择证人类型"
+                                    style="line-height:16px;min-height: 38px"></VueMultiselect>
+                  </div>
                 </div>
               </div>
             </div>
-
-<!--            <div class="layui-form-item" pane style="margin-top: -10px;">-->
-<!--                <div class="layui-input-inline" style="width:50%;margin-left: 0">-->
-<!--                    <label class="layui-form-label" style="width: 210px">证人名称</label>-->
-<!--                    <div class="layui-input-inline" style="margin-left: 210px">-->
-<!--                      <input type="text" placeholder="请输入证据名称" class="layui-input"-->
-<!--                             v-model="data.accuser_evidence_witness[index].witness_name">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="layui-input-inline" style="width:50%;margin-left: 0">-->
-<!--                  <div class="myradiomargin">-->
-<!--                    <label>合法性：</label>-->
-<!--                    <input type="radio" lay-ignore value="1"-->
-<!--                           v-model="data.defendant_and_other_accuser_query[index].legality"-->
-<!--                           class="myradio"><label>是</label>-->
-<!--                    <input type="radio" lay-ignore value="2"-->
-<!--                           v-model="data.defendant_and_other_accuser_query[index].legality"-->
-<!--                           class="myradio" style="margin-left: 15px;"><label>否</label>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-
 
             <template v-for="(item, QAindex) in data.accuser_evidence_witness[index].witness_testimony" :key="QAindex">
               <div class="layui-form-item" pane style="margin-top: -10px;">
 
                 <div class="layui-inline" style="width: 100%;">
-                  <div class="layui-input-inline" style="margin-left:0px;">
+                  <div class="layui-input-inline" style="margin-left:0px;margin-top:8px;">
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].quizzer"
                                     :options="getQuizzerName" placeholder="请选择提问者"
                                     style="width: 210px; line-height:16px;min-height: 38px"></VueMultiselect>
+
                   </div>
                   <div class="layui-input-block">
-                    <div class="myselect-div">
-                      <VueMultiselect :option-height="38" :show-labels="false"
-                                      v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].question"
-                                      :options=data.question_list placeholder="请选择或输入问题列表"
-                                      :searchable="true"
-                                      :taggable="true"
-                                      @tag="add_question"
-                                      style="width:85%;line-height: 16px; min-height: 38px;float:left;"></VueMultiselect>
-                      <button @click="add_component('witnessQA',index,QAindex+1)" type="button"
-                              class="layui-btn layui-btn-sm"
-                              data-type="text">
-                        <i class="layui-icon">&#xe654;</i>
-                      </button>
-
-                      <button @click="delete_component('witnessQA',index,QAindex)" type="button"
-                              class="layui-btn layui-btn-sm layui-btn-danger"
-                              data-type="text" style="float: right;">
-                        <i class="layui-icon">&#xe640;</i>
-                      </button>
-                    </div>
+                      <textarea type="text" v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].question"
+                                                  placeholder="请选择或输入问题列表" autocomplete="off"
+                                                  style="width: 85%;float: left;min-height: 50px"
+                                                  class="layui-textarea"></textarea>
+                    <button type="button"
+                            @click="select_question(index,QAindex)"
+                            class="layui-btn layui-btn-normal"
+                            style="height:54px;width:15%"
+                            data-type="text">
+                      选择问题
+                    </button>
                   </div>
                 </div>
               </div>
@@ -174,9 +143,25 @@
                     <div class="myselect-div">
                   <textarea type="text" v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].answer"
                             placeholder="回答" autocomplete="off"
+                            style="width: 85%;float: left;min-height:100px"
                             class="layui-textarea"></textarea>
+
+                      <button @click="add_component('witnessQA',index,QAindex+1)" type="button"
+                              class="layui-btn layui-btn-sm"
+                              style="height:100px;width:7.5%"
+                              data-type="text">
+                        <i class="layui-icon">&#xe654;</i>
+                      </button>
+                      <button @click="delete_component('witnessQA',index,QAindex)" type="button"
+                              class="layui-btn layui-btn-sm layui-btn-danger"
+                              style="float: right;height:100px;width:7.5%"
+                              data-type="text">
+                        <i class="layui-icon">&#xe640;</i>
+                      </button>
+
                     </div>
                   </div>
+
                 </div>
               </div>
             </template>
@@ -440,7 +425,17 @@ export default {
     }
     return {data: data}
   },
-  mount() {
+  mounted() {
+    window.layui.use("table",  () =>{
+      window.layui.table.on('tool(questionTable)',  (obj) =>{
+        console.log(obj)
+        let witnessIndex=obj.data.witness_index
+        let QAIndex=obj.data.QAindex
+        this.data.accuser_evidence_witness[witnessIndex].witness_testimony[QAIndex].question=obj.data.question
+        window.layer.close(window.layer.index)
+        });
+
+    })
 
   },
   computed: {
@@ -476,8 +471,7 @@ export default {
         let accuser = this.$store.state.plaintiff_item.map(e => (e.accuser_short == '' ? e.accuser : e.accuser_short) + "（原告）").filter(i => i && i != "（原告）")
         let thirdparty = this.$store.state.third_party_item.map(e => (e.third_party_short == '' ? e.third_party : e.third_party_short) + "（第三人）").filter(i => i && i != "（第三人）")
         let judge = this.$store.state.judge_name.filter(i => i && i.trim()).map(e => e + "（审判员）")
-        let chief_judge_name = this.$store.state.chief_judge_name.filter(i => i && i.trim()).map(e => e + "（审判长）")
-        return judge.concat(chief_judge_name).concat(accuser).concat(defendant).concat(thirdparty)
+        return judge.concat(accuser).concat(defendant).concat(thirdparty)
       }
     },
     getResponderName: {
@@ -502,10 +496,46 @@ export default {
     VueMultiselect
   },
   methods: {
-    add_question(newTag) {
-      let tag = newTag
-      this.data.question_list.push(tag)
-      // this.data.accuser_evidence_witness[index].witness_testimony[QAindex].question=tag
+    select_question(witness_index,QAindex){
+      window.layui.use('table', function () {
+        var table = window.layui.table;
+
+        let result=[
+          {question:"传唤原告/被告申请的证人/鉴定人/勘验人某某某出庭作证？",witness_index:witness_index,QAindex:QAindex},
+          {question:"证人某某某报告一下自然人情况/或鉴定人/勘验人资质情况。",witness_index:witness_index,QAindex:QAindex},
+          {question:"鉴定人 / 勘验人报告一下你在某鉴定工作或勘验工作中的职责分工？",witness_index:witness_index,QAindex:QAindex},
+          {question:"证人某某报告一下你与当事人某某某之间的身份关系？",witness_index:witness_index,QAindex:QAindex},
+          {question:"证人某某宣读一下《作证保证书》。",witness_index:witness_index,QAindex:QAindex},
+          {question:"《作证保证书》上的签字是否是你的真实签名？",witness_index:witness_index,QAindex:QAindex},
+          {question:"证人对《作证保证书》中告知的如实作证的法律义务及作伪证的法律后果是否清楚？",witness_index:witness_index,QAindex:QAindex},
+          {question:"证人，书面证人证言是否是你亲笔签字？鉴定人 / 勘验人，鉴定意见 / 勘验结果报告中的署名是否是你亲笔书写？",witness_index:witness_index,QAindex:QAindex},
+          {question:"证人，下面对待证的事实进行作证陈述？（鉴定人或勘验人可以无需先进行作证陈述）。",witness_index:witness_index,QAindex:QAindex},
+          {question:"原告 / 被告，下面由你方对证人 / 鉴定人 / 勘验人进行主询问？",witness_index:witness_index,QAindex:QAindex},
+          {question:"被告 / 原告，下面由你方对证人 / 鉴定人 / 勘验人进行反询问？",witness_index:witness_index,QAindex:QAindex},
+          {question:"原告 / 被告，你方是否还有补充的问题？",witness_index:witness_index,QAindex:QAindex},
+          {question:"被告 / 原告，你方是否还有补充的问题？",witness_index:witness_index,QAindex:QAindex},
+          {question:"证人 / 鉴定人 / 勘验人，是否还有补充的作证陈述？",witness_index:witness_index,QAindex:QAindex},
+          {question:"请证人 / 鉴定人 / 勘验人退庭，到等候席休息等候，待庭审结束，阅读笔录确认无误后签字。",witness_index:witness_index,QAindex:QAindex}
+        ]
+        window.layer.open({
+          type: 1,
+          area: ['50%', '50%'],
+          title: "笔录列表",
+          content: '<div><table id="questionTable" lay-filter="questionTable"></table></div>', //先定义一个数据表格的div框
+          success:  () =>{
+            table.render({
+              elem: '#questionTable',
+              data: result,
+              cols: [[
+                {field: 'question', align:'center', sort: true, title: '笔录名称'},
+                {field: 'witness_index', align:'center',sort: true, title: '证人下标',hide:true},
+                {field: 'QAindex', align:'center',sort: true, title: '问题下标',hide:true},
+                {align: 'center', toolbar: '#questionBar', title: '操作',width: 150}
+              ]]
+            });
+          }
+        });
+      })
     },
     add_component(datatype, index, QAindex) {
       switch (datatype) {
@@ -692,6 +722,7 @@ export default {
   },
 };
 </script>
+
 
 
 <style type="text/css">

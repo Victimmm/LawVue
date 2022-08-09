@@ -40,16 +40,16 @@
           <div class="layui-input-block">
             <div class="myradiomargin">
               <input type="radio" lay-ignore="" name="ischange"
-                     v-model="data.accuser_claim_item_change" class="myradio" value="1"
+                     v-model="data.is_change_claim_item" class="myradio" value="1"
               > <label>是</label>
               <input type="radio" lay-ignore="" name="ischange"
-                     v-model="data.accuser_claim_item_change" class="myradio" value="2"
+                     v-model="data.is_change_claim_item" class="myradio" value="2"
                      style="margin-left: 15px;"><label>否</label>
             </div>
           </div>
         </div>
 
-        <div id="claimchange" v-if="data.accuser_claim_item_change=='1'">
+        <div id="claimchange" v-if="data.is_change_claim_item=='1'">
 
           <div class="layui-form-item " pane>
             <div class="layui-form-label" style="line-height: 70px">
@@ -57,7 +57,7 @@
             </div>
             <div class="layui-input-block">
 
-            <textarea v-model="data.changed_claim_item" placeholder="请输入变更诉讼请求项" autocomplete="off"
+            <textarea v-model="data.accuser_claim_item_after_change" placeholder="请输入变更诉讼请求项" autocomplete="off"
                       class="layui-textarea"></textarea>
             </div>
 
@@ -68,7 +68,7 @@
               事实和理由
             </div>
             <div class="layui-input-block">
-            <textarea v-model="data.changed_claim_fact_reason" placeholder="请输入事实和理由"
+            <textarea v-model="data.accuser_claim_fact_reason_after_change" placeholder="请输入事实和理由"
                       class="layui-textarea"></textarea>
             </div>
           </div>
@@ -80,9 +80,7 @@
   </div>
 
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 25px">
-      <legend>审判员询问
-
-      </legend>
+      <legend>审判员询问</legend>
 <!--      <div class="layui-card" v-show = 'isShow.judge_inquiry1_show == 1'>-->
 
     <div class="layui-card">
@@ -467,9 +465,9 @@ data = {
   }],
   judge_accuser_claim_item: "下面进行法庭调查，原告陈述诉讼请求和事实理由。",
   judge_defendant_reply: "对于原告的诉讼请求及事实理由，被告进行答辩。",
-  accuser_claim_item_change: "2",
-  changed_claim_item: "",
-  changed_claim_fact_reason: ""
+  is_change_claim_item: "2",
+  accuser_claim_item_after_change: "",
+  accuser_claim_fact_reason_after_change: ""
 };
 
 export default {
@@ -618,40 +616,6 @@ export default {
             }],
           });
           break;
-        // case "inquiry_reply":
-        //   this.data.judge_inquiry_after_defendant_reply[index_info_index].answer.splice(inquiry_answer_index,0,{
-        //     name:"",
-        //     answer:"",
-        //   });
-        //   break;
-        // case "inquiry_info":
-        //   //
-        //
-        //   this.data.judge_inquiry_after_defendant_reply.splice(index_info_index,0,{
-        //     question: "",
-        //     answer: [{
-        //       name:"",
-        //       answer:"",
-        //     }],
-        //   });
-        //   break;
-        // case "inquiry_info":
-        //   //
-        //   this.data.judge_inquiry_after_defendant_reply.splice(index_info_index,0,{
-        //     question: "",
-        //     answer: [{
-        //       name:"",
-        //       answer:"",
-        //     }],
-        //   });
-        //   break;
-        // case "inquiry_answer":
-        //   //
-        //   this.data.judge_inquiry_after_defendant_reply[index_info_index].answer.splice(inquiry_answer_index,0,{
-        //     name:"",
-        //     answer:"",
-        //   });
-        //   break;
         default:
           //这里是没有找到对应的值处理
           break
