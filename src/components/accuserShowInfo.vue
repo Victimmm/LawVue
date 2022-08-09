@@ -383,7 +383,7 @@ export default {
       // }]
       accuser_evidence_witness: [
         {
-          serial: 1,//证据序号，自增
+          serial: 2,//证据序号，自增
           evidence: "",
           witness_name: "",
           witness_type: "",
@@ -396,26 +396,9 @@ export default {
           }]
         }
       ],
-      question_list: [
-        " 传唤原告/被告申请的证人/鉴定人/勘验人某某某出庭作证？",
-        "证人某某某报告一下自然人情况/或鉴定人/勘验人资质情况。",
-        "鉴定人 / 勘验人报告一下你在某鉴定工作或勘验工作中的职责分工？",
-        "证人某某报告一下你与当事人某某某之间的身份关系？",
-        "证人某某宣读一下《作证保证书》。",
-        "《作证保证书》上的签字是否是你的真实签名？",
-        "证人对《作证保证书》中告知的如实作证的法律义务及作伪证的法律后果是否清楚？",
-        "证人，书面证人证言是否是你亲笔签字？鉴定人 / 勘验人，鉴定意见 / 勘验结果报告中的署名是否是你亲笔书写？",
-        "证人，下面对待证的事实进行作证陈述？（鉴定人或勘验人可以无需先进行作证陈述）。",
-        "原告 / 被告，下面由你方对证人 / 鉴定人 / 勘验人进行主询问？",
-        "被告 / 原告，下面由你方对证人 / 鉴定人 / 勘验人进行反询问？",
-        "原告 / 被告，你方是否还有补充的问题？",
-        "被告 / 原告，你方是否还有补充的问题？",
-        "证人 / 鉴定人 / 勘验人，是否还有补充的作证陈述？",
-        "请证人 / 鉴定人 / 勘验人退庭，到等候席休息等候，待庭审结束，阅读笔录确认无误后签字。"
-      ],
       witness_type: ["证人", "鉴定人", "勘验人"],
       is_defendant_evidence:"2",
-      accuser_is_witness:"1",
+      accuser_is_witness:"2",
       judge_defendant_and_other_accuser_query:"被告及其他原告对原告提交的证据进行质证。",
       judge_accuser_evidence:"下面进行举证质证，首先原告进行举证。",
   }
@@ -458,7 +441,7 @@ export default {
     getProofPlaintiff: {
       get() {
         let option_label = this.data.accuser_evidence.filter(i => i.evidence).map(e => {
-          return "证据" + this.numberToChinese(e.serial) + ":" + e.evidence;
+          return "证据" + this.numberToChinese(e.serial) + "：" + e.evidence;
         })
         // let optionn_label={evidence_serial:evidence_serial,name_serial:name_serial}
 
@@ -503,8 +486,9 @@ export default {
         let result=[
           {question:"传唤原告/被告申请的证人/鉴定人/勘验人某某某出庭作证？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人某某某报告一下自然人情况/或鉴定人/勘验人资质情况。",witness_index:witness_index,QAindex:QAindex},
-          {question:"鉴定人 / 勘验人报告一下你在某鉴定工作或勘验工作中的职责分工？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人某某报告一下你与当事人某某某之间的身份关系？",witness_index:witness_index,QAindex:QAindex},
+          {question:"鉴定人/勘验人报告一下资质情况？",witness_index:witness_index,QAindex:QAindex},
+          {question:"鉴定人 / 勘验人报告一下你在某鉴定工作或勘验工作中的职责分工？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人某某宣读一下《作证保证书》。",witness_index:witness_index,QAindex:QAindex},
           {question:"《作证保证书》上的签字是否是你的真实签名？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人对《作证保证书》中告知的如实作证的法律义务及作伪证的法律后果是否清楚？",witness_index:witness_index,QAindex:QAindex},
@@ -514,6 +498,7 @@ export default {
           {question:"被告 / 原告，下面由你方对证人 / 鉴定人 / 勘验人进行反询问？",witness_index:witness_index,QAindex:QAindex},
           {question:"原告 / 被告，你方是否还有补充的问题？",witness_index:witness_index,QAindex:QAindex},
           {question:"被告 / 原告，你方是否还有补充的问题？",witness_index:witness_index,QAindex:QAindex},
+          {question:"证人，下面进行法官询问？问题一？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人 / 鉴定人 / 勘验人，是否还有补充的作证陈述？",witness_index:witness_index,QAindex:QAindex},
           {question:"请证人 / 鉴定人 / 勘验人退庭，到等候席休息等候，待庭审结束，阅读笔录确认无误后签字。",witness_index:witness_index,QAindex:QAindex}
         ]
@@ -527,7 +512,7 @@ export default {
               elem: '#questionTable',
               data: result,
               cols: [[
-                {field: 'question', align:'center', sort: true, title: '笔录名称'},
+                {field: 'question', align:'left', sort: true, title: '问题列表'},
                 {field: 'witness_index', align:'center',sort: true, title: '证人下标',hide:true},
                 {field: 'QAindex', align:'center',sort: true, title: '问题下标',hide:true},
                 {align: 'center', toolbar: '#questionBar', title: '操作',width: 150}

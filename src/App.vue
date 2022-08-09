@@ -88,7 +88,7 @@
 
           <fieldset v-if="$store.state.is_defendant_evidence=='1'" class="layui-elem-field layui-field-title"
                     id="defendShowInfo" style="margin-top:-35px">
-            <legend>被告举证</legend>
+            <legend>被告及第三人举证</legend>
             <div class="layui-field-box">
               <defendShowInfo></defendShowInfo>
             </div>

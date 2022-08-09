@@ -64,10 +64,10 @@
 
             <div class="layui-form-item" style="width:100%;margin-top: -10px;">
               <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                      @click="add_component('defendant_and_third_evidence',index+1)"> 添加证据
+                      @click="add_component('defendant_and_third_evidence',index+1)"> 添加物证
               </button>
               <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px"
-                      @click="delete_component('defendant_and_third_evidence',index)" v-if="index != 0"> 删除证据
+                      @click="delete_component('defendant_and_third_evidence',index)"> 删除物证
               </button>
             </div>
           </template>
@@ -199,7 +199,7 @@
   </div>
 
     <fieldset class="layui-elem-field layui-field-title" id="accuser_query" style="margin-top:28px">
-      <legend>被告及其他当事人质证</legend>
+      <legend>原告及其他当事人质证</legend>
       <div class="layui-field-box">
         <div class="layui-card">
           <div class="layui-card-body">
@@ -305,7 +305,7 @@
                   <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                           @click="add_component('accuser_and_other_defendant_query',index+1)"> 添加质证
                   </button>
-                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" v-if="index!=0" style="margin-left:5px"
+                  <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px"
                           @click="delete_component('accuser_and_other_defendant_query',index)"> 删除质证
                   </button>
                 </div>
@@ -889,12 +889,12 @@ export default {
         content: "", //证明事项(原告举证表 原告提出)
         evidence_type: ""//证据类型，原件或者复印件
       }],
-      defendant_is_witness:"1",
+      defendant_is_witness:"2",
       question_list:["问题1","问题2"],
       witness_type:["证人","鉴定人","勘验人"],
       defendant_and_third_evidence_witness: [
         {
-          serial:"",
+          serial:2,
           evidence_type:"",
           evidence: "",
           witness_name:"",
@@ -1032,9 +1032,8 @@ export default {
     getProofDefendant: {
       get() {
         let option_label = this.data.defendant_and_third_evidence.filter(i => i.evidence).map(e => {
-          return "证据" + this.numberToChinese(e.serial) + " ： " + e.evidence;
+          return "证据" + this.numberToChinese(e.serial) + "：" + e.evidence;
         })
-
         return [{evidence: "全选证据", option_label: option_label}]
       }
     },
@@ -1043,14 +1042,13 @@ export default {
         let option_label = this.data.counterclaim_defendant_evidence.filter(i => i.evidence).map(e => {
           return "证据" + this.numberToChinese(e.serial) + " ： " + e.evidence;
         })
-
         return [{evidence: "全选反诉被告提交的证据", option_label: option_label}]
       },
     },
     getProofOfCounterAccuser: {
       get() {
         let option_label = this.data.counterclaim_accuser_evidence.filter(i => i.evidence).map(e => {
-          return "证据" + this.numberToChinese(e.serial) + " ： " + e.evidence;
+          return "证据" + this.numberToChinese(e.serial) + "：" + e.evidence;
         })
 
         return [{evidence: "全选反诉原告提交的证据", option_label: option_label}]
@@ -1087,8 +1085,9 @@ export default {
         let result=[
           {question:"传唤原告/被告申请的证人/鉴定人/勘验人某某某出庭作证？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人某某某报告一下自然人情况/或鉴定人/勘验人资质情况。",witness_index:witness_index,QAindex:QAindex},
-          {question:"鉴定人 / 勘验人报告一下你在某鉴定工作或勘验工作中的职责分工？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人某某报告一下你与当事人某某某之间的身份关系？",witness_index:witness_index,QAindex:QAindex},
+          {question:"鉴定人/勘验人报告一下资质情况？",witness_index:witness_index,QAindex:QAindex},
+          {question:"鉴定人 / 勘验人报告一下你在某鉴定工作或勘验工作中的职责分工？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人某某宣读一下《作证保证书》。",witness_index:witness_index,QAindex:QAindex},
           {question:"《作证保证书》上的签字是否是你的真实签名？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人对《作证保证书》中告知的如实作证的法律义务及作伪证的法律后果是否清楚？",witness_index:witness_index,QAindex:QAindex},
@@ -1098,6 +1097,7 @@ export default {
           {question:"被告 / 原告，下面由你方对证人 / 鉴定人 / 勘验人进行反询问？",witness_index:witness_index,QAindex:QAindex},
           {question:"原告 / 被告，你方是否还有补充的问题？",witness_index:witness_index,QAindex:QAindex},
           {question:"被告 / 原告，你方是否还有补充的问题？",witness_index:witness_index,QAindex:QAindex},
+          {question:"证人，下面进行法官询问？问题一？",witness_index:witness_index,QAindex:QAindex},
           {question:"证人 / 鉴定人 / 勘验人，是否还有补充的作证陈述？",witness_index:witness_index,QAindex:QAindex},
           {question:"请证人 / 鉴定人 / 勘验人退庭，到等候席休息等候，待庭审结束，阅读笔录确认无误后签字。",witness_index:witness_index,QAindex:QAindex}
         ]
@@ -1111,7 +1111,7 @@ export default {
               elem: '#defendantTable',
               data: result,
               cols: [[
-                {field: 'question', align:'center', sort: true, title: '笔录名称'},
+                {field: 'question', align:'left', sort: true, title: '问题列表'},
                 {field: 'witness_index', align:'center',sort: true, title: '证人下标',hide:true},
                 {field: 'QAindex', align:'center',sort: true, title: '问题下标',hide:true},
                 {align: 'center', toolbar: '#questionBar', title: '操作',width: 150}
@@ -1136,6 +1136,9 @@ export default {
           )
           for (let i = 0; i < this.data.defendant_and_third_evidence.length; i++) {
             this.data.defendant_and_third_evidence[i].serial = i + 1
+          }
+          for(let i = 0;i < this.data.defendant_and_third_evidence_witness.length;i++){
+            this.data.defendant_and_third_evidence_witness[i].serial = this.data.defendant_and_third_evidence.length + i + 1;
           }
           break
         case "accuser_and_other_defendant_query":
@@ -1241,6 +1244,10 @@ export default {
     delete_component(datatype, index,QAindex) {
       switch (datatype) {
         case "defendant_and_third_evidence":
+          if (this.data.defendant_and_third_evidence.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
           //这里是值对应的处理
           this.data.defendant_and_third_evidence.splice(index, 1)
           for (let i = 0; i < this.data.defendant_and_third_evidence.length; i++) {
@@ -1248,6 +1255,10 @@ export default {
           }
           break
         case "accuser_and_other_defendant_query":
+          if (this.data.accuser_and_other_defendant_query.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
           //这里是值对应的处理
           this.data.accuser_and_other_defendant_query.splice(index, 1)
           break
