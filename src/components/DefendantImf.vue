@@ -109,7 +109,7 @@
         </template>
 
             <button type="button" class="layui-btn layui-btn-radius  layui-btn-sm" @click="onAddClick"> 添加被告信息</button>
-            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-sm" style="margin-left:5px" v-show="this.index!=0"
+            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-sm" style="margin-left:5px"
                     @click="onCloseClick"> 删除被告信息
             </button>
       </form>
@@ -178,6 +178,10 @@ export default {
     },
     onCloseClick() {
       // 将删除标签事件暴露除去
+      if (this.$store.state.defendant_item.length < 2) {
+        window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+        return;
+      }
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
       if (wholeItem != null && this.index < wholeItem.DefendantItems.length) {
         wholeItem.DefendantItems.splice(this.index, 1)

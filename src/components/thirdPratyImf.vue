@@ -110,7 +110,7 @@
         </template>
 
         <button type="button" class="layui-btn layui-btn-radius  layui-btn-sm" @click="onAddClick"> 添加第三人信息</button>
-        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-sm" style="margin-left:5px" v-show="this.index!=0"
+        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-sm" style="margin-left:5px"
                 @click="onCloseClick"> 删除第三人信息
         </button>
       </form>
@@ -179,6 +179,10 @@ export default {
       this.$store.state.third_party_item[this.index].third_party = ""
     },
     onCloseClick() {
+      if (this.$store.state.third_party_item.length < 2) {
+        window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+        return;
+      }
       // 将删除标签事件暴露除去
       var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
       if (wholeItem != null && this.index < wholeItem.thirdPartyInfo.length) {

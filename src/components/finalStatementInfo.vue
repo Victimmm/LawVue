@@ -28,18 +28,18 @@
 <!--                                style="line-height: 16px; min-height: 38px;float:left;width: 90%;"></VueMultiselect>-->
                 <input type="text" v-model="data.final_statement_info[index].final_statement"   placeholder="请输入最后陈述意见" autocomplete="off"
                        class="layui-input" style="width: 90%;float: left;">
-                <div v-show="index == '0'">
-                  <button @click="add_component('final_statement_info')" type="button" class="layui-btn layui-btn-sm"
+<!--                <div v-show="index == '0'">-->
+                  <button @click="add_component('final_statement_info',index+1)" type="button" class="layui-btn layui-btn-sm"
                           data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe654;</i>
                   </button>
-                </div>
-                <div v-show="index != '0'">
+<!--                </div>-->
+<!--                <div v-show="index != '0'">-->
                   <button @click="delete_component('final_statement_info',index)" type="button" class="layui-btn layui-btn-sm layui-btn-danger"
                           data-type="text" style="float: right;">
                     <i class="layui-icon">&#xe640;</i>
                   </button>
-                </div>
+<!--                </div>-->
               </div>
 
             </div>
@@ -126,10 +126,10 @@ export default {
     VueMultiselect
   },
   methods: {
-    add_component(datatype) {
+    add_component(datatype, index) {
       switch (datatype) {
         case "final_statement_info":
-          this.data.final_statement_info.push({
+          this.data.final_statement_info.splice(index,0,{
             name: "", //原告
             final_statement: "", //最后陈述意见
           });
@@ -143,6 +143,10 @@ export default {
       switch (datatype) {
         case "final_statement_info":
           //这里是值对应的处理
+          if (this.data.final_statement_info.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
           this.data.final_statement_info.splice(index, 1);
           break;
         default:

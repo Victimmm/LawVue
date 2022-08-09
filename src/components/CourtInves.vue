@@ -168,7 +168,7 @@
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                         @click="add_component('defendant_reply',index+1)">添加其他被告答辩
                 </button>
-                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0"
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px"
                         @click="delete_component('defendant_reply',index)"> 删除其他被告答辩
                 </button>
               </div>
@@ -216,7 +216,7 @@
                     <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
                             @click="add_component('third_party_claim',index+1)">添加第三人述称
                     </button>
-                    <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px" v-if="index!=0"
+                    <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px"
                             @click="delete_component('third_party_claim',index)"> 删除第三人述称
                     </button>
                   </div>
@@ -420,7 +420,6 @@
                         @click="add_component('counterclaim_defendant_reply',index)">添加反诉被告答辩内容
                 </button>
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
-                        v-if="index != 0"
                         @click="delete_component('counterclaim_defendant_reply',index)"> 删除答辩内容
                 </button>
               </div>
@@ -630,11 +629,19 @@ export default {
           //   break
         case "defendant_reply":
           //这里是值对应的处理
+          if (this.data.defendant_reply.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
           this.data.defendant_reply.splice(index, 1)
           break
         //第三人述称
         case "third_party_claim":
           //这里是值对应的处理
+          if (this.data.third_party_state.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
           this.data.third_party_state.splice(index, 1)
           break
           // case "counterclaim_plaintiff":
