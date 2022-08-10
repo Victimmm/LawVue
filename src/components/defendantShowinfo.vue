@@ -22,7 +22,7 @@
                                     v-model="data.defendant_and_third_evidence[index].name"
                                     :options=getDefendantThirdPartyName placeholder="请选择被告"
                                     group-label="defendant"
-                                    :group-select="true"
+                                    :group-select="false"
                                     group-values="defendant_name"
                                     :multiple="true"
                                     :close-on-select="false"
@@ -1004,11 +1004,12 @@ export default {
     },
     getDefendantThirdPartyName: {
       get() {
-        let defendant = this.$store.state.defendant_item.map(e => e.defendant_short == '' ? e.defendant : e.defendant_short).filter(i => i && i.trim())
+        let defendant = this.$store.state.defendant_item.filter(i=> i.defendant && i.defendant.trim()).map(function (e) {
+          return (e.defendant_short==''?e.defendant:e.defendant_short) + '（被告）' ;})
         let third_party = this.$store.state.third_party_item.filter(i=> i.third_party && i.third_party.trim()).map(function (e) {
           return (e.third_party_short==''?e.third_party:e.third_party_short) + '（第三人）' ;})
         let defendant_thirdParty=defendant.concat(third_party)
-        return [{defendant: "全选被告第三人", defendant_name: defendant_thirdParty},]
+        return [{defendant_name: defendant_thirdParty},]
       }
     },
     getAccuserName: {
