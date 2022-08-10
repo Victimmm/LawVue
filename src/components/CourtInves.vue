@@ -63,16 +63,6 @@
 
           </div>
 
-          <div class="layui-form-item" pane>
-            <div class="layui-form-label" style="line-height: 70px">
-              事实和理由
-            </div>
-            <div class="layui-input-block">
-            <textarea v-model="data.accuser_claim_fact_reason_after_change" placeholder="请输入事实和理由"
-                      class="layui-textarea"></textarea>
-            </div>
-          </div>
-
         </div>
 
       </form>

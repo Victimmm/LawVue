@@ -383,7 +383,7 @@ export default {
       // }]
       accuser_evidence_witness: [
         {
-          serial: 2,//证据序号，自增
+          serial: 1,//证据序号，自增
           evidence: "",
           witness_name: "",
           witness_type: "",
@@ -398,7 +398,7 @@ export default {
       ],
       witness_type: ["证人", "鉴定人", "勘验人"],
       is_defendant_evidence:"2",
-      accuser_is_witness:"2",
+      accuser_is_witness:"1",
       judge_defendant_and_other_accuser_query:"被告及其他原告对原告提交的证据进行质证。",
       judge_accuser_evidence:"下面进行举证质证，首先原告进行举证。",
   }

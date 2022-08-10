@@ -1363,15 +1363,16 @@ export default {
       },
       deep: true
     },
-    defendant_is_witness:{
+    defendant_is_witness: {
       handler() {
+        console.log("111")
         if(this.data.defendant_is_witness == '1'){
           for(let i = 0;i < this.data.defendant_and_third_evidence_witness.length;i++){
             this.data.defendant_and_third_evidence_witness[i].serial = this.data.defendant_and_third_evidence.length + i + 1;
           }
         }
       },
-      immediate:true
+      immediate: true
     }
   }
 }
