@@ -69,7 +69,7 @@
     </div>
   </div>
 
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 25px">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 25px" id="judge_inquiry_after_accuser_claim">
       <legend>审判员询问</legend>
 <!--      <div class="layui-card" v-show = 'isShow.judge_inquiry1_show == 1'>-->
 
@@ -89,7 +89,7 @@
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 100px;">
                 <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
                   <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.judge_inquiry_after_accuser_claim[index].answer[aindex].name"
-                                  :options="getAccuserMergeDefendant" placeholder="请选择原被告"
+                                  :options="getAccuserMergeDefendant" placeholder="请选择当事人"
                                   style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                 </div>
                 <div class="layui-input-block">
@@ -169,7 +169,7 @@
       </div>
 
     <div v-show = 'this.$store.state.third_party_item[0].third_party != ""'>
-      <fieldset class="layui-elem-field layui-field-title"  style="margin-top:28px">
+      <fieldset class="layui-elem-field layui-field-title"  style="margin-top:28px" id="third_party_state">
         <legend>第三人述称</legend>
         <div class="layui-field-box" >
           <div class="layui-card">
@@ -180,7 +180,7 @@
                     审判员
                   </div>
                   <div class="layui-input-block">
-                    <input type="text" autocomplete="off" class="layui-input" value="请输入第三人述称">
+                    <input type="text" autocomplete="off" class="layui-input" value="请第三人进行述称">
                   </div>
                 </div>
 
@@ -219,7 +219,7 @@
     </div>
 
 
-<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 0px">
+<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 0px" id="judge_inquiry_after_defendant_reply">
     <legend> 审判员询问
     </legend>
     <div class="layui-field-box" >
@@ -243,7 +243,7 @@
                         <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 100px;">
                           <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
                             <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.judge_inquiry_after_defendant_reply[index].answer[aindex].name"
-                                            :options="getAccuserMergeDefendant" placeholder="请选择原被告"
+                                            :options="getAccuserMergeDefendant" placeholder="请选择当事人"
                                             style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                           </div>
                           <div class="layui-input-block">

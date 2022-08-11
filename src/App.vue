@@ -265,14 +265,14 @@ export default {
     }
   },
   methods: {
-    isShowThirdParty(){ //第三人信息是否折叠 默认为 1 不折叠
-      if(this.isShow.third_party_show == 1){
-        this.isShow.third_party_show = 0
-      }
-      else{
-        this.isShow.third_party_show = 1
-      }
-    },
+    // isShowThirdParty(){ //第三人信息是否折叠 默认为 1 不折叠
+    //   if(this.isShow.third_party_show == 1){
+    //     this.isShow.third_party_show = 0
+    //   }
+    //   else{
+    //     this.isShow.third_party_show = 1
+    //   }
+    // },
     SetIsAvoid(value) {
       this.is_avoid = value
     },

@@ -15,7 +15,7 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
               <div class="layui-input-inline" style="margin-left:0px;margin-top:30px ;">
                 <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.argue[index].name"
-                                :options="getAccuserMergeDefendant" placeholder="请选择原被告"
+                                :options="getAccuserMergeDefendant" placeholder="请选择当事人"
                                 style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
               </div>
               <div class="layui-input-block">
