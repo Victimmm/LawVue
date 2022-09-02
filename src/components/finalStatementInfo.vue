@@ -16,7 +16,7 @@
 <!--              <input type="text" v-model="data.final_statement_info[0].name" placeholder="请输入原被告" autocomplete="off"-->
 <!--                     class="layui-input" style="width: 100%;float: left;">-->
               <VueMultiselect :option-height="38" :show-labels="false" v-model="data.final_statement_info[index].name"
-                              :options="getPlaintiffName" placeholder="请选择原被告"
+                              :options="getPlaintiffName" placeholder="请选择当事人"
                               style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
             </div>
             <div class="layui-input-block">

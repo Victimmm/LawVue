@@ -17,7 +17,7 @@
           <div class="layui-form-item" style="margin-bottom: -15px" pane>
             <label class="layui-form-label">审判员</label>
             <div class="layui-input-block" >
-              <input type="text" v-model="data.inquiry_info[index].inquiry_question" placeholder="问题" autocomplete="off"
+              <input type="text" v-model="data.inquiry_info[index].inquiry_question" placeholder="请输入问题" autocomplete="off"
                      class="layui-input" style="width: 100%;float: left;">
             </div>
           </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div " >
-                    <textarea type="text" v-model="data.inquiry_info[index].inquiry_answer[aindex].answer" placeholder="回答" autocomplete="off"
+                    <textarea type="text" v-model="data.inquiry_info[index].inquiry_answer[aindex].answer" placeholder="请输入回答" autocomplete="off"
                             class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
                     <button type="button" @click="delete_component('inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
                             data-type="text"
@@ -114,7 +114,7 @@ export default {
       // console.log(inquiry_data_recall.inquiryInfo)
       this.data = inquiry_data_recall.inquiryInfo
     }else{
-      this.axios.get('/record/question').then((result) =>{
+      this.axios.get('/record/inquiry/question').then((result) =>{
         const questions = result.data.data;
         this.question_list = questions
         if (this.question_list.length != 0 ){

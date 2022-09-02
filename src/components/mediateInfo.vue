@@ -243,7 +243,7 @@
             最终认定调解方案
           </div>
           <div class="layui-input-block">
-                  <textarea v-model="data.final_mediate_plan" placeholder="请填写原被告都统一且法院最终确认的调解方案"
+                  <textarea v-model="data.final_mediate_plan" placeholder="请输入当事人都统一且法院最终确认的调解方案"
                             class="layui-textarea"></textarea>
           </div>
         </div>
