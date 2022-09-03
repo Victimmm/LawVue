@@ -80,7 +80,7 @@
           <div class="layui-form-item" style="margin-bottom: -20px" pane>
             <label class="layui-form-label">审判员</label>
             <div class="layui-input-block" >
-              <input type="text" v-model="data.judge_inquiry_after_accuser_claim[index].question" placeholder="问题" autocomplete="off"
+              <input type="text" v-model="data.judge_inquiry_after_accuser_claim[index].question" placeholder="请输入问题" autocomplete="off"
                      class="layui-input" style="width: 100%;float: left;">
             </div>
           </div>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="layui-input-block">
                   <div class="myselect-div " >
-                  <textarea type="text" v-model="data.judge_inquiry_after_accuser_claim[index].answer[aindex].answer" placeholder="回答" autocomplete="off"
+                  <textarea type="text" v-model="data.judge_inquiry_after_accuser_claim[index].answer[aindex].answer" placeholder="请输入回答" autocomplete="off"
                             class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
                     <button type="button" @click="remove_component_accuser_claim('inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
                             data-type="text"
@@ -156,10 +156,10 @@
               </div>
               <div class="layui-form-item" style="width:100%;">
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
-                        @click="add_component('defendant_reply',index+1)">添加其他被告答辩
+                        @click="add_component('defendant_reply',index+1)">添加被告答辩
                 </button>
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left:5px"
-                        @click="delete_component('defendant_reply',index)"> 删除其他被告答辩
+                        @click="delete_component('defendant_reply',index)"> 删除被告答辩
                 </button>
               </div>
             </template>
@@ -180,7 +180,7 @@
                     审判员
                   </div>
                   <div class="layui-input-block">
-                    <input type="text" autocomplete="off" class="layui-input" value="请第三人进行述称">
+                    <input type="text" autocomplete="off" class="layui-input" value="请第三人进行述称。">
                   </div>
                 </div>
 
@@ -234,7 +234,7 @@
                     <div class="layui-form-item" style="margin-bottom: -20px" pane>
                       <label class="layui-form-label">审判员</label>
                       <div class="layui-input-block" >
-                        <input type="text" v-model="data.judge_inquiry_after_defendant_reply[index].question" placeholder="问题" autocomplete="off"
+                        <input type="text" v-model="data.judge_inquiry_after_defendant_reply[index].question" placeholder="请输入问题" autocomplete="off"
                                class="layui-input" style="width: 100%;float: left;">
                       </div>
                     </div>
@@ -248,8 +248,8 @@
                           </div>
                           <div class="layui-input-block">
                             <div class="myselect-div " >
-                  <textarea type="text" v-model="data.judge_inquiry_after_defendant_reply[index].answer[aindex].answer" placeholder="回答" autocomplete="off"
-                            class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                  <textarea type="text" v-model="data.judge_inquiry_after_defendant_reply[index].answer[aindex].answer" placeholder="请输入回答" autocomplete="off"
+                            class="layui-textarea" style="width: 85%;float: left;min-height:100px"></textarea>
                               <button type="button" @click="remove_component_defendant_reply('inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
                                       data-type="text"
                                       style="float: right;height:100px;width:7.5%">

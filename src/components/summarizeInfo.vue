@@ -84,7 +84,7 @@
               <div class="layui-form-item" style="margin-bottom: -20px" pane>
                 <label class="layui-form-label">审判员</label>
                 <div class="layui-input-block" >
-                  <input type="text" v-model="data.summarize_inquiry[index].question" placeholder="问题" autocomplete="off"
+                  <input type="text" v-model="data.summarize_inquiry[index].question" placeholder="请输入问题" autocomplete="off"
                          class="layui-input" style="width: 100%;float: left;">
                 </div>
               </div>
@@ -123,7 +123,7 @@
                     </div>
                     <div class="layui-input-block">
                       <div class="myselect-div " >
-                      <textarea type="text" v-model="data.summarize_inquiry[index].answer[aindex].answer" placeholder="回答" autocomplete="off"
+                      <textarea type="text" v-model="data.summarize_inquiry[index].answer[aindex].answer" placeholder="请输入回答" autocomplete="off"
                                 class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
                         <button type="button" @click="delete_component('inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
                                 data-type="text"
