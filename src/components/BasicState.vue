@@ -63,6 +63,7 @@ export default {
         let people_juror = this.$store.state.people_juror.filter(i=>i && i.trim()).join("，")
         let court_clerk= this.$store.state.court_clerk
         let content
+        let court_cause = this.$store.state.court_cause.filter(i=>i && i.trim()).join("，")
 
         let third_party_content = ''
         if(third_party != ''){
@@ -72,17 +73,17 @@ export default {
         switch (this.data.state_type) {
           case "1":
             content = "审判员：当事人身份经核对无误，法庭宣布当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
-                "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用简易程序，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）"+third_party_content+"买卖合同纠纷一案，由本院审判" +
+                "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用简易程序，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）"+third_party_content + court_cause+"一案，由本院审判" +
                 "员（"+judge+"）独任审判，书记员（"+court_clerk+"）担任法庭记录。"
                 break
           case  "2":
             content = "审判员：当事人身份经核对无误，法庭宣布当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
-                "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用普通程序独任制程序，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）" +third_party_content+"买卖合同纠纷一案，由本院审判" +
+                "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用普通程序独任制程序，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）" +third_party_content+ court_cause+"买卖合同纠纷一案，由本院审判" +
                 "员（"+judge+"）担任审判长，书记员（"+court_clerk+"）担任法庭记录。"
             break
           case  "3":
             content = "审判员：当事人身份经核对无误，法庭宣布当事人及其诉讼代理人身份符合法律规定，出庭资格合法，可以参" +
-                "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用普通程序合议制，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）"+third_party_content+ "买卖合同纠纷一案，由本院审判" +
+                "加诉讼。现在宣布开庭。北京市海淀区人民法院今天依法适用普通程序合议制，公开审理原告（" + plaintiff + "）诉被告（" + defendant + "）"+third_party_content+ court_cause+"买卖合同纠纷一案，由本院审判" +
                 "员（"+judge+"）担任审判长，与陪审员（"+jurorname+"），人民陪审员（"+people_juror+"）共同组成合议庭，书记员"+court_clerk+"担任法庭记录。"
                 break
           default:

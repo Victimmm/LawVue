@@ -171,9 +171,9 @@
           <div class="layui-form-label ">
             案由
           </div>
-          <div class="layui-input-block" contenteditable="true" >
+          <div class="layui-input-block" contenteditable="true" id="court_cause">
 
-            <VueMultiselect :option-height="38" v-model="data.court_cause"
+            <VueMultiselect :option-height="38" v-model="get_court_cause"
                             :show-labels="false"
                             :options="data.court_cause_list" placeholder="请选择案由"
                             :taggable="true"
@@ -438,6 +438,15 @@ export default {
       set(value) {
         this.data.court_clerk = value
         this.$store.commit('updateCourt_Clerk', value)
+      }
+    },
+    get_court_cause:{
+      get(){
+        return this.$store.state.court_cause
+      },
+      set(value){
+        this.data.court_cause = value
+        this.$store.commit('setCourtCause', value)
       }
     }
   }
