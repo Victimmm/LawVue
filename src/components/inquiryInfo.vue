@@ -9,28 +9,28 @@
           </div>
         </div>
 
-        <div class="layui-form-item" style="margin-bottom: -15px" pane>
-          <label class="layui-form-label">审判员</label>
-        </div>
+<!--        <div class="layui-form-item" style="margin-bottom: -15px" pane>-->
+<!--          <label class="layui-form-label">审判员</label>-->
+<!--        </div>-->
 
         <template v-for="(item, index) in data.inquiry_info" :key="index">
-          <div class="layui-form-item" style="margin-bottom: -15px" pane>
-            <label class="layui-form-label">审判员</label>
-            <div class="layui-input-block" >
-              <input type="text" v-model="data.inquiry_info[index].inquiry_question" placeholder="问题" autocomplete="off"
-                     class="layui-input" style="width: 85%;float: left;">
-              <button type="button"
-                      @click="select_question(index,QAindex)"
-                      class="layui-btn layui-btn-normal"
-                      style="width:15%"
-                      data-type="text">
-                选择问题
-              </button>
-            </div>
-          </div>
+<!--          <div class="layui-form-item" style="margin-bottom: -15px" pane>-->
+<!--            <label class="layui-form-label">审判员</label>-->
+<!--            <div class="layui-input-block" >-->
+<!--              <input type="text" v-model="data.inquiry_info[index].inquiry_question" placeholder="问题" autocomplete="off"-->
+<!--                     class="layui-input" style="width: 85%;float: left;">-->
+<!--              <button type="button"-->
+<!--                      @click="select_question(index,QAindex)"-->
+<!--                      class="layui-btn layui-btn-normal"-->
+<!--                      style="width:15%"-->
+<!--                      data-type="text">-->
+<!--                选择问题-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
           <div class="layui-form-item" pane>
             <template v-for="(aitem, aindex) in data.inquiry_info[index].inquiry_answer" :key="aindex">
-              <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:5px;height: 100px;">
+              <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:0px;height: 100px;">
                 <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
                   <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.inquiry_info[index].inquiry_answer[aindex].name"
                                   :options="inquiryFormGetAccuserMergeDefendant" placeholder="请选择当事人"
@@ -42,10 +42,10 @@
                             class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
                     <button type="button" @click="delete_component('inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
                             data-type="text"
-                            style="float: right;height:100px;width:7.5%">
+                            style="float: right;height:98px;width:7.5%">
                       <i class="layui-icon">&#xe640;</i></button>
                     <button type="button" @click="add_component('inquiry_reply',index,aindex+1)" class="layui-btn layui-btn-sm" data-type="text"
-                            style="float: right;height:100px;width:7.5%">
+                            style="float: right;height:98px;width:7.5%">
                       <i class="layui-icon">&#xe654;</i>
                     </button>
 <!--                    <button @click="delete_component('inquiry_answer',index+1,aindex+1)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"-->

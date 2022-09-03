@@ -63,7 +63,7 @@ export default {
         let people_juror = this.$store.state.people_juror.filter(i=>i && i.trim()).join("，")
         let court_clerk= this.$store.state.court_clerk
         let content
-        let court_cause = this.$store.state.court_cause.filter(i=>i && i.trim()).join("，")
+        let court_cause = this.$store.state.court_cause
 
         let third_party_content = ''
         if(third_party != ''){
