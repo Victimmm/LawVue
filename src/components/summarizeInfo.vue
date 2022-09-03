@@ -153,7 +153,7 @@
       </div>
   </fieldset>
 
-        <fieldset class="layui-elem-field layui-field-title">
+        <fieldset class="layui-elem-field layui-field-title" id="close_court_info">
           <legend>休（闭）庭信息</legend>
           <form class="layui-form">
             <div class="layui-card">

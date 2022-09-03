@@ -282,7 +282,7 @@ export default {
         }
       ],
       final_mediate_plan:'',
-      judge_mediate:"当事人是否能够调解。",
+      judge_mediate:"当事人是否能够调解？",
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(wholeItem!=null &&  "mediateInfo" in wholeItem){

@@ -89,7 +89,7 @@ export default {
         name: "", //原被告
         final_statement: "", //最后陈述意见
       }],
-      judge_finalstatement:"双方发表最后陈述意见。",
+      judge_finalstatement:"各方发表最后陈述意见。",
     };
 
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))

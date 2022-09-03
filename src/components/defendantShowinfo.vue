@@ -13,14 +13,14 @@
 
             <div class="layui-form-item" pane>
               <div class="layui-form-label">
-                请选择被告
+                请选择举证人
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                 <div class="layui-input-block">
                   <div class="myselect-div">
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.defendant_and_third_evidence[index].name"
-                                    :options=getDefendantThirdPartyName placeholder="请选择被告"
+                                    :options=getDefendantThirdPartyName placeholder="请选择举证人"
                                     group-label="defendant"
                                     :group-select="false"
                                     group-values="defendant_name"
@@ -103,7 +103,7 @@
                 证明事项
               </div>
               <div class="layui-input-block">
-              <textarea type="text" v-model="data.defendant_and_third_evidence_witness[index].content" placeholder="证据证明事项"
+              <textarea type="text" v-model="data.defendant_and_third_evidence_witness[index].content" placeholder="请输入证明事项"
                         class="layui-textarea"></textarea>
               </div>
             </div>
@@ -137,7 +137,7 @@
                   </div>
                   <div class="layui-input-block">
                       <textarea type="text" v-model="data.defendant_and_third_evidence_witness[index].witness_testimony[QAindex].question"
-                                placeholder="请选择或输入问题列表" autocomplete="off"
+                                placeholder="请选择或输入问题" autocomplete="off"
                                 style="width: 85%;float: left;min-height: 50px"
                                 class="layui-textarea"></textarea>
                       <button type="button"
@@ -160,7 +160,7 @@
                   <div class="layui-input-block">
                     <div class="myselect-div">
                   <textarea type="text" v-model="data.defendant_and_third_evidence_witness[index].witness_testimony[QAindex].answer"
-                            placeholder="回答" autocomplete="off"
+                            placeholder="请输入回答" autocomplete="off"
                             style="width: 85%;float: left;min-height:100px"
                             class="layui-textarea"></textarea>
 
@@ -890,7 +890,6 @@ export default {
         evidence_type: ""//证据类型，原件或者复印件
       }],
       defendant_is_witness:"2",
-      question_list:["问题1","问题2"],
       witness_type:["证人","鉴定人","勘验人"],
       defendant_and_third_evidence_witness: [
         {
@@ -973,8 +972,8 @@ export default {
         }
       ],
       // counterclaim_accuser_fact_reason:"", //反诉原告 诉讼请求项的事实与理由
-      judge_accuser_and_other_defendant_query:"原告及其他被告对被告提交的证据进行质证。",
-      judge_defendant_evidence:"被告进行举证",
+      judge_accuser_and_other_defendant_query:"原告及其他当事人对被告及第三人提交的证据进行质证。",
+      judge_defendant_evidence:"请被告及第三人进行举证。",
     };
     var wholeItem = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if (wholeItem != null && "defendantShowInfo" in wholeItem) {
@@ -1081,45 +1080,51 @@ export default {
   },
   methods: {
     select_question(witness_index,QAindex){
-      window.layui.use('table', function () {
+      window.layui.use('table', ()  => {
         var table = window.layui.table;
-        let result=[
-          {question:"传唤原告/被告申请的证人/鉴定人/勘验人某某某出庭作证？",witness_index:witness_index,QAindex:QAindex},
-          {question:"证人某某某报告一下自然人情况/或鉴定人/勘验人资质情况。",witness_index:witness_index,QAindex:QAindex},
-          {question:"证人某某报告一下你与当事人某某某之间的身份关系？",witness_index:witness_index,QAindex:QAindex},
-          {question:"鉴定人/勘验人报告一下资质情况？",witness_index:witness_index,QAindex:QAindex},
-          {question:"鉴定人 / 勘验人报告一下你在某鉴定工作或勘验工作中的职责分工？",witness_index:witness_index,QAindex:QAindex},
-          {question:"证人某某宣读一下《作证保证书》。",witness_index:witness_index,QAindex:QAindex},
-          {question:"《作证保证书》上的签字是否是你的真实签名？",witness_index:witness_index,QAindex:QAindex},
-          {question:"证人对《作证保证书》中告知的如实作证的法律义务及作伪证的法律后果是否清楚？",witness_index:witness_index,QAindex:QAindex},
-          {question:"证人，书面证人证言是否是你亲笔签字？鉴定人 / 勘验人，鉴定意见 / 勘验结果报告中的署名是否是你亲笔书写？",witness_index:witness_index,QAindex:QAindex},
-          {question:"证人，下面对待证的事实进行作证陈述？（鉴定人或勘验人可以无需先进行作证陈述）。",witness_index:witness_index,QAindex:QAindex},
-          {question:"原告 / 被告，下面由你方对证人 / 鉴定人 / 勘验人进行主询问？",witness_index:witness_index,QAindex:QAindex},
-          {question:"被告 / 原告，下面由你方对证人 / 鉴定人 / 勘验人进行反询问？",witness_index:witness_index,QAindex:QAindex},
-          {question:"原告 / 被告，你方是否还有补充的问题？",witness_index:witness_index,QAindex:QAindex},
-          {question:"被告 / 原告，你方是否还有补充的问题？",witness_index:witness_index,QAindex:QAindex},
-          {question:"证人，下面进行法官询问？问题一？",witness_index:witness_index,QAindex:QAindex},
-          {question:"证人 / 鉴定人 / 勘验人，是否还有补充的作证陈述？",witness_index:witness_index,QAindex:QAindex},
-          {question:"请证人 / 鉴定人 / 勘验人退庭，到等候席休息等候，待庭审结束，阅读笔录确认无误后签字。",witness_index:witness_index,QAindex:QAindex}
-        ]
-        window.layer.open({
-          type: 1,
-          area: ['50%', '50%'],
-          title: "笔录列表",
-          content: '<div><table id="defendantTable" lay-filter="defendantTable"></table></div>', //先定义一个数据表格的div框
-          success:  () =>{
-            table.render({
-              elem: '#defendantTable',
-              data: result,
-              cols: [[
-                {field: 'question', align:'left', sort: true, title: '问题列表'},
-                {field: 'witness_index', align:'center',sort: true, title: '证人下标',hide:true},
-                {field: 'QAindex', align:'center',sort: true, title: '问题下标',hide:true},
-                {align: 'center', toolbar: '#questionBar', title: '操作',width: 150}
-              ]]
-            });
+        //{serial:0,question:"测试用",witness_index:witness_index,QAindex:QAindex}
+        let questionList=[]
+        this.axios.get('/record/witness/question').then((result) =>{
+          for(let i = 0 ;i < result.data.data.length;i++){
+            let temp={}
+            temp['serial']=result.data.data[i].serial
+            temp['question']=result.data.data[i].question
+            temp['witness_index']=witness_index
+            temp['QAindex']=QAindex
+            questionList.push(temp)
           }
-        });
+
+          window.layer.open({
+            type: 1,
+            area: ['70%', '60%'],
+            content:
+                '<form class="layui-form" >'+
+                '<div class="layui-form-item" style="margin: 10px 5px">\n' +
+                '     <div class="layui-inline">\n' +
+                '         <input id="keyword" class="layui-input" type="text" placeholder="请输入关键字" autocomplete="off"/>\n' +
+                '     </div>\n' +
+                '     <div class="layui-inline">\n' +
+                '          <button type="button" class="layui-btn icon-btn" onclick="questionSearch()"><i class="layui-icon">&#xe615;</i>查询</button>\n' +
+                '     </div>\n' +
+                '</div>'+
+                '     <div><table id="defendantTable" lay-filter="defendantTable"></table> </div>'+
+                '</form>', //先定义一个数据表格的div框
+            success:  () =>{
+              table.render({
+                elem: '#defendantTable',
+                data: questionList,
+                limit:50,
+                cols: [[
+                  {field: 'serial', align:'center', sort: true, title: '序号',width: 80},
+                  {field: 'question', align:'left', sort: false, title: '问题列表'},
+                  {field: 'witness_index', align:'center',sort: false, title: '证人下标',hide:true},
+                  {field: 'QAindex', align:'center',sort: false, title: '问题下标',hide:true},
+                  {align: 'center', toolbar: '#questionBar', title: '操作',width: 150}
+                ]]
+              });
+            }
+          });
+        })
       })
     },
     add_component(datatype, index,QAindex) {

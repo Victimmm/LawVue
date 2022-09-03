@@ -174,10 +174,10 @@ export default {
     delete_component(index){
       this.data.third_party_agent.splice(index, 1)
     },
-    clear_vuex_third_party_item(){         //不加这个会导致vuex中数据存乱了
-      this.$store.state.third_party_item[this.index].third_party_short = ""
-      this.$store.state.third_party_item[this.index].third_party = ""
-    },
+    // clear_vuex_third_party_item(){         //不加这个会导致vuex中数据存乱了
+    //   this.$store.state.third_party_item[this.index].third_party_short = ""
+    //   this.$store.state.third_party_item[this.index].third_party = ""
+    // },
     onCloseClick() {
       if (this.$store.state.third_party_item.length < 2) {
         window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
