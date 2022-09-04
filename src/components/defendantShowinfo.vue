@@ -1034,7 +1034,10 @@ export default {
         let option_label = this.data.defendant_and_third_evidence.filter(i => i.evidence).map(e => {
           return "证据" + this.numberToChinese(e.serial) + "：" + e.evidence;
         })
-        return [{evidence: "全选证据", option_label: option_label}]
+        let witness_label = this.data.defendant_and_third_evidence_witness.filter( i => i.evidence).map(e =>{
+          return "证据" + this.numberToChinese(e.serial) + "：" + e.evidence;
+        })
+        return [{evidence: "全选证据", option_label: option_label.concat(witness_label)}]
       }
     },
     getProofOfCounterDefendant: {
@@ -1370,7 +1373,6 @@ export default {
     },
     defendant_is_witness: {
       handler() {
-        console.log("111")
         if(this.data.defendant_is_witness == '1'){
           for(let i = 0;i < this.data.defendant_and_third_evidence_witness.length;i++){
             this.data.defendant_and_third_evidence_witness[i].serial = this.data.defendant_and_third_evidence.length + i + 1;

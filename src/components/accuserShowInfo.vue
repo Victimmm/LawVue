@@ -441,9 +441,12 @@ export default {
         let option_label = this.data.accuser_evidence.filter(i => i.evidence).map(e => {
           return "证据" + this.numberToChinese(e.serial) + "：" + e.evidence;
         })
+        let witness_label = this.data.accuser_evidence_witness.filter( i => i.evidence).map(e =>{
+          return "证据" + this.numberToChinese(e.serial) + "：" + e.evidence;
+        })
         // let optionn_label={evidence_serial:evidence_serial,name_serial:name_serial}
 
-        return [{evidence: "全选证据", option_label: option_label}]
+        return [{evidence: "全选证据", option_label: option_label.concat(witness_label)}]
       },
     },
     getQuizzerName: {

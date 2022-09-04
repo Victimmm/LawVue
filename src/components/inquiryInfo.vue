@@ -123,7 +123,6 @@ export default {
         this.data.inquiry_info[witnessIndex].inquiry_question=obj.data.question
         window.layer.close(window.layer.index)
       });
-
     })
     let inquiry_data_recall = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(inquiry_data_recall != null && "inquiryInfo" in inquiry_data_recall){

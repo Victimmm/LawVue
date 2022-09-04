@@ -121,6 +121,7 @@
 <!--      </div>-->
     </fieldset>
 
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 25px" id="defendant_reply">
     <legend>被告答辩</legend>
     <div class="layui-field-box" >
       <div class="layui-card">
@@ -167,7 +168,7 @@
           </div>
         </div>
       </div>
-
+  </fieldset>
 
 
 <!--    <div v-if = "this.$store.state.third_party_item[0].third_party != ''">-->

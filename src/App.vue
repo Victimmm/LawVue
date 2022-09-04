@@ -220,6 +220,19 @@ export default {
       })
     })
 
+    const navContents = document.querySelectorAll('fieldset')
+    const id_list = []
+    const title = []
+    let lay_content = ""
+    this.$nextTick(function () {
+      navContents.forEach(item => {
+        title.push(item.getElementsByTagName('legend')[0].innerHTML)
+        id_list.push(item.getAttribute("id"))
+        lay_content = lay_content + "        <li ><a href='#" + item.getAttribute("id") + "'><cite>" + item.getElementsByTagName('legend')[0].innerHTML + "<cite></a></li>\n"
+      })
+      this.onScroll()
+    })
+
     window.addEventListener('scroll', this.onScroll)
     // 添加目录控件
     this.$nextTick(function () {
@@ -231,19 +244,14 @@ export default {
           type: 1,
           content: "    <ul class=\"site-dir layui-layer-wrap\" id=\"content_list\" style=\"display: block;\">\n" +
               "\n" +
+              lay_content+
               "    </ul>",
           shade: 0,
           closeBtn: 0,
-          offset: 'r',
-          success: () => {
-
-
-            this.navChange()
-          }
+          offset: 'r'
         });
       });
     })
-
   },
   destroy() {
     // 必须移除监听器，不然当该vue组件被销毁了，监听器还在就会出错
@@ -553,24 +561,43 @@ export default {
     back() {
       window.location.href = '/view/record'
     },
+    "$store.state.is_defendant_evidence"(){
+      setTimeout(() => {
+        this.navChange()
+      }, 1000);
+    }
 
     navChange() {
       const navContents = document.querySelectorAll('fieldset')
       const id_list = []
       const title = []
-      let innerhtml = ""
-      this.$nextTick(function () {
+      let change_content = ""
+      this.$nextTick( () => {
         navContents.forEach(item => {
           title.push(item.getElementsByTagName('legend')[0].innerHTML)
           id_list.push(item.getAttribute("id"))
-          innerhtml = innerhtml + "        <li ><a href='#" + item.getAttribute("id") + "'><cite>" + item.getElementsByTagName('legend')[0].innerHTML + "<cite></a></li>\n"
+          change_content = change_content + "        <li ><a href='#" + item.getAttribute("id") + "'><cite>" + item.getElementsByTagName('legend')[0].innerHTML + "<cite></a></li>\n"
         })
-        document.getElementById("content_list").innerHTML = innerhtml
+        // document.getElementById("content_list").innerHTML = innerhtml
+
+        window.layer.closeAll()
+        window.layer.open({
+          title: '目录',
+          skin: 'myskin',
+          type: 1,
+          content: "    <ul class=\"site-dir layui-layer-wrap\" id=\"content_list\" style=\"display: block;\">\n" +
+              "\n" +
+              change_content+
+              "    </ul>",
+          shade: 0,
+          closeBtn: 0,
+          offset: 'r',
+          success: ()=>{
+            this.onScroll()
+          }
+        });
         this.onScroll()
       })
-
-
-      //              "        <li ><a href=\"#BasicInfo\"><cite>基本信息</cite></a></li>\n" +
 
 
     }
