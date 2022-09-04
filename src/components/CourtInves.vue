@@ -173,9 +173,8 @@
 
 <!--    <div v-if = "this.$store.state.third_party_item[0].third_party != ''">-->
 <!--  影响目录生成 先注释掉了-->
-  <div>
 
-      <fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 0px" id="judge_inquiry_before_third_state">
+      <fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 0px" id="judge_inquiry_before_third_state"  v-if = "this.$store.state.third_party_item[0].third_party != ''">
         <legend> 审判员询问
         </legend>
         <div class="layui-field-box" >
@@ -227,7 +226,7 @@
         </div>
       </fieldset>
 
-      <fieldset class="layui-elem-field layui-field-title"  style="margin-top:28px" id="third_party_state">
+      <fieldset class="layui-elem-field layui-field-title"  style="margin-top:28px" id="third_party_state"  v-if = "this.$store.state.third_party_item[0].third_party != ''">
         <legend>第三人述称</legend>
         <div class="layui-field-box" >
           <div class="layui-card">
@@ -273,8 +272,7 @@
             </div>
           </div>
         </div>
-      </fieldset>
-    </div>
+      </fieldset >
 
 
   <fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 0px" id="judge_inquiry_after_defendant_reply">

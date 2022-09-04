@@ -561,11 +561,7 @@ export default {
     back() {
       window.location.href = '/view/record'
     },
-    "$store.state.is_defendant_evidence"(){
-      setTimeout(() => {
-        this.navChange()
-      }, 1000);
-    }
+
 
     navChange() {
       const navContents = document.querySelectorAll('fieldset')
@@ -614,6 +610,16 @@ export default {
       }, 1000);
     },
     is_avoid() {
+      setTimeout(() => {
+        this.navChange()
+      }, 1000);
+    },
+    "$store.state.is_defendant_evidence"(){
+      setTimeout(() => {
+        this.navChange()
+      }, 1000);
+    },
+    "$store.state.third_party_item"(){
       setTimeout(() => {
         this.navChange()
       }, 1000);
