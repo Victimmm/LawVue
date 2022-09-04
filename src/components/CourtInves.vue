@@ -170,7 +170,9 @@
 
 
 
-    <div v-if = "this.$store.state.third_party_item[0].third_party != ''">
+<!--    <div v-if = "this.$store.state.third_party_item[0].third_party != ''">-->
+<!--  影响目录生成 先注释掉了-->
+  <div>
 
       <fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 0px" id="judge_inquiry_before_third_state">
         <legend> 审判员询问
