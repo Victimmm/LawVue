@@ -28,7 +28,22 @@
           </template>
         </div>
 
-        <div class="layui-form-item " pane>
+        <div class="layui-form-item " pane v-show = !this.$store.state.plaintiff_item[0].accuser>
+            <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
+              <label class="layui-form-label">未填写原告信息</label>
+              <div class="layui-input-block">
+                <div class="myradiomargin">
+                  <input type="radio" value="1" lay-ignore  class="myradio" name="noneAccuser"><label>
+                  听清楚了 </label>
+                  <input type="radio" value="2" lay-ignore  class="myradio" name="noneAccuser"><label>
+                  没听清楚 </label>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item " pane v-show = this.$store.state.plaintiff_item[0].accuser>
           <template v-for="(item, index) in getDefendantName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
               <label class="layui-form-label">{{ item }}</label>
@@ -44,7 +59,21 @@
           </template>
         </div>
 
-        <div class="layui-form-item " pane>
+        <div class="layui-form-item " pane v-show = !this.$store.state.defendant_item[0].defendant>
+          <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
+            <label class="layui-form-label">未填写被告信息</label>
+            <div class="layui-input-block">
+              <div class="myradiomargin">
+                <input type="radio" value="1" lay-ignore  class="myradio" name="noneDefendant"><label>
+                听清楚了 </label>
+                <input type="radio" value="2" lay-ignore  class="myradio" name="noneDefendant"><label>
+                没听清楚 </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="layui-form-item " pane v-show = this.$store.state.defendant_item[0].defendant>
           <template v-for="(item, index) in getThirdPartyName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
               <label class="layui-form-label">{{ item }}</label>
@@ -60,6 +89,21 @@
           </template>
         </div>
 
+
+<!--        <div class="layui-form-item " pane v-show = !this.$store.state.third_party_item[0].third_party>-->
+<!--          <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">-->
+<!--            <label class="layui-form-label">未填写第三人信息</label>-->
+<!--            <div class="layui-input-block">-->
+<!--              <div class="myradiomargin">-->
+<!--                <input type="radio" value="1" lay-ignore  class="myradio" name="noneThirdParty"><label>-->
+<!--                听清楚了 </label>-->
+<!--                <input type="radio" value="2" lay-ignore  class="myradio" name="noneThirdParty"><label>-->
+<!--                没听清楚 </label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
         <div class="layui-form-item" pane>
           <div class="layui-form-label">
             审判员
@@ -70,7 +114,23 @@
           </div>
         </div>
 
-        <div class="layui-form-item " pane>
+        <div class="layui-form-item " pane v-show = !this.$store.state.plaintiff_item[0].accuser>
+          <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
+            <label class="layui-form-label">未填写原告信息</label>
+            <div class="layui-input-block">
+              <div class="myradiomargin">
+                <input type="radio" value="1" lay-ignore  class="myradio" name="noAccuser"><label>
+                不申请回避 </label>
+                <input type="radio" value="2" lay-ignore  class="myradio" name="noAccuser"><label>
+                申请回避 </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="layui-form-item " pane v-show = this.$store.state.plaintiff_item[0].accuser>
           <template v-for="(item, index) in getPlaintiffName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
               <label class="layui-form-label">{{ item }}</label>
@@ -89,7 +149,7 @@
           </template>
         </div>
 
-        <div class="layui-form-item " pane>
+        <div class="layui-form-item " pane v-show = this.$store.state.defendant_item[0].defendant>
           <template v-for="(item, index) in getDefendantName" :key='index'>
             <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
               <div class="layui-form-label">
@@ -107,6 +167,20 @@
               </div>
             </div>
           </template>
+        </div>
+
+        <div class="layui-form-item " pane v-show = !this.$store.state.defendant_item[0].defendant>
+          <div class="layui-inline" style="width: 100%;margin-bottom:0;height: 38px;">
+            <label class="layui-form-label">未填写被告信息</label>
+            <div class="layui-input-block">
+              <div class="myradiomargin">
+                <input type="radio" value="1" lay-ignore  class="myradio" name="nodefenfant"><label>
+                不申请回避 </label>
+                <input type="radio" value="2" lay-ignore  class="myradio" name="nodefenfant"><label>
+                申请回避 </label>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="layui-form-item " pane>

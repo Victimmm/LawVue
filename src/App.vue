@@ -207,6 +207,7 @@ export default {
         third_party_show: 1,
       }
     }
+
   },
   mounted() {
     window.layui.use('form', () => {
@@ -262,6 +263,11 @@ export default {
           third_party
         ]
       }
+    },
+    third_party_tag(){
+        //监听第三人数据变化 结合watch完成目录更新
+        let third_party_temp = this.$store.state.third_party_item[0].third_party
+        return third_party_temp
     }
   },
   methods: {
@@ -585,6 +591,11 @@ export default {
         this.navChange()
       }, 1000);
     },
+    third_party_tag(){
+      //想在这里根据第三人信息的更改 结合watch 重新渲染一下目录 但是失败了
+      //可以监听到第三人的数据变化 但是重新调用navchange的函数没有使目录更新
+      // this.navChange()
+    }
 
   }
 }
