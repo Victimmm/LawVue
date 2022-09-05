@@ -116,14 +116,14 @@ export default {
     VueMultiselect
   },
   mounted() {
-    window.layui.use("table",  () =>{
-      window.layui.table.on('tool(inquiryTable)',  (obj) =>{
-        console.log(obj)
-        let witnessIndex=obj.data.question_index
-        this.data.inquiry_info[witnessIndex].inquiry_question=obj.data.question
-        window.layer.close(window.layer.index)
-      });
-    })
+    // window.layui.use("table",  () =>{
+    //   window.layui.table.on('tool(inquiryTable)',  (obj) =>{
+    //     console.log(obj)
+    //     let witnessIndex=obj.data.question_index
+    //     this.data.inquiry_info[witnessIndex].inquiry_question=obj.data.question
+    //     window.layer.close(window.layer.index)
+    //   });
+    // })
     let inquiry_data_recall = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(inquiry_data_recall != null && "inquiryInfo" in inquiry_data_recall){
       // console.log(inquiry_data_recall.inquiryInfo)
@@ -164,35 +164,35 @@ export default {
   },
 
   methods: {
-    select_question(question_index){
-      window.layui.use('table', function () {
-        var table = window.layui.table;
-
-        let result=[
-          {question:"问题1",question_index:question_index},
-          {question:"问题2",question_index:question_index},
-          {question:"问题3",question_index:question_index},
-        ]
-        window.layer.open({
-          type: 1,
-          area: ['50%', '50%'],
-          title: "笔录列表",
-          content: '<div><table id="inquiryTable" lay-filter="inquiryTable"></table></div>', //先定义一个数据表格的div框
-          success:  () =>{
-            table.render({
-              elem: '#inquiryTable',
-              data: result,
-              cols: [[
-                {field: 'question', align:'left', sort: true, title: '问题列表'},
-                {field: 'witness_index', align:'center',sort: true, title: '证人下标',hide:true},
-                {field: 'QAindex', align:'center',sort: true, title: '问题下标',hide:true},
-                {align: 'center', toolbar: '#questionBar', title: '操作',width: 150}
-              ]]
-            });
-          }
-        });
-      })
-    },
+    // select_question(question_index){
+    //   window.layui.use('table', function () {
+    //     var table = window.layui.table;
+    //
+    //     let result=[
+    //       {question:"问题1",question_index:question_index},
+    //       {question:"问题2",question_index:question_index},
+    //       {question:"问题3",question_index:question_index},
+    //     ]
+    //     window.layer.open({
+    //       type: 1,
+    //       area: ['50%', '50%'],
+    //       title: "笔录列表",
+    //       content: '<div><table id="inquiryTable" lay-filter="inquiryTable"></table></div>', //先定义一个数据表格的div框
+    //       success:  () =>{
+    //         table.render({
+    //           elem: '#inquiryTable',
+    //           data: result,
+    //           cols: [[
+    //             {field: 'question', align:'left', sort: true, title: '问题列表'},
+    //             {field: 'witness_index', align:'center',sort: true, title: '证人下标',hide:true},
+    //             {field: 'QAindex', align:'center',sort: true, title: '问题下标',hide:true},
+    //             {align: 'center', toolbar: '#questionBar', title: '操作',width: 150}
+    //           ]]
+    //         });
+    //       }
+    //     });
+    //   })
+    // },
 
     add_component(datatype,index_info_index,inquiry_answer_index) {
       switch (datatype) {

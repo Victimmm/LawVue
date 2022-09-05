@@ -175,7 +175,7 @@
         <legend> 审判员询问
         </legend>
         <div class="layui-field-box" >
-          <div class="layui-card">
+          <div class="layui-card" >
             <div class="layui-card-body">
               <form class="layui-form layui-form-pane" action="" onsubmit="return false">
                 <template v-for="(item, index) in data.judge_inquiry_before_third_state" :key="index">
@@ -277,7 +277,7 @@
     </legend>
     <div class="layui-field-box" >
 <!--      <div class="layui-card" v-show = 'isShow.judge_inquiry2_show == 1'>-->
-      <div class="layui-card">
+      <div class="layui-card" style="margin-left: -15px">
         <div class="layui-card-body">
           <form class="layui-form layui-form-pane">
             <div class="layui-card">
@@ -326,7 +326,7 @@
               </div>
             </div>
 
-            <div class="layui-form-item" pane>
+            <div class="layui-form-item" pane style="margin-left: 15px">
               <label class="layui-form-label">是否反诉</label>
               <div class="layui-input-block">
                 <div class="myradiomargin">
