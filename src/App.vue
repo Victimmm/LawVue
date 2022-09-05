@@ -274,7 +274,9 @@ export default {
     },
     third_party_tag(){
         //监听第三人数据变化 结合watch完成目录更新
-        let third_party_temp = this.$store.state.third_party_item[0].third_party
+        //当third_party第一项的姓名为空，并且长度为1 third_party_item 为true 否则为false
+        let third_party_temp = (this.$store.state.third_party_item.length == 1 && !this.$store.state.third_party_item[0].third_party)
+        // console.log(third_party_temp)
         return third_party_temp
     }
   },
@@ -565,7 +567,7 @@ export default {
       setTimeout(() => {
         this.navChange()
       }, 1000);
-    }
+    },
 
     navChange() {
       const navContents = document.querySelectorAll('fieldset')
@@ -618,10 +620,15 @@ export default {
         this.navChange()
       }, 1000);
     },
+    "$store.state.third_party_item"() {
+      setTimeout(() => {
+        this.navChange()
+      }, 1000);
+    },
     third_party_tag(){
-      //想在这里根据第三人信息的更改 结合watch 重新渲染一下目录 但是失败了
-      //可以监听到第三人的数据变化 但是重新调用navchange的函数没有使目录更新
-      // this.navChange()
+      setTimeout(() => {
+        this.navChange()
+      }, 1000);
     }
 
   }
