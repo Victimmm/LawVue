@@ -620,11 +620,11 @@ export default {
         this.navChange()
       }, 1000);
     },
-    "$store.state.third_party_item"() {
-      setTimeout(() => {
-        this.navChange()
-      }, 1000);
-    },
+    // "$store.state.third_party_item"() {
+    //   setTimeout(() => {
+    //     this.navChange()
+    //   }, 1000);
+    // },
     "$store.state.is_defendant_evidence"(){
       setTimeout(() => {
         this.navChange()

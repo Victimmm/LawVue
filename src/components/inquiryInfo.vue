@@ -14,11 +14,11 @@
 <!--        </div>-->
 
         <template v-for="(item, index) in data.inquiry_info" :key="index">
-<!--          <div class="layui-form-item" style="margin-bottom: -15px" pane>-->
-<!--            <label class="layui-form-label">审判员</label>-->
-<!--            <div class="layui-input-block" >-->
-<!--              <input type="text" v-model="data.inquiry_info[index].inquiry_question" placeholder="问题" autocomplete="off"-->
-<!--                     class="layui-input" style="width: 85%;float: left;">-->
+          <div class="layui-form-item" style="margin-bottom: -15px" pane>
+            <label class="layui-form-label">审判员</label>
+            <div class="layui-input-block" >
+              <input type="text" v-model="data.inquiry_info[index].inquiry_question" placeholder="问题" autocomplete="off"
+                     class="layui-input" style="width: 100%;float: left;">
 <!--              <button type="button"-->
 <!--                      @click="select_question(index,QAindex)"-->
 <!--                      class="layui-btn layui-btn-normal"-->
@@ -26,8 +26,8 @@
 <!--                      data-type="text">-->
 <!--                选择问题-->
 <!--              </button>-->
-<!--            </div>-->
-<!--          </div>-->
+            </div>
+          </div>
           <div class="layui-form-item" pane>
             <template v-for="(aitem, aindex) in data.inquiry_info[index].inquiry_answer" :key="aindex">
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;margin-top:0px;height: 100px;">
