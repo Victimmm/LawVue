@@ -625,6 +625,11 @@ export default {
         this.navChange()
       }, 1000);
     },
+    "$store.state.is_defendant_evidence"(){
+      setTimeout(() => {
+        this.navChange()
+      }, 1000);
+    },
     third_party_tag(){
       setTimeout(() => {
         this.navChange()
