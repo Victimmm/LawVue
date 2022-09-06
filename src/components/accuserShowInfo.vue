@@ -17,13 +17,13 @@
             <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
               <label class="layui-form-label">证据 {{ numberToChinese(item.serial) }}</label>
               <div class="layui-input-block">
-                <div class="layui-input-inline" style="width:30%;margin-left: 0">
+                <div class="layui-input-inline" style="width:30%;margin-left: 0;">
                   <VueMultiselect :option-height="38" :show-labels="false"
                                   v-model="data.accuser_evidence[index].evidence_type"
                                   :options="['复印件','原件']" placeholder="请选择证据类型"
                                   style="line-height: 16px;width: 100%; min-height: 38px;"></VueMultiselect>
                 </div>
-                <div class="layui-input-inline" style="width:70%;margin-left: 0">
+                <div class="layui-input-inline" style="width:70%;margin-left: 0; ">
                   <input type="text" placeholder="请输入证据名称" class="layui-input"
                          v-model="data.accuser_evidence[index].evidence">
                 </div>
@@ -140,7 +140,7 @@
                                     style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
-                    <div class="myselect-div">
+                    <div class="myselect-div" style="max-width: 1500px">
                   <textarea type="text" v-model="data.accuser_evidence_witness[index].witness_testimony[QAindex].answer"
                             placeholder="请输入回答" autocomplete="off"
                             style="width: 85%;float: left;min-height:100px"
@@ -204,7 +204,7 @@
                 </div>
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                   <div class="layui-input-block">
-                    <div class="myselect-div">
+                    <div class="myselect-div" style="max-width: 1500px">
                       <VueMultiselect :option-height="38" :show-labels="false"
                                       v-model="data.defendant_and_other_accuser_query[index].name"
                                       :options=getCrossExaminationName placeholder="请选择质证人"
@@ -223,7 +223,7 @@
                 </div>
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                   <div class="layui-input-block">
-                    <div class="myselect-div">
+                    <div class="myselect-div" style="max-width: 1500px">
                       <VueMultiselect :option-height="38" :show-labels="false"
                                       v-model="data.defendant_and_other_accuser_query[index].evidence"
                                       :options=getProofPlaintiff placeholder="请选择证据"

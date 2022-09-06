@@ -20,7 +20,7 @@ export default createStore({
                 let plaintiff_item = [{accuser:"",accuser_short: "",tag:guid()}]
                 let defendant_item = [{defendant:"",defendant_short: "",tag:guid()}]
                 let third_party_item = [{third_party:"",third_party_short: "",tag:guid()}]
-                let court_cause = ['']
+                let court_cause = ''
                 let chief_judge_name = ['']
                 let juror_name = ['']
                 let judge_name = ['']
@@ -106,7 +106,7 @@ export default createStore({
             plaintiff_item:[{accuser:"",accuser_short: "",tag:guid()}],
             defendant_item: [{defendant:"",defendant_short: "",tag:guid()}],
             third_party_item: [{third_party:"",third_party_short: "",tag:guid()}],
-            court_cause:[''],
+            court_cause:'',
             chief_judge_name: [""],
             juror_name: [""],
             judge_name: [""],

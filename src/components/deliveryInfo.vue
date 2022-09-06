@@ -92,7 +92,7 @@
             <label class="layui-form-label">电子邮件地址</label>
             <div class="layui-input-block">
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 38px;">
-                <input type="text" v-model="data.delivery_info[index].email" placeholder="请输入电子邮件地址" lay-verify="email" autocomplete="off"
+                <input type="text" v-model="data.delivery_info[index].email" placeholder="请输入电子邮件地址" autocomplete="off"
                        class="layui-input">
               </div>
             </div>
