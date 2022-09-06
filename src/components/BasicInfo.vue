@@ -235,7 +235,6 @@ export default {
             this.$store.commit('judgeChange', ['judge', 0, this.data.judge[0].name])
           })
           .then(function () {
-
           });
       }
       this.axios.get('/record/court/cause').then((result) =>{

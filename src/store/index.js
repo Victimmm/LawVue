@@ -74,6 +74,7 @@ export default createStore({
                             people_juror[j] = wholeItem.BasicInfo.people_juror[j].name
                         }
                         court_clerk = wholeItem.BasicInfo.court_clerk
+                        court_cause = wholeItem.BasicInfo.court_cause
                     }
                     if ("CourtInves" in wholeItem) {
                         counterclaim_defendant_today_is_reply = wholeItem.CourtInves.counterclaim_defendant_today_is_reply
@@ -82,7 +83,6 @@ export default createStore({
                     if("accuserShowInfo" in wholeItem){
                         is_defendant_evidence = wholeItem.accuserShowInfo.is_defendant_evidence
                     }
-
 
                 }
                 return {

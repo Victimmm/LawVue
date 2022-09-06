@@ -595,10 +595,10 @@ export default {
           closeBtn: 0,
           offset: 'r',
           success: ()=>{
+            console.log("3123123123123123")
             this.onScroll()
           }
         });
-        this.onScroll()
       })
 
 
