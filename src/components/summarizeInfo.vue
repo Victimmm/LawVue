@@ -22,7 +22,7 @@
           <form class="layui-form layui-form-pane" action="">
 
             <template v-for="(item, index) in data.summarize_inquiry" :key="index">
-              <div class="layui-form-item" style="margin-bottom: -20px" pane>
+              <div class="layui-form-item" style="margin-bottom: 10px" pane>
                 <label class="layui-form-label">审判员</label>
                 <div class="layui-input-block" >
                   <input type="text" v-model="data.summarize_inquiry[index].question" placeholder="请输入问题" autocomplete="off"

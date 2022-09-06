@@ -2,8 +2,8 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <div class="layui-bg-gray">
-    <form class="layui-form" action="" onsubmit="return false">
-      <fieldset class="layui-elem-field layui-field-title" id="BasicInfo">
+    <form class="layui-form" action="" onsubmit="return false" >
+      <fieldset class="layui-elem-field layui-field-title" id="BasicInfo" >
         <legend>案件信息</legend>
         <div class="layui-field-box">
           <BasicInfo></BasicInfo>
@@ -79,7 +79,7 @@
         <!--    &lt;!&ndash; 反诉且今日答辩 或者不反诉的情况显示&ndash;&gt;-->
         <div
             v-if="( $store.state.counterclaim_defendant_today_is_reply=='1' && $store.state.is_counterclaim=='1' ) || $store.state.is_counterclaim=='2'">
-          <fieldset class="layui-elem-field layui-field-title" id="accuserShowInfo" style="margin-top:-28px">
+          <fieldset class="layui-elem-field layui-field-title" id="accuserShowInfo" style="margin-top:-10px">
             <legend>原告举证</legend>
             <div class="layui-field-box">
               <accuserShowInfo ref="accuserShowInfo"></accuserShowInfo>

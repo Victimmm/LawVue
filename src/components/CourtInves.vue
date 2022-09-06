@@ -77,7 +77,7 @@
       <div class="layui-card-body">
         <form class="layui-form layui-form-pane" action="" onsubmit="return false">
         <template v-for="(item, index) in data.judge_inquiry_after_accuser_claim" :key="index">
-          <div class="layui-form-item" style="margin-bottom: -20px" pane>
+          <div class="layui-form-item" style="margin-bottom: 10px" pane>
             <label class="layui-form-label">审判员</label>
             <div class="layui-input-block" >
               <input type="text" v-model="data.judge_inquiry_after_accuser_claim[index].question" placeholder="请输入问题" autocomplete="off"
@@ -179,7 +179,7 @@
             <div class="layui-card-body">
               <form class="layui-form layui-form-pane" action="" onsubmit="return false">
                 <template v-for="(item, index) in data.judge_inquiry_before_third_state" :key="index">
-                  <div class="layui-form-item" style="margin-bottom: -20px" pane>
+                  <div class="layui-form-item" style="margin-bottom: 10px" pane>
                     <label class="layui-form-label">审判员</label>
                     <div class="layui-input-block" >
                       <input type="text" v-model="data.judge_inquiry_before_third_state[index].question" placeholder="请输入问题" autocomplete="off"
@@ -284,7 +284,7 @@
               <div class="layui-card-body">
                 <form class="layui-form layui-form-pane" action="" onsubmit="return false">
                   <template v-for="(item, index) in data.judge_inquiry_after_defendant_reply" :key="index">
-                    <div class="layui-form-item" style="margin-bottom: -20px" pane>
+                    <div class="layui-form-item" style="margin-bottom: 10px" pane>
                       <label class="layui-form-label">审判员</label>
                       <div class="layui-input-block" >
                         <input type="text" v-model="data.judge_inquiry_after_defendant_reply[index].question" placeholder="请输入问题" autocomplete="off"

@@ -181,7 +181,7 @@
     </div>
   </div>
 
-  <fieldset class="layui-elem-field layui-field-title" id="defendant_and_other_accuser_query" style="margin-top:28px">
+  <fieldset class="layui-elem-field layui-field-title" id="defendant_and_other_accuser_query" style="margin-top:35px">
     <legend>被告及其他当事人质证</legend>
     <div class="layui-field-box">
       <div class="layui-card">
@@ -316,7 +316,7 @@
       <div class="layui-card">
         <div class="layui-card-body">
           <form class="layui-form layui-form-pane">
-          <div class="layui-form-item" pane>
+          <div class="layui-form-item" style="margin-top:10px" pane>
             <label class="layui-form-label">被告是否举证</label>
             <div class="layui-input-block">
               <div class="myradiomargin">

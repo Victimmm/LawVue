@@ -14,7 +14,7 @@
 <!--        </div>-->
 
         <template v-for="(item, index) in data.inquiry_info" :key="index">
-          <div class="layui-form-item" style="margin-bottom: -15px" pane>
+          <div class="layui-form-item" style="margin-bottom: 10px" pane>
             <label class="layui-form-label">审判员</label>
             <div class="layui-input-block" >
               <input type="text" v-model="data.inquiry_info[index].inquiry_question" placeholder="问题" autocomplete="off"
