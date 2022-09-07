@@ -203,10 +203,10 @@
                               class="layui-textarea" style="width: 85%;float: left;min-height:100px"></textarea>
                                 <button type="button" @click="remove_component_third_party_state('inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
                                         data-type="text"
-                                        style="float: right;height:98px;width:7.5%">
+                                        style="float: right;height:100px;width:7.5%">
                                   <i class="layui-icon">&#xe640;</i></button>
                                 <button type="button" @click="add_component_third_party_state('inquiry_reply',index,aindex+1)" class="layui-btn layui-btn-sm" data-type="text"
-                                        style="float: right;height:98px;width:7.5%">
+                                        style="float: right;height:100px;width:7.5%">
                                   <i class="layui-icon">&#xe654;</i>
                                 </button>
                             </div>
@@ -310,10 +310,10 @@
                               class="layui-textarea" style="width: 85%;float: left;min-height:100px"></textarea>
                                 <button type="button" @click="remove_component_defendant_reply('inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
                                         data-type="text"
-                                        style="float: right;height:98px;width:7.5%">
+                                        style="float: right;height:100px;width:7.5%">
                                   <i class="layui-icon">&#xe640;</i></button>
                                 <button type="button" @click="add_component_defendant_reply ('inquiry_reply',index,aindex+1)" class="layui-btn layui-btn-sm" data-type="text"
-                                        style="float: right;height:98px;width:7.5%">
+                                        style="float: right;height:100px;width:7.5%">
                                   <i class="layui-icon">&#xe654;</i>
                                 </button>
                               </div>
