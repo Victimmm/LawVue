@@ -204,7 +204,7 @@
                 </div>
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                   <div class="layui-input-block">
-                    <div class="myselect-div" style="max-width: 1500px">
+                    <div class="myselect-div">
                       <VueMultiselect :option-height="38" :show-labels="false"
                                       v-model="data.defendant_and_other_accuser_query[index].name"
                                       :options=getCrossExaminationName placeholder="请选择质证人"
@@ -223,7 +223,7 @@
                 </div>
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                   <div class="layui-input-block">
-                    <div class="myselect-div" style="max-width: 1500px">
+                    <div class="myselect-div" style="max-width: 1440px">
                       <VueMultiselect :option-height="38" :show-labels="false"
                                       v-model="data.defendant_and_other_accuser_query[index].evidence"
                                       :options=getProofPlaintiff placeholder="请选择证据"

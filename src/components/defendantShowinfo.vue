@@ -17,7 +17,7 @@
               </div>
               <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                 <div class="layui-input-block">
-                  <div class="myselect-div" style="max-width: 1500px">
+                  <div class="layui-input-inline">
                     <VueMultiselect :option-height="38" :show-labels="false"
                                     v-model="data.defendant_and_third_evidence[index].name"
                                     :options=getDefendantThirdPartyName placeholder="请选择举证人"
@@ -158,7 +158,7 @@
                                     style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                   </div>
                   <div class="layui-input-block">
-                    <div class="myselect-div" style="max-width: 1500px">
+                    <div class="layui-input-inline">
                   <textarea type="text" v-model="data.defendant_and_third_evidence_witness[index].witness_testimony[QAindex].answer"
                             placeholder="请输入回答" autocomplete="off"
                             style="width: 85%;float: left;min-height:100px"
@@ -220,7 +220,7 @@
                 </div>
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                   <div class="layui-input-block">
-                    <div class="myselect-div" style="max-width: 1500px">
+                    <div class="layui-input-inline">
                       <VueMultiselect :option-height="38" :show-labels="false"
                                       v-model="data.accuser_and_other_defendant_query[index].name"
                                       :options=getCrossExaminationName placeholder="请选择质证人"
@@ -239,7 +239,7 @@
                 </div>
                 <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                   <div class="layui-input-block">
-                    <div class="myselect-div" style="max-width: 1500px">
+                    <div class="layui-input-inline">
                       <VueMultiselect :option-height="38" :show-labels="false"
                                       v-model="data.accuser_and_other_defendant_query[index].evidence"
                                       :options=getProofDefendant placeholder="请选择证据"
@@ -404,7 +404,7 @@
                   </div>
                   <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                     <div class="layui-input-block">
-                      <div class="myselect-div" style="max-width: 1500px">
+                      <div class="layui-input-inline">
                         <VueMultiselect :option-height="38" :show-labels="false"
                                         v-model="data.counterclaim_defendant_query[index].counterclaim_defendant"
                                         :options=getCounterDefendantName placeholder="请选择反诉被告"
@@ -425,7 +425,7 @@
                   </div>
                   <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                     <div class="layui-input-block">
-                      <div class="myselect-div" style="max-width: 1500px">
+                      <div class="layui-input-inline">
                         <VueMultiselect :option-height="38" :show-labels="false"
                                         v-model="data.counterclaim_defendant_query[index].evidence"
                                         :options=getProofOfCounterAccuser placeholder="请选择证据"
@@ -529,7 +529,7 @@
                   </div>
                   <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                     <div class="layui-input-block">
-                      <div class="myselect-div" style="max-width: 1500px">
+                      <div class="layui-input-inline">
                         <VueMultiselect :option-height="38" :show-labels="false"
                                         v-model="data.counterclaim_defendant_query[index].counterclaim_defendant"
                                         :options=getCounterDefendantName placeholder="请选择反诉被告"
@@ -550,7 +550,7 @@
                   </div>
                   <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                     <div class="layui-input-block">
-                      <div class="myselect-div" style="max-width: 1500px">
+                      <div class="layui-input-inline">
                         <VueMultiselect :option-height="38" :show-labels="false"
                                         v-model="data.counterclaim_defendant_query[index].evidence"
                                         :options=getProofOfCounterAccuser placeholder="请选择证据"

@@ -19,7 +19,7 @@
 <!--      <div class="layui-card" v-show = 'isShow.summarize_inquiry_show == 1'>-->
       <div class="layui-card" style="margin-left: -15px">
         <div class="layui-card-body" >
-          <form class="layui-form layui-form-pane" action="">
+          <form class="layui-form layui-form-pane">
 
             <template v-for="(item, index) in data.summarize_inquiry" :key="index">
               <div class="layui-form-item" style="margin-bottom: 10px" pane>
@@ -29,36 +29,37 @@
                          class="layui-input" style="width: 100%;float: left;">
                 </div>
               </div>
-              <div class="layui-form-item" pane>
-
+              <form class="layui-form" pane>
                 <template v-for="(aitem, aindex) in data.summarize_inquiry[index].answer" :key="aindex">
-                  <div class="layui-inline" style="width: 100%;margin-bottom:0px;height: 100px;">
-                    <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
-                      <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[index].answer[aindex].name"
-                                      :options="getAccuserMergeDefendant" placeholder="请选择当事人"
-                                      style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
-                    </div>
-                    <div class="layui-input-block">
-                      <div class="myselect-div " >
-                      <textarea type="text" v-model="data.summarize_inquiry[index].answer[aindex].answer" placeholder="请输入回答" autocomplete="off"
-                                class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
-                        <button type="button" @click="delete_component('inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
-                                data-type="text"
-                                style="float: right;height:98px;width:7.5%">
-                          <i class="layui-icon">&#xe640;</i></button>
-                        <button type="button" @click="add_component('inquiry_reply',index,aindex+1)" class="layui-btn layui-btn-sm" data-type="text"
-                                style="float: right;height:98px;width:7.5%">
-                          <i class="layui-icon">&#xe654;</i>
-                        </button>
-                        <!--                    <button @click="delete_component('inquiry_answer',index+1,aindex+1)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"-->
-                        <!--                            data-type="text"-->
-                        <!--                            style="float: right;height:30px;margin-top: 5px;margin-top: 30px;padding: 0 5px;margin-left: 5px">删除-->
-                        <!--                    </button>-->
+                  <div class="layui-form-item" pane>
+                    <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                      <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
+                        <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.summarize_inquiry[index].answer[aindex].name"
+                                        :options="getAccuserMergeDefendant" placeholder="请选择当事人"
+                                        style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                      </div>
+                      <div class="layui-input-block">
+                        <div class="myselect-div " >
+                        <textarea type="text" v-model="data.summarize_inquiry[index].answer[aindex].answer" placeholder="请输入回答" autocomplete="off"
+                                  class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                          <button type="button" @click="delete_component('inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
+                                  data-type="text"
+                                  style="float: right;height:98px;width:7.5%">
+                            <i class="layui-icon">&#xe640;</i></button>
+                          <button type="button" @click="add_component('inquiry_reply',index,aindex+1)" class="layui-btn layui-btn-sm" data-type="text"
+                                  style="float: right;height:98px;width:7.5%">
+                            <i class="layui-icon">&#xe654;</i>
+                          </button>
+                          <!--                    <button @click="delete_component('inquiry_answer',index+1,aindex+1)" type="button" class="layui-btn layui-btn-radius layui-btn-xs"-->
+                          <!--                            data-type="text"-->
+                          <!--                            style="float: right;height:30px;margin-top: 5px;margin-top: 30px;padding: 0 5px;margin-left: 5px">删除-->
+                          <!--                    </button>-->
+                        </div>
                       </div>
                     </div>
                   </div>
                 </template>
-              </div>
+              </form>
               <div class="layui-form-item" style="width:100%;margin-top: -10px;">
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component('inquiry_info',index+1)"> 添加问题</button>
                 <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left: 5px" @click="delete_component('inquiry_info',index)"> 删除问题
