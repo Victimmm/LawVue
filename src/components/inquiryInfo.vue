@@ -128,10 +128,10 @@ export default {
     // })
     let inquiry_data_recall = JSON.parse(localStorage.getItem(this.$store.state.court_number))
     if(inquiry_data_recall != null && "inquiryInfo" in inquiry_data_recall){
-      // console.log(inquiry_data_recall.inquiryInfo)
+      console.log(inquiry_data_recall.inquiryInfo)
       this.data = inquiry_data_recall.inquiryInfo
     }else{
-      this.axios.get('/record/question').then((result) =>{
+      this.axios.get('/record/inquiry/question').then((result) =>{
         const questions = result.data.data;
         this.question_list = questions
         if (this.question_list.length != 0 ){
