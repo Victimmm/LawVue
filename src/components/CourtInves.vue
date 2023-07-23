@@ -510,7 +510,7 @@
                   <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
                     <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
                       <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.judge_inquiry_after_counter_defendant_claim[index].answer[aindex].name"
-                                      :options="getAccuserName" placeholder="请选择当事人"
+                                      :options="getAccuserMergeDefendant" placeholder="请选择当事人"
                                       style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
                     </div>
                     <div class="layui-input-block">
