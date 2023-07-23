@@ -237,17 +237,17 @@
           </template>
         </div>
 
-        <div v-if="show_final_mediate==1">
-        <div class="layui-form-item" pane>
-          <div class="layui-form-label" style="line-height: 80px">
-            最终认定调解方案
-          </div>
-          <div class="layui-input-block">
-                  <textarea v-model="data.final_mediate_plan" placeholder="请输入当事人都统一且法院最终确认的调解方案"
-                            class="layui-textarea"></textarea>
-          </div>
-        </div>
-        </div>
+<!--        <div v-if="show_final_mediate==1">-->
+<!--        <div class="layui-form-item" pane>-->
+<!--          <div class="layui-form-label" style="line-height: 80px">-->
+<!--            最终认定调解方案-->
+<!--          </div>-->
+<!--          <div class="layui-input-block">-->
+<!--                  <textarea v-model="data.final_mediate_plan" placeholder="请输入当事人都统一且法院最终确认的调解方案"-->
+<!--                            class="layui-textarea"></textarea>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        </div>-->
       </form>
     </div>
   </div>

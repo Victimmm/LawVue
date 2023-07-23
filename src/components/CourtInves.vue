@@ -332,113 +332,216 @@
               </div>
             </div>
 
-<!--            <div class="layui-form-item" pane style="margin-left: 15px">-->
-<!--              <label class="layui-form-label">是否反诉</label>-->
-<!--              <div class="layui-input-block">-->
-<!--                <div class="myradiomargin">-->
-<!--                  <input type="radio" name="is_counterclaim" lay-ignore="" v-model="data.is_counterclaim"-->
-<!--                         class="myradio" value="1"-->
-<!--                         title="反诉" @change="setCourterClaim()"><label>反诉</label>-->
-<!--                  <input type="radio" name="is_counterclaim" lay-ignore="" v-model="data.is_counterclaim"-->
-<!--                         class="myradio" value="2"-->
-<!--                         title="不反诉" style="margin-left: 15px;" @change="setCourterClaim()"><label>不反诉</label>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
+            <div class="layui-form-item" pane style="margin-left: 15px">
+              <label class="layui-form-label">是否反诉</label>
+              <div class="layui-input-block">
+                <div class="myradiomargin">
+                  <input type="radio" name="is_counterclaim" lay-ignore="" v-model="data.is_counterclaim"
+                         class="myradio" value="1"
+                         title="反诉" @change="setCourterClaim()"><label>反诉</label>
+                  <input type="radio" name="is_counterclaim" lay-ignore="" v-model="data.is_counterclaim"
+                         class="myradio" value="2"
+                         title="不反诉" style="margin-left: 15px;" @change="setCourterClaim()"><label>不反诉</label>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </fieldset>
 
-<!--  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_claim_item"-->
-<!--            v-if="data.is_counterclaim==1">-->
-<!--    <legend>反诉原告的诉讼请求项</legend>-->
-<!--    <div class="layui-field-box">-->
-<!--      <div class="layui-card">-->
-<!--        <div class="layui-card-body">-->
-<!--          <form class="layui-form layui-form-pane">-->
-<!--            <div class="layui-form-item" pane>-->
-<!--              <div class="layui-form-label" style="line-height: 80px">-->
-<!--                反诉原告诉讼请求项-->
-<!--              </div>-->
-<!--              <div class="layui-input-block" contenteditable="true">-->
-<!--              <textarea v-model="data.counterclaim_accuser_claim_item" placeholder="请输入诉讼请求项"-->
-<!--                        class="layui-textarea" style="height:40px"></textarea>-->
-<!--              </div>-->
-<!--            </div>-->
+  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_accuser_claim_item"
+            v-if="data.is_counterclaim==1">
+    <legend>反诉原告的诉讼请求项</legend>
+    <div class="layui-field-box">
+      <div class="layui-card">
+        <div class="layui-card-body">
+          <form class="layui-form layui-form-pane">
+            <div class="layui-form-item" pane>
+              <div class="layui-form-label" style="line-height: 80px">
+                反诉原告诉讼请求项
+              </div>
+              <div class="layui-input-block" contenteditable="true">
+              <textarea v-model="data.counterclaim_accuser_claim_item" placeholder="请输入诉讼请求项"
+                        class="layui-textarea" style="height:40px"></textarea>
+              </div>
+            </div>
 
-<!--            <div class="layui-form-item" pane>-->
-<!--              <div class="layui-form-label" style="line-height: 80px">-->
-<!--                事实和理由-->
-<!--              </div>-->
-<!--              <div class="layui-input-block">-->
-<!--                <textarea v-model="data.counterclaim_accuser_fact_reason" placeholder="请输入事实和理由"-->
-<!--                          class="layui-textarea"></textarea>-->
-<!--              </div>-->
-<!--            </div>-->
+            <div class="layui-form-item" pane>
+              <div class="layui-form-label" style="line-height: 80px">
+                事实和理由
+              </div>
+              <div class="layui-input-block">
+                <textarea v-model="data.counterclaim_accuser_fact_reason" placeholder="请输入事实和理由"
+                          class="layui-textarea"></textarea>
+              </div>
+            </div>
 
-<!--            <div class="layui-form-item" pane>-->
-<!--              <label class="layui-form-label">反诉被告今天是否答辩</label>-->
-<!--              <div class="layui-input-block">-->
-<!--                <div class="myradiomargin">-->
-<!--                  <input type="radio" lay-ignore="" name="counterclaim_defendant_today_is_reply"-->
-<!--                         v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="1"-->
-<!--                         title="答辩" @change="setIsTodayReply"><label>答辩</label>-->
-<!--                  <input type="radio" lay-ignore="" name="counterclaim_defendant_today_is_reply"-->
-<!--                         v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="2"-->
-<!--                         title="不答辩" @change="setIsTodayReply" style="margin-left: 15px;"><label>不答辩</label>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </form>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </fieldset>-->
+            <div class="layui-form-item" pane>
+              <label class="layui-form-label">反诉被告今天是否答辩</label>
+              <div class="layui-input-block">
+                <div class="myradiomargin">
+                  <input type="radio" lay-ignore="" name="counterclaim_defendant_today_is_reply"
+                         v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="1"
+                         title="答辩" @change="setIsTodayReply"><label>答辩</label>
+                  <input type="radio" lay-ignore="" name="counterclaim_defendant_today_is_reply"
+                         v-model="data.counterclaim_defendant_today_is_reply" class="myradio" value="2"
+                         title="不答辩" @change="setIsTodayReply" style="margin-left: 15px;"><label>不答辩</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </fieldset>
 
-<!--  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_defendant_reply"-->
-<!--            v-if="data.counterclaim_defendant_today_is_reply==1 && data.is_counterclaim==1">-->
-<!--    <legend>反诉被告答辩</legend>-->
-<!--    <div class="layui-field-box">-->
-<!--      <div class="layui-card">-->
-<!--        <div class="layui-card-body">-->
-<!--          <form class="layui-form layui-form-pane">-->
-<!--            <template v-for="(item, index) in data.counterclaim_defendant_reply" :key='index'>-->
-<!--              <div class="layui-form-item " pane>-->
-<!--                <div class="layui-inline" style="width: 100%;margin-bottom:0px;">-->
-<!--                  <div class="layui-input-inline" style="margin-left:0px ;margin-top: 31px;">-->
-<!--                    <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[index].name"-->
-<!--                                    :show-labels="false"-->
-<!--                                    :options="getAccuserName" placeholder="请选择反诉被告"-->
-<!--                                    style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>-->
-<!--                  </div>-->
-<!--                  <div class="layui-input-block">-->
-<!--                    <div class="myselect-div">-->
-<!--                      <textarea type="text" v-model="data.counterclaim_defendant_reply[index].content"-->
-<!--                                placeholder="请输入答辩内容"-->
-<!--                                autocomplete="off"-->
-<!--                                class="layui-input" style="width: 100%;float: left;min-height:100px"></textarea>-->
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 25px" id="judge_inquiry_after_counter_accuser_claim" v-if="data.is_counterclaim==1">
+    <legend>审判员询问</legend>
+    <div class="layui-card">
+      <div class="layui-card-body">
+        <form class="layui-form layui-form-pane">
+          <template v-for="(item, index) in data.judge_inquiry_after_counter_accuser_claim" :key="index">
+            <div class="layui-form-item" style="margin-bottom: 10px" pane>
+              <label class="layui-form-label">审判员</label>
+              <div class="layui-input-block" >
+                <input type="text" v-model="data.judge_inquiry_after_counter_accuser_claim[index].question" placeholder="请输入问题" autocomplete="off"
+                       class="layui-input" style="width: 100%;float: left;">
+              </div>
+            </div>
+            <form class="layui-form">
+              <template v-for="(aitem, aindex) in data.judge_inquiry_after_counter_accuser_claim[index].answer" :key="aindex">
+                <div class="layui-form-item" pane>
+                  <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                    <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
+                      <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.judge_inquiry_after_counter_accuser_claim[index].answer[aindex].name"
+                                      :options="getAccuserMergeDefendant" placeholder="请选择当事人"
+                                      style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                    </div>
+                    <div class="layui-input-block">
+                      <div class="myselect-div">
+                      <textarea type="text" v-model="data.judge_inquiry_after_counter_accuser_claim[index].answer[aindex].answer" placeholder="请输入回答" autocomplete="off"
+                                class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                        <button type="button" @click="remove_component_accuser_claim('counter_accuser_claim_inquiry_reply',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
+                                data-type="text"
+                                style="float: right;height:100px;width:7.5%">
+                          <i class="layui-icon">&#xe640;</i></button>
+                        <button type="button" @click="add_component_accuser_claim('counter_accuser_claim_inquiry_reply',index,aindex+1)" class="layui-btn layui-btn-sm" data-type="text"
+                                style="float: right;height:100px;width:7.5%">
+                          <i class="layui-icon">&#xe654;</i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </form>
+            <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component_accuser_claim('counter_accuser_claim_inquiry_info',index+1)"> 添加问题</button>
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left: 5px" @click="remove_component_accuser_claim('counter_accuser_claim_inquiry_info',index)"> 删除问题
+              </button>
+            </div>
+          </template>
+        </form>
+      </div>
+    </div>
+    <!--      </div>-->
+  </fieldset>
 
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="layui-form-item" style="width:100%;">-->
-<!--                <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"-->
-<!--                        @click="add_component('counterclaim_defendant_reply',index)">添加反诉被告答辩内容-->
-<!--                </button>-->
-<!--                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"-->
-<!--                        @click="delete_component('counterclaim_defendant_reply',index)"> 删除答辩内容-->
-<!--                </button>-->
-<!--              </div>-->
-<!--            </template>-->
-<!--          </form>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </fieldset>-->
+  <fieldset class="layui-elem-field layui-field-title" id="counterclaim_defendant_reply"
+            v-if="data.counterclaim_defendant_today_is_reply==1 && data.is_counterclaim==1">
+    <legend>反诉被告答辩</legend>
+    <div class="layui-field-box">
+      <div class="layui-card">
+        <div class="layui-card-body">
+          <form class="layui-form layui-form-pane">
+            <template v-for="(item, index) in data.counterclaim_defendant_reply" :key='index'>
+              <div class="layui-form-item " pane>
+                <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                  <div class="layui-input-inline" style="margin-left:0px ;margin-top: 31px;">
+                    <VueMultiselect :option-height="38" v-model="data.counterclaim_defendant_reply[index].name"
+                                    :show-labels="false"
+                                    :options="getAccuserName" placeholder="请选择反诉被告"
+                                    style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                  </div>
+                  <div class="layui-input-block">
+                    <div class="myselect-div">
+                      <textarea type="text" v-model="data.counterclaim_defendant_reply[index].content"
+                                placeholder="请输入答辩内容"
+                                autocomplete="off"
+                                class="layui-input" style="width: 100%;float: left;min-height:100px"></textarea>
 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item" style="width:100%;">
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-xs"
+                        @click="add_component('counterclaim_defendant_reply',index)">添加反诉被告答辩内容
+                </button>
+                <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs"
+                        @click="delete_component('counterclaim_defendant_reply',index)"> 删除答辩内容
+                </button>
+              </div>
+            </template>
+          </form>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 25px" id="judge_inquiry_after_counter_defendant_claim" v-if="$store.state.is_counterclaim=='1'">
+    <legend>审判员询问</legend>
+    <div class="layui-card">
+      <div class="layui-card-body">
+        <form class="layui-form layui-form-pane">
+          <template v-for="(item, index) in data.judge_inquiry_after_counter_defendant_claim" :key="index">
+            <div class="layui-form-item" style="margin-bottom: 10px" pane>
+              <label class="layui-form-label">审判员</label>
+              <div class="layui-input-block" >
+                <input type="text" v-model="data.judge_inquiry_after_counter_defendant_claim[index].question" placeholder="请输入问题" autocomplete="off"
+                       class="layui-input" style="width: 100%;float: left;">
+              </div>
+            </div>
+            <form class="layui-form">
+              <template v-for="(aitem, aindex) in data.judge_inquiry_after_counter_defendant_claim[index].answer" :key="aindex">
+                <div class="layui-form-item" pane>
+                  <div class="layui-inline" style="width: 100%;margin-bottom:0px;">
+                    <div class="layui-input-inline" style="margin-left:0px;margin-top:31px;" >
+                      <VueMultiselect :option-height="38"  :show-labels="false" v-model="data.judge_inquiry_after_counter_defendant_claim[index].answer[aindex].name"
+                                      :options="getAccuserName" placeholder="请选择当事人"
+                                      style="line-height: 16px;width: 210px; min-height: 38px"></VueMultiselect>
+                    </div>
+                    <div class="layui-input-block">
+                      <div class="myselect-div">
+                      <textarea type="text" v-model="data.judge_inquiry_after_counter_defendant_claim[index].answer[aindex].answer" placeholder="请输入回答" autocomplete="off"
+                                class="layui-textarea"  style="width: 85%;float: left;min-height:100px"></textarea>
+                        <button type="button" @click="remove_component_accuser_claim('judge_inquiry_after_counter_defendant_claim_query',index,aindex)" class="layui-btn layui-btn-danger layui-btn-sm"
+                                data-type="text"
+                                style="float: right;height:100px;width:7.5%">
+                          <i class="layui-icon">&#xe640;</i></button>
+                        <button type="button" @click="add_component_accuser_claim('judge_inquiry_after_counter_defendant_claim_query',index,aindex+1)" class="layui-btn layui-btn-sm" data-type="text"
+                                style="float: right;height:100px;width:7.5%">
+                          <i class="layui-icon">&#xe654;</i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </form>
+            <div class="layui-form-item" style="width:100%;margin-top: -10px;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-xs" @click="add_component_accuser_claim('judge_inquiry_after_counter_defendant_claim_info',index+1)"> 添加问题</button>
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" style="margin-left: 5px" @click="remove_component_accuser_claim('judge_inquiry_after_counter_defendant_claim_claim',index)"> 删除问题
+              </button>
+            </div>
+          </template>
+        </form>
+      </div>
+    </div>
+    <!--      </div>-->
+  </fieldset>
 
 </template>
 
@@ -482,7 +585,43 @@ data = {
   judge_defendant_reply: "对于原告的诉讼请求及事实理由，被告进行答辩。",
   is_change_claim_item: "2",
   accuser_claim_item_after_change: "",
-  accuser_claim_fact_reason_after_change: ""
+  accuser_claim_fact_reason_after_change: "",
+  judge_inquiry_after_counter_accuser_claim: [
+    {
+      question: "",
+      answer: [
+        {
+          name: "",
+          answer: ""
+        }
+      ]
+    }
+  ],
+  judge_inquiry_after_counter_defendant_reply: [
+    {
+      question: "",
+      answer: [
+        {
+          name: "",
+          answer: ""
+        }
+      ]
+    }
+  ],
+
+  judge_inquiry_after_counter_defendant_claim: [
+    {
+      question: "",
+      answer: [
+        {
+          name: "",
+          answer: ""
+        }
+      ]
+    }
+  ],
+  //反诉被告答辩后的审判员询问
+
 };
 
 export default {
@@ -570,8 +709,10 @@ export default {
           break
         case "counterclaim_defendant_reply":
           //这里是值对应的处理
+
           this.data.counterclaim_defendant_reply.splice(index,0,{name: "", content: ""})
           break
+
         default:
           //这里是没有找到对应的值处理
           break
@@ -581,16 +722,43 @@ export default {
     add_component_accuser_claim(datatype,index_info_index,inquiry_answer_index) {
       switch (datatype) {
         case "inquiry_reply":
-
           this.data.judge_inquiry_after_accuser_claim[index_info_index].answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
           });
           break;
         case "inquiry_info":
-          //
-
           this.data.judge_inquiry_after_accuser_claim.splice(index_info_index,0,{
+            question: "",
+            answer: [{
+              name:"",
+              answer:"",
+            }],
+          });
+          break;
+        case "counter_accuser_claim_inquiry_reply":
+          this.data.judge_inquiry_after_counter_accuser_claim[index_info_index].answer.splice(inquiry_answer_index,0,{
+            name:"",
+            answer:"",
+          });
+          break;
+        case "counter_accuser_claim_inquiry_info":
+          this.data.judge_inquiry_after_counter_accuser_claim.splice(index_info_index,0,{
+            question: "",
+            answer: [{
+              name:"",
+              answer:"",
+            }],
+          });
+          break;
+        case "judge_inquiry_after_counter_defendant_claim_query":
+          this.data.judge_inquiry_after_counter_defendant_claim[index_info_index].answer.splice(inquiry_answer_index,0,{
+            name:"",
+            answer:"",
+          });
+          break;
+        case "judge_inquiry_after_counter_defendant_claim_info":
+          this.data.judge_inquiry_after_counter_defendant_claim.splice(index_info_index,0,{
             question: "",
             answer: [{
               name:"",
@@ -614,7 +782,6 @@ export default {
     add_component_defendant_reply(datatype,index_info_index,inquiry_answer_index) {
       switch (datatype) {
         case "inquiry_reply":
-
           this.data.judge_inquiry_after_defendant_reply[index_info_index].answer.splice(inquiry_answer_index,0,{
             name:"",
             answer:"",
@@ -631,9 +798,23 @@ export default {
             }],
           });
           break;
-        default:
-          //这里是没有找到对应的值处理
-          break
+
+        case "counter_defendant_reply_inquiry_reply":
+          this.data.judge_inquiry_after_counter_defendant_reply[index_info_index].answer.splice(inquiry_answer_index,0,{
+            name:"",
+            answer:"",
+          });
+          break;
+        case "counter_defendant_reply_inquiry_info":
+
+          this.data.judge_inquiry_after_counter_defendant_reply.splice(index_info_index,0,{
+            question: "",
+            answer: [{
+              name:"",
+              answer:"",
+            }],
+          });
+          break;
         }
     },
 
@@ -648,7 +829,6 @@ export default {
           break;
         case "inquiry_info":
           //
-
           this.data.judge_inquiry_before_third_state.splice(index_info_index,0,{
             question: "",
             answer: [{
@@ -693,6 +873,13 @@ export default {
         default:
           //这里是没有找到对应的值处理
           break
+        case "counterclaim_defendant_reply":
+          if (this.data.counterclaim_defendant_reply.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
+          this.data.counterclaim_defendant_reply.splice(index, 1)
+          break
       }
     },
     remove_component_accuser_claim(datatype, inquiry_info_index, inquiry_answer_index) {
@@ -706,6 +893,38 @@ export default {
           this.data.judge_inquiry_after_accuser_claim[inquiry_info_index].answer.splice(inquiry_answer_index, 1);
           break;
         case "inquiry_info":
+          //这里是值对应的处理
+          if (this.data.judge_inquiry_after_accuser_claim.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
+          this.data.judge_inquiry_after_accuser_claim.splice(inquiry_info_index, 1);
+          break;
+        case "judge_inquiry_after_counter_defendant_claim_query":
+          //这里是值对应的处理
+          if (this.data.judge_inquiry_after_counter_accuser_claim[inquiry_info_index].answer.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
+          this.data.judge_inquiry_after_counter_accuser_claim[inquiry_info_index].answer.splice(inquiry_answer_index, 1);
+          break;
+        case "counter_accuser_claim_inquiry_info":
+          //这里是值对应的处理
+          if (this.data.judge_inquiry_after_counter_accuser_claim.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
+          this.data.judge_inquiry_after_counter_accuser_claim.splice(inquiry_info_index, 1);
+          break;
+        case "judge_inquiry_after_counter_defendant_claim_reply":
+          //这里是值对应的处理
+          if (this.data.judge_inquiry_after_counter_defendant_claim[inquiry_info_index].answer.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
+          this.data.judge_inquiry_after_counter_defendant_claim[inquiry_info_index].answer.splice(inquiry_answer_index, 1);
+          break;
+        case "judge_inquiry_after_counter_defendant_claim_info":
           //这里是值对应的处理
           if (this.data.judge_inquiry_after_accuser_claim.length < 2) {
             window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
@@ -737,6 +956,22 @@ export default {
             }
             this.data.judge_inquiry_after_defendant_reply.splice(inquiry_info_index, 1);
             break;
+        case "counter_defendant_reply_inquiry_reply":
+          //这里是值对应的处理
+          if (this.data.judge_inquiry_after_counter_defendant_reply[inquiry_info_index].answer.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
+          this.data.judge_inquiry_after_counter_defendant_reply[inquiry_info_index].answer.splice(inquiry_answer_index, 1);
+          break;
+        case "counter_defendant_reply_inquiry_info":
+          //这里是值对应的处理
+          if (this.data.judge_inquiry_after_counter_defendant_reply.length < 2) {
+            window.layer.msg("不允许删除唯一项", {icon: 5, time: 1500});
+            return;
+          }
+          this.data.judge_inquiry_after_counter_defendant_reply.splice(inquiry_info_index, 1);
+          break;
           // case "inquiry_answer":
           //   //这里是值对应的处理
           //   this.data.judge_inquiry_after_defendant_reply[inquiry_info_index].answer.splice(inquiry_answer_index, 1);

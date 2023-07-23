@@ -431,7 +431,8 @@ export default {
 
           //将数组拼接成字符串
           accuserShowInfo.defendant_and_other_accuser_query.forEach(e => {
-            e.evidence = e.evidence.join("**") , e.name = e.name.join("**")
+            e.evidence = e.evidence.join("**") ,
+            e.name = e.name.join("**")
           })
 
           recordJson["judge_defendant_and_other_accuser_query"] = accuserShowInfo.judge_defendant_and_other_accuser_query
@@ -595,7 +596,6 @@ export default {
           closeBtn: 0,
           offset: 'r',
           success: ()=>{
-            console.log("3123123123123123")
             this.onScroll()
           }
         });
